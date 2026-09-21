@@ -75,7 +75,7 @@ def attendance_report(plan_id: int, db: DB, user: CurrentUser, hall_id: int | No
     return _file(attendance_xlsx(export), XLSX, _name(export, "attendance", "xlsx"))
 
 
-@router.get("/qr-slips.pdf", summary="Seat slips with QR codes, four per page")
+@router.get("/qr-slips.pdf", summary="Seat slips with QR codes, six per page")
 def qr_slips(plan_id: int, db: DB, user: CurrentUser, hall_id: int | None = None) -> Response:
     export = _prepare(db, plan_id, hall_id, user, "seat slips")
     session = export.plan.session

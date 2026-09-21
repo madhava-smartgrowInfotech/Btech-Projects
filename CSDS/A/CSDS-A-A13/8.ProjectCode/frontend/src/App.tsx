@@ -9,6 +9,8 @@ const LoginPage = lazy(() => import("@/pages/auth/LoginPage"));
 const RegisterPage = lazy(() => import("@/pages/auth/RegisterPage"));
 const DashboardPage = lazy(() => import("@/pages/app/DashboardPage"));
 const TeamPage = lazy(() => import("@/pages/app/TeamPage"));
+const ImportPage = lazy(() => import("@/pages/app/ImportPage"));
+const DataPage = lazy(() => import("@/pages/app/DataPage"));
 const SettingsPage = lazy(() => import("@/pages/app/SettingsPage"));
 const NotFoundPage = lazy(() => import("@/pages/NotFoundPage"));
 
@@ -28,6 +30,8 @@ const router = createBrowserRouter([
     ),
     children: [
       { index: true, element: page(<DashboardPage />) },
+      { path: "import", element: admin(<ImportPage />) },
+      { path: "data", element: admin(<DataPage />) },
       { path: "team", element: admin(<TeamPage />) },
       { path: "settings", element: admin(<SettingsPage />) },
     ],

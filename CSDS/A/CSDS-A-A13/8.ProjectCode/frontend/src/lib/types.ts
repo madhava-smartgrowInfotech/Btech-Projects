@@ -31,3 +31,208 @@ export interface DemoInfo {
   password: string | null;
   accounts: { role: Role; email: string; name: string }[];
 }
+
+// ---------------------------------------------------------------- import
+export type ImportKind = "courses" | "candidates" | "halls" | "timetable" | "workbook";
+export type DataKind = Exclude<ImportKind, "workbook">;
+
+export interface ImportIssue {
+  kind: DataKind;
+  row: number | null;
+  column: string | null;
+  message: string;
+  level: "error" | "warning";
+}
+
+export interface ImportKindReport {
+  rows_total: number;
+  rows_valid: number;
+  new: number;
+  updated: number;
+  errors: number;
+  warnings: number;
+}
+
+export interface ImportReport {
+  mode: "update" | "replace";
+  kinds: Partial<Record<DataKind, ImportKindReport>>;
+  errors: number;
+  warnings: number;
+  issues: ImportIssue[];
+  issues_truncated: boolean;
+  preview: Partial<Record<DataKind, Record<string, string | null>[]>>;
+}
+
+export interface ImportBatch {
+  id: number;
+  kind: ImportKind;
+  filename: string;
+  status: "validated" | "failed" | "committed";
+  rows_total: number;
+  rows_valid: number;
+  created_at: string;
+  committed_at: string | null;
+  created_by: string | null;
+  report: ImportReport | null;
+}
+
+// ---------------------------------------------------------------- data
+export interface DataSummary {
+  departments: number;
+  courses: number;
+  candidates: number;
+  accessible_candidates: number;
+  registrations: number;
+  halls: number;
+  active_halls: number;
+  seats: number;
+  sessions: number;
+  papers: number;
+}
+
+export interface Department {
+  id: number;
+  code: string;
+  name: string;
+  courses: number;
+  candidates: number;
+}
+
+export interface Course {
+  id: number;
+  code: string;
+  name: string;
+  department_code: string;
+  department_name: string;
+  candidates: number;
+  session_id: number | null;
+  session_label: string | null;
+  paper_group: string | null;
+}
+
+export interface Candidate {
+  id: number;
+  roll_no: string;
+  full_name: string;
+  department_code: string;
+  department_name: string;
+  email: string | null;
+  date_of_birth: string | null;
+  needs_accessible_seat: boolean;
+  courses: string[];
+}
+
+export interface CandidatePage {
+  items: Candidate[];
+  total: number;
+  page: number;
+  page_size: number;
+}
+
+export interface CandidateSeat {
+  plan_id: number;
+  plan_status: string;
+  session_id: number;
+  session_label: string;
+  date: string;
+  start_time: string;
+  end_time: string;
+  course_code: string;
+  course_name: string;
+  hall_code: string;
+  hall_name: string;
+  seat_label: string;
+}
+
+export interface CandidateDetail extends Candidate {
+  seats: CandidateSeat[];
+}
+
+export interface Hall {
+  id: number;
+  code: string;
+  name: string;
+  building: string;
+  floor: string;
+  rows: number;
+  cols: number;
+  capacity: number;
+  blocked_seats: string[];
+  accessible_seats: string[];
+  aisles_after_cols: number[];
+  is_active: boolean;
+  paper_ceiling: number;
+}
+
+export interface SessionPaper {
+  course_id: number;
+  course_code: string;
+  course_name: string;
+  department_code: string;
+  paper_group: string | null;
+  candidates: number;
+}
+
+export interface ExamSession {
+  id: number;
+  code: string;
+  label: string;
+  date: string;
+  start_time: string;
+  end_time: string;
+  papers: SessionPaper[];
+  candidates: number;
+  accessible_candidates: number;
+  plans: { count: number; latest_id: number | null; latest_status: PlanStatus | null; published_id: number | null };
+}
+
+// ---------------------------------------------------------------- plans
+export type PlanStatus = "draft" | "published" | "archived";
+
+export interface Violation {
+  type: "same_paper" | "roll_gap" | "accessible" | "capacity";
+  hall: string;
+  seats: string[];
+  candidates: string[];
+  detail: string;
+}
+
+export interface HallCard {
+  hall: string;
+  seats: number;
+  placed: number;
+  utilisation: number;
+  papers: Record<string, number>;
+  departments: Record<string, number>;
+  same_paper_pairs: number;
+  roll_gap_violations: number;
+  same_department_pairs: number;
+  neighbour_pairs: number;
+}
+
+export interface Scorecard {
+  candidates: number;
+  placed: number;
+  unplaced: number;
+  capacity_violations: number;
+  same_paper_pairs: number;
+  roll_gap_violations: number;
+  accessible_violations: number;
+  same_department_pairs: number;
+  neighbour_pairs: number;
+  halls_used: number;
+  seats_in_used_halls: number;
+  utilisation: number;
+  hard_ok: boolean;
+  per_hall: HallCard[];
+  violations: Violation[];
+}
+
+export interface Baseline {
+  method?: string;
+  same_paper_pairs?: number;
+  roll_gap_violations?: number;
+  same_department_pairs?: number;
+  accessible_violations?: number;
+  neighbour_pairs?: number;
+}

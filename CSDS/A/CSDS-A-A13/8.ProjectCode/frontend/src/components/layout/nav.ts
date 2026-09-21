@@ -1,4 +1,4 @@
-import { LayoutDashboard, Settings, Users } from "lucide-react";
+import { Database, LayoutDashboard, Settings, Upload, Users } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import type { Role } from "@/lib/types";
 
@@ -20,6 +20,13 @@ const ADMIN: Role[] = ["admin"];
 
 export const NAV: NavSection[] = [
   { items: [{ to: "/app", label: "Dashboard", icon: LayoutDashboard, roles: ALL, end: true }] },
+  {
+    title: "Prepare",
+    items: [
+      { to: "/app/import", label: "Import data", icon: Upload, roles: ADMIN },
+      { to: "/app/data", label: "Data", icon: Database, roles: ADMIN },
+    ],
+  },
   {
     title: "Workspace",
     items: [

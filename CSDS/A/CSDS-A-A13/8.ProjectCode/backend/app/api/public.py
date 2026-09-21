@@ -4,11 +4,13 @@ from datetime import date
 
 import qrcode
 from fastapi import APIRouter, Request, Response
+from qrcode.image.pil import PilImage
 from sqlalchemy import select
 
 from app.core.config import get_settings
 from app.core.deps import DB
 from app.core.errors import AppError
+from app.ml.profile import benchmark_metrics
 from app.models import Candidate, Hall, Plan, SeatAssignment
 from app.models.plan import PLAN_PUBLISHED
 from app.services.exports.slips_pdf import Slip, lookup_url, slips_pdf
@@ -40,6 +42,31 @@ def _seats(db, roll_no: str) -> tuple[Candidate, list[tuple[SeatAssignment, Plan
     if not rows:
         raise AppError(NOT_FOUND, 404)
     return candidate, sorted(rows, key=lambda r: (r[1].session.date, r[1].session.start_time))
+
+
+@router.get("/engine-summary", summary="Headline results of the latest engine benchmark (shown on the home page)")
+def engine_summary() -> dict:
+    metrics = benchmark_metrics()
+    if not metrics:
+        return {"available": False}
+    h = metrics["headline"]
+    seatwise = [s for s in metrics["summary"] if s["method"] == "SeatWise"]
+    largest = max(metrics["dataset"]["scenarios"], key=lambda sc: (sc["candidates"], sc["adjacency"]))
+    largest_run = next((s for s in seatwise if s["scenario"] == largest["name"]), None)
+    return {
+        "available": True,
+        "run_date": metrics["run_date"],
+        "typical_candidates": h["candidates"],
+        "typical_solve_s": round(h["solve_s_mean"], 2),
+        "conflicts_avoided": int(h["conflicts_avoided_vs_sequential"]),
+        "same_paper_pairs": h["same_paper_pairs"],
+        "roll_seat_correlation": round(h["abs_roll_seat_correlation"], 3),
+        "neighbour_overlap": round(h["neighbour_overlap"], 4),
+        "runs": sum(s["runs"] for s in seatwise),
+        "largest_candidates": largest["candidates"],
+        "largest_solve_s": round(largest_run["solve_s_mean"], 1) if largest_run else None,
+        "all_hard_rules_satisfied": h["all_hard_rules_satisfied"],
+    }
 
 
 @router.get("/lookup/{roll_no}", summary="Where do I sit? (published plans only)")
@@ -88,7 +115,7 @@ def slip(roll_no: str, plan_id: int, request: Request, db: DB) -> Response:
 def qr_png(roll_no: str, request: Request, db: DB) -> Response:
     _limiter.check(client_key(request))
     candidate, _ = _seats(db, roll_no)
-    image = qrcode.make(lookup_url(candidate.roll_no), box_size=8, border=2)
+    image = qrcode.make(lookup_url(candidate.roll_no), box_size=8, border=2, image_factory=PilImage)
     buffer = io.BytesIO()
-    image.save(buffer, format="PNG")
+    image.save(buffer)
     return Response(buffer.getvalue(), media_type="image/png", headers={"Cache-Control": "no-store"})

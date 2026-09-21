@@ -49,6 +49,12 @@ def test_slip_and_qr(client, plans):
     assert png.status_code == 200 and png.content.startswith(b"\x89PNG")
 
 
+def test_engine_summary_for_the_home_page(client):
+    summary = client.get("/api/public/engine-summary").json()
+    assert summary["available"] is True
+    assert summary["same_paper_pairs"] == 0 and summary["conflicts_avoided"] > 0 and summary["runs"] > 0
+
+
 def test_lookups_are_rate_limited(client, plans, monkeypatch):
     monkeypatch.setattr(public, "_limiter", public.RateLimiter(3))
     roll = plans["seat"]["candidate"]["roll_no"]

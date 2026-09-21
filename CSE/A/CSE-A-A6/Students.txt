@@ -1,0 +1,25 @@
+==============================================================================
+  CSE-A   |   Batch 06
+==============================================================================
+
+PROJECT TITLE
+  Smart Alcohol Intoxication Detection and Prevention System Using AI
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      B PRANITHA                         23K91A0522
+  2      BANTU KAVYA                        23K91A0531
+  3      DASARI VIVEKA SARVESHWARI          23K91A0560
+  4      BEKKAM VAMSHI                      23K91A0534
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  N. PADMAVATHI
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

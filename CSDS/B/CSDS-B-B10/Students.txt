@@ -1,0 +1,25 @@
+==============================================================================
+  CSDS-B   |   Batch B-10
+==============================================================================
+
+PROJECT TITLE
+  Hybrid Chaotic Lightweight Image Encryption for Secure UAV Transmission: Wavelet and XOR-Diffusion Approach
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      NALLA NIKHILESHWAR REDDY           23K91A67C5
+  2      KASTURI SRIMUKHI                   24K95A6707
+  3      GUNJULURI SHAILAJA                 23K91A6771
+  4      MOKKA PHANEENDHAR GOUD             23K91A67B8
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  DR.M.SANDHYA RANI
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

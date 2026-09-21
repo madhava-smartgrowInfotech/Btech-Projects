@@ -1,0 +1,25 @@
+==============================================================================
+  CSDS-A   |   Batch A-02
+==============================================================================
+
+PROJECT TITLE
+  Attendance Magic: A Smart Geo-Fenced Attendance System with Live Challenge Verification
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      A.GREESHMA                         23K91A6706
+  2      B.VINAY                            23K91A6740
+  3      G.SRIRAM                           23K91A6757
+  4      B.SAI KUMAR                        24K95A6704
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  GUIDE NAME
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

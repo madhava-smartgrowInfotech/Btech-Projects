@@ -1,0 +1,25 @@
+==============================================================================
+  CSE-A   |   Batch 16
+==============================================================================
+
+PROJECT TITLE
+  Sign Language Recognition System Based on Convolutional Neural Networks (CNNs)
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      AJAY                               24k95A0502
+  2      A NAVADEEP REDDDY                  23K91A0514
+  3      B MANIDEEP                         23K91A0540
+  4      B MAHESHWARI                       23K91A0536
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  V. PALLAVI
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

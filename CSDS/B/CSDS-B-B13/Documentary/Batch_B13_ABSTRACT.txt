@@ -1,0 +1,18 @@
+API SECURITY PLATFORM FOR PAYMENT APPLICATIONS  
+ 
+
+ABSTRACT  :
+
+Application Programming Interfaces (APIs) are the backbone of modern UPI and digital payment applications, enabling secure communication between users, banks, and payment services.
+As the use of online payment systems continues to grow, APIs have become a common target for cyberattacks.
+This project develops an automated API security testing tool that scans REST APIs for vulnerabilities based on the OWASP API Security Top 10.
+It detects common security issues such as broken authentication, unauthorized access (BOLA/IDOR), excessive data exposure, and rate-limiting weaknesses. 
+The tool generates a detailed security report along with an API security score and recommendations to help developers improve the security of payment applications before deployment.
+This project presents an automated API security testing tool designed for UPI and digital payment applications.
+The tool scans REST APIs to identify common security vulnerabilities based on the OWASP API Security Top 10 standard. 
+It detects issues such as broken authentication, unauthorized access, excessive data exposure, and rate-limiting weaknesses. 
+Popular tools can identify API vulnerabilities, but they often require skilled security professionals, significant manual effort, and expensive licenses. 
+As a result, vulnerabilities such as broken authentication, unauthorized access (BOLA/IDOR), and excessive data exposure may remain undetected before deployment. 
+This highlights the need for a simple, automated, and cost-effective API security testing solution. 
+The proposed system is an automated tool for checking the security of UPI and payment app APIs.
+It scans REST API endpoints to find common problems like weak login security, unauthorized access, too much data exposure, rate limit issues, and injection attacks.

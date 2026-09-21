@@ -1,0 +1,25 @@
+==============================================================================
+  CSE-A   |   Batch 01
+==============================================================================
+
+PROJECT TITLE
+  Adaptive Learning Intelligence Platform Using Educational Document Analysis and Personalized Learning Analytics
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      A DHANUSH                          23K91A0501
+  2      ALE VIJAYALAXMI                    23K91A0508
+  3      BURRI MALLIKARJUN                  23K91A0549
+  4      ATRAGADA NAGATRIMURTHULU           23K91A0517
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  RAGHAVENDRA
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

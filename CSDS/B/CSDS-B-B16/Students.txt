@@ -1,0 +1,25 @@
+==============================================================================
+  CSDS-B   |   Batch B-16
+==============================================================================
+
+PROJECT TITLE
+  AUTOMATIC DETECTION OF DIABETIC RETINOPATHY USING HAAR WAVELET TRANSFORM AND LENET CNN
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      L. Prathima                        23K91A67A1
+  2      L. Sai Praneeth                    23K91A6799
+  3      G. Yogishwar                       23K91A6769
+  4      L. Sri Ram                         23K91A67A0
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  Mrs. S.Venkata Ramana
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

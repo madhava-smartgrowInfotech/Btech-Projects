@@ -1,0 +1,25 @@
+==============================================================================
+  CSDS-A   |   Batch A-04
+==============================================================================
+
+PROJECT TITLE
+  Advanced Optimization in E-Commerce Logistics: Combining Matheuristics With Random Forests for Hub Location Efficiency
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      CH.ARCHANA                         23K91A6745
+  2      A.MEENAKSHI                        23K91A6705
+  3      B.ARUN                             23K91A6734
+  4      A.SAMPATH                          23K91A6712
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  GUIDE NAME
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

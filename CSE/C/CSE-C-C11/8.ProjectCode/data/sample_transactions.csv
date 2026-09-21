@@ -1,0 +1,35 @@
+date,description,amount,category,type
+2026-06-01,Monthly salary,65000,Salary,income
+2026-06-02,Swiggy order,450,Food,expense
+2026-06-03,Uber ride,220,Transport,expense
+2026-06-04,Electricity bill,1800,Bills,expense
+2026-06-05,Netflix subscription,499,Entertainment,expense
+2026-06-06,Grocery store,3200,Food,expense
+2026-06-08,Flipkart order,2500,Shopping,expense
+2026-06-10,Monthly rent,18000,Rent,expense
+2026-06-12,Mutual fund SIP,5000,Investments,expense
+2026-06-15,Petrol pump,1500,Transport,expense
+2026-06-18,Movie tickets,600,Entertainment,expense
+2026-06-20,Mobile recharge,399,Bills,expense
+2026-06-22,Pharmacy,750,Healthcare,expense
+2026-06-25,Restaurant dinner,1200,Food,expense
+2026-07-01,Monthly salary,65000,Salary,income
+2026-07-02,Zomato order,380,Food,expense
+2026-07-03,Ola cab,300,Transport,expense
+2026-07-04,Electricity bill,2100,Bills,expense
+2026-07-06,Grocery store,3400,Food,expense
+2026-07-09,Amazon purchase,4200,Shopping,expense
+2026-07-10,Monthly rent,18000,Rent,expense
+2026-07-12,Mutual fund SIP,5000,Investments,expense
+2026-07-16,Spotify premium,199,Entertainment,expense
+2026-07-19,Hospital visit,1500,Healthcare,expense
+2026-07-23,Flight tickets,8500,Travel,expense
+2026-08-01,Monthly salary,65000,Salary,income
+2026-08-02,Swiggy order,520,Food,expense
+2026-08-03,Uber ride,260,Transport,expense
+2026-08-05,Electricity bill,1950,Bills,expense
+2026-08-07,Myntra order,1800,Shopping,expense
+2026-08-10,Monthly rent,18000,Rent,expense
+2026-08-12,Mutual fund SIP,5000,Investments,expense
+2026-08-14,Coffee shop,350,Food,expense
+2026-08-17,Concert tickets,2200,Entertainment,expense

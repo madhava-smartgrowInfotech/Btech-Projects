@@ -1,0 +1,25 @@
+==============================================================================
+  CSDS-B   |   Batch B-08
+==============================================================================
+
+PROJECT TITLE
+  Enhanced AI-Based Human Activity Recognition with Fall Detection and Emergency Alert System
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      KUNTA NANDINI REDDY                23K91A6797
+  2      KETHAVATH MALLISHWARI              23K91A6787
+  3      KARATLAPELLY VIVEK                 23K91A6781
+  4      MEDUDHULA SAGAR                    23K91A67B4
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  MR.M.AROKIA MUTHU
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

@@ -1,0 +1,25 @@
+==============================================================================
+  CSDS-B   |   Batch B-06
+==============================================================================
+
+PROJECT TITLE
+  AI-ENHANCED PATIENT-CENTRIC UNIFIED HEALTH DATA INTEROPERABILITY SYSTEM
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      KODIDUTI SRUTHI                    23K91A6791
+  2      K AKSHEYAA                         23K91A6774
+  3      MALLELA NAVYA                      23K91A67A9
+  4      KETHAVATH YUVARAJ                  24K95A6709
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  Dr. N. KIRANMAI
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

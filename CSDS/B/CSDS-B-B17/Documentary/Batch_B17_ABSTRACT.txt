@@ -1,0 +1,59 @@
+6579107-295892312420-209024TKR COLLEGE OF ENGINEERING AND TECHNOLOGY
+Autonomous,
+(Accredited by NBA & NAAC with ‘A+’ Grade)
+
+918844179956
+CSE (Data Science)
+
+Major Project : Phase-IA.Y : 2026-27
+Year & Sem:IV & I SemDate : 07.07.2026
+
+Title of the project:
+NEXTGEN CALL INTELLIGENCE WITH ARTIFICIAL INTELLIGENCE
+
+Project Batch No: B17
+
+S.No.
+H.T.No.
+Name
+Mail id (personal)
+Mobile No.
+Sign
+01
+23k91A6793
+K. Rishivardhan
+Rishivgoud1@gmail.com
+6301212556
+
+02
+23K91A67A5
+M. Divyasri
+divyasrimalgireddy@gmail.com 
+8247693948
+
+03
+23K91A6779
+K. Siddharth
+siddharthkandikonda09@gmail.com 
+9959312406
+
+04
+23K91A67B7
+Mohammed Faizan Uddin
+Mrfaizzzuuu3442@g mail.com
+6304763442
+
+Guide Name: Dr. N. CH. Ravi
+Designation: Head of Department
+Mobile No                                 : 9000325230
+Mail id: dr.gravi@tkrcet.com
+
+Abstract:
+
+         NextGen Call Intelligence with Artificial Intelligence is an advanced AI-powered system designed to improve the efficiency and quality of customer communication by automatically analyzing voice conversations. Traditional call monitoring systems require significant manual effort and often fail to provide real-time insights, resulting in delayed decision-making and inconsistent service quality. This project addresses these challenges by integrating Speech-to-Text, Natural Language Processing (NLP), Machine Learning (ML), and Sentiment Analysis to intelligently process customer interactions.
+
+        The proposed system converts voice calls into text, identifies customer emotions and intent, extracts important keywords, classifies call topics, and automatically generates concise call summaries. It also evaluates agent performance, detects customer issues, and provides real-time analytics through interactive dashboards. These features enable organizations to monitor call quality, improve customer satisfaction, reduce operational costs, and make informed business decisions.
+
+        The system is designed to be secure, scalable, and suitable for industries such as customer support, banking, healthcare, telecommunications, insurance, and e-commerce. By automating call analysis and delivering actionable insights, the proposed solution minimizes manual intervention, increases productivity, and enhances the overall customer experience. This project demonstrates how Artificial Intelligence can transform traditional call management into an intelligent, data-driven communication platform that meets the growing demands of modern businesses.
+
+Project CoordinatorProject Guide

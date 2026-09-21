@@ -1,0 +1,55 @@
+-602615-2209805664200-307340TKR COLLEGE OF ENGINEERING AND TECHNOLOGY                    Autonomous,
+(Accredited by NBA & NAAC with ‘A+’ Grade)
+___________________________________________________________________
+CSE (Data Science)
+
+Major Project :  Phase-I                                                                  A.Y : 2026-27  Year & Sem   :   IV & I Sem                                                          Date : 07.07.2026
+
+Title of the project:
+AI-DRIVEN DISTRIBUTED OP BOOKING SYSTEM WITH INTELLIGENT DISEASE SEVERITY ANALYSIS,DYNAMIC HOSPITAL RECOMMENDATION AND SECURE INTER-HOSPITAL DOCTOR.
+
+Project Batch No: B15
+S.No.
+H.T.No
+Name
+Mail id (personal)
+Mobile No.
+Sign
+1
+23K91A6768
+G.PRAVEEN KUMAR
+gugulothpraveen9990@gmail.com
+8688041356
+G.Praveen
+2
+23K91A6784
+K.AKSHAYA
+katheakshaya@gmail.com
+8919304644
+K.Akshaya
+3
+23K91A6767
+G.AKSHAYA
+akshayareddygovuri@gmail.com
+8074838618
+G.Akshaya
+4
+23K91A67C4
+N.DHEERAJ KUMAR
+nalaparajudheerajkumar@gmail.com
+8341957972
+N.Dheeraj             kumar
+
+Guide Name                            :Mrs.J.Ashwini Reddy
+Designation                              :Assistant Professor
+Mobile No                                :7075450757
+Mail id                                      :ashwinireddy@tkrcet.com
+
+Abstract:
+                   
+           Long waiting times and overcrowding during Outpatient (OP) registration remain major challenges in many hospitals. Patients often spend several hours waiting in queues to obtain an OP appointment, and due to the limited number of daily OP slots, many are unable to consult a doctor on the same day. This results in inconvenience, delayed treatment, and inefficient utilization of healthcare resources.
+        To address these issues, this project proposes an *AI-Driven Distributed OP Booking System with Intelligent Disease Severity Analysis, Dynamic Hospital Recommendation, and Secure Inter-Hospital Doctor Collaboration*. The system enables patients to book OP appointments online by selecting hospitals within their district, eliminating the need for physical registration. Each hospital can configure a fixed number of OP appointments per day along with a reserved quota for emergency patients. Once the daily booking limit is reached, the system automatically schedules the appointment for the next available day.
+       The proposed system employs Artificial Intelligence to analyze patient symptoms and predict disease severity by classifying cases as mild, moderate, severe, or critical. Based on the predicted severity, patient's location, medical specialty requirements, and hospital availability, the system dynamically recommends the most appropriate hospital. A distributed hospital network facilitates secure collaboration among doctors across multiple hospitals, enabling electronic patient referrals and secure sharing of medical records whenever specialized consultation is required. Additionally, a dynamic queue management module continuously updates patient queue positions and estimated waiting times, thereby reducing congestion and improving consultation efficiency.
+       The proposed solution aims to reduce patient waiting time, optimize OP slot utilization, prioritize emergency cases, improve access to appropriate healthcare facilities, and enhance coordination among hospitals through secure inter-hospital collaboration. By integrating AI-driven decision-making with distributed healthcare services, the system provides an intelligent, efficient, and patient-centric OP booking platform.
+
+Project Coordinator                                                                           Project Guide

@@ -1,0 +1,136 @@
+TKR COLLEGE OF ENGINEERING AND TECHNOLOGY                    
+Autonomous, 
+(Accredited by NBA & NAAC with ‘A+’ Grade) 
+ 
+___________________________________________________________________ 
+CSE (Data Science) 
+ 
+ 
+Major Project :  Phase-I                                                                  A.Y : 2026-27 
+Year & Sem   :   IV & I Sem                                                          Date : 06.07.2026 
+ 
+ 
+Title of the project:  
+ JEPA-LLM Tuning Framework for Combating GST and Sales Tax Input 
+Tax Credit Fraud Pattern Detection  
+            
+ 
+ 
+Project Batch No:A5 
+S.No. 
+H.T.No. 
+Name 
+Mail id 
+(personal) 
+Mobile No. 
+Sign 
+01 
+23K91A6732 B.AASHRITHA 
+aashrithabitla@g
+mail.com 
+8985888688 
+ 
+02 
+23K91A6739 B.DIVYA 
+Divyabusa37@g
+mail.com 
+6301491743 
+ 
+03 
+23K91A6711 A.YEGNESH 
+yegneshambati@
+gmail.com 
+8328182505 
+ 
+04 
+23K91A6716 A.KISHORE 
+Kishoreazmeera2
+004@gmail.com 
+8977586695 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Guide Name                            : Mr.Dr.N. Ch.RAVI B Tech CSE,M.Tech CSE,PhD CSE 
+Designation                              : Professor in CSE(D.S) 
+Mobile No                                :9849197575 
+
+Mail id                                      :ravi@saimail.com 
+ 
+ 
+Abstract:  Goods and Services Tax (GST) and Sales Tax Input Tax Credit 
+(ITC) fraud have become a major concern in modern tax administration due 
+to the increasing use of fake invoices, circular trading, shell companies, and 
+fraudulent credit claims. These frauds cause substantial revenue leakage and 
+weaken the integrity of the taxation system by enabling taxpayers to claim 
+illegitimate credits without genuine business transactions. Traditional fraud 
+detection methods, which rely heavily on manual auditing, rule-based checks, 
+and post-fraud investigation, are often slow, reactive, and insufficient for 
+uncovering large-scale hidden fraud networks. In real-world GST ecosystems, 
+fraud patterns are not always directly visible in individual transactions; 
+instead, they emerge through complex behavioural, temporal, and relational 
+patterns spread across multiple invoices, taxpayers, and filing cycles. This 
+creates a strong need for an intelligent, scalable, and explainable fraud 
+detection framework capable of learning hidden patterns from large volumes 
+of tax data. 
+To address this challenge, this project proposes a JEPA-LLM Tuning 
+Framework for Combating GST and Sales Tax Input Tax Credit Fraud 
+Pattern Detection. The framework combines domain-specific GST fraud 
+knowledge, self-supervised representation learning, fraud scoring, and 
+natural-language explanation to identify suspicious ITC claims more 
+effectively. The proposed system is inspired by three major directions: GST 
+fraud and forensic accounting analysis, hybrid AI-based financial fraud 
+detection, and explainable multi-layer fraud assessment. At the domain level, 
+the framework targets major GST/ITC fraud behaviours such as fake invoice 
+generation, abnormal input credit claims, shell-entity participation, circular 
+trading loops, invoice without actual movement of goods or services, and 
+coordinated fraud among linked taxpayers. 
+A core contribution of this project is the integration of Joint Embedding 
+Predictive Architecture (JEPA) as the primary pattern-learning component. 
+In this framework, JEPA is used as a self-supervised representation learning 
+module that learns hidden behavioural structures from largely unlabeled GST 
+data. Instead of depending only on fully labelled fraud examples, JEPA 
+models the normal relationships among invoices, taxpayers, filing history, and 
+transaction flows, and then learns compact predictive embeddings that 
+
+represent expected GST behaviour. When a taxpayer, invoice sequence, or 
+transaction network deviates significantly from these learned behavioural 
+patterns, the system flags it as potentially suspicious. This makes JEPA 
+particularly valuable for GST fraud detection because real tax datasets often 
+contain very limited confirmed fraud labels, while fraudsters continuously 
+change their tactics to avoid rule-based detection. By learning behavioural 
+regularities and deviations, JEPA helps capture subtle fraud signatures such 
+as unusual spikes in ITC claims, repeated invoice cycles, suspicious buyer–
+seller relationships, circular credit movement, and shell-company-linked 
+transaction behaviour. 
+The proposed framework follows a multi-layer fraud detection strategy by 
+combining three categories of features: invoice-level features, taxpayer 
+behaviour features, and transaction/network-level features. Invoice-level 
+features may include invoice amount, tax value, credit claimed, filing 
+frequency, duplicate invoice indicators, and date inconsistencies. Taxpayer 
+behaviour features capture patterns such as sudden increases in ITC 
+utilization, mismatch between outward and inward tax declarations, refund 
+anomalies, and irregular filing habits. Network-level features model buyer–
+seller relationships, repeated entity interactions, shared contact information, 
+shell-company clusters, and circular trading loops. JEPA encodes these 
+heterogeneous patterns into a unified latent representation, which is then 
+passed to a fraud scoring module for classification or anomaly detection. 
+To enhance interpretability and usability, the framework also integrates LLM 
+tuning as an explanation and decision-support layer. Once suspicious entities 
+or transactions are identified, the LLM generates human-readable fraud 
+summaries, highlighting the probable reasons behind each alert. For example, 
+it can explain whether a taxpayer was flagged due to abnormal ITC growth, 
+repeated transactions with linked firms, suspicious invoice chains, or 
+inconsistent filing behaviour. This improves transparency and makes the 
+system more useful for auditors, investigators, and tax officers who require 
+understandable evidence rather than raw anomaly scores alone. 
+ 
+ 
+ 
+Project Co-Ordinator: A.MUTHU                                           
+ProjectGuide:Dr.N.Ch.Ravi

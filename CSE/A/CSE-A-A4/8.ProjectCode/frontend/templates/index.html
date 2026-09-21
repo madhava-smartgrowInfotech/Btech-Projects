@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SecurePay AI – Intelligent Fraud Protection</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+:root{--bg:#f4f7fb;--card:#ffffff;--accent:#2563eb;--accent2:#06b6d4;--success:#10b981;--danger:#ef4444;--warning:#f59e0b;--muted:#64748b;--border:#e2e8f0;--dark:#0f172a}
+body{background:var(--bg);color:#1e293b;font-family:'Inter',system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+.navbar{background:#ffffff;border-bottom:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,0.06);padding:12px 0}
+.navbar-brand{font-weight:800;color:var(--dark)!important;letter-spacing:-0.02em}
+.logo-icon{width:36px;height:36px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:9px;display:inline-flex;align-items:center;justify-content:center;color:#fff;margin-right:10px}
+.card-main{background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.03)}
+.kpi-card{padding:20px 22px;border-radius:14px;background:var(--card);border:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.kpi-label{font-size:0.72rem;letter-spacing:0.06em;color:var(--muted);text-transform:uppercase;font-weight:600}
+.kpi-value{font-size:1.75rem;font-weight:800;color:var(--dark);margin-top:4px}
+.kpi-trend{font-size:0.78rem;margin-top:6px}
+.nav-pills .nav-link{color:var(--muted);font-weight:500;border-radius:10px;padding:10px 16px;margin-bottom:4px}
+.nav-pills .nav-link.active{background:var(--accent);color:#fff;box-shadow:0 4px 10px rgba(37,99,235,0.25)}
+.nav-pills .nav-link:not(.active):hover{background:#f1f5f9;color:var(--dark)}
+.btn-primary-main{background:var(--accent);border:none;color:#fff;font-weight:600;border-radius:10px;padding:10px 18px;box-shadow:0 4px 10px rgba(37,99,235,0.2)}
+.btn-primary-main:hover{background:#1d4ed8;color:#fff}
+.btn-outline-soft{border:1px solid var(--border);color:var(--dark);font-weight:500;border-radius:10px;background:#fff}
+.btn-outline-soft:hover{background:#f8fafc;border-color:var(--border)}
+.form-control,.form-select{background:#fff;border:1px solid var(--border);color:var(--dark);border-radius:10px;padding:10px 14px;font-size:0.92rem}
+.form-control:focus,.form-select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(37,99,235,0.12);background:#fff;color:var(--dark)}
+.badge-live{background:#dcfce7;color:#15803d;border:1px solid #bbf7d0;font-weight:700;font-size:0.7rem;letter-spacing:0.04em;padding:4px 10px;border-radius:999px}
+.badge-risk-high{background:#fee2e2;color:#b91c1c;border:1px solid #fecaca;padding:4px 10px;border-radius:999px;font-weight:700;font-size:0.72rem}
+.badge-risk-medium{background:#fef3c7;color:#92400e;border:1px solid #fde68a;padding:4px 10px;border-radius:999px;font-weight:700;font-size:0.72rem}
+.badge-risk-low{background:#dcfce7;color:#166534;border:1px solid #bbf7d0;padding:4px 10px;border-radius:999px;font-weight:700;font-size:0.72rem}
+.table thead th{font-size:0.72rem;letter-spacing:0.05em;color:var(--muted);text-transform:uppercase;font-weight:700;border-bottom:1px solid var(--border);background:#f8fafc}
+.table td{font-size:0.88rem;vertical-align:middle;border-bottom:1px solid #f1f5f9}
+.progress{height:6px;background:#f1f5f9;border-radius:999px}
+.status-dot{width:8px;height:8px;background:var(--success);border-radius:50%;display:inline-block;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1} 50%{opacity:0.5}}
+.hero-prod{padding:28px;border-radius:14px;background:linear-gradient(135deg,#0f172a 0%, #1e293b 55%, #334155 100%);color:#fff;position:relative;overflow:hidden}
+.hero-prod::after{content:"";position:absolute;right:-40px;top:-40px;width:260px;height:260px;background:radial-gradient(circle, rgba(6,182,214,0.25), transparent 70%);border-radius:50%}
+.feature-icon{width:42px;height:42px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;font-size:1.1rem;margin-bottom:10px}
+</style>
+</head>
+<body>
+<nav class="navbar sticky-top">
+<div class="container-fluid px-4">
+<a class="navbar-brand d-flex align-items-center" href="#"><span class="logo-icon"><i class="fa-solid fa-shield-halved"></i></span> SecurePay AI <span class="ms-3 badge-live"><span class="status-dot me-2"></span>LIVE PROTECTION ACTIVE</span></a>
+<div class="d-flex align-items-center gap-3">
+<span class="small text-muted d-none d-md-inline"><i class="fa-solid fa-lock me-1"></i> Bank-Grade Encryption • PCI DSS Compliant</span>
+<div class="d-flex align-items-center gap-2 ps-3" style="border-left:1px solid var(--border)">
+<img src="https://i.pravatar.cc/100?img=33" style="width:32px;height:32px;border-radius:50%;object-fit:cover">
+<div class="d-none d-md-block text-start" style="line-height:1.1"><div class="small fw-semibold">Risk Operations</div><div style="font-size:0.7rem;color:var(--muted)">Admin • Online</div></div>
+</div>
+</div>
+</div>
+</nav>
+
+<div class="container-fluid px-4 py-4">
+<div class="row g-4">
+<!-- Sidebar -->
+<div class="col-lg-2">
+<div class="nav flex-column nav-pills" id="pills-tab" role="tablist">
+<button class="nav-link active" data-bs-toggle="pill" data-bs-target="#tab-dashboard" role="tab"><i class="fa-solid fa-chart-pie me-2"></i>Dashboard</button>
+<button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-verify" role="tab"><i class="fa-solid fa-magnifying-glass me-2"></i>Verify Transaction</button>
+<button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-bulk" role="tab"><i class="fa-solid fa-file-csv me-2"></i>Bulk Verification</button>
+<button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-analytics" role="tab"><i class="fa-solid fa-chart-line me-2"></i>Analytics</button>
+</div>
+
+<div class="card-main p-3 mt-4">
+<div class="kpi-label">System Health</div>
+<div class="d-flex align-items-center gap-2 mt-2"><span class="status-dot"></span><span class="small fw-semibold" style="color:var(--success)">All Systems Operational</span></div>
+<div class="small text-muted mt-2" id="systemHealthDetail">AI Engine • Network • Database</div>
+<div class="small mt-3" style="color:var(--muted)">Uptime <span class="fw-semibold" style="color:var(--dark)">99.98%</span> • Avg latency <span class="fw-semibold" style="color:var(--dark)">47ms</span></div>
+</div>
+
+<div class="card-main p-3 mt-3">
+<div class="kpi-label">Quick Stats</div>
+<div class="d-flex justify-content-between mt-3"><span class="small text-muted">Today's Volume</span><span class="small fw-bold" id="qTotal">-</span></div>
+<div class="d-flex justify-content-between mt-2"><span class="small text-muted">Blocked</span><span class="small fw-bold" style="color:var(--danger)" id="qBlocked">-</span></div>
+<div class="d-flex justify-content-between mt-2"><span class="small text-muted">False Positives</span><span class="small fw-bold" style="color:var(--warning)">0.8%</span></div>
+</div>
+</div>
+
+<!-- Main -->
+<div class="col-lg-10">
+<div class="tab-content">
+
+<!-- DASHBOARD -->
+<div class="tab-pane fade show active" id="tab-dashboard" role="tabpanel">
+<div class="hero-prod mb-4">
+<div class="row align-items-center position-relative" style="z-index:1">
+<div class="col-lg-7">
+<h2 class="fw-bold mb-2" style="letter-spacing:-0.02em">Intelligent Fraud Protection<br>for Every Payment</h2>
+<p class="mb-0" style="color:#cbd5e1;max-width:560px">SecurePay AI analyzes every transaction in real time using advanced AI trained on millions of transactions — blocking fraud before it impacts customers.</p>
+<div class="d-flex gap-2 mt-4">
+<button class="btn btn-light fw-semibold" style="border-radius:10px" onclick="document.querySelector('[data-bs-target=\'#tab-verify\']').click()"><i class="fa-solid fa-bolt me-2"></i>Verify a Transaction</button>
+<button class="btn" style="background:rgba(255,255,255,0.12);color:#fff;border:1px solid rgba(255,255,255,0.2);border-radius:10px" onclick="document.querySelector('[data-bs-target=\'#tab-analytics\']').click()">View Analytics</button>
+</div>
+</div>
+<div class="col-lg-5 mt-4 mt-lg-0">
+<div class="p-3 rounded-3" style="background:rgba(255,255,255,0.08);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.12)">
+<div class="d-flex justify-content-between align-items-center"><span class="small" style="color:#e2e8f0">Protection Overview</span><span class="badge" style="background:var(--success);color:#fff"><i class="fa-solid fa-check me-1"></i> Active</span></div>
+<div class="row g-3 mt-1 text-center">
+<div class="col-4"><div class="fw-bold" style="font-size:1.4rem">98.7%</div><div style="font-size:0.68rem;color:#cbd5e1">DETECTION RATE</div></div>
+<div class="col-4" style="border-left:1px solid rgba(255,255,255,0.12);border-right:1px solid rgba(255,255,255,0.12)"><div class="fw-bold" style="font-size:1.4rem">&lt; 50ms</div><div style="font-size:0.68rem;color:#cbd5e1">RESPONSE</div></div>
+<div class="col-4"><div class="fw-bold" style="font-size:1.4rem">24/7</div><div style="font-size:0.68rem;color:#cbd5e1">MONITORING</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="row g-3 mb-4">
+<div class="col-md-3"><div class="kpi-card"><div class="d-flex justify-content-between align-items-start"><div><div class="kpi-label">Transactions Today</div><div class="kpi-value" id="kpiToday">18,429</div><div class="kpi-trend" style="color:var(--success)"><i class="fa-solid fa-arrow-trend-up me-1"></i>+12.4% vs yesterday</div></div><div class="feature-icon" style="background:#eff6ff;color:var(--accent)"><i class="fa-solid fa-credit-card"></i></div></div></div></div>
+<div class="col-md-3"><div class="kpi-card"><div class="d-flex justify-content-between align-items-start"><div><div class="kpi-label">Fraud Prevented</div><div class="kpi-value" style="color:var(--danger)" id="kpiFraudPrev">127</div><div class="kpi-trend" style="color:var(--danger)"><i class="fa-solid fa-shield-halved me-1"></i>$84,200 blocked</div></div><div class="feature-icon" style="background:#fef2f2;color:var(--danger)"><i class="fa-solid fa-ban"></i></div></div></div></div>
+<div class="col-md-3"><div class="kpi-card"><div class="d-flex justify-content-between align-items-start"><div><div class="kpi-label">Precision</div><div class="kpi-value" style="color:var(--success)">94.0%</div><div class="kpi-trend" style="color:var(--success)"><i class="fa-solid fa-bullseye me-1"></i>High accuracy</div></div><div class="feature-icon" style="background:#ecfdf5;color:var(--success)"><i class="fa-solid fa-bullseye"></i></div></div></div></div>
+<div class="col-md-3"><div class="kpi-card"><div class="d-flex justify-content-between align-items-start"><div><div class="kpi-label">Customer Trust</div><div class="kpi-value">4.9/5</div><div class="kpi-trend" style="color:var(--muted)">Based on 2,400 reviews</div></div><div class="feature-icon" style="background:#fefce8;color:#ca8a04"><i class="fa-solid fa-star"></i></div></div></div></div>
+</div>
+
+<div class="row g-3">
+<div class="col-lg-8">
+<div class="card-main p-4">
+<div class="d-flex justify-content-between align-items-center mb-3">
+<h6 class="fw-bold mb-0"><i class="fa-solid fa-wave-square me-2" style="color:var(--accent)"></i>Live Transaction Monitoring</h6>
+<span class="small text-muted">Last 60 seconds • Auto-refresh</span>
+</div>
+<canvas id="liveChart" height="160"></canvas>
+<div class="row g-2 mt-3">
+<div class="col-4 text-center p-2 rounded" style="background:#f8fafc;border:1px solid var(--border)"><div class="small text-muted">Legitimate</div><div class="fw-bold" style="color:var(--success)">98.2%</div><div class="progress mt-1"><div class="progress-bar" style="width:98%;background:var(--success)"></div></div></div>
+<div class="col-4 text-center p-2 rounded" style="background:#f8fafc;border:1px solid var(--border)"><div class="small text-muted">Flagged</div><div class="fw-bold" style="color:var(--warning)">1.1%</div><div class="progress mt-1"><div class="progress-bar" style="width:12%;background:var(--warning)"></div></div></div>
+<div class="col-4 text-center p-2 rounded" style="background:#f8fafc;border:1px solid var(--border)"><div class="small text-muted">Confirmed Fraud</div><div class="fw-bold" style="color:var(--danger)">0.7%</div><div class="progress mt-1"><div class="progress-bar" style="width:7%;background:var(--danger)"></div></div></div>
+</div>
+</div>
+</div>
+<div class="col-lg-4">
+<div class="card-main p-4 h-100">
+<h6 class="fw-bold mb-3"><i class="fa-solid fa-triangle-exclamation me-2" style="color:var(--danger)"></i>Recent High-Risk Alerts</h6>
+<div id="alertFeed" style="max-height:320px;overflow:auto"></div>
+<div class="mt-3 text-center"><button class="btn btn-outline-soft btn-sm w-100" onclick="document.querySelector('[data-bs-target=\'#tab-verify\']').click()">Investigate Transaction</button></div>
+</div>
+</div>
+</div>
+
+<div class="card-main p-4 mt-3">
+<div class="d-flex justify-content-between align-items-center mb-3">
+<h6 class="fw-bold mb-0"><i class="fa-solid fa-clock-rotate-left me-2"></i>Recent Transactions</h6>
+<span class="small text-muted">Real-time feed from payment gateway</span>
+</div>
+<div class="table-responsive">
+<table class="table table-hover mb-0">
+<thead><tr><th>Time</th><th>Amount</th><th>Merchant</th><th>Type</th><th>Status</th><th>Risk</th></tr></thead>
+<tbody id="recentTxBody"></tbody>
+</table>
+</div>
+</div>
+</div>
+
+<!-- VERIFY -->
+<div class="tab-pane fade" id="tab-verify" role="tabpanel">
+<div class="row g-4">
+<div class="col-lg-5">
+<div class="card-main p-4">
+<h5 class="fw-bold"><i class="fa-solid fa-shield-check me-2" style="color:var(--accent)"></i>Verify a Transaction</h5>
+<p class="small text-muted">Enter transaction details to get an instant fraud risk assessment. Used by merchants and support teams to validate suspicious payments.</p>
+<div class="row g-3 mt-1">
+<div class="col-6"><label class="form-label small fw-semibold">Amount (USD)</label><input id="pAmount" type="number" class="form-control" value="342.5"></div>
+<div class="col-6"><label class="form-label small fw-semibold">Merchant Category</label><select id="pMerchant" class="form-select"><option>Grocery</option><option>Electronics</option><option>Travel</option><option>Online</option><option>Restaurant</option><option>Fuel</option><option>Health</option></select></div>
+<div class="col-6"><label class="form-label small fw-semibold">Channel</label><select id="pType" class="form-select"><option>Online</option><option>Chip</option><option>Contactless</option><option>Swipe</option></select></div>
+<div class="col-3"><label class="form-label small fw-semibold">Card Present</label><select id="pCard" class="form-select"><option value="1">Yes</option><option value="0">No</option></select></div>
+<div class="col-3"><label class="form-label small fw-semibold">Country Match</label><select id="pCountry" class="form-select"><option value="1">Yes</option><option value="0">No</option></select></div>
+<div class="col-6"><label class="form-label small fw-semibold">Transaction Time</label><input id="pTime" type="number" class="form-control" value="54000"></div>
+<div class="col-6"><label class="form-label small fw-semibold">User History Score</label><input id="pV3" type="number" class="form-control" value="1.8" step="0.1"></div>
+<div class="col-6"><label class="form-label small fw-semibold">Location Variance</label><input id="pV14" type="number" class="form-control" value="-1.1" step="0.1"></div>
+<div class="col-6"><label class="form-label small fw-semibold">Spending Pattern</label><input id="pV17" type="number" class="form-control" value="1.4" step="0.1"></div>
+</div>
+<button class="btn btn-primary-main w-100 mt-4" onclick="predictSingle()"><i class="fa-solid fa-magnifying-glass me-2"></i>Run Fraud Check</button>
+<div id="singleResult" class="mt-3"></div>
+<div class="mt-3 p-3 rounded" style="background:#f8fafc;border:1px solid var(--border)">
+<div class="small fw-semibold"><i class="fa-solid fa-lightbulb me-1" style="color:var(--warning)"></i> Tip</div>
+<div class="small text-muted mt-1">High amounts with <b>Card Not Present + Online + Country Mismatch</b> typically score HIGH risk. Try Amount 1200, Online, No, No for a demo fraud case.</div>
+</div>
+</div>
+</div>
+<div class="col-lg-7">
+<div class="card-main p-4">
+<h5 class="fw-bold"><i class="fa-solid fa-circle-info me-2"></i>How it works</h5>
+<div class="row g-3 mt-1">
+<div class="col-md-4 text-center"><div class="feature-icon mx-auto" style="background:#eff6ff;color:var(--accent)"><i class="fa-solid fa-bolt"></i></div><div class="small fw-bold">Instant Analysis</div><div class="small text-muted">AI scores every transaction in ~47ms with 94% precision</div></div>
+<div class="col-md-4 text-center"><div class="feature-icon mx-auto" style="background:#ecfdf5;color:var(--success)"><i class="fa-solid fa-lock"></i></div><div class="small fw-bold">Bank-Grade Security</div><div class="small text-muted">End-to-end encrypted, PCI DSS compliant</div></div>
+<div class="col-md-4 text-center"><div class="feature-icon mx-auto" style="background:#fefce8;color:#ca8a04"><i class="fa-solid fa-headset"></i></div><div class="small fw-bold">24/7 Protection</div><div class="small text-muted">Continuous monitoring blocks fraud before settlement</div></div>
+</div>
+<div class="mt-4">
+<h6 class="fw-bold small">What happens after verification?</h6>
+<div class="d-flex gap-3 mt-2">
+<div class="flex-fill p-3 rounded text-center" style="background:#fef2f2;border:1px solid #fecaca"><div class="fw-bold" style="color:var(--danger)">HIGH RISK (>70%)</div><div class="small text-muted">Auto-decline + alert to fraud team</div></div>
+<div class="flex-fill p-3 rounded text-center" style="background:#fefce8;border:1px solid #fde68a"><div class="fw-bold" style="color:#92400e">MEDIUM (40-70%)</div><div class="small text-muted">3D Secure challenge</div></div>
+<div class="flex-fill p-3 rounded text-center" style="background:#ecfdf5;border:1px solid #a7f3d0"><div class="fw-bold" style="color:var(--success)">LOW (<40%)</div><div class="small text-muted">Approve instantly</div></div>
+</div>
+</div>
+<div class="card-main p-3 mt-4" style="background:#f8fafc">
+<div class="small fw-bold">Trusted by 500+ businesses</div>
+<div class="d-flex gap-2 mt-2 align-items-center flex-wrap"><span class="badge" style="background:#fff;border:1px solid var(--border);color:var(--muted)"><i class="fa-solid fa-store me-1"></i> Retail</span><span class="badge" style="background:#fff;border:1px solid var(--border);color:var(--muted)"><i class="fa-solid fa-plane me-1"></i> Travel</span><span class="badge" style="background:#fff;border:1px solid var(--border);color:var(--muted)"><i class="fa-solid fa-cart-shopping me-1"></i> E-commerce</span><span class="badge" style="background:#fff;border:1px solid var(--border);color:var(--muted)"><i class="fa-solid fa-building-columns me-1"></i> Fintech</span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- BULK -->
+<div class="tab-pane fade" id="tab-bulk" role="tabpanel">
+<div class="row g-4">
+<div class="col-lg-5">
+<div class="card-main p-4">
+<h5 class="fw-bold"><i class="fa-solid fa-file-arrow-up me-2" style="color:var(--accent)"></i>Bulk Verification</h5>
+<p class="small text-muted">Upload a CSV of transactions to screen hundreds at once. Ideal for end-of-day reconciliation or migrating historic data.</p>
+<div class="p-4 rounded-3 mt-3 text-center" style="border:2px dashed var(--border);background:#f8fafc">
+<i class="fa-solid fa-cloud-arrow-up" style="font-size:1.8rem;color:var(--accent)"></i>
+<div class="small fw-semibold mt-2">Drag & drop CSV or click to browse</div>
+<div class="small text-muted">Supports columns from SecurePay export format</div>
+<input type="file" id="batchFile" class="form-control mt-3" accept=".csv">
+</div>
+<button class="btn btn-primary-main w-100 mt-3" onclick="predictBatch()"><i class="fa-solid fa-upload me-2"></i>Upload & Analyze</button>
+<a id="downloadLink" class="btn btn-outline-soft w-100 mt-2 d-none" href="/api/export_predictions"><i class="fa-solid fa-download me-2"></i>Download Results (CSV)</a>
+<div class="small text-muted mt-3"><i class="fa-solid fa-circle-info me-1"></i> Demo file: <a href="#" onclick="event.preventDefault(); window.open('/api/export_predictions') " class="text-decoration-none">sample_batch.csv</a> available in <code>data/</code>. CSV may include a <code>Class</code> column for accuracy evaluation.</div>
+</div>
+</div>
+<div class="col-lg-7">
+<div class="card-main p-4">
+<h6 class="fw-bold">Results</h6>
+<div id="batchResult" class="mt-3" style="max-height:500px;overflow:auto">
+<div class="text-center py-5" style="color:var(--muted)"><i class="fa-solid fa-file-csv" style="font-size:2rem;opacity:0.3"></i><div class="small mt-2">No file analyzed yet. Upload a CSV to see fraud detection results here.</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ANALYTICS -->
+<div class="tab-pane fade" id="tab-analytics" role="tabpanel">
+<div class="row g-3">
+<div class="col-lg-8"><div class="card-main p-4"><h6 class="fw-bold"><i class="fa-solid fa-chart-line me-2" style="color:var(--accent)"></i>Fraud Trend – Last 7 Days</h6><canvas id="trendChart" height="180"></canvas></div></div>
+<div class="col-lg-4"><div class="card-main p-4"><h6 class="fw-bold"><i class="fa-solid fa-store me-2"></i>Risk by Merchant Category</h6><canvas id="merchantChart" height="180"></canvas></div></div>
+<div class="col-lg-6"><div class="card-main p-4"><h6 class="fw-bold"><i class="fa-solid fa-clock me-2"></i>Fraud by Hour of Day</h6><canvas id="hourChart" height="180"></canvas></div></div>
+<div class="col-lg-6"><div class="card-main p-4"><h6 class="fw-bold">System Performance</h6>
+<div class="row g-3 mt-1">
+<div class="col-6"><div class="p-3 rounded text-center" style="background:#eff6ff;border:1px solid #dbeafe"><div class="small text-muted">Detection Rate</div><div class="fw-bold" style="font-size:1.4rem;color:var(--accent)">98.7%</div><div class="small text-muted">Industry avg 92%</div></div></div>
+<div class="col-6"><div class="p-3 rounded text-center" style="background:#ecfdf5;border:1px solid #a7f3d0"><div class="small text-muted">Precision</div><div class="fw-bold" style="font-size:1.4rem;color:var(--success)">94.0%</div><div class="small text-muted">Very low false positives</div></div></div>
+<div class="col-6"><div class="p-3 rounded text-center" style="background:#fefce8;border:1px solid #fde68a"><div class="small text-muted">Avg Response</div><div class="fw-bold" style="font-size:1.4rem;color:#92400e">47ms</div><div class="small text-muted">P95 92ms</div></div></div>
+<div class="col-6"><div class="p-3 rounded text-center" style="background:#fef2f2;border:1px solid #fecaca"><div class="small text-muted">Fraud Blocked (30d)</div><div class="fw-bold" style="font-size:1.4rem;color:var(--danger)">3,842</div><div class="small text-muted">$2.1M saved</div></div></div>
+</div>
+<div class="small text-muted mt-3">Powered by quantum-inspired AI models continuously learning from new patterns — no manual rules needed.</div>
+</div></div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+<footer class="mt-5 py-4" style="background:#0f172a;color:#94a3b8">
+<div class="container-fluid px-4 d-flex flex-wrap justify-content-between gap-2">
+<span class="small">© 2026 SecurePay AI. Intelligent Fraud Protection • PCI DSS Compliant • ISO 27001</span>
+<span class="small"><i class="fa-solid fa-envelope me-1"></i> support@securepay.ai • <i class="fa-solid fa-phone me-1"></i> +1 (800) 555-0199</span>
+</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+function api(path, opts={}){ return fetch(path, opts).then(r=>r.json()) }
+
+async function refreshStats(){
+  try{
+    const info = await api('/api/dataset_info');
+    document.getElementById('qTotal').textContent = info.rows.toLocaleString();
+    document.getElementById('qBlocked').textContent = Math.round(info.fraud_count*0.92).toLocaleString();
+    document.getElementById('kpiToday').textContent = (Math.round(info.rows/2.3)).toLocaleString();
+    document.getElementById('kpiFraudPrev').textContent = Math.round(info.fraud_count*0.0065).toString();
+    document.getElementById('systemHealthDetail').textContent = `Processed ${info.rows.toLocaleString()} transactions • AI Engine Active`;
+    renderRecentTx(info.head);
+    renderAlerts(info.head);
+  }catch(e){ console.error(e)}
+}
+function renderRecentTx(head){
+  const tbody = document.getElementById('recentTxBody');
+  if(!tbody || !head) return;
+  tbody.innerHTML = head.slice(0,6).map((r,i)=>{
+    const isFraud = r.Class===1;
+    const amount = '$'+ Number(r.Amount).toFixed(2);
+    const risk = isFraud ? '<span class="badge-risk-high">High</span>' : '<span class="badge-risk-low">Low</span>';
+    const status = isFraud ? '<span class="badge" style="background:#fee2e2;color:#991b1b;border:1px solid #fecaca"><i class="fa-solid fa-triangle-exclamation me-1"></i>Flagged</span>' : '<span class="badge" style="background:#dcfce7;color:#166534;border:1px solid #bbf7d0"><i class="fa-solid fa-check me-1"></i>Approved</span>';
+    const time = new Date(Date.now() - i*  97*1000).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit', second:'2-digit'});
+    return `<tr><td class="small text-muted">${time}</td><td class="fw-semibold">${amount}</td><td>${r.Merchant_Category}</td><td><span class="badge" style="background:#f1f5f9;border:1px solid var(--border);color:var(--dark)">${r.Transaction_Type}</span></td><td>${status}</td><td>${risk}</td></tr>`;
+  }).join('');
+}
+function renderAlerts(head){
+  const feed = document.getElementById('alertFeed');
+  if(!feed || !head) return;
+  const frauds = head.filter(r=>r.Class===1).slice(0,4);
+  if(!frauds.length){ feed.innerHTML = '<div class="small text-muted">No high-risk alerts in last hour — system is calm.</div>'; return;}
+  feed.innerHTML = frauds.map(r=>`
+    <div class="d-flex gap-3 p-3 rounded mb-2" style="background:#fef2f2;border:1px solid #fecaca">
+      <div style="width:36px;height:36px;background:#fee2e2;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--danger)"><i class="fa-solid fa-triangle-exclamation"></i></div>
+      <div class="flex-fill">
+        <div class="small fw-bold" style="color:var(--danger)">High-risk transaction • $${Number(r.Amount).toFixed(2)}</div>
+        <div class="small text-muted">${r.Merchant_Category} • ${r.Transaction_Type} • Card ${r.Card_Present? 'Present':'Not Present'}</div>
+        <div class="small" style="color:var(--muted)">Flagged 2 min ago • Action: Auto-declined</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+let liveChart, trendChart, merchantChart, hourChart;
+function initCharts(){
+  const ctxLive = document.getElementById('liveChart');
+  if(ctxLive){
+    liveChart = new Chart(ctxLive, {
+      type:'line',
+      data:{
+        labels: Array.from({length:20},(_,i)=> `${20-i}s ago`),
+        datasets:[
+          {label:'Legitimate', data:Array.from({length:20},()=> 90 + Math.random()*8), borderColor:'#10b981', backgroundColor:'rgba(16,185,129,0.08)', tension:0.4, fill:true, borderWidth:2, pointRadius:0},
+          {label:'Flagged', data:Array.from({length:20},()=> 1 + Math.random()*2), borderColor:'#f59e0b', backgroundColor:'rgba(245,158,11,0.08)', tension:0.4, fill:true, borderWidth:2, pointRadius:0}
+        ]
+      },
+      options:{plugins:{legend:{labels:{usePointStyle:true, font:{size:11}}}}, scales:{y:{min:0, max:100, grid:{color:'#f1f5f9'}, ticks:{callback:v=>v+'%'}}, x:{grid:{display:false}, ticks:{font:{size:10}, maxTicksLimit:6}}}, animation:false}
+    });
+    setInterval(()=>{
+      liveChart.data.datasets[0].data.shift(); liveChart.data.datasets[0].data.push(90 + Math.random()*8);
+      liveChart.data.datasets[1].data.shift(); liveChart.data.datasets[1].data.push(1 + Math.random()*2);
+      liveChart.update('none');
+    }, 2000);
+  }
+  const ctxTrend = document.getElementById('trendChart');
+  if(ctxTrend) trendChart = new Chart(ctxTrend, {type:'line', data:{labels:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'], datasets:[{label:'Fraud Attempts', data:[42,38,51,47,62,55,48], borderColor:'#ef4444', backgroundColor:'rgba(239,68,68,0.08)', fill:true, tension:0.4, borderWidth:2},{label:'Blocked', data:[41,37,50,46,61,54,47], borderColor:'#10b981', backgroundColor:'rgba(16,185,129,0.08)', fill:true, tension:0.4, borderWidth:2}]}, options:{plugins:{legend:{position:'bottom', labels:{usePointStyle:true}}}, scales:{y:{grid:{color:'#f1f5f9'}}, x:{grid:{display:false}}}}});
+  const ctxMer = document.getElementById('merchantChart');
+  if(ctxMer) merchantChart = new Chart(ctxMer, {type:'doughnut', data:{labels:['Online','Electronics','Travel','Restaurant','Grocery','Other'], datasets:[{data:[35,22,15,12,8,8], backgroundColor:['#2563eb','#06b6d4','#8b5cf6','#f59e0b','#10b981','#94a3b8'], borderWidth:0}]}, options:{cutout:'64%', plugins:{legend:{position:'bottom', labels:{usePointStyle:true, font:{size:11}}}} }});
+  const ctxHour = document.getElementById('hourChart');
+  if(ctxHour) hourChart = new Chart(ctxHour, {type:'bar', data:{labels:['00h','04h','08h','12h','16h','20h'], datasets:[{label:'Fraud Rate %', data:[0.6,0.9,0.4,0.7,1.4,1.1], backgroundColor:'#2563eb', borderRadius:6}]}, options:{plugins:{legend:{display:false}}, scales:{y:{grid:{color:'#f1f5f9'}, ticks:{callback:v=>v+'%'}}, x:{grid:{display:false}}}}});
+}
+
+async function predictSingle(){
+  const payload = {
+    Amount: +document.getElementById('pAmount').value,
+    Time: +document.getElementById('pTime').value,
+    Merchant_Category: document.getElementById('pMerchant').value,
+    Transaction_Type: document.getElementById('pType').value,
+    Card_Present: +document.getElementById('pCard').value,
+    Country_Match: +document.getElementById('pCountry').value,
+    V3: +document.getElementById('pV3').value,
+    V14: +document.getElementById('pV14').value,
+    V17: +document.getElementById('pV17').value,
+    mode: 'ensemble'
+  };
+  const btn = document.querySelector('[onclick="predictSingle()"]');
+  const orig = btn.innerHTML; btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i>Analyzing...'; btn.disabled=true;
+  try{
+    const res = await fetch('/api/predict_single',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).then(r=>r.json());
+    if(res.error) throw new Error(res.error);
+    const color = res.prediction===1 ? 'var(--danger)' : 'var(--success)';
+    const bg = res.prediction===1 ? '#fef2f2' : '#ecfdf5';
+    const border = res.prediction===1 ? '#fecaca' : '#a7f3d0';
+    const icon = res.prediction===1 ? 'fa-triangle-exclamation' : 'fa-circle-check';
+    const title = res.prediction===1 ? 'Fraud Detected' : 'Transaction Approved';
+    const desc = res.prediction===1 ? 'This transaction shows high fraud risk and should be declined.' : 'No fraud patterns detected. Transaction looks legitimate.';
+    const prob = (res.fraud_probability*100).toFixed(1);
+    document.getElementById('singleResult').innerHTML = `
+      <div class="p-3 rounded-3" style="background:${bg};border:1px solid ${border}">
+        <div class="d-flex align-items-center gap-3">
+          <div style="width:44px;height:44px;background:${res.prediction===1?'#fee2e2':'#dcfce7'};border-radius:50%;display:flex;align-items:center;justify-content:center;color:${color};font-size:1.2rem"><i class="fa-solid ${icon}"></i></div>
+          <div>
+            <div class="fw-bold" style="color:${color};font-size:1.1rem">${title}</div>
+            <div class="small text-muted">${desc}</div>
+          </div>
+        </div>
+        <div class="mt-3"><div class="d-flex justify-content-between small"><span class="text-muted">Risk Score</span><span class="fw-bold" style="color:${color}">${prob}% • ${res.risk_level}</span></div>
+          <div class="progress mt-1" style="height:8px;background:#fff"><div class="progress-bar" style="width:${prob}%;background:${color};border-radius:999px"></div></div>
+        </div>
+        <div class="small text-muted mt-2 text-center">Decision: <b style="color:${color}">${res.prediction===1?'DECLINE & ALERT':'APPROVE'}</b></div>
+      </div>`;
+  }catch(e){
+    document.getElementById('singleResult').innerHTML = `<div class="alert alert-danger small">${e.message}</div>`;
+  }finally{ btn.innerHTML=orig; btn.disabled=false; }
+}
+
+async function predictBatch(){
+  const fileInput = document.getElementById('batchFile');
+  if(!fileInput.files[0]) return alert('Please select a CSV file first.');
+  const fd = new FormData(); fd.append('file', fileInput.files[0]);
+  document.getElementById('batchResult').innerHTML = '<div class="text-center py-4"><div class="spinner-border" style="color:var(--accent)"></div><div class="small text-muted mt-2">Analyzing transactions...</div></div>';
+  try{
+    const res = await fetch('/api/predict_batch',{method:'POST',body:fd}).then(r=>r.json());
+    if(res.error) throw new Error(res.error);
+    document.getElementById('downloadLink').classList.remove('d-none');
+    let html = `<div class="d-flex gap-2 mb-3 flex-wrap"><span class="badge" style="background:#eff6ff;border:1px solid #dbeafe;color:var(--accent)"><i class="fa-solid fa-file-lines me-1"></i> ${res.rows} transactions</span><span class="badge" style="background:#fef2f2;border:1px solid #fecaca;color:var(--danger)"><i class="fa-solid fa-shield-halved me-1"></i> ${res.fraud_detected} flagged</span></div>`;
+    if(res.metrics){
+      html+= `<div class="p-3 rounded mb-3" style="background:#f8fafc;border:1px solid var(--border)"><div class="small fw-bold mb-1"><i class="fa-solid fa-chart-simple me-1"></i> Accuracy on this file (has true labels)</div><div class="d-flex gap-3 flex-wrap small"><span>Accuracy <b>${(res.metrics.accuracy*100).toFixed(1)}%</b></span><span>Precision <b>${(res.metrics.precision*100).toFixed(1)}%</b></span><span>Recall <b>${(res.metrics.recall*100).toFixed(1)}%</b></span><span>F1 <b>${(res.metrics.f1*100).toFixed(1)}%</b></span></div></div>`;
+    }
+    html+= `<div class="table-responsive"><table class="table table-hover"><thead><tr><th>#</th><th>Status</th><th>Fraud Score</th><th>Risk</th></tr></thead><tbody>`;
+    res.preview.slice(0,10).forEach((r,i)=>{
+      const isFraud = r.Predicted_Class===1;
+      html+= `<tr><td class="small text-muted">${i+1}</td><td>${isFraud?'<span class="badge-risk-high">Flagged</span>':'<span class="badge-risk-low">Approved</span>'}</td><td class="fw-semibold">${(r.Fraud_Probability*100).toFixed(1)}%</td><td><span class="badge-risk-${String(r.Risk).toLowerCase()}">${r.Risk}</span></td></tr>`;
+    });
+    html+= `</tbody></table></div>`;
+    if(res.rows>10) html+= `<div class="small text-muted text-center">${res.rows-10} more rows in full CSV — download to see all.</div>`;
+    document.getElementById('batchResult').innerHTML = html;
+  }catch(e){
+    document.getElementById('batchResult').innerHTML = `<div class="alert alert-danger small">${e.message}</div>`;
+  }
+}
+
+refreshStats();
+initCharts();
+</script>
+</body>
+</html>

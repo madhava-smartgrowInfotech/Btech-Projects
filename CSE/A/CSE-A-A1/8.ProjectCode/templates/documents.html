@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h4>Your Knowledge Repository</h4>
+  <a href="{{ url_for('upload') }}" class="btn btn-primary btn-sm"><i class="fa-solid fa-plus"></i> Upload New</a>
+</div>
+
+{% if documents %}
+  {% for doc in documents %}
+  <div class="card p-3 mb-3">
+    <div class="d-flex justify-content-between align-items-start">
+      <div>
+        <h6><i class="fa-solid fa-file-lines"></i> {{ doc.filename }}</h6>
+        <span class="badge bg-secondary mb-2">{{ doc.subject }}</span>
+        <div>
+          {% for topic in doc.topics %}
+          <span class="topic-badge">{{ topic }}</span>
+          {% endfor %}
+        </div>
+        <small class="text-muted">Uploaded {{ doc.uploaded_at[:19].replace('T', ' ') }}</small>
+      </div>
+      <div>
+        <a href="{{ url_for('quiz', doc_id=doc.id) }}" class="btn btn-sm btn-outline-primary">Generate Quiz</a>
+        <form method="POST" action="{{ url_for('delete_document', doc_id=doc.id) }}" class="d-inline" onsubmit="return confirm('Delete this document?');">
+          <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+        </form>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+{% else %}
+  <p class="text-muted">No documents uploaded yet. <a href="{{ url_for('upload') }}">Upload your first document</a>.</p>
+{% endif %}
+{% endblock %}

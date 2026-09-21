@@ -1,0 +1,9 @@
+AI-Powered Intelligent Hospital Patient Flow Management System
+
+ABSTRACT
+
+Hospitals manage a large number of patients every day, making patient management a challenging task. Although hospitals use software for registration, billing, and appointments, many activities inside the hospital are still handled manually. Nurses call patient names in waiting areas, laboratory staff manage test queues manually, and bed or ICU availability is checked through manual communication. These methods increase waiting time, create confusion, and reduce the efficiency of hospital operations. Since patients move through different departments such as OPD, laboratory, pharmacy, wards, and ICU, proper coordination between these departments is essential.
+
+The proposed AI-Powered Intelligent Hospital Patient Flow Management System aims to automate the complete patient journey inside the hospital. The system generates digital tokens, tracks patient movement, schedules laboratory tests, and monitors bed and ICU availability in real time. It also provides separate dashboards for doctors, nurses, laboratory staff, and administrators to manage patient information and hospital resources efficiently. By automating these activities, the system reduces manual work, improves communication between departments, and decreases patient waiting time.
+
+Artificial Intelligence is used to make the system more intelligent and efficient. AI can predict patient waiting time, prioritize emergency cases, and help allocate beds and ICU rooms based on availability. It can also analyze hospital data to improve resource utilization and hospital workflow. Overall, the proposed system provides a smarter way to manage patients, reduces the workload of hospital staff, improves hospital efficiency, and delivers faster and better healthcare services.

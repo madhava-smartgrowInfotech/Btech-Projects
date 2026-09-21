@@ -1,0 +1,25 @@
+==============================================================================
+  CSDS-A   |   Batch A-07
+==============================================================================
+
+PROJECT TITLE
+  SHEGUARD: AI POWERED WOMEN’S SAFETY PLATFORM
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      CH.AARTHI                          23K91A6741
+  2      D.PRANATHI                         23K91A6748
+  3      BALA VIGNESH                       23K91A6717
+  4      A.VISHAL                           23K91A6704
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  GUIDE NAME
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

@@ -1,0 +1,25 @@
+==============================================================================
+  CSDS-B   |   Batch B-13
+==============================================================================
+
+PROJECT TITLE
+  API SECURITY PLATFORM FOR PAYMENT APPLICATIONS
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      KAPARTHI SRIPAD                    23K91A6780
+  2      NUTHANAGANTI DIVYAJYOTHI           23K91A67C8
+  3      NAGUNOORI SIDHARTHA                24K95A6710
+  4      KODURU SATHISH                     23K91A6792
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  MRS.T.JYOTHI
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

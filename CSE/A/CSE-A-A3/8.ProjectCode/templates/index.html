@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Intelligent Health Assistant</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <h1>Intelligent Health Assistant</h1>
+    <p>Multi-Disease Risk Prediction using Machine Learning</p>
+  </header>
+
+  <div class="container">
+    <p>Select a health condition below to enter patient details and get an
+       instant ML-based risk prediction.</p>
+
+    <div class="grid">
+      <a class="card" href="{{ url_for('diabetes') }}">
+        <h3>Diabetes</h3>
+        <div class="meta">Predicts risk based on glucose, BMI, insulin and related indicators.</div>
+        <div class="badge">Model: {{ accuracies['diabetes']['model'] }} · Acc: {{ (accuracies['diabetes']['accuracy']*100)|round(1) }}%</div>
+      </a>
+
+      <a class="card" href="{{ url_for('heart') }}">
+        <h3>Heart Disease</h3>
+        <div class="meta">Predicts risk based on blood pressure, cholesterol, ECG and related indicators.</div>
+        <div class="badge">Model: {{ accuracies['heart']['model'] }} · Acc: {{ (accuracies['heart']['accuracy']*100)|round(1) }}%</div>
+      </a>
+
+      <a class="card" href="{{ url_for('liver') }}">
+        <h3>Liver Disease</h3>
+        <div class="meta">Predicts risk based on bilirubin, liver enzymes and protein levels.</div>
+        <div class="badge">Model: {{ accuracies['liver']['model'] }} · Acc: {{ (accuracies['liver']['accuracy']*100)|round(1) }}%</div>
+      </a>
+
+      <a class="card" href="{{ url_for('kidney') }}">
+        <h3>Kidney Disease</h3>
+        <div class="meta">Predicts risk based on creatinine, urea, hemoglobin and related indicators.</div>
+        <div class="badge">Model: {{ accuracies['kidney']['model'] }} · Acc: {{ (accuracies['kidney']['accuracy']*100)|round(1) }}%</div>
+      </a>
+    </div>
+
+    <div class="disclaimer">
+      This tool provides a machine-learning based risk estimate for educational
+      and demonstration purposes only. It is not a substitute for professional
+      medical diagnosis. Please consult a qualified healthcare provider for
+      any medical concerns.
+    </div>
+  </div>
+
+  <footer>Intelligent Health Assistant &mdash; Multi-Disease Prediction System</footer>
+</body>
+</html>

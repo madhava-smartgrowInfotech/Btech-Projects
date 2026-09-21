@@ -1,0 +1,87 @@
+TKR COLLEGE OF ENGINEERING AND TECHNOLOGY
+Autonomous,
+(Accredited by NBA & NAAC with ‘A+’ Grade)
+___________________________________________________________________
+CSE (Data Science)
+Major Project : Phase-I
+A.Y : 2026-27
+Year & Sem : IV & I Sem
+Date : 06.07.2026
+Title of the project:
+AI-Driven E-Commerce Recommendation System with Digital Twin
+Simulation
+Project Batch No: A11
+S.No.
+H.T.No.
+Name
+Mail id (personal)
+Mobile No.
+Sign
+01
+23k91A6708
+A.Pravalika
+pravalikaaletii@gm
+ail.com
+7396944302
+Pravalika
+02
+23K91A6751
+D.Anusha
+domakondaanushas
+agar@gmail.com
+8520006986
+Anusha
+03
+23K91A6758
+G.Laxmi lavanya
+gangaraboinalaxmil
+avanya@gmail.com
+9542638326
+Lavanya
+04
+23K91A6708
+A.Aravind
+aravindakula33@g
+mail.com
+9182328606
+Aravind
+Guide Name
+: Mrs/K.Saideepthi
+Designation
+: Assistant Professor
+Mobile No
+:7981713803
+Mail id
+: ksaideepthi@tkrcet.com
+
+Abstract:
+E-commerce platforms have become an important part of modern shopping, where customers
+expect personalized product recommendations and fast service. Most existing recommendation
+systems use purchase history, browsing history, ratings, and reviews to suggest products.
+Although these systems improve the shopping experience, they still face several challenges,
+including limited personalization, dependence on historical data, poor real-time adaptation, lack
+of recommendation transparency, and reduced performance during periods of high server traffic.
+These limitations affect both customer satisfaction and overall system efficiency.
+To address these challenges, this project proposes an Adaptive E-Commerce Recommendation
+System Using Big Data Analytics, Digital Twin Simulation, and AI-Based Traffic
+Optimization. The system analyzes customer engagement factors such as product views, clicks,
+searches, cart activities, purchases, ratings, and reviews to better understand customer
+preferences. Big Data Analytics is used to process large volumes of customer data efficiently,
+while a Multi-Agent AI framework generates personalized recommendations based on user
+behavior.
+The proposed system also integrates Digital Twin Simulation to virtually evaluate
+recommendation strategies before they are presented to users, improving recommendation
+quality and reliability. Explainable AI (XAI) provides users with clear reasons for each
+recommendation, increasing transparency and trust. A Self-Learning Feedback Engine
+continuously updates the recommendation model based on user interactions, while the AI-Based
+Traffic Optimization module monitors server load and efficiently manages recommendation
+requests during peak shopping periods to ensure smooth system performance.
+The proposed framework improves recommendation accuracy, scalability, transparency,
+response time, and overall customer experience while maintaining efficient resource utilization.
+Future improvements may include integrating voice-based shopping assistants, Augmented
+Reality (AR) product visualization, blockchain-based review verification, and federated
+learning to further enhance personalization, security, privacy, and the overall shopping
+experience.
+Project Coordinator
+Project
+Guide

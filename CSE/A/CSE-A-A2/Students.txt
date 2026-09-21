@@ -1,0 +1,25 @@
+==============================================================================
+  CSE-A   |   Batch 02
+==============================================================================
+
+PROJECT TITLE
+  ResQAI: AI-Based Accident Detection, Severity Assessment and Intelligent Emergency Response System
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      ADEPU MEENAKSHI                    23K91A0503
+  2      AYILA SHANMUKHA SAI                23K91A0521
+  3      CHEKKA CHANDRASHEKHAR              23K91A0552
+  4      AVULA SREEYA                       23K91A0519
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  SHIRISHA REDDY
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

@@ -1,0 +1,25 @@
+==============================================================================
+  CSDS-B   |   Batch B-15
+==============================================================================
+
+PROJECT TITLE
+  AI-DRIVEN DISTRIBUTED OP BOOKING SYSTEM WITH INTELLIGENT DISEASE SEVERITY ANALYSIS AND DYNAMIC QUEUE POSITION SYSTEM
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      G. PRAVEEN KUMAR                   23K91A6768
+  2      K. AKSHAYA                         23K91A6784
+  3      G. AKSHAYA                         23K91A6767
+  4      N. DHEERAJ KUMAR                   23K91A67C4
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  MRS J.ASHWINI REDDY
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

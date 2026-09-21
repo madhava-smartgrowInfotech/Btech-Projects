@@ -1,0 +1,14 @@
+TKR COLLEGE OF ENGINEERING AND TECHNOLOGY                    Autonomous,-602614-2209785664200-307339
+(Accredited by NBA & NAAC with ‘A+’ Grade)
+
+___________________________________________________________________
+                                                         CSE(DATA SCIENCE)
+
+Project Title:
+Attendance Magic: A Smart Geo-Fenced Attendance System with Live Challenge Verification
+
+Abstract:
+
+Attendance Magic is a secure, AI-assisted attendance management system designed to reduce proxy attendance, manual attendance errors, and the time required to record attendance in educational institutions. The system provides a digital attendance workflow in which faculty members can create time-bound attendance sessions with configurable geographic boundaries and students can access the session through a unique attendance link.
+To improve attendance security, the system combines JWT-based authentication, GPS-based location verification, session expiration, device identification, and roll-number restrictions. In addition, an AI-based facial verification mechanism is being integrated to make proxy attendance significantly more difficult. After successful location verification, the student is required to complete a random live facial challenge such as turning the head in a specified direction. The system uses MediaPipe for real-time facial landmark and challenge detection and InsightFace for facial feature embedding and similarity comparison. After successful verification, the system automatically captures the student's face and checks it against faces already recorded for that particular attendance session, preventing the same person from attempting attendance again using another identity.
+The system uses React and Tailwind CSS for the frontend, Django REST Framework with JWT authentication for the backend, and PostgreSQL hosted on Supabase for data storage. Attendance records can also be viewed through summaries and lists and exported to Excel. Overall, Attendance Magic aims to provide a fast, scalable, and secure digital attendance solution that minimizes proxy attendance while reducing administrative effort for faculty and improving the reliability of attendance records.

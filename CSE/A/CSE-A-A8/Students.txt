@@ -1,0 +1,25 @@
+==============================================================================
+  CSE-A   |   Batch 08
+==============================================================================
+
+PROJECT TITLE
+  AI-POWERED MEDICAL LAB REPORT ANALYSIS & HEALTH INSIGHTS PLATFORM
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      BANOTH SWAPNA                      23K91A0528
+  2      BEKKAM VARSHITHA                   23K91A0535
+  3      A NAVADEEP REDDY                   23K91A0502
+  4      BUDIGAM MANOJ                      23K91A0546
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  L.G REDDY
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

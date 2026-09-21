@@ -1,0 +1,6 @@
+Flask==3.0.3
+Werkzeug==3.0.3
+scikit-learn==1.5.1
+numpy==1.26.4
+pypdf==4.3.1
+python-docx==1.1.2

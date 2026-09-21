@@ -1,0 +1,25 @@
+==============================================================================
+  CSE-C   |   Batch C-02
+==============================================================================
+
+PROJECT TITLE
+  Multilingual Story Generation and Speech System
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      Lingala Sindhu                     23K91A05D3
+  2      Padige Ajay                        23K91A05H8
+  3      Mahek Ansari                       23K91A05D8
+  4      Maheshwaram Hari Krishna           23K91A05D9
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  A Tejaswini
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

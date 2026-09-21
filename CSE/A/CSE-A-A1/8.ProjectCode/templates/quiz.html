@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+<h4 class="mb-4"><i class="fa-solid fa-clipboard-question"></i> Adaptive Quiz</h4>
+
+{% if results %}
+  <div class="card p-4 mb-4">
+    <h5>Result: {{ score_pct }}%</h5>
+    {% for r in results %}
+    <div class="border-bottom py-2">
+      <p class="mb-1">{{ r.question }}</p>
+      {% if r.is_correct %}
+        <span class="text-success"><i class="fa-solid fa-check"></i> Correct — {{ r.options[r.answer_index] }}</span>
+      {% else %}
+        <span class="text-danger"><i class="fa-solid fa-xmark"></i> Your answer: {{ r.options[r.selected] if r.selected is not none else 'No answer' }}</span>
+        <span class="text-success ms-2">Correct: {{ r.options[r.answer_index] }}</span>
+      {% endif %}
+    </div>
+    {% endfor %}
+    <a href="{{ url_for('roadmap') }}" class="btn btn-primary mt-3">View Updated Roadmap</a>
+  </div>
+{% elif quiz_questions %}
+  <div class="card p-4">
+    <h6 class="text-muted mb-3">Quiz generated from: {{ doc_name }}</h6>
+    <form method="POST">
+      {% for q in quiz_questions %}
+      {% set q_idx = loop.index0 %}
+      <div class="mb-4">
+        <p class="fw-semibold">{{ loop.index }}. {{ q.question }}</p>
+        {% for opt in q.options %}
+        {% set opt_idx = loop.index0 %}
+        <div class="form-check quiz-option">
+          <input class="form-check-input" type="radio" name="q{{ q_idx }}" id="q{{ q_idx }}o{{ opt_idx }}" value="{{ opt_idx }}" required>
+          <label class="form-check-label" for="q{{ q_idx }}o{{ opt_idx }}">{{ opt }}</label>
+        </div>
+        {% endfor %}
+      </div>
+      {% endfor %}
+      <button type="submit" class="btn btn-primary"><i class="fa-solid fa-check"></i> Submit Quiz</button>
+    </form>
+  </div>
+{% else %}
+  <div class="card p-4">
+    <h6>Select a document to generate a quiz from</h6>
+    {% if docs %}
+    <div class="list-group mt-3">
+      {% for d in docs %}
+      <a href="{{ url_for('quiz', doc_id=d.id) }}" class="list-group-item list-group-item-action d-flex justify-content-between">
+        <span>{{ d.filename }}</span>
+        <span class="badge bg-secondary">{{ d.subject }}</span>
+      </a>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p class="text-muted">Upload a document first to generate a quiz. <a href="{{ url_for('upload') }}">Upload now</a>.</p>
+    {% endif %}
+  </div>
+{% endif %}
+{% endblock %}

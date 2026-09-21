@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <div class="card p-4">
+      <h4 class="mb-3"><i class="fa-solid fa-upload"></i> Upload Study Material</h4>
+      <p class="text-muted">Supported formats: PDF, DOCX, TXT (timetables, syllabi, notes, question banks, etc.)</p>
+      <form method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+          <label class="form-label">Subject</label>
+          <input type="text" name="subject" class="form-control" placeholder="e.g. Data Structures">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Document</label>
+          <input type="file" name="document" class="form-control" accept=".pdf,.docx,.txt" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100"><i class="fa-solid fa-cloud-arrow-up"></i> Upload &amp; Process</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

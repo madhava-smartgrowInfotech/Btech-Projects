@@ -1,0 +1,11 @@
+Flask==3.1.0
+Flask-Cors==5.0.0
+numpy==1.26.4
+pandas==2.2.2
+scikit-learn==1.5.0
+scipy==1.13.0
+imbalanced-learn==0.12.4
+matplotlib==3.9.0
+seaborn==0.13.2
+joblib==1.4.2
+openpyxl==3.1.5

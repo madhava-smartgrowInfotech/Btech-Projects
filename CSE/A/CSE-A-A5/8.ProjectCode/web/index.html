@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CipherGuard Shield — Secure Data Transmission Platform</title>
+<link rel="stylesheet" href="/static/css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <div class="logo">🛡️</div>
+    <div>
+      <h1>CipherGuard Shield</h1>
+      <span>Secure Data Transmission Platform for Cloud Environments</span>
+    </div>
+  </div>
+  <nav class="nav">
+    <button class="nav-btn active" data-tab="dashboard">Dashboard</button>
+    <button class="nav-btn" data-tab="secure">Secure Transfer</button>
+    <button class="nav-btn" data-tab="alerts">Alerts</button>
+    <button class="nav-btn" data-tab="performance">Model Performance</button>
+  </nav>
+  <div class="status">
+    <span id="engineStatus" class="badge">Checking engine...</span>
+    <span class="sub">AES-256-GCM • ECDH P-256 • HKDF</span>
+  </div>
+</header>
+
+<main>
+<!-- Dashboard Tab -->
+<section id="tab-dashboard" class="tab active">
+  <div class="grid2">
+    <div class="card">
+      <h2>ThreatSense Engine — Live Scoring</h2>
+      <p class="muted">Submit a single traffic record or upload a CSV batch. Engine: XGBoost + 1D CNN (Keras) + Logistic Regression stacking.</p>
+
+      <div class="form-row">
+        <label>Protocol <select id="f_proto"><option>tcp</option><option>udp</option><option>icmp</option><option>arp</option><option>ospf</option><option>igmp</option></select></label>
+        <label>Service <select id="f_service"><option>http</option><option>-</option><option>ftp</option><option>smtp</option><option>ssh</option><option>dns</option><option>ftp-data</option><option>pop3</option><option>ssl</option></select></label>
+        <label>State <select id="f_state"><option>CON</option><option>FIN</option><option>INT</option><option>REQ</option><option>RST</option><option>ECO</option><option>CLO</option></select></label>
+      </div>
+      <div class="form-row">
+        <label>Duration <input id="f_dur" type="number" step="0.01" value="0.5"></label>
+        <label>Src Bytes <input id="f_sbytes" type="number" value="1200"></label>
+        <label>Dst Bytes <input id="f_dbytes" type="number" value="800"></label>
+        <label>Rate <input id="f_rate" type="number" value="15000"></label>
+      </div>
+      <div class="form-row">
+        <label>Src Packets <input id="f_spkts" type="number" value="8"></label>
+        <label>Dst Packets <input id="f_dpkts" type="number" value="6"></label>
+        <label>Src Load <input id="f_sload" type="number" value="80000"></label>
+        <label>Dst Load <input id="f_dload" type="number" value="60000"></label>
+      </div>
+      <div class="form-row">
+        <label>ct_srv_src <input id="f_ct_srv_src" type="number" value="2"></label>
+        <label>ct_dst_ltm <input id="f_ct_dst_ltm" type="number" value="2"></label>
+        <label>ct_src_ltm <input id="f_ct_src_ltm" type="number" value="2"></label>
+        <label>ct_srv_dst <input id="f_ct_srv_dst" type="number" value="2"></label>
+      </div>
+      <div class="actions">
+        <button id="btnScore" class="btn primary">Score Single Record</button>
+        <button id="btnSimNormal" class="btn">Simulate Normal</button>
+        <button id="btnSimAttack" class="btn danger">Simulate Attack</button>
+      </div>
+      <div id="singleResult" class="result hidden"></div>
+    </div>
+
+    <div class="card">
+      <h2>Batch Upload (CSV)</h2>
+      <p class="muted">Upload a UNSW-NB15-formatted CSV or synthetic demo CSV. Max 10 MB / 10,000 rows.</p>
+      <input type="file" id="csvFile" accept=".csv">
+      <button id="btnUpload" class="btn primary" style="margin-top:10px">Upload & Score Batch</button>
+      <div id="batchResult" class="result hidden"></div>
+      <div class="chart-wrap">
+        <canvas id="chartCounts"></canvas>
+      </div>
+      <div class="chart-wrap">
+        <canvas id="chartConfidence"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Live Classification Log</h2>
+    <div class="toolbar">
+      <span id="liveStats">No records yet</span>
+      <button id="btnClearLog" class="btn small">Clear</button>
+    </div>
+    <table class="table" id="liveTable">
+      <thead><tr><th>Time</th><th>Label</th><th>Confidence</th><th>Proto/Service/State</th><th>Scores (XGB/CNN)</th><th>Severity</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- Secure Transfer Tab -->
+<section id="tab-secure" class="tab">
+  <div class="grid2">
+    <div class="card">
+      <h2>SecureChannel — Encrypt & Transmit</h2>
+      <p class="muted">SecureChannel: ECDH P-256 key exchange → HKDF-SHA256 → AES-256-GCM authenticated encryption. Payload is encrypted client-side via API, transmitted to mock cloud, and verified by decryption.</p>
+      <label>Message / Payload
+        <textarea id="plainText" rows="5" placeholder="Enter sensitive data to encrypt...">Confidential payload for cloud storage: Project CipherGuard Shield Q4 financials</textarea>
+      </label>
+      <button id="btnEncrypt" class="btn primary">Encrypt & Transmit to Cloud</button>
+      <div id="encResult" class="result hidden"></div>
+
+      <hr>
+      <label>Or encrypt a file (max 5 MB) <input type="file" id="encFile"></label>
+      <button id="btnEncryptFile" class="btn">Encrypt File</button>
+      <div id="encFileResult" class="result hidden"></div>
+    </div>
+    <div class="card">
+      <h2>Mock Cloud — Decrypt & Verify</h2>
+      <p class="muted">The cloud endpoint derives the same session key via ECDH with its private key and verifies the GCM tag. Tampering is detected.</p>
+      <div id="decryptPanel" class="hidden">
+        <label>Ciphertext (base64) <textarea id="dec_ct" rows="2" readonly></textarea></label>
+        <label>Nonce (base64) <input id="dec_nonce" readonly></label>
+        <label>Tag (base64) <input id="dec_tag" readonly></label>
+        <label>Ephemeral Public (base64) <input id="dec_eph" readonly></label>
+        <button id="btnDecrypt" class="btn primary">Decrypt & Verify at Cloud</button>
+        <button id="btnTamper" class="btn danger">Tamper Ciphertext (test tag failure)</button>
+        <div id="decResult" class="result hidden"></div>
+      </div>
+      <div id="decryptPlaceholder" class="muted">Encrypt something on the left first.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Alerts Tab -->
+<section id="tab-alerts" class="tab">
+  <div class="card">
+    <h2>Alerts — Detected Intrusions</h2>
+    <div class="toolbar">
+      <span id="alertCount">Loading...</span>
+      <button id="btnRefreshAlerts" class="btn small">Refresh</button>
+      <button id="btnClearAlerts" class="btn small danger">Clear All</button>
+    </div>
+    <table class="table" id="alertsTable">
+      <thead><tr><th>Timestamp</th><th>Severity</th><th>Confidence</th><th>Features</th><th>Model Scores</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- Performance Tab -->
+<section id="tab-performance" class="tab">
+  <div class="card">
+    <h2>Model Performance — Held-out Test Metrics</h2>
+    <p class="muted">ThreatSense Engine: XGBoost + 1D CNN (TensorFlow/Keras) + Logistic Regression stacking ensemble. Dataset: UNSW-NB15 (or synthetic demo data with identical schema when real CSVs not provided). All numbers are computed from an actual held-out test set.</p>
+    <div id="metricsPanel">Loading metrics...</div>
+    <div class="grid2" style="margin-top:16px">
+      <div class="chart-wrap"><canvas id="chartMetrics"></canvas></div>
+      <div class="chart-wrap"><canvas id="chartCM"></canvas></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">CipherGuard Shield v1.0.0 — SecureChannel (AES-256-GCM + ECDH P-256 + HKDF-SHA256) • ThreatSense Engine (XGBoost + 1D CNN + Logistic Regression stacking) • UNSW-NB15 • <a href="/docs" target="_blank">API Docs</a></footer>
+
+<script src="/static/js/app.js"></script>
+</body>
+</html>

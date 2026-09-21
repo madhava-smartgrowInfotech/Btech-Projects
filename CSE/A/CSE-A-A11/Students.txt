@@ -1,0 +1,25 @@
+==============================================================================
+  CSE-A   |   Batch 11
+==============================================================================
+
+PROJECT TITLE
+  AutoSecAI: Autonomous Pull Request Analysis for Security, Vulnerability Detection, and Code Quality using Multi-Agent LLMs
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      CHEPURI RISHIVARDHAN               23K91A0553
+  2      BODA SANDEEP                       23K91A0539
+  3      DHARAVATH SEETHARAM                23K91A0562
+  4      NARISIMHA REDDY                    24K95A0501
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  P. KISHORE
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

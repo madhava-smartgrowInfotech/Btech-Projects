@@ -1,0 +1,25 @@
+==============================================================================
+  CSE-C   |   Batch C-05
+==============================================================================
+
+PROJECT TITLE
+  Smart Campus Placement System
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      Mopidevi Bhagyasri                 23K91A05F9
+  2      Pamulaparthi Harsha Vardan Reddy   23K91A05J0
+  3      Mohammad Faruk Baba                23K91A05F3
+  4      Prahalladh Terati                  23K91A05J8
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  S Usha Devi
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

@@ -1,0 +1,25 @@
+==============================================================================
+  CSE-A   |   Batch 14
+==============================================================================
+
+PROJECT TITLE
+  Customer Churn Prediction in Telecom Industry (Machine Learning Based Customer Retention System)
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      ANANTULA SAI NIKHILA SRAVANI       23K91A0512
+  2      AVULA ANUDEEP                      23K91A0518
+  3      B SANDEEP                          24K915A0503
+  4      DARAGANI VINOD KUMAR               23K91A0558
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  B. SRIKANTH
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

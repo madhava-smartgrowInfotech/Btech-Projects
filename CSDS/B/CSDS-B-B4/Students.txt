@@ -1,0 +1,25 @@
+==============================================================================
+  CSDS-B   |   Batch B-04
+==============================================================================
+
+PROJECT TITLE
+  UPI Guardian: AI-Based Adaptive Fraud Prevention Framework
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      GURJAPALLI SRI HARSHINI            23K91A6772
+  2      MALLARAPU BHANUCHANDAR             23K91A67A7
+  3      KALUSANI ABHISHEK REDDY            23K91A6776
+  4      NAGULA KALYAN RAM                  23K91A67C3
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  MRS. K. UMA BHARATHI
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

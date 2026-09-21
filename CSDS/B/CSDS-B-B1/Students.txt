@@ -1,0 +1,25 @@
+==============================================================================
+  CSDS-B   |   Batch B-01
+==============================================================================
+
+PROJECT TITLE
+  AI POWERED GOVERNMENT DECISION SUPPORT SYSTEM FOR SMART GOVERNANCE
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      MALLAVARAPU AMULYA                 23K91A67A8
+  2      KORAY PRAMOD KUMAR                 23K91A6794
+  3      KAGE KRISHNACHAITANYA KUMAR        23K91A6775
+  4      MOHAMMAD FAZAL                     23K91A67B6
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  MR.M.AROKIA MUTHU
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

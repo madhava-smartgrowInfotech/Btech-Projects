@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ResQAI &mdash; Accident Detection &amp; Emergency Response</title>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<nav class="navbar navbar-dark navbar-custom shadow-sm">
+  <div class="container-fluid px-4">
+    <span class="navbar-brand mb-0 h1">
+      <i class="fa-solid fa-truck-medical me-2"></i>ResQAI
+      <small class="brand-sub">Accident Detection &amp; Emergency Response</small>
+    </span>
+    <span class="badge {{ 'bg-success' if models_loaded else 'bg-warning text-dark' }}" id="model-status-badge">
+      <i class="fa-solid fa-brain me-1"></i>
+      {{ 'ML Models Loaded' if models_loaded else 'Rule-based Fallback' }}
+    </span>
+  </div>
+</nav>
+
+<div class="container-fluid px-4 py-4">
+  <div class="row g-4">
+
+    <!-- LEFT: Sensor input / live monitor -->
+    <div class="col-lg-5">
+      <div class="card shadow-sm mb-4">
+        <div class="card-header">
+          <i class="fa-solid fa-mobile-screen-button me-2"></i>Simulated Smartphone Sensors
+        </div>
+        <div class="card-body">
+          <p class="text-muted small mb-3">
+            No physical device is attached in this environment, so sensor
+            readings are simulated. Use the scenario buttons for a quick
+            demo, live-monitoring mode for continuous streaming, or the
+            sliders below for manual control.
+          </p>
+
+          <div class="d-flex flex-wrap gap-2 mb-3">
+            <button class="btn btn-outline-secondary btn-sm scenario-btn" data-scenario="normal">Normal Driving</button>
+            <button class="btn btn-outline-warning btn-sm scenario-btn" data-scenario="brake">Harsh Brake</button>
+            <button class="btn btn-outline-info btn-sm scenario-btn" data-scenario="minor">Minor Crash</button>
+            <button class="btn btn-outline-danger btn-sm scenario-btn" data-scenario="moderate">Moderate Crash</button>
+            <button class="btn btn-danger btn-sm scenario-btn" data-scenario="severe">Severe Crash</button>
+          </div>
+
+          <div class="d-flex align-items-center gap-2 mb-4">
+            <button id="live-toggle" class="btn btn-primary btn-sm">
+              <i class="fa-solid fa-play me-1"></i>Start Live Monitoring
+            </button>
+            <span class="small text-muted" id="live-status">Monitoring stopped</span>
+          </div>
+
+          <canvas id="sensorChart" height="140"></canvas>
+
+          <hr>
+
+          <h6 class="text-muted mb-3"><i class="fa-solid fa-sliders me-1"></i>Manual Override</h6>
+          <div class="row g-2">
+            <div class="col-6">
+              <label class="form-label small mb-0">Acc X (m/s&sup2;)</label>
+              <input type="number" step="0.1" class="form-control form-control-sm manual-field" id="acc_x" value="0">
+            </div>
+            <div class="col-6">
+              <label class="form-label small mb-0">Acc Y (m/s&sup2;)</label>
+              <input type="number" step="0.1" class="form-control form-control-sm manual-field" id="acc_y" value="0">
+            </div>
+            <div class="col-6">
+              <label class="form-label small mb-0">Acc Z (m/s&sup2;)</label>
+              <input type="number" step="0.1" class="form-control form-control-sm manual-field" id="acc_z" value="9.81">
+            </div>
+            <div class="col-6">
+              <label class="form-label small mb-0">Gyro magnitude (rad/s)</label>
+              <input type="number" step="0.1" class="form-control form-control-sm manual-field" id="gyro_magnitude" value="0.1">
+            </div>
+            <div class="col-6">
+              <label class="form-label small mb-0">Speed before (km/h)</label>
+              <input type="number" step="1" class="form-control form-control-sm manual-field" id="speed_before" value="40">
+            </div>
+            <div class="col-6">
+              <label class="form-label small mb-0">Speed change (km/h)</label>
+              <input type="number" step="1" class="form-control form-control-sm manual-field" id="speed_change" value="0">
+            </div>
+            <div class="col-6">
+              <label class="form-label small mb-0">Jerk</label>
+              <input type="number" step="0.1" class="form-control form-control-sm manual-field" id="jerk" value="0">
+            </div>
+          </div>
+          <button class="btn btn-dark btn-sm mt-3" id="manual-predict-btn">
+            <i class="fa-solid fa-magnifying-glass-chart me-1"></i>Run Detection on These Values
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MIDDLE: Detection results -->
+    <div class="col-lg-3">
+      <div class="card shadow-sm mb-4">
+        <div class="card-header"><i class="fa-solid fa-shield-heart me-2"></i>Detection Result</div>
+        <div class="card-body text-center">
+          <div id="status-icon" class="status-icon status-idle">
+            <i class="fa-solid fa-circle-check"></i>
+          </div>
+          <h4 id="status-text" class="mt-2 mb-1">Waiting for data&hellip;</h4>
+          <div id="severity-badge" class="badge bg-secondary mb-3">Severity: &mdash;</div>
+
+          <div class="text-start small">
+            <div class="d-flex justify-content-between">
+              <span>Accident probability</span><span id="conf-text">0%</span>
+            </div>
+            <div class="progress mb-3" style="height:8px;">
+              <div id="conf-bar" class="progress-bar" role="progressbar" style="width:0%"></div>
+            </div>
+            <div class="d-flex justify-content-between text-muted">
+              <span>Model source</span><span id="model-source">&mdash;</span>
+            </div>
+            <div class="d-flex justify-content-between text-muted">
+              <span>Last update</span><span id="last-update">&mdash;</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card shadow-sm">
+        <div class="card-header"><i class="fa-solid fa-list-check me-2"></i>Event Log</div>
+        <div class="card-body p-0">
+          <ul class="list-group list-group-flush small" id="event-log" style="max-height:260px; overflow-y:auto;">
+            <li class="list-group-item text-muted">No events yet.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Emergency response -->
+    <div class="col-lg-4">
+      <div class="card shadow-sm mb-4">
+        <div class="card-header bg-danger text-white">
+          <i class="fa-solid fa-truck-medical me-2"></i>Emergency Response
+        </div>
+        <div class="card-body">
+          <div id="map" style="height:230px; border-radius:8px;"></div>
+          <div id="hospital-info" class="mt-3 small text-muted">
+            Nearest hospital information will appear here once an accident
+            is confirmed.
+          </div>
+        </div>
+      </div>
+
+      <div class="card shadow-sm">
+        <div class="card-header"><i class="fa-solid fa-phone-volume me-2"></i>Emergency Contacts</div>
+        <div class="card-body small">
+          <div class="d-flex justify-content-between"><span>Ambulance</span><strong>108</strong></div>
+          <div class="d-flex justify-content-between"><span>National Emergency</span><strong>112</strong></div>
+          <div class="d-flex justify-content-between"><span>Traffic Police</span><strong>103</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Confirmation modal shown when a possible accident is detected -->
+<div class="modal fade" id="confirmModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-warning-subtle">
+        <h5 class="modal-title"><i class="fa-solid fa-triangle-exclamation me-2"></i>Possible Accident Detected</h5>
+      </div>
+      <div class="modal-body text-center">
+        <p>ResQAI detected a <strong id="modal-severity">Severe</strong> impact.</p>
+        <p>If you do not respond within <strong><span id="countdown">15</span>s</strong>,
+           an emergency alert will be sent automatically with your location.</p>
+        <div class="display-6" id="countdown-big">15</div>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-success px-4" id="im-fine-btn">
+          <i class="fa-solid fa-check me-1"></i>I'm Fine, Cancel
+        </button>
+        <button type="button" class="btn btn-danger px-4" id="send-now-btn">
+          <i class="fa-solid fa-paper-plane me-1"></i>Send Alert Now
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Alert dispatched modal -->
+<div class="modal fade" id="dispatchModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title"><i class="fa-solid fa-bell me-2"></i>Emergency Alert Dispatched</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <pre id="dispatch-message" class="dispatch-pre"></pre>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  window.DEFAULT_LOCATION = {{ default_loc | tojson }};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

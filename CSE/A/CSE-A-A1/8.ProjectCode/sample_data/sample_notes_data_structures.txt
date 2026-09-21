@@ -1,0 +1,35 @@
+Subject: Data Structures
+
+Unit 1: Introduction to Data Structures
+A data structure is a specialized format for organizing, processing, retrieving and storing data. There are several basic and advanced types of data structures, all designed to arrange data to suit a specific purpose. Data structures make it easy for users to access and work with the data they need in appropriate ways. Common data structures include arrays, linked lists, stacks, queues, trees, and graphs.
+
+An array is a collection of elements identified by index or key, stored so that each element can be computed from its index by a simple mathematical formula. Arrays provide constant time access to elements but insertion and deletion can be expensive because elements may need to be shifted.
+
+A linked list is a linear data structure where elements are stored in nodes, and each node points to the next node in the sequence. Unlike arrays, linked lists do not require contiguous memory allocation, which makes insertion and deletion more efficient at the cost of slower access time.
+
+Unit 2: Stacks and Queues
+A stack is a linear data structure that follows the Last In First Out (LIFO) principle. The main operations on a stack are push, which adds an element to the top, and pop, which removes the top element. Stacks are widely used in function call management, expression evaluation, and backtracking algorithms.
+
+A queue is a linear data structure that follows the First In First Out (FIFO) principle. Elements are inserted at the rear and removed from the front. Queues are used in scheduling algorithms, breadth-first search, and handling of requests in order of arrival.
+
+Unit 3: Trees
+A tree is a hierarchical data structure consisting of nodes connected by edges, with one node designated as the root. Each node may have zero or more child nodes. A binary tree is a tree in which each node has at most two children, referred to as the left child and the right child.
+
+A binary search tree is a binary tree where the left subtree of a node contains only values less than the node, and the right subtree contains only values greater than the node. This property enables efficient searching, insertion, and deletion operations, typically in logarithmic time for balanced trees.
+
+Unit 4: Graphs
+A graph is a non-linear data structure consisting of a set of vertices and a set of edges connecting pairs of vertices. Graphs can be directed or undirected, and weighted or unweighted. Common graph traversal algorithms include Breadth-First Search and Depth-First Search, which are used to visit all vertices in a graph.
+
+Dijkstra's algorithm is a well-known algorithm used to find the shortest path between nodes in a weighted graph with non-negative edge weights. It works by maintaining a set of visited nodes and repeatedly selecting the unvisited node with the smallest known distance.
+
+Unit 5: Sorting and Searching
+Sorting algorithms arrange elements of a list in a certain order, typically ascending or descending. Common sorting algorithms include bubble sort, insertion sort, selection sort, merge sort, and quick sort. Merge sort and quick sort are efficient comparison-based sorting algorithms with average time complexity of O(n log n).
+
+Binary search is an efficient algorithm for finding an item from a sorted list of items. It works by repeatedly dividing the search interval in half, comparing the target value to the middle element, and narrowing the search space accordingly.
+
+Important Questions:
+1. Explain the difference between an array and a linked list.
+2. What is the LIFO principle and where is it applied?
+3. Define binary search tree and explain its properties.
+4. Explain Dijkstra's algorithm with an example.
+5. Compare merge sort and quick sort in terms of time complexity.

@@ -1,0 +1,25 @@
+==============================================================================
+  CSE-C   |   Batch C-15
+==============================================================================
+
+PROJECT TITLE
+  DDOS ATTACK DETECTION AND MITIGATION (Real-Time DDoS Detection and Adaptive Mitigation Framework Using Machine Learning)
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      Mallela Pallavi                    23K91A05E3
+  2      Kattoju Durgabhavani               24K95A0514
+  3      Nimmala Rakshitha                  23K91A05H3
+  4      Prodhatoor Shashi Preetham         23K91A05K0
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  V Meenakshi
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

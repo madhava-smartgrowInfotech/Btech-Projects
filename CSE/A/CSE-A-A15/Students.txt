@@ -1,0 +1,25 @@
+==============================================================================
+  CSE-A   |   Batch 15
+==============================================================================
+
+PROJECT TITLE
+  Data Protection Using Hybrid Encryption and Steganography
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      ALLAM RAKESH                       23K91A0509
+  2      BOLLEDDU SHANKER                   23K91A0543
+  3      AGARAM SRI SARVAGNA                23K91A0506
+  4      B AKSHAY                           24K915A0504
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  Rajalakshmi
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

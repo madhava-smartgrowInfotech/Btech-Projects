@@ -1,0 +1,93 @@
+TKR COLLEGE OF ENGINEERING AND TECHNOLOGY                    
+Autonomous, 
+(Accredited by NBA & NAAC with ‘A+’ Grade) 
+ 
+___________________________________________________________________ 
+CSE (Data Science) 
+ 
+ 
+Major Project :  Phase-I                                                                  A.Y : 2026-27   
+Year & Sem   :   IV & I Sem                                                          Date : 07.07.2025 
+ 
+ 
+Title of the project: 
+VisionForge AI: An Explainable Vision-Language Framework for Industrial Defect 
+Detection, Root Cause Analysis, and Automated Inspection Reporting  
+          ​ ​
+​
+ 
+ 
+Project Batch No: 
+S.No. 
+H.T.No. 
+Name 
+Mail id (personal) 
+Mobile No. 
+Sign 
+1 
+23K91A6755 
+G.SRIVARDHAN 
+srivardhangandla85
+8@gmail.com 
+6309129611 
+ 
+2 
+23K91A6733 
+B.TRIVED 
+trivedbobbali@gmai
+l.com 
+9848143903 
+ 
+3 
+23K91A6752 
+G.RAKESH 
+gaddalarakesh18@g
+mail.com 
+9177136935 
+ 
+4 
+23K91A6729 
+B.INDRA NEEL 
+indraneelvarma120
+@gmail.com 
+8519988616 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Guide Name                            : Mr K.SATHYANARAYANA 
+Designation                              : Assistant Professor 
+Mobile No                                : 9963282737 
+Mail id                                      : satyam@tkrcet.com 
+
+ 
+ 
+Abstract: 
+ 
+VisionForge AI is an intelligent software-based industrial inspection system designed to improve 
+product quality by automating the defect detection process. The system uses deep learning-based 
+computer vision techniques to identify defects in industrial products such as Printed Circuit 
+Boards (PCBs), steel surfaces, and other manufactured components. Unlike traditional AI models 
+that only classify defects, VisionForge AI also explains why a defect was detected by 
+highlighting the important regions of the image using Explainable AI techniques. 
+The system further enhances the inspection process by generating a simple human-readable 
+explanation and suggesting possible root causes for the detected defect. A web-based dashboard 
+allows users to upload images, view inspection results, analyze explanation heatmaps, and 
+automatically generate professional inspection reports. The reports include defect type, 
+confidence score, explanation, possible causes, and recommended corrective actions. 
+The proposed system is completely software-based, making it cost-effective and easy to 
+implement using publicly available industrial datasets. VisionForge AI aims to improve 
+inspection accuracy, reduce manual effort, increase transparency in AI predictions, and support 
+faster decision-making in manufacturing industries. 
+ 
+ 
+ 
+ 
+ 
+ 
+Project Coordinator                                                                           Project Guide

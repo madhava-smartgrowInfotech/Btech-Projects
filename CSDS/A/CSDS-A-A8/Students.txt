@@ -1,0 +1,25 @@
+==============================================================================
+  CSDS-A   |   Batch A-08
+==============================================================================
+
+PROJECT TITLE
+  JEPA LLM Tuning Framework Model for Self Supervised Medical Image Segmentation and DNA Finger Printing Analysis
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      C.MANASA                           23K91A6746
+  2      B.SRUTHI                           23K91A6723
+  3      B.MANASVI                          23K91A6738
+  4      B.SATHWIK                          23K91A6726
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  GUIDE NAME
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

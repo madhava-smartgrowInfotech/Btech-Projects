@@ -1,0 +1,53 @@
+-602615-2209805664200-307340TKR COLLEGE OF ENGINEERING AND TECHNOLOGY                    Autonomous,
+(Accredited by NBA & NAAC with ‘A+’ Grade)
+___________________________________________________________________
+CSE (Data Science)
+
+Major Project :  Phase-I                                                                  A.Y : 2025-26   Year & Sem   :   IV & I Sem                                                          Date :31.07.2026
+
+Title of the project: A Dynamic Phishing URL Detection System Integrating Advanced Machine Learning and Crowdsourced Threat Intelligence.
+
+Project Batch No:
+S.No.
+H.T.No.
+Name
+Mail id (personal)
+Mobile No.
+Sign
+1.
+23K91A6750
+D. Anish Meghan
+anishmeghan1809@gmail.com
+7794970892
+D. Anish
+2.
+23K91A6737
+B. Akshaya
+akshaya2005.siri@gmail.com
+8074488087
+B. Akshaya
+3.
+23K91A6736
+B. Tanuja
+tanujab1306@gmail.com
+9014771346
+B. Tanuja
+4.
+23K91A6742
+Ch. Sai Chethan
+saichethanchalamala@gmail.com
+7989990680
+Ch. chethan
+
+Guide Name                            : Mr. G. Ravi
+Designation                              : Head of Department
+Mobile No                                : 9000325230
+Mail id                                      : g.raviraja@gmail.com
+
+Abstract:
+Phishing attacks have become one of the most significant cybersecurity threats, targeting individuals and organizations by using deceptive websites to steal sensitive information such as usernames, passwords, banking credentials, and personal data. Traditional phishing detection techniques, which primarily rely on static blacklists or manually updated databases, often fail to identify newly emerging (zero-day) phishing websites. To address this challenge, this project proposes "A Dynamic Phishing URL Detection System Integrating Advanced Machine Learning and Crowdsourced Threat Intelligence."
+The proposed system utilizes advanced Machine Learning algorithms to analyze and classify URLs based on multiple lexical, structural, and domain-based features, enabling the detection of malicious websites with high accuracy. In addition to machine learning, the system integrates crowdsourced threat intelligence collected from trusted cybersecurity communities and threat-sharing platforms. This continuously updated threat data enhances the model's ability to recognize newly discovered phishing URLs and adapt to evolving attack patterns.
+The system follows a complete pipeline that includes data collection, preprocessing, feature extraction, model training, phishing URL classification, and real-time threat intelligence integration. Multiple machine learning algorithms, such as Random Forest, XGBoost, and Logistic Regression, can be evaluated to identify the model with the best performance in terms of accuracy, precision, recall, and F1-score. By combining predictive machine learning with real-time threat intelligence, the proposed solution provides faster detection, improved adaptability, and reduced false positives compared to conventional phishing detection methods.
+This project aims to develop an efficient, scalable, and intelligent phishing URL detection system that strengthens cybersecurity by protecting users from fraudulent websites. The proposed approach contributes to proactive threat detection and enhances online security for individuals, businesses, and digital platforms.
+
+Project Coordinator                                                                           Project Guide

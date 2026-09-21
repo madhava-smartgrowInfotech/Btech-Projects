@@ -1,0 +1,13 @@
+services:
+  cipherguard:
+    build: .
+    image: cipherguard-shield:latest
+    container_name: cipherguard-shield
+    ports:
+      - "8000:8000"
+    volumes:
+      # Persist trained models/reports across restarts (optional — remove if you want immutable image)
+      - ./models:/app/models
+      - ./reports:/app/reports
+      - ./data/raw:/app/data/raw
+    restart: unless-stopped

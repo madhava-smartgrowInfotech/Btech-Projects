@@ -1,0 +1,25 @@
+==============================================================================
+  CSE-A   |   Batch 07
+==============================================================================
+
+PROJECT TITLE
+  ATHENA – Autonomous Triage and Healthcare Electronic Neural Assistant
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      BADAVENI SRINATH                   23K91A0523
+  2      BASANI AVINASH                     23K91A0532
+  3      DEGALA PRANEETH                    23K91A0561
+  4      BONTHA SAISREE                     23K91A0545
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  K. SHALINI
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

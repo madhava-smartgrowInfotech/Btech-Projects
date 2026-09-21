@@ -1,0 +1,25 @@
+==============================================================================
+  CSE-C   |   Batch C-10
+==============================================================================
+
+PROJECT TITLE
+  An Efficient Novel Approach for Predicting Startup Company Success Rates Using Advanced Machine Learning Paradigms
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      Orchu Shirisha                     23K91A05H6
+  2      Mudavath Raghavendar               23K91A05G1
+  3      Majgi Vaishnavi                    23K91A05E0
+  4      Polishetty Poojitha                23K91A05J4
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  P Prasanna
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

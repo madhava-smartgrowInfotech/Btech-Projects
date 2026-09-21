@@ -1,0 +1,25 @@
+==============================================================================
+  CSDS-B   |   Batch B-05
+==============================================================================
+
+PROJECT TITLE
+  AI-Powered Real-Time Indian Sign Language Recognition and Bidirectional Communication System with Live Subtitle Generation
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      MAMIDALA SAI PRANATHI              23K91A67B0
+  2      JOOKANTI SRAVANTHI                 24K95A6706
+  3      KUTHADI SANDEEP                    23K91A6798
+  4      MOHAMMAD ABDUL SHAAZ MOHAMMAD      23K91A67B5
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  MRS.K.KIRANMAYEE
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

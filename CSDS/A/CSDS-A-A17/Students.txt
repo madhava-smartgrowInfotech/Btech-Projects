@@ -1,0 +1,25 @@
+==============================================================================
+  CSDS-A   |   Batch A-17
+==============================================================================
+
+PROJECT TITLE
+  CropSight: Smart Crop Delivery with AI-Based Price and Quality Intelligence
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      G.PRANAVI                          23K91A6765
+  2      G.SIRI CHANDANA                    23K91A6763
+  3      A.NIKHIL                           23K91A6715
+  4      G.VISHNU VARDHAN                   23K91A6754
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  K. Mounika
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

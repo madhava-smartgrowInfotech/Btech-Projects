@@ -1,0 +1,25 @@
+==============================================================================
+  CSDS-B   |   Batch B-09
+==============================================================================
+
+PROJECT TITLE
+  TalentTrack: AI-Powered Placement Readiness Platform with Integrated Coding Evaluation
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      KODAVATH VAMSHI                    23K91A6790
+  2      KARTIKEY SHUKLA                    23K91A6783
+  3      ODETI THIRUPATHI                   23K91A67C9
+  4      M BHAVANI PRASAD                   23K91A67A2
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  MRS.CH.GAYATHRI
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

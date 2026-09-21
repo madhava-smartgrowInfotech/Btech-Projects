@@ -1,0 +1,25 @@
+==============================================================================
+  CSDS-B   |   Batch B-7
+==============================================================================
+
+PROJECT TITLE
+  AI-Driven Intelligent Hospital Resource Prediction, Optimization and Decision Support System
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      KOTHA ROHITH                       23K91A6796
+  2      GUMMULA VIKRAM REDDY               23K91A6770
+  3      JANGILI MARUTHI                    23K91A6773
+  4      KATRIYAL VAMSHI                    24K95A6708
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  MR.J.ANIL KUMAR
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

@@ -1,0 +1,25 @@
+==============================================================================
+  CSDS-B   |   Batch B-12
+==============================================================================
+
+PROJECT TITLE
+  Pulmonary Disease Detection Using Deep Learning Techniques
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      MALKAJGIRI RAKSHITHA               23K91A67A6
+  2      KATTA SOWMYA                       23K91A6786
+  3      GOURABATHUNI SAI VAISHNAVI         23K91A6766
+  4      MUDUSU GOUTHAM                     23K91A67B9
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  MRS M. PRAVARSHA REDDY
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

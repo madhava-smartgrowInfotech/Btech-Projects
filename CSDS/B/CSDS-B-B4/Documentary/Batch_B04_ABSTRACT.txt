@@ -1,0 +1,96 @@
+TKR COLLEGE OF ENGINEERING AND TECHNOLOGY                    
+Autonomous, 
+(Accredited by NBA & NAAC with ‘A+’ Grade) 
+ 
+___________________________________________________________________ 
+CSE (Data Science) 
+ 
+ 
+Major Project :  Phase-I                                                                  A.Y : 2026-27   
+Year & Sem   :   IV & I Sem                                                          Date : 07.07.2026 
+ 
+ 
+Title of the project:    UPI Guardian: AI-Based Adaptive Fraud Prevention 
+Framework 
+            
+ 
+ 
+ 
+ 
+Project Batch No:04 
+S.No. 
+H.T.No. 
+Name 
+Mail id 
+(personal) 
+Mobile No. 
+Sign 
+1. 
+23K91A6772 
+G. Sri Harshini 
+sriharshinigurjapa
+lli@gmail.com 
+8121570252 
+ 
+2. 
+23K91A67A7 
+M. Bhanuchandar 
+Bhanu02b@gmail
+.com 
+8897150269 
+ 
+3. 
+23K91A6776 
+K. Abhishek Reddy 
+abhishekreddykal
+usani28@gmail.c
+om 
+7989259928 
+ 
+4. 
+23K91A67C3 
+N. Kayan Ram 
+Kalyanramnagula
+06@gmail.com 
+8978912050 
+ 
+ 
+Guide Name                            :  Mrs. K. Uma Bharathi 
+Designation                              : Assistant Professor 
+Mobile No                                :  8897093726 
+Mail id                                      :. umabharathi@tkrcet.com 
+
+ 
+ 
+Abstract: 
+The rapid growth of the Unified Payments Interface (UPI) has made digital payments faster, 
+simpler, and more convenient. However, it has also increased frauds such as phishing attacks, 
+fake payment requests, QR code scams, and social engineering. Existing AI-based fraud 
+detection systems can identify suspicious transactions but cannot always prevent users from 
+unknowingly sending money to fraudsters. To address this problem, we propose UPI Guardian, 
+an AI-Based Adaptive Fraud Prevention Framework that performs AI Risk Analysis using 
+transaction behavior, payment history, receiver trust score, and suspicious SMS indicators. Based 
+on the calculated risk, the system activates Smart Payment Intent Verification, Delayed 
+Protection Mode, and AI Explainable Risk Analysis for high-risk transactions. The framework 
+also provides Personalized Multilingual Voice Assistance in English, Hindi, and Telugu to 
+improve accessibility. Overall, UPI Guardian aims to make digital payments safer, smarter, more 
+secure, and user-friendly. 
+ 
+Keywords: UPI, Fraud Prevention, AI Risk Analysis, Trust Score, Smart Payment Intent 
+Verification, Delayed Protection Mode, Explainable AI, Multilingual Voice Assistance. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Project Coordinator                                                                           Project Guide

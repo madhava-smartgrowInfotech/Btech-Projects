@@ -1,0 +1,25 @@
+==============================================================================
+  CSE-C   |   Batch C-01
+==============================================================================
+
+PROJECT TITLE
+  SECURE VOTING SYSTEM WITH AADHAR VERIFICATION THROUGH BLOCKCHAIN
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      Mohammed Anwar-Ul-Haq              23K91A05F6
+  2      Mohammad Mosin                     23K91A05F4
+  3      Manda Akshitha                     23K91A05E4
+  4      Kothlapur Ganesh                   24K95A0516
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  B Shruthi
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

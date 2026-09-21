@@ -1,0 +1,12 @@
+6579107-295892312420-209024TKR COLLEGE OF ENGINEERING AND TECHNOLOGY
+Autonomous,
+(Accredited by NBA & NAAC with ‘A+’ Grade)
+
+918844179956
+CSE (Data Science)
+Title of the Project : AI-POWERED GOVERNMENT DECISION SUPPORT SYSTEM FOR SMART GOVERNANCE
+
+Abstract:
+The rapid growth of digital governance has increased citizen complaints related to public infrastructure issues such as road damage, water leakage, streetlight failures, garbage accumulation, drainage, and sanitation problems. Existing grievance management systems mainly focus on complaint registration and tracking, while government officers still manually analyze complaints, determine priorities, identify responsible departments, allocate resources, and monitor progress, leading to delays and inefficient service delivery. To address these challenges, the proposed AI-Powered Government Decision Support System for Smart Governance uses Artificial Intelligence (AI), Natural Language Processing (NLP), and Explainable AI (XAI) to automatically analyze and classify complaints, predict their priority, recommend the appropriate department, and estimate resolution time. Following a Human-in-the-Loop approach, the system provides intelligent and explainable recommendations while allowing government officers to make final decisions. The platform supports Citizens, Government Officers, Field Staff, and Administrators by enabling complaint submission and tracking, AI-assisted decision-making, work assignment and progress updates, administrative management, and real-time analytics. By integrating intelligent complaint processing, explainable decision support, resource optimization, and performance monitoring into a unified platform, the proposed system aims to reduce complaint resolution time, improve governance efficiency, enhance transparency, optimize resource utilization, and increase citizen satisfaction.
+
+Keywords: Artificial Intelligence (AI), Smart Governance, Decision Support System, Natural Language Processing (NLP), Explainable Artificial Intelligence (XAI), Complaint Classification, Priority Prediction, Department Recommendation, Real-Time Analytics.

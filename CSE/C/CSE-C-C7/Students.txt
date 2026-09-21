@@ -1,0 +1,25 @@
+==============================================================================
+  CSE-C   |   Batch C-07
+==============================================================================
+
+PROJECT TITLE
+  Personalized E-learning Course Recommendation System
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      Pittala Akhila                     23K91A05J3
+  2      Mundala Sandhya                    23K91A05G5
+  3      Mula Thanuj Reddy                  23K91A05G4
+  4      Majjigapu Jagadeshwar Reddy        23K91A05E1
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  K Gayathri
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

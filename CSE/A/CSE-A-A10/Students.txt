@@ -1,0 +1,25 @@
+==============================================================================
+  CSE-A   |   Batch 10
+==============================================================================
+
+PROJECT TITLE
+  AI-Based Smart Traffic Management
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      BUNETI HARSHITHA                   23K91A0548
+  2      BHUVANESHWARI KADIKE               23K91A0537
+  3      AMBATI SAI NIKHIL REDDY            23K91A0510
+  4      CHAPALA ROHITH REDDY               23K91A0551
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  LAXMI PRASANNA
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

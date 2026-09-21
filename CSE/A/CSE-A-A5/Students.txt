@@ -1,0 +1,25 @@
+==============================================================================
+  CSE-A   |   Batch 05
+==============================================================================
+
+PROJECT TITLE
+  Secure Data Transmission in Cloud Computing using Encryption and Machine Learning
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      AVUTI SANDHYA                      23K91A0520
+  2      BANOTHU INDU                       23K91A0530
+  3      DASARI SRITEJA                     23K91A0559
+  4      BEJUGAM VAISHNAVI                  23K91A0533
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  CH.PRABHAKAR
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

@@ -1,0 +1,25 @@
+==============================================================================
+  CSDS-A   |   Batch A-09
+==============================================================================
+
+PROJECT TITLE
+  Privacy-Preserving Machine Unlearning in Federated LLMs: A Certified Right-to-Be-Forgotten Framework
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      G.SHASHANK                         23K91A6761
+  2      B.SATHISH                          23K91A6719
+  3      G.RAKESH                           23K91A6759
+  4      B.AKHIL                            23K91A6721
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  GUIDE NAME
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

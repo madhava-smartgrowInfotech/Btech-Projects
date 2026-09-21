@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block content %}
+<h3 class="mb-4">Welcome back, {{ session.username }} 👋</h3>
+
+<div class="row g-3 mb-4">
+  <div class="col-md-4">
+    <div class="card stat-card">
+      <div class="value">{{ doc_count }}</div>
+      <div class="text-muted">Documents Uploaded</div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card stat-card">
+      <div class="value">{{ query_count }}</div>
+      <div class="text-muted">Questions Asked</div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card stat-card">
+      <div class="value">{{ quiz_attempts }}</div>
+      <div class="text-muted">Quiz Questions Attempted</div>
+    </div>
+  </div>
+</div>
+
+<div class="row g-4">
+  <div class="col-md-6">
+    <div class="card p-4">
+      <h5>Subject-wise Performance</h5>
+      {% if performance %}
+      <canvas id="perfChart" height="220"></canvas>
+      {% else %}
+      <p class="text-muted mt-3">Take a quiz to see your performance analytics here.</p>
+      {% endif %}
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card p-4">
+      <h5>Recent Documents</h5>
+      {% if documents %}
+      <ul class="list-group list-group-flush mt-2">
+        {% for doc in documents %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <span><i class="fa-solid fa-file"></i> {{ doc.filename }}</span>
+          <span class="badge bg-primary rounded-pill">{{ doc.subject }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p class="text-muted mt-3">No documents uploaded yet. <a href="{{ url_for('upload') }}">Upload one now</a>.</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<div class="mt-4 text-center">
+  <a href="{{ url_for('upload') }}" class="btn btn-primary me-2"><i class="fa-solid fa-upload"></i> Upload Material</a>
+  <a href="{{ url_for('ask') }}" class="btn btn-outline-primary me-2"><i class="fa-solid fa-comments"></i> Ask a Question</a>
+  <a href="{{ url_for('roadmap') }}" class="btn btn-outline-primary"><i class="fa-solid fa-route"></i> View Roadmap</a>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{% if performance %}
+<script>
+fetch("{{ url_for('api_performance') }}")
+  .then(r => r.json())
+  .then(data => {
+    const ctx = document.getElementById('perfChart');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: data.labels,
+        datasets: [{
+          label: 'Accuracy (%)',
+          data: data.data,
+          backgroundColor: '#4f46e5'
+        }]
+      },
+      options: {
+        scales: { y: { beginAtZero: true, max: 100 } },
+        plugins: { legend: { display: false } }
+      }
+    });
+  });
+</script>
+{% endif %}
+{% endblock %}

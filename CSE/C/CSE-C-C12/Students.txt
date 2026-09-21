@@ -1,0 +1,25 @@
+==============================================================================
+  CSE-C   |   Batch C-12
+==============================================================================
+
+PROJECT TITLE
+  SymptoTrackAI: Hybrid RAG Based Symptom Tracking and Health Monitoring System
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      Mariyada Karthika Reddy            23K91A05E9
+  2      Nacharam Akshaya                   23K91A05G6
+  3      Madoori Prabath Teja               23K91A05D6
+  4      Pulimadhi Keerthan                 23K91A05K1
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  Dr. Ch. B. Naga Lakshmi
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

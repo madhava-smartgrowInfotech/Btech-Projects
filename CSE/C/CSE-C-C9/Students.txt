@@ -1,0 +1,25 @@
+==============================================================================
+  CSE-C   |   Batch C-09
+==============================================================================
+
+PROJECT TITLE
+  AI-Based Financial Identification Based On Demography and Financial Forecasting
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      Mohd Ahmed                         23K91A05F7
+  2      Manne Upender                      23K91A05E6
+  3      Padala Rajesh                      23K91A05H7
+  4      Madagouni Harshavardhan Goud       23K91A05D5
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  B Srikanth
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

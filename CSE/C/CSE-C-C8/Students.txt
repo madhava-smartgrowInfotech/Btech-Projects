@@ -1,0 +1,25 @@
+==============================================================================
+  CSE-C   |   Batch C-08
+==============================================================================
+
+PROJECT TITLE
+  Paper Evaluation Using Artificial Intelligence (Hybrid AI Framework for Research Paper Evaluation & Reviewer Recommendation)
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      Mula Sreebindu                     23K91A05G3
+  2      Puramshetty Vishnu Vardhan         23K91A05K2
+  3      K Sampoorna                        24K95A0512
+  4      Korsa Shivashankar                 24K95A0515
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  M Anupama
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

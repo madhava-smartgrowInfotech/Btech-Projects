@@ -1,0 +1,25 @@
+==============================================================================
+  CSDS-B   |   Batch B-3
+==============================================================================
+
+PROJECT TITLE
+  AI-Driven Learning and Earning Ecosystem for Knowledge Engineers
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      MANDADI PRANATHI REDDY             23K91A67B2
+  2      MULKALAPALLI SANTHOSH              23K91A67C1
+  3      MADANU SATHWIKA                    23K91A67A3
+  4      NANDIKONDA ANISH REDDY             23K91A67C7
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  MRS. M. PRAVARSHA REDDY
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

@@ -1,0 +1,30 @@
+Abstract 
+ 
+Agriculture is facing significant challenges due to fluctuating market prices, inconsistent crop 
+quality assessment, supply chain inefficiencies, and limited access to real-time decision 
+support for farmers. To address these issues, this project, CropSight: Smart Crop Delivery 
+with AI-Based Price and Quality Intelligence, presents an intelligent agricultural platform 
+that integrates Artificial Intelligence (AI), Machine Learning (ML), and Internet of Things (IoT) 
+technologies. The system enables farmers to assess crop quality, predict market prices, and 
+streamline crop delivery processes through a data-driven and automated approach, thereby 
+enhancing profitability and reducing post-harvest losses. 
+The proposed framework utilizes image-based crop quality analysis to evaluate factors such 
+as size, color, texture, and defects using deep learning models. Simultaneously, machine 
+learning algorithms analyze historical market trends, weather conditions, demand patterns, 
+and regional price variations to generate accurate crop price predictions. IoT sensors and 
+cloud-based services provide real-time monitoring of storage and transportation conditions, 
+ensuring that crops maintain their quality throughout the supply chain. The platform also 
+incorporates explainable AI techniques to provide transparent insights into quality grading 
+and pricing decisions. 
+Furthermore, CropSight features a smart delivery recommendation module that connects 
+farmers, distributors, and buyers through an integrated digital marketplace. The system 
+recommends optimal delivery routes, suitable buyers, and the best time for selling crops to 
+maximize returns. By combining quality intelligence, price forecasting, and smart logistics, 
+the proposed solution improves supply chain efficiency, promotes fair pricing, reduces 
+wastage, and empowers farmers with actionable insights for sustainable and profitable 
+agriculture. 
+PROJECT GUIDE:                                                                                       TEAM MEMBERS: 
+K.MOUNIKA                                                                          G.PRANAVI                  23K91A6765 
+                                                                                G.SIRICHANDANA      23K91A6763 
+                                                                                G.VISHNUVARDHAN  23K91A6754 
+                                                                                A.NIKHIL                      23K91A6714

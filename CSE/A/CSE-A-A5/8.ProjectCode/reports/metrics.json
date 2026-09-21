@@ -1,0 +1,52 @@
+{
+  "data_mode": "synthetic demo data (UNSW-NB15 schema, generated)",
+  "dataset_rows": 12000,
+  "splits": {
+    "train": 8400,
+    "val": 1800,
+    "test": 1800
+  },
+  "accuracy": 0.9733333333333334,
+  "precision": 0.9765625,
+  "recall": 0.9700665188470067,
+  "f1": 0.9733036707452726,
+  "roc_auc": 0.9704035575484324,
+  "confusion_matrix": [
+    [
+      877,
+      21
+    ],
+    [
+      27,
+      875
+    ]
+  ],
+  "confusion_labels": [
+    "normal",
+    "attack"
+  ],
+  "xgb_accuracy": 0.9733333333333334,
+  "cnn_accuracy": 0.9733333333333334,
+  "meta_coef": [
+    [
+      3.767190830729736,
+      3.5850207704372536
+    ]
+  ],
+  "meta_intercept": [
+    -3.5732827548629666
+  ],
+  "class_balance": {
+    "neg": 4187,
+    "pos": 4213
+  },
+  "input_dim": 70,
+  "cnn_backend": "torch",
+  "technology": {
+    "model_a": "XGBoost (Gradient-boosted trees)",
+    "model_b": "1D Convolutional Neural Network (2 conv layers + pooling + dense, PyTorch)",
+    "fusion": "Logistic Regression stacking (soft-voting / weighted score averaging with min-max normalized probabilities)",
+    "dataset": "UNSW-NB15",
+    "crypto": "AES-256-GCM + ECDH P-256 + HKDF-SHA256"
+  }
+}

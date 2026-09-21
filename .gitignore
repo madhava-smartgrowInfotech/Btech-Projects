@@ -1,0 +1,14 @@
+# Python / Node environments and caches (reinstallable, kept on disk only)
+venv/
+.venv/
+__pycache__/
+*.pyc
+node_modules/
+
+# Old base papers replaced during the IEEE switch (kept on disk only)
+archived_base_papers/
+
+# Office / Windows temporary files
+~$*
+Thumbs.db
+desktop.ini

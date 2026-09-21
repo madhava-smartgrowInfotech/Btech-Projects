@@ -1,0 +1,25 @@
+==============================================================================
+  CSDS-B   |   Batch B-17
+==============================================================================
+
+PROJECT TITLE
+  NextGen Call Intelligence with Artificial Intelligence
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      KOPPU RISHIVARDHAN GOUD            23K91A6793
+  2      MALGI REDDY DIVYA SRI              23K91A67A5
+  3      KANDIKONDA SIDDHARTH               23K91A6779
+  4      MOHAMMED FAIZAN UDDIN              23K91A67B7
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  DR.G.RAVI
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

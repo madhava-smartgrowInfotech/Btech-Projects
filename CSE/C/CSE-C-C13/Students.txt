@@ -1,0 +1,25 @@
+==============================================================================
+  CSE-C   |   Batch C-13
+==============================================================================
+
+PROJECT TITLE
+  Secure File Storage System with Encryption and Role-Based Access Control (RBAC)
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      Pramod Reddy Yalala                23K91A05J9
+  2      Pendela Vyshnavi                   23K91A05J1
+  3      Luke Abraham Sam                   23K91A05D4
+  4      Mudavath Suresh                    23K91A05G2
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  D V V Deepthi
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

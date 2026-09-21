@@ -1,0 +1,25 @@
+==============================================================================
+  CSDS-A   |   Batch A-12
+==============================================================================
+
+PROJECT TITLE
+  ANALYSING MILLET SEED GERMINATION PREDICTION USING JEPA LLM TUNING MODELS AND CROP ANALYSIS
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      A.ROHINI                           23K91A6710
+  2      A.CHARAN                           23K91A6709
+  3      B.PRAVEEN                          23K91A6718
+  4      STUDENT NAME                       REG. NO
+  --------------------------------------------------------------------------
+
+  Total students: 3
+
+FACULTY PROJECT GUIDE
+  GUIDE NAME
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

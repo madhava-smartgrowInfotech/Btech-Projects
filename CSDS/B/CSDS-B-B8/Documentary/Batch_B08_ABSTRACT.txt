@@ -1,0 +1,95 @@
+TKR COLLEGE OF ENGINEERING AND TECHNOLOGY                    
+Autonomous, 
+(Accredited by NBA & NAAC with ‘A+’ Grade) 
+ 
+___________________________________________________________________ 
+CSE (Data Science) 
+ 
+ 
+Major Project :  Phase-I                                                                  A.Y : 2026-27   
+Year & Sem   :   IV & I Sem                                                          Date : 07.07.2026 
+ 
+ 
+Title of the project: 
+Enhanced AI-Based Human Activity Recognition with Fall Detection and 
+Emergency Alert System           
+ 
+ 
+ 
+ 
+ 
+Project Batch No: B-08 
+S.No
+. 
+H.T.No. 
+Name 
+Mail id 
+(personal) 
+Mobile No. 
+Sign 
+01. 
+23K91A6797 
+K Nandini Reddy 
+kuntanandinireddy@
+gmail.com 
+9390821224 
+ 
+02. 
+23K91A6787 
+K Mallishwari 
+kethavathmallishwari
+5@gmail.com 
+9391670647 
+ 
+03. 
+23K91A6781 
+K Vivek 
+vivekvivek55544@g
+mail.com 
+9390294169 
+ 
+04. 
+23K91A67B4 
+M Sagar 
+sagaryadav8443@gm
+ail.com 
+8639236249 
+ 
+ 
+ 
+Guide Name                            : Mr. M. Arokia Muthu 
+Designation                              : Assistant Professor 
+Mobile No                                : 9943436555 
+Mail id                                      : arokyamuthu@tkrcet.com 
+
+ 
+ 
+Abstract: 
+ 
+Human Activity Recognition (HAR) is an important application of Artificial Intelligence (AI) 
+that enables the automatic identification of human activities for applications such as healthcare, 
+elderly care, smart homes, surveillance, and human-computer interaction. Existing HAR systems 
+mainly focus on recognizing daily activities but are limited by small datasets, controlled 
+environments, and the absence of fall detection and emergency response mechanisms, reducing 
+their effectiveness in real-world scenarios. The proposed Enhanced AI-Based Human Activity 
+Recognition with Fall Detection and Emergency Alert System uses vision-based data to 
+accurately recognize activities such as walking, standing, sitting, drinking water, and object 
+picking. The system employs Artificial Intelligence and Deep Learning techniques with a larger 
+and more diverse dataset to improve accuracy, robustness, and generalization under different 
+environmental conditions, including low-light and partial occlusion scenarios. In addition, an AI-
+based Fall Detection module detects accidental falls in real time and automatically generates 
+emergency alerts through SMS, email, mobile notifications, or alarms, enabling immediate 
+assistance from caregivers or family members. The proposed system provides reliable real-time 
+healthcare monitoring, enhances user safety, improves activity recognition performance, and 
+offers a practical, scalable, and intelligent solution for elderly care, smart homes, and other real-
+world monitoring applications. 
+Keywords: Human Activity Recognition (HAR), Artificial Intelligence (AI), Deep Learning, 
+Vision-Based Activity Recognition, Fall Detection, Emergency Alert System, Healthcare 
+Monitoring, Elderly Care, Smart Homes. 
+ 
+ 
+ 
+ 
+ 
+ 
+Project Coordinator                                                                           Project Guide

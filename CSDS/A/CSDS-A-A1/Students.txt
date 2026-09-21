@@ -1,0 +1,25 @@
+==============================================================================
+  CSDS-A   |   Batch A-01
+==============================================================================
+
+PROJECT TITLE
+  AI Health Insurance Assistance Using LLM + RAG
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      G.PRANATHI                         23K91A6764
+  2      CH.AISHWARYA                       23K91A6747
+  3      BHAVANSH MANE                      23K91A6728
+  4      B.DEEKSHITH                        24K95A6701
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  GUIDE NAME
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

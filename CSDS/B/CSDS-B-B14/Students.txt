@@ -1,0 +1,25 @@
+==============================================================================
+  CSDS-B   |   Batch B-14
+==============================================================================
+
+PROJECT TITLE
+  AQUAVISION: AI-POWERED SMART WATER DISTRIBUTION AND QUALITY INTELLIGENCE PLATFORM
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      MEDIPALLY KAVYA                    23K91A67B3
+  2      KETHAVATH SUMATHI                  23K91A6788
+  3      KETHIREDDY MANOJ REDDY             23K91A6789
+  4      NALLAGATLA NITHIN                  23K91A67C6
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  MRS K.MOUNIKA
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

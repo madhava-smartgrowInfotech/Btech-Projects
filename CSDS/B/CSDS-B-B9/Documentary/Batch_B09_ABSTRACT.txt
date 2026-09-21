@@ -1,0 +1,13 @@
+TKR COLLEGE OF ENGINEERING AND TECHNOLOGY                    
+Autonomous, 
+(Accredited by NBA & NAAC with ‘A+’ Grade) 
+ 
+___________________________________________________________________ 
+CSE (Data Science) 
+
+PROJECT TITLE: TALENTTRACK: AI-POWERED PLACEMENT READINESS PLATFORM WITH INTEGRATED CODING EVALUATION
+ABSTRACT:
+Campus recruitment plays a vital role in helping students transition from academics to professional careers. However, traditional placement systems mainly focus on conducting recruitment drives and often lack continuous skill assessment, performance tracking, and personalized guidance.
+To address these challenges, TalentTrack: AI-Powered Placement Readiness Platform with Integrated Coding Evaluation is proposed as an intelligent web-based platform developed using the MERN Stack (MongoDB, Express.js, React.js, and Node.js). The platform provides a centralized environment where students, placement officers, and recruiters can effectively participate in the placement process.  
+The system offers aptitude, coding, and technical practice modules with automated evaluation, leaderboards, and regular coding contests to improve student skills. Based on their performance, students progress through multiple evaluation levels and participate in expert-led mock interviews before becoming placement-ready. The platform also integrates AI-powered resume analysis and an intelligent chatbot that provides personalized guidance, answers placementrelated queries, and helps students improve their employability. 
+Recruiters can create recruitment drives, define eligibility criteria, and efficiently shortlist candidates based on their skills and assessment performance.  By integrating modern web technologies with artificial intelligence, TalentTrack simplifies campus recruitment while promoting continuous learning and skill development. The platform enables placement officers to monitor student progress through analytics and performance dashboards, helping them make informed decisions. Overall, the proposed system reduces manual effort, improves recruitment efficiency, enhances student employability, and creates a transparent, data-driven placement ecosystem that benefits students, recruiters, and educational institutions.

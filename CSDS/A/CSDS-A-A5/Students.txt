@@ -1,0 +1,25 @@
+==============================================================================
+  CSDS-A   |   Batch A-05
+==============================================================================
+
+PROJECT TITLE
+  JEPA-LLM Tuning Framework for Combating GST and Sales Tax Input Tax Credit Fraud Pattern Detection
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      B.ASHRITHA                         23K91A6732
+  2      B.DIVYA                            23K91A6739
+  3      A.KISHORE                          23K91A6716
+  4      A.YAGNESH                          23K91A6711
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  Dr. N. Ch. Ravi
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

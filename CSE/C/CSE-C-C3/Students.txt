@@ -1,0 +1,25 @@
+==============================================================================
+  CSE-C   |   Batch C-03
+==============================================================================
+
+PROJECT TITLE
+  Online Vehicle Parking Reservation System
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      Palle Yashaswini                   23K91A05H9
+  2      Mohammed Muneeb Ahmed              24K95A0518
+  3      Kamasani Manisha                   24K95A0513
+  4      Pothagani Nithyya Bhargava         23K91A05J6
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  V Pallavi
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

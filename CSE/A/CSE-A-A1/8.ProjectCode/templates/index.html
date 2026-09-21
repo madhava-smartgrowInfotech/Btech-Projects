@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="hero text-center mb-5">
+  <h1 class="display-5 fw-bold">Adaptive Learning Intelligence Platform</h1>
+  <p class="lead">Upload your syllabus, notes and question banks — get a personalized, AI-powered study companion.</p>
+  <a href="{{ url_for('register') }}" class="btn btn-light btn-lg mt-2 me-2">Get Started</a>
+  <a href="{{ url_for('login') }}" class="btn btn-outline-light btn-lg mt-2">Login</a>
+</div>
+
+<div class="row g-4">
+  <div class="col-md-4">
+    <div class="card p-4 h-100">
+      <i class="fa-solid fa-file-lines fa-2x mb-3" style="color:#4f46e5"></i>
+      <h5>Document Analysis</h5>
+      <p class="text-muted">Upload timetables, syllabi, notes and question banks. The platform extracts subjects, units and topics automatically.</p>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card p-4 h-100">
+      <i class="fa-solid fa-comments fa-2x mb-3" style="color:#4f46e5"></i>
+      <h5>RAG-Powered Q&amp;A</h5>
+      <p class="text-muted">Ask questions in plain English and get context-aware answers retrieved directly from your own study material.</p>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card p-4 h-100">
+      <i class="fa-solid fa-route fa-2x mb-3" style="color:#4f46e5"></i>
+      <h5>Adaptive Roadmap</h5>
+      <p class="text-muted">Auto-generated quizzes track your weak topics and build a personalized, priority-ranked study roadmap.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

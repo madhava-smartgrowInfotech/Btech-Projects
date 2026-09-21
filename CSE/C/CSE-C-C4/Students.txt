@@ -1,0 +1,25 @@
+==============================================================================
+  CSE-C   |   Batch C-04
+==============================================================================
+
+PROJECT TITLE
+  Stock Market Prediction Using Multi-Source Multiple Instance Learning
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      Pottepaka Lingaswamy               23K91A05J7
+  2      Maduna Naveen Kumar                23K91A05D7
+  3      Meedigeri Keerthi                  24K95A0517
+  4      Mareddy Sai Karthik                23K91A05E8
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  K Anusha
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

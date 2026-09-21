@@ -1,0 +1,24 @@
+1. G. Christina, “Review on Wearable Antennas and their Applications ”, IRO Journal on Sustainable Wireless Systems, vol. 3, no. 4, pp. 259–265, 2022.
+
+2. H D Nalina, B Aishwarya, P Harshitha, M Kruthika and P Rachana Naidu, “Smart Women Safety Device using IoT ”, International Journal of Engineering Research & Technology (IJERT) NCCDS –2021, vol. 9, no. 12, 2021.
+
+3. V. Suma, “Wearable IoT based Distributed Framework for Ubiquitous Computing ”, Journal of Ubiquitous Computing and Communication Technologies (UCCT), vol. 3, no. 01, pp. 23–32, 2021.
+
+4. V. Hyndavi, N. S. Nikhita and S. Rakesh, “Smart Wearable Device for Women Safety Using IoT ”, 2020 5th International Conference on Communication and Electronics Systems (ICCES), pp. 459–463, 2020.
+
+5. D. Sunehra, V. S. Sreshta, V. Shashank and B. U. Kumar Goud, “Raspberry Pi Based Smart earable Device for Women Safety using GPS and GSM Technology ”, 2020 IEEE International Conference for Innovation in Technology (INOCON), pp. 1–5, 2020.
+
+6. J. Agarkhed, A. Rathi Maheshwari and F. Begum, “Women Self Defense Device ”, 2020 IEEE Bangalore Humanitarian Technology Conference (B-HTC), pp. 1–5, 2020.
+
+7. R. Khan, N. Mahfuz and N. Nowshin, “A Novel Approach of Women Safety Assistant Device with Biometric Verification in Real Scenario ”, 2020 IEEE International Women in Engineering (WIE) Conference on Electrical and Computer Engineering (WIECON-ECE), pp. 426–431, 2020.
+
+8. L. F. Cardoso, S. B. Sorenson, O. Webb and S. Landers, “Recent and emerging technologies: Implications for women's safety ”, Technology in Society, vol. 58, pp. 101108, 2019.
+
+9. M. Guggisberg and Guggisberg, “The impact of violence against women and girls: A life span analysis ”, Violence against Women in the 21st Century: Challenges and Future Directions, 2018.
+
+10. Meivel, S., Maheswari, S. Remote Sensing Analysis of Agricultural Drone. J Indian Soc Remote Sens 49, 689–701 ( 2021 ).
+
+11. Meivel, S., Devi, K.I., Subramanian, A.S. et al. Remote Sensing Analysis of the LIDAR Drone Mapping System for Detecting Damages to Buildings, Roads, and Bridges Using the Faster CNN Method. J Indian Soc Remote Sens ( 2024 ).
+
+12. Meivel, S., Maheswari, S. Monitoring of potato crops based on multispectral image feature extraction with vegetation indices. Multidim Syst Sign Process 33, 683–709 ( 2022 ).
+

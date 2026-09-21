@@ -1,0 +1,25 @@
+==============================================================================
+  CSE-A   |   Batch 17
+==============================================================================
+
+PROJECT TITLE
+  Fashion Demand Forecasting Using Machine Learning And Domain Adaptation
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      B SHILPA                           23K91A0547
+  2      B HARI NARAYANA                    23K91A0544
+  3      A RANI THEJASWINI                  23K91A0516
+  4      A SANJANA                          23K91A0511
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  DEEPTHI
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

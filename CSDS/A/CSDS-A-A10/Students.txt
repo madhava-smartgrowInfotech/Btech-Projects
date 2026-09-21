@@ -1,0 +1,25 @@
+==============================================================================
+  CSDS-A   |   Batch A-10
+==============================================================================
+
+PROJECT TITLE
+  AI Powered Intelligent Hospital Patient Flow Management System
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      A.RAMU                             23K91A6715
+  2      B.RUSHI                            23K91A6720
+  3      B.RAJ KUMAR                        23K91A6725
+  4      A.PRABHAS                          23K91A6703
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  GUIDE NAME
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

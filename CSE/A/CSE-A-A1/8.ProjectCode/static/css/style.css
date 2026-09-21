@@ -1,0 +1,61 @@
+:root {
+  --brand-primary: #4f46e5;
+  --brand-secondary: #7c3aed;
+}
+
+body {
+  background-color: #f4f6fb;
+}
+
+.app-navbar {
+  background: linear-gradient(90deg, var(--brand-primary), var(--brand-secondary));
+}
+
+.hero {
+  background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+  color: white;
+  border-radius: 1rem;
+  padding: 4rem 2rem;
+}
+
+.card {
+  border: none;
+  border-radius: 0.9rem;
+  box-shadow: 0 2px 10px rgba(20, 20, 43, 0.06);
+}
+
+.stat-card {
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.stat-card .value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--brand-primary);
+}
+
+.topic-badge {
+  background: #ede9fe;
+  color: #5b21b6;
+  border-radius: 999px;
+  padding: 0.3rem 0.8rem;
+  margin: 0.15rem;
+  display: inline-block;
+  font-size: 0.85rem;
+}
+
+.priority-High { color: #dc2626; font-weight: 600; }
+.priority-Medium { color: #d97706; font-weight: 600; }
+.priority-Low { color: #16a34a; font-weight: 600; }
+
+.answer-box {
+  background: #fff;
+  border-left: 4px solid var(--brand-primary);
+  padding: 1rem 1.25rem;
+  border-radius: 0.5rem;
+}
+
+.quiz-option {
+  cursor: pointer;
+}

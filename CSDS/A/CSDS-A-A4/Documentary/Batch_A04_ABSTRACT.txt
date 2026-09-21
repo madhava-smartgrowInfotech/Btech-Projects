@@ -1,0 +1,15 @@
+5667375-351265-600074-265540TKR COLLEGE OF ENGINEERING AND TECHNOLOGY                    
+Autonomous, 
+(Accredited by NBA & NAAC with ‘A+’ Grade) 
+ 
+___________________________________________________________________ 
+CSE (Data Science) 
+ 
+Title of the project: 
+Advanced Optimization in E-Commerce Logistics: Combining Matheuristics 
+With Random Forests for Hub Location Efficiency 
+
+Abstract: 
+The rapid growth of e-commerce has significantly increased the demand for fast, reliable, and cost-effective logistics services. One of the most critical challenges in supply chain management is identifying optimal hub locations that minimize transportation costs while ensuring timely deliveries. Conventional optimization techniques often fail to respond efficiently to dynamic customer demand and changing operational conditions. This study presents an advanced optimization framework that combines matheuristic techniques with the Random Forest machine learning algorithm to improve hub location efficiency in e-commerce logistics. 
+The proposed framework utilizes the Random Forest algorithm to analyze historical logistics data and accurately predict future demand patterns. These predictions are integrated into a matheuristic optimization model that determines the most suitable hub locations by considering factors such as transportation costs, delivery time, hub capacity, and network constraints. By combining predictive analytics with mathematical optimization, the model can dynamically adapt hub configurations to changing business requirements, resulting in better resource utilization and improved logistics performance. 
+The proposed approach is validated using real-world logistics data, and the experimental results demonstrate its effectiveness compared with traditional hub location methods. The integrated model achieves better delivery time performance, higher order fulfillment rates, and improved network reliability while reducing overall operational costs. The study highlights the benefits of combining machine learning with optimization techniques for intelligent logistics planning and provides a practical solution for enhancing supply chain efficiency in the rapidly evolving e-commerce industry.

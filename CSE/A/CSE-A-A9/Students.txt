@@ -1,0 +1,25 @@
+==============================================================================
+  CSE-A   |   Batch 09
+==============================================================================
+
+PROJECT TITLE
+  Graph Neural Network Analysis for Scalable Fake Profile Detection and Botnets
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      BIJJA NAGA LAKSHMI                 23K91A0538
+  2      DIVVELA SRIVATSHAV                 23K91A0564
+  3      ADUMULLA DURGA                     23K91A0504
+  4      BURUGULA KOUSHIK                   23K91A0550
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  NEELIMA
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

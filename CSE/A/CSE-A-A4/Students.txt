@@ -1,0 +1,25 @@
+==============================================================================
+  CSE-A   |   Batch 04
+==============================================================================
+
+PROJECT TITLE
+  Credit Card Fraud Detection Using Machine Learning
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      ARELLI PRAVEEN KUMAR               23K91A0513
+  2      BANOTHU AJAY                       23K91A0529
+  3      D CHANDRIKA                        23K91A0557
+  4      BAIRAGONI VIJAY                    23K91A0525
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  KOTESHWAR RAO
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

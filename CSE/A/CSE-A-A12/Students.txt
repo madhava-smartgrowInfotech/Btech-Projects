@@ -1,0 +1,25 @@
+==============================================================================
+  CSE-A   |   Batch 12
+==============================================================================
+
+PROJECT TITLE
+  Pneumonia Detection Using Deep Learning
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      CHOUDAM AKSHITHA                   23K91A0556
+  2      BOGGULA SATVIK KUMAR               23K91A0541
+  3      ARUTLA ABHI THEJ REDDY             23K91A0515
+  4      DUGGARAJU LIKHITHA                 23K91A0565
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  V. MEENAKSHI
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

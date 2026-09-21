@@ -1,0 +1,25 @@
+==============================================================================
+  CSE-C   |   Batch C-06
+==============================================================================
+
+PROJECT TITLE
+  FAKE NEWS DETECTION SYSTEM USING FEATURE BASED OPTIMISED MSVM CLASSIFICATION
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      Neela Mojes                        23K91A05H1
+  2      Noor Saniya                        23K91A05H4
+  3      Malkajgiri Akshitha                23K91A05E2
+  4      Maravajhala Radha Sri Aashritha    23K91A05E7
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  K Rajasekhar Rao
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

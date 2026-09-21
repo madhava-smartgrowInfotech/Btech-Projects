@@ -1,0 +1,25 @@
+==============================================================================
+  CSE-A   |   Batch 03
+==============================================================================
+
+PROJECT TITLE
+  Multi-Disease Prediction Using Machine Learning
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      AJMEERA HARINI                     23K91A0507
+  2      BANDI LIKITHA                      23K91A0526
+  3      CHINTHAKINDI SWATHI                23K91A0555
+  4      BADROJU SRI HANSIKA                23K91A0524
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  B.SRUTHI
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

@@ -1,0 +1,25 @@
+==============================================================================
+  CSDS-A   |   Batch A-11
+==============================================================================
+
+PROJECT TITLE
+  AI-Driven E-Commerce Recommendation System with Digital Twin Simulation
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      A.PRAVALIKA                        23K91A6708
+  2      G.LAXMILAVANYA                     23K91A6758
+  3      D.ANUSHA                           23K91A6751
+  4      A.ARAVIND                          23K91A6707
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  Mrs. K. Saideepthi (Assistant Professor)
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

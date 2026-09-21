@@ -1,0 +1,31 @@
+TKR COLLEGE OF ENGINEERING AND TECHNOLOGY                    
+Autonomous, 
+(Accredited by NBA & NAAC with ‘A+’ Grade) 
+___________________________________________________________________ 
+Title of the project: HYBRID CHAOTIC LIGHT IMAGE 
+ENCRYPTION FOR SECURE UAV TRANSMISSION : 
+WAVELET AND XOR-DIFFUSION APPROACH 
+Abstract: 
+          The secure transmission of digital images has become a critical requirement in modern 
+UAV communication systems due to the increasing risk of cyber threats targeting sensitive visual 
+information. Images transmitted over wireless communication channels are vulnerable to 
+interception, modification, statistical attacks, differential attacks, and unauthorized access. 
+Existing encryption techniques often provide strong security but may involve high computational 
+complexity, making them less suitable for real-time image transmission.  
+This project presents a Hybrid Chaotic Lightweight Image Encryption for Secure UAV 
+Transmission using a Wavelet and XOR-Diffusion Approach, designed as a purely software-
+based encryption framework that combines computational efficiency with robust security. The 
+proposed method employs the Discrete Wavelet Transform (DWT) to decompose the input image 
+into multiple frequency components, enabling efficient image representation while preserving 
+essential visual features. A chaotic map is utilized to generate highly unpredictable encryption 
+keys, taking advantage of its randomness, nonlinearity, and extreme sensitivity to initial 
+conditions.The generated chaotic keys are integrated with an XOR-based diffusion algorithm to 
+perform pixel-level encryption, effectively reducing pixel correlation and increasing resistance 
+against cryptographic attacks. 
+The proposed encryption framework provides multiple security advantages, including a large key 
+space, high information entropy, strong key sensitivity, low pixel correlation, and resistance to 
+brute-force, statistical, differential, replay, and interception attacks. The performance of the 
+proposed approach is evaluated using standard image encryption metrics such as Information 
+Entropy, Histogram Analysis, Correlation Coefficient, NPCR (Number of Pixel Change Rate), 
+UACI (Unified Average Changing Intensity), PSNR (Peak Signal-to-Noise Ratio), MSE (Mean 
+Square Error), Encryption Time, Decryption Time, and Key Sensitivity Analysis.

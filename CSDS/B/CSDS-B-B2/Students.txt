@@ -1,0 +1,25 @@
+==============================================================================
+  CSDS-B   |   Batch B-02
+==============================================================================
+
+PROJECT TITLE
+  IoT-Driven Mobile Network Detection and Automatic Complaint System
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      MAIDAM RISHI KUMAR                 23K91A67A4
+  2      KATKAM SAITEJA                     23K91A6785
+  3      KAMBHAMPATI VASUDEVARA             23K91A6777
+  4      MULAKA VENKATA SASHANKAR REDDY     23K91A67C0
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  MRS.M.SAROJINI RANI
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

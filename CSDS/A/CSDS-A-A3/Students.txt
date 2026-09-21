@@ -1,0 +1,25 @@
+==============================================================================
+  CSDS-A   |   Batch A-03
+==============================================================================
+
+PROJECT TITLE
+  A Dynamic Phishing URL Detection System Integrating Advanced Machine Learning and Crowdsourced Threat Intelligence
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      D.ANISH MEGHAN                     23K91A6750
+  2      B.AKSHAYA                          23K91A6737
+  3      B.TANUJA                           23K91A6736
+  4      CH.SAI CHETHAN                     23K91A6742
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  Mr. G. Ravi
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

@@ -1,0 +1,25 @@
+==============================================================================
+  CSDS-B   |   Batch B-11
+==============================================================================
+
+PROJECT TITLE
+  Smart Diet Planner: An AI-Powered Web Application for Personalized Nutrition Management
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      NAGAPURI VINAY KUMAR               23K91A67C2
+  2      MANCHALA AKSHITH VARMA             23K91A67B1
+  3      KARNATI PRAVEEN REDDY              23K91A6782
+  4      KORRA RAHUL                        23K91A6795
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  MRS.T.ANUSHA
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

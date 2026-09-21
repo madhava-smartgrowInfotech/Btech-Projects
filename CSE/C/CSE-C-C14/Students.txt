@@ -1,0 +1,25 @@
+==============================================================================
+  CSE-C   |   Batch C-14
+==============================================================================
+
+PROJECT TITLE
+  Detecting AI Generated Images with CNN and Interpretation Using Explainable AI
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      Ponugoti Viduranandan              23K91A05J5
+  2      Naina Baherji                      23K91A05G9
+  3      Likki Pranathi                     23K91A05D2
+  4      Motasani Sathish                   23K91A05G0
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  M Thanmayee
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

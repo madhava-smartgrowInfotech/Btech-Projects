@@ -1,0 +1,25 @@
+==============================================================================
+  CSE-A   |   Batch 13
+==============================================================================
+
+PROJECT TITLE
+  SafeGrid-AI: An Explainable Multi-Agent System for Dynamic Power Routing
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      DISHA KAUSHAL                      23K91A0563
+  2      BOLLAM RAKESH                      23K91A0542
+  3      CHINNOLLA RAVINDHAR                23K91A0554
+  4      AFFAN MOHAMMED RAMY                23K91A0505
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  CHANDRASHEKAR
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

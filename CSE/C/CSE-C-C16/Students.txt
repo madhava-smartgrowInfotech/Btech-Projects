@@ -1,0 +1,25 @@
+==============================================================================
+  CSE-C   |   Batch C-16
+==============================================================================
+
+PROJECT TITLE
+  AI Powered Crop Disease Detection and Recommendation System for Sustainable Development
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      Pishke Vishal                      23K91A05J2
+  2      Kyatham Nithisha                   23K91A05D1
+  3      Mekala Tharun Kuruma               23K91A05F1
+  4      Nakka Sreenith                     23K91A05H0
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  V Krishna Teja
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

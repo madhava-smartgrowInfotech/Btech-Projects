@@ -1,0 +1,25 @@
+==============================================================================
+  CSDS-A   |   Batch A-15
+==============================================================================
+
+PROJECT TITLE
+  VisionForge AI: An Explainable Vision-Language Framework for Industrial Defect Detection, Root Cause Analysis, and Automated Inspection Reporting
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      G.SRIVARDHAN                       23K91A6755
+  2      B.TRIVED                           23K91A6733
+  3      G.RAKESH                           23K91A6752
+  4      B.INDRANEEL VARMA                  23K91A6729
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  Mr. K. Sathyanarayana (Assistant Professor)
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

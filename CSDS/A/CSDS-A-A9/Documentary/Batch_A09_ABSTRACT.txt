@@ -1,0 +1,13 @@
+TKR COLLEGE OF ENGINEERING AND TECHNOLOGY                    Autonomous,-602614-2209785664200-307339
+(Accredited by NBA & NAAC with ‘A+’ Grade)
+___________________________________________________________________
+                                                         CSE(DATA SCIENCE)
+
+Project Title:
+Privacy-Preserving Machine Unlearning in Federated LLMs: A Certified Right-to-Be-Forgotten Framework
+
+Abstract:
+
+Privacy-Preserving Machine Unlearning in Federated LLMs is a certified framework designed to address the growing need for verifiable data removal in large language models trained through federated learning. As federated LLMs are trained across multiple decentralized clients, each contributing private data without exposing it centrally, the influence of that data remains embedded in the model's parameters even after training. Existing deletion methods often rely on heuristic retraining or approximate weight adjustments, offering no formal guarantee that a client's data has been sufficiently forgotten, leaving models non-compliant with data protection regulations such as the GDPR's "Right to Be Forgotten."
+To address this gap, the proposed framework introduces certified unlearning, providing provable, quantifiable guarantees that a client's data influence has been reduced below a defined threshold following an unlearning request. The framework combines differential privacy bounds with parameter-level update techniques to erase targeted data contributions from the federated global model without requiring full retraining from scratch. A verification and auditability mechanism is further incorporated, allowing unlearning requests to be validated and demonstrated as compliant to regulators, institutions, or end users.
+The framework is designed to operate efficiently within federated LLM training pipelines, minimizing computational overhead while preserving overall model utility and performance. By ensuring that both the unlearning process and its verification remain privacy-preserving, the proposed system offers a practical and legally aligned pathway for real-world federated LLM deployments to support user-driven data deletion requests reliably and transparently.

@@ -1,0 +1,169 @@
+{
+  "diabetes": {
+    "best_model": "SVM",
+    "all_results": {
+      "Logistic Regression": {
+        "accuracy": 0.89,
+        "precision": 0.8882,
+        "recall": 0.8333,
+        "f1": 0.8599
+      },
+      "Decision Tree": {
+        "accuracy": 0.8,
+        "precision": 0.7808,
+        "recall": 0.7037,
+        "f1": 0.7403
+      },
+      "Random Forest": {
+        "accuracy": 0.8625,
+        "precision": 0.8794,
+        "recall": 0.7654,
+        "f1": 0.8185
+      },
+      "SVM": {
+        "accuracy": 0.895,
+        "precision": 0.911,
+        "recall": 0.821,
+        "f1": 0.8636
+      }
+    },
+    "features": [
+      "Pregnancies",
+      "Glucose",
+      "BloodPressure",
+      "SkinThickness",
+      "Insulin",
+      "BMI",
+      "DiabetesPedigreeFunction",
+      "Age"
+    ]
+  },
+  "heart": {
+    "best_model": "Logistic Regression",
+    "all_results": {
+      "Logistic Regression": {
+        "accuracy": 0.885,
+        "precision": 0.8917,
+        "recall": 0.9589,
+        "f1": 0.9241
+      },
+      "Decision Tree": {
+        "accuracy": 0.7675,
+        "precision": 0.8241,
+        "recall": 0.8664,
+        "f1": 0.8447
+      },
+      "Random Forest": {
+        "accuracy": 0.8275,
+        "precision": 0.8195,
+        "recall": 0.9795,
+        "f1": 0.8924
+      },
+      "SVM": {
+        "accuracy": 0.8775,
+        "precision": 0.8857,
+        "recall": 0.9555,
+        "f1": 0.9193
+      }
+    },
+    "features": [
+      "age",
+      "sex",
+      "cp",
+      "trestbps",
+      "chol",
+      "fbs",
+      "restecg",
+      "thalach",
+      "exang",
+      "oldpeak",
+      "slope",
+      "ca",
+      "thal"
+    ]
+  },
+  "liver": {
+    "best_model": "Logistic Regression",
+    "all_results": {
+      "Logistic Regression": {
+        "accuracy": 0.9175,
+        "precision": 0.9158,
+        "recall": 0.7768,
+        "f1": 0.8406
+      },
+      "Decision Tree": {
+        "accuracy": 0.86,
+        "precision": 0.7642,
+        "recall": 0.7232,
+        "f1": 0.7431
+      },
+      "Random Forest": {
+        "accuracy": 0.8825,
+        "precision": 0.8652,
+        "recall": 0.6875,
+        "f1": 0.7662
+      },
+      "SVM": {
+        "accuracy": 0.89,
+        "precision": 0.9048,
+        "recall": 0.6786,
+        "f1": 0.7755
+      }
+    },
+    "features": [
+      "Age",
+      "Gender",
+      "Total_Bilirubin",
+      "Direct_Bilirubin",
+      "Alkaline_Phosphotase",
+      "Alamine_Aminotransferase",
+      "Aspartate_Aminotransferase",
+      "Total_Protiens",
+      "Albumin",
+      "Albumin_and_Globulin_Ratio"
+    ]
+  },
+  "kidney": {
+    "best_model": "Logistic Regression",
+    "all_results": {
+      "Logistic Regression": {
+        "accuracy": 0.8825,
+        "precision": 0.8934,
+        "recall": 0.9121,
+        "f1": 0.9027
+      },
+      "Decision Tree": {
+        "accuracy": 0.745,
+        "precision": 0.7665,
+        "recall": 0.8243,
+        "f1": 0.7944
+      },
+      "Random Forest": {
+        "accuracy": 0.815,
+        "precision": 0.8113,
+        "recall": 0.8996,
+        "f1": 0.8532
+      },
+      "SVM": {
+        "accuracy": 0.8525,
+        "precision": 0.8516,
+        "recall": 0.9121,
+        "f1": 0.8808
+      }
+    },
+    "features": [
+      "age",
+      "blood_pressure",
+      "specific_gravity",
+      "albumin",
+      "sugar",
+      "blood_glucose_random",
+      "blood_urea",
+      "serum_creatinine",
+      "sodium",
+      "potassium",
+      "hemoglobin",
+      "packed_cell_volume"
+    ]
+  }
+}

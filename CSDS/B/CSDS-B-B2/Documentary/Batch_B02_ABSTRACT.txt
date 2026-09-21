@@ -1,0 +1,10 @@
+TKR COLLEGE OF ENGINEERING AND TECHNOLOGY                    -602918-525385663896-52538
+Autonomous, 
+(Accredited by NBA & NAAC with ‘A+’ Grade) 
+ ___________________________________________________________________ 
+CSE (Data Science) 
+Title of the project: IoT-Driven Mobile Network Detection and Automatic Complaint System
+Abstract:
+Reliable mobile network coverage is critical for digital services, yet rural and semi‑urban regions continue to face weak signals, call drops, and unresolved complaints. Existing IEEE studies, such as Mobile Network Coverage Prediction Based on Supervised Machine Learning Algorithms (IEEE Access), demonstrate that models like Gaussian Process Regression and Random Forest can predict signal strength with high accuracy, but remain limited to prediction only, without offering real‑time solutions or complaint automation.
+This project introduces an IoT‑driven AI agent system for end‑to‑end mobile network monitoring and automated complaint registration. Using ESP32/Raspberry Pi modules, GSM sensors, and smartphone APIs, the system verifies 2G–5G signals, performs GPS‑based zone classification, and auto‑registers complaints via SMS gateways or REST APIs. Unlike prior models, the proposed system ensures offline‑first resilience, functioning even during power cuts or without internet connectivity, making it inclusive for underserved regions.
+A complaint lifecycle dashboard provides transparency by tracking issues from detection to resolution, empowering communities with accountability. By combining machine learning detection (GPR, Random Forest), IoT resilience, and automated grievance redressal, the system addresses key limitations of earlier approaches—moving beyond prediction to deliver real‑time detection, automation, offline support, and complete complaint monitoring. This work offers a practical, scalable solution for improving telecom service reliability in real‑world scenarios.

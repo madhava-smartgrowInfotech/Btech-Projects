@@ -1,0 +1,25 @@
+==============================================================================
+  CSE-C   |   Batch C-11
+==============================================================================
+
+PROJECT TITLE
+  AI Based Personal Finance Manager
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      Mekala Kalyan                      23K91A05F0
+  2      Rajanala Sai Hemanth               23K91A05K3
+  3      Middala Surya Teja Reddy           23K91A05F2
+  4      Manga Akash                        23K91A05E5
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  N Padmavathi
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

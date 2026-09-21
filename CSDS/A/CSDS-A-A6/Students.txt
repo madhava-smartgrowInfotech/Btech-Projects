@@ -1,0 +1,25 @@
+==============================================================================
+  CSDS-A   |   Batch A-06
+==============================================================================
+
+PROJECT TITLE
+  Legal Contract Complexity & Predatory Clause Detector
+
+PROJECT TEAM MEMBERS
+
+  S.No.  Student Name                       Hall Ticket / Roll No.
+  --------------------------------------------------------------------------
+  1      CH.PRANATHI                        23K91A6744
+  2      G.PRANAVI                          23K91A6762
+  3      G.CHARAN JOSEPH                    23K91A6753
+  4      G.BHAGWATH                         23K91A6760
+  --------------------------------------------------------------------------
+
+  Total students: 4
+
+FACULTY PROJECT GUIDE
+  GUIDE NAME
+
+------------------------------------------------------------------------------
+Source: D:\abstracts\Vinay-Projects-Data-TKR (1).xlsx
+(final student and guide data, applied 19-09-2026)

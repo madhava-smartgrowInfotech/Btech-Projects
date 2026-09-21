@@ -1,0 +1,19 @@
+{
+  "default_location": {
+    "lat": 17.3850,
+    "lon": 78.4867,
+    "label": "Hyderabad, Telangana"
+  },
+  "hospitals": [
+    {"name": "Apollo Hospitals, Jubilee Hills", "lat": 17.4239, "lon": 78.4738, "phone": "040-23607777", "emergency": true},
+    {"name": "KIMS Hospital, Secunderabad", "lat": 17.4399, "lon": 78.4983, "phone": "040-44885000", "emergency": true},
+    {"name": "Yashoda Hospitals, Somajiguda", "lat": 17.4166, "lon": 78.4590, "phone": "040-45674567", "emergency": true},
+    {"name": "Continental Hospitals, Gachibowli", "lat": 17.4141, "lon": 78.3489, "phone": "040-67000000", "emergency": true},
+    {"name": "Care Hospitals, Banjara Hills", "lat": 17.4126, "lon": 78.4471, "phone": "040-30418888", "emergency": true},
+    {"name": "Osmania General Hospital", "lat": 17.3752, "lon": 78.4744, "phone": "040-24600146", "emergency": true},
+    {"name": "Gandhi Hospital, Secunderabad", "lat": 17.4514, "lon": 78.4998, "phone": "040-27505566", "emergency": true},
+    {"name": "Sunshine Hospitals, Paradise", "lat": 17.4423, "lon": 78.4864, "phone": "040-30883088", "emergency": true},
+    {"name": "Rainbow Children's Hospital, Banjara Hills", "lat": 17.4147, "lon": 78.4483, "phone": "040-35088888", "emergency": true},
+    {"name": "MaxCure Hospitals, Madhapur", "lat": 17.4483, "lon": 78.3915, "phone": "040-49141414", "emergency": true}
+  ]
+}

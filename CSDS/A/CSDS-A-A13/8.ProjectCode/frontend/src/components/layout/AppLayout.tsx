@@ -110,6 +110,12 @@ export function AppLayout() {
 
   return (
     <div className="min-h-dvh lg:pl-64">
+      <a
+        href="#main"
+        className="sr-only z-50 rounded-lg bg-primary px-4 py-2 text-primary-foreground focus:not-sr-only focus:fixed focus:left-3 focus:top-3"
+      >
+        Skip to content
+      </a>
       <aside className="fixed inset-y-0 left-0 z-30 hidden w-64 flex-col border-r border-sidebar-border bg-sidebar lg:flex">
         <div className="flex h-16 items-center justify-between px-5">
           <Link to="/app" aria-label="SeatWise dashboard">
@@ -147,7 +153,7 @@ export function AppLayout() {
         </SheetContent>
       </Sheet>
 
-      <main className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
+      <main id="main" tabIndex={-1} className="mx-auto w-full max-w-7xl px-4 py-6 outline-none sm:px-6 lg:px-8 lg:py-8">
         {user.role === "invigilator" && (
           <Badge variant="secondary" className="mb-4 lg:hidden">
             Invigilator view

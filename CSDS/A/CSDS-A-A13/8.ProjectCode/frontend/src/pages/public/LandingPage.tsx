@@ -118,6 +118,7 @@ export default function LandingPage() {
     <div ref={root} className="flex min-h-dvh flex-col">
       <PublicHeader transparent />
 
+      <main id="main" tabIndex={-1} className="outline-none">
       {/* Hero */}
       <section className="relative isolate overflow-hidden">
         <div className="absolute inset-0 -z-10" aria-hidden>
@@ -317,6 +318,7 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
+      </main>
 
       <PublicFooter />
     </div>

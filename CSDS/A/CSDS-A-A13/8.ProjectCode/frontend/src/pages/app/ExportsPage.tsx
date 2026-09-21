@@ -87,7 +87,7 @@ export default function ExportsPage() {
         <div className="space-y-6">
           <Card>
             <CardContent className="grid gap-4 p-5 md:grid-cols-[1fr_16rem]">
-              <div className="space-y-2">
+              <div className="min-w-0 space-y-2">
                 <Label>Plan</Label>
                 <Select value={planId ? String(planId) : undefined} onValueChange={(v) => setParams({ plan: v }, { replace: true })}>
                   <SelectTrigger aria-label="Plan">
@@ -102,7 +102,7 @@ export default function ExportsPage() {
                   </SelectContent>
                 </Select>
               </div>
-              <div className="space-y-2">
+              <div className="min-w-0 space-y-2">
                 <Label>Halls</Label>
                 <Select value={hallId} onValueChange={setHallId} disabled={!detail.data}>
                   <SelectTrigger aria-label="Halls">

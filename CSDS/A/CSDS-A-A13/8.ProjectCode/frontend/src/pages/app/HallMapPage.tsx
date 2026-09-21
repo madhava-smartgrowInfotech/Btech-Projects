@@ -128,7 +128,7 @@ export default function HallMapPage() {
   const [selected, setSelected] = useState<string | null>(null);
   const [focusPaper, setFocusPaper] = useState<string | null>(null);
   const [search, setSearch] = useState("");
-  const [size, setSize] = useState(() => (window.innerWidth < 640 ? 1 : 2));
+  const [size, setSize] = useState(2);
   const [dragging, setDragging] = useState<string | null>(null);
   const scroller = useRef<HTMLDivElement>(null);
 

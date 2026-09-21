@@ -10,6 +10,12 @@ export function PublicHeader({ transparent = false }: { transparent?: boolean })
   const { user } = useAuth();
   return (
     <header className={cn("sticky top-0 z-40 border-b backdrop-blur", transparent ? "border-transparent bg-background/60" : "bg-background/85")}>
+      <a
+        href="#main"
+        className="sr-only z-50 rounded-lg bg-primary px-4 py-2 text-primary-foreground focus:not-sr-only focus:fixed focus:left-3 focus:top-3"
+      >
+        Skip to content
+      </a>
       <div className="container flex h-16 items-center justify-between gap-3">
         <Link to="/" aria-label="SeatWise home">
           <Logo />
@@ -64,7 +70,7 @@ export function PublicShell({ children }: { children: ReactNode }) {
   return (
     <div className="flex min-h-dvh flex-col">
       <PublicHeader />
-      <main className="flex-1">{children}</main>
+      <main id="main" tabIndex={-1} className="flex-1 outline-none">{children}</main>
       <PublicFooter />
     </div>
   );

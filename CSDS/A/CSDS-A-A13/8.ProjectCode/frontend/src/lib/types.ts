@@ -312,6 +312,66 @@ export interface AuditEvent {
   details: Record<string, unknown>;
 }
 
+export interface MapSeat {
+  label: string;
+  row: number;
+  col: number;
+  candidate: { id: number; roll_no: string; full_name: string; department: string };
+  course_code: string;
+  course_name: string;
+  paper: string;
+  colour: number;
+  needs_accessible: boolean;
+  attendance: "present" | "absent" | null;
+}
+
+export interface HallMap {
+  plan: {
+    id: number;
+    version: number;
+    status: PlanStatus;
+    seed: number;
+    adjacency: number;
+    roll_gap: number;
+    session: { id: number; label: string; date: string; start_time: string; end_time: string };
+  };
+  hall: {
+    id: number;
+    code: string;
+    name: string;
+    building: string;
+    floor: string;
+    rows: number;
+    cols: number;
+    blocked: string[];
+    accessible: string[];
+    aisles: number[];
+    capacity: number;
+  };
+  legend: { paper: string; courses: string[]; count: number; colour: number }[];
+  seats: MapSeat[];
+  violations: Violation[];
+  stats: Partial<HallCard>;
+  invigilators: PersonRef[];
+  attendance: { present: number; absent: number; submitted_at: string | null };
+  can_edit: boolean;
+  halls: { hall_id: number; code: string; name: string; placed: number }[];
+}
+
+export interface SwapTarget {
+  seat: string;
+  occupied: boolean;
+  ok: boolean;
+  reasons: string[];
+  notes: string[];
+}
+
+export interface SwapOptions {
+  seat: string;
+  candidate: string;
+  targets: SwapTarget[];
+}
+
 export interface Baseline {
   method?: string;
   same_paper_pairs?: number;

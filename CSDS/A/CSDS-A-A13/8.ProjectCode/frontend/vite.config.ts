@@ -13,6 +13,20 @@ export default defineConfig(({ mode }) => {
     plugins: [react()],
     resolve: {
       alias: { "@": path.resolve(__dirname, "src") },
+      dedupe: ["react", "react-dom"],
+    },
+    // Pre-bundle every library that lazily loaded pages use, so the dev server never
+    // re-optimises mid-session (which would load a second copy of React).
+    optimizeDeps: {
+      include: [
+        "react", "react-dom", "react-dom/client", "react-router-dom", "@tanstack/react-query", "axios",
+        "@dnd-kit/core", "recharts", "motion/react", "gsap", "gsap/ScrollTrigger", "lenis", "sonner", "lucide-react",
+        "@radix-ui/react-alert-dialog", "@radix-ui/react-checkbox", "@radix-ui/react-dialog",
+        "@radix-ui/react-dropdown-menu", "@radix-ui/react-label", "@radix-ui/react-popover", "@radix-ui/react-progress",
+        "@radix-ui/react-radio-group", "@radix-ui/react-scroll-area", "@radix-ui/react-select",
+        "@radix-ui/react-separator", "@radix-ui/react-slot", "@radix-ui/react-switch", "@radix-ui/react-tabs",
+        "@radix-ui/react-tooltip", "class-variance-authority", "clsx", "tailwind-merge",
+      ],
     },
     server: {
       port: webPort,

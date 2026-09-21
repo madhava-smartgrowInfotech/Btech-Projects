@@ -29,6 +29,12 @@ _LETTER = re.compile(r"^(?P<ref>[A-H])[.)]\s+(?P<rest>[A-Z].*)$")
 _SUB_ITEM = re.compile(r"^(\(?[a-z]{1,2}\)|\(?[ivx]{1,5}[.)]|\(?\d{1,2}\)|[•\-–·*]|[a-z]\.)\s", re.I)
 _CODE_EXCL = re.compile(r"\(?\s*Code\s*[-–:]?\s*(?P<code>Excl\s*\d{1,2})\s*\)?", re.I)
 _MENTIONS_CODE = re.compile(r"\(?\bCode\s*[-–:]?\s*(Excl\s*\d{1,2}\s*\)?)?\s*$|\(\s*Code\s*[-–:]?\s*Excl", re.I)
+# "b. Rest Cure...: Code – Excl05" / "ii) ..." - a lettered or roman list item.
+_LETTER_ITEM = re.compile(r"^\(?(?P<marker>[a-z]|[ivx]{1,5}|[A-Z])[.)]\s+(?P<rest>.+)$")
+_NUMBER_ITEM = re.compile(r"^(?P<marker>\d{1,2})[.)](?!\d)\s*(?P<rest>.+)$")
+_ITEM_START = re.compile(r"^\(?(?:[a-z]|[ivx]{1,5}|[A-Z]|\d{1,2}(?:\.\d{1,2})*)[.)]\s")
+# "... for domestic reasons. Code – Excl13" - the code closes the item instead of opening it.
+_END_CODE = re.compile(r"\(?\s*\bCode\s*[-–:]?\s*(?P<code>Excl\s*\d{1,2})\s*\)?[.:;]?\s*$", re.I)
 _UIN = re.compile(r"\b[A-Z]{5,9}\d{5}V\d{6}\b")
 _LEAD_IN_SPLIT = re.compile(r"^(.{3,80}?)(?::|\s[-–]\s|\s(?:means|is defined as|shall mean|refers to)\b)", re.I)
 
@@ -59,6 +65,7 @@ class _Segment:
     heading: str | None
     lines: list[Line] = field(default_factory=list)
     path: list[str] = field(default_factory=list)
+    complete: bool = False
 
     @property
     def words(self) -> int:
@@ -84,7 +91,7 @@ def _heading_from(rest: str) -> str:
     # "Day Care Treatment: We will cover..." -> "Day Care Treatment"
     colon = rest.find(":")
     if 0 < colon <= 90 and 1 <= len(rest[:colon].split()) <= 10 and rest[colon + 1:].strip():
-        return rest[:colon].strip()
+        return rest[:colon].strip().rstrip("-–(").strip()
     match = _LEAD_IN_SPLIT.match(rest)
     if match and len(match.group(1).split()) <= 8:
         return match.group(1).strip()  # "Accident means a sudden..." -> "Accident"
@@ -102,7 +109,9 @@ class _Classifier:
         self.last_top: int | None = None
         self.context_depth: float = 0.0  # depth of the innermost open heading (set by segment())
 
-    def classify(self, line: Line, prev: Line | None, nxt: Line | None = None) -> tuple[str | None, float, str] | None:
+    def classify(self, line: Line, prev: Line | None, nxt: Line | None = None,
+                 item_text: str | None = None) -> tuple[str | None, float, str] | None:
+        """``item_text`` is this line plus the rest of its list item, when the line opens a lettered item."""
         if line.kind == "table":
             return None
         text = line.text
@@ -127,10 +136,29 @@ class _Classifier:
         # clause but never a top-level section, even when its list number looks like the next section.
         numbered_item = re.match(r"^(\d{1,2})[.)]\s*(.*)$", text)
         if numbered_item:
-            continues = nxt is not None and nxt.page == line.page and not re.match(r"^\(?\d{1,2}(\.\d{1,2})*[.)]?\s", nxt.text)
+            continues = (nxt is not None and nxt.page == line.page and not _ITEM_START.match(nxt.text)
+                         and not re.match(r"^\(?\d{1,2}(\.\d{1,2})*[.)]?\s", nxt.text))
             window = text + " " + (nxt.text[:60] if continues else "")
-            if _CODE_EXCL.search(window) or _MENTIONS_CODE.search(text):
+            if code := _CODE_EXCL.search(window):
+                title = _NUMBER_ITEM.match(item_text).group("rest") if item_text else numbered_item.group(2)
+                title = re.sub(r"^(?:\d{1,2}\.)+\s*", "", title)  # "1.9. Breach of law" -> "Breach of law"
+                return _norm_excl(code.group("code")), 99, _heading_from(title)
+            if _MENTIONS_CODE.search(text):
                 return numbered_item.group(1), 99, _heading_from(numbered_item.group(2))
+        # A list item that carries an exclusion code is its own clause, whether the code closes its title
+        # ("b. Rest Cure...: Code – Excl05: Expenses...") or the whole item ("j. Treatments in spas... Code – Excl13").
+        # A code mentioned in prose ("ii. Exclusion no. 3 (Code Excl 03) as stated...") does neither.
+        if item_text and (item := _LETTER_ITEM.match(text) or _NUMBER_ITEM.match(text)):
+            body = item.group("rest")
+            whole = (_LETTER_ITEM.match(item_text) or _NUMBER_ITEM.match(item_text)).group("rest")
+            title = _CODE_EXCL.search(body[:220])
+            if (title and not numbered_item and len(body[: title.start()].split()) <= 14
+                    and re.match(r"\s*([:.\-–]|$)", body[title.end():])):
+                return _norm_excl(title.group("code")), 99, _heading_from(body)
+            closing = _END_CODE.search(whole)
+            if closing and (whole[: closing.start()].rstrip().endswith((".", ";", ")", "-", "–", ":"))
+                            or closing.group(0).lstrip()[:1] == "("):
+                return _norm_excl(closing.group("code")), 99, _heading_from(whole[: closing.start()])
         if (m := _SECTION.match(text)) and emphasised:
             self.last_top = None
             return m.group("ref").title(), 0.5, _heading_from(m.group("rest") or m.group("ref"))
@@ -163,10 +191,10 @@ class _Classifier:
         if line.bold and (prev is None or not prev.bold or prev.page != line.page):
             if _is_major_heading(line, self.body):
                 return None, max(1.5, nested), text.strip().rstrip(":")
-            if words and text[0].isalpha():
+            if words and text[0].isupper():  # a bold line starting in lower case continues a sentence
                 return None, 99, _heading_from(text)
         lead = line.bold_lead.strip()
-        if lead and lead[0].isalpha() and len(lead.split()) <= 10:
+        if lead and lead[0].isupper() and len(lead.split()) <= 10:
             after_sentence = prev is None or prev.page != line.page or prev.text.rstrip().endswith(
                 (".", ":", ";", ")")
             )
@@ -278,6 +306,22 @@ def _excl_ref(seg: _Segment) -> None:
         seg.heading = _heading_from(before)
 
 
+def _item_text(lines: list[Line], idx: int, max_lines: int = 16) -> tuple[str, int]:
+    """The list item opened at ``idx``: its text and line count, up to the next item or table, or up to
+    the exclusion code that closes it ("... domestic reasons - Code Excl 13")."""
+    parts = [lines[idx].text]
+    for ln in lines[idx + 1: idx + max_lines]:
+        if ln.kind == "table" or _ITEM_START.match(ln.text):
+            break
+        closes_code = re.match(r"^\(?Code\b", ln.text, re.I) or re.search(r"(\(|\b)Code\s*[-–:]?\s*$", parts[-1], re.I)
+        if _EXCL.match(ln.text) and not closes_code:
+            break  # the next clause's code
+        parts.append(ln.text)
+        if _END_CODE.search(ln.text) or (closes_code and _EXCL.match(ln.text)):
+            break  # the code closes this item
+    return " ".join(parts), len(parts)
+
+
 def segment(parsed: ParsedPdf) -> list[Chunk]:
     classifier = _Classifier(parsed.body_size)
     segments: list[_Segment] = []
@@ -286,10 +330,14 @@ def segment(parsed: ParsedPdf) -> list[Chunk]:
     prev: Line | None = None
 
     lines = parsed.lines
+    inside_item_until = -1  # lines of a list item already closed by its exclusion code
     for idx, line in enumerate(lines):
         nxt = lines[idx + 1] if idx + 1 < len(lines) else None
         classifier.context_depth = stack[-1][0] if stack else 0.0
-        result = classifier.classify(line, prev, nxt)
+        item_text, item_lines = None, 1
+        if idx > inside_item_until and (_LETTER_ITEM.match(line.text) or _NUMBER_ITEM.match(line.text)):
+            item_text, item_lines = _item_text(lines, idx)
+        result = None if idx <= inside_item_until else classifier.classify(line, prev, nxt, item_text)
         if result is not None:
             ref, depth, heading = result
             if current.lines:
@@ -299,6 +347,10 @@ def segment(parsed: ParsedPdf) -> list[Chunk]:
                     stack.pop()
             ancestors = [title for _, title in stack]
             current = _Segment(ref=ref, depth=depth, heading=heading, lines=[line], path=ancestors)
+            if item_text and depth == 99 and ref and ref.startswith("Excl"):
+                current.complete = True  # a whole exclusion item: never folded into its neighbour
+                if _END_CODE.search(item_text):
+                    inside_item_until = idx + item_lines - 1
             label = f"{ref} {heading}".strip() if ref else (heading or "")
             if depth < 99 and label:
                 stack.append((depth, label[:120]))
@@ -315,7 +367,7 @@ def segment(parsed: ParsedPdf) -> list[Chunk]:
         if carry:
             seg.lines = carry + seg.lines
             carry = []
-        if seg.words < MIN_STANDALONE_WORDS and idx < len(segments) - 1:
+        if seg.words < MIN_STANDALONE_WORDS and not seg.complete and idx < len(segments) - 1:
             carry = seg.lines
             continue
         merged.append(seg)

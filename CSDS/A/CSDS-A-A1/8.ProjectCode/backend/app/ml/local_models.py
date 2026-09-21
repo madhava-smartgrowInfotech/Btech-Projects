@@ -68,7 +68,8 @@ def _load(key: str) -> Any:
             model = CrossEncoder(path, device="cpu", max_length=512)
         _models[key] = model
         _load_ms[key] = round((time.perf_counter() - start) * 1000)
-        log_event(log, "model_loaded", model=key, source=path, ms=_load_ms[key])
+        source = "hub" if path == MODEL_IDS[key] else "models/hf"
+        log_event(log, "model_loaded", model=key, repo=MODEL_IDS[key], source=source, ms=_load_ms[key])
         return model
 
 

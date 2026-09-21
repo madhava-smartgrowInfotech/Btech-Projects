@@ -111,8 +111,10 @@ def main() -> int:
             "answer_top_k": answerer.TOP_K,
             "candidates_per_retriever": hybrid.CANDIDATES,
             "rerank_pool": hybrid.RERANK_POOL,
+            "per_retriever_in_pool": hybrid.SOLO_TOP,
             "rrf_k": 60,
             "abstain_below_rerank": answerer.ABSTAIN_BELOW,
+            "abstain_below_bm25": answerer.KEYWORD_FLOOR,
             "gemini_model": s.gemini_model,
             "gemini_fallback_models": ", ".join(s.gemini_fallback_models),
             "thinking_level": "low",
@@ -125,7 +127,7 @@ def main() -> int:
     run.save()
     run.mark_latest()
     log(f"Headline: {json.dumps(m['headline'])}")
-    log(f"Done -> {run.path}")
+    log(f"Done -> experiments/{run.name}")
     return 0
 
 

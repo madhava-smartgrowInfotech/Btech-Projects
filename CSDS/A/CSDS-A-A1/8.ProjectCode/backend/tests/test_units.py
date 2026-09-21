@@ -2,7 +2,7 @@ from datetime import date
 
 from app.ml.retrieval.fusion import reciprocal_rank_fusion
 from app.ml.retrieval.text import expand_query, tokenize
-from app.services.eligibility import months_between, pre_checks, treatment_matches
+from app.services.eligibility import copay_applies, months_between, pre_checks, treatment_matches
 from app.services.risk_engine import build_risks
 from app.services.text_match import contains_text
 
@@ -76,3 +76,14 @@ def test_eligibility_waiting_periods_and_estimate():
     statuses = {c["check"]: c["status"] for c in later["checks"]}
     assert statuses["Specific disease/procedure waiting period"] == "pass"
     assert later["estimate"]["insurer_pays"] == 32000  # capped at 40,000 then 20% co-payment
+
+
+def test_copay_conditions():
+    network = "Non-network hospitals 20% on each and every claim"
+    assert copay_applies(network, 45, "cashless")[0] is False  # cashless means a network hospital
+    assert copay_applies(network, 45, "reimbursement")[0] is None
+    assert copay_applies("Treatment in hospitals other than those listed in Annexure III: 20%", 45, "cashless")[0] is False
+    assert copay_applies("Age 61 years and above 20% co-payment", 58)[0] is False
+    assert copay_applies("Age 61 years and above 20% co-payment", 64)[0] is True
+    assert copay_applies("Voluntary co-payment of 10% if opted", 40)[0] is None
+    assert copay_applies("20% of every admissible claim", 30)[0] is True

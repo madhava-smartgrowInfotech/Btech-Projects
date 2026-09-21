@@ -210,6 +210,7 @@ def run_claim_copilot(document_id: int, card: dict | None, treatment: str, input
         "timings": {"retrieval_ms": retrieval_ms, "retrieval_stages_ms": stage_ms, "generation_ms": generation_ms,
                     "faithfulness_ms": faith_ms, "total_ms": total_ms},
         "model": meta.model,
+        "cached": meta.cached,
     }
     log_event(log, "claim_checked", document_id=document_id, verdict=verdict, ms=total_ms, model=meta.model)
     return result

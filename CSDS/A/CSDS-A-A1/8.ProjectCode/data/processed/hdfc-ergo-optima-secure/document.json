@@ -11,7 +11,7 @@
   "parse_stats": {
     "pages": 53,
     "words": 20958,
-    "clauses": 193,
+    "clauses": 207,
     "two_column": false,
     "headers_removed": 373,
     "page_sizes": [
@@ -228,8 +228,8 @@
         841.9
       ]
     ],
-    "parse_ms": 5861
+    "parse_ms": 4154
   },
-  "index_version": "1790011967",
-  "processed_at": "2026-09-21T17:53:53.098227"
+  "index_version": "1790016995",
+  "processed_at": "2026-09-21T19:09:01.605274"
 }

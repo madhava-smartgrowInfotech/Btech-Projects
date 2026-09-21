@@ -1,0 +1,296 @@
+2026-09-22 00:27:33 INFO    Run eval-20260922-0027 -> experiments/eval-20260922-0027
+2026-09-22 00:27:35 INFO    Sample documents: {'care-health-care-supreme': 1, 'hdfc-ergo-optima-secure': 2, 'niva-bupa-reassure-2': 3, 'star-health-family-health-optima': 4}
+2026-09-22 00:27:35 INFO    == Retrieval ablation
+2026-09-22 00:27:43 INFO    retrieval star-01: bm25=1 dense=2 hybrid=1 hybrid_rerank=1
+2026-09-22 00:27:44 INFO    retrieval star-02: bm25=1 dense=2 hybrid=1 hybrid_rerank=2
+2026-09-22 00:27:45 INFO    retrieval star-03: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:27:46 INFO    retrieval star-04: bm25=3 dense=5 hybrid=3 hybrid_rerank=1
+2026-09-22 00:27:47 INFO    retrieval star-05: bm25=3 dense=1 hybrid=2 hybrid_rerank=1
+2026-09-22 00:27:48 INFO    retrieval star-06: bm25=2 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:27:49 INFO    retrieval star-07: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:27:51 INFO    retrieval star-08: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:27:51 INFO    retrieval star-09: bm25=3 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:27:52 INFO    retrieval star-10: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:27:53 INFO    retrieval star-11: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:27:54 INFO    retrieval star-12: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:27:55 INFO    retrieval star-13: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:27:56 INFO    retrieval star-14: bm25=1 dense=4 hybrid=1 hybrid_rerank=1
+2026-09-22 00:27:57 INFO    retrieval hdfc-01: bm25=2 dense=3 hybrid=2 hybrid_rerank=1
+2026-09-22 00:27:58 INFO    retrieval hdfc-02: bm25=1 dense=3 hybrid=1 hybrid_rerank=1
+2026-09-22 00:27:59 INFO    retrieval hdfc-03: bm25=1 dense=7 hybrid=1 hybrid_rerank=2
+2026-09-22 00:28:00 INFO    retrieval hdfc-04: bm25=5 dense=None hybrid=9 hybrid_rerank=2
+2026-09-22 00:28:00 INFO    retrieval hdfc-05: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:28:01 INFO    retrieval hdfc-06: bm25=1 dense=6 hybrid=1 hybrid_rerank=1
+2026-09-22 00:28:02 INFO    retrieval hdfc-07: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:28:03 INFO    retrieval hdfc-08: bm25=2 dense=2 hybrid=2 hybrid_rerank=1
+2026-09-22 00:28:04 INFO    retrieval hdfc-09: bm25=2 dense=3 hybrid=3 hybrid_rerank=1
+2026-09-22 00:28:05 INFO    retrieval hdfc-10: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:28:06 INFO    retrieval hdfc-11: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:28:07 INFO    retrieval hdfc-12: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:28:08 INFO    retrieval hdfc-13: bm25=3 dense=1 hybrid=2 hybrid_rerank=1
+2026-09-22 00:28:08 INFO    retrieval niva-01: bm25=1 dense=2 hybrid=1 hybrid_rerank=1
+2026-09-22 00:28:09 INFO    retrieval niva-02: bm25=1 dense=6 hybrid=1 hybrid_rerank=1
+2026-09-22 00:28:10 INFO    retrieval niva-03: bm25=1 dense=2 hybrid=1 hybrid_rerank=1
+2026-09-22 00:28:11 INFO    retrieval niva-04: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:28:12 INFO    retrieval niva-05: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:28:13 INFO    retrieval niva-06: bm25=5 dense=None hybrid=5 hybrid_rerank=1
+2026-09-22 00:28:14 INFO    retrieval niva-07: bm25=3 dense=3 hybrid=3 hybrid_rerank=2
+2026-09-22 00:28:14 INFO    retrieval niva-08: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:28:15 INFO    retrieval niva-09: bm25=1 dense=None hybrid=2 hybrid_rerank=1
+2026-09-22 00:28:16 INFO    retrieval niva-10: bm25=1 dense=1 hybrid=1 hybrid_rerank=2
+2026-09-22 00:28:17 INFO    retrieval niva-11: bm25=1 dense=2 hybrid=1 hybrid_rerank=1
+2026-09-22 00:28:18 INFO    retrieval niva-12: bm25=3 dense=2 hybrid=2 hybrid_rerank=1
+2026-09-22 00:28:19 INFO    retrieval care-01: bm25=1 dense=2 hybrid=1 hybrid_rerank=2
+2026-09-22 00:28:20 INFO    retrieval care-02: bm25=1 dense=None hybrid=4 hybrid_rerank=1
+2026-09-22 00:28:21 INFO    retrieval care-03: bm25=1 dense=2 hybrid=1 hybrid_rerank=1
+2026-09-22 00:28:22 INFO    retrieval care-04: bm25=4 dense=6 hybrid=4 hybrid_rerank=4
+2026-09-22 00:28:22 INFO    retrieval care-05: bm25=2 dense=None hybrid=4 hybrid_rerank=2
+2026-09-22 00:28:23 INFO    retrieval care-06: bm25=4 dense=None hybrid=7 hybrid_rerank=2
+2026-09-22 00:28:24 INFO    retrieval care-07: bm25=2 dense=3 hybrid=3 hybrid_rerank=2
+2026-09-22 00:28:25 INFO    retrieval care-08: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:28:26 INFO    retrieval care-09: bm25=3 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:28:27 INFO    retrieval care-10: bm25=2 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:28:28 INFO    retrieval care-11: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:28:29 INFO    retrieval care-12: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:28:29 INFO    == Policy Card extraction
+2026-09-22 00:28:29 INFO    extraction star-health-family-health-optima: 14/14 correct
+2026-09-22 00:28:29 INFO    extraction hdfc-ergo-optima-secure: 13/14 correct
+2026-09-22 00:28:29 INFO    extraction niva-bupa-reassure-2: 10/11 correct
+2026-09-22 00:28:29 INFO    extraction care-health-care-supreme: 13/13 correct
+2026-09-22 00:28:29 INFO    == Answers (Gemini + faithfulness)
+2026-09-22 00:28:41 INFO    answer star-01: status=answered facts=1.0 cite=True faith=98.9 ms=11717
+2026-09-22 00:28:45 INFO    answer star-02: status=answered facts=1.0 cite=True faith=88.4 ms=4651
+2026-09-22 00:28:50 INFO    answer star-03: status=answered facts=1.0 cite=True faith=80.2 ms=4599
+2026-09-22 00:28:54 INFO    answer star-04: status=answered facts=1.0 cite=True faith=91.8 ms=3713
+2026-09-22 00:28:57 INFO    answer star-05: status=answered facts=1.0 cite=True faith=97.2 ms=3157
+2026-09-22 00:29:00 INFO    answer star-06: status=answered facts=1.0 cite=True faith=98.7 ms=3634
+2026-09-22 00:29:04 INFO    answer star-07: status=answered facts=1.0 cite=True faith=99.1 ms=3990
+2026-09-22 00:29:08 INFO    answer star-08: status=answered facts=1.0 cite=True faith=97.3 ms=3497
+2026-09-22 00:29:33 INFO    answer star-09: status=answered facts=1.0 cite=True faith=93.6 ms=24772
+2026-09-22 00:29:37 INFO    answer star-10: status=answered facts=1.0 cite=True faith=94.6 ms=4193
+2026-09-22 00:29:40 INFO    answer star-11: status=answered facts=1.0 cite=True faith=88.4 ms=3613
+2026-09-22 00:29:46 INFO    answer star-12: status=answered facts=1.0 cite=True faith=90.8 ms=5191
+2026-09-22 00:29:51 INFO    answer star-13: status=answered facts=1.0 cite=True faith=91.6 ms=5324
+2026-09-22 00:29:54 INFO    answer star-14: status=answered facts=1.0 cite=True faith=73.6 ms=3480
+2026-09-22 00:30:00 INFO    answer hdfc-01: status=answered facts=1.0 cite=True faith=96.3 ms=5593
+2026-09-22 00:30:04 INFO    answer hdfc-02: status=answered facts=1.0 cite=True faith=96.0 ms=4340
+2026-09-22 00:30:10 INFO    answer hdfc-03: status=answered facts=1.0 cite=True faith=92.4 ms=5138
+2026-09-22 00:30:15 INFO    answer hdfc-04: status=answered facts=1.0 cite=True faith=78.5 ms=5283
+2026-09-22 00:30:33 INFO    answer hdfc-05: status=answered facts=1.0 cite=True faith=99.4 ms=18183
+2026-09-22 00:30:36 INFO    answer hdfc-06: status=answered facts=1.0 cite=True faith=99.3 ms=2765
+2026-09-22 00:30:41 INFO    answer hdfc-07: status=answered facts=1.0 cite=True faith=98.7 ms=5687
+2026-09-22 00:30:47 INFO    answer hdfc-08: status=answered facts=1.0 cite=True faith=72.8 ms=5178
+2026-09-22 00:30:51 INFO    answer hdfc-09: status=answered facts=1.0 cite=True faith=98.4 ms=4545
+2026-09-22 00:30:56 INFO    answer hdfc-10: status=answered facts=1.0 cite=True faith=91.7 ms=4794
+2026-09-22 00:30:59 INFO    answer hdfc-11: status=answered facts=1.0 cite=True faith=73.8 ms=3406
+2026-09-22 00:31:04 INFO    answer hdfc-12: status=answered facts=1.0 cite=True faith=87.3 ms=4656
+2026-09-22 00:31:08 INFO    answer hdfc-13: status=answered facts=1.0 cite=True faith=99.0 ms=3715
+2026-09-22 00:31:15 INFO    answer niva-01: status=answered facts=1.0 cite=True faith=98.8 ms=7310
+2026-09-22 00:31:34 INFO    answer niva-02: status=answered facts=1.0 cite=True faith=78.4 ms=18703
+2026-09-22 00:31:38 INFO    answer niva-03: status=answered facts=1.0 cite=True faith=90.8 ms=4096
+2026-09-22 00:31:41 INFO    answer niva-04: status=answered facts=1.0 cite=True faith=84.0 ms=2980
+2026-09-22 00:31:44 INFO    answer niva-05: status=answered facts=1.0 cite=True faith=99.6 ms=3398
+2026-09-22 00:31:51 INFO    answer niva-06: status=answered facts=1.0 cite=True faith=98.5 ms=6707
+2026-09-22 00:31:54 INFO    answer niva-07: status=answered facts=1.0 cite=True faith=75.1 ms=3465
+2026-09-22 00:32:01 INFO    answer niva-08: status=answered facts=1.0 cite=True faith=94.5 ms=6814
+2026-09-22 00:32:04 INFO    answer niva-09: status=answered facts=1.0 cite=True faith=72.7 ms=2930
+2026-09-22 00:32:09 INFO    answer niva-10: status=answered facts=1.0 cite=True faith=82.9 ms=4911
+2026-09-22 00:32:13 INFO    answer niva-11: status=answered facts=1.0 cite=True faith=40.1 ms=4295
+2026-09-22 00:32:34 INFO    answer niva-12: status=answered facts=1.0 cite=True faith=99.0 ms=20436
+2026-09-22 00:32:39 INFO    answer care-01: status=answered facts=1.0 cite=True faith=99.0 ms=5617
+2026-09-22 00:32:43 INFO    answer care-02: status=answered facts=1.0 cite=True faith=82.5 ms=3895
+2026-09-22 00:32:48 INFO    answer care-03: status=answered facts=1.0 cite=True faith=84.1 ms=4163
+2026-09-22 00:32:53 INFO    answer care-04: status=answered facts=1.0 cite=True faith=80.6 ms=5715
+2026-09-22 00:32:57 INFO    answer care-05: status=answered facts=1.0 cite=True faith=91.5 ms=3398
+2026-09-22 00:33:01 INFO    answer care-06: status=answered facts=1.0 cite=True faith=98.9 ms=3963
+2026-09-22 00:33:08 INFO    answer care-07: status=answered facts=1.0 cite=True faith=98.7 ms=7535
+2026-09-22 00:33:14 INFO    answer care-08: status=answered facts=1.0 cite=True faith=98.5 ms=5950
+2026-09-22 00:33:18 INFO    answer care-09: status=answered facts=1.0 cite=True faith=98.8 ms=3477
+2026-09-22 00:33:35 INFO    answer care-10: status=answered facts=1.0 cite=True faith=99.1 ms=17442
+2026-09-22 00:33:40 INFO    answer care-11: status=answered facts=1.0 cite=True faith=88.4 ms=4570
+2026-09-22 00:33:42 INFO    answer care-12: status=answered facts=1.0 cite=True faith=4.7 ms=2579
+2026-09-22 00:33:43 INFO    answer none-01: status=not_in_policy facts=None cite=None faith=None ms=860
+2026-09-22 00:33:44 INFO    answer none-02: status=not_in_policy facts=None cite=None faith=None ms=1012
+2026-09-22 00:33:45 INFO    answer none-03: status=not_in_policy facts=None cite=None faith=None ms=759
+2026-09-22 00:33:45 INFO    answer none-04: status=not_in_policy facts=None cite=None faith=None ms=541
+2026-09-22 00:33:46 INFO    answer none-05: status=not_in_policy facts=None cite=None faith=None ms=682
+2026-09-22 00:33:47 INFO    answer none-06: status=not_in_policy facts=None cite=None faith=None ms=861
+2026-09-22 00:33:52 INFO    answer lang-hi-01: status=answered facts=1.0 cite=True faith=91.3 ms=4918
+2026-09-22 00:33:57 INFO    answer lang-te-01: status=answered facts=1.0 cite=True faith=86.4 ms=5109
+2026-09-22 00:34:03 INFO    answer lang-hi-02: status=answered facts=1.0 cite=True faith=41.3 ms=6452
+2026-09-22 00:34:09 INFO    answer lang-te-02: status=answered facts=1.0 cite=True faith=68.3 ms=5588
+2026-09-22 00:34:13 INFO    answer lang-en-hi-03: status=answered facts=1.0 cite=True faith=80.2 ms=3809
+2026-09-22 00:34:13 INFO    == Claim Copilot scenarios
+2026-09-22 00:34:27 INFO    claim claim-01: expected=partly_covered predicted=partly_covered ms=13794
+2026-09-22 00:34:37 INFO    claim claim-02: expected=not_covered predicted=not_covered ms=10120
+2026-09-22 00:34:48 INFO    claim claim-03: expected=not_covered predicted=not_covered ms=10838
+2026-09-22 00:34:57 INFO    claim claim-04: expected=not_covered predicted=not_covered ms=9560
+2026-09-22 00:35:10 INFO    claim claim-05: expected=covered predicted=covered ms=12870
+2026-09-22 00:35:25 INFO    claim claim-06: expected=covered predicted=covered ms=15294
+2026-09-22 00:35:40 INFO    claim claim-07: expected=not_covered predicted=not_covered ms=14934
+2026-09-22 00:35:55 INFO    claim claim-08: expected=covered predicted=covered ms=15122
+2026-09-22 00:36:08 INFO    claim claim-09: expected=not_covered predicted=not_covered ms=12593
+2026-09-22 00:36:18 INFO    claim claim-10: expected=not_covered predicted=not_covered ms=10345
+2026-09-22 00:36:32 INFO    claim claim-11: expected=covered predicted=partly_covered ms=13491
+2026-09-22 00:36:44 INFO    claim claim-12: expected=needs_info predicted=needs_info ms=12623
+2026-09-22 00:36:54 INFO    claim claim-13: expected=not_covered predicted=not_covered ms=10091
+2026-09-22 00:37:06 INFO    claim claim-14: expected=covered predicted=covered ms=11088
+2026-09-22 00:37:06 INFO    experiments/latest.json -> eval-20260922-0027
+2026-09-22 00:37:06 INFO    Headline: {"retrieval_hit_at_5": 1.0, "answer_accuracy": 1.0, "citation_accuracy": 1.0, "faithfulness_mean": 87.0, "abstention_accuracy": 1.0, "latency_p50_ms": 4340, "extraction_accuracy": 0.9615, "claim_verdict_accuracy": 0.9286}
+2026-09-22 00:37:06 INFO    Done -> experiments/eval-20260922-0027
+2026-09-22 00:39:34 INFO    Run eval-20260922-0027 -> experiments/eval-20260922-0027
+2026-09-22 00:39:35 INFO    Sample documents: {'care-health-care-supreme': 1, 'hdfc-ergo-optima-secure': 2, 'niva-bupa-reassure-2': 3, 'star-health-family-health-optima': 4}
+2026-09-22 00:39:35 INFO    == Retrieval ablation
+2026-09-22 00:39:42 INFO    retrieval star-01: bm25=1 dense=2 hybrid=1 hybrid_rerank=1
+2026-09-22 00:39:43 INFO    retrieval star-02: bm25=1 dense=2 hybrid=1 hybrid_rerank=2
+2026-09-22 00:39:44 INFO    retrieval star-03: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:39:45 INFO    retrieval star-04: bm25=3 dense=5 hybrid=3 hybrid_rerank=1
+2026-09-22 00:39:45 INFO    retrieval star-05: bm25=3 dense=1 hybrid=2 hybrid_rerank=1
+2026-09-22 00:39:46 INFO    retrieval star-06: bm25=2 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:39:47 INFO    retrieval star-07: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:39:48 INFO    retrieval star-08: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:39:49 INFO    retrieval star-09: bm25=3 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:39:50 INFO    retrieval star-10: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:39:51 INFO    retrieval star-11: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:39:51 INFO    retrieval star-12: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:39:52 INFO    retrieval star-13: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:39:53 INFO    retrieval star-14: bm25=1 dense=4 hybrid=1 hybrid_rerank=1
+2026-09-22 00:39:54 INFO    retrieval hdfc-01: bm25=2 dense=3 hybrid=2 hybrid_rerank=1
+2026-09-22 00:39:55 INFO    retrieval hdfc-02: bm25=1 dense=3 hybrid=1 hybrid_rerank=1
+2026-09-22 00:39:56 INFO    retrieval hdfc-03: bm25=1 dense=7 hybrid=1 hybrid_rerank=2
+2026-09-22 00:39:57 INFO    retrieval hdfc-04: bm25=5 dense=None hybrid=9 hybrid_rerank=2
+2026-09-22 00:39:58 INFO    retrieval hdfc-05: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:39:58 INFO    retrieval hdfc-06: bm25=1 dense=6 hybrid=1 hybrid_rerank=1
+2026-09-22 00:39:59 INFO    retrieval hdfc-07: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:40:00 INFO    retrieval hdfc-08: bm25=2 dense=2 hybrid=2 hybrid_rerank=1
+2026-09-22 00:40:01 INFO    retrieval hdfc-09: bm25=2 dense=3 hybrid=3 hybrid_rerank=1
+2026-09-22 00:40:02 INFO    retrieval hdfc-10: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:40:03 INFO    retrieval hdfc-11: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:40:04 INFO    retrieval hdfc-12: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:40:04 INFO    retrieval hdfc-13: bm25=3 dense=1 hybrid=2 hybrid_rerank=1
+2026-09-22 00:40:05 INFO    retrieval niva-01: bm25=1 dense=2 hybrid=1 hybrid_rerank=1
+2026-09-22 00:40:06 INFO    retrieval niva-02: bm25=1 dense=6 hybrid=1 hybrid_rerank=1
+2026-09-22 00:40:07 INFO    retrieval niva-03: bm25=1 dense=2 hybrid=1 hybrid_rerank=1
+2026-09-22 00:40:08 INFO    retrieval niva-04: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:40:09 INFO    retrieval niva-05: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:40:09 INFO    retrieval niva-06: bm25=5 dense=None hybrid=5 hybrid_rerank=1
+2026-09-22 00:40:10 INFO    retrieval niva-07: bm25=3 dense=3 hybrid=3 hybrid_rerank=2
+2026-09-22 00:40:11 INFO    retrieval niva-08: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:40:12 INFO    retrieval niva-09: bm25=1 dense=None hybrid=2 hybrid_rerank=1
+2026-09-22 00:40:13 INFO    retrieval niva-10: bm25=1 dense=1 hybrid=1 hybrid_rerank=2
+2026-09-22 00:40:14 INFO    retrieval niva-11: bm25=1 dense=2 hybrid=1 hybrid_rerank=1
+2026-09-22 00:40:14 INFO    retrieval niva-12: bm25=3 dense=2 hybrid=2 hybrid_rerank=1
+2026-09-22 00:40:15 INFO    retrieval care-01: bm25=1 dense=2 hybrid=1 hybrid_rerank=2
+2026-09-22 00:40:16 INFO    retrieval care-02: bm25=1 dense=None hybrid=4 hybrid_rerank=1
+2026-09-22 00:40:17 INFO    retrieval care-03: bm25=1 dense=2 hybrid=1 hybrid_rerank=1
+2026-09-22 00:40:18 INFO    retrieval care-04: bm25=4 dense=6 hybrid=4 hybrid_rerank=4
+2026-09-22 00:40:19 INFO    retrieval care-05: bm25=2 dense=None hybrid=4 hybrid_rerank=2
+2026-09-22 00:40:20 INFO    retrieval care-06: bm25=4 dense=None hybrid=7 hybrid_rerank=2
+2026-09-22 00:40:20 INFO    retrieval care-07: bm25=2 dense=3 hybrid=3 hybrid_rerank=2
+2026-09-22 00:40:21 INFO    retrieval care-08: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:40:22 INFO    retrieval care-09: bm25=3 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:40:23 INFO    retrieval care-10: bm25=2 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:40:24 INFO    retrieval care-11: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:40:25 INFO    retrieval care-12: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:40:25 INFO    == Policy Card extraction
+2026-09-22 00:40:25 INFO    extraction star-health-family-health-optima: 14/14 correct
+2026-09-22 00:40:25 INFO    extraction hdfc-ergo-optima-secure: 13/14 correct
+2026-09-22 00:40:25 INFO    extraction niva-bupa-reassure-2: 11/11 correct
+2026-09-22 00:40:25 INFO    extraction care-health-care-supreme: 13/13 correct
+2026-09-22 00:40:25 INFO    == Answers (Gemini + faithfulness)
+2026-09-22 00:40:25 INFO    == Claim Copilot scenarios
+2026-09-22 00:40:52 INFO    claim claim-01: expected=partly_covered predicted=partly_covered ms=27172
+2026-09-22 00:41:02 INFO    claim claim-02: expected=not_covered predicted=not_covered ms=10039
+2026-09-22 00:41:19 INFO    claim claim-03: expected=not_covered predicted=not_covered ms=17555
+2026-09-22 00:41:38 INFO    claim claim-04: expected=not_covered predicted=not_covered ms=18264
+2026-09-22 00:41:50 INFO    claim claim-05: expected=covered predicted=covered ms=12326
+2026-09-22 00:41:56 INFO    claim claim-06: expected=covered predicted=covered ms=5837
+2026-09-22 00:42:03 INFO    claim claim-07: expected=not_covered predicted=not_covered ms=6827
+2026-09-22 00:42:09 INFO    claim claim-08: expected=covered predicted=covered ms=6049
+2026-09-22 00:42:14 INFO    claim claim-09: expected=not_covered predicted=not_covered ms=5776
+2026-09-22 00:42:20 INFO    claim claim-10: expected=not_covered predicted=not_covered ms=6071
+2026-09-22 00:42:29 INFO    claim claim-11: expected=covered predicted=partly_covered ms=8057
+2026-09-22 00:42:37 INFO    claim claim-12: expected=needs_info predicted=needs_info ms=8256
+2026-09-22 00:42:43 INFO    claim claim-13: expected=not_covered predicted=not_covered ms=6460
+2026-09-22 00:42:50 INFO    claim claim-14: expected=covered predicted=covered ms=6614
+2026-09-22 00:42:51 INFO    experiments/latest.json -> eval-20260922-0027
+2026-09-22 00:42:51 INFO    Headline: {"retrieval_hit_at_5": 1.0, "answer_accuracy": 1.0, "citation_accuracy": 1.0, "faithfulness_mean": 87.0, "abstention_accuracy": 1.0, "latency_p50_ms": 4340, "extraction_accuracy": 0.9808, "claim_verdict_accuracy": 0.9286}
+2026-09-22 00:42:51 INFO    Done -> experiments/eval-20260922-0027
+2026-09-22 00:43:40 INFO    Run eval-20260922-0027 -> experiments/eval-20260922-0027
+2026-09-22 00:43:42 INFO    Sample documents: {'care-health-care-supreme': 1, 'hdfc-ergo-optima-secure': 2, 'niva-bupa-reassure-2': 3, 'star-health-family-health-optima': 4}
+2026-09-22 00:43:42 INFO    == Retrieval ablation
+2026-09-22 00:43:48 INFO    retrieval star-01: bm25=1 dense=2 hybrid=1 hybrid_rerank=1
+2026-09-22 00:43:49 INFO    retrieval star-02: bm25=1 dense=2 hybrid=1 hybrid_rerank=2
+2026-09-22 00:43:50 INFO    retrieval star-03: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:43:51 INFO    retrieval star-04: bm25=3 dense=5 hybrid=3 hybrid_rerank=1
+2026-09-22 00:43:52 INFO    retrieval star-05: bm25=3 dense=1 hybrid=2 hybrid_rerank=1
+2026-09-22 00:43:53 INFO    retrieval star-06: bm25=2 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:43:54 INFO    retrieval star-07: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:43:55 INFO    retrieval star-08: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:43:55 INFO    retrieval star-09: bm25=3 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:43:56 INFO    retrieval star-10: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:43:57 INFO    retrieval star-11: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:43:58 INFO    retrieval star-12: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:43:59 INFO    retrieval star-13: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:44:00 INFO    retrieval star-14: bm25=1 dense=4 hybrid=1 hybrid_rerank=1
+2026-09-22 00:44:01 INFO    retrieval hdfc-01: bm25=2 dense=3 hybrid=2 hybrid_rerank=1
+2026-09-22 00:44:02 INFO    retrieval hdfc-02: bm25=1 dense=3 hybrid=1 hybrid_rerank=1
+2026-09-22 00:44:03 INFO    retrieval hdfc-03: bm25=1 dense=7 hybrid=1 hybrid_rerank=2
+2026-09-22 00:44:03 INFO    retrieval hdfc-04: bm25=5 dense=None hybrid=9 hybrid_rerank=2
+2026-09-22 00:44:04 INFO    retrieval hdfc-05: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:44:05 INFO    retrieval hdfc-06: bm25=1 dense=6 hybrid=1 hybrid_rerank=1
+2026-09-22 00:44:06 INFO    retrieval hdfc-07: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:44:07 INFO    retrieval hdfc-08: bm25=2 dense=2 hybrid=2 hybrid_rerank=1
+2026-09-22 00:44:08 INFO    retrieval hdfc-09: bm25=2 dense=3 hybrid=3 hybrid_rerank=1
+2026-09-22 00:44:09 INFO    retrieval hdfc-10: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:44:09 INFO    retrieval hdfc-11: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:44:10 INFO    retrieval hdfc-12: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:44:11 INFO    retrieval hdfc-13: bm25=3 dense=1 hybrid=2 hybrid_rerank=1
+2026-09-22 00:44:12 INFO    retrieval niva-01: bm25=1 dense=2 hybrid=1 hybrid_rerank=1
+2026-09-22 00:44:13 INFO    retrieval niva-02: bm25=1 dense=6 hybrid=1 hybrid_rerank=1
+2026-09-22 00:44:14 INFO    retrieval niva-03: bm25=1 dense=2 hybrid=1 hybrid_rerank=1
+2026-09-22 00:44:15 INFO    retrieval niva-04: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:44:16 INFO    retrieval niva-05: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:44:16 INFO    retrieval niva-06: bm25=5 dense=None hybrid=5 hybrid_rerank=1
+2026-09-22 00:44:17 INFO    retrieval niva-07: bm25=3 dense=3 hybrid=3 hybrid_rerank=2
+2026-09-22 00:44:18 INFO    retrieval niva-08: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:44:19 INFO    retrieval niva-09: bm25=1 dense=None hybrid=2 hybrid_rerank=1
+2026-09-22 00:44:20 INFO    retrieval niva-10: bm25=1 dense=1 hybrid=1 hybrid_rerank=2
+2026-09-22 00:44:21 INFO    retrieval niva-11: bm25=1 dense=2 hybrid=1 hybrid_rerank=1
+2026-09-22 00:44:21 INFO    retrieval niva-12: bm25=3 dense=2 hybrid=2 hybrid_rerank=1
+2026-09-22 00:44:22 INFO    retrieval care-01: bm25=1 dense=2 hybrid=1 hybrid_rerank=2
+2026-09-22 00:44:23 INFO    retrieval care-02: bm25=1 dense=None hybrid=4 hybrid_rerank=1
+2026-09-22 00:44:24 INFO    retrieval care-03: bm25=1 dense=2 hybrid=1 hybrid_rerank=1
+2026-09-22 00:44:25 INFO    retrieval care-04: bm25=4 dense=6 hybrid=4 hybrid_rerank=4
+2026-09-22 00:44:26 INFO    retrieval care-05: bm25=2 dense=None hybrid=4 hybrid_rerank=2
+2026-09-22 00:44:27 INFO    retrieval care-06: bm25=4 dense=None hybrid=7 hybrid_rerank=2
+2026-09-22 00:44:28 INFO    retrieval care-07: bm25=2 dense=3 hybrid=3 hybrid_rerank=2
+2026-09-22 00:44:29 INFO    retrieval care-08: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:44:30 INFO    retrieval care-09: bm25=3 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:44:31 INFO    retrieval care-10: bm25=2 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:44:32 INFO    retrieval care-11: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:44:33 INFO    retrieval care-12: bm25=1 dense=1 hybrid=1 hybrid_rerank=1
+2026-09-22 00:44:33 INFO    == Policy Card extraction
+2026-09-22 00:44:33 INFO    extraction star-health-family-health-optima: 14/14 correct
+2026-09-22 00:44:33 INFO    extraction hdfc-ergo-optima-secure: 13/14 correct
+2026-09-22 00:44:33 INFO    extraction niva-bupa-reassure-2: 11/11 correct
+2026-09-22 00:44:33 INFO    extraction care-health-care-supreme: 13/13 correct
+2026-09-22 00:44:33 INFO    == Answers (Gemini + faithfulness)
+2026-09-22 00:44:33 INFO    == Claim Copilot scenarios
+2026-09-22 00:44:43 INFO    claim claim-01: expected=partly_covered predicted=partly_covered ms=10708
+2026-09-22 00:44:50 INFO    claim claim-02: expected=not_covered predicted=not_covered ms=6239
+2026-09-22 00:44:56 INFO    claim claim-03: expected=not_covered predicted=not_covered ms=6407
+2026-09-22 00:45:02 INFO    claim claim-04: expected=not_covered predicted=not_covered ms=6149
+2026-09-22 00:45:10 INFO    claim claim-05: expected=covered predicted=covered ms=7955
+2026-09-22 00:45:16 INFO    claim claim-06: expected=covered predicted=covered ms=6191
+2026-09-22 00:45:23 INFO    claim claim-07: expected=not_covered predicted=not_covered ms=7165
+2026-09-22 00:45:30 INFO    claim claim-08: expected=covered predicted=covered ms=6601
+2026-09-22 00:45:36 INFO    claim claim-09: expected=not_covered predicted=not_covered ms=5910
+2026-09-22 00:45:42 INFO    claim claim-10: expected=not_covered predicted=not_covered ms=6016
+2026-09-22 00:46:05 INFO    claim claim-11: expected=covered predicted=covered ms=22761
+2026-09-22 00:46:17 INFO    claim claim-12: expected=needs_info predicted=needs_info ms=12309
+2026-09-22 00:46:27 INFO    claim claim-13: expected=not_covered predicted=not_covered ms=9786
+2026-09-22 00:46:37 INFO    claim claim-14: expected=covered predicted=covered ms=10247
+2026-09-22 00:46:38 INFO    experiments/latest.json -> eval-20260922-0027
+2026-09-22 00:46:38 INFO    Headline: {"retrieval_hit_at_5": 1.0, "answer_accuracy": 1.0, "citation_accuracy": 1.0, "faithfulness_mean": 87.0, "abstention_accuracy": 1.0, "latency_p50_ms": 4340, "extraction_accuracy": 0.9808, "claim_verdict_accuracy": 1.0}
+2026-09-22 00:46:38 INFO    Done -> experiments/eval-20260922-0027

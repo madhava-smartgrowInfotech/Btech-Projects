@@ -70,10 +70,11 @@ _NUMBER_WORDS = {
 
 
 def _numbers_as_digits(text: str) -> str:
+    """Normalise for fact matching: number words -> digits, and '15-day' == '15 days' (unit plurals folded)."""
     text = normalise(text)
     for word, digit in sorted(_NUMBER_WORDS.items(), key=lambda kv: -len(kv[0])):
         text = re.sub(rf"\b{word}\b", digit, text)
-    return text
+    return re.sub(r"\b(day|month|year|hour|week|time)s\b", r"\1", text)
 
 
 def key_fact_match(answer: str, key_facts: Sequence[Sequence[str] | str]) -> float:

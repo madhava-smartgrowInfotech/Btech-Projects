@@ -6,7 +6,7 @@ from typing import Literal
 
 from pydantic import BaseModel, Field
 
-PROMPT_VERSION = "card-v3"
+PROMPT_VERSION = "card-v4"
 
 
 class Sourced(BaseModel):

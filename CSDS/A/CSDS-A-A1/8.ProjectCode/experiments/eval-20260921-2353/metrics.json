@@ -1,0 +1,368 @@
+{
+  "retrieval": {
+    "bm25": {
+      "n": 51,
+      "hit@1": 0.6275,
+      "hit@3": 0.9216,
+      "hit@5": 1.0,
+      "mrr@10": 0.7693,
+      "recall@5": 1.0
+    },
+    "dense": {
+      "n": 51,
+      "hit@1": 0.5098,
+      "hit@3": 0.7843,
+      "hit@5": 0.8627,
+      "mrr@10": 0.6513,
+      "recall@5": 0.8431
+    },
+    "hybrid": {
+      "n": 51,
+      "hit@1": 0.6667,
+      "hit@3": 0.8824,
+      "hit@5": 0.9412,
+      "mrr@10": 0.7773,
+      "recall@5": 0.9314
+    },
+    "hybrid_rerank": {
+      "n": 51,
+      "hit@1": 0.7843,
+      "hit@3": 0.9608,
+      "hit@5": 0.9804,
+      "mrr@10": 0.8775,
+      "recall@5": 0.9706
+    },
+    "latency_ms": {
+      "bm25": {
+        "n": 51,
+        "mean_ms": 3.5,
+        "p50_ms": 1.2,
+        "p95_ms": 26.2,
+        "max_ms": 41.2
+      },
+      "dense": {
+        "n": 51,
+        "mean_ms": 140.2,
+        "p50_ms": 10.8,
+        "p95_ms": 13.9,
+        "max_ms": 6603.0
+      },
+      "hybrid": {
+        "n": 51,
+        "mean_ms": 11.7,
+        "p50_ms": 11.8,
+        "p95_ms": 14.6,
+        "max_ms": 15.1
+      },
+      "hybrid_rerank": {
+        "n": 51,
+        "mean_ms": 853.3,
+        "p50_ms": 881.6,
+        "p95_ms": 975.7,
+        "max_ms": 1064.5
+      }
+    }
+  },
+  "run": "eval-20260921-2353",
+  "started_at": "2026-09-21T18:23:55+00:00",
+  "updated_at": "2026-09-21T18:33:09+00:00",
+  "environment": {
+    "python": "3.11.9",
+    "platform": "Windows-10-10.0.26200-SP0"
+  },
+  "extraction": {
+    "fields": 52,
+    "accuracy": 0.9808,
+    "verified_ratio": 1.0,
+    "by_field": {
+      "ambulance": 1.0,
+      "cumulative_bonus": 0.5,
+      "emergency_intimation": 1.0,
+      "free_look_period": 1.0,
+      "initial": 1.0,
+      "insurer": 1.0,
+      "planned_intimation": 1.0,
+      "post_hospitalization": 1.0,
+      "pre_existing": 1.0,
+      "pre_hospitalization": 1.0,
+      "reimbursement_documents": 1.0,
+      "restoration": 1.0,
+      "room_rent_limit": 1.0,
+      "specific_disease_examples": 1.0,
+      "specific_diseases": 1.0,
+      "sum_insured": 1.0,
+      "uin": 1.0
+    },
+    "by_policy": {
+      "star-health-family-health-optima": 1.0,
+      "hdfc-ergo-optima-secure": 0.9286,
+      "care-health-care-supreme": 1.0,
+      "niva-bupa-reassure-2": 1.0
+    },
+    "models": [
+      "gemini-3.5-flash-lite",
+      "gemini-3.8-flash"
+    ]
+  },
+  "answers": {
+    "n": 62,
+    "errors": 0,
+    "answerable": 51,
+    "answer_accuracy": 0.8824,
+    "key_fact_recall": 0.8824,
+    "citation_accuracy": 0.9216,
+    "faithfulness": {
+      "mean": 89.8,
+      "median": 94.5,
+      "bins": [
+        {
+          "bin": "0-49",
+          "count": 0
+        },
+        {
+          "bin": "50-79",
+          "count": 9
+        },
+        {
+          "bin": "80-100",
+          "count": 42
+        }
+      ]
+    },
+    "abstention": {
+      "n": 6,
+      "accuracy": 1.0,
+      "false_abstentions": 5
+    },
+    "multilingual": {
+      "n": 5,
+      "in_requested_language": 1.0,
+      "key_fact_recall": 1.0
+    },
+    "latency_ms": {
+      "n": 62,
+      "mean_ms": 5574.1,
+      "p50_ms": 4511,
+      "p95_ms": 15052,
+      "max_ms": 20829
+    },
+    "stage_latency_ms": {
+      "retrieval": {
+        "n": 62,
+        "mean_ms": 936.0,
+        "p50_ms": 882,
+        "p95_ms": 2134,
+        "max_ms": 2236
+      },
+      "generation": {
+        "n": 53,
+        "mean_ms": 4181.6,
+        "p50_ms": 2686,
+        "p95_ms": 13415,
+        "max_ms": 20057
+      },
+      "faithfulness": {
+        "n": 53,
+        "mean_ms": 1002.0,
+        "p50_ms": 834,
+        "p95_ms": 1986,
+        "max_ms": 2611
+      },
+      "translate": {
+        "n": 62,
+        "mean_ms": 206.1,
+        "p50_ms": 0,
+        "p95_ms": 869,
+        "max_ms": 9093
+      }
+    },
+    "by_category": {
+      "waiting_period": {
+        "n": 14,
+        "correct": 11,
+        "accuracy": 0.7857
+      },
+      "sub_limit": {
+        "n": 2,
+        "correct": 2,
+        "accuracy": 1.0
+      },
+      "benefit": {
+        "n": 15,
+        "correct": 15,
+        "accuracy": 1.0
+      },
+      "claim_process": {
+        "n": 8,
+        "correct": 8,
+        "accuracy": 1.0
+      },
+      "exclusion": {
+        "n": 5,
+        "correct": 3,
+        "accuracy": 0.6
+      },
+      "policy_terms": {
+        "n": 4,
+        "correct": 3,
+        "accuracy": 0.75
+      },
+      "room_rent": {
+        "n": 3,
+        "correct": 3,
+        "accuracy": 1.0
+      }
+    }
+  },
+  "claims": {
+    "accuracy": 1.0,
+    "labels": [
+      "covered",
+      "partly_covered",
+      "not_covered",
+      "needs_info"
+    ],
+    "confusion_matrix": [
+      [
+        5,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        7,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1
+      ]
+    ],
+    "per_label": {
+      "covered": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 5
+      },
+      "partly_covered": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 1
+      },
+      "not_covered": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 7
+      },
+      "needs_info": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 1
+      }
+    },
+    "n": 14,
+    "errors": 0,
+    "faithfulness_mean": 79.8,
+    "avg_documents": 6.1,
+    "avg_steps": 4.1,
+    "latency_ms": {
+      "n": 14,
+      "mean_ms": 10991.5,
+      "p50_ms": 11010,
+      "p95_ms": 12603,
+      "max_ms": 12941
+    }
+  },
+  "headline": {
+    "retrieval_hit_at_5": 0.9804,
+    "answer_accuracy": 0.8824,
+    "citation_accuracy": 0.9216,
+    "faithfulness_mean": 89.8,
+    "abstention_accuracy": 1.0,
+    "latency_p50_ms": 4511,
+    "extraction_accuracy": 0.9808,
+    "claim_verdict_accuracy": 1.0
+  },
+  "models": [
+    {
+      "role": "Answers, claims, comparison",
+      "model": "gemini-3.5-flash-lite",
+      "purpose": "Grounded generation with JSON schema output"
+    },
+    {
+      "role": "Policy Card extraction",
+      "model": "gemini-3.5-flash-lite, gemini-3.8-flash",
+      "purpose": "Schema-constrained long-context extraction"
+    },
+    {
+      "role": "Dense embeddings",
+      "model": "sentence-transformers/all-MiniLM-L6-v2",
+      "purpose": "Semantic retrieval"
+    },
+    {
+      "role": "Re-ranker",
+      "model": "cross-encoder/ms-marco-MiniLM-L6-v2",
+      "purpose": "Re-ranking fused candidates"
+    },
+    {
+      "role": "Faithfulness (NLI)",
+      "model": "cross-encoder/nli-deberta-v3-xsmall",
+      "purpose": "Claim support score"
+    },
+    {
+      "role": "Keyword search",
+      "model": "BM25Okapi (k1=1.4, b=0.7)",
+      "purpose": "Exact-term retrieval"
+    },
+    {
+      "role": "Vector store",
+      "model": "ChromaDB (cosine, persistent)",
+      "purpose": "Dense index"
+    }
+  ],
+  "dataset": {
+    "qa_items": 57,
+    "answerable": 51,
+    "unanswerable": 6,
+    "multilingual_items": 5,
+    "claim_scenarios": 14,
+    "card_checks": 52,
+    "policies": 4,
+    "split": "Held-out test set - every item is used only for evaluation (no model is trained)",
+    "source": "data/eval/ - written by hand from the policy wordings in data/policies/"
+  },
+  "settings": {
+    "answer_top_k": 7,
+    "candidates_per_retriever": 30,
+    "rerank_pool": 20,
+    "rrf_k": 60,
+    "abstain_below_rerank": 0.004,
+    "gemini_model": "gemini-3.8-flash",
+    "gemini_fallback_models": "gemini-3.6-flash, gemini-3.5-flash-lite",
+    "thinking_level": "low",
+    "temperature": 0.2,
+    "embedding_provider": "local"
+  },
+  "plots": [
+    "retrieval_ablation.png",
+    "faithfulness_distribution.png",
+    "latency_by_stage.png",
+    "answer_accuracy_by_category.png",
+    "claims_confusion_matrix.png",
+    "extraction_accuracy_by_field.png"
+  ]
+}

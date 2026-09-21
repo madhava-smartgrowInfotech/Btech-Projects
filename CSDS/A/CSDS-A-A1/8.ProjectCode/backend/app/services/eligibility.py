@@ -36,14 +36,20 @@ def _src(item: dict | None) -> dict[str, Any]:
 
 
 _OPTIONAL = re.compile(r"\b(voluntary|optional|opted|if opted|chosen|opt for)\b", re.I)
+_NON_NETWORK = re.compile(r"\bnon-?(?:network|listed|empanelled|preferred)\b|\bother than (?:those |the )?"
+                          r"(?:listed|network|empanelled)|\boutside (?:the |our )?network", re.I)
 _ZONE = re.compile(r"\b(zone|tier|city|non-?network|network hospital|annexure|listed hospitals?)\b", re.I)
 _AGE_THRESHOLD = re.compile(r"(?:age|aged)[^0-9%]{0,60}?(\d{2})\s*(?:years|yrs)?|(\d{2})\s*(?:years|yrs)(?:\s*of age)?"
                             r"\s*(?:and|or)\s*(?:above|older|more)", re.I)
 
 
-def copay_applies(wording: str, age: int | None) -> tuple[bool | None, str]:
+def copay_applies(wording: str, age: int | None, claim_mode: str | None = None) -> tuple[bool | None, str]:
     """Does a co-payment described by ``wording`` apply to this claim? (True/False/None=unknown, reason)."""
     text = wording or ""
+    if _NON_NETWORK.search(text):
+        if claim_mode == "cashless":
+            return False, "cashless claims are settled only in network hospitals, where it does not apply"
+        return None, "applies only if treatment is taken in a hospital outside the insurer's network"
     if _OPTIONAL.search(text):
         return None, "only if this option is chosen in your policy schedule"
     match = _AGE_THRESHOLD.search(text) if re.search(r"\bage", text, re.I) else None
@@ -145,8 +151,8 @@ def pre_checks(card: dict[str, Any] | None, treatment: str, inputs: dict[str, An
         if not item.get("found") or item.get("unit") != "percent" or not isinstance(item.get("number"), (int, float)):
             continue
         pct = float(item["number"])
-        wording = f"{item.get('name') or ''} {item.get('value') or ''}"
-        applies, why = copay_applies(wording, age)
+        wording = f"{item.get('name') or ''} {item.get('value') or ''} {item.get('quote') or ''}"
+        applies, why = copay_applies(wording, age, inputs.get("claim_mode"))
         if pct in seen_pcts:
             continue  # the same percentage stated twice (general field and condition list)
         seen_pcts.add(pct)

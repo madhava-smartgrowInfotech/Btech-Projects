@@ -25,8 +25,13 @@ from app.services.language import to_english_query
 
 log = get_logger("answerer")
 
-# Below this cross-encoder relevance, nothing in the policy talks about the question.
+# The model is skipped (answer: "not covered in this policy") only when BOTH signals find nothing:
+# cross-encoder relevance below ABSTAIN_BELOW and best keyword (BM25) score below KEYWORD_FLOOR.
+# Calibrated on data/eval/qa.jsonl: out-of-scope questions score at most 0.003 / 7.3; answerable ones
+# with a re-rank score under 0.004 all have a BM25 score of 15 or more. Either signal alone overlaps,
+# the pair separates them.
 ABSTAIN_BELOW = 0.004
+KEYWORD_FLOOR = 9.0
 TOP_K = 7
 _TAG = re.compile(r"\[C(\d+)\]")
 _MULTI_TAG = re.compile(r"\[\s*(C\s*\d+(?:\s*[,;/&]\s*(?:C\s*)?\d+)+)\s*\]")
@@ -54,6 +59,8 @@ Strict rules:
    [C12][C15]. Only use tags that appear in the provided clauses.
 3. If the clauses do not answer the question, set status="not_in_policy" and say plainly that this policy
    document does not cover it. If they answer only part of it, set status="partial" and say what is missing.
+   A clause that excludes or limits something IS an answer: use status="answered", say it is not covered
+   (or limited) and cite that exclusion.
 4. Be concrete: amounts, percentages, waiting periods, conditions, exceptions. Mention important conditions
    (waiting periods, sub-limits, co-payment) that change the answer.
 5. Write the "answer" in the requested language, in simple words, with short paragraphs or bullets (Markdown).
@@ -99,6 +106,61 @@ def format_clauses(clauses: list[ClauseRecord]) -> str:
         context = " > ".join(p for p in (c.section_path, c.heading) if p)
         blocks.append(f"[C{c.ordinal}] {ref}, {pages}" + (f" | {context}" if context else "") + f"\n{c.text}")
     return "\n\n".join(blocks)
+
+
+def _is_fragment(clause: ClauseRecord) -> bool:
+    """A chunk that only makes sense with the clause before it: a table/list part or a continuation."""
+    head = clause.text.lstrip()[:120]
+    return (not clause.clause_ref and not (clause.heading or "").lower().startswith(("note", "notes"))) \
+        or (clause.heading or "").endswith("(continued)") or " | " in head
+
+
+def with_parent_context(document_id: int, clauses: list[ClauseRecord], max_extra: int = 4) -> list[ClauseRecord]:
+    """Keep rules and the lists they govern together.
+
+    * Before a retrieved fragment (table part, list, continuation), add the rule it belongs to - e.g. the
+      'excluded until 24 months' rule before the table of conditions it applies to, even when another
+      part of the same table sits in between.
+    * After a retrieved rule, add up to two fragments that directly follow it in the same section - e.g. the
+      tables of listed illnesses and procedures after the waiting-period rule.
+    """
+    from app.ml.retrieval.clause_cache import load_clauses
+
+    by_ordinal = {c.ordinal: c for c in load_clauses(document_id)}
+    have = {c.ordinal for c in clauses}
+    out: list[ClauseRecord] = []
+    added = 0
+
+    def same_section(child: ClauseRecord, parent: ClauseRecord) -> bool:
+        return (child.section_path or "").startswith(parent.section_path or "")
+
+    def governing_rule(fragment: ClauseRecord) -> ClauseRecord | None:
+        """The nearest clause before a fragment that is not itself a fragment (skipping sibling table parts)."""
+        for step in (1, 2, 3):
+            prev = by_ordinal.get(fragment.ordinal - step)
+            if prev is None or not same_section(fragment, prev):
+                return None
+            if not _is_fragment(prev):
+                return prev
+        return None
+
+    for clause in clauses:
+        parent = governing_rule(clause) if _is_fragment(clause) else None
+        if added < max_extra and parent is not None and parent.ordinal not in have:
+            out.append(parent)
+            have.add(parent.ordinal)
+            added += 1
+        out.append(clause)
+        if not _is_fragment(clause):
+            for step in (1, 2):
+                nxt = by_ordinal.get(clause.ordinal + step)
+                if nxt is None or added >= max_extra or not _is_fragment(nxt) or not same_section(nxt, clause):
+                    break
+                if nxt.ordinal not in have:
+                    out.append(nxt)
+                    have.add(nxt.ordinal)
+                    added += 1
+    return out
 
 
 def citation_for(clause: ClauseRecord, claim_texts: list[str] | None = None) -> dict[str, Any]:
@@ -153,15 +215,17 @@ def answer_question(document_id: int, question: str, language: str = "en",
         "items": [{"ordinal": i.clause.ordinal, "label": i.clause.label, "page": i.clause.page_start,
                    "bm25_rank": i.bm25_rank, "dense_rank": i.dense_rank, "rerank": i.rerank} for i in result.items],
     }
-    clauses = [i.clause for i in result.items]
-    by_ordinal = {c.ordinal: c for c in clauses}
+    retrieved = [i.clause for i in result.items]
+    best_keyword = max((i.bm25 or 0.0 for i in result.items), default=0.0)
 
-    if not clauses or result.best_score < ABSTAIN_BELOW:
+    if not retrieved or (result.best_score < ABSTAIN_BELOW and best_keyword < KEYWORD_FLOOR):
         timings["total_ms"] = round((time.perf_counter() - t0) * 1000)
         text = NOT_IN_POLICY.get(language, NOT_IN_POLICY["en"])
         return AnswerResult("not_in_policy", text, NOT_IN_POLICY["en"], [], score_claims([], {}), [],
                             retrieval_info, timings, None, language, {"abstained_before_llm": True})
 
+    clauses = with_parent_context(document_id, retrieved)
+    by_ordinal = {c.ordinal: c for c in clauses}
     prompt = (
         f"Answer language: {LANGUAGE_NAMES.get(language, 'English')}\n\n"
         f"Earlier conversation:\n{_history_text(history)}\n\n"

@@ -47,7 +47,7 @@ class ExperimentRun:
         metrics = json.loads(existing.read_text(encoding="utf-8")) if existing.exists() else {}
         started = metrics.get("started_at") or datetime.now(timezone.utc).isoformat(timespec="seconds")
         run = cls(name=run_name, path=path, started_at=started, logger=logger, metrics=metrics)
-        logger.info("Run %s -> %s", run_name, path)
+        logger.info("Run %s -> experiments/%s", run_name, run_name)
         return run
 
     # --- artefacts -------------------------------------------------------------

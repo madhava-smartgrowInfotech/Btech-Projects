@@ -33,6 +33,9 @@ Rules:
   copied character-for-character from that clause (at most 30 words).
 - If the policy does not state an item, set found=false, value="Not specified in this policy", clause=null,
   quote=null. Do not guess.
+- If the policy EXCLUDES a benefit (for example maternity under a standard exclusion), that is a stated value:
+  set found=true, value="Not covered" (add "except ..." or "available as an optional cover" when the text says
+  so) and cite the exclusion clause.
 - Give full ranges or options where the policy offers several (for example all sum insured options).
 - Normalise numbers: rupees for amounts (1 lakh = 100000, 1 crore = 10000000), percent for percentages,
   months for waiting periods (2 years = 24 months), days for day counts.

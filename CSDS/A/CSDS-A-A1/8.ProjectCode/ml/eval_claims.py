@@ -61,6 +61,7 @@ def run(doc_ids: dict[str, int], scenarios: list[dict[str, Any]], log=print, run
             "steps": len(result["steps"]),
             "total_ms": result["timings"]["total_ms"],
             "model": result.get("model"),
+            "cached": result.get("cached", False),
         }
         rows.append(row)
         if run:
@@ -75,6 +76,8 @@ def run(doc_ids: dict[str, int], scenarios: list[dict[str, Any]], log=print, run
         "faithfulness_mean": round(statistics.fmean(faith), 1) if faith else None,
         "avg_documents": round(statistics.fmean(r["documents"] for r in ok), 1) if ok else None,
         "avg_steps": round(statistics.fmean(r["steps"] for r in ok), 1) if ok else None,
-        "latency_ms": latency_stats([r["total_ms"] for r in ok]),
+        # live Gemini calls only (a cached response would flatter the latency)
+        "latency_ms": latency_stats([r["total_ms"] for r in ok if not r.get("cached")]
+                                    or [r["total_ms"] for r in ok]),
     })
     return report, rows

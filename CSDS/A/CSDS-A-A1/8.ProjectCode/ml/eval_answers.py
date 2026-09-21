@@ -96,9 +96,11 @@ def summarise(rows: list[dict]) -> dict:
     for cat in by_category.values():
         cat["accuracy"] = round(cat["correct"] / cat["n"], 4)
     multilingual = [r for r in ok if r.get("language", "en") != "en"]
+    # Latency is measured on live Gemini calls only; answers served from the disk cache would flatter it.
+    timed = [r for r in ok if r.get("timings") and not r.get("cached")] or [r for r in ok if r.get("timings")]
     stage = {}
     for key in ("retrieval_ms", "generation_ms", "faithfulness_ms", "translate_ms"):
-        values = [r["timings"].get(key) for r in ok if r.get("timings") and r["timings"].get(key) is not None]
+        values = [r["timings"].get(key) for r in timed if r["timings"].get(key) is not None]
         if values and any(values):
             stage[key.replace("_ms", "")] = latency_stats(values)
     return {
@@ -127,7 +129,8 @@ def summarise(rows: list[dict]) -> dict:
             "key_fact_recall": round(statistics.fmean(r["key_fact_recall"] or 0 for r in multilingual), 4)
             if multilingual else None,
         },
-        "latency_ms": latency_stats([r["timings"].get("total_ms") for r in ok if r.get("timings")]),
+        "latency_ms": latency_stats([r["timings"].get("total_ms") for r in timed]),
+        "cached_answers": sum(1 for r in ok if r.get("cached")),
         "stage_latency_ms": stage,
         "by_category": by_category,
     }

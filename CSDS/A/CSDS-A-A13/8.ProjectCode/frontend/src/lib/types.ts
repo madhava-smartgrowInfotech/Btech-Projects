@@ -382,6 +382,108 @@ export interface ScanResult {
   counts: AttendanceCounts;
 }
 
+// ---------------------------------------------------------------- analytics
+export interface PlanBrief {
+  id: number;
+  version: number;
+  status: PlanStatus;
+  solve_ms: number;
+  halls_used: number;
+  utilisation: number;
+  candidates: number;
+  same_paper_pairs: number;
+  same_department_pairs: number;
+  hard_ok: boolean;
+  conflicts_avoided: number;
+  swaps: number;
+}
+
+export interface Overview {
+  counts: { candidates: number; halls: number; sessions: number; plans: number; published: number; seated: number };
+  totals: {
+    conflicts_avoided: number;
+    same_paper_pairs: number;
+    avg_solve_ms: number | null;
+    max_solve_ms: number | null;
+    hard_ok_rate: number | null;
+    manual_moves: number;
+  };
+  attendance: { total: number; present: number; absent: number; unmarked: number; rate: number | null };
+  sessions: {
+    id: number;
+    label: string;
+    date: string;
+    start_time: string;
+    candidates: number;
+    papers: number;
+    plans: number;
+    published_plan: PlanBrief | null;
+    attendance: { total: number; present: number; absent: number; unmarked: number } | null;
+  }[];
+  solve_times: { plan_id: number; label: string; session_id: number; version: number; candidates: number; solve_ms: number; created_at: string; status: PlanStatus }[];
+  hall_usage: { hall: string; name: string; sittings: number; utilisation: number }[];
+}
+
+export interface PlanAnalytics {
+  plan: PlanBrief;
+  session: { id: number; label: string };
+  halls: { hall: string; seats: number; placed: number; utilisation: number; papers: number; departments: Record<string, number>; same_department_pairs: number; neighbour_pairs: number }[];
+  department_codes: string[];
+  comparison: { measure: string; seatwise: number; baseline: number | null }[];
+  neighbour_pairs: { total: number; same_paper: number; same_department: number; mixed: number };
+  attendance: { hall: string; total: number; present: number; absent: number }[];
+}
+
+export interface BenchmarkSummaryRow {
+  scenario: string;
+  method: string;
+  runs: number;
+  solved_rate: number;
+  solve_s_mean: number;
+  solve_s_min: number;
+  solve_s_max: number;
+  same_paper_pairs_mean?: number | null;
+  roll_gap_violations_mean?: number | null;
+  accessible_violations_mean?: number | null;
+  same_department_pairs_mean?: number | null;
+  neighbour_pairs_mean?: number | null;
+  utilisation_mean?: number | null;
+  halls_used_mean?: number | null;
+  hard_rules_satisfied_rate: number;
+}
+
+export interface EngineInfo {
+  profile: { engine_version: string; hall_budget: number; hall_budget_in_use: number; experiment: string | null; tuned_at?: string; ortools_version?: string; source: string };
+  available: boolean;
+  metrics: null | {
+    run: string;
+    run_date: string;
+    engine_version: string;
+    ortools_version: string;
+    machine: { platform: string; processor: string; cpu_threads: number; python: string };
+    dataset: { type: string; split: string; scenarios: { name: string; candidates: number; papers: number; departments: number; adjacency: number; roll_gap: number; halls: number; seats: number }[]; seeds: number[] };
+    per_hall_budget: number | null;
+    headline: {
+      scenario: string;
+      candidates: number;
+      solve_s_mean: number;
+      hard_rules_satisfied_rate: number;
+      same_paper_pairs: number;
+      conflicts_avoided_vs_sequential: number;
+      abs_roll_seat_correlation: number;
+      neighbour_overlap: number;
+      all_scenarios_solved: boolean;
+      all_hard_rules_satisfied: boolean;
+      max_solve_s: number;
+    };
+    summary: BenchmarkSummaryRow[];
+    predictability: Record<string, { seeds: number; abs_roll_seat_correlation: number; neighbour_overlap: number | null; front_row_bias_pp: number }>;
+    tuning: null | { budgets: { budget: number; all_hard_rules_satisfied: boolean; same_department_pairs_mean: number; session_solve_s_mean: number }[]; chosen_budget: number; tolerance: number };
+    plots: string[];
+  };
+  plots: string[];
+}
+
 export interface SwapTarget {
   seat: string;
   occupied: boolean;

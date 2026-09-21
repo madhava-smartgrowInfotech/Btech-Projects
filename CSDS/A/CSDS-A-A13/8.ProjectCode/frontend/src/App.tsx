@@ -17,6 +17,7 @@ const AuditPage = lazy(() => import("@/pages/app/AuditPage"));
 const HallMapPage = lazy(() => import("@/pages/app/HallMapPage"));
 const ExportsPage = lazy(() => import("@/pages/app/ExportsPage"));
 const AttendancePage = lazy(() => import("@/pages/app/AttendancePage"));
+const AnalyticsPage = lazy(() => import("@/pages/app/AnalyticsPage"));
 const AttendanceHallPage = lazy(() => import("@/pages/app/AttendanceHallPage"));
 const SettingsPage = lazy(() => import("@/pages/app/SettingsPage"));
 const NotFoundPage = lazy(() => import("@/pages/NotFoundPage"));
@@ -48,6 +49,7 @@ const router = createBrowserRouter([
       { path: "plans/:planId/halls/:hallId", element: page(<HallMapPage />) },
       { path: "exports", element: admin(<ExportsPage />) },
       { path: "attendance", element: page(<AttendancePage />) },
+      { path: "analytics", element: admin(<AnalyticsPage />) },
       { path: "attendance/:planId/:hallId", element: page(<AttendanceHallPage />) },
       { path: "team", element: admin(<TeamPage />) },
       { path: "settings", element: admin(<SettingsPage />) },

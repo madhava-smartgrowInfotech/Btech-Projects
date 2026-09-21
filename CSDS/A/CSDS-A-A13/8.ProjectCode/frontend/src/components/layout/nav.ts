@@ -1,5 +1,5 @@
 import {
-  CalendarClock, ClipboardCheck, Database, FileDown, LayoutDashboard, ScrollText, Settings, Upload, Users,
+  BarChart3, CalendarClock, ClipboardCheck, Database, FileDown, LayoutDashboard, ScrollText, Settings, Upload, Users,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import type { Role } from "@/lib/types";
@@ -35,6 +35,7 @@ export const NAV: NavSection[] = [
       { to: "/app/sessions", label: "Sittings & plans", icon: CalendarClock, roles: ADMIN },
       { to: "/app/exports", label: "Exports", icon: FileDown, roles: ADMIN },
       { to: "/app/attendance", label: "Attendance", icon: ClipboardCheck, roles: ALL },
+      { to: "/app/analytics", label: "Analytics", icon: BarChart3, roles: ADMIN },
       { to: "/app/audit", label: "Audit trail", icon: ScrollText, roles: ADMIN },
     ],
   },

@@ -1,0 +1,63 @@
+{
+  "_about": "Hand-checked Policy Card values for the sample policies, read from the policy wordings in data/policies/. Used by ml/eval_extraction.py. Check types: 'months'/'days'/'hours' compare the extracted number after unit conversion; 'text' passes when the extracted value contains any of the accepted strings (case-insensitive); 'list' passes when the named list contains an item matching any accepted string; 'exact' compares strings.",
+  "star-health-family-health-optima": [
+    {"field": "uin", "type": "exact", "expected": "SHAHLIP26046V092526"},
+    {"field": "insurer", "type": "text", "expected": ["star health"]},
+    {"field": "sum_insured", "type": "text", "expected": ["25,00,000", "25 lakh", "2500000"]},
+    {"field": "waiting_periods.initial", "type": "days", "expected": 30},
+    {"field": "waiting_periods.pre_existing", "type": "months", "expected": 36},
+    {"field": "waiting_periods.specific_diseases", "type": "months", "expected": 24},
+    {"field": "pre_hospitalization", "type": "days", "expected": 60},
+    {"field": "post_hospitalization", "type": "days", "expected": 90},
+    {"field": "free_look_period", "type": "days", "expected": 30},
+    {"field": "ambulance", "type": "text", "expected": ["750"]},
+    {"field": "restoration", "type": "text", "expected": ["3 times", "three times", "3 time"]},
+    {"field": "claim_timelines.emergency_intimation", "type": "hours", "expected": 24},
+    {"field": "claim_timelines.reimbursement_documents", "type": "days", "expected": 15},
+    {"field": "specific_disease_examples", "type": "list", "expected": ["cataract"]}
+  ],
+  "hdfc-ergo-optima-secure": [
+    {"field": "uin", "type": "exact", "expected": "HDFHLIP25041V062425"},
+    {"field": "insurer", "type": "text", "expected": ["hdfc ergo"]},
+    {"field": "waiting_periods.initial", "type": "days", "expected": 30},
+    {"field": "waiting_periods.pre_existing", "type": "months", "expected": 36},
+    {"field": "waiting_periods.specific_diseases", "type": "months", "expected": 24},
+    {"field": "pre_hospitalization", "type": "days", "expected": 60},
+    {"field": "post_hospitalization", "type": "days", "expected": 180},
+    {"field": "free_look_period", "type": "days", "expected": 30},
+    {"field": "room_rent_limit", "type": "text", "expected": ["actual"]},
+    {"field": "cumulative_bonus", "type": "text", "expected": ["10%", "10 %"]},
+    {"field": "claim_timelines.emergency_intimation", "type": "hours", "expected": 24},
+    {"field": "claim_timelines.planned_intimation", "type": "hours", "expected": 48},
+    {"field": "claim_timelines.reimbursement_documents", "type": "days", "expected": 30},
+    {"field": "specific_disease_examples", "type": "list", "expected": ["cataract"]}
+  ],
+  "niva-bupa-reassure-2": [
+    {"field": "uin", "type": "exact", "expected": "NBHHLIP23169V012223"},
+    {"field": "insurer", "type": "text", "expected": ["niva bupa"]},
+    {"field": "waiting_periods.initial", "type": "days", "expected": 30},
+    {"field": "waiting_periods.pre_existing", "type": "months", "expected": 36},
+    {"field": "waiting_periods.specific_diseases", "type": "months", "expected": 24},
+    {"field": "pre_hospitalization", "type": "days", "expected": 60},
+    {"field": "post_hospitalization", "type": "days", "expected": 180},
+    {"field": "free_look_period", "type": "days", "expected": 15},
+    {"field": "room_rent_limit", "type": "text", "expected": ["no", "any", "choose", "actual"]},
+    {"field": "claim_timelines.reimbursement_documents", "type": "days", "expected": 30},
+    {"field": "specific_disease_examples", "type": "list", "expected": ["cataract"]}
+  ],
+  "care-health-care-supreme": [
+    {"field": "uin", "type": "exact", "expected": "CHIHLIP23128V012223"},
+    {"field": "insurer", "type": "text", "expected": ["care health"]},
+    {"field": "waiting_periods.initial", "type": "days", "expected": 30},
+    {"field": "waiting_periods.pre_existing", "type": "months", "expected": 36},
+    {"field": "waiting_periods.specific_diseases", "type": "months", "expected": 24},
+    {"field": "pre_hospitalization", "type": "days", "expected": 60},
+    {"field": "post_hospitalization", "type": "days", "expected": 180},
+    {"field": "free_look_period", "type": "days", "expected": 30},
+    {"field": "room_rent_limit", "type": "text", "expected": ["no limit"]},
+    {"field": "cumulative_bonus", "type": "text", "expected": ["50%", "50 %"]},
+    {"field": "claim_timelines.emergency_intimation", "type": "hours", "expected": 48},
+    {"field": "claim_timelines.reimbursement_documents", "type": "days", "expected": 30},
+    {"field": "specific_disease_examples", "type": "list", "expected": ["cataract"]}
+  ]
+}

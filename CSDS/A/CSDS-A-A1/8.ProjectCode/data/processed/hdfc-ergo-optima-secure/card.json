@@ -1,0 +1,501 @@
+{
+  "model": "gemini-3.5-flash-lite",
+  "prompt_version": "card-v3",
+  "verified_ratio": 1.0,
+  "latency_ms": 10068,
+  "created_at": "2026-09-21T17:54:18.603089",
+  "data": {
+    "insurer": "HDFC ERGO General Insurance Company Limited",
+    "product_name": "Optima Secure",
+    "uin": "HDFHLIP25041V062425",
+    "policy_type": "both",
+    "specific_disease_examples": [
+      "Cataract and other disorders of lens and Retina",
+      "Benign tumors, cysts, nodules, polyps including breast lumps",
+      "Stone diseases of Urogenital system",
+      "Osteoarthritis and osteoporosis",
+      "Hernia",
+      "Hysterectomy",
+      "Joint replacement surgeries",
+      "Pile / Fissure / Fistula surgeries"
+    ],
+    "sum_insured": {
+      "value": "Rs. 5 lakh to Rs. 2 crore",
+      "number": 500000.0,
+      "unit": "INR",
+      "quote": "5/10/15/20/25/50/ 100/200 Lakhs",
+      "found": true,
+      "clause_ordinal": 180,
+      "clause_ref": "Annexure C",
+      "clause_label": "Clause Annexure C - Plan Chart",
+      "page": 50,
+      "verified": true
+    },
+    "deductible": {
+      "value": "Rs. 10,000 to Rs. 25 lakh (Aggregate Deductible optional)",
+      "number": 10000.0,
+      "unit": "INR",
+      "quote": "10K/25K/ 50K /1L /2L /3L /5L /10L /20L /25L",
+      "found": true,
+      "clause_ordinal": 183,
+      "clause_ref": "Annexure C",
+      "clause_label": "Clause Annexure C - Plan Chart (continued)",
+      "page": 51,
+      "verified": true
+    },
+    "co_payment": {
+      "value": "Not specified in this policy",
+      "number": null,
+      "unit": "none",
+      "quote": null,
+      "found": false,
+      "clause_ordinal": null,
+      "clause_ref": null,
+      "clause_label": null,
+      "page": null,
+      "verified": false
+    },
+    "co_payment_conditions": [
+      {
+        "value": "No co-payment shall apply if Insured Person from Tier 2 avails a treatment in Tier 1.",
+        "number": null,
+        "unit": "none",
+        "quote": "No co-payment shall apply if Insured Person from Tier 2 avails a treatment in Tier 1.",
+        "found": true,
+        "name": "Tier 2 to Tier 1 hospital treatment",
+        "clause_ordinal": 161,
+        "clause_ref": "1.24",
+        "clause_label": "Clause 1.24 - Premium Tier",
+        "page": 41,
+        "verified": true
+      }
+    ],
+    "room_rent_limit": {
+      "value": "At Actuals",
+      "number": null,
+      "unit": "none",
+      "quote": "At Actuals",
+      "found": true,
+      "clause_ordinal": 180,
+      "clause_ref": "Annexure C",
+      "clause_label": "Clause Annexure C - Plan Chart",
+      "page": 50,
+      "verified": true
+    },
+    "icu_limit": {
+      "value": "At Actuals",
+      "number": null,
+      "unit": "none",
+      "quote": "At Actuals",
+      "found": true,
+      "clause_ordinal": 180,
+      "clause_ref": "Annexure C",
+      "clause_label": "Clause Annexure C - Plan Chart",
+      "page": 50,
+      "verified": true
+    },
+    "waiting_periods": {
+      "initial": {
+        "value": "30 days",
+        "number": 30.0,
+        "unit": "days",
+        "quote": "Expenses related to the treatment of any illness within 30 days from the first Policy commencement date shall be excluded",
+        "found": true,
+        "clause_ordinal": 124,
+        "clause_ref": null,
+        "clause_label": "C124 - Surgical Procedures",
+        "page": 30,
+        "verified": true
+      },
+      "pre_existing": {
+        "value": "36 months",
+        "number": 36.0,
+        "unit": "months",
+        "quote": "Expenses related to the treatment of a pre-existing disease (PED) and its direct complications shall be excluded until the expiry of 36 months",
+        "found": true,
+        "clause_ordinal": 122,
+        "clause_ref": "1",
+        "clause_label": "Clause 1 - Waiting Periods",
+        "page": 28,
+        "verified": true
+      },
+      "specific_diseases": {
+        "value": "24 months",
+        "number": 24.0,
+        "unit": "months",
+        "quote": "Expenses related to the treatment of the listed Conditions, surgeries/treatments shall be excluded until the expiry of 24 months",
+        "found": true,
+        "clause_ordinal": 122,
+        "clause_ref": "1",
+        "clause_label": "Clause 1 - Waiting Periods",
+        "page": 28,
+        "verified": true
+      },
+      "maternity": {
+        "value": "Not specified in this policy",
+        "number": null,
+        "unit": "none",
+        "quote": null,
+        "found": false,
+        "clause_ordinal": null,
+        "clause_ref": null,
+        "clause_label": null,
+        "page": null,
+        "verified": false
+      }
+    },
+    "sub_limits": [],
+    "pre_hospitalization": {
+      "value": "60 days",
+      "number": 60.0,
+      "unit": "days",
+      "quote": "60 days",
+      "found": true,
+      "clause_ordinal": 181,
+      "clause_ref": "Annexure C",
+      "clause_label": "Clause Annexure C - Plan Chart (continued)",
+      "page": 50,
+      "verified": true
+    },
+    "post_hospitalization": {
+      "value": "180 days",
+      "number": 180.0,
+      "unit": "days",
+      "quote": "180 days",
+      "found": true,
+      "clause_ordinal": 181,
+      "clause_ref": "Annexure C",
+      "clause_label": "Clause Annexure C - Plan Chart (continued)",
+      "page": 50,
+      "verified": true
+    },
+    "day_care": {
+      "value": "Covered upto sum insured",
+      "number": null,
+      "unit": "none",
+      "quote": "Covered upto sum insured",
+      "found": true,
+      "clause_ordinal": 180,
+      "clause_ref": "Annexure C",
+      "clause_label": "Clause Annexure C - Plan Chart",
+      "page": 50,
+      "verified": true
+    },
+    "ambulance": {
+      "value": "Covered upto sum insured",
+      "number": null,
+      "unit": "none",
+      "quote": "Covered upto sum insured",
+      "found": true,
+      "clause_ordinal": 180,
+      "clause_ref": "Annexure C",
+      "clause_label": "Clause Annexure C - Plan Chart",
+      "page": 50,
+      "verified": true
+    },
+    "restoration": {
+      "value": "Equal to 100% of Base sum insured",
+      "number": 100.0,
+      "unit": "percent",
+      "quote": "Equal to 100% of Base sum insured",
+      "found": true,
+      "clause_ordinal": 183,
+      "clause_ref": "Annexure C",
+      "clause_label": "Clause Annexure C - Plan Chart (continued)",
+      "page": 51,
+      "verified": true
+    },
+    "cumulative_bonus": {
+      "value": "Not Covered",
+      "number": null,
+      "unit": "none",
+      "quote": "Not Covered",
+      "found": true,
+      "clause_ordinal": 182,
+      "clause_ref": "Annexure C",
+      "clause_label": "Clause Annexure C - Plan Chart (continued)",
+      "page": 51,
+      "verified": true
+    },
+    "ayush": {
+      "value": "Covered upto sum insured",
+      "number": null,
+      "unit": "none",
+      "quote": "Covered upto sum insured",
+      "found": true,
+      "clause_ordinal": 181,
+      "clause_ref": "Annexure C",
+      "clause_label": "Clause Annexure C - Plan Chart (continued)",
+      "page": 50,
+      "verified": true
+    },
+    "modern_treatments": {
+      "value": "Not specified in this policy",
+      "number": null,
+      "unit": "none",
+      "quote": null,
+      "found": false,
+      "clause_ordinal": null,
+      "clause_ref": null,
+      "clause_label": null,
+      "page": null,
+      "verified": false
+    },
+    "maternity_cover": {
+      "value": "Not Covered",
+      "number": null,
+      "unit": "none",
+      "quote": null,
+      "found": false,
+      "clause_ordinal": null,
+      "clause_ref": null,
+      "clause_label": null,
+      "page": null,
+      "verified": false
+    },
+    "key_exclusions": [
+      {
+        "value": "Investigation & Evaluation: Expenses related to any admission primarily for diagnostics and evaluation purposes only are excluded.",
+        "number": null,
+        "unit": "none",
+        "quote": "Expenses related to any admission primarily for diagnostics and evaluation purposes only are excluded.",
+        "found": true,
+        "name": "Investigation & Evaluation",
+        "clause_ordinal": 125,
+        "clause_ref": "Excl04",
+        "clause_label": "Clause Excl04 - Standard Exclusions a. Investigation & Evaluation",
+        "page": 30,
+        "verified": true
+      },
+      {
+        "value": "Rest Cure, rehabilitation and respite care",
+        "number": null,
+        "unit": "none",
+        "quote": "Expenses related to any admission primarily for enforced bed rest and not for receiving treatment.",
+        "found": true,
+        "name": "Rest cure and rehabilitation",
+        "clause_ordinal": 125,
+        "clause_ref": "Excl04",
+        "clause_label": "Clause Excl04 - Standard Exclusions a. Investigation & Evaluation",
+        "page": 30,
+        "verified": true
+      },
+      {
+        "value": "Obesity/Weight control surgical treatment unless specific criteria are met",
+        "number": null,
+        "unit": "none",
+        "quote": "Expenses related to the surgical treatment of obesity that does not fulfil all the below conditions",
+        "found": true,
+        "name": "Obesity treatment",
+        "clause_ordinal": 125,
+        "clause_ref": "Excl04",
+        "clause_label": "Clause Excl04 - Standard Exclusions a. Investigation & Evaluation",
+        "page": 30,
+        "verified": true
+      },
+      {
+        "value": "Change-of-Gender treatments",
+        "number": null,
+        "unit": "none",
+        "quote": "Expenses related to any treatment, including surgical management, to change characteristics of the body to those of the opposite sex.",
+        "found": true,
+        "name": "Change-of-Gender treatments",
+        "clause_ordinal": 125,
+        "clause_ref": "Excl04",
+        "clause_label": "Clause Excl04 - Standard Exclusions a. Investigation & Evaluation",
+        "page": 31,
+        "verified": true
+      },
+      {
+        "value": "Cosmetic or plastic Surgery unless for reconstruction following Accident, Burn or Cancer",
+        "number": null,
+        "unit": "none",
+        "quote": "Expenses for cosmetic or plastic surgery or any treatment to change appearance unless for reconstruction following an Accident, Burn(s) or Cancer",
+        "found": true,
+        "name": "Cosmetic or plastic surgery",
+        "clause_ordinal": 126,
+        "clause_ref": "Excl04",
+        "clause_label": "Clause Excl04 - Standard Exclusions a. Investigation & Evaluation (continued)",
+        "page": 31,
+        "verified": true
+      },
+      {
+        "value": "Hazardous or Adventure Sports professional participation",
+        "number": null,
+        "unit": "none",
+        "quote": "Expenses related to any treatment necessitated due to participation as a professional in Hazardous or Adventure sports",
+        "found": true,
+        "name": "Hazardous or Adventure Sports",
+        "clause_ordinal": 126,
+        "clause_ref": "Excl04",
+        "clause_label": "Clause Excl04 - Standard Exclusions a. Investigation & Evaluation (continued)",
+        "page": 31,
+        "verified": true
+      },
+      {
+        "value": "Breach of Law with criminal intent",
+        "number": null,
+        "unit": "none",
+        "quote": "Expenses for treatment directly arising from or consequent upon any Insured Person committing or attempting to commit a breach of law with criminal intent.",
+        "found": true,
+        "name": "Breach of Law",
+        "clause_ordinal": 126,
+        "clause_ref": "Excl04",
+        "clause_label": "Clause Excl04 - Standard Exclusions a. Investigation & Evaluation (continued)",
+        "page": 31,
+        "verified": true
+      },
+      {
+        "value": "Sterility and Infertility treatment",
+        "number": null,
+        "unit": "none",
+        "quote": "Expenses related to sterility and infertility.",
+        "found": true,
+        "name": "Sterility and Infertility",
+        "clause_ordinal": 127,
+        "clause_ref": "Excl12",
+        "clause_label": "Clause Excl12 - thereof.",
+        "page": 31,
+        "verified": true
+      }
+    ],
+    "claim_timelines": {
+      "planned_intimation": {
+        "value": "At least 48 hours prior to admission",
+        "number": 48.0,
+        "unit": "hours",
+        "quote": "At least 48 hours prior to admission in Hospital in case of a planned Hospitalization",
+        "found": true,
+        "clause_ordinal": 164,
+        "clause_ref": "1.1",
+        "clause_label": "Clause 1.1 - Notification of a Claim",
+        "page": 41,
+        "verified": true
+      },
+      "emergency_intimation": {
+        "value": "Within 24 hours from emergency hospitalization or before discharge",
+        "number": 24.0,
+        "unit": "hours",
+        "quote": "Within 24 hours from the date of emergency Hospitalization required or before the Insured Person’s discharge from Hospital, whichever is earlier.",
+        "found": true,
+        "clause_ordinal": 164,
+        "clause_ref": "1.1",
+        "clause_label": "Clause 1.1 - Notification of a Claim",
+        "page": 41,
+        "verified": true
+      },
+      "reimbursement_documents": {
+        "value": "Within 30 days of date of discharge for hospitalization",
+        "number": 30.0,
+        "unit": "days",
+        "quote": "Reimbursement of Hospitalization, Day Care Treatment or Pre-Hospitalization Expenses | Within 30 days of date of discharge from Hospital.",
+        "found": true,
+        "clause_ordinal": 170,
+        "clause_ref": "1.6",
+        "clause_label": "Clause 1.6 - Procedure for Reimbursement Claims",
+        "page": 43,
+        "verified": true
+      }
+    },
+    "free_look_period": {
+      "value": "30 days",
+      "number": 30.0,
+      "unit": "days",
+      "quote": "The insured person shall be allowed free look period of thirty days from date of receipt of the policy document",
+      "found": true,
+      "clause_ordinal": 138,
+      "clause_ref": "1.8",
+      "clause_label": "Clause 1.8 - Free look Period",
+      "page": 35,
+      "verified": true
+    },
+    "grace_period": {
+      "value": "30 days",
+      "number": 30.0,
+      "unit": "days",
+      "quote": "Multi-Year / Yearly | 30 days",
+      "found": true,
+      "clause_ordinal": 143,
+      "clause_ref": "1.13",
+      "clause_label": "Clause 1.13 - Premium Payment in Instalments",
+      "page": 37,
+      "verified": true
+    },
+    "moratorium_period": {
+      "value": "60 months",
+      "number": 60.0,
+      "unit": "months",
+      "quote": "After completion of sixty continuous months of coverage (including portability and migration) in health insurance policy, no policy and claim shall be contestable",
+      "found": true,
+      "clause_ordinal": 136,
+      "clause_ref": "1.6",
+      "clause_label": "Clause 1.6 - Moratorium Period",
+      "page": 34,
+      "verified": true
+    }
+  },
+  "summary": {
+    "overview": "HDFC ERGO Optima Secure is a comprehensive indemnity-based health insurance policy offering high sum insured options up to Rs. 2 crore with unique inbuilt covers like Protect Benefit and Secure Benefit. It provides actuals room rent, automatic restoration, and generous pre and post hospitalization periods.",
+    "best_for": [
+      "Individuals seeking high sum insured health coverage",
+      "Families looking for extensive base coverages with robust restoration benefits",
+      "Buyers preferring actuals room rent without sub-limits"
+    ],
+    "watch_outs": [
+      "36-month waiting period for pre-existing diseases",
+      "Strict intimation timelines for emergency (24 hours) and planned (48 hours) hospitalizations",
+      "Exclusion of non-medical expenses unless Protect Benefit is opted"
+    ],
+    "next_actions": [
+      "Review the chosen sum insured and check if optional aggregate deductible or add-ons are needed",
+      "Disclose all pre-existing medical conditions truthfully to avoid future claim disputes",
+      "Note down network hospital locations and cashless request procedures"
+    ]
+  },
+  "risks": [
+    {
+      "title": "Pre-existing diseases covered only after 3 years",
+      "category": "waiting_period",
+      "severity": "high",
+      "explanation": "Any illness you had before buying the policy is not covered until this period of continuous cover is complete.",
+      "clause_ordinal": 122,
+      "page": 28,
+      "quote": "Expenses related to the treatment of a pre-existing disease (PED) and its direct complications shall be excluded until the expiry of 36 months",
+      "source": "rule",
+      "rule_id": "ped_waiting"
+    },
+    {
+      "title": "Deductible of Rs. 10,000",
+      "category": "deductible",
+      "severity": "medium",
+      "explanation": "Claims are paid only above this amount each year/claim, so smaller bills may be fully out of pocket.",
+      "clause_ordinal": 183,
+      "page": 51,
+      "quote": "10K/25K/ 50K /1L /2L /3L /5L /10L /20L /25L",
+      "source": "rule",
+      "rule_id": "deductible"
+    },
+    {
+      "title": "2 years wait for listed diseases/procedures",
+      "category": "waiting_period",
+      "severity": "medium",
+      "explanation": "Treatments on the specific list (e.g. Cataract and other disorders of lens and Retina, Benign tumors, cysts, nodules, polyps including breast lumps, Stone diseases of Urogenital system, Osteoarthritis and osteoporosis) are not covered in this period.",
+      "clause_ordinal": 122,
+      "page": 28,
+      "quote": "Expenses related to the treatment of the listed Conditions, surgeries/treatments shall be excluded until the expiry of 24 months",
+      "source": "rule",
+      "rule_id": "specific_waiting"
+    },
+    {
+      "title": "Emergency admission must be reported within 24 hours",
+      "category": "claim_process",
+      "severity": "medium",
+      "explanation": "Late intimation can delay or complicate the claim.",
+      "clause_ordinal": 164,
+      "page": 41,
+      "quote": "Within 24 hours from the date of emergency Hospitalization required or before the Insured Person’s discharge from Hospital, whichever is earlier.",
+      "source": "rule",
+      "rule_id": "intimation"
+    }
+  ]
+}

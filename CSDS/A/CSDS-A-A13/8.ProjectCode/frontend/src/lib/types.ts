@@ -228,6 +228,90 @@ export interface Scorecard {
   violations: Violation[];
 }
 
+export interface SessionRef {
+  id: number;
+  code: string;
+  label: string;
+  date: string;
+  start_time: string;
+  end_time: string;
+}
+
+export interface PersonRef {
+  id: number;
+  full_name: string;
+}
+
+export interface PlanSummary {
+  id: number;
+  session: SessionRef;
+  version: number;
+  status: PlanStatus;
+  seed: number;
+  solve_ms: number;
+  swaps: number;
+  created_at: string;
+  created_by: string | null;
+  published_at: string | null;
+  candidates: number;
+  halls_used: number;
+  utilisation: number;
+  same_paper_pairs: number;
+  roll_gap_violations: number;
+  accessible_violations: number;
+  same_department_pairs: number;
+  hard_ok: boolean;
+  conflicts_avoided: number | null;
+}
+
+export interface PlanHall {
+  hall_id: number;
+  code: string;
+  name: string;
+  building: string;
+  capacity: number;
+  placed: number;
+  utilisation: number;
+  papers: Record<string, number>;
+  same_department_pairs: number;
+  invigilators: PersonRef[];
+}
+
+export interface PlanDetail extends PlanSummary {
+  rules: Rules;
+  hall_ids: number[];
+  engine_version: string;
+  data_fingerprint: string;
+  solver_hash: string;
+  assignment_hash: string;
+  scorecard: Scorecard;
+  baseline: Baseline;
+  stats: { hall_budget?: number; attempts?: number; stage_a_ms?: number; stage_b_ms?: number; halls_used?: number; retries?: number };
+  halls: PlanHall[];
+}
+
+export interface VerifyResult {
+  plan_id: number;
+  seed: number;
+  data_unchanged: boolean;
+  reproduced: boolean;
+  stored_solver_hash: string;
+  recomputed_hash: string | null;
+  manual_moves: number;
+  engine_version: string;
+  solve_ms: number | null;
+}
+
+export interface AuditEvent {
+  id: number;
+  at: string;
+  action: string;
+  summary: string;
+  actor: string | null;
+  plan_id: number | null;
+  details: Record<string, unknown>;
+}
+
 export interface Baseline {
   method?: string;
   same_paper_pairs?: number;

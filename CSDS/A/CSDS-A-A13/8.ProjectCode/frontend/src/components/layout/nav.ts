@@ -1,4 +1,4 @@
-import { Database, LayoutDashboard, Settings, Upload, Users } from "lucide-react";
+import { CalendarClock, Database, LayoutDashboard, ScrollText, Settings, Upload, Users } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import type { Role } from "@/lib/types";
 
@@ -25,6 +25,13 @@ export const NAV: NavSection[] = [
     items: [
       { to: "/app/import", label: "Import data", icon: Upload, roles: ADMIN },
       { to: "/app/data", label: "Data", icon: Database, roles: ADMIN },
+    ],
+  },
+  {
+    title: "Seating",
+    items: [
+      { to: "/app/sessions", label: "Sittings & plans", icon: CalendarClock, roles: ADMIN },
+      { to: "/app/audit", label: "Audit trail", icon: ScrollText, roles: ADMIN },
     ],
   },
   {

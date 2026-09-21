@@ -11,6 +11,9 @@ const DashboardPage = lazy(() => import("@/pages/app/DashboardPage"));
 const TeamPage = lazy(() => import("@/pages/app/TeamPage"));
 const ImportPage = lazy(() => import("@/pages/app/ImportPage"));
 const DataPage = lazy(() => import("@/pages/app/DataPage"));
+const SessionsPage = lazy(() => import("@/pages/app/SessionsPage"));
+const SessionPlanPage = lazy(() => import("@/pages/app/SessionPlanPage"));
+const AuditPage = lazy(() => import("@/pages/app/AuditPage"));
 const SettingsPage = lazy(() => import("@/pages/app/SettingsPage"));
 const NotFoundPage = lazy(() => import("@/pages/NotFoundPage"));
 
@@ -32,6 +35,9 @@ const router = createBrowserRouter([
       { index: true, element: page(<DashboardPage />) },
       { path: "import", element: admin(<ImportPage />) },
       { path: "data", element: admin(<DataPage />) },
+      { path: "sessions", element: admin(<SessionsPage />) },
+      { path: "sessions/:sessionId", element: admin(<SessionPlanPage />) },
+      { path: "audit", element: admin(<AuditPage />) },
       { path: "team", element: admin(<TeamPage />) },
       { path: "settings", element: admin(<SettingsPage />) },
     ],

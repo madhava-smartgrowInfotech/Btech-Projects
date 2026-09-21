@@ -15,6 +15,7 @@ const SessionsPage = lazy(() => import("@/pages/app/SessionsPage"));
 const SessionPlanPage = lazy(() => import("@/pages/app/SessionPlanPage"));
 const AuditPage = lazy(() => import("@/pages/app/AuditPage"));
 const HallMapPage = lazy(() => import("@/pages/app/HallMapPage"));
+const ExportsPage = lazy(() => import("@/pages/app/ExportsPage"));
 const SettingsPage = lazy(() => import("@/pages/app/SettingsPage"));
 const NotFoundPage = lazy(() => import("@/pages/NotFoundPage"));
 
@@ -40,6 +41,7 @@ const router = createBrowserRouter([
       { path: "sessions/:sessionId", element: admin(<SessionPlanPage />) },
       { path: "audit", element: admin(<AuditPage />) },
       { path: "plans/:planId/halls/:hallId", element: page(<HallMapPage />) },
+      { path: "exports", element: admin(<ExportsPage />) },
       { path: "team", element: admin(<TeamPage />) },
       { path: "settings", element: admin(<SettingsPage />) },
     ],

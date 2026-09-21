@@ -14,7 +14,7 @@ Base URL: `http://localhost:8101/api`. Interactive documentation (Swagger UI) wi
 ```json
 {
   "status": "ok", "version": "1.0.0", "database": "ok",
-  "vector_store": {"status": "ok", "collection": "clauses_minilm", "vectors": 790},
+  "vector_store": {"status": "ok", "collection": "clauses_minilm", "vectors": 801},
   "local_models": {"embedder": {"model": "sentence-transformers/all-MiniLM-L6-v2", "downloaded": true, "loaded": true, "load_ms": 6884}, "...": {}},
   "ingestion": {"running": true, "queued": 0, "current": null},
   "gemini": {"configured": true, "model": "gemini-3.8-flash", "fallback_models": ["gemini-3.6-flash", "gemini-3.5-flash-lite"],
@@ -63,7 +63,7 @@ Password: at least 8 characters with a letter and a number. `409 email_taken` if
                "insurer": "Star Health and Allied Insurance Company Limited", "product_name": "Family Health Optima Insurance Plan",
                "uin": "SHAHLIP26046V092526", "status": "ready", "status_detail": null, "progress": 100,
                "error": null, "extraction_error": null, "is_sample": true, "processed_at": "..."},
-  "has_card": true, "clause_count": 221, "risk_counts": {"high": 4, "medium": 7},
+  "has_card": true, "clause_count": 219, "risk_counts": {"high": 4, "medium": 7},
   "highlights": {"sum_insured": "Rs. 1,00,000 to Rs. 25,00,000", "pre_existing_wait": "36 months", "specific_wait": "24 months"}
 }]
 ```

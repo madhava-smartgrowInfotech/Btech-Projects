@@ -39,7 +39,7 @@ Produced by `scripts/process_samples.py` with the product's own pipeline, and co
 | `clauses.jsonl` | One clause per line: `ordinal`, `clause_ref` (e.g. `Excl02`, `4.2.1`, `Def. 5`), `heading`, `section_path`, `text`, `page_start`, `page_end`, `bboxes` (highlight rectangles in PDF points), `word_count` |
 | `card.json` | Policy Card (`data`), summary, the Gemini model that produced it, prompt version, share of values verified in the text, and the risk highlights |
 
-Totals: 790 clauses across 166 pages; 772 KB.
+Totals: 801 clauses across 166 pages; 769 KB.
 
 `setup.bat` (through `scripts/init_app.py`) loads these into the database and builds the vector index locally.
 

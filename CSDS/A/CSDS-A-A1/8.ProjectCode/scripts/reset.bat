@@ -4,6 +4,7 @@ cd /d "%~dp0.."
 echo This deletes all accounts, uploaded policies, conversations and claim checks on this computer,
 echo then recreates the demo account and the sample policies. Your .env and AI response cache are kept.
 set /p CONFIRM=Type RESET to continue:
+if defined CONFIRM set "CONFIRM=%CONFIRM: =%"
 if /i not "%CONFIRM%"=="RESET" (
   echo Cancelled.
   exit /b 0

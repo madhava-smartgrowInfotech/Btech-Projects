@@ -46,6 +46,17 @@ const METHODS: { key: string; label: string; color: string }[] = [
   { key: "hybrid_rerank", label: "Hybrid + re-rank", color: "var(--series-1)" },
 ];
 const METRICS = ["hit@1", "hit@3", "hit@5", "mrr@10"] as const;
+const DATASET_LABELS: Record<string, string> = {
+  qa_items: "Questions",
+  answerable: "Answerable",
+  unanswerable: "Not in the policy",
+  multilingual_items: "Hindi / Telugu questions",
+  claim_scenarios: "Claim scenarios",
+  card_checks: "Policy Card values",
+  policies: "Policies",
+  split: "Split",
+  source: "Source",
+};
 
 const pct = (v: number | null | undefined) => (v === null || v === undefined ? null : Math.round(v * 1000) / 10);
 
@@ -309,7 +320,7 @@ export default function ModelPerformance() {
               <dl className="grid grid-cols-2 gap-2 text-sm">
                 {Object.entries(m.dataset ?? {}).map(([k, v]) => (
                   <div key={k} className="rounded-lg bg-muted/50 px-3 py-2">
-                    <dt className="text-xs capitalize text-muted-foreground">{k.replace(/_/g, " ")}</dt>
+                    <dt className="text-xs text-muted-foreground">{DATASET_LABELS[k] ?? k.replace(/_/g, " ")}</dt>
                     <dd className="font-medium">{v}</dd>
                   </div>
                 ))}

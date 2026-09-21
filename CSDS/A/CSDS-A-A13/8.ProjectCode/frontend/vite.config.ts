@@ -32,8 +32,9 @@ export default defineConfig(({ mode }) => {
       port: webPort,
       strictPort: true,
       host: true, // reachable from tablets and phones on the same network
+      // xfwd passes the device's address on, so the API can rate-limit public lookups per device.
       proxy: {
-        "/api": { target: `http://127.0.0.1:${apiPort}`, changeOrigin: true },
+        "/api": { target: `http://127.0.0.1:${apiPort}`, changeOrigin: true, xfwd: true },
       },
     },
     preview: {
@@ -41,7 +42,7 @@ export default defineConfig(({ mode }) => {
       strictPort: true,
       host: true,
       proxy: {
-        "/api": { target: `http://127.0.0.1:${apiPort}`, changeOrigin: true },
+        "/api": { target: `http://127.0.0.1:${apiPort}`, changeOrigin: true, xfwd: true },
       },
     },
     build: {

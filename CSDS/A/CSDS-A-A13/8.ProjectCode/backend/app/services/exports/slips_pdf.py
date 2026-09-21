@@ -93,8 +93,8 @@ def _slip(c: canvas.Canvas, s: Slip, x: float, y: float, w: float, h: float) -> 
     c.drawString(note_x, y + pad + 2 * mm, "Phones stay in your bag.")
 
 
-def slips_pdf(slips: list[Slip], title: str) -> bytes:
-    """Six slips per A4 page (cut along the dashed lines)."""
+def slips_pdf(slips: list[Slip], title: str, single: bool = False) -> bytes:
+    """Six slips per A4 page (cut along the dashed lines), or one larger slip for a candidate's own download."""
     register_fonts()
     buffer = io.BytesIO()
     c = canvas.Canvas(buffer, pagesize=A4)
@@ -102,6 +102,17 @@ def slips_pdf(slips: list[Slip], title: str) -> bytes:
     c.setAuthor("SeatWise")
     width, height = A4
     margin, gap = 10 * mm, 6 * mm
+    if single and slips:
+        w, h = 120 * mm, 95 * mm
+        _slip(c, slips[0], (width - w) / 2, height - 25 * mm - h, w, h)
+        c.setFont(FONT, 7)
+        c.setFillColor(MUTED)
+        c.drawCentredString(width / 2, height - 32 * mm - h, "Keep this slip with you on the day. "
+                                                            "Seats can change until the day before - scan the code to check.")
+        c.drawString(margin, 5 * mm, f"{slips[0].stamp} · generated {generated_at()}")
+        c.showPage()
+        c.save()
+        return buffer.getvalue()
     per_page = PER_PAGE_COLS * PER_PAGE_ROWS
     w = (width - 2 * margin - (PER_PAGE_COLS - 1) * gap) / PER_PAGE_COLS
     h = (height - 2 * margin - 6 * mm - (PER_PAGE_ROWS - 1) * gap) / PER_PAGE_ROWS

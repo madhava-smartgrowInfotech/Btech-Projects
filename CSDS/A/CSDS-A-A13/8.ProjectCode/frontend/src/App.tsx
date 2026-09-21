@@ -20,12 +20,15 @@ const AttendancePage = lazy(() => import("@/pages/app/AttendancePage"));
 const AttendanceHallPage = lazy(() => import("@/pages/app/AttendanceHallPage"));
 const SettingsPage = lazy(() => import("@/pages/app/SettingsPage"));
 const NotFoundPage = lazy(() => import("@/pages/NotFoundPage"));
+const LookupPage = lazy(() => import("@/pages/public/LookupPage"));
 
 const page = (element: React.ReactNode) => <Suspense fallback={<FullPageLoader />}>{element}</Suspense>;
 const admin = (element: React.ReactNode) => <RequireAuth roles={["admin"]}>{page(element)}</RequireAuth>;
 
 const router = createBrowserRouter([
   { path: "/", element: page(<LandingPage />) },
+  { path: "/lookup", element: page(<LookupPage />) },
+  { path: "/lookup/:candidateId", element: page(<LookupPage />) },
   { path: "/login", element: page(<LoginPage />) },
   { path: "/register", element: page(<RegisterPage />) },
   {

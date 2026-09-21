@@ -37,7 +37,7 @@ def _style() -> None:
         "axes.labelcolor": INK_SECONDARY,
         "axes.titlecolor": INK,
         "axes.titlesize": 12,
-        "axes.titleweight": "semibold",
+        "axes.titleweight": "bold",
         "axes.titlelocation": "left",
         "axes.titlepad": 14,
         "axes.spines.top": False,
@@ -162,5 +162,5 @@ def budget_tuning(budgets: list[float], dept_pairs: list[float], solve_s: list[f
     ax.set_xlabel("Deterministic time budget per hall")
     ax.set_ylabel("Same-department neighbour pairs")
     ax.set_title("Choosing the per-hall time budget")
-    _subtitle(ax, "Lower is better; the smallest budget within 3% of the best is used")
+    _subtitle(ax, "Lower is better; the smallest budget within 10% of the best is used")
     return _save(fig, path)

@@ -1,0 +1,2 @@
+﻿hall_code,hall_name,building,floor,rows,columns,blocked_seats,accessible_seats,aisles_after_columns
+MB-101,Main Building 101,Main Building,1,8,8,D4;D5,A1;A2,4

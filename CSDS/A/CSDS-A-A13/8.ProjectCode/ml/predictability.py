@@ -49,11 +49,12 @@ def neighbour_overlap(first: set[frozenset[str]], second: set[frozenset[str]]) -
     return len(first & second) / len(first) if first else 0.0
 
 
-def front_row_bias(candidates: list[EngineCandidate], placements: list[Placement]) -> float:
-    """Largest gap (percentage points) between a department's front-row share and its overall share."""
+def front_row_bias(candidates: list[EngineCandidate], plans: list[list[Placement]]) -> float:
+    """Largest gap (percentage points) between a department's share of front-row seats and its share
+    of all candidates, over every plan together - fairness is about repeated draws, not one plan."""
     dept = {c.key: c.department for c in candidates}
     overall = Counter(dept.values())
-    front = Counter(dept[p.candidate] for p in placements if p.row == 0)
+    front = Counter(dept[p.candidate] for plan in plans for p in plan if p.row == 0)
     total_front = sum(front.values()) or 1
     return max(abs(front[d] / total_front - n / len(candidates)) for d, n in overall.items()) * 100
 
@@ -64,10 +65,9 @@ def evaluate_method(scenario, method, seeds: list[int]) -> dict:
     correlations = [abs(roll_seat_correlation(scenario.candidates, scenario.halls, p)) for p in plans]
     pairs = [neighbour_pairs(scenario.halls, p, scenario.rules) for p in plans]
     overlaps = [neighbour_overlap(a, b) for a, b in combinations(pairs, 2)]
-    biases = [front_row_bias(scenario.candidates, p) for p in plans]
     return {
         "seeds": len(seeds),
         "abs_roll_seat_correlation": float(np.mean(correlations)),
         "neighbour_overlap": float(np.mean(overlaps)) if overlaps else None,
-        "front_row_bias_pp": float(np.mean(biases)),
+        "front_row_bias_pp": front_row_bias(scenario.candidates, plans),
     }

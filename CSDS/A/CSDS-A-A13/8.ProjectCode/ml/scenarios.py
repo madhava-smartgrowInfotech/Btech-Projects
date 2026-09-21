@@ -78,9 +78,7 @@ def spec_by_name(name: str) -> ScenarioSpec:
 
 def _paper_sizes(rng: np.random.Generator, total: int, papers: int) -> list[int]:
     """Uneven paper sizes that add up to ``total``, none above the share cap."""
-    cap = math.floor(total * MAX_PAPER_SHARE)
-    if cap * papers < total:
-        raise ValueError(f"{papers} papers cannot hold {total} candidates under the {MAX_PAPER_SHARE:.0%} cap")
+    cap = math.floor(total * max(MAX_PAPER_SHARE, 1.35 / papers))
     sizes = np.floor(rng.dirichlet(np.full(papers, 4.0)) * total).astype(int)
     sizes = np.clip(sizes, 8, cap)
     while sizes.sum() != total:

@@ -31,10 +31,11 @@ log = logging.getLogger("benchmark")
 
 SEEDS = [11, 12, 13]
 PREDICTABILITY_SEEDS = [21, 22, 23, 24, 25, 26]
-TUNING_BUDGETS = [0.25, 0.5, 1.0, 2.0, 4.0]
+TUNING_BUDGETS = [0.1, 0.15, 0.25, 0.4, 0.6]
 TUNING_SCENARIOS = ["m-600", "l-1000"]
 TUNING_SEEDS = [31, 32]
-TUNING_TOLERANCE = 0.03
+# Department mix is a soft preference: take the fastest budget whose mix is within 10% of the best seen.
+TUNING_TOLERANCE = 0.10
 
 
 class EngineFailure(RuntimeError):

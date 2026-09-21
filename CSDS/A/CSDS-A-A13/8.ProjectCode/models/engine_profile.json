@@ -1,0 +1,12 @@
+{
+  "engine_version": "1.0.0",
+  "ortools_version": "9.15.6755",
+  "hall_budget": 0.15,
+  "threads": "auto",
+  "tuned_at": "2026-09-21T12:41:23+00:00",
+  "tuned_on": [
+    "m-600",
+    "l-1000"
+  ],
+  "experiment": "engine-benchmark-20260921"
+}

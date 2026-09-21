@@ -89,7 +89,8 @@ def hall_map(db: Session, plan_id: int, hall_id: int, user: User) -> dict:
         "invigilators": staff,
         "attendance": {"present": sum(1 for m in marks.values() if m.status == "present"),
                        "absent": sum(1 for m in marks.values() if m.status == "absent"),
-                       "submitted_at": submitted.submitted_at.isoformat() if submitted else None},
+                       "submitted_at": submitted.submitted_at.isoformat() if submitted else None,
+                       "can_mark": plan.status == PLAN_PUBLISHED and submitted is None},
         "can_edit": user.is_admin and plan.status != PLAN_ARCHIVED,
         "halls": others,
     }

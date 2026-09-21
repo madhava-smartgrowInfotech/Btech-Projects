@@ -353,9 +353,33 @@ export interface HallMap {
   violations: Violation[];
   stats: Partial<HallCard>;
   invigilators: PersonRef[];
-  attendance: { present: number; absent: number; submitted_at: string | null };
+  attendance: { present: number; absent: number; submitted_at: string | null; can_mark: boolean };
   can_edit: boolean;
   halls: { hall_id: number; code: string; name: string; placed: number }[];
+}
+
+export interface AttendanceCounts {
+  total: number;
+  present: number;
+  absent: number;
+  unmarked: number;
+  submitted_at: string | null;
+}
+
+export interface AttendanceAssignment extends AttendanceCounts {
+  plan_id: number;
+  plan_version: number;
+  session: { id: number; label: string; date: string; start_time: string; end_time: string };
+  hall: { id: number; code: string; name: string; building: string; floor: string };
+  invigilators: string[];
+  mine: boolean;
+}
+
+export interface ScanResult {
+  candidate: { id: number; roll_no: string; full_name: string };
+  seat: string;
+  already_present: boolean;
+  counts: AttendanceCounts;
 }
 
 export interface SwapTarget {

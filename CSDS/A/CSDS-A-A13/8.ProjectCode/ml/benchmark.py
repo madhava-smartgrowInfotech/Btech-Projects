@@ -257,7 +257,7 @@ def main() -> None:
         "quick": args.quick,
     }
     (out_dir / "metrics.json").write_text(json.dumps(metrics, indent=2), encoding="utf-8")
-    log.info("Wrote %s", out_dir / "metrics.json")
+    log.info("Wrote %s", (out_dir / "metrics.json").relative_to(ROOT).as_posix())
 
     if tuning:
         profile = {
@@ -272,7 +272,7 @@ def main() -> None:
         profile_path = ROOT / "models" / "engine_profile.json"
         profile_path.parent.mkdir(exist_ok=True)
         profile_path.write_text(json.dumps(profile, indent=2), encoding="utf-8")
-        log.info("Wrote %s", profile_path)
+        log.info("Wrote %s", profile_path.relative_to(ROOT).as_posix())
 
     if not headline["all_hard_rules_satisfied"] or not headline["all_scenarios_solved"]:
         raise SystemExit("The engine missed a hard rule or a scenario - see benchmark.log.")

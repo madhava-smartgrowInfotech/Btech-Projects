@@ -172,6 +172,6 @@
 2026-09-21 18:11:23,101 INFO Sequential     {'seeds': 6, 'abs_roll_seat_correlation': 0.9999999999999999, 'neighbour_overlap': 1.0, 'front_row_bias_pp': 12.364341085271318}
 2026-09-21 18:11:23,123 INFO Round-robin    {'seeds': 6, 'abs_roll_seat_correlation': 0.21267553520982, 'neighbour_overlap': 1.0, 'front_row_bias_pp': 3.3798449612403108}
 2026-09-21 18:11:23,145 INFO Random shuffle {'seeds': 6, 'abs_roll_seat_correlation': 0.03413397444622531, 'neighbour_overlap': 0.010036252623545124, 'front_row_bias_pp': 1.6356589147286826}
-2026-09-21 18:11:23,916 INFO Wrote D:\abstracts\Madhav\CSDS\A\CSDS-A-A13\8.ProjectCode\experiments\engine-benchmark-20260921\metrics.json
-2026-09-21 18:11:23,916 INFO Wrote D:\abstracts\Madhav\CSDS\A\CSDS-A-A13\8.ProjectCode\models\engine_profile.json
+2026-09-21 18:11:23,916 INFO Wrote experiments/engine-benchmark-20260921/metrics.json
+2026-09-21 18:11:23,916 INFO Wrote models/engine_profile.json
 2026-09-21 18:11:23,916 INFO Headline: {'scenario': 'm-600', 'candidates': 600, 'solve_s_mean': 2.356453466665698, 'hard_rules_satisfied_rate': 1.0, 'same_paper_pairs': 0.0, 'conflicts_avoided_vs_sequential': 1253.0, 'abs_roll_seat_correlation': 0.06456969787879041, 'neighbour_overlap': 0.010140170751938455, 'all_scenarios_solved': True, 'all_hard_rules_satisfied': True, 'max_solve_s': 6.135404500000732}

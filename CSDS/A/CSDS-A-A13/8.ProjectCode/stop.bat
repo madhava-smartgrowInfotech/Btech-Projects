@@ -19,4 +19,4 @@ for %%p in (%API_PORT% %WEB_PORT%) do (
   )
 )
 if not defined STOPPED echo SeatWise was not running.
-timeout /t 2 >nul
+ping -n 3 127.0.0.1 >nul

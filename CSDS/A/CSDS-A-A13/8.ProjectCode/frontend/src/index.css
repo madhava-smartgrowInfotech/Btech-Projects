@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 228 33% 98%;
+    --foreground: 232 38% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 232 38% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 232 38% 12%;
+    --primary: 244 76% 57%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 229 32% 94%;
+    --secondary-foreground: 232 38% 16%;
+    --muted: 228 26% 95%;
+    --muted-foreground: 230 12% 40%;
+    --accent: 232 40% 95%;
+    --accent-foreground: 232 38% 14%;
+    --destructive: 350 72% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 168 76% 30%;
+    --success-foreground: 0 0% 100%;
+    --warning: 34 94% 42%;
+    --warning-foreground: 0 0% 100%;
+    --border: 228 22% 89%;
+    --input: 228 20% 85%;
+    --ring: 244 76% 57%;
+    --sidebar: 0 0% 100%;
+    --sidebar-foreground: 232 30% 20%;
+    --sidebar-border: 228 22% 91%;
+    --shadow: 232 40% 20%;
+    --radius: 0.75rem;
+
+    /* Paper colours on seat maps (validated categorical order; codes are always printed too). */
+    --paper-1: #2a78d6;
+    --paper-2: #eb6834;
+    --paper-3: #1baf7a;
+    --paper-4: #eda100;
+    --paper-5: #e87ba4;
+    --paper-6: #008300;
+    --paper-7: #4a3aa7;
+    --paper-8: #e34948;
+    --paper-other: #898781;
+    color-scheme: light;
+  }
+
+  .dark {
+    --background: 233 32% 7%;
+    --foreground: 228 30% 95%;
+    --card: 233 28% 10%;
+    --card-foreground: 228 30% 95%;
+    --popover: 233 28% 11%;
+    --popover-foreground: 228 30% 95%;
+    --primary: 244 92% 73%;
+    --primary-foreground: 234 45% 10%;
+    --secondary: 233 22% 16%;
+    --secondary-foreground: 228 30% 92%;
+    --muted: 233 22% 14%;
+    --muted-foreground: 230 14% 66%;
+    --accent: 233 24% 17%;
+    --accent-foreground: 228 30% 95%;
+    --destructive: 350 80% 62%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 166 58% 47%;
+    --success-foreground: 234 45% 8%;
+    --warning: 38 92% 58%;
+    --warning-foreground: 234 45% 8%;
+    --border: 233 20% 19%;
+    --input: 233 20% 23%;
+    --ring: 244 92% 73%;
+    --sidebar: 233 30% 9%;
+    --sidebar-foreground: 228 24% 86%;
+    --sidebar-border: 233 20% 16%;
+    --shadow: 234 60% 2%;
+
+    --paper-1: #3987e5;
+    --paper-2: #d95926;
+    --paper-3: #199e70;
+    --paper-4: #c98500;
+    --paper-5: #d55181;
+    --paper-6: #008300;
+    --paper-7: #9085e9;
+    --paper-8: #e66767;
+    --paper-other: #6f6e69;
+    color-scheme: dark;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv11", "ss01";
+    min-height: 100dvh;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply tracking-tight;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, hsl(var(--border) / 0.6) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.6) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+}
+
+/* Lenis smooth scrolling */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}

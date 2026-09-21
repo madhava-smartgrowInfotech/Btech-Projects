@@ -1,0 +1,26 @@
+# Python
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Node
+node_modules/
+dist/
+
+# Secrets
+.env
+
+# Local runtime files
+data/app.db
+data/app.db-journal
+data/app.db-wal
+data/app.db-shm
+logs/
+
+# Editors / OS
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store

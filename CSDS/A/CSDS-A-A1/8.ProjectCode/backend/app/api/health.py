@@ -24,6 +24,7 @@ def health() -> dict[str, Any]:
 
     from app.ml.local_models import models_status
     from app.ml.retrieval.dense_index import vector_store_status
+    from app.services.gemini_client import model_health
     from app.services.ingestion import worker_status
 
     return {
@@ -37,6 +38,7 @@ def health() -> dict[str, Any]:
             "configured": settings.gemini_configured,
             "model": settings.gemini_model,
             "fallback_models": settings.gemini_fallback_models,
+            "availability": model_health() if settings.gemini_configured else {},
         },
         "embedding_provider": settings.embedding_provider,
         "languages": settings.supported_languages,

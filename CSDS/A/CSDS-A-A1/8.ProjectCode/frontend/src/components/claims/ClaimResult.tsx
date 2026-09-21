@@ -14,6 +14,8 @@ import { useToggleChecklist } from "@/lib/queries";
 import type { ClaimCase, ClauseRef } from "@/lib/types";
 import { cn, formatDate, formatINR, formatMs } from "@/lib/utils";
 
+const TAGS = /\s*\[C\d+(?:\s*[,;]\s*C?\d+)*\]/g;
+
 export function ClaimResultView({ claim }: { claim: ClaimCase }) {
   const r = claim.result;
   const meta = verdictMeta[r.verdict];
@@ -66,7 +68,9 @@ export function ClaimResultView({ claim }: { claim: ClaimCase }) {
           <CardContent className="space-y-3 pl-7">
             <p className="leading-relaxed">{r.verdict_summary}</p>
             {r.matched_specific_disease && (
-              <Badge variant="outline">Listed under the specific-disease waiting period as “{r.matched_specific_disease}”</Badge>
+              <Badge variant="outline" className="h-auto max-w-full whitespace-normal text-left">
+                Listed under the specific-disease waiting period as “{r.matched_specific_disease}”
+              </Badge>
             )}
             <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
               <FaithfulnessBadge faithfulness={r.faithfulness} />
@@ -88,7 +92,7 @@ export function ClaimResultView({ claim }: { claim: ClaimCase }) {
             <ul className="space-y-3">
               {r.reasons.map((reason, i) => (
                 <li key={i} className="space-y-1.5">
-                  <p className="text-sm leading-relaxed">{reason.text.replace(/\s*\[C\d+\]/g, "")}</p>
+                  <p className="text-sm leading-relaxed">{reason.text.replace(TAGS, "")}</p>
                   <div className="flex flex-wrap gap-1.5">{chips(reason.clauses)}</div>
                 </li>
               ))}
@@ -116,7 +120,7 @@ export function ClaimResultView({ claim }: { claim: ClaimCase }) {
                         {c.source === "rule" ? "Calculated" : "From policy text"}
                       </Badge>
                     </div>
-                    <p className="text-sm text-muted-foreground">{c.detail.replace(/\s*\[C\d+\]/g, "")}</p>
+                    <p className="text-sm text-muted-foreground">{c.detail.replace(TAGS, "")}</p>
                     <div className="flex flex-wrap gap-1.5">
                       {chips(c.clauses ?? (c.clause_ordinal ? [{ ordinal: c.clause_ordinal, page: c.page ?? null }] : []))}
                     </div>
@@ -174,7 +178,7 @@ export function ClaimResultView({ claim }: { claim: ClaimCase }) {
             )}
             <ul className="list-disc space-y-1.5 pl-5 text-sm text-muted-foreground">
               {r.cost_notes.map((n) => (
-                <li key={n}>{n.replace(/\s*\[C\d+\]/g, "")}</li>
+                <li key={n}>{n.replace(TAGS, "")}</li>
               ))}
             </ul>
           </CardContent>
@@ -208,7 +212,7 @@ export function ClaimResultView({ claim }: { claim: ClaimCase }) {
                     />
                     <label htmlFor={`doc-${d.id}`} className="min-w-0 flex-1 cursor-pointer space-y-1">
                       <span className={cn("block text-sm font-medium", checked && "text-muted-foreground line-through")}>{d.item}</span>
-                      <span className="block text-xs text-muted-foreground">{d.why.replace(/\s*\[C\d+\]/g, "")}</span>
+                      <span className="block text-xs text-muted-foreground">{d.why.replace(TAGS, "")}</span>
                       <span className="flex flex-wrap gap-1.5">{chips(d.clauses)}</span>
                     </label>
                   </li>
@@ -246,7 +250,7 @@ export function ClaimResultView({ claim }: { claim: ClaimCase }) {
                       </Badge>
                     )}
                   </div>
-                  <p className="mt-1 text-sm text-muted-foreground">{s.detail.replace(/\s*\[C\d+\]/g, "")}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">{s.detail.replace(TAGS, "")}</p>
                   <div className="mt-1.5 flex flex-wrap gap-1.5">{chips(s.clauses)}</div>
                 </motion.li>
               ))}

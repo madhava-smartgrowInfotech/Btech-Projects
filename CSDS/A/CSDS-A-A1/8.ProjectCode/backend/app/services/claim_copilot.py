@@ -17,12 +17,13 @@ from pydantic import BaseModel, Field
 from app.core.config import LANGUAGE_NAMES
 from app.core.logging import get_logger, log_event
 from app.ml.faithfulness import ClaimInput, score_claims
-from app.ml.retrieval.clause_cache import ClauseRecord
+from app.ml.retrieval.clause_cache import ClauseRecord, load_clauses
 from app.ml.retrieval.hybrid import retrieve
-from app.services.answerer import citation_for, format_clauses
+from app.services.answerer import citation_for, format_clauses, normalise_tags
 from app.services.eligibility import pre_checks
 from app.services.gemini_client import generate_json
 from app.services.language import to_english_query
+from app.services.text_match import token_overlap
 
 log = get_logger("claims")
 
@@ -45,6 +46,10 @@ Rules:
 class Reason(BaseModel):
     text: str = Field(description="Reason in the requested language, citing tags like [C12].")
     text_en: str = Field(description="The same reason in English.")
+    policy_fact_en: str = Field(description="Only the policy rule behind this reason, restated in English as close as "
+                                            "possible to the clause wording, WITHOUT the user's details (no dates, "
+                                            "ages or costs). Example: 'Joint replacement is excluded until the "
+                                            "expiry of 24 months of continuous coverage.'")
     clauses: list[str]
 
 
@@ -127,6 +132,14 @@ def run_claim_copilot(document_id: int, card: dict | None, treatment: str, input
     by_ordinal = {c.ordinal: c for c in clauses}
 
     computed = pre_checks(card, search_treatment, inputs)
+    # Every clause behind a calculated check goes to the model too, so it can cite it and we can verify it.
+    all_clauses = {c.ordinal: c for c in load_clauses(document_id)}
+    for check in computed["checks"]:
+        ordinal = check.get("clause_ordinal")
+        if ordinal and ordinal not in by_ordinal and ordinal in all_clauses:
+            by_ordinal[ordinal] = all_clauses[ordinal]
+            clauses.append(all_clauses[ordinal])
+    clauses.sort(key=lambda c: c.ordinal)
     labels = {
         "hospitalization_type": inputs.get("hospitalization_type"), "claim_mode": inputs.get("claim_mode"),
         "policy_start_date": inputs["policy_start_date"].isoformat()
@@ -160,26 +173,30 @@ def run_claim_copilot(document_id: int, card: dict | None, treatment: str, input
 
     checks = [dict(c, clauses=[{"ordinal": c["clause_ordinal"], "page": c.get("page")}]
                    if c.get("clause_ordinal") else []) for c in computed["checks"]]
-    seen = {c["check"].lower() for c in checks}
     for c in plan.prechecks:
-        if c.check.lower() not in seen:
-            checks.append({"check": c.check, "status": c.status, "detail": c.detail, "source": "ai",
-                           "clauses": cite(c.clauses)})
+        # Skip AI checks that restate a calculated one ("Initial 30-day waiting period" vs "Initial waiting period").
+        if any(token_overlap(c.check, existing["check"]) >= 0.5 for existing in checks):
+            continue
+        checks.append({"check": c.check, "status": c.status, "detail": c.detail, "source": "ai",
+                       "clauses": cite(c.clauses)})
 
-    claims = [ClaimInput(r.text_en, tags(r.clauses)) for r in plan.reasons]
+    claims = [ClaimInput(r.policy_fact_en or r.text_en, tags(r.clauses)) for r in plan.reasons]
     t = time.perf_counter()
     faithfulness = score_claims(claims, {o: c.text for o, c in by_ordinal.items()})
     faith_ms = round((time.perf_counter() - t) * 1000)
     cited_ordinals = sorted({o for r in plan.reasons for o in tags(r.clauses)}
                             | {o for s in plan.steps for o in tags(s.clauses)}
-                            | {o for d in plan.documents for o in tags(d.clauses)})
+                            | {o for d in plan.documents for o in tags(d.clauses)}
+                            | {c["clause_ordinal"] for c in computed["checks"]
+                               if c.get("clause_ordinal") in by_ordinal})
     total_ms = round((time.perf_counter() - t0) * 1000)
     result = {
         "verdict": verdict,
         "model_verdict": plan.verdict,
         "verdict_summary": plan.verdict_summary,
         "verdict_summary_en": plan.verdict_summary_en,
-        "reasons": [{"text": r.text, "text_en": r.text_en, "clauses": cite(r.clauses)} for r in plan.reasons],
+        "reasons": [{"text": normalise_tags(r.text), "text_en": r.text_en, "policy_fact_en": r.policy_fact_en,
+                     "clauses": cite(r.clauses)} for r in plan.reasons],
         "prechecks": checks,
         "documents": [{"id": f"d{i}", "item": d.item, "why": d.why, "clauses": cite(d.clauses)}
                       for i, d in enumerate(plan.documents)],

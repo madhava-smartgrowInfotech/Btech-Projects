@@ -97,7 +97,7 @@ export function PolicyCardView({ card, onOpenSource }: { card: PolicyCardRespons
                   <Target className="size-4 text-primary" />
                   <span className="text-xs font-medium text-muted-foreground">Suits:</span>
                   {summary.best_for.map((b) => (
-                    <Badge key={b} variant="outline" className="bg-background">
+                    <Badge key={b} variant="outline" className="h-auto max-w-full shrink whitespace-normal bg-background text-left">
                       {b}
                     </Badge>
                   ))}

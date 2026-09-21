@@ -56,8 +56,14 @@ def _windows(texts: Sequence[str], claim: str) -> list[str]:
     return windows[:MAX_WINDOWS]
 
 
+_DATE = re.compile(r"\b\d{4}-\d{2}-\d{2}\b|\b\d{1,2}[/-]\d{1,2}[/-]\d{2,4}\b")
+
+
 def _numbers(text: str) -> set[str]:
-    return {n.replace(",", "") for n in _NUMBER.findall(text)}
+    """Numbers that must be backed by the clause: dates and calendar years are the user's details, not policy facts."""
+    text = _DATE.sub(" ", text)
+    numbers = {n.replace(",", "") for n in _NUMBER.findall(text)}
+    return {n for n in numbers if not (len(n) == 4 and n.isdigit() and 1900 <= int(n) <= 2100)}
 
 
 def score_claims(claims: Sequence[ClaimInput], clause_texts: dict[int, str]) -> dict:

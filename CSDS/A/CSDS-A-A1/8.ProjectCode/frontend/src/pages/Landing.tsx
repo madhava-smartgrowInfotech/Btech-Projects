@@ -262,13 +262,14 @@ export default function Landing() {
         </div>
       </header>
 
-      <section className="relative overflow-hidden pb-20 pt-28 sm:pt-32">
+      <section className="relative isolate overflow-hidden pb-20 pt-28 sm:pt-32">
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-teal-50 via-background to-background dark:from-teal-950/40" />
         <Aurora
-          className="absolute inset-x-0 top-0 -z-10 h-[520px] opacity-70 dark:opacity-60"
+          className="absolute inset-x-0 top-0 -z-10 h-[520px] opacity-80 dark:opacity-60"
           colorStops={resolvedTheme === "dark" ? ["#0f766e", "#14b8a6", "#0369a1"] : ["#5eead4", "#99f6e4", "#7dd3fc"]}
           amplitude={0.9}
           blend={0.55}
+          lightSurface={resolvedTheme !== "dark"}
         />
         <div className="bg-grid absolute inset-0 -z-10 opacity-40 [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-[1.1fr_1fr]">

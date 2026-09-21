@@ -70,10 +70,16 @@ export function PdfPageViewer({
     ordinal === null ? [] : ((clauses.data ?? []).find((c) => c.ordinal === ordinal)?.bboxes ?? []).filter((b) => b.page === page);
 
   useEffect(() => {
-    // Bring the highlighted clause into view.
-    const el = frameRef.current?.querySelector("[data-highlight='selected']");
-    if (el) el.scrollIntoView({ block: "center", behavior: "smooth" });
-  }, [selectedOrdinal, page, image.data]);
+    // Bring the highlighted clause into view once the page image and clause boxes are both on screen.
+    const timer = window.setTimeout(() => {
+      const frame = frameRef.current;
+      const el = frame?.querySelector<HTMLElement>("[data-highlight='selected']");
+      if (!frame || !el) return;
+      const top = el.getBoundingClientRect().top - frame.getBoundingClientRect().top + frame.scrollTop;
+      frame.scrollTo({ top: Math.max(0, top - frame.clientHeight / 3), behavior: "smooth" });
+    }, 120);
+    return () => window.clearTimeout(timer);
+  }, [selectedOrdinal, page, image.data, clauses.data]);
 
   function onImageClick(e: MouseEvent<HTMLDivElement>) {
     if (!info) return;

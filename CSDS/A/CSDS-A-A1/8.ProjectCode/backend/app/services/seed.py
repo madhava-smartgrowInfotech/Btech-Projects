@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 from pathlib import Path
 from typing import Any
 
@@ -150,10 +151,28 @@ def sample_document_ids() -> list[int]:
         return list(db.scalars(select(Document.id).where(Document.is_sample.is_(True)).order_by(Document.id)))
 
 
+_INSURER_TAILS = [re.compile(rf"\s+{tail}\b.*$", re.I) for tail in
+                  ("and allied", "general insurance", "health insurance", "insurance", "company", "limited", "ltd")]
+_PRODUCT_TAIL = re.compile(r"\s+(insurance plan|insurance policy|health insurance policy|policy)$", re.I)
+
+
+def short_insurer(name: str | None) -> str | None:
+    """'Star Health and Allied Insurance Company Limited' -> 'Star Health' (keeps at least two words)."""
+    if not name:
+        return None
+    for tail in _INSURER_TAILS:
+        short = tail.sub("", name.strip()).strip(" ,-")
+        if short != name.strip() and len(short.split()) >= 2:
+            return short
+    return name.strip()
+
+
 def sample_display_name(doc: Document) -> str:
-    if doc.product_name and doc.insurer:
-        return f"{doc.product_name} ({doc.insurer})"
-    return doc.product_name or doc.file_name.rsplit(".", 1)[0].replace("-", " ").title()
+    product = _PRODUCT_TAIL.sub("", (doc.product_name or "").strip()).strip()
+    insurer = short_insurer(doc.insurer)
+    if product and insurer and insurer.lower() not in product.lower():
+        return f"{product} ({insurer})"
+    return product or doc.file_name.rsplit(".", 1)[0].replace("-", " ").title()
 
 
 def add_samples_to_library(user_id: int) -> list[int]:

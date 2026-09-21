@@ -29,6 +29,12 @@ log = get_logger("answerer")
 ABSTAIN_BELOW = 0.004
 TOP_K = 7
 _TAG = re.compile(r"\[C(\d+)\]")
+_MULTI_TAG = re.compile(r"\[\s*(C\s*\d+(?:\s*[,;/&]\s*(?:C\s*)?\d+)+)\s*\]")
+
+
+def normalise_tags(text: str) -> str:
+    """'[C15, C111]' -> '[C15][C111]' so every citation renders as its own chip."""
+    return _MULTI_TAG.sub(lambda m: "".join(f"[C{n}]" for n in re.findall(r"\d+", m.group(1))), text or "")
 
 NOT_IN_POLICY = {
     "en": "This isn't covered in this policy document - I couldn't find any clause about it. "
@@ -44,15 +50,16 @@ SYSTEM = """You are PolicyLens, an assistant that explains ONE health-insurance 
 Strict rules:
 1. Answer ONLY from the numbered policy clauses provided. Never use outside knowledge, typical market terms or
    assumptions about "most policies".
-2. Cite the clause tag, e.g. [C12], right after every statement it supports. Only use tags that appear in the
-   provided clauses.
+2. Cite the clause tag, e.g. [C12], right after every statement it supports - one tag per bracket, like
+   [C12][C15]. Only use tags that appear in the provided clauses.
 3. If the clauses do not answer the question, set status="not_in_policy" and say plainly that this policy
    document does not cover it. If they answer only part of it, set status="partial" and say what is missing.
 4. Be concrete: amounts, percentages, waiting periods, conditions, exceptions. Mention important conditions
    (waiting periods, sub-limits, co-payment) that change the answer.
 5. Write the "answer" in the requested language, in simple words, with short paragraphs or bullets (Markdown).
    Keep clause tags like [C12] unchanged. Write "answer_en" as the same answer in English.
-6. "claims" lists each factual statement of answer_en separately (in English), with the clause tags supporting it.
+6. "claims" lists each factual statement of answer_en separately (in English), restated as close as possible to
+   the clause wording, with the clause tags supporting it.
 """
 
 
@@ -168,6 +175,7 @@ def answer_question(document_id: int, question: str, language: str = "en",
 
     # Keep only citations to clauses we actually retrieved.
     def clean(text: str) -> str:
+        text = normalise_tags(text)
         return _TAG.sub(lambda m: m.group(0) if int(m.group(1)) in by_ordinal else "", text).replace("  ", " ")
 
     answer, answer_en = clean(out.answer), clean(out.answer_en)

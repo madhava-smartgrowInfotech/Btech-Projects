@@ -24,9 +24,10 @@ function highlight(text: string, query: string) {
     .split(/\W+/)
     .filter((w) => w.length > 3);
   if (!words.length) return text;
-  const re = new RegExp(`(${words.map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|")})`, "gi");
+  const escaped = words.map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|");
+  const re = new RegExp(`(\\b(?:${escaped})\\w*)`, "gi");
   return text.split(re).map((part, i) =>
-    words.includes(part.toLowerCase()) ? (
+    words.some((w) => part.toLowerCase().startsWith(w)) && re.test(part) ? (
       <mark key={i} className="rounded bg-amber-200/60 px-0.5 text-inherit dark:bg-amber-400/25">
         {part}
       </mark>

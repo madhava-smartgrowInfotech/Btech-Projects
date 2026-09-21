@@ -26,13 +26,19 @@ log = get_logger("app")
 
 
 def _warm_up() -> None:
-    """Load the local models in the background so the first question is fast."""
+    """Load the local models and check which Gemini model is answering, in the background."""
     try:
         from app.ml.local_models import warm_up
 
         warm_up()
     except Exception as exc:  # noqa: BLE001
         log_event(log, "warm_up_failed", error=str(exc))
+    try:
+        from app.services.gemini_client import probe_models
+
+        probe_models()
+    except Exception as exc:  # noqa: BLE001
+        log_event(log, "model_probe_failed", error=str(exc))
 
 
 @asynccontextmanager

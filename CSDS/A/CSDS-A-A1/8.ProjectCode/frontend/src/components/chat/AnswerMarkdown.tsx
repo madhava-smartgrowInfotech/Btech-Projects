@@ -16,25 +16,27 @@ export function AnswerMarkdown({
   const numberOf = new Map(citations.map((c, i) => [c.ordinal, i + 1]));
 
   function inline(line: string, key: string): ReactNode[] {
-    const parts = line.split(/(\*\*[^*]+\*\*|\[C\d+\])/g).filter(Boolean);
+    const parts = line.split(/(\*\*[^*]+\*\*|\[C\d+(?:\s*[,;]\s*C?\d+)*\])/g).filter(Boolean);
     return parts.map((part, i) => {
       const k = `${key}-${i}`;
-      const cite = part.match(/^\[C(\d+)\]$/);
-      if (cite) {
-        const c = byOrdinal.get(Number(cite[1]));
-        if (!c) return null;
-        return (
-          <button
-            key={k}
-            type="button"
-            onClick={() => onCite(c)}
-            className="mx-0.5 inline-flex h-5 min-w-5 -translate-y-px items-center justify-center rounded-md bg-primary/10 px-1 align-middle text-[11px] font-semibold text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
-            aria-label={`Source ${numberOf.get(c.ordinal)}: ${c.label}, page ${c.page}`}
-            title={`${c.label} · page ${c.page}`}
-          >
-            {numberOf.get(c.ordinal)}
-          </button>
-        );
+      if (/^\[C\d+/.test(part)) {
+        const ordinals = (part.match(/\d+/g) ?? []).map(Number);
+        return ordinals.map((ordinal) => {
+          const c = byOrdinal.get(ordinal);
+          if (!c) return null;
+          return (
+            <button
+              key={`${k}-${ordinal}`}
+              type="button"
+              onClick={() => onCite(c)}
+              className="mx-0.5 inline-flex h-5 min-w-5 -translate-y-px items-center justify-center rounded-md bg-primary/10 px-1 align-middle text-[11px] font-semibold text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
+              aria-label={`Source ${numberOf.get(c.ordinal)}: ${c.label}, page ${c.page}`}
+              title={`${c.label} · page ${c.page}`}
+            >
+              {numberOf.get(c.ordinal)}
+            </button>
+          );
+        });
       }
       if (part.startsWith("**") && part.endsWith("**")) return <strong key={k}>{part.slice(2, -2)}</strong>;
       return <Fragment key={k}>{part}</Fragment>;

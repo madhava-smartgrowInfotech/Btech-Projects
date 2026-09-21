@@ -20,6 +20,7 @@ uniform float uAmplitude;
 uniform vec3 uColorStops[3];
 uniform vec2 uResolution;
 uniform float uBlend;
+uniform float uLight;
 
 out vec4 fragColor;
 
@@ -107,7 +108,11 @@ void main() {
 
   vec3 auroraColor = intensity * rampColor;
 
-  fragColor = vec4(auroraColor * auroraAlpha, auroraAlpha);
+  // Dark surfaces: the classic glow. Light surfaces: a pastel wash (no darkening), premultiplied alpha.
+  vec4 glow = vec4(auroraColor * auroraAlpha, auroraAlpha);
+  float washAlpha = auroraAlpha * 0.55;
+  vec4 wash = vec4(rampColor * washAlpha, washAlpha);
+  fragColor = mix(glow, wash, uLight);
 }
 `;
 
@@ -116,6 +121,7 @@ interface AuroraProps {
   amplitude?: number;
   blend?: number;
   speed?: number;
+  lightSurface?: boolean;
   className?: string;
 }
 
@@ -124,6 +130,7 @@ export default function Aurora({
   amplitude = 1.0,
   blend = 0.5,
   speed = 0.6,
+  lightSurface = false,
   className,
 }: AuroraProps) {
   const ref = useRef<HTMLDivElement>(null);
@@ -162,6 +169,7 @@ export default function Aurora({
         uColorStops: { value: stops },
         uResolution: { value: [container.offsetWidth, container.offsetHeight] },
         uBlend: { value: blend },
+        uLight: { value: lightSurface ? 1 : 0 },
       },
     });
     const mesh = new Mesh(gl, { geometry, program });
@@ -192,7 +200,7 @@ export default function Aurora({
       if (gl.canvas.parentNode === container) container.removeChild(gl.canvas);
       gl.getExtension("WEBGL_lose_context")?.loseContext();
     };
-  }, [amplitude, blend, speed, stopsKey]);
+  }, [amplitude, blend, speed, stopsKey, lightSurface]);
 
   return <div ref={ref} className={className} aria-hidden="true" />;
 }

@@ -5,6 +5,7 @@ also given to the model so its verdict stays consistent with them.
 
 from __future__ import annotations
 
+import re
 from datetime import date
 from typing import Any
 
@@ -32,6 +33,31 @@ def _months(item: dict | None) -> float | None:
 def _src(item: dict | None) -> dict[str, Any]:
     item = item or {}
     return {"clause_ordinal": item.get("clause_ordinal"), "page": item.get("page")}
+
+
+_OPTIONAL = re.compile(r"\b(voluntary|optional|opted|if opted|chosen|opt for)\b", re.I)
+_ZONE = re.compile(r"\b(zone|tier|city|non-?network|network hospital|annexure|listed hospitals?)\b", re.I)
+_AGE_THRESHOLD = re.compile(r"(?:age|aged)[^0-9%]{0,60}?(\d{2})\s*(?:years|yrs)?|(\d{2})\s*(?:years|yrs)(?:\s*of age)?"
+                            r"\s*(?:and|or)\s*(?:above|older|more)", re.I)
+
+
+def copay_applies(wording: str, age: int | None) -> tuple[bool | None, str]:
+    """Does a co-payment described by ``wording`` apply to this claim? (True/False/None=unknown, reason)."""
+    text = wording or ""
+    if _OPTIONAL.search(text):
+        return None, "only if this option is chosen in your policy schedule"
+    match = _AGE_THRESHOLD.search(text) if re.search(r"\bage", text, re.I) else None
+    if match:
+        threshold = int(match.group(1) or match.group(2))
+        if 18 <= threshold <= 99:
+            if age is None:
+                return None, f"applies if the insured person's age (at entry) is {threshold} or above"
+            if age >= threshold:
+                return True, f"age {age} is {threshold} or above"
+            return False, f"it applies from age {threshold} and the patient is {age}"
+    if _ZONE.search(text):
+        return None, "depends on the hospital or city where treatment is taken"
+    return True, "applies to every claim"
 
 
 def treatment_matches(treatment: str, names: list[str]) -> str | None:
@@ -110,24 +136,33 @@ def pre_checks(card: dict[str, Any] | None, treatment: str, inputs: dict[str, An
             facts.append(f"Sub-limit for {sub.get('name')}: {sub.get('value')}.")
             break
 
-    copay = card.get("co_payment") or {}
-    copay_pct = copay.get("number") if copay.get("found") and copay.get("unit") == "percent" else None
     age = inputs.get("insured_age")
-    for cond in card.get("co_payment_conditions") or []:
-        name = (cond.get("name") or "").lower()
-        if cond.get("found") and age and "age" in name and cond.get("unit") == "percent":
-            digits = [int(d) for d in "".join(ch if ch.isdigit() else " " for ch in name).split()]
-            if digits and age >= min(digits):
-                copay_pct = max(copay_pct or 0, cond.get("number") or 0)
-                checks.append({"check": "Age-based co-payment", "status": "warning",
-                               "detail": f"{cond.get('value')} may apply at age {age}.", "source": "rule",
-                               **_src(cond)})
-    if copay_pct:
-        facts.append(f"Co-payment: {copay_pct:g}% of the admissible amount.")
-        if not any(c["check"] == "Age-based co-payment" for c in checks):
+    copay_pct: float | None = None
+    copay_notes: list[str] = []
+    candidates = [card.get("co_payment") or {}, *(card.get("co_payment_conditions") or [])]
+    seen_pcts: set[float] = set()
+    for item in candidates:
+        if not item.get("found") or item.get("unit") != "percent" or not isinstance(item.get("number"), (int, float)):
+            continue
+        pct = float(item["number"])
+        wording = f"{item.get('name') or ''} {item.get('value') or ''}"
+        applies, why = copay_applies(wording, age)
+        if pct in seen_pcts:
+            continue  # the same percentage stated twice (general field and condition list)
+        seen_pcts.add(pct)
+        if applies is True:
+            copay_pct = max(copay_pct or 0.0, pct)
             checks.append({"check": "Co-payment", "status": "warning",
-                           "detail": f"You pay {copay_pct:g}% of each admissible claim.", "source": "rule",
-                           **_src(copay)})
+                           "detail": f"You pay {pct:g}% of the admissible amount ({item.get('value')}).",
+                           "source": "rule", **_src(item)})
+            facts.append(f"Co-payment that applies to this claim: {pct:g}% ({item.get('value')}).")
+        elif applies is None:
+            checks.append({"check": f"Possible {pct:g}% co-payment", "status": "unknown",
+                           "detail": f"{item.get('value')} - {why}.", "source": "rule", **_src(item)})
+            facts.append(f"A {pct:g}% co-payment may apply ({item.get('value')}); {why}.")
+            copay_notes.append(f"A {pct:g}% co-payment may also apply ({why}).")
+        else:
+            facts.append(f"The {pct:g}% co-payment ({item.get('value')}) does not apply here: {why}.")
 
     room_type = inputs.get("room_type")
     room = card.get("room_rent_limit") or {}
@@ -156,8 +191,8 @@ def pre_checks(card: dict[str, Any] | None, treatment: str, inputs: dict[str, An
             "co_payment_amount": round(copay_amount),
             "insurer_pays": round(payable),
             "you_pay": round(float(cost) - payable),
-            "notes": [n for n in [cap_note, "Estimate before non-payable items (consumables, registration "
-                                  "charges) and before any room-rent proportionate deduction."] if n],
+            "notes": [n for n in [cap_note, *copay_notes, "Estimate before non-payable items (consumables, "
+                                  "registration charges) and before any room-rent proportionate deduction."] if n],
         }
         facts.append(f"Estimated split for Rs. {cost:,.0f}: insurer about Rs. {estimate['insurer_pays']:,}, "
                      f"you about Rs. {estimate['you_pay']:,}.")

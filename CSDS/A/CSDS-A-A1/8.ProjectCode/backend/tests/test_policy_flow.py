@@ -128,7 +128,8 @@ def test_claim_copilot_flow(client, auth_headers, uploaded, monkeypatch):
             verdict="covered", verdict_summary="Covered after the waiting period.",
             verdict_summary_en="Covered after the waiting period.",
             reasons=[{"text": f"Cataract has a 24 month wait [{tag}]", "text_en": "Cataract has a 24 month wait",
-                      "clauses": [tag]}],
+                      "policy_fact_en": "Treatment of cataract is excluded until the expiry of 24 months of "
+                                        "continuous coverage.", "clauses": [tag]}],
             prechecks=[], documents=[{"item": "Discharge summary", "why": "Required for every claim", "clauses": []}],
             steps=[{"title": "Inform the insurer", "detail": "Within 24 hours of emergency admission",
                     "timeline": "24 hours", "clauses": [tag]}],

@@ -35,7 +35,7 @@ _recent_calls: deque[float] = deque()
 _cooldown: dict[str, float] = {}
 _thinking_unsupported: set[tuple[str, str]] = set()
 
-COOLDOWN_SECONDS = 180
+COOLDOWN_SECONDS = 600
 
 
 @dataclass
@@ -130,6 +130,50 @@ def _classify_error(exc: Exception) -> tuple[str, str]:
     if exc.__class__.__name__ in ("ReadTimeout", "ConnectTimeout", "TimeoutException", "ConnectError"):
         return "retry", message or "timeout"
     return "fatal", message
+
+
+class _Ping(BaseModel):
+    ok: bool
+
+
+def probe_models() -> dict[str, str]:
+    """Send one tiny request to each model in the chain (background, at startup).
+
+    Overloaded models are put in cool-down right away, so the first real question does not wait
+    on them. Stops at the first model that answers.
+    """
+    from google.genai import types
+
+    status: dict[str, str] = {}
+    if not get_settings().gemini_configured:
+        return status
+    client = get_client()
+    for model in model_chain():
+        start = time.perf_counter()
+        try:
+            client.models.generate_content(
+                model=model, contents="Reply with ok=true.",
+                config=types.GenerateContentConfig(
+                    temperature=0, response_mime_type="application/json", response_schema=_Ping,
+                    automatic_function_calling=types.AutomaticFunctionCallingConfig(disable=True),
+                    thinking_config=types.ThinkingConfig(thinking_level="low"),
+                ),
+            )
+            status[model] = f"ok ({round((time.perf_counter() - start) * 1000)} ms)"
+            _cooldown.pop(model, None)
+            break
+        except Exception as exc:  # noqa: BLE001
+            kind, message = _classify_error(exc)
+            status[model] = f"{kind}: {message[:80]}"
+            if kind != "fatal":
+                _cooldown[model] = time.time() + COOLDOWN_SECONDS
+    log_event(log, "model_probe", **{m.replace("-", "_").replace(".", "_"): s for m, s in status.items()})
+    return status
+
+
+def model_health() -> dict[str, object]:
+    now = time.time()
+    return {m: ("cooling down" if _cooldown.get(m, 0) > now else "available") for m in model_chain()}
 
 
 def generate_json(
@@ -237,10 +281,11 @@ def generate_json(
             _record(purpose, None, user_id, ok=False, error=last_error[1], model=model)
             if last_error[0] == "fatal":
                 raise LLMUnavailable(f"The AI service rejected the request: {last_error[1][:200]}")
-            if attempt == 1 and last_error[0] == "retry":
-                time.sleep(2.0)
+            overloaded = "high demand" in last_error[1].lower() or "overloaded" in last_error[1].lower()
+            if attempt == 1 and last_error[0] == "retry" and not overloaded:
+                time.sleep(2.0)  # a network blip or timeout: one quick retry on the same model
                 continue
-            break
+            break  # overloaded or out of quota: move straight to the next model
         _cooldown[model] = time.time() + COOLDOWN_SECONDS
 
     if last_error[0] == "quota":

@@ -1,0 +1,33 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Node / frontend build
+node_modules/
+dist/
+
+# Secrets
+.env
+
+# Downloaded pre-trained model weights (re-created by setup.bat; see models/manifest.json)
+models/hf/
+
+# Runtime state (re-created by setup.bat from the committed data/processed/)
+data/app.db
+data/app.db-*
+data/chroma/
+data/uploads/
+data/pages/
+logs/
+
+# Editors / OS
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
+
+# Local AI response cache (re-created on demand)
+data/cache/

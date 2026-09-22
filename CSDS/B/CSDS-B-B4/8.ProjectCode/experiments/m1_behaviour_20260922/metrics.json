@@ -1,0 +1,335 @@
+{
+  "run": "m1_behaviour_20260922",
+  "family": "behaviour",
+  "created_at": "2026-09-22T11:13:19+00:00",
+  "duration_seconds": 508.3,
+  "seed": 42,
+  "model": "M1 behaviour fraud model",
+  "deployed": "XGBoost",
+  "version": "m1-xgb-20260922",
+  "dataset": {
+    "name": "Digital Payment Fraud Detection Benchmark (Kaggle, CC0-1.0)",
+    "split": "time-based: fit 2023-01-01..2023-08-31, validation 2023-09, test 2023-10-01..2023-12-30 (provided test file)",
+    "rows": {
+      "fit": 267224,
+      "validation": 32889,
+      "test": 99887
+    },
+    "fraud_rate": {
+      "fit": 0.01589,
+      "validation": 0.019,
+      "test": 0.01985
+    },
+    "gps_masked_share_in_training": 0.5
+  },
+  "features": [
+    "log_amount",
+    "amount_deviation_from_user_mean",
+    "avg_monthly_spend",
+    "account_age_days",
+    "txn_count_1h",
+    "txn_count_24h",
+    "failed_txn_count_24h",
+    "geo_distance_from_last_txn",
+    "merchant_risk_score",
+    "is_international",
+    "hour_sin",
+    "hour_cos",
+    "device_mobile",
+    "device_desktop",
+    "device_tablet"
+  ],
+  "excluded_features": {
+    "post_auth_risk_score": "target leakage",
+    "ip_risk_score": "not observable in the sandbox",
+    "credit_score_band": "not observable in the sandbox",
+    "kyc_level": "not observable in the sandbox",
+    "payment_channel": "not observable in the sandbox"
+  },
+  "threshold_rule": "maximum F1 on the validation month",
+  "models": {
+    "Logistic Regression": {
+      "validation": {
+        "n": 32889,
+        "positives": 625,
+        "prevalence": 0.019,
+        "threshold": 0.13427,
+        "precision": 0.4255,
+        "recall": 0.3472,
+        "f1": 0.3824,
+        "pr_auc": 0.327,
+        "roc_auc": 0.8482,
+        "confusion": {
+          "tn": 31971,
+          "fp": 293,
+          "fn": 408,
+          "tp": 217
+        }
+      },
+      "test": {
+        "n": 99887,
+        "positives": 1983,
+        "prevalence": 0.01985,
+        "threshold": 0.13427,
+        "precision": 0.4426,
+        "recall": 0.352,
+        "f1": 0.3921,
+        "pr_auc": 0.3563,
+        "roc_auc": 0.8421,
+        "confusion": {
+          "tn": 97025,
+          "fp": 879,
+          "fn": 1285,
+          "tp": 698
+        }
+      },
+      "test_without_gps": {
+        "n": 99887,
+        "positives": 1983,
+        "prevalence": 0.01985,
+        "threshold": 0.13427,
+        "precision": 0.4338,
+        "recall": 0.3666,
+        "f1": 0.3974,
+        "pr_auc": 0.3566,
+        "roc_auc": 0.8421,
+        "confusion": {
+          "tn": 96955,
+          "fp": 949,
+          "fn": 1256,
+          "tp": 727
+        }
+      }
+    },
+    "Random Forest": {
+      "validation": {
+        "n": 32889,
+        "positives": 625,
+        "prevalence": 0.019,
+        "threshold": 0.12444,
+        "precision": 0.3583,
+        "recall": 0.3744,
+        "f1": 0.3662,
+        "pr_auc": 0.2997,
+        "roc_auc": 0.8289,
+        "confusion": {
+          "tn": 31845,
+          "fp": 419,
+          "fn": 391,
+          "tp": 234
+        }
+      },
+      "test": {
+        "n": 99887,
+        "positives": 1983,
+        "prevalence": 0.01985,
+        "threshold": 0.12444,
+        "precision": 0.3836,
+        "recall": 0.3888,
+        "f1": 0.3862,
+        "pr_auc": 0.3294,
+        "roc_auc": 0.8239,
+        "confusion": {
+          "tn": 96665,
+          "fp": 1239,
+          "fn": 1212,
+          "tp": 771
+        }
+      },
+      "test_without_gps": {
+        "n": 99887,
+        "positives": 1983,
+        "prevalence": 0.01985,
+        "threshold": 0.12444,
+        "precision": 0.3872,
+        "recall": 0.3833,
+        "f1": 0.3852,
+        "pr_auc": 0.3314,
+        "roc_auc": 0.8262,
+        "confusion": {
+          "tn": 96701,
+          "fp": 1203,
+          "fn": 1223,
+          "tp": 760
+        }
+      }
+    },
+    "XGBoost": {
+      "validation": {
+        "n": 32889,
+        "positives": 625,
+        "prevalence": 0.019,
+        "threshold": 0.14831,
+        "precision": 0.4409,
+        "recall": 0.328,
+        "f1": 0.3761,
+        "pr_auc": 0.3242,
+        "roc_auc": 0.8482,
+        "confusion": {
+          "tn": 32004,
+          "fp": 260,
+          "fn": 420,
+          "tp": 205
+        }
+      },
+      "test": {
+        "n": 99887,
+        "positives": 1983,
+        "prevalence": 0.01985,
+        "threshold": 0.14831,
+        "precision": 0.4546,
+        "recall": 0.3459,
+        "f1": 0.3929,
+        "pr_auc": 0.3504,
+        "roc_auc": 0.8439,
+        "confusion": {
+          "tn": 97081,
+          "fp": 823,
+          "fn": 1297,
+          "tp": 686
+        }
+      },
+      "test_without_gps": {
+        "n": 99887,
+        "positives": 1983,
+        "prevalence": 0.01985,
+        "threshold": 0.14831,
+        "precision": 0.4526,
+        "recall": 0.354,
+        "f1": 0.3973,
+        "pr_auc": 0.3534,
+        "roc_auc": 0.8451,
+        "confusion": {
+          "tn": 97055,
+          "fp": 849,
+          "fn": 1281,
+          "tp": 702
+        }
+      }
+    },
+    "Contrastive + attention": {
+      "validation": {
+        "n": 32889,
+        "positives": 625,
+        "prevalence": 0.019,
+        "threshold": 0.78824,
+        "precision": 0.3851,
+        "recall": 0.3568,
+        "f1": 0.3704,
+        "pr_auc": 0.3209,
+        "roc_auc": 0.8499,
+        "confusion": {
+          "tn": 31908,
+          "fp": 356,
+          "fn": 402,
+          "tp": 223
+        }
+      },
+      "test": {
+        "n": 99887,
+        "positives": 1983,
+        "prevalence": 0.01985,
+        "threshold": 0.78824,
+        "precision": 0.4194,
+        "recall": 0.3661,
+        "f1": 0.391,
+        "pr_auc": 0.3469,
+        "roc_auc": 0.8429,
+        "confusion": {
+          "tn": 96899,
+          "fp": 1005,
+          "fn": 1257,
+          "tp": 726
+        }
+      },
+      "test_without_gps": {
+        "n": 99887,
+        "positives": 1983,
+        "prevalence": 0.01985,
+        "threshold": 0.78824,
+        "precision": 0.38,
+        "recall": 0.3954,
+        "f1": 0.3875,
+        "pr_auc": 0.3482,
+        "roc_auc": 0.8432,
+        "confusion": {
+          "tn": 96625,
+          "fp": 1279,
+          "fn": 1199,
+          "tp": 784
+        }
+      }
+    }
+  },
+  "full_feature_reference": {
+    "features": [
+      "account_age_days",
+      "credit_score_band",
+      "kyc_level",
+      "avg_monthly_spend",
+      "merchant_risk_score",
+      "transaction_amount",
+      "payment_channel",
+      "device_type",
+      "is_international",
+      "ip_risk_score",
+      "txn_count_1h",
+      "txn_count_24h",
+      "failed_txn_count_24h",
+      "geo_distance_from_last_txn",
+      "amount_deviation_from_user_mean"
+    ],
+    "test": {
+      "n": 99887,
+      "positives": 1983,
+      "prevalence": 0.01985,
+      "threshold": 0.14867,
+      "precision": 0.4537,
+      "recall": 0.356,
+      "f1": 0.399,
+      "pr_auc": 0.3554,
+      "roc_auc": 0.8456,
+      "confusion": {
+        "tn": 97054,
+        "fp": 850,
+        "fn": 1277,
+        "tp": 706
+      }
+    }
+  },
+  "pr_auc_by_month": {
+    "2023-09": 0.3242,
+    "2023-10": 0.3383,
+    "2023-11": 0.3691,
+    "2023-12": 0.3446
+  },
+  "drift_check": {
+    "trained_on": "2023-01 to 2023-05",
+    "pr_auc_june_before_drift": 0.2998,
+    "pr_auc_jul_sep_after_drift": 0.3092
+  },
+  "shap_mean_abs": {
+    "Payment amount": 0.060689475387334824,
+    "Amount compared with your daily spending": 0.016491767019033432,
+    "Your usual monthly spending": 0.039722200483083725,
+    "Age of your account": 0.018461192026734352,
+    "Payments in the last hour": 0.022882897406816483,
+    "Payments in the last 24 hours": 0.825581431388855,
+    "Failed attempts in the last 24 hours": 0.2437858283519745,
+    "Distance from your last payment location": 0.03341859579086304,
+    "Receiver risk": 0.06552629917860031,
+    "International payment": 0.09999306499958038,
+    "Time of day": 0.04615124315023422,
+    "Device type": 0.004278404172509909
+  },
+  "xgboost_best_iteration": 272,
+  "plots": [
+    "pr_curve.png",
+    "roc_curve.png",
+    "confusion_matrix.png",
+    "calibration.png",
+    "shap_importance.png",
+    "shap_summary.png",
+    "pr_auc_by_month.png"
+  ]
+}

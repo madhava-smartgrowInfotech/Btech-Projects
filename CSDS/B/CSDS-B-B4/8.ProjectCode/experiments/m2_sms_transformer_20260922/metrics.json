@@ -1,0 +1,111 @@
+{
+  "run": "m2_sms_transformer_20260922",
+  "family": "sms_comparison",
+  "created_at": "2026-09-22T10:52:17+00:00",
+  "duration_seconds": 92.4,
+  "seed": 42,
+  "model": "M2 comparison: small multilingual transformer vs TF-IDF",
+  "transformer": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "method": "frozen mean-pooled sentence embeddings (normalised) + logistic regression head",
+  "dataset": {
+    "split": "identical to ml/train_sms.py",
+    "rows": {
+      "train": 3444,
+      "validation": 889,
+      "test": 1640
+    }
+  },
+  "models": {
+    "MiniLM embeddings + LR": {
+      "validation": {
+        "n": 889,
+        "positives": 187,
+        "prevalence": 0.21035,
+        "threshold": 0.78514,
+        "precision": 0.9833,
+        "recall": 0.9465,
+        "f1": 0.9646,
+        "pr_auc": 0.9906,
+        "roc_auc": 0.9959,
+        "confusion": {
+          "tn": 699,
+          "fp": 3,
+          "fn": 10,
+          "tp": 177
+        }
+      },
+      "test": {
+        "n": 1640,
+        "positives": 381,
+        "prevalence": 0.23232,
+        "threshold": 0.78514,
+        "precision": 0.8817,
+        "recall": 0.8609,
+        "f1": 0.8712,
+        "pr_auc": 0.955,
+        "roc_auc": 0.9847,
+        "confusion": {
+          "tn": 1215,
+          "fp": 44,
+          "fn": 53,
+          "tp": 328
+        }
+      }
+    },
+    "TF-IDF + LR (deployed)": {
+      "validation": {
+        "n": 889,
+        "positives": 187,
+        "prevalence": 0.21035,
+        "threshold": 0.6217,
+        "precision": 1.0,
+        "recall": 0.9626,
+        "f1": 0.9809,
+        "pr_auc": 0.991,
+        "roc_auc": 0.9959,
+        "confusion": {
+          "tn": 702,
+          "fp": 0,
+          "fn": 7,
+          "tp": 180
+        }
+      },
+      "test": {
+        "n": 1640,
+        "positives": 381,
+        "prevalence": 0.23232,
+        "threshold": 0.6217,
+        "precision": 0.9649,
+        "recall": 0.937,
+        "f1": 0.9507,
+        "pr_auc": 0.9888,
+        "roc_auc": 0.996,
+        "confusion": {
+          "tn": 1246,
+          "fp": 13,
+          "fn": 24,
+          "tp": 357
+        }
+      }
+    }
+  },
+  "f1_by_language": {
+    "indian_en": {
+      "MiniLM embeddings + LR": 0.7947,
+      "TF-IDF + LR (deployed)": 0.9333
+    },
+    "indian_hi": {
+      "MiniLM embeddings + LR": 0.7571,
+      "TF-IDF + LR (deployed)": 0.9542
+    },
+    "indian_te": {
+      "MiniLM embeddings + LR": 0.9281,
+      "TF-IDF + LR (deployed)": 0.9496
+    }
+  },
+  "decision": "transformer does not clearly beat TF-IDF (PR-AUC difference -0.0338); TF-IDF stays deployed because it is faster, fully offline and gives word-level highlights",
+  "plots": [
+    "pr_curve.png",
+    "roc_curve.png"
+  ]
+}

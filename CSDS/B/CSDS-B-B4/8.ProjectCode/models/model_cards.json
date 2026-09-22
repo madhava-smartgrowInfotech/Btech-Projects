@@ -1,0 +1,18 @@
+{
+  "profile": {
+    "run": "m0_upi2024_20260922",
+    "metrics_file": "experiments/m0_upi2024_20260922/metrics.json"
+  },
+  "behaviour": {
+    "run": "m1_behaviour_20260922",
+    "metrics_file": "experiments/m1_behaviour_20260922/metrics.json"
+  },
+  "sms": {
+    "run": "m2_sms_transformer_20260922",
+    "metrics_file": "experiments/m2_sms_transformer_20260922/metrics.json"
+  },
+  "risk": {
+    "run": "m3_risk_20260922",
+    "metrics_file": "experiments/m3_risk_20260922/metrics.json"
+  }
+}

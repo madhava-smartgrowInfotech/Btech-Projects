@@ -1,0 +1,339 @@
+{
+  "run": "m3_risk_20260922",
+  "family": "risk",
+  "created_at": "2026-09-22T11:20:44+00:00",
+  "duration_seconds": 433.6,
+  "seed": 42,
+  "model": "M3 payment risk model",
+  "deployed": "XGBoost (monotonic constraints) + SHAP",
+  "version": "m3-xgb-20260922",
+  "dataset": {
+    "name": "UPI Guardian scenario simulator (ml/simulator.py), calibrated from UPI Transactions 2024, signals from M1 and M2",
+    "file": "data/processed/upi_scenarios.csv.gz (re-created by ml/train_risk.py --regenerate); 5,000-row sample in data/sample/",
+    "users": 3000,
+    "split": "time-based: months 1-9 train, month 10 validation, months 11-12 test",
+    "rows": {
+      "train": 470514,
+      "validation": 53689,
+      "test": 105156
+    },
+    "scam_rate": {
+      "train": 0.00566,
+      "validation": 0.00512,
+      "test": 0.00538
+    },
+    "scam_mix": {
+      "job_task": 815,
+      "refund_scam": 476,
+      "kyc_fraud": 436,
+      "lottery_prize": 313,
+      "impersonation": 306,
+      "investment": 237,
+      "qr_scam": 184,
+      "loan_fee": 167,
+      "bill_disconnection": 140,
+      "account_takeover": 130,
+      "none": 130,
+      "wrong_transfer": 90,
+      "courier_customs": 81
+    },
+    "label_noise_share": 0.00033
+  },
+  "features": [
+    "behaviour_score",
+    "amount_log",
+    "amount_to_median",
+    "amount_to_max",
+    "is_new_payee",
+    "payee_times_paid",
+    "is_saved_contact",
+    "is_night",
+    "hour_share",
+    "txn_count_1h",
+    "txn_count_24h",
+    "failed_24h",
+    "payee_account_age_days",
+    "payee_reports",
+    "payee_distinct_payers_24h",
+    "payee_new_payer_share_7d",
+    "payee_collects_7d",
+    "payee_is_merchant",
+    "sms_scam_prob",
+    "sms_recent_scam",
+    "channel_qr",
+    "channel_collect",
+    "collect_note_score",
+    "qr_flag",
+    "payer_account_age_days"
+  ],
+  "monotone_constraints": {
+    "behaviour_score": 1,
+    "amount_log": 0,
+    "amount_to_median": 1,
+    "amount_to_max": 1,
+    "is_new_payee": 1,
+    "payee_times_paid": -1,
+    "is_saved_contact": -1,
+    "is_night": 1,
+    "hour_share": -1,
+    "txn_count_1h": 0,
+    "txn_count_24h": 0,
+    "failed_24h": 1,
+    "payee_account_age_days": -1,
+    "payee_reports": 1,
+    "payee_distinct_payers_24h": 0,
+    "payee_new_payer_share_7d": 1,
+    "payee_collects_7d": 1,
+    "payee_is_merchant": 0,
+    "sms_scam_prob": 1,
+    "sms_recent_scam": 0,
+    "channel_qr": 0,
+    "channel_collect": 0,
+    "collect_note_score": 1,
+    "qr_flag": 1,
+    "payer_account_age_days": 0
+  },
+  "models": {
+    "Logistic Regression": {
+      "validation": {
+        "n": 53689,
+        "positives": 275,
+        "prevalence": 0.00512,
+        "threshold": 0.22355,
+        "precision": 0.8063,
+        "recall": 0.6509,
+        "f1": 0.7203,
+        "pr_auc": 0.7248,
+        "roc_auc": 0.9552,
+        "confusion": {
+          "tn": 53371,
+          "fp": 43,
+          "fn": 96,
+          "tp": 179
+        }
+      },
+      "test": {
+        "n": 105156,
+        "positives": 566,
+        "prevalence": 0.00538,
+        "threshold": 0.22355,
+        "precision": 0.8704,
+        "recall": 0.6643,
+        "f1": 0.7535,
+        "pr_auc": 0.778,
+        "roc_auc": 0.9727,
+        "confusion": {
+          "tn": 104534,
+          "fp": 56,
+          "fn": 190,
+          "tp": 376
+        }
+      }
+    },
+    "Random Forest": {
+      "validation": {
+        "n": 53689,
+        "positives": 275,
+        "prevalence": 0.00512,
+        "threshold": 0.2163,
+        "precision": 0.9433,
+        "recall": 0.8473,
+        "f1": 0.8927,
+        "pr_auc": 0.8908,
+        "roc_auc": 0.9693,
+        "confusion": {
+          "tn": 53400,
+          "fp": 14,
+          "fn": 42,
+          "tp": 233
+        }
+      },
+      "test": {
+        "n": 105156,
+        "positives": 566,
+        "prevalence": 0.00538,
+        "threshold": 0.2163,
+        "precision": 0.9283,
+        "recall": 0.8463,
+        "f1": 0.8854,
+        "pr_auc": 0.8974,
+        "roc_auc": 0.9741,
+        "confusion": {
+          "tn": 104553,
+          "fp": 37,
+          "fn": 87,
+          "tp": 479
+        }
+      }
+    },
+    "XGBoost": {
+      "validation": {
+        "n": 53689,
+        "positives": 275,
+        "prevalence": 0.00512,
+        "threshold": 0.17684,
+        "precision": 0.9512,
+        "recall": 0.8509,
+        "f1": 0.8983,
+        "pr_auc": 0.8778,
+        "roc_auc": 0.9644,
+        "confusion": {
+          "tn": 53402,
+          "fp": 12,
+          "fn": 41,
+          "tp": 234
+        }
+      },
+      "test": {
+        "n": 105156,
+        "positives": 566,
+        "prevalence": 0.00538,
+        "threshold": 0.17684,
+        "precision": 0.9165,
+        "recall": 0.8339,
+        "f1": 0.8733,
+        "pr_auc": 0.8942,
+        "roc_auc": 0.9802,
+        "confusion": {
+          "tn": 104547,
+          "fp": 43,
+          "fn": 94,
+          "tp": 472
+        }
+      }
+    }
+  },
+  "ablation_test_pr_auc": {
+    "without SMS signals": 0.8852,
+    "without payee trust signals": 0.6316,
+    "without history signals": 0.8773,
+    "without M1 behaviour score": 0.8927,
+    "without collect/QR guard signals": 0.8894,
+    "all signals (deployed)": 0.8942
+  },
+  "policy": {
+    "medium_score": 35,
+    "high_score": 70,
+    "probability_anchors": {
+      "medium": 0.00414,
+      "high": 0.02448
+    },
+    "test": {
+      "scams_reaching_medium_or_high": 0.9452,
+      "scams_reaching_high_hold": 0.9117,
+      "genuine_payments_low": 0.9811,
+      "genuine_payments_asked_intent_medium": 0.0158,
+      "genuine_payments_held_high": 0.0031,
+      "precision_of_high": 0.6158,
+      "level_share": {
+        "low": 0.9762,
+        "medium": 0.0159,
+        "high": 0.008
+      }
+    }
+  },
+  "per_scam_type_test": {
+    "account_takeover": {
+      "n": 23.0,
+      "caught_medium_or_high": 1.0,
+      "held_high": 0.913
+    },
+    "bill_disconnection": {
+      "n": 20.0,
+      "caught_medium_or_high": 0.95,
+      "held_high": 0.85
+    },
+    "courier_customs": {
+      "n": 10.0,
+      "caught_medium_or_high": 1.0,
+      "held_high": 0.9
+    },
+    "impersonation": {
+      "n": 48.0,
+      "caught_medium_or_high": 1.0,
+      "held_high": 1.0
+    },
+    "investment": {
+      "n": 36.0,
+      "caught_medium_or_high": 1.0,
+      "held_high": 1.0
+    },
+    "job_task": {
+      "n": 121.0,
+      "caught_medium_or_high": 0.975,
+      "held_high": 0.934
+    },
+    "kyc_fraud": {
+      "n": 58.0,
+      "caught_medium_or_high": 0.983,
+      "held_high": 0.966
+    },
+    "loan_fee": {
+      "n": 25.0,
+      "caught_medium_or_high": 1.0,
+      "held_high": 0.84
+    },
+    "lottery_prize": {
+      "n": 51.0,
+      "caught_medium_or_high": 1.0,
+      "held_high": 0.941
+    },
+    "none": {
+      "n": 25.0,
+      "caught_medium_or_high": 0.0,
+      "held_high": 0.0
+    },
+    "qr_scam": {
+      "n": 40.0,
+      "caught_medium_or_high": 1.0,
+      "held_high": 0.975
+    },
+    "refund_scam": {
+      "n": 98.0,
+      "caught_medium_or_high": 0.99,
+      "held_high": 0.99
+    },
+    "wrong_transfer": {
+      "n": 11.0,
+      "caught_medium_or_high": 1.0,
+      "held_high": 1.0
+    }
+  },
+  "shap_mean_abs": {
+    "behaviour_score": 0.27560335397720337,
+    "amount_log": 0.3665602505207062,
+    "amount_to_median": 0.7381082773208618,
+    "amount_to_max": 0.16221044957637787,
+    "is_new_payee": 0.10175997018814087,
+    "payee_times_paid": 0.7702564001083374,
+    "is_saved_contact": 0.5224138498306274,
+    "is_night": 0.1562374383211136,
+    "hour_share": 0.1953495889902115,
+    "txn_count_1h": 0.09591880440711975,
+    "txn_count_24h": 0.0802142471075058,
+    "failed_24h": 0.15709339082241058,
+    "payee_account_age_days": 0.6582051515579224,
+    "payee_reports": 0.05748879536986351,
+    "payee_distinct_payers_24h": 0.2751181125640869,
+    "payee_new_payer_share_7d": 0.20889179408550262,
+    "payee_collects_7d": 0.26237598061561584,
+    "payee_is_merchant": 1.4611562490463257,
+    "sms_scam_prob": 0.09545868635177612,
+    "sms_recent_scam": 0.042244140058755875,
+    "channel_qr": 0.3850720226764679,
+    "channel_collect": 0.015537025406956673,
+    "collect_note_score": 0.015426753088831902,
+    "qr_flag": 0.04638677462935448,
+    "payer_account_age_days": 0.2555122673511505
+  },
+  "plots": [
+    "pr_curve.png",
+    "roc_curve.png",
+    "confusion_matrix.png",
+    "calibration.png",
+    "shap_importance.png",
+    "shap_summary.png",
+    "recall_by_scam_type.png",
+    "ablation.png"
+  ]
+}

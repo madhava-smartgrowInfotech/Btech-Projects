@@ -1,0 +1,37 @@
+[
+  {
+    "text": "Your KYC expires today, click link http://kyc-verify-now.top/a77 to update or your account will be blocked.",
+    "language": "en",
+    "probability": 0.9994,
+    "verdict": "scam",
+    "scam_type": "kyc_fraud"
+  },
+  {
+    "text": "आपका KYC आज समाप्त हो रहा है, खाता बंद हो जाएगा। तुरंत लिंक पर क्लिक करें",
+    "language": "hi",
+    "probability": 0.9447,
+    "verdict": "scam",
+    "scam_type": "kyc_fraud"
+  },
+  {
+    "text": "మీ ఖాతా బ్లాక్ అవుతుంది, వెంటనే KYC అప్‌డేట్ చేయండి",
+    "language": "te",
+    "probability": 0.934,
+    "verdict": "scam",
+    "scam_type": "kyc_fraud"
+  },
+  {
+    "text": "Rs 450 debited from A/c XX1234 to Lakshmi Stores via UPI. Never share your OTP with anyone.",
+    "language": "en",
+    "probability": 0.299,
+    "verdict": "safe",
+    "scam_type": null
+  },
+  {
+    "text": "Hey, are we still meeting for lunch at 1?",
+    "language": "en",
+    "probability": 0.0116,
+    "verdict": "safe",
+    "scam_type": null
+  }
+]

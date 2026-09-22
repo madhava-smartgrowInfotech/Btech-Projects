@@ -1,0 +1,816 @@
+id,text,label,category,language,script,template_id,kind
+upg-sms-00001,"Dear customer, your Bharat Union Bank KYC expires today. Your account will be blocked. Update KYC now: http://acct-help-india.site/38649",1,kyc_fraud,en,native,s1-kyc_fraud-enn-000,sms
+upg-sms-00002,"Dear customer, your Kaveri Gramin Bank KYC expires today. Your account will be blocked. Update KYC now: http://kyc-verify-now.top/a61433",1,kyc_fraud,en,native,s1-kyc_fraud-enn-000,sms
+upg-sms-00003,"Dear customer, your Narmada Bank KYC expires today. Your account will be blocked. Update KYC now: http://acct-help-india.site/31005",1,kyc_fraud,en,native,s1-kyc_fraud-enn-000,sms
+upg-sms-00004,"Dear customer, your Deccan Co-op Bank KYC expires today. Your account will be blocked. Update KYC now: http://secure-bank-update.click/62165",1,kyc_fraud,en,native,s1-kyc_fraud-enn-000,sms
+upg-sms-00005,"Dear customer, your Bharat Union Bank KYC expires today. Your account will be blocked. Update KYC now: http://parcel-track-in.info/t13080",1,kyc_fraud,en,native,s1-kyc_fraud-enn-000,sms
+upg-sms-00006,"Dear customer, your Narmada Bank KYC expires today. Your account will be blocked. Update KYC now: https://upi-refund-help.xyz/r12066",1,kyc_fraud,en,native,s1-kyc_fraud-enn-000,sms
+upg-sms-00007,ALERT: Your SAHB account is SUSPENDED due to pending KYC. Click https://reward-claim.online/c16908 and verify within 24 hrs to avoid permanent block.,1,kyc_fraud,en,native,s1-kyc_fraud-enn-001,sms
+upg-sms-00008,ALERT: Your KAVB account is SUSPENDED due to pending KYC. Click http://acct-help-india.site/17926 and verify within 24 hrs to avoid permanent block.,1,kyc_fraud,en,native,s1-kyc_fraud-enn-001,sms
+upg-sms-00009,ALERT: Your NRMB account is SUSPENDED due to pending KYC. Click http://secure-bank-update.click/70107 and verify within 24 hrs to avoid permanent block.,1,kyc_fraud,en,native,s1-kyc_fraud-enn-001,sms
+upg-sms-00010,ALERT: Your KAVB account is SUSPENDED due to pending KYC. Click http://secure-bank-update.click/35565 and verify within 24 hrs to avoid permanent block.,1,kyc_fraud,en,native,s1-kyc_fraud-enn-001,sms
+upg-sms-00011,ALERT: Your NRMB account is SUSPENDED due to pending KYC. Click http://secure-bank-update.click/13303 and verify within 24 hrs to avoid permanent block.,1,kyc_fraud,en,native,s1-kyc_fraud-enn-001,sms
+upg-sms-00012,ALERT: Your NRMB account is SUSPENDED due to pending KYC. Click http://secure-bank-update.click/96305 and verify within 24 hrs to avoid permanent block.,1,kyc_fraud,en,native,s1-kyc_fraud-enn-001,sms
+upg-sms-00013,Your UPI ID will be deactivated today. Complete PAN-KYC update immediately at http://kyc-verify-now.top/a51345 or call 9356952839.,1,kyc_fraud,en,native,s1-kyc_fraud-enn-002,sms
+upg-sms-00014,Your UPI ID will be deactivated today. Complete PAN-KYC update immediately at http://kyc-verify-now.top/a45657 or call 8160404143.,1,kyc_fraud,en,native,s1-kyc_fraud-enn-002,sms
+upg-sms-00015,Your UPI ID will be deactivated today. Complete PAN-KYC update immediately at http://secure-bank-update.click/21156 or call 9105703511.,1,kyc_fraud,en,native,s1-kyc_fraud-enn-002,sms
+upg-sms-00016,Your UPI ID will be deactivated today. Complete PAN-KYC update immediately at http://kyc-verify-now.top/a19598 or call 9458210951.,1,kyc_fraud,en,native,s1-kyc_fraud-enn-002,sms
+upg-sms-00017,Your UPI ID will be deactivated today. Complete PAN-KYC update immediately at https://bit-link.cc/22487 or call 6225302957.,1,kyc_fraud,en,native,s1-kyc_fraud-enn-002,sms
+upg-sms-00018,Your UPI ID will be deactivated today. Complete PAN-KYC update immediately at https://upi-refund-help.xyz/r66372 or call 6696563396.,1,kyc_fraud,en,native,s1-kyc_fraud-enn-002,sms
+upg-sms-00019,"प्रिय ग्राहक, आपका Bharat Union Bank KYC आज समाप्त हो रहा है। खाता बंद कर दिया जाएगा। तुरंत KYC अपडेट करें: http://secure-bank-update.click/61687",1,kyc_fraud,hi,native,s1-kyc_fraud-hin-003,sms
+upg-sms-00020,"प्रिय ग्राहक, आपका Deccan Co-op Bank KYC आज समाप्त हो रहा है। खाता बंद कर दिया जाएगा। तुरंत KYC अपडेट करें: http://parcel-track-in.info/t36115",1,kyc_fraud,hi,native,s1-kyc_fraud-hin-003,sms
+upg-sms-00021,"प्रिय ग्राहक, आपका Kaveri Gramin Bank KYC आज समाप्त हो रहा है। खाता बंद कर दिया जाएगा। तुरंत KYC अपडेट करें: https://bit-link.cc/44779",1,kyc_fraud,hi,native,s1-kyc_fraud-hin-003,sms
+upg-sms-00022,"प्रिय ग्राहक, आपका Godavari Bank KYC आज समाप्त हो रहा है। खाता बंद कर दिया जाएगा। तुरंत KYC अपडेट करें: http://parcel-track-in.info/t29757",1,kyc_fraud,hi,native,s1-kyc_fraud-hin-003,sms
+upg-sms-00023,"प्रिय ग्राहक, आपका Deccan Co-op Bank KYC आज समाप्त हो रहा है। खाता बंद कर दिया जाएगा। तुरंत KYC अपडेट करें: https://reward-claim.online/c34469",1,kyc_fraud,hi,native,s1-kyc_fraud-hin-003,sms
+upg-sms-00024,"प्रिय ग्राहक, आपका Kaveri Gramin Bank KYC आज समाप्त हो रहा है। खाता बंद कर दिया जाएगा। तुरंत KYC अपडेट करें: http://parcel-track-in.info/t65124",1,kyc_fraud,hi,native,s1-kyc_fraud-hin-003,sms
+upg-sms-00025,आपका UPI खाता ब्लॉक होने वाला है। KYC सत्यापन के लिए अभी इस लिंक पर क्लिक करें https://upi-refund-help.xyz/r74254 या 8490569023 पर कॉल करें।,1,kyc_fraud,hi,native,s1-kyc_fraud-hin-004,sms
+upg-sms-00026,आपका UPI खाता ब्लॉक होने वाला है। KYC सत्यापन के लिए अभी इस लिंक पर क्लिक करें http://parcel-track-in.info/t91830 या 6906765076 पर कॉल करें।,1,kyc_fraud,hi,native,s1-kyc_fraud-hin-004,sms
+upg-sms-00027,आपका UPI खाता ब्लॉक होने वाला है। KYC सत्यापन के लिए अभी इस लिंक पर क्लिक करें https://bit-link.cc/77809 या 8453015901 पर कॉल करें।,1,kyc_fraud,hi,native,s1-kyc_fraud-hin-004,sms
+upg-sms-00028,आपका UPI खाता ब्लॉक होने वाला है। KYC सत्यापन के लिए अभी इस लिंक पर क्लिक करें http://acct-help-india.site/97869 या 7224396058 पर कॉल करें।,1,kyc_fraud,hi,native,s1-kyc_fraud-hin-004,sms
+upg-sms-00029,आपका UPI खाता ब्लॉक होने वाला है। KYC सत्यापन के लिए अभी इस लिंक पर क्लिक करें https://bit-link.cc/15085 या 7700916106 पर कॉल करें।,1,kyc_fraud,hi,native,s1-kyc_fraud-hin-004,sms
+upg-sms-00030,आपका UPI खाता ब्लॉक होने वाला है। KYC सत्यापन के लिए अभी इस लिंक पर क्लिक करें https://reward-claim.online/c70158 या 9705996205 पर कॉल करें।,1,kyc_fraud,hi,native,s1-kyc_fraud-hin-004,sms
+upg-sms-00031,Aapka DCCB account aaj band ho jayega. KYC update karne ke liye turant link par click karein http://kyc-verify-now.top/a94973,1,kyc_fraud,hi,latin,s1-kyc_fraud-hil-005,sms
+upg-sms-00032,Aapka SAHB account aaj band ho jayega. KYC update karne ke liye turant link par click karein http://acct-help-india.site/39623,1,kyc_fraud,hi,latin,s1-kyc_fraud-hil-005,sms
+upg-sms-00033,Aapka NRMB account aaj band ho jayega. KYC update karne ke liye turant link par click karein https://upi-refund-help.xyz/r69776,1,kyc_fraud,hi,latin,s1-kyc_fraud-hil-005,sms
+upg-sms-00034,Aapka GODB account aaj band ho jayega. KYC update karne ke liye turant link par click karein http://kyc-verify-now.top/a86441,1,kyc_fraud,hi,latin,s1-kyc_fraud-hil-005,sms
+upg-sms-00035,Aapka GODB account aaj band ho jayega. KYC update karne ke liye turant link par click karein http://acct-help-india.site/2983,1,kyc_fraud,hi,latin,s1-kyc_fraud-hil-005,sms
+upg-sms-00036,Aapka NRMB account aaj band ho jayega. KYC update karne ke liye turant link par click karein https://bit-link.cc/24030,1,kyc_fraud,hi,latin,s1-kyc_fraud-hil-005,sms
+upg-sms-00037,"ప్రియమైన కస్టమర్, మీ Deccan Co-op Bank KYC ఈ రోజు ముగుస్తుంది. మీ ఖాతా బ్లాక్ అవుతుంది. వెంటనే KYC అప్‌డేట్ చేయండి: https://bit-link.cc/45898",1,kyc_fraud,te,native,s1-kyc_fraud-ten-006,sms
+upg-sms-00038,"ప్రియమైన కస్టమర్, మీ Narmada Bank KYC ఈ రోజు ముగుస్తుంది. మీ ఖాతా బ్లాక్ అవుతుంది. వెంటనే KYC అప్‌డేట్ చేయండి: http://kyc-verify-now.top/a77973",1,kyc_fraud,te,native,s1-kyc_fraud-ten-006,sms
+upg-sms-00039,"ప్రియమైన కస్టమర్, మీ Kaveri Gramin Bank KYC ఈ రోజు ముగుస్తుంది. మీ ఖాతా బ్లాక్ అవుతుంది. వెంటనే KYC అప్‌డేట్ చేయండి: http://acct-help-india.site/30471",1,kyc_fraud,te,native,s1-kyc_fraud-ten-006,sms
+upg-sms-00040,"ప్రియమైన కస్టమర్, మీ Deccan Co-op Bank KYC ఈ రోజు ముగుస్తుంది. మీ ఖాతా బ్లాక్ అవుతుంది. వెంటనే KYC అప్‌డేట్ చేయండి: https://bit-link.cc/88836",1,kyc_fraud,te,native,s1-kyc_fraud-ten-006,sms
+upg-sms-00041,"ప్రియమైన కస్టమర్, మీ Godavari Bank KYC ఈ రోజు ముగుస్తుంది. మీ ఖాతా బ్లాక్ అవుతుంది. వెంటనే KYC అప్‌డేట్ చేయండి: https://upi-refund-help.xyz/r51778",1,kyc_fraud,te,native,s1-kyc_fraud-ten-006,sms
+upg-sms-00042,"ప్రియమైన కస్టమర్, మీ Sahyadri Bank KYC ఈ రోజు ముగుస్తుంది. మీ ఖాతా బ్లాక్ అవుతుంది. వెంటనే KYC అప్‌డేట్ చేయండి: http://acct-help-india.site/84351",1,kyc_fraud,te,native,s1-kyc_fraud-ten-006,sms
+upg-sms-00043,మీ UPI ఖాతా నిలిపివేయబడుతుంది. KYC ధృవీకరణ కోసం ఈ లింక్ క్లిక్ చేయండి https://bit-link.cc/20581 లేదా 9600643630 కి కాల్ చేయండి.,1,kyc_fraud,te,native,s1-kyc_fraud-ten-007,sms
+upg-sms-00044,మీ UPI ఖాతా నిలిపివేయబడుతుంది. KYC ధృవీకరణ కోసం ఈ లింక్ క్లిక్ చేయండి https://reward-claim.online/c15283 లేదా 8281339622 కి కాల్ చేయండి.,1,kyc_fraud,te,native,s1-kyc_fraud-ten-007,sms
+upg-sms-00045,మీ UPI ఖాతా నిలిపివేయబడుతుంది. KYC ధృవీకరణ కోసం ఈ లింక్ క్లిక్ చేయండి http://kyc-verify-now.top/a70119 లేదా 9411532423 కి కాల్ చేయండి.,1,kyc_fraud,te,native,s1-kyc_fraud-ten-007,sms
+upg-sms-00046,మీ UPI ఖాతా నిలిపివేయబడుతుంది. KYC ధృవీకరణ కోసం ఈ లింక్ క్లిక్ చేయండి http://kyc-verify-now.top/a80787 లేదా 9825451231 కి కాల్ చేయండి.,1,kyc_fraud,te,native,s1-kyc_fraud-ten-007,sms
+upg-sms-00047,మీ UPI ఖాతా నిలిపివేయబడుతుంది. KYC ధృవీకరణ కోసం ఈ లింక్ క్లిక్ చేయండి https://reward-claim.online/c16224 లేదా 8563593899 కి కాల్ చేయండి.,1,kyc_fraud,te,native,s1-kyc_fraud-ten-007,sms
+upg-sms-00048,మీ UPI ఖాతా నిలిపివేయబడుతుంది. KYC ధృవీకరణ కోసం ఈ లింక్ క్లిక్ చేయండి http://secure-bank-update.click/31065 లేదా 6845980490 కి కాల్ చేయండి.,1,kyc_fraud,te,native,s1-kyc_fraud-ten-007,sms
+upg-sms-00049,Mee DCCB account ee roju block avutundi. KYC update cheyyadaniki ventane ee link click cheyandi http://kyc-verify-now.top/a36059,1,kyc_fraud,te,latin,s1-kyc_fraud-tel-008,sms
+upg-sms-00050,Mee DCCB account ee roju block avutundi. KYC update cheyyadaniki ventane ee link click cheyandi http://parcel-track-in.info/t5068,1,kyc_fraud,te,latin,s1-kyc_fraud-tel-008,sms
+upg-sms-00051,Mee NRMB account ee roju block avutundi. KYC update cheyyadaniki ventane ee link click cheyandi https://upi-refund-help.xyz/r23387,1,kyc_fraud,te,latin,s1-kyc_fraud-tel-008,sms
+upg-sms-00052,Mee SAHB account ee roju block avutundi. KYC update cheyyadaniki ventane ee link click cheyandi https://upi-refund-help.xyz/r36159,1,kyc_fraud,te,latin,s1-kyc_fraud-tel-008,sms
+upg-sms-00053,Mee DCCB account ee roju block avutundi. KYC update cheyyadaniki ventane ee link click cheyandi http://parcel-track-in.info/t4634,1,kyc_fraud,te,latin,s1-kyc_fraud-tel-008,sms
+upg-sms-00054,Mee DCCB account ee roju block avutundi. KYC update cheyyadaniki ventane ee link click cheyandi http://secure-bank-update.click/62920,1,kyc_fraud,te,latin,s1-kyc_fraud-tel-008,sms
+upg-sms-00055,"Your refund of Rs 9,999 from DailyBasket is ready. Approve the UPI request from claim.reward@upg and enter your PIN to receive it.",1,refund_scam,en,native,s1-refund_scam-enn-009,sms
+upg-sms-00056,"Your refund of Rs 12,000 from ShopKart is ready. Approve the UPI request from support.verify@upg and enter your PIN to receive it.",1,refund_scam,en,native,s1-refund_scam-enn-009,sms
+upg-sms-00057,"Your refund of Rs 12,000 from StyleHub is ready. Approve the UPI request from claim.reward@upg and enter your PIN to receive it.",1,refund_scam,en,native,s1-refund_scam-enn-009,sms
+upg-sms-00058,"Your refund of Rs 4,999 from MegaMart Online is ready. Approve the UPI request from refund.desk@upg and enter your PIN to receive it.",1,refund_scam,en,native,s1-refund_scam-enn-009,sms
+upg-sms-00059,"Your refund of Rs 5,000 from ShopKart is ready. Approve the UPI request from claim.reward@upg and enter your PIN to receive it.",1,refund_scam,en,native,s1-refund_scam-enn-009,sms
+upg-sms-00060,"Your refund of Rs 1,499 from StyleHub is ready. Approve the UPI request from cashback.offer@upg and enter your PIN to receive it.",1,refund_scam,en,native,s1-refund_scam-enn-009,sms
+upg-sms-00061,"Congrats! Cashback of Rs 5,000 credited to your RupeeGo wallet. To withdraw, scan the QR at https://reward-claim.online/c11710 and enter UPI PIN.",1,refund_scam,en,native,s1-refund_scam-enn-010,sms
+upg-sms-00062,"Congrats! Cashback of Rs 2,999 credited to your SwiftPay wallet. To withdraw, scan the QR at https://bit-link.cc/17895 and enter UPI PIN.",1,refund_scam,en,native,s1-refund_scam-enn-010,sms
+upg-sms-00063,"Congrats! Cashback of Rs 7,500 credited to your PayNest wallet. To withdraw, scan the QR at https://bit-link.cc/13635 and enter UPI PIN.",1,refund_scam,en,native,s1-refund_scam-enn-010,sms
+upg-sms-00064,"Congrats! Cashback of Rs 5,000 credited to your PayNest wallet. To withdraw, scan the QR at https://reward-claim.online/c70137 and enter UPI PIN.",1,refund_scam,en,native,s1-refund_scam-enn-010,sms
+upg-sms-00065,"Congrats! Cashback of Rs 1,499 credited to your RupeeGo wallet. To withdraw, scan the QR at http://parcel-track-in.info/t16791 and enter UPI PIN.",1,refund_scam,en,native,s1-refund_scam-enn-010,sms
+upg-sms-00066,"Congrats! Cashback of Rs 5,000 credited to your RupeeGo wallet. To withdraw, scan the QR at https://reward-claim.online/c23918 and enter UPI PIN.",1,refund_scam,en,native,s1-refund_scam-enn-010,sms
+upg-sms-00067,"Order cancelled. Rs 2,999 refund pending. Our executive will send a collect request, please accept to get your money back.",1,refund_scam,en,native,s1-refund_scam-enn-011,sms
+upg-sms-00068,"Order cancelled. Rs 5,000 refund pending. Our executive will send a collect request, please accept to get your money back.",1,refund_scam,en,native,s1-refund_scam-enn-011,sms
+upg-sms-00069,"Order cancelled. Rs 4,999 refund pending. Our executive will send a collect request, please accept to get your money back.",1,refund_scam,en,native,s1-refund_scam-enn-011,sms
+upg-sms-00070,"Order cancelled. Rs 9,999 refund pending. Our executive will send a collect request, please accept to get your money back.",1,refund_scam,en,native,s1-refund_scam-enn-011,sms
+upg-sms-00071,"Order cancelled. Rs 1,499 refund pending. Our executive will send a collect request, please accept to get your money back.",1,refund_scam,en,native,s1-refund_scam-enn-011,sms
+upg-sms-00072,"ShopKart से आपका ₹12,000 का रिफंड तैयार है। पैसा पाने के लिए kyc.helpdesk@upg से आए अनुरोध को स्वीकार करें और PIN डालें।",1,refund_scam,hi,native,s1-refund_scam-hin-012,sms
+upg-sms-00073,"StyleHub से आपका ₹5,000 का रिफंड तैयार है। पैसा पाने के लिए cashback.offer@upg से आए अनुरोध को स्वीकार करें और PIN डालें।",1,refund_scam,hi,native,s1-refund_scam-hin-012,sms
+upg-sms-00074,"StyleHub से आपका ₹7,500 का रिफंड तैयार है। पैसा पाने के लिए tasks.pay@upg से आए अनुरोध को स्वीकार करें और PIN डालें।",1,refund_scam,hi,native,s1-refund_scam-hin-012,sms
+upg-sms-00075,"DailyBasket से आपका ₹9,999 का रिफंड तैयार है। पैसा पाने के लिए cashback.offer@upg से आए अनुरोध को स्वीकार करें और PIN डालें।",1,refund_scam,hi,native,s1-refund_scam-hin-012,sms
+upg-sms-00076,"ShopKart से आपका ₹1,499 का रिफंड तैयार है। पैसा पाने के लिए cashback.offer@upg से आए अनुरोध को स्वीकार करें और PIN डालें।",1,refund_scam,hi,native,s1-refund_scam-hin-012,sms
+upg-sms-00077,"ShopKart से आपका ₹2,999 का रिफंड तैयार है। पैसा पाने के लिए claim.reward@upg से आए अनुरोध को स्वीकार करें और PIN डालें।",1,refund_scam,hi,native,s1-refund_scam-hin-012,sms
+upg-sms-00078,"बधाई हो! आपके PayNest वॉलेट में ₹2,999 कैशबैक आया है। पैसे निकालने के लिए https://reward-claim.online/c18812 पर QR स्कैन करके PIN डालें।",1,refund_scam,hi,native,s1-refund_scam-hin-013,sms
+upg-sms-00079,"बधाई हो! आपके RupeeGo वॉलेट में ₹12,000 कैशबैक आया है। पैसे निकालने के लिए https://upi-refund-help.xyz/r84550 पर QR स्कैन करके PIN डालें।",1,refund_scam,hi,native,s1-refund_scam-hin-013,sms
+upg-sms-00080,"बधाई हो! आपके SwiftPay वॉलेट में ₹9,999 कैशबैक आया है। पैसे निकालने के लिए https://upi-refund-help.xyz/r89892 पर QR स्कैन करके PIN डालें।",1,refund_scam,hi,native,s1-refund_scam-hin-013,sms
+upg-sms-00081,"बधाई हो! आपके RupeeGo वॉलेट में ₹7,500 कैशबैक आया है। पैसे निकालने के लिए http://secure-bank-update.click/83610 पर QR स्कैन करके PIN डालें।",1,refund_scam,hi,native,s1-refund_scam-hin-013,sms
+upg-sms-00082,"बधाई हो! आपके SwiftPay वॉलेट में ₹1,499 कैशबैक आया है। पैसे निकालने के लिए https://upi-refund-help.xyz/r69083 पर QR स्कैन करके PIN डालें।",1,refund_scam,hi,native,s1-refund_scam-hin-013,sms
+upg-sms-00083,"बधाई हो! आपके PayNest वॉलेट में ₹4,999 कैशबैक आया है। पैसे निकालने के लिए https://upi-refund-help.xyz/r41385 पर QR स्कैन करके PIN डालें।",1,refund_scam,hi,native,s1-refund_scam-hin-013,sms
+upg-sms-00084,"Aapka Rs 5,000 refund pending hai. Paisa wapas paane ke liye request accept karke UPI PIN daalein. tasks.pay@upg",1,refund_scam,hi,latin,s1-refund_scam-hil-014,sms
+upg-sms-00085,"Aapka Rs 2,999 refund pending hai. Paisa wapas paane ke liye request accept karke UPI PIN daalein. cashback.offer@upg",1,refund_scam,hi,latin,s1-refund_scam-hil-014,sms
+upg-sms-00086,"Aapka Rs 5,000 refund pending hai. Paisa wapas paane ke liye request accept karke UPI PIN daalein. claim.reward@upg",1,refund_scam,hi,latin,s1-refund_scam-hil-014,sms
+upg-sms-00087,"Aapka Rs 5,000 refund pending hai. Paisa wapas paane ke liye request accept karke UPI PIN daalein. refund.desk@upg",1,refund_scam,hi,latin,s1-refund_scam-hil-014,sms
+upg-sms-00088,"Aapka Rs 2,999 refund pending hai. Paisa wapas paane ke liye request accept karke UPI PIN daalein. claim.reward@upg",1,refund_scam,hi,latin,s1-refund_scam-hil-014,sms
+upg-sms-00089,"Aapka Rs 9,999 refund pending hai. Paisa wapas paane ke liye request accept karke UPI PIN daalein. cashback.offer@upg",1,refund_scam,hi,latin,s1-refund_scam-hil-014,sms
+upg-sms-00090,"ShopKart నుండి మీ ₹5,000 రీఫండ్ సిద్ధంగా ఉంది. డబ్బు పొందడానికి luckydraw.winner@upg నుండి వచ్చిన అభ్యర్థనను ఆమోదించి PIN ఎంటర్ చేయండి.",1,refund_scam,te,native,s1-refund_scam-ten-015,sms
+upg-sms-00091,"DailyBasket నుండి మీ ₹12,000 రీఫండ్ సిద్ధంగా ఉంది. డబ్బు పొందడానికి luckydraw.winner@upg నుండి వచ్చిన అభ్యర్థనను ఆమోదించి PIN ఎంటర్ చేయండి.",1,refund_scam,te,native,s1-refund_scam-ten-015,sms
+upg-sms-00092,"StyleHub నుండి మీ ₹5,000 రీఫండ్ సిద్ధంగా ఉంది. డబ్బు పొందడానికి kyc.helpdesk@upg నుండి వచ్చిన అభ్యర్థనను ఆమోదించి PIN ఎంటర్ చేయండి.",1,refund_scam,te,native,s1-refund_scam-ten-015,sms
+upg-sms-00093,"ShopKart నుండి మీ ₹5,000 రీఫండ్ సిద్ధంగా ఉంది. డబ్బు పొందడానికి claim.reward@upg నుండి వచ్చిన అభ్యర్థనను ఆమోదించి PIN ఎంటర్ చేయండి.",1,refund_scam,te,native,s1-refund_scam-ten-015,sms
+upg-sms-00094,"StyleHub నుండి మీ ₹9,999 రీఫండ్ సిద్ధంగా ఉంది. డబ్బు పొందడానికి luckydraw.winner@upg నుండి వచ్చిన అభ్యర్థనను ఆమోదించి PIN ఎంటర్ చేయండి.",1,refund_scam,te,native,s1-refund_scam-ten-015,sms
+upg-sms-00095,"ShopKart నుండి మీ ₹2,999 రీఫండ్ సిద్ధంగా ఉంది. డబ్బు పొందడానికి claim.reward@upg నుండి వచ్చిన అభ్యర్థనను ఆమోదించి PIN ఎంటర్ చేయండి.",1,refund_scam,te,native,s1-refund_scam-ten-015,sms
+upg-sms-00096,"అభినందనలు! మీ SwiftPay వాలెట్‌లో ₹4,999 క్యాష్‌బ్యాక్ వచ్చింది. డబ్బు తీసుకోవడానికి https://reward-claim.online/c72367 లో QR స్కాన్ చేసి PIN ఇవ్వండి.",1,refund_scam,te,native,s1-refund_scam-ten-016,sms
+upg-sms-00097,"అభినందనలు! మీ RupeeGo వాలెట్‌లో ₹4,999 క్యాష్‌బ్యాక్ వచ్చింది. డబ్బు తీసుకోవడానికి http://acct-help-india.site/41270 లో QR స్కాన్ చేసి PIN ఇవ్వండి.",1,refund_scam,te,native,s1-refund_scam-ten-016,sms
+upg-sms-00098,"అభినందనలు! మీ RupeeGo వాలెట్‌లో ₹12,000 క్యాష్‌బ్యాక్ వచ్చింది. డబ్బు తీసుకోవడానికి https://upi-refund-help.xyz/r21946 లో QR స్కాన్ చేసి PIN ఇవ్వండి.",1,refund_scam,te,native,s1-refund_scam-ten-016,sms
+upg-sms-00099,"అభినందనలు! మీ SwiftPay వాలెట్‌లో ₹5,000 క్యాష్‌బ్యాక్ వచ్చింది. డబ్బు తీసుకోవడానికి http://secure-bank-update.click/83133 లో QR స్కాన్ చేసి PIN ఇవ్వండి.",1,refund_scam,te,native,s1-refund_scam-ten-016,sms
+upg-sms-00100,"అభినందనలు! మీ PayNest వాలెట్‌లో ₹9,999 క్యాష్‌బ్యాక్ వచ్చింది. డబ్బు తీసుకోవడానికి https://upi-refund-help.xyz/r55657 లో QR స్కాన్ చేసి PIN ఇవ్వండి.",1,refund_scam,te,native,s1-refund_scam-ten-016,sms
+upg-sms-00101,"అభినందనలు! మీ RupeeGo వాలెట్‌లో ₹12,000 క్యాష్‌బ్యాక్ వచ్చింది. డబ్బు తీసుకోవడానికి https://reward-claim.online/c98725 లో QR స్కాన్ చేసి PIN ఇవ్వండి.",1,refund_scam,te,native,s1-refund_scam-ten-016,sms
+upg-sms-00102,"Mee Rs 5,000 refund pending lo undi. Dabbu raavadaniki request accept chesi UPI PIN enter cheyandi refund.desk@upg",1,refund_scam,te,latin,s1-refund_scam-tel-017,sms
+upg-sms-00103,"Mee Rs 5,000 refund pending lo undi. Dabbu raavadaniki request accept chesi UPI PIN enter cheyandi tasks.pay@upg",1,refund_scam,te,latin,s1-refund_scam-tel-017,sms
+upg-sms-00104,"Mee Rs 9,999 refund pending lo undi. Dabbu raavadaniki request accept chesi UPI PIN enter cheyandi luckydraw.winner@upg",1,refund_scam,te,latin,s1-refund_scam-tel-017,sms
+upg-sms-00105,"Mee Rs 12,000 refund pending lo undi. Dabbu raavadaniki request accept chesi UPI PIN enter cheyandi cashback.offer@upg",1,refund_scam,te,latin,s1-refund_scam-tel-017,sms
+upg-sms-00106,"Mee Rs 1,499 refund pending lo undi. Dabbu raavadaniki request accept chesi UPI PIN enter cheyandi cashback.offer@upg",1,refund_scam,te,latin,s1-refund_scam-tel-017,sms
+upg-sms-00107,"Mee Rs 7,500 refund pending lo undi. Dabbu raavadaniki request accept chesi UPI PIN enter cheyandi kyc.helpdesk@upg",1,refund_scam,te,latin,s1-refund_scam-tel-017,sms
+upg-sms-00108,"Congratulations! Your number won Rs 25,000 in the Mega Lucky Draw. Pay processing fee of Rs 7,500 to tasks.pay@upg to claim now.",1,lottery_prize,en,native,s1-lottery_prize-enn-018,sms
+upg-sms-00109,"Congratulations! Your number won Rs 25,000 in the Mega Lucky Draw. Pay processing fee of Rs 12,000 to cashback.offer@upg to claim now.",1,lottery_prize,en,native,s1-lottery_prize-enn-018,sms
+upg-sms-00110,"Congratulations! Your number won Rs 25,000 in the Mega Lucky Draw. Pay processing fee of Rs 9,999 to tasks.pay@upg to claim now.",1,lottery_prize,en,native,s1-lottery_prize-enn-018,sms
+upg-sms-00111,"Congratulations! Your number won Rs 5,00,000 in the Mega Lucky Draw. Pay processing fee of Rs 2,999 to luckydraw.winner@upg to claim now.",1,lottery_prize,en,native,s1-lottery_prize-enn-018,sms
+upg-sms-00112,"Congratulations! Your number won Rs 1,00,000 in the Mega Lucky Draw. Pay processing fee of Rs 12,000 to refund.desk@upg to claim now.",1,lottery_prize,en,native,s1-lottery_prize-enn-018,sms
+upg-sms-00113,"Congratulations! Your number won Rs 25,000 in the Mega Lucky Draw. Pay processing fee of Rs 5,000 to cashback.offer@upg to claim now.",1,lottery_prize,en,native,s1-lottery_prize-enn-018,sms
+upg-sms-00114,"You are selected for a Rs 2,50,000 reward! Claim before tonight 9:30 PM: http://parcel-track-in.info/t96698",1,lottery_prize,en,native,s1-lottery_prize-enn-019,sms
+upg-sms-00115,"You are selected for a Rs 50,000 reward! Claim before today 10 PM: http://kyc-verify-now.top/a95183",1,lottery_prize,en,native,s1-lottery_prize-enn-019,sms
+upg-sms-00116,"You are selected for a Rs 25,000 reward! Claim before within 2 hours: https://reward-claim.online/c37823",1,lottery_prize,en,native,s1-lottery_prize-enn-019,sms
+upg-sms-00117,"You are selected for a Rs 50,000 reward! Claim before today 10 PM: http://acct-help-india.site/89249",1,lottery_prize,en,native,s1-lottery_prize-enn-019,sms
+upg-sms-00118,"You are selected for a Rs 5,00,000 reward! Claim before in 30 minutes: http://secure-bank-update.click/7644",1,lottery_prize,en,native,s1-lottery_prize-enn-019,sms
+upg-sms-00119,"You are selected for a Rs 25,000 reward! Claim before in 30 minutes: http://kyc-verify-now.top/a43986",1,lottery_prize,en,native,s1-lottery_prize-enn-019,sms
+upg-sms-00120,"WINNER! Your mobile number has won a car + Rs 25,000. Call 9120796963 to claim your prize today.",1,lottery_prize,en,native,s1-lottery_prize-enn-020,sms
+upg-sms-00121,"WINNER! Your mobile number has won a car + Rs 1,00,000. Call 9783496923 to claim your prize today.",1,lottery_prize,en,native,s1-lottery_prize-enn-020,sms
+upg-sms-00122,"WINNER! Your mobile number has won a car + Rs 25,000. Call 9787494951 to claim your prize today.",1,lottery_prize,en,native,s1-lottery_prize-enn-020,sms
+upg-sms-00123,"WINNER! Your mobile number has won a car + Rs 1,00,000. Call 6744336332 to claim your prize today.",1,lottery_prize,en,native,s1-lottery_prize-enn-020,sms
+upg-sms-00124,"WINNER! Your mobile number has won a car + Rs 1,00,000. Call 9660693442 to claim your prize today.",1,lottery_prize,en,native,s1-lottery_prize-enn-020,sms
+upg-sms-00125,"WINNER! Your mobile number has won a car + Rs 25,000. Call 7969430483 to claim your prize today.",1,lottery_prize,en,native,s1-lottery_prize-enn-020,sms
+upg-sms-00126,"बधाई हो! आपने मेगा लकी ड्रॉ में ₹50,000 जीते हैं। इनाम पाने के लिए ₹7,500 प्रोसेसिंग फीस claim.reward@upg पर भेजें।",1,lottery_prize,hi,native,s1-lottery_prize-hin-021,sms
+upg-sms-00127,"बधाई हो! आपने मेगा लकी ड्रॉ में ₹5,00,000 जीते हैं। इनाम पाने के लिए ₹1,499 प्रोसेसिंग फीस luckydraw.winner@upg पर भेजें।",1,lottery_prize,hi,native,s1-lottery_prize-hin-021,sms
+upg-sms-00128,"बधाई हो! आपने मेगा लकी ड्रॉ में ₹25,000 जीते हैं। इनाम पाने के लिए ₹2,999 प्रोसेसिंग फीस support.verify@upg पर भेजें।",1,lottery_prize,hi,native,s1-lottery_prize-hin-021,sms
+upg-sms-00129,"बधाई हो! आपने मेगा लकी ड्रॉ में ₹50,000 जीते हैं। इनाम पाने के लिए ₹1,499 प्रोसेसिंग फीस cashback.offer@upg पर भेजें।",1,lottery_prize,hi,native,s1-lottery_prize-hin-021,sms
+upg-sms-00130,"बधाई हो! आपने मेगा लकी ड्रॉ में ₹50,000 जीते हैं। इनाम पाने के लिए ₹5,000 प्रोसेसिंग फीस support.verify@upg पर भेजें।",1,lottery_prize,hi,native,s1-lottery_prize-hin-021,sms
+upg-sms-00131,"बधाई हो! आपने मेगा लकी ड्रॉ में ₹25,000 जीते हैं। इनाम पाने के लिए ₹4,999 प्रोसेसिंग फीस claim.reward@upg पर भेजें।",1,lottery_prize,hi,native,s1-lottery_prize-hin-021,sms
+upg-sms-00132,"आपका नंबर ₹10,00,000 इनाम के लिए चुना गया है। आज रात 10 बजे से पहले दावा करें: http://parcel-track-in.info/t65017",1,lottery_prize,hi,native,s1-lottery_prize-hin-022,sms
+upg-sms-00133,"आपका नंबर ₹2,50,000 इनाम के लिए चुना गया है। आज रात 10 बजे से पहले दावा करें: http://acct-help-india.site/45877",1,lottery_prize,hi,native,s1-lottery_prize-hin-022,sms
+upg-sms-00134,"आपका नंबर ₹1,00,000 इनाम के लिए चुना गया है। 30 मिनट में से पहले दावा करें: http://acct-help-india.site/94641",1,lottery_prize,hi,native,s1-lottery_prize-hin-022,sms
+upg-sms-00135,"आपका नंबर ₹2,50,000 इनाम के लिए चुना गया है। 30 मिनट में से पहले दावा करें: http://secure-bank-update.click/55648",1,lottery_prize,hi,native,s1-lottery_prize-hin-022,sms
+upg-sms-00136,"आपका नंबर ₹25,000 इनाम के लिए चुना गया है। आज रात 9:30 बजे से पहले दावा करें: https://bit-link.cc/82573",1,lottery_prize,hi,native,s1-lottery_prize-hin-022,sms
+upg-sms-00137,"आपका नंबर ₹1,00,000 इनाम के लिए चुना गया है। 2 घंटे में से पहले दावा करें: http://acct-help-india.site/64565",1,lottery_prize,hi,native,s1-lottery_prize-hin-022,sms
+upg-sms-00138,"Badhai ho! Aapne Rs 5,00,000 ka inaam jeeta hai. Claim karne ke liye 9698366063 par call karein.",1,lottery_prize,hi,latin,s1-lottery_prize-hil-023,sms
+upg-sms-00139,"Badhai ho! Aapne Rs 2,50,000 ka inaam jeeta hai. Claim karne ke liye 9793794798 par call karein.",1,lottery_prize,hi,latin,s1-lottery_prize-hil-023,sms
+upg-sms-00140,"Badhai ho! Aapne Rs 10,00,000 ka inaam jeeta hai. Claim karne ke liye 8401053208 par call karein.",1,lottery_prize,hi,latin,s1-lottery_prize-hil-023,sms
+upg-sms-00141,"Badhai ho! Aapne Rs 50,000 ka inaam jeeta hai. Claim karne ke liye 8507810596 par call karein.",1,lottery_prize,hi,latin,s1-lottery_prize-hil-023,sms
+upg-sms-00142,"Badhai ho! Aapne Rs 2,50,000 ka inaam jeeta hai. Claim karne ke liye 6906526849 par call karein.",1,lottery_prize,hi,latin,s1-lottery_prize-hil-023,sms
+upg-sms-00143,"Badhai ho! Aapne Rs 1,00,000 ka inaam jeeta hai. Claim karne ke liye 8828644883 par call karein.",1,lottery_prize,hi,latin,s1-lottery_prize-hil-023,sms
+upg-sms-00144,"అభినందనలు! మెగా లక్కీ డ్రాలో మీరు ₹5,00,000 గెలుచుకున్నారు. బహుమతి పొందడానికి ₹1,499 ప్రాసెసింగ్ ఫీజు luckydraw.winner@upg కి పంపండి.",1,lottery_prize,te,native,s1-lottery_prize-ten-024,sms
+upg-sms-00145,"అభినందనలు! మెగా లక్కీ డ్రాలో మీరు ₹2,50,000 గెలుచుకున్నారు. బహుమతి పొందడానికి ₹4,999 ప్రాసెసింగ్ ఫీజు refund.desk@upg కి పంపండి.",1,lottery_prize,te,native,s1-lottery_prize-ten-024,sms
+upg-sms-00146,"అభినందనలు! మెగా లక్కీ డ్రాలో మీరు ₹5,00,000 గెలుచుకున్నారు. బహుమతి పొందడానికి ₹2,999 ప్రాసెసింగ్ ఫీజు tasks.pay@upg కి పంపండి.",1,lottery_prize,te,native,s1-lottery_prize-ten-024,sms
+upg-sms-00147,"అభినందనలు! మెగా లక్కీ డ్రాలో మీరు ₹5,00,000 గెలుచుకున్నారు. బహుమతి పొందడానికి ₹2,999 ప్రాసెసింగ్ ఫీజు cashback.offer@upg కి పంపండి.",1,lottery_prize,te,native,s1-lottery_prize-ten-024,sms
+upg-sms-00148,"అభినందనలు! మెగా లక్కీ డ్రాలో మీరు ₹2,50,000 గెలుచుకున్నారు. బహుమతి పొందడానికి ₹12,000 ప్రాసెసింగ్ ఫీజు refund.desk@upg కి పంపండి.",1,lottery_prize,te,native,s1-lottery_prize-ten-024,sms
+upg-sms-00149,"అభినందనలు! మెగా లక్కీ డ్రాలో మీరు ₹5,00,000 గెలుచుకున్నారు. బహుమతి పొందడానికి ₹9,999 ప్రాసెసింగ్ ఫీజు refund.desk@upg కి పంపండి.",1,lottery_prize,te,native,s1-lottery_prize-ten-024,sms
+upg-sms-00150,"మీ నంబర్ ₹50,000 బహుమతికి ఎంపికైంది. 30 నిమిషాల్లో లోపు క్లెయిమ్ చేయండి: http://parcel-track-in.info/t8119",1,lottery_prize,te,native,s1-lottery_prize-ten-025,sms
+upg-sms-00151,"మీ నంబర్ ₹1,00,000 బహుమతికి ఎంపికైంది. ఈ రాత్రి 9:30కి లోపు క్లెయిమ్ చేయండి: http://secure-bank-update.click/39759",1,lottery_prize,te,native,s1-lottery_prize-ten-025,sms
+upg-sms-00152,"మీ నంబర్ ₹25,000 బహుమతికి ఎంపికైంది. ఈ రాత్రి 9:30కి లోపు క్లెయిమ్ చేయండి: https://upi-refund-help.xyz/r8340",1,lottery_prize,te,native,s1-lottery_prize-ten-025,sms
+upg-sms-00153,"మీ నంబర్ ₹10,00,000 బహుమతికి ఎంపికైంది. 2 గంటల్లో లోపు క్లెయిమ్ చేయండి: https://bit-link.cc/22525",1,lottery_prize,te,native,s1-lottery_prize-ten-025,sms
+upg-sms-00154,"మీ నంబర్ ₹5,00,000 బహుమతికి ఎంపికైంది. 30 నిమిషాల్లో లోపు క్లెయిమ్ చేయండి: http://acct-help-india.site/58025",1,lottery_prize,te,native,s1-lottery_prize-ten-025,sms
+upg-sms-00155,"మీ నంబర్ ₹10,00,000 బహుమతికి ఎంపికైంది. 2 గంటల్లో లోపు క్లెయిమ్ చేయండి: http://acct-help-india.site/92131",1,lottery_prize,te,native,s1-lottery_prize-ten-025,sms
+upg-sms-00156,"Congratulations! Meeru Rs 50,000 lottery gelicharu. Prize kosam 7432088429 ki call cheyandi.",1,lottery_prize,te,latin,s1-lottery_prize-tel-026,sms
+upg-sms-00157,"Congratulations! Meeru Rs 1,00,000 lottery gelicharu. Prize kosam 8565127264 ki call cheyandi.",1,lottery_prize,te,latin,s1-lottery_prize-tel-026,sms
+upg-sms-00158,"Congratulations! Meeru Rs 2,50,000 lottery gelicharu. Prize kosam 9453894293 ki call cheyandi.",1,lottery_prize,te,latin,s1-lottery_prize-tel-026,sms
+upg-sms-00159,"Congratulations! Meeru Rs 5,00,000 lottery gelicharu. Prize kosam 7143110536 ki call cheyandi.",1,lottery_prize,te,latin,s1-lottery_prize-tel-026,sms
+upg-sms-00160,"Congratulations! Meeru Rs 1,00,000 lottery gelicharu. Prize kosam 6306056446 ki call cheyandi.",1,lottery_prize,te,latin,s1-lottery_prize-tel-026,sms
+upg-sms-00161,"Congratulations! Meeru Rs 50,000 lottery gelicharu. Prize kosam 7188637196 ki call cheyandi.",1,lottery_prize,te,latin,s1-lottery_prize-tel-026,sms
+upg-sms-00162,"Part-time job: earn Rs 3,000-8,000 daily by liking videos. Join now https://reward-claim.online/c53617. Registration fee Rs 1 only.",1,job_task,en,native,s1-job_task-enn-027,sms
+upg-sms-00163,"Part-time job: earn Rs 3,000-8,000 daily by liking videos. Join now http://secure-bank-update.click/39133. Registration fee Rs 499 only.",1,job_task,en,native,s1-job_task-enn-027,sms
+upg-sms-00164,"Part-time job: earn Rs 3,000-8,000 daily by liking videos. Join now https://upi-refund-help.xyz/r20961. Registration fee Rs 199 only.",1,job_task,en,native,s1-job_task-enn-027,sms
+upg-sms-00165,"Part-time job: earn Rs 3,000-8,000 daily by liking videos. Join now https://upi-refund-help.xyz/r26572. Registration fee Rs 199 only.",1,job_task,en,native,s1-job_task-enn-027,sms
+upg-sms-00166,"Part-time job: earn Rs 3,000-8,000 daily by liking videos. Join now http://kyc-verify-now.top/a71058. Registration fee Rs 49 only.",1,job_task,en,native,s1-job_task-enn-027,sms
+upg-sms-00167,"Part-time job: earn Rs 3,000-8,000 daily by liking videos. Join now http://kyc-verify-now.top/a53068. Registration fee Rs 49 only.",1,job_task,en,native,s1-job_task-enn-027,sms
+upg-sms-00168,"Hi, I am HR from Digital Hire India. Work from home, simple review tasks, daily payment. Pay Rs 5,000 deposit to claim.reward@upg to unlock tasks.",1,job_task,en,native,s1-job_task-enn-028,sms
+upg-sms-00169,"Hi, I am HR from Digital Hire India. Work from home, simple review tasks, daily payment. Pay Rs 5,000 deposit to cashback.offer@upg to unlock tasks.",1,job_task,en,native,s1-job_task-enn-028,sms
+upg-sms-00170,"Hi, I am HR from Global Tasks Pvt Ltd. Work from home, simple review tasks, daily payment. Pay Rs 1,499 deposit to tasks.pay@upg to unlock tasks.",1,job_task,en,native,s1-job_task-enn-028,sms
+upg-sms-00171,"Hi, I am HR from Digital Hire India. Work from home, simple review tasks, daily payment. Pay Rs 12,000 deposit to refund.desk@upg to unlock tasks.",1,job_task,en,native,s1-job_task-enn-028,sms
+upg-sms-00172,"Hi, I am HR from Digital Hire India. Work from home, simple review tasks, daily payment. Pay Rs 1,499 deposit to support.verify@upg to unlock tasks.",1,job_task,en,native,s1-job_task-enn-028,sms
+upg-sms-00173,"Hi, I am HR from Digital Hire India. Work from home, simple review tasks, daily payment. Pay Rs 2,999 deposit to cashback.offer@upg to unlock tasks.",1,job_task,en,native,s1-job_task-enn-028,sms
+upg-sms-00174,"Your task commission is ready. Complete one prepaid task of Rs 7,500 to withdraw Rs 50,000.",1,job_task,en,native,s1-job_task-enn-029,sms
+upg-sms-00175,"Your task commission is ready. Complete one prepaid task of Rs 9,999 to withdraw Rs 25,000.",1,job_task,en,native,s1-job_task-enn-029,sms
+upg-sms-00176,"Your task commission is ready. Complete one prepaid task of Rs 7,500 to withdraw Rs 1,00,000.",1,job_task,en,native,s1-job_task-enn-029,sms
+upg-sms-00177,"Your task commission is ready. Complete one prepaid task of Rs 5,000 to withdraw Rs 5,00,000.",1,job_task,en,native,s1-job_task-enn-029,sms
+upg-sms-00178,"Your task commission is ready. Complete one prepaid task of Rs 7,500 to withdraw Rs 25,000.",1,job_task,en,native,s1-job_task-enn-029,sms
+upg-sms-00179,"Your task commission is ready. Complete one prepaid task of Rs 9,999 to withdraw Rs 10,00,000.",1,job_task,en,native,s1-job_task-enn-029,sms
+upg-sms-00180,पार्ट टाइम नौकरी: वीडियो लाइक करके रोज़ ₹3000-8000 कमाएँ। अभी जुड़ें https://reward-claim.online/c21891। रजिस्ट्रेशन फीस केवल ₹199।,1,job_task,hi,native,s1-job_task-hin-030,sms
+upg-sms-00181,पार्ट टाइम नौकरी: वीडियो लाइक करके रोज़ ₹3000-8000 कमाएँ। अभी जुड़ें http://acct-help-india.site/77458। रजिस्ट्रेशन फीस केवल ₹49।,1,job_task,hi,native,s1-job_task-hin-030,sms
+upg-sms-00182,पार्ट टाइम नौकरी: वीडियो लाइक करके रोज़ ₹3000-8000 कमाएँ। अभी जुड़ें http://kyc-verify-now.top/a9798। रजिस्ट्रेशन फीस केवल ₹10।,1,job_task,hi,native,s1-job_task-hin-030,sms
+upg-sms-00183,पार्ट टाइम नौकरी: वीडियो लाइक करके रोज़ ₹3000-8000 कमाएँ। अभी जुड़ें http://parcel-track-in.info/t31460। रजिस्ट्रेशन फीस केवल ₹99।,1,job_task,hi,native,s1-job_task-hin-030,sms
+upg-sms-00184,पार्ट टाइम नौकरी: वीडियो लाइक करके रोज़ ₹3000-8000 कमाएँ। अभी जुड़ें http://acct-help-india.site/85028। रजिस्ट्रेशन फीस केवल ₹1।,1,job_task,hi,native,s1-job_task-hin-030,sms
+upg-sms-00185,पार्ट टाइम नौकरी: वीडियो लाइक करके रोज़ ₹3000-8000 कमाएँ। अभी जुड़ें http://kyc-verify-now.top/a43345। रजिस्ट्रेशन फीस केवल ₹199।,1,job_task,hi,native,s1-job_task-hin-030,sms
+upg-sms-00186,"घर बैठे काम, रोज़ भुगतान। टास्क शुरू करने के लिए ₹4,999 जमा राशि luckydraw.winner@upg पर भेजें।",1,job_task,hi,native,s1-job_task-hin-031,sms
+upg-sms-00187,"घर बैठे काम, रोज़ भुगतान। टास्क शुरू करने के लिए ₹1,499 जमा राशि support.verify@upg पर भेजें।",1,job_task,hi,native,s1-job_task-hin-031,sms
+upg-sms-00188,"घर बैठे काम, रोज़ भुगतान। टास्क शुरू करने के लिए ₹2,999 जमा राशि kyc.helpdesk@upg पर भेजें।",1,job_task,hi,native,s1-job_task-hin-031,sms
+upg-sms-00189,"घर बैठे काम, रोज़ भुगतान। टास्क शुरू करने के लिए ₹9,999 जमा राशि refund.desk@upg पर भेजें।",1,job_task,hi,native,s1-job_task-hin-031,sms
+upg-sms-00190,"घर बैठे काम, रोज़ भुगतान। टास्क शुरू करने के लिए ₹12,000 जमा राशि tasks.pay@upg पर भेजें।",1,job_task,hi,native,s1-job_task-hin-031,sms
+upg-sms-00191,"घर बैठे काम, रोज़ भुगतान। टास्क शुरू करने के लिए ₹9,999 जमा राशि cashback.offer@upg पर भेजें।",1,job_task,hi,native,s1-job_task-hin-031,sms
+upg-sms-00192,"Ghar baithe kamaayein Rs 5000 roz. Task unlock karne ke liye Rs 12,000 deposit bhejein luckydraw.winner@upg",1,job_task,hi,latin,s1-job_task-hil-032,sms
+upg-sms-00193,"Ghar baithe kamaayein Rs 5000 roz. Task unlock karne ke liye Rs 1,499 deposit bhejein cashback.offer@upg",1,job_task,hi,latin,s1-job_task-hil-032,sms
+upg-sms-00194,"Ghar baithe kamaayein Rs 5000 roz. Task unlock karne ke liye Rs 2,999 deposit bhejein support.verify@upg",1,job_task,hi,latin,s1-job_task-hil-032,sms
+upg-sms-00195,"Ghar baithe kamaayein Rs 5000 roz. Task unlock karne ke liye Rs 2,999 deposit bhejein tasks.pay@upg",1,job_task,hi,latin,s1-job_task-hil-032,sms
+upg-sms-00196,"Ghar baithe kamaayein Rs 5000 roz. Task unlock karne ke liye Rs 2,999 deposit bhejein kyc.helpdesk@upg",1,job_task,hi,latin,s1-job_task-hil-032,sms
+upg-sms-00197,"Ghar baithe kamaayein Rs 5000 roz. Task unlock karne ke liye Rs 7,500 deposit bhejein cashback.offer@upg",1,job_task,hi,latin,s1-job_task-hil-032,sms
+upg-sms-00198,పార్ట్ టైమ్ ఉద్యోగం: వీడియోలు లైక్ చేసి రోజూ ₹3000-8000 సంపాదించండి. ఇప్పుడే చేరండి http://secure-bank-update.click/19117. రిజిస్ట్రేషన్ ఫీజు ₹199 మాత్రమే.,1,job_task,te,native,s1-job_task-ten-033,sms
+upg-sms-00199,పార్ట్ టైమ్ ఉద్యోగం: వీడియోలు లైక్ చేసి రోజూ ₹3000-8000 సంపాదించండి. ఇప్పుడే చేరండి http://secure-bank-update.click/1524. రిజిస్ట్రేషన్ ఫీజు ₹99 మాత్రమే.,1,job_task,te,native,s1-job_task-ten-033,sms
+upg-sms-00200,పార్ట్ టైమ్ ఉద్యోగం: వీడియోలు లైక్ చేసి రోజూ ₹3000-8000 సంపాదించండి. ఇప్పుడే చేరండి https://reward-claim.online/c80479. రిజిస్ట్రేషన్ ఫీజు ₹1 మాత్రమే.,1,job_task,te,native,s1-job_task-ten-033,sms
+upg-sms-00201,పార్ట్ టైమ్ ఉద్యోగం: వీడియోలు లైక్ చేసి రోజూ ₹3000-8000 సంపాదించండి. ఇప్పుడే చేరండి http://acct-help-india.site/69208. రిజిస్ట్రేషన్ ఫీజు ₹10 మాత్రమే.,1,job_task,te,native,s1-job_task-ten-033,sms
+upg-sms-00202,పార్ట్ టైమ్ ఉద్యోగం: వీడియోలు లైక్ చేసి రోజూ ₹3000-8000 సంపాదించండి. ఇప్పుడే చేరండి https://reward-claim.online/c31459. రిజిస్ట్రేషన్ ఫీజు ₹49 మాత్రమే.,1,job_task,te,native,s1-job_task-ten-033,sms
+upg-sms-00203,పార్ట్ టైమ్ ఉద్యోగం: వీడియోలు లైక్ చేసి రోజూ ₹3000-8000 సంపాదించండి. ఇప్పుడే చేరండి http://acct-help-india.site/48008. రిజిస్ట్రేషన్ ఫీజు ₹499 మాత్రమే.,1,job_task,te,native,s1-job_task-ten-033,sms
+upg-sms-00204,"ఇంటి నుండే పని, రోజువారీ చెల్లింపు. టాస్క్‌లు ప్రారంభించడానికి ₹4,999 డిపాజిట్ support.verify@upg కి పంపండి.",1,job_task,te,native,s1-job_task-ten-034,sms
+upg-sms-00205,"ఇంటి నుండే పని, రోజువారీ చెల్లింపు. టాస్క్‌లు ప్రారంభించడానికి ₹12,000 డిపాజిట్ luckydraw.winner@upg కి పంపండి.",1,job_task,te,native,s1-job_task-ten-034,sms
+upg-sms-00206,"ఇంటి నుండే పని, రోజువారీ చెల్లింపు. టాస్క్‌లు ప్రారంభించడానికి ₹1,499 డిపాజిట్ kyc.helpdesk@upg కి పంపండి.",1,job_task,te,native,s1-job_task-ten-034,sms
+upg-sms-00207,"ఇంటి నుండే పని, రోజువారీ చెల్లింపు. టాస్క్‌లు ప్రారంభించడానికి ₹1,499 డిపాజిట్ claim.reward@upg కి పంపండి.",1,job_task,te,native,s1-job_task-ten-034,sms
+upg-sms-00208,"ఇంటి నుండే పని, రోజువారీ చెల్లింపు. టాస్క్‌లు ప్రారంభించడానికి ₹4,999 డిపాజిట్ claim.reward@upg కి పంపండి.",1,job_task,te,native,s1-job_task-ten-034,sms
+upg-sms-00209,"ఇంటి నుండే పని, రోజువారీ చెల్లింపు. టాస్క్‌లు ప్రారంభించడానికి ₹12,000 డిపాజిట్ claim.reward@upg కి పంపండి.",1,job_task,te,native,s1-job_task-ten-034,sms
+upg-sms-00210,"Intlo nunde pani, roju Rs 5000 sampadinchandi. Task kosam Rs 2,999 deposit pampandi tasks.pay@upg",1,job_task,te,latin,s1-job_task-tel-035,sms
+upg-sms-00211,"Intlo nunde pani, roju Rs 5000 sampadinchandi. Task kosam Rs 2,999 deposit pampandi refund.desk@upg",1,job_task,te,latin,s1-job_task-tel-035,sms
+upg-sms-00212,"Intlo nunde pani, roju Rs 5000 sampadinchandi. Task kosam Rs 4,999 deposit pampandi tasks.pay@upg",1,job_task,te,latin,s1-job_task-tel-035,sms
+upg-sms-00213,"Intlo nunde pani, roju Rs 5000 sampadinchandi. Task kosam Rs 2,999 deposit pampandi luckydraw.winner@upg",1,job_task,te,latin,s1-job_task-tel-035,sms
+upg-sms-00214,"Intlo nunde pani, roju Rs 5000 sampadinchandi. Task kosam Rs 12,000 deposit pampandi refund.desk@upg",1,job_task,te,latin,s1-job_task-tel-035,sms
+upg-sms-00215,"Intlo nunde pani, roju Rs 5000 sampadinchandi. Task kosam Rs 12,000 deposit pampandi support.verify@upg",1,job_task,te,latin,s1-job_task-tel-035,sms
+upg-sms-00216,"Dear consumer, your electricity power will be disconnected today 10 PM because your last month bill was not updated. Call officer 6193149055 immediately.",1,bill_disconnection,en,native,s1-bill_disconnection-enn-036,sms
+upg-sms-00217,"Dear consumer, your electricity power will be disconnected within 2 hours because your last month bill was not updated. Call officer 9983418919 immediately.",1,bill_disconnection,en,native,s1-bill_disconnection-enn-036,sms
+upg-sms-00218,"Dear consumer, your electricity power will be disconnected today 10 PM because your last month bill was not updated. Call officer 8360358852 immediately.",1,bill_disconnection,en,native,s1-bill_disconnection-enn-036,sms
+upg-sms-00219,"Dear consumer, your electricity power will be disconnected in 30 minutes because your last month bill was not updated. Call officer 9401645311 immediately.",1,bill_disconnection,en,native,s1-bill_disconnection-enn-036,sms
+upg-sms-00220,"Dear consumer, your electricity power will be disconnected within 2 hours because your last month bill was not updated. Call officer 9155936963 immediately.",1,bill_disconnection,en,native,s1-bill_disconnection-enn-036,sms
+upg-sms-00221,"Dear consumer, your electricity power will be disconnected today 10 PM because your last month bill was not updated. Call officer 9223093658 immediately.",1,bill_disconnection,en,native,s1-bill_disconnection-enn-036,sms
+upg-sms-00222,State Power Distribution: Bill payment pending. Connection will be cut in 30 minutes. Pay Rs 499 to cashback.offer@upg to update your record.,1,bill_disconnection,en,native,s1-bill_disconnection-enn-037,sms
+upg-sms-00223,Power Supply Office: Bill payment pending. Connection will be cut today 10 PM. Pay Rs 499 to refund.desk@upg to update your record.,1,bill_disconnection,en,native,s1-bill_disconnection-enn-037,sms
+upg-sms-00224,Power Supply Office: Bill payment pending. Connection will be cut today 10 PM. Pay Rs 199 to luckydraw.winner@upg to update your record.,1,bill_disconnection,en,native,s1-bill_disconnection-enn-037,sms
+upg-sms-00225,City Electricity Board: Bill payment pending. Connection will be cut within 2 hours. Pay Rs 199 to support.verify@upg to update your record.,1,bill_disconnection,en,native,s1-bill_disconnection-enn-037,sms
+upg-sms-00226,City Electricity Board: Bill payment pending. Connection will be cut tonight 9:30 PM. Pay Rs 499 to kyc.helpdesk@upg to update your record.,1,bill_disconnection,en,native,s1-bill_disconnection-enn-037,sms
+upg-sms-00227,City Electricity Board: Bill payment pending. Connection will be cut today 10 PM. Pay Rs 499 to claim.reward@upg to update your record.,1,bill_disconnection,en,native,s1-bill_disconnection-enn-037,sms
+upg-sms-00228,"प्रिय उपभोक्ता, पिछले महीने का बिल अपडेट नहीं होने के कारण आज रात 10 बजे आपकी बिजली काट दी जाएगी। तुरंत अधिकारी को 9910777640 पर कॉल करें।",1,bill_disconnection,hi,native,s1-bill_disconnection-hin-038,sms
+upg-sms-00229,"प्रिय उपभोक्ता, पिछले महीने का बिल अपडेट नहीं होने के कारण आज रात 10 बजे आपकी बिजली काट दी जाएगी। तुरंत अधिकारी को 6793790505 पर कॉल करें।",1,bill_disconnection,hi,native,s1-bill_disconnection-hin-038,sms
+upg-sms-00230,"प्रिय उपभोक्ता, पिछले महीने का बिल अपडेट नहीं होने के कारण आज रात 10 बजे आपकी बिजली काट दी जाएगी। तुरंत अधिकारी को 6200597813 पर कॉल करें।",1,bill_disconnection,hi,native,s1-bill_disconnection-hin-038,sms
+upg-sms-00231,"प्रिय उपभोक्ता, पिछले महीने का बिल अपडेट नहीं होने के कारण 2 घंटे में आपकी बिजली काट दी जाएगी। तुरंत अधिकारी को 6402619729 पर कॉल करें।",1,bill_disconnection,hi,native,s1-bill_disconnection-hin-038,sms
+upg-sms-00232,"प्रिय उपभोक्ता, पिछले महीने का बिल अपडेट नहीं होने के कारण 30 मिनट में आपकी बिजली काट दी जाएगी। तुरंत अधिकारी को 8330623803 पर कॉल करें।",1,bill_disconnection,hi,native,s1-bill_disconnection-hin-038,sms
+upg-sms-00233,"प्रिय उपभोक्ता, पिछले महीने का बिल अपडेट नहीं होने के कारण आज रात 9:30 बजे आपकी बिजली काट दी जाएगी। तुरंत अधिकारी को 6217201359 पर कॉल करें।",1,bill_disconnection,hi,native,s1-bill_disconnection-hin-038,sms
+upg-sms-00234,Aapki bijli 30 min mein kaat di jayegi. Bill update ke liye turant 6175592924 par call karein.,1,bill_disconnection,hi,latin,s1-bill_disconnection-hil-039,sms
+upg-sms-00235,Aapki bijli aaj raat 9:30 kaat di jayegi. Bill update ke liye turant 7180480738 par call karein.,1,bill_disconnection,hi,latin,s1-bill_disconnection-hil-039,sms
+upg-sms-00236,Aapki bijli 30 min mein kaat di jayegi. Bill update ke liye turant 6807012958 par call karein.,1,bill_disconnection,hi,latin,s1-bill_disconnection-hil-039,sms
+upg-sms-00237,Aapki bijli 2 ghante mein kaat di jayegi. Bill update ke liye turant 6232881380 par call karein.,1,bill_disconnection,hi,latin,s1-bill_disconnection-hil-039,sms
+upg-sms-00238,Aapki bijli 2 ghante mein kaat di jayegi. Bill update ke liye turant 6333511247 par call karein.,1,bill_disconnection,hi,latin,s1-bill_disconnection-hil-039,sms
+upg-sms-00239,Aapki bijli aaj raat 10 baje kaat di jayegi. Bill update ke liye turant 7281027250 par call karein.,1,bill_disconnection,hi,latin,s1-bill_disconnection-hil-039,sms
+upg-sms-00240,"ప్రియమైన వినియోగదారు, గత నెల బిల్ అప్‌డేట్ కాలేదు కాబట్టి 30 నిమిషాల్లో మీ కరెంట్ కట్ చేయబడుతుంది. వెంటనే అధికారికి 6927308881 కాల్ చేయండి.",1,bill_disconnection,te,native,s1-bill_disconnection-ten-040,sms
+upg-sms-00241,"ప్రియమైన వినియోగదారు, గత నెల బిల్ అప్‌డేట్ కాలేదు కాబట్టి 2 గంటల్లో మీ కరెంట్ కట్ చేయబడుతుంది. వెంటనే అధికారికి 6438417609 కాల్ చేయండి.",1,bill_disconnection,te,native,s1-bill_disconnection-ten-040,sms
+upg-sms-00242,"ప్రియమైన వినియోగదారు, గత నెల బిల్ అప్‌డేట్ కాలేదు కాబట్టి 30 నిమిషాల్లో మీ కరెంట్ కట్ చేయబడుతుంది. వెంటనే అధికారికి 9754383908 కాల్ చేయండి.",1,bill_disconnection,te,native,s1-bill_disconnection-ten-040,sms
+upg-sms-00243,"ప్రియమైన వినియోగదారు, గత నెల బిల్ అప్‌డేట్ కాలేదు కాబట్టి ఈ రాత్రి 9:30కి మీ కరెంట్ కట్ చేయబడుతుంది. వెంటనే అధికారికి 6852570272 కాల్ చేయండి.",1,bill_disconnection,te,native,s1-bill_disconnection-ten-040,sms
+upg-sms-00244,"ప్రియమైన వినియోగదారు, గత నెల బిల్ అప్‌డేట్ కాలేదు కాబట్టి 2 గంటల్లో మీ కరెంట్ కట్ చేయబడుతుంది. వెంటనే అధికారికి 6169189123 కాల్ చేయండి.",1,bill_disconnection,te,native,s1-bill_disconnection-ten-040,sms
+upg-sms-00245,"ప్రియమైన వినియోగదారు, గత నెల బిల్ అప్‌డేట్ కాలేదు కాబట్టి ఈ రోజు రాత్రి 10 గంటలకు మీ కరెంట్ కట్ చేయబడుతుంది. వెంటనే అధికారికి 8376336946 కాల్ చేయండి.",1,bill_disconnection,te,native,s1-bill_disconnection-ten-040,sms
+upg-sms-00246,Mee current ee roju raatri 10 ki cut avutundi. Bill update kosam ventane 7954234443 ki call cheyandi.,1,bill_disconnection,te,latin,s1-bill_disconnection-tel-041,sms
+upg-sms-00247,Mee current ee roju raatri 10 ki cut avutundi. Bill update kosam ventane 9487666461 ki call cheyandi.,1,bill_disconnection,te,latin,s1-bill_disconnection-tel-041,sms
+upg-sms-00248,Mee current 30 nimishallo cut avutundi. Bill update kosam ventane 7534625357 ki call cheyandi.,1,bill_disconnection,te,latin,s1-bill_disconnection-tel-041,sms
+upg-sms-00249,Mee current ee raatri 9:30 ki cut avutundi. Bill update kosam ventane 8513000862 ki call cheyandi.,1,bill_disconnection,te,latin,s1-bill_disconnection-tel-041,sms
+upg-sms-00250,Mee current 2 gantallo cut avutundi. Bill update kosam ventane 8908630140 ki call cheyandi.,1,bill_disconnection,te,latin,s1-bill_disconnection-tel-041,sms
+upg-sms-00251,Mee current 30 nimishallo cut avutundi. Bill update kosam ventane 9908543022 ki call cheyandi.,1,bill_disconnection,te,latin,s1-bill_disconnection-tel-041,sms
+upg-sms-00252,"You have received Rs 12,000. Accept the collect request from support.verify@upg to credit it to your account.",1,collect_request,en,native,s1-collect_request-enn-042,sms
+upg-sms-00253,"You have received Rs 9,999. Accept the collect request from kyc.helpdesk@upg to credit it to your account.",1,collect_request,en,native,s1-collect_request-enn-042,sms
+upg-sms-00254,"You have received Rs 1,499. Accept the collect request from cashback.offer@upg to credit it to your account.",1,collect_request,en,native,s1-collect_request-enn-042,sms
+upg-sms-00255,"You have received Rs 7,500. Accept the collect request from claim.reward@upg to credit it to your account.",1,collect_request,en,native,s1-collect_request-enn-042,sms
+upg-sms-00256,"You have received Rs 7,500. Accept the collect request from kyc.helpdesk@upg to credit it to your account.",1,collect_request,en,native,s1-collect_request-enn-042,sms
+upg-sms-00257,"You have received Rs 1,499. Accept the collect request from luckydraw.winner@upg to credit it to your account.",1,collect_request,en,native,s1-collect_request-enn-042,sms
+upg-sms-00258,"To receive your payment of Rs 4,999, approve the UPI request and enter PIN. Request sent by kyc.helpdesk@upg.",1,collect_request,en,native,s1-collect_request-enn-043,sms
+upg-sms-00259,"To receive your payment of Rs 12,000, approve the UPI request and enter PIN. Request sent by luckydraw.winner@upg.",1,collect_request,en,native,s1-collect_request-enn-043,sms
+upg-sms-00260,"To receive your payment of Rs 5,000, approve the UPI request and enter PIN. Request sent by cashback.offer@upg.",1,collect_request,en,native,s1-collect_request-enn-043,sms
+upg-sms-00261,"To receive your payment of Rs 1,499, approve the UPI request and enter PIN. Request sent by cashback.offer@upg.",1,collect_request,en,native,s1-collect_request-enn-043,sms
+upg-sms-00262,"To receive your payment of Rs 12,000, approve the UPI request and enter PIN. Request sent by support.verify@upg.",1,collect_request,en,native,s1-collect_request-enn-043,sms
+upg-sms-00263,"To receive your payment of Rs 4,999, approve the UPI request and enter PIN. Request sent by claim.reward@upg.",1,collect_request,en,native,s1-collect_request-enn-043,sms
+upg-sms-00264,"आपको ₹2,999 मिले हैं। पैसा खाते में लेने के लिए cashback.offer@upg का कलेक्ट अनुरोध स्वीकार करें और PIN डालें।",1,collect_request,hi,native,s1-collect_request-hin-044,sms
+upg-sms-00265,"आपको ₹4,999 मिले हैं। पैसा खाते में लेने के लिए claim.reward@upg का कलेक्ट अनुरोध स्वीकार करें और PIN डालें।",1,collect_request,hi,native,s1-collect_request-hin-044,sms
+upg-sms-00266,"आपको ₹12,000 मिले हैं। पैसा खाते में लेने के लिए support.verify@upg का कलेक्ट अनुरोध स्वीकार करें और PIN डालें।",1,collect_request,hi,native,s1-collect_request-hin-044,sms
+upg-sms-00267,"आपको ₹9,999 मिले हैं। पैसा खाते में लेने के लिए kyc.helpdesk@upg का कलेक्ट अनुरोध स्वीकार करें और PIN डालें।",1,collect_request,hi,native,s1-collect_request-hin-044,sms
+upg-sms-00268,"आपको ₹5,000 मिले हैं। पैसा खाते में लेने के लिए tasks.pay@upg का कलेक्ट अनुरोध स्वीकार करें और PIN डालें।",1,collect_request,hi,native,s1-collect_request-hin-044,sms
+upg-sms-00269,"आपको ₹1,499 मिले हैं। पैसा खाते में लेने के लिए claim.reward@upg का कलेक्ट अनुरोध स्वीकार करें और PIN डालें।",1,collect_request,hi,native,s1-collect_request-hin-044,sms
+upg-sms-00270,"Rs 7,500 receive karne ke liye tasks.pay@upg ki request approve karein aur PIN daalein.",1,collect_request,hi,latin,s1-collect_request-hil-045,sms
+upg-sms-00271,"Rs 1,499 receive karne ke liye refund.desk@upg ki request approve karein aur PIN daalein.",1,collect_request,hi,latin,s1-collect_request-hil-045,sms
+upg-sms-00272,"Rs 5,000 receive karne ke liye kyc.helpdesk@upg ki request approve karein aur PIN daalein.",1,collect_request,hi,latin,s1-collect_request-hil-045,sms
+upg-sms-00273,"Rs 12,000 receive karne ke liye support.verify@upg ki request approve karein aur PIN daalein.",1,collect_request,hi,latin,s1-collect_request-hil-045,sms
+upg-sms-00274,"Rs 2,999 receive karne ke liye refund.desk@upg ki request approve karein aur PIN daalein.",1,collect_request,hi,latin,s1-collect_request-hil-045,sms
+upg-sms-00275,"Rs 12,000 receive karne ke liye luckydraw.winner@upg ki request approve karein aur PIN daalein.",1,collect_request,hi,latin,s1-collect_request-hil-045,sms
+upg-sms-00276,"మీకు ₹5,000 వచ్చాయి. డబ్బు ఖాతాలో జమ కావడానికి claim.reward@upg నుండి వచ్చిన కలెక్ట్ అభ్యర్థనను ఆమోదించి PIN ఇవ్వండి.",1,collect_request,te,native,s1-collect_request-ten-046,sms
+upg-sms-00277,"మీకు ₹4,999 వచ్చాయి. డబ్బు ఖాతాలో జమ కావడానికి support.verify@upg నుండి వచ్చిన కలెక్ట్ అభ్యర్థనను ఆమోదించి PIN ఇవ్వండి.",1,collect_request,te,native,s1-collect_request-ten-046,sms
+upg-sms-00278,"మీకు ₹4,999 వచ్చాయి. డబ్బు ఖాతాలో జమ కావడానికి claim.reward@upg నుండి వచ్చిన కలెక్ట్ అభ్యర్థనను ఆమోదించి PIN ఇవ్వండి.",1,collect_request,te,native,s1-collect_request-ten-046,sms
+upg-sms-00279,"మీకు ₹12,000 వచ్చాయి. డబ్బు ఖాతాలో జమ కావడానికి tasks.pay@upg నుండి వచ్చిన కలెక్ట్ అభ్యర్థనను ఆమోదించి PIN ఇవ్వండి.",1,collect_request,te,native,s1-collect_request-ten-046,sms
+upg-sms-00280,"మీకు ₹9,999 వచ్చాయి. డబ్బు ఖాతాలో జమ కావడానికి luckydraw.winner@upg నుండి వచ్చిన కలెక్ట్ అభ్యర్థనను ఆమోదించి PIN ఇవ్వండి.",1,collect_request,te,native,s1-collect_request-ten-046,sms
+upg-sms-00281,"మీకు ₹2,999 వచ్చాయి. డబ్బు ఖాతాలో జమ కావడానికి support.verify@upg నుండి వచ్చిన కలెక్ట్ అభ్యర్థనను ఆమోదించి PIN ఇవ్వండి.",1,collect_request,te,native,s1-collect_request-ten-046,sms
+upg-sms-00282,"Rs 1,499 receive cheyyadaniki refund.desk@upg request approve chesi PIN enter cheyandi.",1,collect_request,te,latin,s1-collect_request-tel-047,sms
+upg-sms-00283,"Rs 7,500 receive cheyyadaniki cashback.offer@upg request approve chesi PIN enter cheyandi.",1,collect_request,te,latin,s1-collect_request-tel-047,sms
+upg-sms-00284,"Rs 5,000 receive cheyyadaniki claim.reward@upg request approve chesi PIN enter cheyandi.",1,collect_request,te,latin,s1-collect_request-tel-047,sms
+upg-sms-00285,"Rs 2,999 receive cheyyadaniki refund.desk@upg request approve chesi PIN enter cheyandi.",1,collect_request,te,latin,s1-collect_request-tel-047,sms
+upg-sms-00286,"Rs 9,999 receive cheyyadaniki cashback.offer@upg request approve chesi PIN enter cheyandi.",1,collect_request,te,latin,s1-collect_request-tel-047,sms
+upg-sms-00287,"Rs 7,500 receive cheyyadaniki support.verify@upg request approve chesi PIN enter cheyandi.",1,collect_request,te,latin,s1-collect_request-tel-047,sms
+upg-sms-00288,"Sorry, I sent Rs 12,000 to your number by mistake. Please return it to kyc.helpdesk@upg, it was my hospital fee.",1,wrong_transfer,en,native,s1-wrong_transfer-enn-048,sms
+upg-sms-00289,"Sorry, I sent Rs 9,999 to your number by mistake. Please return it to refund.desk@upg, it was my hospital fee.",1,wrong_transfer,en,native,s1-wrong_transfer-enn-048,sms
+upg-sms-00290,"Sorry, I sent Rs 9,999 to your number by mistake. Please return it to tasks.pay@upg, it was my hospital fee.",1,wrong_transfer,en,native,s1-wrong_transfer-enn-048,sms
+upg-sms-00291,"Sorry, I sent Rs 9,999 to your number by mistake. Please return it to luckydraw.winner@upg, it was my hospital fee.",1,wrong_transfer,en,native,s1-wrong_transfer-enn-048,sms
+upg-sms-00292,"Sorry, I sent Rs 2,999 to your number by mistake. Please return it to cashback.offer@upg, it was my hospital fee.",1,wrong_transfer,en,native,s1-wrong_transfer-enn-048,sms
+upg-sms-00293,"Sorry, I sent Rs 5,000 to your number by mistake. Please return it to kyc.helpdesk@upg, it was my hospital fee.",1,wrong_transfer,en,native,s1-wrong_transfer-enn-048,sms
+upg-sms-00294,"Rs 12,000 credited to your a/c by mistake. Kindly refund to tasks.pay@upg urgently or legal action will be taken.",1,wrong_transfer,en,native,s1-wrong_transfer-enn-049,sms
+upg-sms-00295,"Rs 2,999 credited to your a/c by mistake. Kindly refund to cashback.offer@upg urgently or legal action will be taken.",1,wrong_transfer,en,native,s1-wrong_transfer-enn-049,sms
+upg-sms-00296,"Rs 1,499 credited to your a/c by mistake. Kindly refund to refund.desk@upg urgently or legal action will be taken.",1,wrong_transfer,en,native,s1-wrong_transfer-enn-049,sms
+upg-sms-00297,"Rs 9,999 credited to your a/c by mistake. Kindly refund to kyc.helpdesk@upg urgently or legal action will be taken.",1,wrong_transfer,en,native,s1-wrong_transfer-enn-049,sms
+upg-sms-00298,"Rs 9,999 credited to your a/c by mistake. Kindly refund to luckydraw.winner@upg urgently or legal action will be taken.",1,wrong_transfer,en,native,s1-wrong_transfer-enn-049,sms
+upg-sms-00299,"Rs 1,499 credited to your a/c by mistake. Kindly refund to claim.reward@upg urgently or legal action will be taken.",1,wrong_transfer,en,native,s1-wrong_transfer-enn-049,sms
+upg-sms-00300,"माफ़ कीजिए, गलती से आपके नंबर पर ₹9,999 चले गए। कृपया tasks.pay@upg पर वापस भेज दें, यह अस्पताल की फीस थी।",1,wrong_transfer,hi,native,s1-wrong_transfer-hin-050,sms
+upg-sms-00301,"माफ़ कीजिए, गलती से आपके नंबर पर ₹2,999 चले गए। कृपया luckydraw.winner@upg पर वापस भेज दें, यह अस्पताल की फीस थी।",1,wrong_transfer,hi,native,s1-wrong_transfer-hin-050,sms
+upg-sms-00302,"माफ़ कीजिए, गलती से आपके नंबर पर ₹12,000 चले गए। कृपया kyc.helpdesk@upg पर वापस भेज दें, यह अस्पताल की फीस थी।",1,wrong_transfer,hi,native,s1-wrong_transfer-hin-050,sms
+upg-sms-00303,"माफ़ कीजिए, गलती से आपके नंबर पर ₹2,999 चले गए। कृपया refund.desk@upg पर वापस भेज दें, यह अस्पताल की फीस थी।",1,wrong_transfer,hi,native,s1-wrong_transfer-hin-050,sms
+upg-sms-00304,"माफ़ कीजिए, गलती से आपके नंबर पर ₹12,000 चले गए। कृपया refund.desk@upg पर वापस भेज दें, यह अस्पताल की फीस थी।",1,wrong_transfer,hi,native,s1-wrong_transfer-hin-050,sms
+upg-sms-00305,"माफ़ कीजिए, गलती से आपके नंबर पर ₹4,999 चले गए। कृपया tasks.pay@upg पर वापस भेज दें, यह अस्पताल की फीस थी।",1,wrong_transfer,hi,native,s1-wrong_transfer-hin-050,sms
+upg-sms-00306,"Galti se aapko Rs 2,999 bhej diye. Please turant claim.reward@upg par wapas bhej do.",1,wrong_transfer,hi,latin,s1-wrong_transfer-hil-051,sms
+upg-sms-00307,"Galti se aapko Rs 12,000 bhej diye. Please turant kyc.helpdesk@upg par wapas bhej do.",1,wrong_transfer,hi,latin,s1-wrong_transfer-hil-051,sms
+upg-sms-00308,"Galti se aapko Rs 1,499 bhej diye. Please turant refund.desk@upg par wapas bhej do.",1,wrong_transfer,hi,latin,s1-wrong_transfer-hil-051,sms
+upg-sms-00309,"Galti se aapko Rs 2,999 bhej diye. Please turant kyc.helpdesk@upg par wapas bhej do.",1,wrong_transfer,hi,latin,s1-wrong_transfer-hil-051,sms
+upg-sms-00310,"Galti se aapko Rs 7,500 bhej diye. Please turant refund.desk@upg par wapas bhej do.",1,wrong_transfer,hi,latin,s1-wrong_transfer-hil-051,sms
+upg-sms-00311,"Galti se aapko Rs 9,999 bhej diye. Please turant claim.reward@upg par wapas bhej do.",1,wrong_transfer,hi,latin,s1-wrong_transfer-hil-051,sms
+upg-sms-00312,"క్షమించండి, పొరపాటున మీ నంబర్‌కి ₹7,500 పంపాను. దయచేసి support.verify@upg కి తిరిగి పంపండి, అది ఆసుపత్రి ఫీజు.",1,wrong_transfer,te,native,s1-wrong_transfer-ten-052,sms
+upg-sms-00313,"క్షమించండి, పొరపాటున మీ నంబర్‌కి ₹9,999 పంపాను. దయచేసి claim.reward@upg కి తిరిగి పంపండి, అది ఆసుపత్రి ఫీజు.",1,wrong_transfer,te,native,s1-wrong_transfer-ten-052,sms
+upg-sms-00314,"క్షమించండి, పొరపాటున మీ నంబర్‌కి ₹2,999 పంపాను. దయచేసి kyc.helpdesk@upg కి తిరిగి పంపండి, అది ఆసుపత్రి ఫీజు.",1,wrong_transfer,te,native,s1-wrong_transfer-ten-052,sms
+upg-sms-00315,"క్షమించండి, పొరపాటున మీ నంబర్‌కి ₹12,000 పంపాను. దయచేసి luckydraw.winner@upg కి తిరిగి పంపండి, అది ఆసుపత్రి ఫీజు.",1,wrong_transfer,te,native,s1-wrong_transfer-ten-052,sms
+upg-sms-00316,"క్షమించండి, పొరపాటున మీ నంబర్‌కి ₹1,499 పంపాను. దయచేసి kyc.helpdesk@upg కి తిరిగి పంపండి, అది ఆసుపత్రి ఫీజు.",1,wrong_transfer,te,native,s1-wrong_transfer-ten-052,sms
+upg-sms-00317,"క్షమించండి, పొరపాటున మీ నంబర్‌కి ₹9,999 పంపాను. దయచేసి luckydraw.winner@upg కి తిరిగి పంపండి, అది ఆసుపత్రి ఫీజు.",1,wrong_transfer,te,native,s1-wrong_transfer-ten-052,sms
+upg-sms-00318,"Porapatuna meeku Rs 7,500 pampanu. Please ventane kyc.helpdesk@upg ki tirigi pampandi.",1,wrong_transfer,te,latin,s1-wrong_transfer-tel-053,sms
+upg-sms-00319,"Porapatuna meeku Rs 12,000 pampanu. Please ventane claim.reward@upg ki tirigi pampandi.",1,wrong_transfer,te,latin,s1-wrong_transfer-tel-053,sms
+upg-sms-00320,"Porapatuna meeku Rs 9,999 pampanu. Please ventane support.verify@upg ki tirigi pampandi.",1,wrong_transfer,te,latin,s1-wrong_transfer-tel-053,sms
+upg-sms-00321,"Porapatuna meeku Rs 12,000 pampanu. Please ventane refund.desk@upg ki tirigi pampandi.",1,wrong_transfer,te,latin,s1-wrong_transfer-tel-053,sms
+upg-sms-00322,"Porapatuna meeku Rs 1,499 pampanu. Please ventane luckydraw.winner@upg ki tirigi pampandi.",1,wrong_transfer,te,latin,s1-wrong_transfer-tel-053,sms
+upg-sms-00323,"Porapatuna meeku Rs 7,500 pampanu. Please ventane support.verify@upg ki tirigi pampandi.",1,wrong_transfer,te,latin,s1-wrong_transfer-tel-053,sms
+upg-sms-00324,FastTrack Parcel: Your parcel is held at customs. Pay clearance fee Rs 10 within 24 hours: http://acct-help-india.site/32764,1,courier_customs,en,native,s1-courier_customs-enn-054,sms
+upg-sms-00325,Express Cargo: Your parcel is held at customs. Pay clearance fee Rs 1 within 24 hours: https://reward-claim.online/c32694,1,courier_customs,en,native,s1-courier_customs-enn-054,sms
+upg-sms-00326,FastTrack Parcel: Your parcel is held at customs. Pay clearance fee Rs 199 within 24 hours: https://reward-claim.online/c80831,1,courier_customs,en,native,s1-courier_customs-enn-054,sms
+upg-sms-00327,FastTrack Parcel: Your parcel is held at customs. Pay clearance fee Rs 499 within 24 hours: http://secure-bank-update.click/61240,1,courier_customs,en,native,s1-courier_customs-enn-054,sms
+upg-sms-00328,Swift Courier: Your parcel is held at customs. Pay clearance fee Rs 1 within 24 hours: http://kyc-verify-now.top/a22963,1,courier_customs,en,native,s1-courier_customs-enn-054,sms
+upg-sms-00329,Swift Courier: Your parcel is held at customs. Pay clearance fee Rs 99 within 24 hours: https://reward-claim.online/c25265,1,courier_customs,en,native,s1-courier_customs-enn-054,sms
+upg-sms-00330,Delivery failed due to incomplete address. Update details and pay Rs 99 redelivery charge at http://parcel-track-in.info/t44335,1,courier_customs,en,native,s1-courier_customs-enn-055,sms
+upg-sms-00331,Delivery failed due to incomplete address. Update details and pay Rs 10 redelivery charge at https://bit-link.cc/21916,1,courier_customs,en,native,s1-courier_customs-enn-055,sms
+upg-sms-00332,Delivery failed due to incomplete address. Update details and pay Rs 99 redelivery charge at http://acct-help-india.site/20667,1,courier_customs,en,native,s1-courier_customs-enn-055,sms
+upg-sms-00333,Delivery failed due to incomplete address. Update details and pay Rs 199 redelivery charge at https://reward-claim.online/c46478,1,courier_customs,en,native,s1-courier_customs-enn-055,sms
+upg-sms-00334,Delivery failed due to incomplete address. Update details and pay Rs 99 redelivery charge at http://secure-bank-update.click/80068,1,courier_customs,en,native,s1-courier_customs-enn-055,sms
+upg-sms-00335,Delivery failed due to incomplete address. Update details and pay Rs 1 redelivery charge at http://secure-bank-update.click/8135,1,courier_customs,en,native,s1-courier_customs-enn-055,sms
+upg-sms-00336,Express Cargo: आपका पार्सल कस्टम में रुका है। 24 घंटे में ₹1 क्लियरेंस फीस भरें: http://kyc-verify-now.top/a86997,1,courier_customs,hi,native,s1-courier_customs-hin-056,sms
+upg-sms-00337,Swift Courier: आपका पार्सल कस्टम में रुका है। 24 घंटे में ₹1 क्लियरेंस फीस भरें: http://kyc-verify-now.top/a35459,1,courier_customs,hi,native,s1-courier_customs-hin-056,sms
+upg-sms-00338,Express Cargo: आपका पार्सल कस्टम में रुका है। 24 घंटे में ₹1 क्लियरेंस फीस भरें: http://parcel-track-in.info/t43277,1,courier_customs,hi,native,s1-courier_customs-hin-056,sms
+upg-sms-00339,Swift Courier: आपका पार्सल कस्टम में रुका है। 24 घंटे में ₹49 क्लियरेंस फीस भरें: http://acct-help-india.site/82575,1,courier_customs,hi,native,s1-courier_customs-hin-056,sms
+upg-sms-00340,FastTrack Parcel: आपका पार्सल कस्टम में रुका है। 24 घंटे में ₹49 क्लियरेंस फीस भरें: https://bit-link.cc/49017,1,courier_customs,hi,native,s1-courier_customs-hin-056,sms
+upg-sms-00341,Express Cargo: आपका पार्सल कस्टम में रुका है। 24 घंटे में ₹49 क्लियरेंस फीस भरें: https://reward-claim.online/c41748,1,courier_customs,hi,native,s1-courier_customs-hin-056,sms
+upg-sms-00342,Aapka parcel customs mein ruka hai. Rs 199 fees bharein https://reward-claim.online/c82914,1,courier_customs,hi,latin,s1-courier_customs-hil-057,sms
+upg-sms-00343,Aapka parcel customs mein ruka hai. Rs 499 fees bharein https://reward-claim.online/c17731,1,courier_customs,hi,latin,s1-courier_customs-hil-057,sms
+upg-sms-00344,Aapka parcel customs mein ruka hai. Rs 99 fees bharein https://reward-claim.online/c45588,1,courier_customs,hi,latin,s1-courier_customs-hil-057,sms
+upg-sms-00345,Aapka parcel customs mein ruka hai. Rs 199 fees bharein https://bit-link.cc/93699,1,courier_customs,hi,latin,s1-courier_customs-hil-057,sms
+upg-sms-00346,Aapka parcel customs mein ruka hai. Rs 10 fees bharein http://parcel-track-in.info/t89005,1,courier_customs,hi,latin,s1-courier_customs-hil-057,sms
+upg-sms-00347,Aapka parcel customs mein ruka hai. Rs 1 fees bharein https://reward-claim.online/c48720,1,courier_customs,hi,latin,s1-courier_customs-hil-057,sms
+upg-sms-00348,FastTrack Parcel: మీ పార్సెల్ కస్టమ్స్ వద్ద ఆగింది. 24 గంటల్లో ₹1 క్లియరెన్స్ ఫీజు చెల్లించండి: https://reward-claim.online/c97564,1,courier_customs,te,native,s1-courier_customs-ten-058,sms
+upg-sms-00349,FastTrack Parcel: మీ పార్సెల్ కస్టమ్స్ వద్ద ఆగింది. 24 గంటల్లో ₹1 క్లియరెన్స్ ఫీజు చెల్లించండి: http://acct-help-india.site/51618,1,courier_customs,te,native,s1-courier_customs-ten-058,sms
+upg-sms-00350,FastTrack Parcel: మీ పార్సెల్ కస్టమ్స్ వద్ద ఆగింది. 24 గంటల్లో ₹49 క్లియరెన్స్ ఫీజు చెల్లించండి: http://kyc-verify-now.top/a67776,1,courier_customs,te,native,s1-courier_customs-ten-058,sms
+upg-sms-00351,Express Cargo: మీ పార్సెల్ కస్టమ్స్ వద్ద ఆగింది. 24 గంటల్లో ₹1 క్లియరెన్స్ ఫీజు చెల్లించండి: http://kyc-verify-now.top/a11405,1,courier_customs,te,native,s1-courier_customs-ten-058,sms
+upg-sms-00352,FastTrack Parcel: మీ పార్సెల్ కస్టమ్స్ వద్ద ఆగింది. 24 గంటల్లో ₹49 క్లియరెన్స్ ఫీజు చెల్లించండి: http://parcel-track-in.info/t74102,1,courier_customs,te,native,s1-courier_customs-ten-058,sms
+upg-sms-00353,FastTrack Parcel: మీ పార్సెల్ కస్టమ్స్ వద్ద ఆగింది. 24 గంటల్లో ₹499 క్లియరెన్స్ ఫీజు చెల్లించండి: http://kyc-verify-now.top/a34814,1,courier_customs,te,native,s1-courier_customs-ten-058,sms
+upg-sms-00354,Mee parcel customs lo aagindi. Rs 99 fee kattandi http://secure-bank-update.click/20057,1,courier_customs,te,latin,s1-courier_customs-tel-059,sms
+upg-sms-00355,Mee parcel customs lo aagindi. Rs 199 fee kattandi http://acct-help-india.site/81723,1,courier_customs,te,latin,s1-courier_customs-tel-059,sms
+upg-sms-00356,Mee parcel customs lo aagindi. Rs 199 fee kattandi http://acct-help-india.site/22750,1,courier_customs,te,latin,s1-courier_customs-tel-059,sms
+upg-sms-00357,Mee parcel customs lo aagindi. Rs 199 fee kattandi http://kyc-verify-now.top/a69623,1,courier_customs,te,latin,s1-courier_customs-tel-059,sms
+upg-sms-00358,Mee parcel customs lo aagindi. Rs 499 fee kattandi https://reward-claim.online/c19380,1,courier_customs,te,latin,s1-courier_customs-tel-059,sms
+upg-sms-00359,Mee parcel customs lo aagindi. Rs 1 fee kattandi http://kyc-verify-now.top/a60200,1,courier_customs,te,latin,s1-courier_customs-tel-059,sms
+upg-sms-00360,"Pre-approved instant loan of Rs 5,00,000 without documents! Pay file charge Rs 7,500 to luckydraw.winner@upg and get money in 10 minutes.",1,loan_fee,en,native,s1-loan_fee-enn-060,sms
+upg-sms-00361,"Pre-approved instant loan of Rs 5,00,000 without documents! Pay file charge Rs 5,000 to support.verify@upg and get money in 10 minutes.",1,loan_fee,en,native,s1-loan_fee-enn-060,sms
+upg-sms-00362,"Pre-approved instant loan of Rs 10,00,000 without documents! Pay file charge Rs 2,999 to refund.desk@upg and get money in 10 minutes.",1,loan_fee,en,native,s1-loan_fee-enn-060,sms
+upg-sms-00363,"Pre-approved instant loan of Rs 2,50,000 without documents! Pay file charge Rs 9,999 to support.verify@upg and get money in 10 minutes.",1,loan_fee,en,native,s1-loan_fee-enn-060,sms
+upg-sms-00364,"Pre-approved instant loan of Rs 5,00,000 without documents! Pay file charge Rs 12,000 to cashback.offer@upg and get money in 10 minutes.",1,loan_fee,en,native,s1-loan_fee-enn-060,sms
+upg-sms-00365,"Pre-approved instant loan of Rs 50,000 without documents! Pay file charge Rs 2,999 to support.verify@upg and get money in 10 minutes.",1,loan_fee,en,native,s1-loan_fee-enn-060,sms
+upg-sms-00366,"Your loan is sanctioned. To release Rs 50,000, pay insurance fee Rs 5,000 today. Call 6940831618.",1,loan_fee,en,native,s1-loan_fee-enn-061,sms
+upg-sms-00367,"Your loan is sanctioned. To release Rs 2,50,000, pay insurance fee Rs 1,499 today. Call 9878245206.",1,loan_fee,en,native,s1-loan_fee-enn-061,sms
+upg-sms-00368,"Your loan is sanctioned. To release Rs 2,50,000, pay insurance fee Rs 7,500 today. Call 8785714533.",1,loan_fee,en,native,s1-loan_fee-enn-061,sms
+upg-sms-00369,"Your loan is sanctioned. To release Rs 1,00,000, pay insurance fee Rs 2,999 today. Call 7966010397.",1,loan_fee,en,native,s1-loan_fee-enn-061,sms
+upg-sms-00370,"Your loan is sanctioned. To release Rs 1,00,000, pay insurance fee Rs 1,499 today. Call 7403432353.",1,loan_fee,en,native,s1-loan_fee-enn-061,sms
+upg-sms-00371,"Your loan is sanctioned. To release Rs 1,00,000, pay insurance fee Rs 4,999 today. Call 8643075386.",1,loan_fee,en,native,s1-loan_fee-enn-061,sms
+upg-sms-00372,"बिना कागज़ात ₹50,000 का तुरंत लोन मंज़ूर! फ़ाइल चार्ज ₹9,999 kyc.helpdesk@upg पर भेजें और 10 मिनट में पैसा पाएँ।",1,loan_fee,hi,native,s1-loan_fee-hin-062,sms
+upg-sms-00373,"बिना कागज़ात ₹1,00,000 का तुरंत लोन मंज़ूर! फ़ाइल चार्ज ₹7,500 refund.desk@upg पर भेजें और 10 मिनट में पैसा पाएँ।",1,loan_fee,hi,native,s1-loan_fee-hin-062,sms
+upg-sms-00374,"बिना कागज़ात ₹5,00,000 का तुरंत लोन मंज़ूर! फ़ाइल चार्ज ₹2,999 claim.reward@upg पर भेजें और 10 मिनट में पैसा पाएँ।",1,loan_fee,hi,native,s1-loan_fee-hin-062,sms
+upg-sms-00375,"बिना कागज़ात ₹10,00,000 का तुरंत लोन मंज़ूर! फ़ाइल चार्ज ₹7,500 luckydraw.winner@upg पर भेजें और 10 मिनट में पैसा पाएँ।",1,loan_fee,hi,native,s1-loan_fee-hin-062,sms
+upg-sms-00376,"बिना कागज़ात ₹1,00,000 का तुरंत लोन मंज़ूर! फ़ाइल चार्ज ₹5,000 cashback.offer@upg पर भेजें और 10 मिनट में पैसा पाएँ।",1,loan_fee,hi,native,s1-loan_fee-hin-062,sms
+upg-sms-00377,"बिना कागज़ात ₹2,50,000 का तुरंत लोन मंज़ूर! फ़ाइल चार्ज ₹7,500 refund.desk@upg पर भेजें और 10 मिनट में पैसा पाएँ।",1,loan_fee,hi,native,s1-loan_fee-hin-062,sms
+upg-sms-00378,"Aapka Rs 10,00,000 loan approve ho gaya hai. File charge Rs 5,000 bhejein tasks.pay@upg",1,loan_fee,hi,latin,s1-loan_fee-hil-063,sms
+upg-sms-00379,"Aapka Rs 50,000 loan approve ho gaya hai. File charge Rs 7,500 bhejein refund.desk@upg",1,loan_fee,hi,latin,s1-loan_fee-hil-063,sms
+upg-sms-00380,"Aapka Rs 25,000 loan approve ho gaya hai. File charge Rs 7,500 bhejein kyc.helpdesk@upg",1,loan_fee,hi,latin,s1-loan_fee-hil-063,sms
+upg-sms-00381,"Aapka Rs 5,00,000 loan approve ho gaya hai. File charge Rs 7,500 bhejein claim.reward@upg",1,loan_fee,hi,latin,s1-loan_fee-hil-063,sms
+upg-sms-00382,"Aapka Rs 1,00,000 loan approve ho gaya hai. File charge Rs 12,000 bhejein support.verify@upg",1,loan_fee,hi,latin,s1-loan_fee-hil-063,sms
+upg-sms-00383,"Aapka Rs 1,00,000 loan approve ho gaya hai. File charge Rs 2,999 bhejein support.verify@upg",1,loan_fee,hi,latin,s1-loan_fee-hil-063,sms
+upg-sms-00384,"డాక్యుమెంట్లు లేకుండా ₹2,50,000 తక్షణ లోన్ ఆమోదం! ఫైల్ చార్జ్ ₹5,000 support.verify@upg కి పంపి 10 నిమిషాల్లో డబ్బు పొందండి.",1,loan_fee,te,native,s1-loan_fee-ten-064,sms
+upg-sms-00385,"డాక్యుమెంట్లు లేకుండా ₹1,00,000 తక్షణ లోన్ ఆమోదం! ఫైల్ చార్జ్ ₹2,999 tasks.pay@upg కి పంపి 10 నిమిషాల్లో డబ్బు పొందండి.",1,loan_fee,te,native,s1-loan_fee-ten-064,sms
+upg-sms-00386,"డాక్యుమెంట్లు లేకుండా ₹1,00,000 తక్షణ లోన్ ఆమోదం! ఫైల్ చార్జ్ ₹5,000 claim.reward@upg కి పంపి 10 నిమిషాల్లో డబ్బు పొందండి.",1,loan_fee,te,native,s1-loan_fee-ten-064,sms
+upg-sms-00387,"డాక్యుమెంట్లు లేకుండా ₹5,00,000 తక్షణ లోన్ ఆమోదం! ఫైల్ చార్జ్ ₹12,000 refund.desk@upg కి పంపి 10 నిమిషాల్లో డబ్బు పొందండి.",1,loan_fee,te,native,s1-loan_fee-ten-064,sms
+upg-sms-00388,"డాక్యుమెంట్లు లేకుండా ₹50,000 తక్షణ లోన్ ఆమోదం! ఫైల్ చార్జ్ ₹2,999 kyc.helpdesk@upg కి పంపి 10 నిమిషాల్లో డబ్బు పొందండి.",1,loan_fee,te,native,s1-loan_fee-ten-064,sms
+upg-sms-00389,"డాక్యుమెంట్లు లేకుండా ₹2,50,000 తక్షణ లోన్ ఆమోదం! ఫైల్ చార్జ్ ₹9,999 refund.desk@upg కి పంపి 10 నిమిషాల్లో డబ్బు పొందండి.",1,loan_fee,te,native,s1-loan_fee-ten-064,sms
+upg-sms-00390,"Mee Rs 10,00,000 loan approve ayindi. File charge Rs 5,000 pampandi support.verify@upg",1,loan_fee,te,latin,s1-loan_fee-tel-065,sms
+upg-sms-00391,"Mee Rs 2,50,000 loan approve ayindi. File charge Rs 9,999 pampandi refund.desk@upg",1,loan_fee,te,latin,s1-loan_fee-tel-065,sms
+upg-sms-00392,"Mee Rs 10,00,000 loan approve ayindi. File charge Rs 4,999 pampandi cashback.offer@upg",1,loan_fee,te,latin,s1-loan_fee-tel-065,sms
+upg-sms-00393,"Mee Rs 2,50,000 loan approve ayindi. File charge Rs 2,999 pampandi kyc.helpdesk@upg",1,loan_fee,te,latin,s1-loan_fee-tel-065,sms
+upg-sms-00394,"Mee Rs 1,00,000 loan approve ayindi. File charge Rs 12,000 pampandi luckydraw.winner@upg",1,loan_fee,te,latin,s1-loan_fee-tel-065,sms
+upg-sms-00395,"Mee Rs 1,00,000 loan approve ayindi. File charge Rs 4,999 pampandi refund.desk@upg",1,loan_fee,te,latin,s1-loan_fee-tel-065,sms
+upg-sms-00396,Kaveri Gramin Bank security team: suspicious login detected. Share the OTP you just received with our officer on 8793686766 to secure your account.,1,otp_pin_request,en,native,s1-otp_pin_request-enn-066,sms
+upg-sms-00397,Deccan Co-op Bank security team: suspicious login detected. Share the OTP you just received with our officer on 9181053330 to secure your account.,1,otp_pin_request,en,native,s1-otp_pin_request-enn-066,sms
+upg-sms-00398,Kaveri Gramin Bank security team: suspicious login detected. Share the OTP you just received with our officer on 6235692119 to secure your account.,1,otp_pin_request,en,native,s1-otp_pin_request-enn-066,sms
+upg-sms-00399,Godavari Bank security team: suspicious login detected. Share the OTP you just received with our officer on 7130629788 to secure your account.,1,otp_pin_request,en,native,s1-otp_pin_request-enn-066,sms
+upg-sms-00400,Godavari Bank security team: suspicious login detected. Share the OTP you just received with our officer on 7811364018 to secure your account.,1,otp_pin_request,en,native,s1-otp_pin_request-enn-066,sms
+upg-sms-00401,Deccan Co-op Bank security team: suspicious login detected. Share the OTP you just received with our officer on 9498713177 to secure your account.,1,otp_pin_request,en,native,s1-otp_pin_request-enn-066,sms
+upg-sms-00402,"To stop the unauthorised debit of Rs 4,999, reply with your UPI PIN and the OTP sent to you.",1,otp_pin_request,en,native,s1-otp_pin_request-enn-067,sms
+upg-sms-00403,"To stop the unauthorised debit of Rs 5,000, reply with your UPI PIN and the OTP sent to you.",1,otp_pin_request,en,native,s1-otp_pin_request-enn-067,sms
+upg-sms-00404,"To stop the unauthorised debit of Rs 12,000, reply with your UPI PIN and the OTP sent to you.",1,otp_pin_request,en,native,s1-otp_pin_request-enn-067,sms
+upg-sms-00405,"To stop the unauthorised debit of Rs 9,999, reply with your UPI PIN and the OTP sent to you.",1,otp_pin_request,en,native,s1-otp_pin_request-enn-067,sms
+upg-sms-00406,"To stop the unauthorised debit of Rs 2,999, reply with your UPI PIN and the OTP sent to you.",1,otp_pin_request,en,native,s1-otp_pin_request-enn-067,sms
+upg-sms-00407,"To stop the unauthorised debit of Rs 1,499, reply with your UPI PIN and the OTP sent to you.",1,otp_pin_request,en,native,s1-otp_pin_request-enn-067,sms
+upg-sms-00408,Kaveri Gramin Bank सुरक्षा टीम: आपके खाते में संदिग्ध लॉगिन हुआ है। खाता सुरक्षित करने के लिए अभी मिला OTP हमारे अधिकारी को 6955724625 पर बताएँ।,1,otp_pin_request,hi,native,s1-otp_pin_request-hin-068,sms
+upg-sms-00409,Kaveri Gramin Bank सुरक्षा टीम: आपके खाते में संदिग्ध लॉगिन हुआ है। खाता सुरक्षित करने के लिए अभी मिला OTP हमारे अधिकारी को 7534576333 पर बताएँ।,1,otp_pin_request,hi,native,s1-otp_pin_request-hin-068,sms
+upg-sms-00410,Bharat Union Bank सुरक्षा टीम: आपके खाते में संदिग्ध लॉगिन हुआ है। खाता सुरक्षित करने के लिए अभी मिला OTP हमारे अधिकारी को 8617976156 पर बताएँ।,1,otp_pin_request,hi,native,s1-otp_pin_request-hin-068,sms
+upg-sms-00411,Narmada Bank सुरक्षा टीम: आपके खाते में संदिग्ध लॉगिन हुआ है। खाता सुरक्षित करने के लिए अभी मिला OTP हमारे अधिकारी को 9748535199 पर बताएँ।,1,otp_pin_request,hi,native,s1-otp_pin_request-hin-068,sms
+upg-sms-00412,Narmada Bank सुरक्षा टीम: आपके खाते में संदिग्ध लॉगिन हुआ है। खाता सुरक्षित करने के लिए अभी मिला OTP हमारे अधिकारी को 7386474063 पर बताएँ।,1,otp_pin_request,hi,native,s1-otp_pin_request-hin-068,sms
+upg-sms-00413,Godavari Bank सुरक्षा टीम: आपके खाते में संदिग्ध लॉगिन हुआ है। खाता सुरक्षित करने के लिए अभी मिला OTP हमारे अधिकारी को 7381647010 पर बताएँ।,1,otp_pin_request,hi,native,s1-otp_pin_request-hin-068,sms
+upg-sms-00414,"Aapke account se Rs 4,999 katne wale hain. Rokne ke liye apna OTP aur PIN batayein 6449792401",1,otp_pin_request,hi,latin,s1-otp_pin_request-hil-069,sms
+upg-sms-00415,"Aapke account se Rs 4,999 katne wale hain. Rokne ke liye apna OTP aur PIN batayein 8742301928",1,otp_pin_request,hi,latin,s1-otp_pin_request-hil-069,sms
+upg-sms-00416,"Aapke account se Rs 12,000 katne wale hain. Rokne ke liye apna OTP aur PIN batayein 9359687307",1,otp_pin_request,hi,latin,s1-otp_pin_request-hil-069,sms
+upg-sms-00417,"Aapke account se Rs 1,499 katne wale hain. Rokne ke liye apna OTP aur PIN batayein 9572647900",1,otp_pin_request,hi,latin,s1-otp_pin_request-hil-069,sms
+upg-sms-00418,"Aapke account se Rs 12,000 katne wale hain. Rokne ke liye apna OTP aur PIN batayein 6413613532",1,otp_pin_request,hi,latin,s1-otp_pin_request-hil-069,sms
+upg-sms-00419,"Aapke account se Rs 12,000 katne wale hain. Rokne ke liye apna OTP aur PIN batayein 7778694245",1,otp_pin_request,hi,latin,s1-otp_pin_request-hil-069,sms
+upg-sms-00420,Deccan Co-op Bank భద్రతా బృందం: మీ ఖాతాలో అనుమానాస్పద లాగిన్. ఖాతా రక్షణ కోసం ఇప్పుడు వచ్చిన OTP ని మా అధికారికి 7516926810 లో చెప్పండి.,1,otp_pin_request,te,native,s1-otp_pin_request-ten-070,sms
+upg-sms-00421,Sahyadri Bank భద్రతా బృందం: మీ ఖాతాలో అనుమానాస్పద లాగిన్. ఖాతా రక్షణ కోసం ఇప్పుడు వచ్చిన OTP ని మా అధికారికి 9391395168 లో చెప్పండి.,1,otp_pin_request,te,native,s1-otp_pin_request-ten-070,sms
+upg-sms-00422,Kaveri Gramin Bank భద్రతా బృందం: మీ ఖాతాలో అనుమానాస్పద లాగిన్. ఖాతా రక్షణ కోసం ఇప్పుడు వచ్చిన OTP ని మా అధికారికి 7424564234 లో చెప్పండి.,1,otp_pin_request,te,native,s1-otp_pin_request-ten-070,sms
+upg-sms-00423,Deccan Co-op Bank భద్రతా బృందం: మీ ఖాతాలో అనుమానాస్పద లాగిన్. ఖాతా రక్షణ కోసం ఇప్పుడు వచ్చిన OTP ని మా అధికారికి 9490340716 లో చెప్పండి.,1,otp_pin_request,te,native,s1-otp_pin_request-ten-070,sms
+upg-sms-00424,Deccan Co-op Bank భద్రతా బృందం: మీ ఖాతాలో అనుమానాస్పద లాగిన్. ఖాతా రక్షణ కోసం ఇప్పుడు వచ్చిన OTP ని మా అధికారికి 6761834027 లో చెప్పండి.,1,otp_pin_request,te,native,s1-otp_pin_request-ten-070,sms
+upg-sms-00425,Narmada Bank భద్రతా బృందం: మీ ఖాతాలో అనుమానాస్పద లాగిన్. ఖాతా రక్షణ కోసం ఇప్పుడు వచ్చిన OTP ని మా అధికారికి 8179273907 లో చెప్పండి.,1,otp_pin_request,te,native,s1-otp_pin_request-ten-070,sms
+upg-sms-00426,"Mee account nundi Rs 2,999 cut avutundi. Aapadaniki mee OTP mariyu PIN cheppandi 6606760400",1,otp_pin_request,te,latin,s1-otp_pin_request-tel-071,sms
+upg-sms-00427,"Mee account nundi Rs 7,500 cut avutundi. Aapadaniki mee OTP mariyu PIN cheppandi 9182127309",1,otp_pin_request,te,latin,s1-otp_pin_request-tel-071,sms
+upg-sms-00428,"Mee account nundi Rs 12,000 cut avutundi. Aapadaniki mee OTP mariyu PIN cheppandi 9365695182",1,otp_pin_request,te,latin,s1-otp_pin_request-tel-071,sms
+upg-sms-00429,"Mee account nundi Rs 2,999 cut avutundi. Aapadaniki mee OTP mariyu PIN cheppandi 8355919635",1,otp_pin_request,te,latin,s1-otp_pin_request-tel-071,sms
+upg-sms-00430,"Mee account nundi Rs 5,000 cut avutundi. Aapadaniki mee OTP mariyu PIN cheppandi 8689891248",1,otp_pin_request,te,latin,s1-otp_pin_request-tel-071,sms
+upg-sms-00431,"Mee account nundi Rs 9,999 cut avutundi. Aapadaniki mee OTP mariyu PIN cheppandi 7879301389",1,otp_pin_request,te,latin,s1-otp_pin_request-tel-071,sms
+upg-sms-00432,"Hi Uncle, this is my new number. My phone broke. I urgently need Rs 2,999, please send to refund.desk@upg, will return tomorrow.",1,impersonation,en,native,s1-impersonation-enn-072,sms
+upg-sms-00433,"Hi Mom, this is my new number. My phone broke. I urgently need Rs 5,000, please send to claim.reward@upg, will return tomorrow.",1,impersonation,en,native,s1-impersonation-enn-072,sms
+upg-sms-00434,"Hi Aunty, this is my new number. My phone broke. I urgently need Rs 1,499, please send to tasks.pay@upg, will return tomorrow.",1,impersonation,en,native,s1-impersonation-enn-072,sms
+upg-sms-00435,"Hi Dad, this is my new number. My phone broke. I urgently need Rs 4,999, please send to claim.reward@upg, will return tomorrow.",1,impersonation,en,native,s1-impersonation-enn-072,sms
+upg-sms-00436,"Hi Bro, this is my new number. My phone broke. I urgently need Rs 4,999, please send to support.verify@upg, will return tomorrow.",1,impersonation,en,native,s1-impersonation-enn-072,sms
+upg-sms-00437,"Hi Mom, this is my new number. My phone broke. I urgently need Rs 7,500, please send to support.verify@upg, will return tomorrow.",1,impersonation,en,native,s1-impersonation-enn-072,sms
+upg-sms-00438,"I am calling from police cyber cell. Your Aadhaar is linked to a crime. Pay Rs 2,999 verification to luckydraw.winner@upg to avoid arrest.",1,impersonation,en,native,s1-impersonation-enn-073,sms
+upg-sms-00439,"I am calling from police cyber cell. Your Aadhaar is linked to a crime. Pay Rs 1,499 verification to claim.reward@upg to avoid arrest.",1,impersonation,en,native,s1-impersonation-enn-073,sms
+upg-sms-00440,"I am calling from police cyber cell. Your Aadhaar is linked to a crime. Pay Rs 7,500 verification to refund.desk@upg to avoid arrest.",1,impersonation,en,native,s1-impersonation-enn-073,sms
+upg-sms-00441,"I am calling from police cyber cell. Your Aadhaar is linked to a crime. Pay Rs 7,500 verification to support.verify@upg to avoid arrest.",1,impersonation,en,native,s1-impersonation-enn-073,sms
+upg-sms-00442,"I am calling from police cyber cell. Your Aadhaar is linked to a crime. Pay Rs 2,999 verification to claim.reward@upg to avoid arrest.",1,impersonation,en,native,s1-impersonation-enn-073,sms
+upg-sms-00443,"I am calling from police cyber cell. Your Aadhaar is linked to a crime. Pay Rs 12,000 verification to support.verify@upg to avoid arrest.",1,impersonation,en,native,s1-impersonation-enn-073,sms
+upg-sms-00444,"मम्मी, यह मेरा नया नंबर है, पुराना फ़ोन खराब हो गया। बहुत ज़रूरी है, ₹2,999 support.verify@upg पर भेज दो, कल लौटा दूँगा।",1,impersonation,hi,native,s1-impersonation-hin-074,sms
+upg-sms-00445,"मम्मी, यह मेरा नया नंबर है, पुराना फ़ोन खराब हो गया। बहुत ज़रूरी है, ₹2,999 cashback.offer@upg पर भेज दो, कल लौटा दूँगा।",1,impersonation,hi,native,s1-impersonation-hin-074,sms
+upg-sms-00446,"मम्मी, यह मेरा नया नंबर है, पुराना फ़ोन खराब हो गया। बहुत ज़रूरी है, ₹7,500 refund.desk@upg पर भेज दो, कल लौटा दूँगा।",1,impersonation,hi,native,s1-impersonation-hin-074,sms
+upg-sms-00447,"मम्मी, यह मेरा नया नंबर है, पुराना फ़ोन खराब हो गया। बहुत ज़रूरी है, ₹5,000 kyc.helpdesk@upg पर भेज दो, कल लौटा दूँगा।",1,impersonation,hi,native,s1-impersonation-hin-074,sms
+upg-sms-00448,"मम्मी, यह मेरा नया नंबर है, पुराना फ़ोन खराब हो गया। बहुत ज़रूरी है, ₹1,499 claim.reward@upg पर भेज दो, कल लौटा दूँगा।",1,impersonation,hi,native,s1-impersonation-hin-074,sms
+upg-sms-00449,"मम्मी, यह मेरा नया नंबर है, पुराना फ़ोन खराब हो गया। बहुत ज़रूरी है, ₹12,000 refund.desk@upg पर भेज दो, कल लौटा दूँगा।",1,impersonation,hi,native,s1-impersonation-hin-074,sms
+upg-sms-00450,"Main police cyber cell se bol raha hoon. Aapka Aadhaar crime mein linked hai. Arrest se bachne ke liye Rs 12,000 bhejein refund.desk@upg",1,impersonation,hi,latin,s1-impersonation-hil-075,sms
+upg-sms-00451,"Main police cyber cell se bol raha hoon. Aapka Aadhaar crime mein linked hai. Arrest se bachne ke liye Rs 4,999 bhejein refund.desk@upg",1,impersonation,hi,latin,s1-impersonation-hil-075,sms
+upg-sms-00452,"Main police cyber cell se bol raha hoon. Aapka Aadhaar crime mein linked hai. Arrest se bachne ke liye Rs 12,000 bhejein cashback.offer@upg",1,impersonation,hi,latin,s1-impersonation-hil-075,sms
+upg-sms-00453,"Main police cyber cell se bol raha hoon. Aapka Aadhaar crime mein linked hai. Arrest se bachne ke liye Rs 5,000 bhejein refund.desk@upg",1,impersonation,hi,latin,s1-impersonation-hil-075,sms
+upg-sms-00454,"Main police cyber cell se bol raha hoon. Aapka Aadhaar crime mein linked hai. Arrest se bachne ke liye Rs 2,999 bhejein claim.reward@upg",1,impersonation,hi,latin,s1-impersonation-hil-075,sms
+upg-sms-00455,"Main police cyber cell se bol raha hoon. Aapka Aadhaar crime mein linked hai. Arrest se bachne ke liye Rs 7,500 bhejein cashback.offer@upg",1,impersonation,hi,latin,s1-impersonation-hil-075,sms
+upg-sms-00456,"అమ్మా, ఇది నా కొత్త నంబర్, పాత ఫోన్ పాడైంది. చాలా అర్జెంట్, ₹4,999 tasks.pay@upg కి పంపు, రేపు తిరిగి ఇస్తాను.",1,impersonation,te,native,s1-impersonation-ten-076,sms
+upg-sms-00457,"అమ్మా, ఇది నా కొత్త నంబర్, పాత ఫోన్ పాడైంది. చాలా అర్జెంట్, ₹2,999 cashback.offer@upg కి పంపు, రేపు తిరిగి ఇస్తాను.",1,impersonation,te,native,s1-impersonation-ten-076,sms
+upg-sms-00458,"అమ్మా, ఇది నా కొత్త నంబర్, పాత ఫోన్ పాడైంది. చాలా అర్జెంట్, ₹1,499 cashback.offer@upg కి పంపు, రేపు తిరిగి ఇస్తాను.",1,impersonation,te,native,s1-impersonation-ten-076,sms
+upg-sms-00459,"అమ్మా, ఇది నా కొత్త నంబర్, పాత ఫోన్ పాడైంది. చాలా అర్జెంట్, ₹12,000 kyc.helpdesk@upg కి పంపు, రేపు తిరిగి ఇస్తాను.",1,impersonation,te,native,s1-impersonation-ten-076,sms
+upg-sms-00460,"అమ్మా, ఇది నా కొత్త నంబర్, పాత ఫోన్ పాడైంది. చాలా అర్జెంట్, ₹7,500 support.verify@upg కి పంపు, రేపు తిరిగి ఇస్తాను.",1,impersonation,te,native,s1-impersonation-ten-076,sms
+upg-sms-00461,"అమ్మా, ఇది నా కొత్త నంబర్, పాత ఫోన్ పాడైంది. చాలా అర్జెంట్, ₹4,999 cashback.offer@upg కి పంపు, రేపు తిరిగి ఇస్తాను.",1,impersonation,te,native,s1-impersonation-ten-076,sms
+upg-sms-00462,"Nenu police cyber cell nundi. Mee Aadhaar crime lo link ayindi. Arrest avvakunda Rs 5,000 pampandi tasks.pay@upg",1,impersonation,te,latin,s1-impersonation-tel-077,sms
+upg-sms-00463,"Nenu police cyber cell nundi. Mee Aadhaar crime lo link ayindi. Arrest avvakunda Rs 9,999 pampandi cashback.offer@upg",1,impersonation,te,latin,s1-impersonation-tel-077,sms
+upg-sms-00464,"Nenu police cyber cell nundi. Mee Aadhaar crime lo link ayindi. Arrest avvakunda Rs 7,500 pampandi kyc.helpdesk@upg",1,impersonation,te,latin,s1-impersonation-tel-077,sms
+upg-sms-00465,"Nenu police cyber cell nundi. Mee Aadhaar crime lo link ayindi. Arrest avvakunda Rs 12,000 pampandi kyc.helpdesk@upg",1,impersonation,te,latin,s1-impersonation-tel-077,sms
+upg-sms-00466,"Nenu police cyber cell nundi. Mee Aadhaar crime lo link ayindi. Arrest avvakunda Rs 12,000 pampandi tasks.pay@upg",1,impersonation,te,latin,s1-impersonation-tel-077,sms
+upg-sms-00467,"Nenu police cyber cell nundi. Mee Aadhaar crime lo link ayindi. Arrest avvakunda Rs 2,999 pampandi tasks.pay@upg",1,impersonation,te,latin,s1-impersonation-tel-077,sms
+upg-sms-00468,"Double your money in 7 days! Invest Rs 4,999 in our crypto plan and get Rs 1,00,000 guaranteed. Join http://secure-bank-update.click/99835",1,investment,en,native,s1-investment-enn-078,sms
+upg-sms-00469,"Double your money in 7 days! Invest Rs 9,999 in our crypto plan and get Rs 1,00,000 guaranteed. Join https://upi-refund-help.xyz/r88237",1,investment,en,native,s1-investment-enn-078,sms
+upg-sms-00470,"Double your money in 7 days! Invest Rs 9,999 in our crypto plan and get Rs 2,50,000 guaranteed. Join http://parcel-track-in.info/t1067",1,investment,en,native,s1-investment-enn-078,sms
+upg-sms-00471,"Double your money in 7 days! Invest Rs 5,000 in our crypto plan and get Rs 1,00,000 guaranteed. Join https://upi-refund-help.xyz/r83769",1,investment,en,native,s1-investment-enn-078,sms
+upg-sms-00472,"Double your money in 7 days! Invest Rs 4,999 in our crypto plan and get Rs 2,50,000 guaranteed. Join http://acct-help-india.site/72056",1,investment,en,native,s1-investment-enn-078,sms
+upg-sms-00473,"Double your money in 7 days! Invest Rs 9,999 in our crypto plan and get Rs 2,50,000 guaranteed. Join http://kyc-verify-now.top/a85019",1,investment,en,native,s1-investment-enn-078,sms
+upg-sms-00474,"VIP stock tips group: 300% returns this week. Pay Rs 2,999 membership to cashback.offer@upg and join now.",1,investment,en,native,s1-investment-enn-079,sms
+upg-sms-00475,"VIP stock tips group: 300% returns this week. Pay Rs 12,000 membership to refund.desk@upg and join now.",1,investment,en,native,s1-investment-enn-079,sms
+upg-sms-00476,"VIP stock tips group: 300% returns this week. Pay Rs 9,999 membership to tasks.pay@upg and join now.",1,investment,en,native,s1-investment-enn-079,sms
+upg-sms-00477,"VIP stock tips group: 300% returns this week. Pay Rs 9,999 membership to claim.reward@upg and join now.",1,investment,en,native,s1-investment-enn-079,sms
+upg-sms-00478,"VIP stock tips group: 300% returns this week. Pay Rs 1,499 membership to claim.reward@upg and join now.",1,investment,en,native,s1-investment-enn-079,sms
+upg-sms-00479,"VIP stock tips group: 300% returns this week. Pay Rs 4,999 membership to support.verify@upg and join now.",1,investment,en,native,s1-investment-enn-079,sms
+upg-sms-00480,"7 दिन में पैसा दोगुना! हमारे प्लान में ₹1,499 लगाएँ और ₹50,000 पक्का पाएँ। जुड़ें https://bit-link.cc/11453",1,investment,hi,native,s1-investment-hin-080,sms
+upg-sms-00481,"7 दिन में पैसा दोगुना! हमारे प्लान में ₹1,499 लगाएँ और ₹25,000 पक्का पाएँ। जुड़ें http://kyc-verify-now.top/a37024",1,investment,hi,native,s1-investment-hin-080,sms
+upg-sms-00482,"7 दिन में पैसा दोगुना! हमारे प्लान में ₹2,999 लगाएँ और ₹1,00,000 पक्का पाएँ। जुड़ें http://acct-help-india.site/65201",1,investment,hi,native,s1-investment-hin-080,sms
+upg-sms-00483,"7 दिन में पैसा दोगुना! हमारे प्लान में ₹2,999 लगाएँ और ₹2,50,000 पक्का पाएँ। जुड़ें http://parcel-track-in.info/t60338",1,investment,hi,native,s1-investment-hin-080,sms
+upg-sms-00484,"7 दिन में पैसा दोगुना! हमारे प्लान में ₹9,999 लगाएँ और ₹1,00,000 पक्का पाएँ। जुड़ें https://upi-refund-help.xyz/r54410",1,investment,hi,native,s1-investment-hin-080,sms
+upg-sms-00485,"7 दिन में पैसा दोगुना! हमारे प्लान में ₹7,500 लगाएँ और ₹50,000 पक्का पाएँ। जुड़ें https://upi-refund-help.xyz/r12735",1,investment,hi,native,s1-investment-hin-080,sms
+upg-sms-00486,"Sirf 7 din mein paisa double! Rs 5,000 invest karein https://reward-claim.online/c16347",1,investment,hi,latin,s1-investment-hil-081,sms
+upg-sms-00487,"Sirf 7 din mein paisa double! Rs 2,999 invest karein https://upi-refund-help.xyz/r90873",1,investment,hi,latin,s1-investment-hil-081,sms
+upg-sms-00488,"Sirf 7 din mein paisa double! Rs 9,999 invest karein https://bit-link.cc/39891",1,investment,hi,latin,s1-investment-hil-081,sms
+upg-sms-00489,"Sirf 7 din mein paisa double! Rs 4,999 invest karein https://bit-link.cc/80827",1,investment,hi,latin,s1-investment-hil-081,sms
+upg-sms-00490,"Sirf 7 din mein paisa double! Rs 5,000 invest karein http://secure-bank-update.click/45573",1,investment,hi,latin,s1-investment-hil-081,sms
+upg-sms-00491,"Sirf 7 din mein paisa double! Rs 4,999 invest karein http://kyc-verify-now.top/a38352",1,investment,hi,latin,s1-investment-hil-081,sms
+upg-sms-00492,"7 రోజుల్లో మీ డబ్బు రెట్టింపు! మా ప్లాన్‌లో ₹2,999 పెట్టి ₹5,00,000 ఖచ్చితంగా పొందండి. చేరండి https://upi-refund-help.xyz/r42014",1,investment,te,native,s1-investment-ten-082,sms
+upg-sms-00493,"7 రోజుల్లో మీ డబ్బు రెట్టింపు! మా ప్లాన్‌లో ₹12,000 పెట్టి ₹2,50,000 ఖచ్చితంగా పొందండి. చేరండి https://reward-claim.online/c37384",1,investment,te,native,s1-investment-ten-082,sms
+upg-sms-00494,"7 రోజుల్లో మీ డబ్బు రెట్టింపు! మా ప్లాన్‌లో ₹12,000 పెట్టి ₹2,50,000 ఖచ్చితంగా పొందండి. చేరండి https://upi-refund-help.xyz/r30289",1,investment,te,native,s1-investment-ten-082,sms
+upg-sms-00495,"7 రోజుల్లో మీ డబ్బు రెట్టింపు! మా ప్లాన్‌లో ₹7,500 పెట్టి ₹1,00,000 ఖచ్చితంగా పొందండి. చేరండి http://acct-help-india.site/28357",1,investment,te,native,s1-investment-ten-082,sms
+upg-sms-00496,"7 రోజుల్లో మీ డబ్బు రెట్టింపు! మా ప్లాన్‌లో ₹5,000 పెట్టి ₹2,50,000 ఖచ్చితంగా పొందండి. చేరండి http://kyc-verify-now.top/a13299",1,investment,te,native,s1-investment-ten-082,sms
+upg-sms-00497,"7 రోజుల్లో మీ డబ్బు రెట్టింపు! మా ప్లాన్‌లో ₹1,499 పెట్టి ₹5,00,000 ఖచ్చితంగా పొందండి. చేరండి https://reward-claim.online/c19959",1,investment,te,native,s1-investment-ten-082,sms
+upg-sms-00498,"7 rojullo dabbu double! Rs 2,999 invest cheyandi http://secure-bank-update.click/20586",1,investment,te,latin,s1-investment-tel-083,sms
+upg-sms-00499,"7 rojullo dabbu double! Rs 7,500 invest cheyandi http://parcel-track-in.info/t28924",1,investment,te,latin,s1-investment-tel-083,sms
+upg-sms-00500,"7 rojullo dabbu double! Rs 4,999 invest cheyandi https://bit-link.cc/33582",1,investment,te,latin,s1-investment-tel-083,sms
+upg-sms-00501,"7 rojullo dabbu double! Rs 9,999 invest cheyandi https://upi-refund-help.xyz/r4761",1,investment,te,latin,s1-investment-tel-083,sms
+upg-sms-00502,"7 rojullo dabbu double! Rs 4,999 invest cheyandi https://upi-refund-help.xyz/r93308",1,investment,te,latin,s1-investment-tel-083,sms
+upg-sms-00503,"7 rojullo dabbu double! Rs 9,999 invest cheyandi http://kyc-verify-now.top/a25106",1,investment,te,latin,s1-investment-tel-083,sms
+upg-sms-00504,"Rs 2,999 debited from A/c XX7400 on 10-Aug to Divya via UPI. Ref 8763121562. Not you? Call the number on the back of your card. -NRMB",0,bank_debit,en,native,s0-bank_debit-enn-000,sms
+upg-sms-00505,"Rs 2,999 debited from A/c XX6114 on 09-Nov to Suresh via UPI. Ref 9838970820. Not you? Call the number on the back of your card. -DCCB",0,bank_debit,en,native,s0-bank_debit-enn-000,sms
+upg-sms-00506,"Rs 2,999 debited from A/c XX0317 on 14-Jul to Priya via UPI. Ref 1402535622. Not you? Call the number on the back of your card. -GODB",0,bank_debit,en,native,s0-bank_debit-enn-000,sms
+upg-sms-00507,"Rs 7,500 debited from A/c XX1023 on 23-Jan to Suresh via UPI. Ref 4423357722. Not you? Call the number on the back of your card. -BUNB",0,bank_debit,en,native,s0-bank_debit-enn-000,sms
+upg-sms-00508,"Rs 12,000 debited from A/c XX4928 on 22-Oct to Lakshmi via UPI. Ref 8488894514. Not you? Call the number on the back of your card. -GODB",0,bank_debit,en,native,s0-bank_debit-enn-000,sms
+upg-sms-00509,"Rs 4,999 debited from A/c XX9304 on 06-Dec to Priya via UPI. Ref 1843461274. Not you? Call the number on the back of your card. -NRMB",0,bank_debit,en,native,s0-bank_debit-enn-000,sms
+upg-sms-00510,"BUNB: Your A/c XX9027 is debited by Rs 1 for UPI payment to DailyBasket. Avl bal Rs 82,687.",0,bank_debit,en,native,s0-bank_debit-enn-001,sms
+upg-sms-00511,"BUNB: Your A/c XX0303 is debited by Rs 199 for UPI payment to DailyBasket. Avl bal Rs 88,910.",0,bank_debit,en,native,s0-bank_debit-enn-001,sms
+upg-sms-00512,"SAHB: Your A/c XX2235 is debited by Rs 199 for UPI payment to DailyBasket. Avl bal Rs 114,899.",0,bank_debit,en,native,s0-bank_debit-enn-001,sms
+upg-sms-00513,"BUNB: Your A/c XX2194 is debited by Rs 49 for UPI payment to DailyBasket. Avl bal Rs 88,532.",0,bank_debit,en,native,s0-bank_debit-enn-001,sms
+upg-sms-00514,"DCCB: Your A/c XX3829 is debited by Rs 1 for UPI payment to DailyBasket. Avl bal Rs 107,967.",0,bank_debit,en,native,s0-bank_debit-enn-001,sms
+upg-sms-00515,"NRMB: Your A/c XX1937 is debited by Rs 1 for UPI payment to DailyBasket. Avl bal Rs 65,431.",0,bank_debit,en,native,s0-bank_debit-enn-001,sms
+upg-sms-00516,"आपके खाते XX2740 से 18-Jan को UPI द्वारा ₹9,999 Divya को भेजे गए। संदर्भ 3308153566। -KAVB",0,bank_debit,hi,native,s0-bank_debit-hin-002,sms
+upg-sms-00517,"आपके खाते XX1409 से 08-May को UPI द्वारा ₹7,500 Ramesh को भेजे गए। संदर्भ 4690957604। -GODB",0,bank_debit,hi,native,s0-bank_debit-hin-002,sms
+upg-sms-00518,"आपके खाते XX3383 से 12-Jul को UPI द्वारा ₹7,500 Anita को भेजे गए। संदर्भ 7363032807। -DCCB",0,bank_debit,hi,native,s0-bank_debit-hin-002,sms
+upg-sms-00519,"आपके खाते XX4251 से 03-Aug को UPI द्वारा ₹5,000 Anita को भेजे गए। संदर्भ 7153158184। -BUNB",0,bank_debit,hi,native,s0-bank_debit-hin-002,sms
+upg-sms-00520,"आपके खाते XX6877 से 04-Jul को UPI द्वारा ₹7,500 Ramesh को भेजे गए। संदर्भ 6914042594। -BUNB",0,bank_debit,hi,native,s0-bank_debit-hin-002,sms
+upg-sms-00521,"आपके खाते XX7519 से 12-Jul को UPI द्वारा ₹12,000 Arjun को भेजे गए। संदर्भ 4474200577। -SAHB",0,bank_debit,hi,native,s0-bank_debit-hin-002,sms
+upg-sms-00522,"A/c XX1300 se Rs 1,499 debit hue 04-Feb ko UPI se. Ref 7909853251. -SAHB",0,bank_debit,hi,latin,s0-bank_debit-hil-003,sms
+upg-sms-00523,"A/c XX5926 se Rs 12,000 debit hue 21-Aug ko UPI se. Ref 4109846983. -NRMB",0,bank_debit,hi,latin,s0-bank_debit-hil-003,sms
+upg-sms-00524,"A/c XX5231 se Rs 9,999 debit hue 14-May ko UPI se. Ref 3344732530. -SAHB",0,bank_debit,hi,latin,s0-bank_debit-hil-003,sms
+upg-sms-00525,"A/c XX9964 se Rs 1,499 debit hue 24-Jun ko UPI se. Ref 9966841999. -BUNB",0,bank_debit,hi,latin,s0-bank_debit-hil-003,sms
+upg-sms-00526,"A/c XX5226 se Rs 7,500 debit hue 19-Feb ko UPI se. Ref 8910963591. -DCCB",0,bank_debit,hi,latin,s0-bank_debit-hil-003,sms
+upg-sms-00527,"A/c XX9772 se Rs 4,999 debit hue 13-Jan ko UPI se. Ref 3052737589. -GODB",0,bank_debit,hi,latin,s0-bank_debit-hil-003,sms
+upg-sms-00528,"మీ ఖాతా XX6493 నుండి 24-Jun న UPI ద్వారా ₹5,000 Fatima కి డెబిట్ అయింది. రెఫ్ 1138885260. -NRMB",0,bank_debit,te,native,s0-bank_debit-ten-004,sms
+upg-sms-00529,"మీ ఖాతా XX1918 నుండి 02-Mar న UPI ద్వారా ₹7,500 Divya కి డెబిట్ అయింది. రెఫ్ 5583253858. -DCCB",0,bank_debit,te,native,s0-bank_debit-ten-004,sms
+upg-sms-00530,"మీ ఖాతా XX4523 నుండి 14-Feb న UPI ద్వారా ₹2,999 Anita కి డెబిట్ అయింది. రెఫ్ 4623019431. -NRMB",0,bank_debit,te,native,s0-bank_debit-ten-004,sms
+upg-sms-00531,"మీ ఖాతా XX7191 నుండి 02-Nov న UPI ద్వారా ₹9,999 Fatima కి డెబిట్ అయింది. రెఫ్ 3833617261. -BUNB",0,bank_debit,te,native,s0-bank_debit-ten-004,sms
+upg-sms-00532,"మీ ఖాతా XX9796 నుండి 21-Nov న UPI ద్వారా ₹9,999 Lakshmi కి డెబిట్ అయింది. రెఫ్ 7842549073. -GODB",0,bank_debit,te,native,s0-bank_debit-ten-004,sms
+upg-sms-00533,"మీ ఖాతా XX5514 నుండి 19-Jul న UPI ద్వారా ₹1,499 Ramesh కి డెబిట్ అయింది. రెఫ్ 1481475543. -KAVB",0,bank_debit,te,native,s0-bank_debit-ten-004,sms
+upg-sms-00534,"Mee A/c XX1514 nundi Rs 7,500 debit ayindi 19-Sep UPI dwara. Ref 3607672087. -KAVB",0,bank_debit,te,latin,s0-bank_debit-tel-005,sms
+upg-sms-00535,"Mee A/c XX1666 nundi Rs 1,499 debit ayindi 05-Oct UPI dwara. Ref 2253819718. -KAVB",0,bank_debit,te,latin,s0-bank_debit-tel-005,sms
+upg-sms-00536,"Mee A/c XX7718 nundi Rs 7,500 debit ayindi 20-Aug UPI dwara. Ref 7317064468. -SAHB",0,bank_debit,te,latin,s0-bank_debit-tel-005,sms
+upg-sms-00537,"Mee A/c XX2024 nundi Rs 1,499 debit ayindi 17-Apr UPI dwara. Ref 5438076328. -KAVB",0,bank_debit,te,latin,s0-bank_debit-tel-005,sms
+upg-sms-00538,"Mee A/c XX5670 nundi Rs 2,999 debit ayindi 01-Jul UPI dwara. Ref 6986432114. -BUNB",0,bank_debit,te,latin,s0-bank_debit-tel-005,sms
+upg-sms-00539,"Mee A/c XX4874 nundi Rs 12,000 debit ayindi 07-Oct UPI dwara. Ref 3687925056. -NRMB",0,bank_debit,te,latin,s0-bank_debit-tel-005,sms
+upg-sms-00540,"Rs 5,000 credited to A/c XX8519 on 01-Feb from Srinivas (UPI Ref 7428803598). Avl bal Rs 75,219. -NRMB",0,bank_credit,en,native,s0-bank_credit-enn-006,sms
+upg-sms-00541,"Rs 12,000 credited to A/c XX2652 on 20-Jun from Arjun (UPI Ref 5915595511). Avl bal Rs 101,188. -GODB",0,bank_credit,en,native,s0-bank_credit-enn-006,sms
+upg-sms-00542,"Rs 2,999 credited to A/c XX1908 on 02-Jan from Kiran (UPI Ref 7099123013). Avl bal Rs 27,308. -GODB",0,bank_credit,en,native,s0-bank_credit-enn-006,sms
+upg-sms-00543,"Rs 2,999 credited to A/c XX9119 on 05-Jan from Suresh (UPI Ref 9451835351). Avl bal Rs 13,314. -GODB",0,bank_credit,en,native,s0-bank_credit-enn-006,sms
+upg-sms-00544,"Rs 2,999 credited to A/c XX1598 on 13-Dec from Anita (UPI Ref 6637474176). Avl bal Rs 32,895. -DCCB",0,bank_credit,en,native,s0-bank_credit-enn-006,sms
+upg-sms-00545,"Rs 1,499 credited to A/c XX5163 on 12-Oct from Suresh (UPI Ref 3337425592). Avl bal Rs 73,881. -DCCB",0,bank_credit,en,native,s0-bank_credit-enn-006,sms
+upg-sms-00546,"Salary of Rs 1,00,000 credited to your A/c XX6809. -DCCB",0,bank_credit,en,native,s0-bank_credit-enn-007,sms
+upg-sms-00547,"Salary of Rs 1,00,000 credited to your A/c XX8278. -SAHB",0,bank_credit,en,native,s0-bank_credit-enn-007,sms
+upg-sms-00548,"Salary of Rs 50,000 credited to your A/c XX8549. -NRMB",0,bank_credit,en,native,s0-bank_credit-enn-007,sms
+upg-sms-00549,"Salary of Rs 1,00,000 credited to your A/c XX9350. -BUNB",0,bank_credit,en,native,s0-bank_credit-enn-007,sms
+upg-sms-00550,"Salary of Rs 2,50,000 credited to your A/c XX8093. -DCCB",0,bank_credit,en,native,s0-bank_credit-enn-007,sms
+upg-sms-00551,"Salary of Rs 10,00,000 credited to your A/c XX3951. -NRMB",0,bank_credit,en,native,s0-bank_credit-enn-007,sms
+upg-sms-00552,"01-Feb को Fatima से आपके खाते XX7425 में ₹2,999 जमा हुए। UPI संदर्भ 9794680615। -NRMB",0,bank_credit,hi,native,s0-bank_credit-hin-008,sms
+upg-sms-00553,"19-Jan को Anita से आपके खाते XX3138 में ₹4,999 जमा हुए। UPI संदर्भ 8018085133। -GODB",0,bank_credit,hi,native,s0-bank_credit-hin-008,sms
+upg-sms-00554,"08-Dec को Priya से आपके खाते XX4841 में ₹1,499 जमा हुए। UPI संदर्भ 7067076991। -SAHB",0,bank_credit,hi,native,s0-bank_credit-hin-008,sms
+upg-sms-00555,"19-Oct को Arjun से आपके खाते XX6834 में ₹2,999 जमा हुए। UPI संदर्भ 4270532628। -SAHB",0,bank_credit,hi,native,s0-bank_credit-hin-008,sms
+upg-sms-00556,"13-Dec को Suresh से आपके खाते XX4316 में ₹12,000 जमा हुए। UPI संदर्भ 4365405037। -KAVB",0,bank_credit,hi,native,s0-bank_credit-hin-008,sms
+upg-sms-00557,"18-Apr को Priya से आपके खाते XX7633 में ₹7,500 जमा हुए। UPI संदर्भ 7143689782। -SAHB",0,bank_credit,hi,native,s0-bank_credit-hin-008,sms
+upg-sms-00558,"Aapke A/c XX6557 mein Rs 12,000 credit hue Priya se. Ref 5277769113. -NRMB",0,bank_credit,hi,latin,s0-bank_credit-hil-009,sms
+upg-sms-00559,"Aapke A/c XX5272 mein Rs 2,999 credit hue Ramesh se. Ref 1567191057. -NRMB",0,bank_credit,hi,latin,s0-bank_credit-hil-009,sms
+upg-sms-00560,"Aapke A/c XX9700 mein Rs 12,000 credit hue Srinivas se. Ref 6686948564. -NRMB",0,bank_credit,hi,latin,s0-bank_credit-hil-009,sms
+upg-sms-00561,"Aapke A/c XX8578 mein Rs 4,999 credit hue Suresh se. Ref 5631442960. -NRMB",0,bank_credit,hi,latin,s0-bank_credit-hil-009,sms
+upg-sms-00562,"Aapke A/c XX0303 mein Rs 5,000 credit hue Srinivas se. Ref 4422376282. -DCCB",0,bank_credit,hi,latin,s0-bank_credit-hil-009,sms
+upg-sms-00563,"Aapke A/c XX3991 mein Rs 12,000 credit hue Fatima se. Ref 8437056847. -DCCB",0,bank_credit,hi,latin,s0-bank_credit-hil-009,sms
+upg-sms-00564,"14-Apr న Suresh నుండి మీ ఖాతా XX3188 లో ₹5,000 జమ అయింది. UPI రెఫ్ 9508713811. -NRMB",0,bank_credit,te,native,s0-bank_credit-ten-010,sms
+upg-sms-00565,"04-Apr న Fatima నుండి మీ ఖాతా XX2940 లో ₹7,500 జమ అయింది. UPI రెఫ్ 5441068492. -SAHB",0,bank_credit,te,native,s0-bank_credit-ten-010,sms
+upg-sms-00566,"25-May న Kiran నుండి మీ ఖాతా XX8773 లో ₹5,000 జమ అయింది. UPI రెఫ్ 7048489748. -SAHB",0,bank_credit,te,native,s0-bank_credit-ten-010,sms
+upg-sms-00567,"27-Feb న Suresh నుండి మీ ఖాతా XX3884 లో ₹5,000 జమ అయింది. UPI రెఫ్ 5639268442. -BUNB",0,bank_credit,te,native,s0-bank_credit-ten-010,sms
+upg-sms-00568,"14-Sep న Priya నుండి మీ ఖాతా XX5975 లో ₹2,999 జమ అయింది. UPI రెఫ్ 2566508632. -SAHB",0,bank_credit,te,native,s0-bank_credit-ten-010,sms
+upg-sms-00569,"20-Apr న Anita నుండి మీ ఖాతా XX5366 లో ₹9,999 జమ అయింది. UPI రెఫ్ 7586844740. -BUNB",0,bank_credit,te,native,s0-bank_credit-ten-010,sms
+upg-sms-00570,"Mee A/c XX9307 lo Rs 7,500 credit ayindi Arjun nundi. Ref 1253806147. -BUNB",0,bank_credit,te,latin,s0-bank_credit-tel-011,sms
+upg-sms-00571,"Mee A/c XX5047 lo Rs 2,999 credit ayindi Divya nundi. Ref 8226508878. -DCCB",0,bank_credit,te,latin,s0-bank_credit-tel-011,sms
+upg-sms-00572,"Mee A/c XX0925 lo Rs 7,500 credit ayindi Suresh nundi. Ref 4582647517. -DCCB",0,bank_credit,te,latin,s0-bank_credit-tel-011,sms
+upg-sms-00573,"Mee A/c XX5865 lo Rs 2,999 credit ayindi Fatima nundi. Ref 3310991925. -KAVB",0,bank_credit,te,latin,s0-bank_credit-tel-011,sms
+upg-sms-00574,"Mee A/c XX0618 lo Rs 1,499 credit ayindi Rahul nundi. Ref 7426049999. -SAHB",0,bank_credit,te,latin,s0-bank_credit-tel-011,sms
+upg-sms-00575,"Mee A/c XX8452 lo Rs 9,999 credit ayindi Suresh nundi. Ref 8333279724. -NRMB",0,bank_credit,te,latin,s0-bank_credit-tel-011,sms
+upg-sms-00576,"758030 is your OTP to log in to Kaveri Gramin Bank mobile banking. Valid for 5 minutes. Never share your OTP with anyone, including bank staff.",0,otp_genuine,en,native,s0-otp_genuine-enn-012,sms
+upg-sms-00577,"205134 is your OTP to log in to Narmada Bank mobile banking. Valid for 5 minutes. Never share your OTP with anyone, including bank staff.",0,otp_genuine,en,native,s0-otp_genuine-enn-012,sms
+upg-sms-00578,"000988 is your OTP to log in to Godavari Bank mobile banking. Valid for 5 minutes. Never share your OTP with anyone, including bank staff.",0,otp_genuine,en,native,s0-otp_genuine-enn-012,sms
+upg-sms-00579,"320899 is your OTP to log in to Bharat Union Bank mobile banking. Valid for 5 minutes. Never share your OTP with anyone, including bank staff.",0,otp_genuine,en,native,s0-otp_genuine-enn-012,sms
+upg-sms-00580,"196362 is your OTP to log in to Sahyadri Bank mobile banking. Valid for 5 minutes. Never share your OTP with anyone, including bank staff.",0,otp_genuine,en,native,s0-otp_genuine-enn-012,sms
+upg-sms-00581,"191435 is your OTP to log in to Kaveri Gramin Bank mobile banking. Valid for 5 minutes. Never share your OTP with anyone, including bank staff.",0,otp_genuine,en,native,s0-otp_genuine-enn-012,sms
+upg-sms-00582,Use OTP 330545 to confirm your MegaMart Online order. Do not share this code.,0,otp_genuine,en,native,s0-otp_genuine-enn-013,sms
+upg-sms-00583,Use OTP 407253 to confirm your MegaMart Online order. Do not share this code.,0,otp_genuine,en,native,s0-otp_genuine-enn-013,sms
+upg-sms-00584,Use OTP 340263 to confirm your StyleHub order. Do not share this code.,0,otp_genuine,en,native,s0-otp_genuine-enn-013,sms
+upg-sms-00585,Use OTP 851593 to confirm your StyleHub order. Do not share this code.,0,otp_genuine,en,native,s0-otp_genuine-enn-013,sms
+upg-sms-00586,Use OTP 978602 to confirm your StyleHub order. Do not share this code.,0,otp_genuine,en,native,s0-otp_genuine-enn-013,sms
+upg-sms-00587,Use OTP 955546 to confirm your ShopKart order. Do not share this code.,0,otp_genuine,en,native,s0-otp_genuine-enn-013,sms
+upg-sms-00588,Kaveri Gramin Bank मोबाइल बैंकिंग लॉगिन के लिए आपका OTP 643507 है। यह 5 मिनट के लिए मान्य है। किसी के साथ OTP साझा न करें।,0,otp_genuine,hi,native,s0-otp_genuine-hin-014,sms
+upg-sms-00589,Sahyadri Bank मोबाइल बैंकिंग लॉगिन के लिए आपका OTP 758442 है। यह 5 मिनट के लिए मान्य है। किसी के साथ OTP साझा न करें।,0,otp_genuine,hi,native,s0-otp_genuine-hin-014,sms
+upg-sms-00590,Narmada Bank मोबाइल बैंकिंग लॉगिन के लिए आपका OTP 704201 है। यह 5 मिनट के लिए मान्य है। किसी के साथ OTP साझा न करें।,0,otp_genuine,hi,native,s0-otp_genuine-hin-014,sms
+upg-sms-00591,Narmada Bank मोबाइल बैंकिंग लॉगिन के लिए आपका OTP 519191 है। यह 5 मिनट के लिए मान्य है। किसी के साथ OTP साझा न करें।,0,otp_genuine,hi,native,s0-otp_genuine-hin-014,sms
+upg-sms-00592,Kaveri Gramin Bank मोबाइल बैंकिंग लॉगिन के लिए आपका OTP 133677 है। यह 5 मिनट के लिए मान्य है। किसी के साथ OTP साझा न करें।,0,otp_genuine,hi,native,s0-otp_genuine-hin-014,sms
+upg-sms-00593,Deccan Co-op Bank मोबाइल बैंकिंग लॉगिन के लिए आपका OTP 849659 है। यह 5 मिनट के लिए मान्य है। किसी के साथ OTP साझा न करें।,0,otp_genuine,hi,native,s0-otp_genuine-hin-014,sms
+upg-sms-00594,"004075 aapka OTP hai. Ise kisi ke saath share na karein, bank bhi kabhi nahi maangta. -KAVB",0,otp_genuine,hi,latin,s0-otp_genuine-hil-015,sms
+upg-sms-00595,"990100 aapka OTP hai. Ise kisi ke saath share na karein, bank bhi kabhi nahi maangta. -BUNB",0,otp_genuine,hi,latin,s0-otp_genuine-hil-015,sms
+upg-sms-00596,"863740 aapka OTP hai. Ise kisi ke saath share na karein, bank bhi kabhi nahi maangta. -DCCB",0,otp_genuine,hi,latin,s0-otp_genuine-hil-015,sms
+upg-sms-00597,"486148 aapka OTP hai. Ise kisi ke saath share na karein, bank bhi kabhi nahi maangta. -BUNB",0,otp_genuine,hi,latin,s0-otp_genuine-hil-015,sms
+upg-sms-00598,"487801 aapka OTP hai. Ise kisi ke saath share na karein, bank bhi kabhi nahi maangta. -SAHB",0,otp_genuine,hi,latin,s0-otp_genuine-hil-015,sms
+upg-sms-00599,"426627 aapka OTP hai. Ise kisi ke saath share na karein, bank bhi kabhi nahi maangta. -DCCB",0,otp_genuine,hi,latin,s0-otp_genuine-hil-015,sms
+upg-sms-00600,Kaveri Gramin Bank మొబైల్ బ్యాంకింగ్ లాగిన్ కోసం మీ OTP 321933. 5 నిమిషాలు చెల్లుతుంది. OTP ని ఎవరితోనూ పంచుకోవద్దు.,0,otp_genuine,te,native,s0-otp_genuine-ten-016,sms
+upg-sms-00601,Kaveri Gramin Bank మొబైల్ బ్యాంకింగ్ లాగిన్ కోసం మీ OTP 046533. 5 నిమిషాలు చెల్లుతుంది. OTP ని ఎవరితోనూ పంచుకోవద్దు.,0,otp_genuine,te,native,s0-otp_genuine-ten-016,sms
+upg-sms-00602,Sahyadri Bank మొబైల్ బ్యాంకింగ్ లాగిన్ కోసం మీ OTP 356296. 5 నిమిషాలు చెల్లుతుంది. OTP ని ఎవరితోనూ పంచుకోవద్దు.,0,otp_genuine,te,native,s0-otp_genuine-ten-016,sms
+upg-sms-00603,Godavari Bank మొబైల్ బ్యాంకింగ్ లాగిన్ కోసం మీ OTP 332293. 5 నిమిషాలు చెల్లుతుంది. OTP ని ఎవరితోనూ పంచుకోవద్దు.,0,otp_genuine,te,native,s0-otp_genuine-ten-016,sms
+upg-sms-00604,Godavari Bank మొబైల్ బ్యాంకింగ్ లాగిన్ కోసం మీ OTP 178258. 5 నిమిషాలు చెల్లుతుంది. OTP ని ఎవరితోనూ పంచుకోవద్దు.,0,otp_genuine,te,native,s0-otp_genuine-ten-016,sms
+upg-sms-00605,Kaveri Gramin Bank మొబైల్ బ్యాంకింగ్ లాగిన్ కోసం మీ OTP 448129. 5 నిమిషాలు చెల్లుతుంది. OTP ని ఎవరితోనూ పంచుకోవద్దు.,0,otp_genuine,te,native,s0-otp_genuine-ten-016,sms
+upg-sms-00606,"144178 mee OTP. Deenni evaritho share cheyyakandi, bank kuda adagadu. -DCCB",0,otp_genuine,te,latin,s0-otp_genuine-tel-017,sms
+upg-sms-00607,"076327 mee OTP. Deenni evaritho share cheyyakandi, bank kuda adagadu. -NRMB",0,otp_genuine,te,latin,s0-otp_genuine-tel-017,sms
+upg-sms-00608,"562695 mee OTP. Deenni evaritho share cheyyakandi, bank kuda adagadu. -NRMB",0,otp_genuine,te,latin,s0-otp_genuine-tel-017,sms
+upg-sms-00609,"935730 mee OTP. Deenni evaritho share cheyyakandi, bank kuda adagadu. -SAHB",0,otp_genuine,te,latin,s0-otp_genuine-tel-017,sms
+upg-sms-00610,"937619 mee OTP. Deenni evaritho share cheyyakandi, bank kuda adagadu. -GODB",0,otp_genuine,te,latin,s0-otp_genuine-tel-017,sms
+upg-sms-00611,"964496 mee OTP. Deenni evaritho share cheyyakandi, bank kuda adagadu. -KAVB",0,otp_genuine,te,latin,s0-otp_genuine-tel-017,sms
+upg-sms-00612,Power Supply Office: Your bill of Rs 499 for this month is generated. Due date 19-Oct. Pay through your usual UPI app. Ignore if already paid.,0,bill_reminder,en,native,s0-bill_reminder-enn-018,sms
+upg-sms-00613,City Electricity Board: Your bill of Rs 10 for this month is generated. Due date 04-Oct. Pay through your usual UPI app. Ignore if already paid.,0,bill_reminder,en,native,s0-bill_reminder-enn-018,sms
+upg-sms-00614,Power Supply Office: Your bill of Rs 49 for this month is generated. Due date 13-Nov. Pay through your usual UPI app. Ignore if already paid.,0,bill_reminder,en,native,s0-bill_reminder-enn-018,sms
+upg-sms-00615,State Power Distribution: Your bill of Rs 1 for this month is generated. Due date 24-May. Pay through your usual UPI app. Ignore if already paid.,0,bill_reminder,en,native,s0-bill_reminder-enn-018,sms
+upg-sms-00616,City Electricity Board: Your bill of Rs 1 for this month is generated. Due date 13-Jan. Pay through your usual UPI app. Ignore if already paid.,0,bill_reminder,en,native,s0-bill_reminder-enn-018,sms
+upg-sms-00617,Power Supply Office: Your bill of Rs 10 for this month is generated. Due date 16-Jul. Pay through your usual UPI app. Ignore if already paid.,0,bill_reminder,en,native,s0-bill_reminder-enn-018,sms
+upg-sms-00618,Your mobile bill of Rs 499 is due on 26-May. Pay via your bank app or UPI.,0,bill_reminder,en,native,s0-bill_reminder-enn-019,sms
+upg-sms-00619,Your mobile bill of Rs 1 is due on 10-Jan. Pay via your bank app or UPI.,0,bill_reminder,en,native,s0-bill_reminder-enn-019,sms
+upg-sms-00620,Your mobile bill of Rs 199 is due on 28-Jun. Pay via your bank app or UPI.,0,bill_reminder,en,native,s0-bill_reminder-enn-019,sms
+upg-sms-00621,Your mobile bill of Rs 1 is due on 08-Oct. Pay via your bank app or UPI.,0,bill_reminder,en,native,s0-bill_reminder-enn-019,sms
+upg-sms-00622,Your mobile bill of Rs 499 is due on 14-Feb. Pay via your bank app or UPI.,0,bill_reminder,en,native,s0-bill_reminder-enn-019,sms
+upg-sms-00623,Your mobile bill of Rs 1 is due on 25-Jun. Pay via your bank app or UPI.,0,bill_reminder,en,native,s0-bill_reminder-enn-019,sms
+upg-sms-00624,State Power Distribution: इस महीने का ₹49 का बिल बन गया है। अंतिम तिथि 25-Oct। अपने सामान्य UPI ऐप से भुगतान करें।,0,bill_reminder,hi,native,s0-bill_reminder-hin-020,sms
+upg-sms-00625,City Electricity Board: इस महीने का ₹49 का बिल बन गया है। अंतिम तिथि 21-Dec। अपने सामान्य UPI ऐप से भुगतान करें।,0,bill_reminder,hi,native,s0-bill_reminder-hin-020,sms
+upg-sms-00626,Power Supply Office: इस महीने का ₹10 का बिल बन गया है। अंतिम तिथि 10-Dec। अपने सामान्य UPI ऐप से भुगतान करें।,0,bill_reminder,hi,native,s0-bill_reminder-hin-020,sms
+upg-sms-00627,City Electricity Board: इस महीने का ₹49 का बिल बन गया है। अंतिम तिथि 27-Feb। अपने सामान्य UPI ऐप से भुगतान करें।,0,bill_reminder,hi,native,s0-bill_reminder-hin-020,sms
+upg-sms-00628,City Electricity Board: इस महीने का ₹49 का बिल बन गया है। अंतिम तिथि 04-Sep। अपने सामान्य UPI ऐप से भुगतान करें।,0,bill_reminder,hi,native,s0-bill_reminder-hin-020,sms
+upg-sms-00629,City Electricity Board: इस महीने का ₹1 का बिल बन गया है। अंतिम तिथि 06-Dec। अपने सामान्य UPI ऐप से भुगतान करें।,0,bill_reminder,hi,native,s0-bill_reminder-hin-020,sms
+upg-sms-00630,"Aapka is mahine ka bijli bill Rs 10 hai, antim tithi 09-Aug. Pehle bhar diya ho to ignore karein.",0,bill_reminder,hi,latin,s0-bill_reminder-hil-021,sms
+upg-sms-00631,"Aapka is mahine ka bijli bill Rs 199 hai, antim tithi 16-Jun. Pehle bhar diya ho to ignore karein.",0,bill_reminder,hi,latin,s0-bill_reminder-hil-021,sms
+upg-sms-00632,"Aapka is mahine ka bijli bill Rs 499 hai, antim tithi 01-Apr. Pehle bhar diya ho to ignore karein.",0,bill_reminder,hi,latin,s0-bill_reminder-hil-021,sms
+upg-sms-00633,"Aapka is mahine ka bijli bill Rs 199 hai, antim tithi 26-Dec. Pehle bhar diya ho to ignore karein.",0,bill_reminder,hi,latin,s0-bill_reminder-hil-021,sms
+upg-sms-00634,"Aapka is mahine ka bijli bill Rs 499 hai, antim tithi 09-Dec. Pehle bhar diya ho to ignore karein.",0,bill_reminder,hi,latin,s0-bill_reminder-hil-021,sms
+upg-sms-00635,"Aapka is mahine ka bijli bill Rs 10 hai, antim tithi 15-Oct. Pehle bhar diya ho to ignore karein.",0,bill_reminder,hi,latin,s0-bill_reminder-hil-021,sms
+upg-sms-00636,City Electricity Board: ఈ నెల ₹10 బిల్ తయారైంది. చివరి తేదీ 13-Oct. మీ సాధారణ UPI యాప్ ద్వారా చెల్లించండి.,0,bill_reminder,te,native,s0-bill_reminder-ten-022,sms
+upg-sms-00637,State Power Distribution: ఈ నెల ₹49 బిల్ తయారైంది. చివరి తేదీ 27-Jul. మీ సాధారణ UPI యాప్ ద్వారా చెల్లించండి.,0,bill_reminder,te,native,s0-bill_reminder-ten-022,sms
+upg-sms-00638,City Electricity Board: ఈ నెల ₹499 బిల్ తయారైంది. చివరి తేదీ 14-Apr. మీ సాధారణ UPI యాప్ ద్వారా చెల్లించండి.,0,bill_reminder,te,native,s0-bill_reminder-ten-022,sms
+upg-sms-00639,City Electricity Board: ఈ నెల ₹1 బిల్ తయారైంది. చివరి తేదీ 27-Jul. మీ సాధారణ UPI యాప్ ద్వారా చెల్లించండి.,0,bill_reminder,te,native,s0-bill_reminder-ten-022,sms
+upg-sms-00640,City Electricity Board: ఈ నెల ₹199 బిల్ తయారైంది. చివరి తేదీ 10-Jun. మీ సాధారణ UPI యాప్ ద్వారా చెల్లించండి.,0,bill_reminder,te,native,s0-bill_reminder-ten-022,sms
+upg-sms-00641,Power Supply Office: ఈ నెల ₹499 బిల్ తయారైంది. చివరి తేదీ 08-Feb. మీ సాధారణ UPI యాప్ ద్వారా చెల్లించండి.,0,bill_reminder,te,native,s0-bill_reminder-ten-022,sms
+upg-sms-00642,"Mee ee nela current bill Rs 1, chivari tedi 19-Feb. Already kattinattaite ignore cheyandi.",0,bill_reminder,te,latin,s0-bill_reminder-tel-023,sms
+upg-sms-00643,"Mee ee nela current bill Rs 99, chivari tedi 17-Aug. Already kattinattaite ignore cheyandi.",0,bill_reminder,te,latin,s0-bill_reminder-tel-023,sms
+upg-sms-00644,"Mee ee nela current bill Rs 99, chivari tedi 15-Jan. Already kattinattaite ignore cheyandi.",0,bill_reminder,te,latin,s0-bill_reminder-tel-023,sms
+upg-sms-00645,"Mee ee nela current bill Rs 49, chivari tedi 26-Oct. Already kattinattaite ignore cheyandi.",0,bill_reminder,te,latin,s0-bill_reminder-tel-023,sms
+upg-sms-00646,"Mee ee nela current bill Rs 199, chivari tedi 02-May. Already kattinattaite ignore cheyandi.",0,bill_reminder,te,latin,s0-bill_reminder-tel-023,sms
+upg-sms-00647,"Mee ee nela current bill Rs 499, chivari tedi 19-Dec. Already kattinattaite ignore cheyandi.",0,bill_reminder,te,latin,s0-bill_reminder-tel-023,sms
+upg-sms-00648,Your StyleHub order #8912055727 has been shipped and will arrive by 11-Apr.,0,delivery,en,native,s0-delivery-enn-024,sms
+upg-sms-00649,Your MegaMart Online order #5537468960 has been shipped and will arrive by 15-Feb.,0,delivery,en,native,s0-delivery-enn-024,sms
+upg-sms-00650,Your DailyBasket order #2043880662 has been shipped and will arrive by 13-Feb.,0,delivery,en,native,s0-delivery-enn-024,sms
+upg-sms-00651,Your MegaMart Online order #3577632647 has been shipped and will arrive by 28-Oct.,0,delivery,en,native,s0-delivery-enn-024,sms
+upg-sms-00652,Your DailyBasket order #3900210827 has been shipped and will arrive by 12-Apr.,0,delivery,en,native,s0-delivery-enn-024,sms
+upg-sms-00653,Your MegaMart Online order #2896029867 has been shipped and will arrive by 03-Aug.,0,delivery,en,native,s0-delivery-enn-024,sms
+upg-sms-00654,FastTrack Parcel: Your parcel is out for delivery today. Delivery partner Anita will call before arriving.,0,delivery,en,native,s0-delivery-enn-025,sms
+upg-sms-00655,FastTrack Parcel: Your parcel is out for delivery today. Delivery partner Ramesh will call before arriving.,0,delivery,en,native,s0-delivery-enn-025,sms
+upg-sms-00656,FastTrack Parcel: Your parcel is out for delivery today. Delivery partner Arjun will call before arriving.,0,delivery,en,native,s0-delivery-enn-025,sms
+upg-sms-00657,FastTrack Parcel: Your parcel is out for delivery today. Delivery partner Srinivas will call before arriving.,0,delivery,en,native,s0-delivery-enn-025,sms
+upg-sms-00658,Express Cargo: Your parcel is out for delivery today. Delivery partner Divya will call before arriving.,0,delivery,en,native,s0-delivery-enn-025,sms
+upg-sms-00659,Swift Courier: Your parcel is out for delivery today. Delivery partner Arjun will call before arriving.,0,delivery,en,native,s0-delivery-enn-025,sms
+upg-sms-00660,आपका StyleHub ऑर्डर #7504469673 भेज दिया गया है और 08-Jul तक पहुँच जाएगा।,0,delivery,hi,native,s0-delivery-hin-026,sms
+upg-sms-00661,आपका ShopKart ऑर्डर #9400526614 भेज दिया गया है और 28-Nov तक पहुँच जाएगा।,0,delivery,hi,native,s0-delivery-hin-026,sms
+upg-sms-00662,आपका MegaMart Online ऑर्डर #7778099336 भेज दिया गया है और 05-Nov तक पहुँच जाएगा।,0,delivery,hi,native,s0-delivery-hin-026,sms
+upg-sms-00663,आपका ShopKart ऑर्डर #2766796241 भेज दिया गया है और 18-Apr तक पहुँच जाएगा।,0,delivery,hi,native,s0-delivery-hin-026,sms
+upg-sms-00664,आपका MegaMart Online ऑर्डर #1064435960 भेज दिया गया है और 05-May तक पहुँच जाएगा।,0,delivery,hi,native,s0-delivery-hin-026,sms
+upg-sms-00665,आपका ShopKart ऑर्डर #8142445279 भेज दिया गया है और 03-Sep तक पहुँच जाएगा।,0,delivery,hi,native,s0-delivery-hin-026,sms
+upg-sms-00666,Aapka order #6354596894 aaj deliver hoga. Delivery partner Lakshmi call karenge.,0,delivery,hi,latin,s0-delivery-hil-027,sms
+upg-sms-00667,Aapka order #3485575583 aaj deliver hoga. Delivery partner Priya call karenge.,0,delivery,hi,latin,s0-delivery-hil-027,sms
+upg-sms-00668,Aapka order #3920894488 aaj deliver hoga. Delivery partner Ramesh call karenge.,0,delivery,hi,latin,s0-delivery-hil-027,sms
+upg-sms-00669,Aapka order #4470031502 aaj deliver hoga. Delivery partner Rahul call karenge.,0,delivery,hi,latin,s0-delivery-hil-027,sms
+upg-sms-00670,Aapka order #1417329402 aaj deliver hoga. Delivery partner Priya call karenge.,0,delivery,hi,latin,s0-delivery-hil-027,sms
+upg-sms-00671,Aapka order #8818213211 aaj deliver hoga. Delivery partner Priya call karenge.,0,delivery,hi,latin,s0-delivery-hil-027,sms
+upg-sms-00672,"మీ StyleHub ఆర్డర్ #1443009126 పంపబడింది, 14-Sep లోపు చేరుతుంది.",0,delivery,te,native,s0-delivery-ten-028,sms
+upg-sms-00673,"మీ ShopKart ఆర్డర్ #1791934766 పంపబడింది, 24-Aug లోపు చేరుతుంది.",0,delivery,te,native,s0-delivery-ten-028,sms
+upg-sms-00674,"మీ StyleHub ఆర్డర్ #9899902194 పంపబడింది, 06-Dec లోపు చేరుతుంది.",0,delivery,te,native,s0-delivery-ten-028,sms
+upg-sms-00675,"మీ StyleHub ఆర్డర్ #9430598798 పంపబడింది, 12-Mar లోపు చేరుతుంది.",0,delivery,te,native,s0-delivery-ten-028,sms
+upg-sms-00676,"మీ StyleHub ఆర్డర్ #2910892136 పంపబడింది, 03-Feb లోపు చేరుతుంది.",0,delivery,te,native,s0-delivery-ten-028,sms
+upg-sms-00677,"మీ StyleHub ఆర్డర్ #7086424105 పంపబడింది, 19-Jul లోపు చేరుతుంది.",0,delivery,te,native,s0-delivery-ten-028,sms
+upg-sms-00678,Mee order #3296910009 ee roju deliver avutundi. Delivery partner Srinivas call chestaru.,0,delivery,te,latin,s0-delivery-tel-029,sms
+upg-sms-00679,Mee order #7429087154 ee roju deliver avutundi. Delivery partner Fatima call chestaru.,0,delivery,te,latin,s0-delivery-tel-029,sms
+upg-sms-00680,Mee order #9420260500 ee roju deliver avutundi. Delivery partner Kiran call chestaru.,0,delivery,te,latin,s0-delivery-tel-029,sms
+upg-sms-00681,Mee order #3489374955 ee roju deliver avutundi. Delivery partner Arjun call chestaru.,0,delivery,te,latin,s0-delivery-tel-029,sms
+upg-sms-00682,Mee order #7679390893 ee roju deliver avutundi. Delivery partner Divya call chestaru.,0,delivery,te,latin,s0-delivery-tel-029,sms
+upg-sms-00683,Mee order #5915488431 ee roju deliver avutundi. Delivery partner Imran call chestaru.,0,delivery,te,latin,s0-delivery-tel-029,sms
+upg-sms-00684,"Hey Suresh, dinner at 8? I'll book the table.",0,personal,en,native,s0-personal-enn-030,sms
+upg-sms-00685,"Hey Ramesh, dinner at 8? I'll book the table.",0,personal,en,native,s0-personal-enn-030,sms
+upg-sms-00686,"Hey Fatima, dinner at 8? I'll book the table.",0,personal,en,native,s0-personal-enn-030,sms
+upg-sms-00687,"Hey Priya, dinner at 8? I'll book the table.",0,personal,en,native,s0-personal-enn-030,sms
+upg-sms-00688,"Hey Anita, dinner at 8? I'll book the table.",0,personal,en,native,s0-personal-enn-030,sms
+upg-sms-00689,"Hey Rahul, dinner at 8? I'll book the table.",0,personal,en,native,s0-personal-enn-030,sms
+upg-sms-00690,Sent you Rs 1 for the movie tickets. Thanks for booking!,0,personal,en,native,s0-personal-enn-031,sms
+upg-sms-00691,Sent you Rs 99 for the movie tickets. Thanks for booking!,0,personal,en,native,s0-personal-enn-031,sms
+upg-sms-00692,Sent you Rs 199 for the movie tickets. Thanks for booking!,0,personal,en,native,s0-personal-enn-031,sms
+upg-sms-00693,Sent you Rs 499 for the movie tickets. Thanks for booking!,0,personal,en,native,s0-personal-enn-031,sms
+upg-sms-00694,Sent you Rs 10 for the movie tickets. Thanks for booking!,0,personal,en,native,s0-personal-enn-031,sms
+upg-sms-00695,Sent you Rs 49 for the movie tickets. Thanks for booking!,0,personal,en,native,s0-personal-enn-031,sms
+upg-sms-00696,Reached home safely. Call you tomorrow morning.,0,personal,en,native,s0-personal-enn-032,sms
+upg-sms-00697,"Anita, कल सुबह 7 बजे मंदिर चलेंगे? बता देना।",0,personal,hi,native,s0-personal-hin-033,sms
+upg-sms-00698,"Suresh, कल सुबह 7 बजे मंदिर चलेंगे? बता देना।",0,personal,hi,native,s0-personal-hin-033,sms
+upg-sms-00699,"Ramesh, कल सुबह 7 बजे मंदिर चलेंगे? बता देना।",0,personal,hi,native,s0-personal-hin-033,sms
+upg-sms-00700,"Divya, कल सुबह 7 बजे मंदिर चलेंगे? बता देना।",0,personal,hi,native,s0-personal-hin-033,sms
+upg-sms-00701,"Kiran, कल सुबह 7 बजे मंदिर चलेंगे? बता देना।",0,personal,hi,native,s0-personal-hin-033,sms
+upg-sms-00702,"Imran, कल सुबह 7 बजे मंदिर चलेंगे? बता देना।",0,personal,hi,native,s0-personal-hin-033,sms
+upg-sms-00703,Bhai kal cricket khelne chalega? 6 baje ground pe milte hain.,0,personal,hi,latin,s0-personal-hil-034,sms
+upg-sms-00704,"Maine tumhe Rs 49 bhej diye chai ke, check kar lo.",0,personal,hi,latin,s0-personal-hil-035,sms
+upg-sms-00705,"Maine tumhe Rs 99 bhej diye chai ke, check kar lo.",0,personal,hi,latin,s0-personal-hil-035,sms
+upg-sms-00706,"Maine tumhe Rs 1 bhej diye chai ke, check kar lo.",0,personal,hi,latin,s0-personal-hil-035,sms
+upg-sms-00707,"Maine tumhe Rs 199 bhej diye chai ke, check kar lo.",0,personal,hi,latin,s0-personal-hil-035,sms
+upg-sms-00708,"Maine tumhe Rs 10 bhej diye chai ke, check kar lo.",0,personal,hi,latin,s0-personal-hil-035,sms
+upg-sms-00709,"Maine tumhe Rs 499 bhej diye chai ke, check kar lo.",0,personal,hi,latin,s0-personal-hil-035,sms
+upg-sms-00710,"Divya, రేపు సాయంత్రం సినిమాకి వెళదామా? టికెట్లు నేను బుక్ చేస్తా.",0,personal,te,native,s0-personal-ten-036,sms
+upg-sms-00711,"Lakshmi, రేపు సాయంత్రం సినిమాకి వెళదామా? టికెట్లు నేను బుక్ చేస్తా.",0,personal,te,native,s0-personal-ten-036,sms
+upg-sms-00712,"Imran, రేపు సాయంత్రం సినిమాకి వెళదామా? టికెట్లు నేను బుక్ చేస్తా.",0,personal,te,native,s0-personal-ten-036,sms
+upg-sms-00713,"Ramesh, రేపు సాయంత్రం సినిమాకి వెళదామా? టికెట్లు నేను బుక్ చేస్తా.",0,personal,te,native,s0-personal-ten-036,sms
+upg-sms-00714,"Suresh, రేపు సాయంత్రం సినిమాకి వెళదామా? టికెట్లు నేను బుక్ చేస్తా.",0,personal,te,native,s0-personal-ten-036,sms
+upg-sms-00715,"Arjun, రేపు సాయంత్రం సినిమాకి వెళదామా? టికెట్లు నేను బుక్ చేస్తా.",0,personal,te,native,s0-personal-ten-036,sms
+upg-sms-00716,Nenu intiki cherukunnanu. Repu call chesta.,0,personal,te,latin,s0-personal-tel-037,sms
+upg-sms-00717,"Neeku Rs 10 pampanu tiffin ki, check chesko.",0,personal,te,latin,s0-personal-tel-038,sms
+upg-sms-00718,"Neeku Rs 99 pampanu tiffin ki, check chesko.",0,personal,te,latin,s0-personal-tel-038,sms
+upg-sms-00719,"Neeku Rs 49 pampanu tiffin ki, check chesko.",0,personal,te,latin,s0-personal-tel-038,sms
+upg-sms-00720,"Neeku Rs 199 pampanu tiffin ki, check chesko.",0,personal,te,latin,s0-personal-tel-038,sms
+upg-sms-00721,"Neeku Rs 499 pampanu tiffin ki, check chesko.",0,personal,te,latin,s0-personal-tel-038,sms
+upg-sms-00722,"Neeku Rs 1 pampanu tiffin ki, check chesko.",0,personal,te,latin,s0-personal-tel-038,sms
+upg-sms-00723,"StyleHub festive sale: up to 40% off on home essentials this weekend. Shop in the app. T&C apply. To stop, reply STOP.",0,promotion,en,native,s0-promotion-enn-039,sms
+upg-sms-00724,"ShopKart festive sale: up to 40% off on home essentials this weekend. Shop in the app. T&C apply. To stop, reply STOP.",0,promotion,en,native,s0-promotion-enn-039,sms
+upg-sms-00725,"DailyBasket festive sale: up to 40% off on home essentials this weekend. Shop in the app. T&C apply. To stop, reply STOP.",0,promotion,en,native,s0-promotion-enn-039,sms
+upg-sms-00726,"MegaMart Online festive sale: up to 40% off on home essentials this weekend. Shop in the app. T&C apply. To stop, reply STOP.",0,promotion,en,native,s0-promotion-enn-039,sms
+upg-sms-00727,Your RupeeGo monthly statement is ready in the app.,0,promotion,en,native,s0-promotion-enn-040,sms
+upg-sms-00728,Your PayNest monthly statement is ready in the app.,0,promotion,en,native,s0-promotion-enn-040,sms
+upg-sms-00729,Your SwiftPay monthly statement is ready in the app.,0,promotion,en,native,s0-promotion-enn-040,sms
+upg-sms-00730,MegaMart Online त्योहार सेल: इस हफ्ते घरेलू सामान पर 40% तक की छूट। ऐप में खरीदें। शर्तें लागू।,0,promotion,hi,native,s0-promotion-hin-041,sms
+upg-sms-00731,ShopKart त्योहार सेल: इस हफ्ते घरेलू सामान पर 40% तक की छूट। ऐप में खरीदें। शर्तें लागू।,0,promotion,hi,native,s0-promotion-hin-041,sms
+upg-sms-00732,StyleHub त्योहार सेल: इस हफ्ते घरेलू सामान पर 40% तक की छूट। ऐप में खरीदें। शर्तें लागू।,0,promotion,hi,native,s0-promotion-hin-041,sms
+upg-sms-00733,DailyBasket त्योहार सेल: इस हफ्ते घरेलू सामान पर 40% तक की छूट। ऐप में खरीदें। शर्तें लागू।,0,promotion,hi,native,s0-promotion-hin-041,sms
+upg-sms-00734,"MegaMart Online weekend sale shuru, app mein 40% tak off. Shartein laagu.",0,promotion,hi,latin,s0-promotion-hil-042,sms
+upg-sms-00735,"DailyBasket weekend sale shuru, app mein 40% tak off. Shartein laagu.",0,promotion,hi,latin,s0-promotion-hil-042,sms
+upg-sms-00736,"StyleHub weekend sale shuru, app mein 40% tak off. Shartein laagu.",0,promotion,hi,latin,s0-promotion-hil-042,sms
+upg-sms-00737,"ShopKart weekend sale shuru, app mein 40% tak off. Shartein laagu.",0,promotion,hi,latin,s0-promotion-hil-042,sms
+upg-sms-00738,StyleHub పండుగ సేల్: ఈ వారం ఇంటి వస్తువులపై 40% వరకు తగ్గింపు. యాప్‌లో కొనండి. షరతులు వర్తిస్తాయి.,0,promotion,te,native,s0-promotion-ten-043,sms
+upg-sms-00739,MegaMart Online పండుగ సేల్: ఈ వారం ఇంటి వస్తువులపై 40% వరకు తగ్గింపు. యాప్‌లో కొనండి. షరతులు వర్తిస్తాయి.,0,promotion,te,native,s0-promotion-ten-043,sms
+upg-sms-00740,DailyBasket పండుగ సేల్: ఈ వారం ఇంటి వస్తువులపై 40% వరకు తగ్గింపు. యాప్‌లో కొనండి. షరతులు వర్తిస్తాయి.,0,promotion,te,native,s0-promotion-ten-043,sms
+upg-sms-00741,ShopKart పండుగ సేల్: ఈ వారం ఇంటి వస్తువులపై 40% వరకు తగ్గింపు. యాప్‌లో కొనండి. షరతులు వర్తిస్తాయి.,0,promotion,te,native,s0-promotion-ten-043,sms
+upg-sms-00742,"StyleHub weekend sale, app lo 40% varaku discount. Sharathulu vartistayi.",0,promotion,te,latin,s0-promotion-tel-044,sms
+upg-sms-00743,"ShopKart weekend sale, app lo 40% varaku discount. Sharathulu vartistayi.",0,promotion,te,latin,s0-promotion-tel-044,sms
+upg-sms-00744,"DailyBasket weekend sale, app lo 40% varaku discount. Sharathulu vartistayi.",0,promotion,te,latin,s0-promotion-tel-044,sms
+upg-sms-00745,"MegaMart Online weekend sale, app lo 40% varaku discount. Sharathulu vartistayi.",0,promotion,te,latin,s0-promotion-tel-044,sms
+upg-sms-00746,"Anita has sent you Rs 9,999 via UPI. It is already in your account - no action needed.",0,upi_received,en,native,s0-upi_received-enn-045,sms
+upg-sms-00747,"Ramesh has sent you Rs 12,000 via UPI. It is already in your account - no action needed.",0,upi_received,en,native,s0-upi_received-enn-045,sms
+upg-sms-00748,"Suresh has sent you Rs 12,000 via UPI. It is already in your account - no action needed.",0,upi_received,en,native,s0-upi_received-enn-045,sms
+upg-sms-00749,"Rahul has sent you Rs 4,999 via UPI. It is already in your account - no action needed.",0,upi_received,en,native,s0-upi_received-enn-045,sms
+upg-sms-00750,"Arjun has sent you Rs 9,999 via UPI. It is already in your account - no action needed.",0,upi_received,en,native,s0-upi_received-enn-045,sms
+upg-sms-00751,"Suresh has sent you Rs 4,999 via UPI. It is already in your account - no action needed.",0,upi_received,en,native,s0-upi_received-enn-045,sms
+upg-sms-00752,"Anita ने आपको UPI से ₹7,500 भेजे हैं। पैसा आपके खाते में आ चुका है।",0,upi_received,hi,native,s0-upi_received-hin-046,sms
+upg-sms-00753,"Arjun ने आपको UPI से ₹1,499 भेजे हैं। पैसा आपके खाते में आ चुका है।",0,upi_received,hi,native,s0-upi_received-hin-046,sms
+upg-sms-00754,"Suresh ने आपको UPI से ₹1,499 भेजे हैं। पैसा आपके खाते में आ चुका है।",0,upi_received,hi,native,s0-upi_received-hin-046,sms
+upg-sms-00755,"Rahul ने आपको UPI से ₹2,999 भेजे हैं। पैसा आपके खाते में आ चुका है।",0,upi_received,hi,native,s0-upi_received-hin-046,sms
+upg-sms-00756,"Arjun ने आपको UPI से ₹9,999 भेजे हैं। पैसा आपके खाते में आ चुका है।",0,upi_received,hi,native,s0-upi_received-hin-046,sms
+upg-sms-00757,"Arjun ने आपको UPI से ₹12,000 भेजे हैं। पैसा आपके खाते में आ चुका है।",0,upi_received,hi,native,s0-upi_received-hin-046,sms
+upg-sms-00758,"Rahul ne aapko Rs 5,000 bheje hain UPI se. Paisa account mein aa gaya hai.",0,upi_received,hi,latin,s0-upi_received-hil-047,sms
+upg-sms-00759,"Fatima ne aapko Rs 1,499 bheje hain UPI se. Paisa account mein aa gaya hai.",0,upi_received,hi,latin,s0-upi_received-hil-047,sms
+upg-sms-00760,"Srinivas ne aapko Rs 7,500 bheje hain UPI se. Paisa account mein aa gaya hai.",0,upi_received,hi,latin,s0-upi_received-hil-047,sms
+upg-sms-00761,"Imran ne aapko Rs 4,999 bheje hain UPI se. Paisa account mein aa gaya hai.",0,upi_received,hi,latin,s0-upi_received-hil-047,sms
+upg-sms-00762,"Suresh ne aapko Rs 4,999 bheje hain UPI se. Paisa account mein aa gaya hai.",0,upi_received,hi,latin,s0-upi_received-hil-047,sms
+upg-sms-00763,"Imran ne aapko Rs 5,000 bheje hain UPI se. Paisa account mein aa gaya hai.",0,upi_received,hi,latin,s0-upi_received-hil-047,sms
+upg-sms-00764,"Suresh మీకు UPI ద్వారా ₹4,999 పంపారు. డబ్బు ఇప్పటికే మీ ఖాతాలో ఉంది.",0,upi_received,te,native,s0-upi_received-ten-048,sms
+upg-sms-00765,"Anita మీకు UPI ద్వారా ₹4,999 పంపారు. డబ్బు ఇప్పటికే మీ ఖాతాలో ఉంది.",0,upi_received,te,native,s0-upi_received-ten-048,sms
+upg-sms-00766,"Srinivas మీకు UPI ద్వారా ₹2,999 పంపారు. డబ్బు ఇప్పటికే మీ ఖాతాలో ఉంది.",0,upi_received,te,native,s0-upi_received-ten-048,sms
+upg-sms-00767,"Ramesh మీకు UPI ద్వారా ₹7,500 పంపారు. డబ్బు ఇప్పటికే మీ ఖాతాలో ఉంది.",0,upi_received,te,native,s0-upi_received-ten-048,sms
+upg-sms-00768,"Arjun మీకు UPI ద్వారా ₹4,999 పంపారు. డబ్బు ఇప్పటికే మీ ఖాతాలో ఉంది.",0,upi_received,te,native,s0-upi_received-ten-048,sms
+upg-sms-00769,"Suresh మీకు UPI ద్వారా ₹7,500 పంపారు. డబ్బు ఇప్పటికే మీ ఖాతాలో ఉంది.",0,upi_received,te,native,s0-upi_received-ten-048,sms
+upg-sms-00770,"Ramesh meeku Rs 1,499 pamparu UPI lo. Dabbu mee account lo undi.",0,upi_received,te,latin,s0-upi_received-tel-049,sms
+upg-sms-00771,"Anita meeku Rs 2,999 pamparu UPI lo. Dabbu mee account lo undi.",0,upi_received,te,latin,s0-upi_received-tel-049,sms
+upg-sms-00772,"Fatima meeku Rs 1,499 pamparu UPI lo. Dabbu mee account lo undi.",0,upi_received,te,latin,s0-upi_received-tel-049,sms
+upg-sms-00773,"Anita meeku Rs 7,500 pamparu UPI lo. Dabbu mee account lo undi.",0,upi_received,te,latin,s0-upi_received-tel-049,sms
+upg-sms-00774,"Divya meeku Rs 5,000 pamparu UPI lo. Dabbu mee account lo undi.",0,upi_received,te,latin,s0-upi_received-tel-049,sms
+upg-sms-00775,"Arjun meeku Rs 7,500 pamparu UPI lo. Dabbu mee account lo undi.",0,upi_received,te,latin,s0-upi_received-tel-049,sms
+upg-sms-00776,"Refund for order #5580897387 - approve to receive Rs 2,999",1,collect_request,en,native,c1-collect_request-enn-000,collect_note
+upg-sms-00777,"Refund for order #9724215310 - approve to receive Rs 12,000",1,collect_request,en,native,c1-collect_request-enn-000,collect_note
+upg-sms-00778,"Refund for order #5605716123 - approve to receive Rs 9,999",1,collect_request,en,native,c1-collect_request-enn-000,collect_note
+upg-sms-00779,"Refund for order #2339555545 - approve to receive Rs 12,000",1,collect_request,en,native,c1-collect_request-enn-000,collect_note
+upg-sms-00780,"Cashback reward Rs 12,000 - accept to get credited",1,collect_request,en,native,c1-collect_request-enn-001,collect_note
+upg-sms-00781,"Cashback reward Rs 7,500 - accept to get credited",1,collect_request,en,native,c1-collect_request-enn-001,collect_note
+upg-sms-00782,"Cashback reward Rs 1,499 - accept to get credited",1,collect_request,en,native,c1-collect_request-enn-001,collect_note
+upg-sms-00783,"Cashback reward Rs 5,000 - accept to get credited",1,collect_request,en,native,c1-collect_request-enn-001,collect_note
+upg-sms-00784,Prize money release - enter PIN to receive,1,collect_request,en,native,c1-collect_request-enn-002,collect_note
+upg-sms-00785,KYC verification charge,1,collect_request,en,native,c1-collect_request-enn-003,collect_note
+upg-sms-00786,Approve to receive your refund,1,collect_request,en,native,c1-collect_request-enn-004,collect_note
+upg-sms-00787,Lucky draw winning amount credit,1,collect_request,en,native,c1-collect_request-enn-005,collect_note
+upg-sms-00788,"रिफंड पाने के लिए स्वीकार करें ₹1,499",1,collect_request,hi,native,c1-collect_request-hin-006,collect_note
+upg-sms-00789,"रिफंड पाने के लिए स्वीकार करें ₹2,999",1,collect_request,hi,native,c1-collect_request-hin-006,collect_note
+upg-sms-00790,"रिफंड पाने के लिए स्वीकार करें ₹12,000",1,collect_request,hi,native,c1-collect_request-hin-006,collect_note
+upg-sms-00791,"रिफंड पाने के लिए स्वीकार करें ₹4,999",1,collect_request,hi,native,c1-collect_request-hin-006,collect_note
+upg-sms-00792,Cashback paane ke liye approve karein,1,collect_request,hi,latin,c1-collect_request-hil-007,collect_note
+upg-sms-00793,Inaam ki raashi receive karein,1,collect_request,hi,latin,c1-collect_request-hil-008,collect_note
+upg-sms-00794,"రీఫండ్ పొందడానికి ఆమోదించండి ₹9,999",1,collect_request,te,native,c1-collect_request-ten-009,collect_note
+upg-sms-00795,"రీఫండ్ పొందడానికి ఆమోదించండి ₹4,999",1,collect_request,te,native,c1-collect_request-ten-009,collect_note
+upg-sms-00796,"రీఫండ్ పొందడానికి ఆమోదించండి ₹1,499",1,collect_request,te,native,c1-collect_request-ten-009,collect_note
+upg-sms-00797,"రీఫండ్ పొందడానికి ఆమోదించండి ₹12,000",1,collect_request,te,native,c1-collect_request-ten-009,collect_note
+upg-sms-00798,Cashback kosam approve cheyandi,1,collect_request,te,latin,c1-collect_request-tel-010,collect_note
+upg-sms-00799,Bahumati dabbu receive cheyyandi,1,collect_request,te,latin,c1-collect_request-tel-011,collect_note
+upg-sms-00800,Dinner split,0,collect_note,en,native,c0-collect_note-enn-000,collect_note
+upg-sms-00801,Movie tickets,0,collect_note,en,native,c0-collect_note-enn-001,collect_note
+upg-sms-00802,Rent share for this month,0,collect_note,en,native,c0-collect_note-enn-002,collect_note
+upg-sms-00803,Electricity bill share,0,collect_note,en,native,c0-collect_note-enn-003,collect_note
+upg-sms-00804,Trip expenses,0,collect_note,en,native,c0-collect_note-enn-004,collect_note
+upg-sms-00805,Grocery bill #8747777406,0,collect_note,en,native,c0-collect_note-enn-005,collect_note
+upg-sms-00806,Grocery bill #7487091663,0,collect_note,en,native,c0-collect_note-enn-005,collect_note
+upg-sms-00807,Grocery bill #8420444845,0,collect_note,en,native,c0-collect_note-enn-005,collect_note
+upg-sms-00808,Grocery bill #2806333870,0,collect_note,en,native,c0-collect_note-enn-005,collect_note
+upg-sms-00809,Birthday gift contribution,0,collect_note,en,native,c0-collect_note-enn-006,collect_note
+upg-sms-00810,खाने का बिल बाँटना,0,collect_note,hi,native,c0-collect_note-hin-007,collect_note
+upg-sms-00811,Chai aur nashta,0,collect_note,hi,latin,c0-collect_note-hil-008,collect_note
+upg-sms-00812,Kiraya ka hissa,0,collect_note,hi,latin,c0-collect_note-hil-009,collect_note
+upg-sms-00813,భోజనం బిల్ పంపకం,0,collect_note,te,native,c0-collect_note-ten-010,collect_note
+upg-sms-00814,Tiffin dabbulu,0,collect_note,te,latin,c0-collect_note-tel-011,collect_note
+upg-sms-00815,Room rent share,0,collect_note,te,latin,c0-collect_note-tel-012,collect_note

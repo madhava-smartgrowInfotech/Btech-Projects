@@ -1,0 +1,11 @@
+{
+  "medium": 35,
+  "high": 70,
+  "block_report_score": 2.5,
+  "probability_anchors": {
+    "medium": 0.00414,
+    "high": 0.02448
+  },
+  "tuned_on": "validation month 10 of the scenario simulator: Medium = 92% scam recall capped at 8% of genuine payments; High = 60% precision capped at 0.5% of genuine payments",
+  "run": "m3_risk_20260922"
+}

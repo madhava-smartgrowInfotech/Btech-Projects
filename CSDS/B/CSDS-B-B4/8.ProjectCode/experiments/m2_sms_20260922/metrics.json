@@ -1,0 +1,435 @@
+{
+  "run": "m2_sms_20260922",
+  "family": "sms",
+  "created_at": "2026-09-22T11:13:28+00:00",
+  "duration_seconds": 5.4,
+  "seed": 42,
+  "model": "M2 SMS scam classifier",
+  "deployed": "TF-IDF + Logistic Regression",
+  "version": "m2-tfidf-lr-20260922",
+  "dataset": {
+    "sources": {
+      "uci": "SMS Spam Collection (UCI / Kaggle mirror), de-duplicated",
+      "indian_upi": "UPI Guardian Indian UPI-scam SMS set (scripts/generate_scam_sms.py, seed 2026)"
+    },
+    "split": "UCI stratified random 60/15/25; Indian set grouped by template family (30% of templates held out for test, 25% of the rest for validation)",
+    "rows": {
+      "train": 3444,
+      "validation": 889,
+      "test": 1640
+    },
+    "scam_share": {
+      "train": 0.1745,
+      "test": 0.2323
+    },
+    "languages_in_test": {
+      "hi": 120,
+      "en": 115,
+      "te": 115
+    }
+  },
+  "models": {
+    "TF-IDF + Logistic Regression": {
+      "validation": {
+        "n": 889,
+        "positives": 187,
+        "prevalence": 0.21035,
+        "threshold": 0.6217,
+        "precision": 1.0,
+        "recall": 0.9626,
+        "f1": 0.9809,
+        "pr_auc": 0.991,
+        "roc_auc": 0.9959,
+        "confusion": {
+          "tn": 702,
+          "fp": 0,
+          "fn": 7,
+          "tp": 180
+        }
+      },
+      "test": {
+        "n": 1640,
+        "positives": 381,
+        "prevalence": 0.23232,
+        "threshold": 0.6217,
+        "precision": 0.9649,
+        "recall": 0.937,
+        "f1": 0.9507,
+        "pr_auc": 0.9888,
+        "roc_auc": 0.996,
+        "confusion": {
+          "tn": 1246,
+          "fp": 13,
+          "fn": 24,
+          "tp": 357
+        }
+      }
+    },
+    "TF-IDF + Linear SVM (calibrated)": {
+      "validation": {
+        "n": 889,
+        "positives": 187,
+        "prevalence": 0.21035,
+        "threshold": 0.61379,
+        "precision": 1.0,
+        "recall": 0.9626,
+        "f1": 0.9809,
+        "pr_auc": 0.9924,
+        "roc_auc": 0.9968,
+        "confusion": {
+          "tn": 702,
+          "fp": 0,
+          "fn": 7,
+          "tp": 180
+        }
+      },
+      "test": {
+        "n": 1640,
+        "positives": 381,
+        "prevalence": 0.23232,
+        "threshold": 0.61379,
+        "precision": 0.9655,
+        "recall": 0.9554,
+        "f1": 0.9604,
+        "pr_auc": 0.99,
+        "roc_auc": 0.9964,
+        "confusion": {
+          "tn": 1246,
+          "fp": 13,
+          "fn": 17,
+          "tp": 364
+        }
+      }
+    }
+  },
+  "verdict": {
+    "thresholds": {
+      "scam": 0.5,
+      "suspicious": 0.3531
+    },
+    "rule": "combined = 1 - (1 - model) * (1 - rules); scam >= scam threshold (95% precision on validation), suspicious >= suspicious threshold",
+    "validation": {
+      "n": 889,
+      "positives": 187,
+      "prevalence": 0.21035,
+      "threshold": 0.5,
+      "precision": 0.9945,
+      "recall": 0.9626,
+      "f1": 0.9783,
+      "pr_auc": 0.9909,
+      "roc_auc": 0.9955,
+      "confusion": {
+        "tn": 701,
+        "fp": 1,
+        "fn": 7,
+        "tp": 180
+      }
+    },
+    "test": {
+      "n": 1640,
+      "positives": 381,
+      "prevalence": 0.23232,
+      "threshold": 0.5,
+      "precision": 0.9562,
+      "recall": 0.9738,
+      "f1": 0.9649,
+      "pr_auc": 0.9905,
+      "roc_auc": 0.9961,
+      "confusion": {
+        "tn": 1242,
+        "fp": 17,
+        "fn": 10,
+        "tp": 371
+      }
+    },
+    "test_flagged_suspicious_or_scam": {
+      "n": 1640,
+      "positives": 381,
+      "prevalence": 0.23232,
+      "threshold": 0.3531,
+      "precision": 0.8945,
+      "recall": 0.979,
+      "f1": 0.9348,
+      "pr_auc": 0.9905,
+      "roc_auc": 0.9961,
+      "confusion": {
+        "tn": 1215,
+        "fp": 44,
+        "fn": 8,
+        "tp": 373
+      }
+    }
+  },
+  "slices": {
+    "uci": {
+      "model_only": {
+        "n": 1290,
+        "positives": 161,
+        "prevalence": 0.12481,
+        "threshold": 0.6217,
+        "precision": 1.0,
+        "recall": 0.9193,
+        "f1": 0.9579,
+        "pr_auc": 0.9896,
+        "roc_auc": 0.9978,
+        "confusion": {
+          "tn": 1129,
+          "fp": 0,
+          "fn": 13,
+          "tp": 148
+        }
+      },
+      "model_plus_rules": {
+        "n": 1290,
+        "positives": 161,
+        "prevalence": 0.12481,
+        "threshold": 0.5,
+        "precision": 0.9869,
+        "recall": 0.9379,
+        "f1": 0.9618,
+        "pr_auc": 0.9843,
+        "roc_auc": 0.996,
+        "confusion": {
+          "tn": 1127,
+          "fp": 2,
+          "fn": 10,
+          "tp": 151
+        }
+      }
+    },
+    "indian_upi": {
+      "model_only": {
+        "n": 350,
+        "positives": 220,
+        "prevalence": 0.62857,
+        "threshold": 0.6217,
+        "precision": 0.9414,
+        "recall": 0.95,
+        "f1": 0.9457,
+        "pr_auc": 0.9893,
+        "roc_auc": 0.9825,
+        "confusion": {
+          "tn": 117,
+          "fp": 13,
+          "fn": 11,
+          "tp": 209
+        }
+      },
+      "model_plus_rules": {
+        "n": 350,
+        "positives": 220,
+        "prevalence": 0.62857,
+        "threshold": 0.5,
+        "precision": 0.9362,
+        "recall": 1.0,
+        "f1": 0.967,
+        "pr_auc": 0.9957,
+        "roc_auc": 0.993,
+        "confusion": {
+          "tn": 115,
+          "fp": 15,
+          "fn": 0,
+          "tp": 220
+        }
+      }
+    },
+    "indian_en": {
+      "model_only": {
+        "n": 115,
+        "positives": 74,
+        "prevalence": 0.64348,
+        "threshold": 0.6217,
+        "precision": 0.9211,
+        "recall": 0.9459,
+        "f1": 0.9333,
+        "pr_auc": 0.9808,
+        "roc_auc": 0.967,
+        "confusion": {
+          "tn": 35,
+          "fp": 6,
+          "fn": 4,
+          "tp": 70
+        }
+      },
+      "model_plus_rules": {
+        "n": 115,
+        "positives": 74,
+        "prevalence": 0.64348,
+        "threshold": 0.5,
+        "precision": 0.925,
+        "recall": 1.0,
+        "f1": 0.961,
+        "pr_auc": 1.0,
+        "roc_auc": 1.0,
+        "confusion": {
+          "tn": 35,
+          "fp": 6,
+          "fn": 0,
+          "tp": 74
+        }
+      }
+    },
+    "indian_hi": {
+      "model_only": {
+        "n": 120,
+        "positives": 73,
+        "prevalence": 0.60833,
+        "threshold": 0.6217,
+        "precision": 0.9125,
+        "recall": 1.0,
+        "f1": 0.9542,
+        "pr_auc": 0.9819,
+        "roc_auc": 0.9726,
+        "confusion": {
+          "tn": 40,
+          "fp": 7,
+          "fn": 0,
+          "tp": 73
+        }
+      },
+      "model_plus_rules": {
+        "n": 120,
+        "positives": 73,
+        "prevalence": 0.60833,
+        "threshold": 0.5,
+        "precision": 0.9012,
+        "recall": 1.0,
+        "f1": 0.9481,
+        "pr_auc": 0.9986,
+        "roc_auc": 0.9977,
+        "confusion": {
+          "tn": 39,
+          "fp": 8,
+          "fn": 0,
+          "tp": 73
+        }
+      }
+    },
+    "indian_te": {
+      "model_only": {
+        "n": 115,
+        "positives": 73,
+        "prevalence": 0.63478,
+        "threshold": 0.6217,
+        "precision": 1.0,
+        "recall": 0.9041,
+        "f1": 0.9496,
+        "pr_auc": 0.9982,
+        "roc_auc": 0.9967,
+        "confusion": {
+          "tn": 42,
+          "fp": 0,
+          "fn": 7,
+          "tp": 66
+        }
+      },
+      "model_plus_rules": {
+        "n": 115,
+        "positives": 73,
+        "prevalence": 0.63478,
+        "threshold": 0.5,
+        "precision": 0.9865,
+        "recall": 1.0,
+        "f1": 0.9932,
+        "pr_auc": 1.0,
+        "roc_auc": 1.0,
+        "confusion": {
+          "tn": 41,
+          "fp": 1,
+          "fn": 0,
+          "tp": 73
+        }
+      }
+    },
+    "collect_notes": {
+      "model_only": {
+        "n": 14,
+        "positives": 10,
+        "prevalence": 0.71429,
+        "threshold": 0.6217,
+        "precision": 1.0,
+        "recall": 0.9,
+        "f1": 0.9474,
+        "pr_auc": 1.0,
+        "roc_auc": 1.0,
+        "confusion": {
+          "tn": 4,
+          "fp": 0,
+          "fn": 1,
+          "tp": 9
+        }
+      },
+      "model_plus_rules": {
+        "n": 14,
+        "positives": 10,
+        "prevalence": 0.71429,
+        "threshold": 0.5,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "pr_auc": 1.0,
+        "roc_auc": 1.0,
+        "confusion": {
+          "tn": 4,
+          "fp": 0,
+          "fn": 0,
+          "tp": 10
+        }
+      }
+    }
+  },
+  "scam_type_classifier": {
+    "n": 210,
+    "accuracy": 0.4381,
+    "macro_f1": 0.4276,
+    "pipeline_rules_then_classifier": {
+      "typed_share": 1.0,
+      "accuracy_when_typed": 0.8048
+    }
+  },
+  "worked_examples": [
+    {
+      "text": "Your KYC expires today, click link http://kyc-verify-now.top/a77 to update or your account will be blocked.",
+      "language": "en",
+      "probability": 0.9994,
+      "verdict": "scam",
+      "scam_type": "kyc_fraud"
+    },
+    {
+      "text": "\u0906\u092a\u0915\u093e KYC \u0906\u091c \u0938\u092e\u093e\u092a\u094d\u0924 \u0939\u094b \u0930\u0939\u093e \u0939\u0948, \u0916\u093e\u0924\u093e \u092c\u0902\u0926 \u0939\u094b \u091c\u093e\u090f\u0917\u093e\u0964 \u0924\u0941\u0930\u0902\u0924 \u0932\u093f\u0902\u0915 \u092a\u0930 \u0915\u094d\u0932\u093f\u0915 \u0915\u0930\u0947\u0902",
+      "language": "hi",
+      "probability": 0.9447,
+      "verdict": "scam",
+      "scam_type": "kyc_fraud"
+    },
+    {
+      "text": "\u0c2e\u0c40 \u0c16\u0c3e\u0c24\u0c3e \u0c2c\u0c4d\u0c32\u0c3e\u0c15\u0c4d \u0c05\u0c35\u0c41\u0c24\u0c41\u0c02\u0c26\u0c3f, \u0c35\u0c46\u0c02\u0c1f\u0c28\u0c47 KYC \u0c05\u0c2a\u0c4d\u200c\u0c21\u0c47\u0c1f\u0c4d \u0c1a\u0c47\u0c2f\u0c02\u0c21\u0c3f",
+      "language": "te",
+      "probability": 0.934,
+      "verdict": "scam",
+      "scam_type": "kyc_fraud"
+    },
+    {
+      "text": "Rs 450 debited from A/c XX1234 to Lakshmi Stores via UPI. Never share your OTP with anyone.",
+      "language": "en",
+      "probability": 0.299,
+      "verdict": "safe",
+      "scam_type": null
+    },
+    {
+      "text": "Hey, are we still meeting for lunch at 1?",
+      "language": "en",
+      "probability": 0.0116,
+      "verdict": "safe",
+      "scam_type": null
+    }
+  ],
+  "plots": [
+    "pr_curve.png",
+    "roc_curve.png",
+    "confusion_matrix.png",
+    "calibration.png",
+    "f1_by_slice.png",
+    "top_terms.png"
+  ]
+}

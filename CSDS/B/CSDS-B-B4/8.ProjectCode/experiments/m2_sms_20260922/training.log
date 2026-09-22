@@ -1,0 +1,23 @@
+2026-09-22 16:43:22 | INFO | run m2_sms_20260922 started (python 3.11.9, Windows-10-10.0.26200-SP0)
+2026-09-22 16:43:22 | INFO | train       3444 messages  scam  601  indian  350  templates 71
+2026-09-22 16:43:22 | INFO | validation   889 messages  scam  187  indian  115  templates 22
+2026-09-22 16:43:22 | INFO | test        1640 messages  scam  381  indian  350  templates 66
+2026-09-22 16:43:23 | INFO | TF-IDF + Logistic Regression       val PR-AUC 0.9910 F1 0.9809 | test PR-AUC 0.9888 F1 0.9507
+2026-09-22 16:43:24 | INFO | TF-IDF + Linear SVM (calibrated)   val PR-AUC 0.9924 F1 0.9809 | test PR-AUC 0.9900 F1 0.9604
+2026-09-22 16:43:25 | INFO | scam-type classifier on held-out templates: {'n': 210, 'accuracy': 0.4381, 'macro_f1': 0.4276}
+2026-09-22 16:43:25 | INFO | verdict thresholds from validation: {'scam': 0.5, 'suspicious': 0.3531}
+2026-09-22 16:43:26 | INFO | scam typing in the product pipeline: {'typed_share': 1.0, 'accuracy_when_typed': 0.8048}
+2026-09-22 16:43:27 | INFO | combined verdict test: P 0.9562 R 0.9738 F1 0.9649 PR-AUC 0.9905
+2026-09-22 16:43:27 | INFO | slice uci            n=1290  model F1 0.9579  model+rules F1 0.9618
+2026-09-22 16:43:27 | INFO | slice indian_upi     n= 350  model F1 0.9457  model+rules F1 0.9670
+2026-09-22 16:43:27 | INFO | slice indian_en      n= 115  model F1 0.9333  model+rules F1 0.9610
+2026-09-22 16:43:27 | INFO | slice indian_hi      n= 120  model F1 0.9542  model+rules F1 0.9481
+2026-09-22 16:43:27 | INFO | slice indian_te      n= 115  model F1 0.9496  model+rules F1 0.9932
+2026-09-22 16:43:27 | INFO | slice collect_notes  n=  14  model F1 0.9474  model+rules F1 1.0000
+2026-09-22 16:43:27 | INFO | example scam       0.999 Your KYC expires today, click link http://kyc-verify-now.top
+2026-09-22 16:43:27 | INFO | example scam       0.945 आपका KYC आज समाप्त हो रहा है, खाता बंद हो जाएगा। तुरंत लिंक 
+2026-09-22 16:43:27 | INFO | example scam       0.934 మీ ఖాతా బ్లాక్ అవుతుంది, వెంటనే KYC అప్‌డేట్ చేయండి
+2026-09-22 16:43:27 | INFO | example safe       0.299 Rs 450 debited from A/c XX1234 to Lakshmi Stores via UPI. Ne
+2026-09-22 16:43:27 | INFO | example safe       0.012 Hey, are we still meeting for lunch at 1?
+2026-09-22 16:43:28 | INFO | metrics written to experiments\m2_sms_20260922\metrics.json
+2026-09-22 16:43:28 | INFO | done in D:\abstracts\Madhav\CSDS\B\CSDS-B-B4\8.ProjectCode\experiments\m2_sms_20260922

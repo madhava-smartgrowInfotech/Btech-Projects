@@ -1,0 +1,17 @@
+2026-09-22 16:34:51 | INFO | run m1_behaviour_20260922 started (python 3.11.9, Windows-10-10.0.26200-SP0)
+2026-09-22 16:34:52 | INFO | fit 267224 rows (4246 fraud)  val 32889 (625)  test 99887 (1983)
+2026-09-22 16:36:15 | INFO | xgboost best iteration 272
+2026-09-22 16:36:15 | INFO | Logistic Regression  val PR-AUC 0.3270 | test PR-AUC 0.3563 ROC 0.8421 F1 0.3921
+2026-09-22 16:36:17 | INFO | Random Forest        val PR-AUC 0.2997 | test PR-AUC 0.3294 ROC 0.8239 F1 0.3862
+2026-09-22 16:36:17 | INFO | XGBoost              val PR-AUC 0.3242 | test PR-AUC 0.3504 ROC 0.8439 F1 0.3929
+2026-09-22 16:37:04 | INFO | contrastive epoch 1/6  loss 0.4641  val PR-AUC 0.3174
+2026-09-22 16:38:07 | INFO | contrastive epoch 2/6  loss 0.4502  val PR-AUC 0.3209
+2026-09-22 16:39:16 | INFO | contrastive epoch 3/6  loss 0.4475  val PR-AUC 0.3187
+2026-09-22 16:40:36 | INFO | contrastive epoch 4/6  loss 0.4478  val PR-AUC 0.3145
+2026-09-22 16:41:47 | INFO | contrastive epoch 5/6  loss 0.4443  val PR-AUC 0.3163
+2026-09-22 16:43:04 | INFO | contrastive epoch 6/6  loss 0.4438  val PR-AUC 0.3126
+2026-09-22 16:43:09 | INFO | Contrastive+attn     val PR-AUC 0.3209 | test PR-AUC 0.3469
+2026-09-22 16:43:15 | INFO | full-feature XGBoost (reference only) test PR-AUC 0.3554
+2026-09-22 16:43:17 | INFO | drift check {'trained_on': '2023-01 to 2023-05', 'pr_auc_june_before_drift': 0.2998, 'pr_auc_jul_sep_after_drift': 0.3092}
+2026-09-22 16:43:19 | INFO | metrics written to experiments\m1_behaviour_20260922\metrics.json
+2026-09-22 16:43:19 | INFO | done in D:\abstracts\Madhav\CSDS\B\CSDS-B-B4\8.ProjectCode\experiments\m1_behaviour_20260922

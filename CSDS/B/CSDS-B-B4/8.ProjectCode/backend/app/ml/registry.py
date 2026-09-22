@@ -26,7 +26,9 @@ POLICY_FILE = "risk_policy.json"
 class ModelRegistry:
     directory: Path = MODELS_DIR
     bundles: dict[str, Any] = field(default_factory=dict)
+    explainers: dict[str, Any] = field(default_factory=dict)
     policy: dict[str, Any] = field(default_factory=dict)
+    profile: dict[str, Any] = field(default_factory=dict)
     errors: dict[str, str] = field(default_factory=dict)
     _lock: Lock = field(default_factory=Lock)
 
@@ -46,6 +48,19 @@ class ModelRegistry:
                     log.exception("model load failed", extra={"model": name})
             policy_path = self.directory / POLICY_FILE
             self.policy = json.loads(policy_path.read_text(encoding="utf-8")) if policy_path.exists() else {}
+            profile_path = self.directory / "behaviour_profile.json"
+            self.profile = json.loads(profile_path.read_text(encoding="utf-8")) if profile_path.exists() else {}
+            self.explainers.clear()
+            if self.bundles:
+                import shap
+
+                for name in ("behaviour", "risk"):
+                    if name in self.bundles:
+                        self.explainers[name] = shap.TreeExplainer(self.bundles[name]["model"])
+
+    def hour_prior(self, hour: int) -> float:
+        """Share of UPI payments made within +/-1 hour of `hour` (UPI Transactions 2024 profile)."""
+        return float(self.profile.get("hour_window_share", {}).get(str(hour % 24), 0.125))
 
     def get(self, name: str) -> Any:
         bundle = self.bundles.get(name)

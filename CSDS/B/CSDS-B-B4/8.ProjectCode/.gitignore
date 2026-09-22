@@ -21,7 +21,7 @@ data/app.db-journal
 data/app.db-wal
 data/app.db-shm
 data/voice_cache/
-data/processed/upi_scenarios.parquet
+data/processed/upi_scenarios.csv.gz
 logs/
 *.log.tmp
 

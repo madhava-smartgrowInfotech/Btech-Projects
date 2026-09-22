@@ -1,0 +1,4 @@
+2026-09-22 16:34:42 | INFO | run m0_upi2024_20260922 started (python 3.11.9, Windows-10-10.0.26200-SP0)
+2026-09-22 16:34:43 | INFO | 250000 rows, fraud_flag rate 0.0019 (480 positives)
+2026-09-22 16:34:47 | INFO | label check: LR PR-AUC 0.0027, XGB PR-AUC 0.0022, base rate 0.0020 -> fraud_flag is not learnable (best PR-AUC 0.0027 vs base rate 0.0020); the flag looks randomly assigned, so this dataset is used only for behaviour profiles, as planned
+2026-09-22 16:34:48 | INFO | metrics written to experiments\m0_upi2024_20260922\metrics.json

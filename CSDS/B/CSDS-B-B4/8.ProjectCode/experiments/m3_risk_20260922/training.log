@@ -1,0 +1,19 @@
+2026-09-22 16:43:30 | INFO | run m3_risk_20260922 started (python 3.11.9, Windows-10-10.0.26200-SP0)
+2026-09-22 16:43:30 | INFO | simulating 3000 users for 12 months (seed 42)
+2026-09-22 16:45:32 | INFO | 629359 payments, 3505 scam payments (0.56%), 207 label-noise flips
+2026-09-22 16:45:32 | INFO | scam mix: {np.str_('job_task'): 815, np.str_('refund_scam'): 476, np.str_('kyc_fraud'): 436, np.str_('lottery_prize'): 313, np.str_('impersonation'): 306, np.str_('investment'): 237, np.str_('qr_scam'): 184, np.str_('loan_fee'): 167, np.str_('bill_disconnection'): 140, np.str_('account_takeover'): 130, 'none': 130, np.str_('wrong_transfer'): 90, np.str_('courier_customs'): 81}
+2026-09-22 16:45:32 | INFO | train 470514 (2664 scam)  val 53689 (275)  test 105156 (566)
+2026-09-22 16:49:57 | INFO | xgboost best iteration 658
+2026-09-22 16:49:57 | INFO | Logistic Regression  val PR-AUC 0.7248 | test PR-AUC 0.7780 ROC 0.9727 P 0.870 R 0.664 F1 0.7535
+2026-09-22 16:49:58 | INFO | Random Forest        val PR-AUC 0.8908 | test PR-AUC 0.8974 ROC 0.9741 P 0.928 R 0.846 F1 0.8854
+2026-09-22 16:49:58 | INFO | XGBoost              val PR-AUC 0.8778 | test PR-AUC 0.8942 ROC 0.9802 P 0.916 R 0.834 F1 0.8733
+2026-09-22 16:50:06 | INFO | ablation without SMS signals                test PR-AUC 0.8852
+2026-09-22 16:50:13 | INFO | ablation without payee trust signals        test PR-AUC 0.6316
+2026-09-22 16:50:23 | INFO | ablation without history signals            test PR-AUC 0.8773
+2026-09-22 16:50:32 | INFO | ablation without M1 behaviour score         test PR-AUC 0.8927
+2026-09-22 16:50:40 | INFO | ablation without collect/QR guard signals   test PR-AUC 0.8894
+2026-09-22 16:50:40 | INFO | policy probabilities: medium >= 0.0041, high >= 0.0245
+2026-09-22 16:50:40 | INFO | policy on test: {'scams_reaching_medium_or_high': 0.9452, 'scams_reaching_high_hold': 0.9117, 'genuine_payments_low': 0.9811, 'genuine_payments_asked_intent_medium': 0.0158, 'genuine_payments_held_high': 0.0031, 'precision_of_high': 0.6158, 'level_share': {'low': 0.9762, 'medium': 0.0159, 'high': 0.008}}
+2026-09-22 16:50:40 | INFO | per scam type: {np.str_('account_takeover'): {'n': 23.0, 'caught_medium_or_high': 1.0, 'held_high': 0.913}, np.str_('bill_disconnection'): {'n': 20.0, 'caught_medium_or_high': 0.95, 'held_high': 0.85}, np.str_('courier_customs'): {'n': 10.0, 'caught_medium_or_high': 1.0, 'held_high': 0.9}, np.str_('impersonation'): {'n': 48.0, 'caught_medium_or_high': 1.0, 'held_high': 1.0}, np.str_('investment'): {'n': 36.0, 'caught_medium_or_high': 1.0, 'held_high': 1.0}, np.str_('job_task'): {'n': 121.0, 'caught_medium_or_high': 0.975, 'held_high': 0.934}, np.str_('kyc_fraud'): {'n': 58.0, 'caught_medium_or_high': 0.983, 'held_high': 0.966}, np.str_('loan_fee'): {'n': 25.0, 'caught_medium_or_high': 1.0, 'held_high': 0.84}, np.str_('lottery_prize'): {'n': 51.0, 'caught_medium_or_high': 1.0, 'held_high': 0.941}, 'none': {'n': 25.0, 'caught_medium_or_high': 0.0, 'held_high': 0.0}, np.str_('qr_scam'): {'n': 40.0, 'caught_medium_or_high': 1.0, 'held_high': 0.975}, np.str_('refund_scam'): {'n': 98.0, 'caught_medium_or_high': 0.99, 'held_high': 0.99}, np.str_('wrong_transfer'): {'n': 11.0, 'caught_medium_or_high': 1.0, 'held_high': 1.0}}
+2026-09-22 16:50:44 | INFO | metrics written to experiments\m3_risk_20260922\metrics.json
+2026-09-22 16:50:44 | INFO | done in D:\abstracts\Madhav\CSDS\B\CSDS-B-B4\8.ProjectCode\experiments\m3_risk_20260922

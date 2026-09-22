@@ -1,0 +1,8 @@
+2026-09-22 16:20:44 | INFO | run m2_sms_transformer_20260922 started (python 3.11.9, Windows-10-10.0.26200-SP0)
+2026-09-22 16:20:44 | INFO | same split as train_sms.py: train 3444, validation 889, test 1640
+2026-09-22 16:20:44 | INFO | loading sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2 (downloaded to the Hugging Face cache on first use)
+2026-09-22 16:22:16 | INFO | MiniLM embeddings + LR     test PR-AUC 0.9550 F1 0.8712
+2026-09-22 16:22:16 | INFO | TF-IDF + LR (deployed)     test PR-AUC 0.9888 F1 0.9507
+2026-09-22 16:22:16 | INFO | F1 by language (Indian test templates): {'indian_en': {'MiniLM embeddings + LR': 0.7947, 'TF-IDF + LR (deployed)': 0.9333}, 'indian_hi': {'MiniLM embeddings + LR': 0.7571, 'TF-IDF + LR (deployed)': 0.9542}, 'indian_te': {'MiniLM embeddings + LR': 0.9281, 'TF-IDF + LR (deployed)': 0.9496}}
+2026-09-22 16:22:16 | INFO | transformer does not clearly beat TF-IDF (PR-AUC difference -0.0338); TF-IDF stays deployed because it is faster, fully offline and gives word-level highlights
+2026-09-22 16:22:17 | INFO | metrics written to experiments\m2_sms_transformer_20260922\metrics.json

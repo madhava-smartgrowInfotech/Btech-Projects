@@ -1,0 +1,10 @@
+venv/
+node_modules/
+__pycache__/
+*.pyc
+.env
+dist/
+data/app.db
+data/app.db-*
+data/uploads/
+data/cache/

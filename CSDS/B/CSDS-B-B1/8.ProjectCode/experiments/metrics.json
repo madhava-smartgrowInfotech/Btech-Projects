@@ -1,0 +1,133 @@
+{
+  "version": 1,
+  "trained_at": "2026-09-22T09:49:15+00:00",
+  "category": {
+    "test": {
+      "accuracy": 0.8293,
+      "macro_f1": 0.7859,
+      "n": 9459
+    },
+    "by_language": {
+      "English": 0.8266,
+      "Hindi": 0.8283,
+      "Hinglish": 0.833
+    },
+    "by_source": {
+      "civiccomp": 0.8151,
+      "grievance": 1.0,
+      "indian_complaint": 0.8912
+    },
+    "holdout_templates": {
+      "accuracy": 0.7314,
+      "macro_f1": 0.7385,
+      "n": 566
+    }
+  },
+  "department": {
+    "test": {
+      "accuracy": 0.8489,
+      "macro_f1": 0.8002,
+      "n": 9459
+    },
+    "by_language": {
+      "English": 0.8456,
+      "Hindi": 0.8482,
+      "Hinglish": 0.853
+    },
+    "by_source": {
+      "civiccomp": 0.8352,
+      "grievance": 1.0,
+      "indian_complaint": 0.9324
+    },
+    "holdout_templates": {
+      "accuracy": 0.9152,
+      "macro_f1": 0.8895,
+      "n": 566
+    }
+  },
+  "priority": {
+    "test": {
+      "accuracy": 0.7968,
+      "macro_f1": 0.6813,
+      "n": 8533
+    },
+    "by_language": {
+      "English": 0.8357,
+      "Hindi": 0.7744,
+      "Hinglish": 0.779
+    },
+    "recall": {
+      "Low": 0.883,
+      "Medium": 0.6,
+      "High": 0.6217,
+      "Critical": 0.7574
+    },
+    "confusion_matrix": {
+      "labels": [
+        "Low",
+        "Medium",
+        "High",
+        "Critical"
+      ],
+      "matrix": [
+        [
+          5080,
+          618,
+          55,
+          0
+        ],
+        [
+          385,
+          1017,
+          280,
+          13
+        ],
+        [
+          18,
+          206,
+          549,
+          110
+        ],
+        [
+          2,
+          2,
+          45,
+          153
+        ]
+      ]
+    },
+    "within_one_level": 0.9895
+  },
+  "resolution": {
+    "rows_train": 242529,
+    "rows_test": 48218,
+    "mae_days": 8.894,
+    "median_abs_error_days": 1.104,
+    "baseline_category_median_mae_days": 8.95,
+    "baseline_category_median_median_abs_error_days": 1.244,
+    "baseline_sla_breach_flag_accuracy": 0.7877,
+    "sla_breach_flag_accuracy": 0.7683,
+    "actual_breach_rate": 0.3365,
+    "by_category_median_days": {
+      "Corruption & Bribery": 12.52,
+      "Drainage & Sewage": 0.21,
+      "Encroachment & Illegal Construction": 1.68,
+      "Garbage & Waste": 1.79,
+      "Land & Certificates": 5.84,
+      "Law & Order": 0.03,
+      "Power Supply": 7.17,
+      "Public Health": 4.81,
+      "Public Nuisance": 0.06,
+      "Roads & Footpaths": 6.99,
+      "Streetlights": 9.59,
+      "Traffic & Parking": 0.09,
+      "Water Leakage": 16.83,
+      "Water Supply": 0.7,
+      "Welfare & Pensions": 5.84
+    }
+  },
+  "feedback": {
+    "labels_used": 0
+  },
+  "train_seconds": 173.8
+}

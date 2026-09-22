@@ -1,0 +1,16 @@
+fastapi==0.115.*
+uvicorn[standard]
+python-multipart
+sqlalchemy>=2.0
+pyjwt>=2.8
+bcrypt>=4.1
+python-dotenv
+pandas
+numpy<2.3
+scikit-learn>=1.5
+xgboost>=2.1
+lime
+shap
+google-genai
+kagglehub
+httpx

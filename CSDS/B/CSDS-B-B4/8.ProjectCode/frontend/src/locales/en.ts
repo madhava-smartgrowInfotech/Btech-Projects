@@ -614,7 +614,7 @@ const en = {
   "feature.payee_distinct_payers_24h": "Receiver's payers today",
   "feature.payee_new_payer_share_7d": "Receiver's new payers",
   "feature.payee_collects_7d": "Receiver's requests sent",
-  "feature.payee_is_merchant": "Receiver is a shop",
+  "feature.payee_is_merchant": "Receiver type (shop or person)",
   "feature.sms_scam_prob": "Linked scam SMS",
   "feature.sms_recent_scam": "Scam SMS checked today",
   "feature.channel_qr": "Paid by QR",

@@ -596,7 +596,7 @@ const hi: Record<MessageKey, string> = {
   "feature.payee_distinct_payers_24h": "आज प्राप्तकर्ता को भुगतान करने वाले",
   "feature.payee_new_payer_share_7d": "प्राप्तकर्ता के नए भुगतानकर्ता",
   "feature.payee_collects_7d": "प्राप्तकर्ता के भेजे अनुरोध",
-  "feature.payee_is_merchant": "प्राप्तकर्ता दुकान है",
+  "feature.payee_is_merchant": "प्राप्तकर्ता का प्रकार (दुकान या व्यक्ति)",
   "feature.sms_scam_prob": "जुड़ा धोखाधड़ी SMS",
   "feature.sms_recent_scam": "आज जाँचा धोखाधड़ी SMS",
   "feature.channel_qr": "QR से भुगतान",

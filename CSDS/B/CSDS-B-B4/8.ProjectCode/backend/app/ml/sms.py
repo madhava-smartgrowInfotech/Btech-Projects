@@ -11,6 +11,12 @@ from app.services.sms_rules import detect_language, extract_entities, match_rule
 # Word tokens that keep Devanagari / Telugu vowel signs inside the word.
 TOKEN_PATTERN = r"(?u)[\wऀ-ॿఀ-౿]{2,}"
 DEFAULT_THRESHOLDS = {"scam": 0.7, "suspicious": 0.4}
+# Everyday words are never highlighted on their own, even when the model weights them.
+STOPWORDS = {
+    "the", "you", "your", "yours", "for", "and", "are", "our", "this", "that", "with", "will", "from", "have", "has",
+    "now", "can", "all", "get", "not", "but", "was", "his", "her", "its", "they", "them", "who", "what", "just",
+    "ke", "ki", "ka", "hai", "hain", "aur", "se", "ko", "mein", "the", "mee", "meeku",
+}
 
 
 def _merge_spans(spans: list[dict]) -> list[dict]:
@@ -36,7 +42,7 @@ def model_terms(bundle: dict[str, Any], text: str, top: int = 6) -> list[tuple[s
     coef = clf.coef_.ravel()[: len(word_vec.vocabulary_)]
     row = word_vec.transform([text])
     vocab = word_vec.get_feature_names_out()
-    contrib = [(vocab[j], float(row[0, j] * coef[j])) for j in row.indices if len(vocab[j]) >= 3 and not vocab[j].replace(" ", "").isdigit()]
+    contrib = [(vocab[j], float(row[0, j] * coef[j])) for j in row.indices if len(vocab[j]) >= 3 and not vocab[j].replace(" ", "").isdigit() and not set(vocab[j].split()) <= STOPWORDS]
     return sorted([c for c in contrib if c[1] > 0], key=lambda c: -c[1])[:top]
 
 

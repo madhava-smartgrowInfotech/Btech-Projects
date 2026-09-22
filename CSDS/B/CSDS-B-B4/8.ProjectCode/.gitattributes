@@ -1,0 +1,8 @@
+# Windows batch files must keep CRLF line endings on every checkout
+*.bat text eol=crlf
+# Keep data files byte-for-byte
+*.csv -text
+*.csv.gz binary
+*.joblib binary
+*.mp3 binary
+*.png binary

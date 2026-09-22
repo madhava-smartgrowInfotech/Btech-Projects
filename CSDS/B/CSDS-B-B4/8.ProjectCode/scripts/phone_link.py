@@ -36,6 +36,7 @@ def find_cloudflared() -> str | None:
 
 
 def main() -> int:
+    sys.stdout.reconfigure(line_buffering=True)
     exe = find_cloudflared()
     if not exe:
         print("[x] cloudflared was not found. Install it with:  winget install --id Cloudflare.cloudflared")

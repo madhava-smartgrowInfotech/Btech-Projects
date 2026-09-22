@@ -37,7 +37,7 @@ RULES: list[Rule] = [
         0.5,
         "kyc_fraud",
         _r(
-            r"\bKYC\b.{0,40}?(expir|update|pending|verif|block|suspend|deactivat)",
+            r"\bKYC\b.{0,40}?(expir\w*|update\w*|pending|verif\w*|block\w*|suspend\w*|deactivat\w*)",
             r"(PAN|Aadhaar)[- ]?KYC",
             r"(KYC|केवाईसी).{0,30}?(समाप्त|अपडेट|सत्यापन|ब्लॉक|बंद)",
             r"(KYC|కేవైసీ).{0,30}?(ముగుస్తుంది|అప్‌డేట్|ధృవీకరణ|బ్లాక్|నిలిపి)",

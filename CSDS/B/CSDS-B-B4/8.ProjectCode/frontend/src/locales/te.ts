@@ -596,7 +596,7 @@ const te: Record<MessageKey, string> = {
   "feature.payee_distinct_payers_24h": "ఈ రోజు గ్రహీతకు చెల్లించినవారు",
   "feature.payee_new_payer_share_7d": "గ్రహీత కొత్త చెల్లింపుదారులు",
   "feature.payee_collects_7d": "గ్రహీత పంపిన అభ్యర్థనలు",
-  "feature.payee_is_merchant": "గ్రహీత ఒక దుకాణం",
+  "feature.payee_is_merchant": "గ్రహీత రకం (దుకాణం లేదా వ్యక్తి)",
   "feature.sms_scam_prob": "అనుసంధానిత మోసపు SMS",
   "feature.sms_recent_scam": "ఈ రోజు తనిఖీ చేసిన మోసపు SMS",
   "feature.channel_qr": "QR ద్వారా చెల్లింపు",

@@ -1,0 +1,61 @@
+{
+  "lte_speed": {
+    "steps": {
+      "raw_rows": 174523,
+      "trace_files": 135,
+      "after_valid_time_and_position": 174523,
+      "after_keep_operators_A_B": 174243,
+      "level_sentinels_removed": 69,
+      "after_drop_unlabellable": 174233,
+      "after_drop_exact_duplicates": 173366
+    },
+    "label_share": {
+      "Strong": 0.539,
+      "Weak": 0.3292,
+      "Dead": 0.1317
+    },
+    "family_share": {
+      "lte_nr": 0.6939,
+      "3g": 0.2993,
+      "2g": 0.0068
+    },
+    "operators": {
+      "Operator A": 138973,
+      "Operator B": 34393
+    },
+    "mobility_traces": {
+      "bus": 16,
+      "car": 53,
+      "pedestrian": 31,
+      "static": 15,
+      "train": 20
+    },
+    "date_range": [
+      "2017-11-21 15:03:50",
+      "2018-02-12 16:28:44"
+    ]
+  },
+  "cellular_analysis": {
+    "steps": {
+      "raw_rows": 16829,
+      "after_valid": 16829
+    },
+    "label_share": {
+      "Strong": 0.9569,
+      "Weak": 0.043,
+      "Dead": 0.0001
+    },
+    "network_types": {
+      "LTE": 4224,
+      "4G": 4219,
+      "3G": 4208,
+      "5G": 4178
+    },
+    "localities": 20,
+    "date_range": [
+      "2023-05-05 12:50:40",
+      "2023-06-10 23:56:52.791244"
+    ],
+    "notes": "Signal Quality (%) is 0 for every row and the BB60C/srsRAN/BladeRF columns are 0 for 3G rows, so they are not used."
+  }
+}

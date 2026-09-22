@@ -1,0 +1,29 @@
+# Python
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Node / frontend build output
+node_modules/
+dist/
+*.tsbuildinfo
+
+# Secrets
+.env
+firmware/esp32_node/config.h
+
+# Runtime database (created automatically on first run)
+data/app.db
+data/app.db-wal
+data/app.db-shm
+logs/
+
+# Portable third-party tools downloaded by setup.bat (cloudflared.exe)
+tools/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/

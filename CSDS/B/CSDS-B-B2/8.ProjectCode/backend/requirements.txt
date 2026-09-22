@@ -1,0 +1,38 @@
+# Python 3.11 - versions pinned for reproducible installs (setup.bat installs this file)
+
+# API
+fastapi==0.141.1
+uvicorn[standard]==0.53.0
+pydantic==2.13.5
+email-validator==2.3.0
+python-multipart==0.0.32
+python-dotenv==1.2.3
+SQLAlchemy==2.0.54
+PyJWT==2.14.0
+passlib[bcrypt]==1.7.4
+# passlib 1.7.4 breaks with bcrypt 5 (its long-password self test raises); keep 4.0.x
+bcrypt==4.0.1
+httpx==0.28.1
+h3==4.5.0
+
+# Data / ML (the Windows PyPI wheels of torch are the CPU build)
+numpy==2.4.6
+pandas==3.0.6
+scikit-learn==1.9.1
+xgboost==3.2.0
+joblib==1.6.0
+matplotlib==3.11.2
+torch==2.14.0
+torchvision==0.29.0
+kagglehub==1.0.2
+
+# LLM (optional complaint summaries)
+google-genai==2.24.0
+
+# Notebooks
+ipykernel==7.3.0
+nbconvert==7.17.1
+nbformat==5.11.1
+
+# Tests
+pytest==9.1.1

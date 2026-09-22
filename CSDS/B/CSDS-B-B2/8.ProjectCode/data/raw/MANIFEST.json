@@ -1,0 +1,566 @@
+{
+  "datasets": {
+    "cellular_network_analysis": {
+      "title": "Cellular Network Analysis Dataset",
+      "source": "https://www.kaggle.com/datasets/suraj520/cellular-network-analysis-dataset",
+      "license": "CC0-1.0",
+      "downloaded_at": "2026-09-22T09:56:07+00:00",
+      "total_bytes": 3108157,
+      "files": {
+        "cellular_network_analysis/signal_metrics.csv": {
+          "bytes": 3108157,
+          "sha256": "b0ff74b8d0d0fa63935a7fb00fe4b8d3e931dc91e7ae843dcab16e082adc1605"
+        }
+      }
+    },
+    "lte_speed": {
+      "title": "4G LTE Speed Dataset",
+      "source": "https://www.kaggle.com/datasets/aeryss/lte-dataset",
+      "license": "CC BY-SA 4.0",
+      "downloaded_at": "2026-09-22T09:56:11+00:00",
+      "total_bytes": 19522834,
+      "files": {
+        "lte_speed/bus/A_2017.11.30_16.48.26.csv": {
+          "bytes": 116508,
+          "sha256": "3246ee868c282083b649daaeb82cdcc57ca62874c634cc5aa66ff3761f430a33"
+        },
+        "lte_speed/bus/A_2018.01.25_16.33.53.csv": {
+          "bytes": 66371,
+          "sha256": "86699bb661aa4f18a1e83bd9f924d81b94e3636d61424a64e20ab184af1e6ad4"
+        },
+        "lte_speed/bus/A_2018.01.25_17.27.30.csv": {
+          "bytes": 111382,
+          "sha256": "90764e73ac6dcbd7903e1f34c1f914e05e82ffe2bf8a7f1e16b51f0d32fde26d"
+        },
+        "lte_speed/bus/A_2018.01.25_18.02.07.csv": {
+          "bytes": 45922,
+          "sha256": "0a19ffa1ba6abd885d4136bd205b0b0bda16a6db597966b00b87151f152ec649"
+        },
+        "lte_speed/bus/A_2018.01.25_19.50.40.csv": {
+          "bytes": 43687,
+          "sha256": "694c59dca7bce38eddd5540c4c867d10fed851964e027462525b237c85d27a8c"
+        },
+        "lte_speed/bus/A_2018.01.26_11.26.26.csv": {
+          "bytes": 183492,
+          "sha256": "ad5d969d26654e318b5eeb9d12bba297d8cf11c55b08f816df5f6853a6ab591f"
+        },
+        "lte_speed/bus/A_2018.01.27_10.58.49.csv": {
+          "bytes": 57613,
+          "sha256": "e24bdba73aa50a7f9420d52fea3592dc0032f1d538d14b2e840c7903625e9edc"
+        },
+        "lte_speed/bus/A_2018.01.27_11.12.23.csv": {
+          "bytes": 67999,
+          "sha256": "48e904a596ec6bcd863d2c81a4a98640fd6763b2dfe6e79e1556bd987e74ee7c"
+        },
+        "lte_speed/bus/A_2018.01.27_12.10.00.csv": {
+          "bytes": 66011,
+          "sha256": "6b73bd7acc7bd9dcc80bc514b4e7116d9f152d45a8c638b664488871d003d0d1"
+        },
+        "lte_speed/bus/B_2018.01.25_16.33.45.csv": {
+          "bytes": 75374,
+          "sha256": "248b885ca354f09306b792ca3c47f673dbc27e9dbe7156d5c73316fd957ec333"
+        },
+        "lte_speed/bus/B_2018.01.25_17.27.27.csv": {
+          "bytes": 100097,
+          "sha256": "779345d17f1e28f5495df880faa730f2fcdffa9d842bdfc053c6db0f3005e0e8"
+        },
+        "lte_speed/bus/B_2018.01.25_18.02.03.csv": {
+          "bytes": 53469,
+          "sha256": "2b2842c1c46e0f62e494040f21b24a88705f701dbe0e599fdcd4d11063f1c163"
+        },
+        "lte_speed/bus/B_2018.01.25_19.50.43.csv": {
+          "bytes": 61778,
+          "sha256": "3ef2be4c6ab0a6a1f4bfddedeb59890e876e58af8814f665c11ac0daed6281c2"
+        },
+        "lte_speed/bus/B_2018.01.27_10.58.49.csv": {
+          "bytes": 58648,
+          "sha256": "637f7b68c1625e82f68bdb43ea20f2ef88fe615ed8499927e6ef537cac7fb345"
+        },
+        "lte_speed/bus/B_2018.01.27_11.12.22.csv": {
+          "bytes": 67400,
+          "sha256": "d1c3239b643cba9c2bedc7f9de808e30a75638a9c70adfeb2d09fd598dcefbdd"
+        },
+        "lte_speed/bus/B_2018.01.27_12.09.59.csv": {
+          "bytes": 64307,
+          "sha256": "32b29bb0740c245c14d2ce77c61c638d69e0d2e4f7ffe82867463d007023cff1"
+        },
+        "lte_speed/car/A_2017.12.04_15.24.12.csv": {
+          "bytes": 154992,
+          "sha256": "08982606b1f5b3f88e604800120598305d2c0c0dd9e7f6b4cb73b6cbab6e63a2"
+        },
+        "lte_speed/car/A_2017.12.05_07.24.29.csv": {
+          "bytes": 184699,
+          "sha256": "eaec4db5fdf8283a319e69e41f5eebfa80c3b7fa063cde9c33a125615563bbf9"
+        },
+        "lte_speed/car/A_2017.12.05_14.26.31.csv": {
+          "bytes": 114449,
+          "sha256": "9ffe6279942c58ac956c3d8415b66b0628cbd268bf9e00df1d3d62c339163095"
+        },
+        "lte_speed/car/A_2017.12.05_16.43.34.csv": {
+          "bytes": 180425,
+          "sha256": "6de8e21b86d0054d181f43397c57ece8f3ad8001539e62a56d0d4059701e1bd8"
+        },
+        "lte_speed/car/A_2017.12.06_07.24.45.csv": {
+          "bytes": 200526,
+          "sha256": "5ce6bdb487154fa2e0dbb1ab5744f2b902a7f0f12811b56667582fc6eb1be7c6"
+        },
+        "lte_speed/car/A_2017.12.06_13.01.21.csv": {
+          "bytes": 80046,
+          "sha256": "221d8faec0eb0f6e2eef921b588aa36a9ffd9c9f2e3466b978e399e2b791d72a"
+        },
+        "lte_speed/car/A_2017.12.06_13.58.03.csv": {
+          "bytes": 65615,
+          "sha256": "196af4ec8ddba5dfb4a59b0b744c9c2d5f5e47d5dd48efc92f8c0d2db1eb9c3b"
+        },
+        "lte_speed/car/A_2017.12.06_14.30.04.csv": {
+          "bytes": 129345,
+          "sha256": "fdb67d6bd864b22fbd4ca100a2e06ce81b8bcedf2b5109c5b9071b47f354aa51"
+        },
+        "lte_speed/car/A_2017.12.06_15.51.59.csv": {
+          "bytes": 137765,
+          "sha256": "7704249b27c36780be1e0b9430ff9cefb13383e0374578bd7808b955c5caec04"
+        },
+        "lte_speed/car/A_2017.12.06_16.22.11.csv": {
+          "bytes": 294563,
+          "sha256": "1d43979f412a9961ae3ee93b1c42ec2d338c911918f630fc5b8bb99c705d0dbf"
+        },
+        "lte_speed/car/A_2017.12.06_18.14.45.csv": {
+          "bytes": 273912,
+          "sha256": "147bd4dd13c9213bbac016081d7c964ee2baf2a9523043be6f2aec72d4a04ec9"
+        },
+        "lte_speed/car/A_2017.12.07_08.08.44.csv": {
+          "bytes": 263253,
+          "sha256": "1f79031427ad12f18e040d37a685858e5f521d44bfef9a9594540ec2da3276eb"
+        },
+        "lte_speed/car/A_2017.12.07_10.25.54.csv": {
+          "bytes": 58467,
+          "sha256": "39bb35a73dbf0ee99290002de9f1c05aec3689ad4baba2cdecf0f81ae7f6c1ad"
+        },
+        "lte_speed/car/A_2017.12.07_10.41.37.csv": {
+          "bytes": 153229,
+          "sha256": "01b2a85d553cbba1d1e25c3dc75b6fa3becf6273596f5b1674a509f498b3496d"
+        },
+        "lte_speed/car/A_2017.12.07_15.39.50.csv": {
+          "bytes": 52510,
+          "sha256": "92eaf5a99f350db0576d2e7bd4fa00a3f9230dea69c9bc679688358ef3499900"
+        },
+        "lte_speed/car/A_2017.12.07_15.57.35.csv": {
+          "bytes": 180710,
+          "sha256": "83baa2331a0c47c694464d15f1fa51a052b3670600b602f6e3a81582d9cf6690"
+        },
+        "lte_speed/car/A_2017.12.07_16.42.38.csv": {
+          "bytes": 161522,
+          "sha256": "f862631233c33673e3c161bc5d7e5ce50db01051b4a0c9c06c00e6965986e638"
+        },
+        "lte_speed/car/A_2017.12.08_07.01.34.csv": {
+          "bytes": 134701,
+          "sha256": "52ec554946453a3de84a13d6df6fda4242cc3cd83b4e85f6d5df99fcf26aa614"
+        },
+        "lte_speed/car/A_2017.12.08_13.32.04.csv": {
+          "bytes": 161242,
+          "sha256": "e5af44d24f34bda26cee02c87a76bb64a4f8802829cc6b31d8908f8f84c88d73"
+        },
+        "lte_speed/car/A_2017.12.09_11.03.44.csv": {
+          "bytes": 223029,
+          "sha256": "ac123f6282716b5c4ca22b682109ad027919cb943cbcab6a3a3b450a60a85328"
+        },
+        "lte_speed/car/A_2017.12.09_11.50.20.csv": {
+          "bytes": 161896,
+          "sha256": "9880962f2b1002b81e8fa0d3b0352503448341476f1fdb19771da36cc01b1b7e"
+        },
+        "lte_speed/car/A_2017.12.09_12.51.07.csv": {
+          "bytes": 120763,
+          "sha256": "2a08db28171cd9c98dfac2f757f06c942d85d12f245f82c945aa5d9e2981419d"
+        },
+        "lte_speed/car/A_2017.12.09_14.04.02.csv": {
+          "bytes": 43831,
+          "sha256": "ac665783301e6832a45a3ec267f17e0cb7c9bac346950102c9314454355e5f51"
+        },
+        "lte_speed/car/A_2017.12.09_14.18.51.csv": {
+          "bytes": 109607,
+          "sha256": "7976621bda537d8b8ee1821b20c583370b2dff3761bb1cb364beb91d82cef775"
+        },
+        "lte_speed/car/A_2017.12.09_15.24.03.csv": {
+          "bytes": 70176,
+          "sha256": "be3c221704d6c7b65271f420d69bd2ce0728b22aeab37a1182c226698143b131"
+        },
+        "lte_speed/car/A_2017.12.11_10.00.59.csv": {
+          "bytes": 146681,
+          "sha256": "b3d3f49cd1074a781a905cc6f0788dca821bdc57625992b9cecc7ad356845fac"
+        },
+        "lte_speed/car/A_2017.12.11_11.52.19.csv": {
+          "bytes": 183010,
+          "sha256": "470917e75ccdbe241986f0617d9bb0204585c33180643dbcb0631d5c9c22e8de"
+        },
+        "lte_speed/car/A_2017.12.11_12.46.16.csv": {
+          "bytes": 136117,
+          "sha256": "f77e38acfcb6b1a32a07c7ba7bf5f74a9628786ee16d8a0b04fcbc48bdc65946"
+        },
+        "lte_speed/car/A_2017.12.11_13.53.01.csv": {
+          "bytes": 96864,
+          "sha256": "8e573450ad7374811719314a70c245485497effe3767b1e17f836bc6969ac246"
+        },
+        "lte_speed/car/A_2017.12.11_15.04.57.csv": {
+          "bytes": 241117,
+          "sha256": "2d99a11e265b0804de5aecf63591e5dc751e4b76844f6532f065bc131c1fe2a8"
+        },
+        "lte_speed/car/A_2018.01.16_15.24.19.csv": {
+          "bytes": 148305,
+          "sha256": "b1f746cd9aca88779c6396baeee398424319b9f4273e390a8dd959bcd9e353f8"
+        },
+        "lte_speed/car/A_2018.01.17_09.10.23.csv": {
+          "bytes": 137839,
+          "sha256": "b8185b7697e6981f3edc622773e67658021e1d4cfe25d59851487408643851f4"
+        },
+        "lte_speed/car/A_2018.01.17_10.01.01.csv": {
+          "bytes": 85098,
+          "sha256": "753e7fb00808058f7443ffa7fb57679853792c10f852f7725aa8d80ed64e7605"
+        },
+        "lte_speed/car/A_2018.01.17_10.42.49.csv": {
+          "bytes": 104667,
+          "sha256": "19856f1a8960d054a00d1174ce94bfcc470f9ae4ef0b8f752bd115f4d67775d1"
+        },
+        "lte_speed/car/A_2018.01.17_11.58.28.csv": {
+          "bytes": 153429,
+          "sha256": "47bc6f9c712fc44e1e29de4ac054cb8e8fd61919cedcfde026bb8b6f2c2c7c32"
+        },
+        "lte_speed/car/A_2018.01.17_15.57.04.csv": {
+          "bytes": 92729,
+          "sha256": "aba7f6e0b725158c3a3cfdb58b29a2b9f622f3c97625233621c1be580bfdeedf"
+        },
+        "lte_speed/car/A_2018.01.18_07.30.25.csv": {
+          "bytes": 221054,
+          "sha256": "4ebc19989ba7ec5c3d1b1ffb6b5dea67d500cd8bece18904aa63a7a7f445be2f"
+        },
+        "lte_speed/car/A_2018.01.18_10.39.39.csv": {
+          "bytes": 84935,
+          "sha256": "f33589f0b074f2d329b9405c9efeb88f7cc43485f4448cc838b3ed5a45466fee"
+        },
+        "lte_speed/car/A_2018.01.18_12.59.06.csv": {
+          "bytes": 118833,
+          "sha256": "2350529dfc2eade518d872667b252635d2b3d89cccfd71e5f5c3e16665e20dfd"
+        },
+        "lte_speed/car/A_2018.01.18_14.37.56.csv": {
+          "bytes": 331160,
+          "sha256": "5fb9918c921df707c9f3908b0652e5349bbeb8183c10cd785459d8c8177cd639"
+        },
+        "lte_speed/car/A_2018.01.19_07.31.38.csv": {
+          "bytes": 205662,
+          "sha256": "d13e031bcecac6694d23dc3d8d375b56e4c9d8a2b9f90efb45c382ec656eadb1"
+        },
+        "lte_speed/car/B_2017.12.14_07.27.18.csv": {
+          "bytes": 185833,
+          "sha256": "1b38983ca222c01563fea72769db16ba9933fea0202ffd5b203fe47bb24452a9"
+        },
+        "lte_speed/car/B_2018.01.16_15.23.57.csv": {
+          "bytes": 151236,
+          "sha256": "0b91858454cbfca5bc63f0fd3c8546d9c2010f84983bd2c1bd3b12d842e88825"
+        },
+        "lte_speed/car/B_2018.01.17_09.10.11.csv": {
+          "bytes": 148708,
+          "sha256": "bcad08af0b59355d30de7c59e9d3c84b1635a4aacafe4152c474dab92a5ba6af"
+        },
+        "lte_speed/car/B_2018.01.17_10.00.47.csv": {
+          "bytes": 100340,
+          "sha256": "e36944b4ca10f0ea4afca091a9f90518ab1d90e6bd4417df7078857230b5784b"
+        },
+        "lte_speed/car/B_2018.01.17_10.42.37.csv": {
+          "bytes": 117634,
+          "sha256": "53b3f8626dbaa9105a9eee05c0499ba4a6619de19710a6fbfa9d3082057039db"
+        },
+        "lte_speed/car/B_2018.01.17_11.58.38.csv": {
+          "bytes": 167501,
+          "sha256": "b57e21de6c7b7a329eed4af6cb85fec2d6090524a0b61b8cc1cb728635461196"
+        },
+        "lte_speed/car/B_2018.01.17_15.56.48.csv": {
+          "bytes": 97742,
+          "sha256": "f0f63cee09fd0e8e5c2c861d4d7863783413bfcf3b5dfc805d5a8cfc8e4d19ad"
+        },
+        "lte_speed/car/B_2018.01.18_07.30.40.csv": {
+          "bytes": 211913,
+          "sha256": "e5439b87c87fde5985d2a6097f4f9292cb1f5f7185fc40d979e8e9fa29be7cb7"
+        },
+        "lte_speed/car/B_2018.01.18_10.39.29.csv": {
+          "bytes": 86578,
+          "sha256": "c958c70f09180d68fe1d74906a4d9b35eb3b552565ecb4c6f43a158c9967e34a"
+        },
+        "lte_speed/car/B_2018.01.18_12.59.16.csv": {
+          "bytes": 116789,
+          "sha256": "bc60a3547c14e2332a43c41f682af7b9c45bb4b1e73cabb6efe1274cd61b62c7"
+        },
+        "lte_speed/car/B_2018.01.18_14.38.07.csv": {
+          "bytes": 332857,
+          "sha256": "531aa49333c8c71e78222de0afae0407ce126202edddb69674f381660424f4ec"
+        },
+        "lte_speed/car/B_2018.01.19_07.31.48.csv": {
+          "bytes": 227180,
+          "sha256": "40c665080b9ee40dcff7f56c798edc8af4e5a6e5f059fce28aa9bf396eb52dc1"
+        },
+        "lte_speed/pedestrian/A_2017.11.21_15.03.50.csv": {
+          "bytes": 194278,
+          "sha256": "dd99cdfaf7acee8f9baa83edeeddedbe942b66ac744e08dc66930057f2da2c4a"
+        },
+        "lte_speed/pedestrian/A_2017.11.21_15.35.33.csv": {
+          "bytes": 186156,
+          "sha256": "c7dfc527e45c2eb0b978ce2d3327dee4229abc2ee3cc8b3ecc4ee50199062e80"
+        },
+        "lte_speed/pedestrian/A_2017.11.21_17.35.54.csv": {
+          "bytes": 118093,
+          "sha256": "918818ae75916c7c3793249ee5f68c7f51b308d282f4e99d4500f31e21bddc42"
+        },
+        "lte_speed/pedestrian/A_2017.11.22_07.57.13.csv": {
+          "bytes": 87894,
+          "sha256": "232164310d963e376e865462fbc0eab6e31e1b658e4075968ae0b64b8f520b6e"
+        },
+        "lte_speed/pedestrian/A_2017.11.29_18.40.47.csv": {
+          "bytes": 89111,
+          "sha256": "cf96af99d976addebb0ce545e085d841b492842a23e3b824e75620b611100be7"
+        },
+        "lte_speed/pedestrian/A_2017.11.30_08.18.06.csv": {
+          "bytes": 98326,
+          "sha256": "d69e6ac3d05fff1749466d82e7546c825fcb0d85d7a58f8fd9b035f868b1b49b"
+        },
+        "lte_speed/pedestrian/A_2017.11.30_11.59.09.csv": {
+          "bytes": 64891,
+          "sha256": "36b8b9586ddb7e8778da336154aa28d83d509a3ac10db8f455a2864a39168b89"
+        },
+        "lte_speed/pedestrian/A_2017.11.30_11.59.10.csv": {
+          "bytes": 73047,
+          "sha256": "96418dc425481720e4c9adbc1c9e40b0c62e23d0ad9259cc05f919a6ac6eee51"
+        },
+        "lte_speed/pedestrian/A_2017.12.01_17.07.08.csv": {
+          "bytes": 327759,
+          "sha256": "d8060e4a17c79ecf9f451eaf5aa1b0a966514d4f8227d08f1a57fc70529c91b7"
+        },
+        "lte_speed/pedestrian/A_2017.12.01_21.56.26.csv": {
+          "bytes": 86981,
+          "sha256": "7d5fdbe75a8b968d0baa2f7e7ae0453bd8672243fbe37e11059b657c17ce12fb"
+        },
+        "lte_speed/pedestrian/A_2017.12.02_09.57.48.csv": {
+          "bytes": 81234,
+          "sha256": "f5240dc06939fdd1f517122aaf3c1bf9dc65c0a25548e761b35b3b2d218f821b"
+        },
+        "lte_speed/pedestrian/A_2017.12.02_12.48.28.csv": {
+          "bytes": 166451,
+          "sha256": "69f4d351ad19cce59f941efbdb31659f4a601c3e969483090458732965f0af02"
+        },
+        "lte_speed/pedestrian/A_2017.12.02_13.49.20.csv": {
+          "bytes": 161563,
+          "sha256": "7e149cef0b6cf1b811a28fc9837a4e3113a9a83fd1a4e9ddcb77de7af4eb33e0"
+        },
+        "lte_speed/pedestrian/A_2017.12.02_15.48.09.csv": {
+          "bytes": 110453,
+          "sha256": "38924b1d5810e41f3f000c99607ab16518a75ae755583429783fd7cf1f3c5b6f"
+        },
+        "lte_speed/pedestrian/A_2017.12.03_11.12.44.csv": {
+          "bytes": 85164,
+          "sha256": "596d4c86e11b0fb3869aec085851a3bd0a07d67a83fda917db604fe015db1117"
+        },
+        "lte_speed/pedestrian/A_2017.12.03_13.31.30.csv": {
+          "bytes": 131086,
+          "sha256": "8d0174877ed230719b127584c7c91998358aa74211c2670c1ab9ad8c6698d36b"
+        },
+        "lte_speed/pedestrian/A_2017.12.03_14.14.42.csv": {
+          "bytes": 79455,
+          "sha256": "97bbaf5a8c37913385f9706c515fa86571bb44d047301685ea3d3a408feb9495"
+        },
+        "lte_speed/pedestrian/A_2017.12.03_14.31.44.csv": {
+          "bytes": 173986,
+          "sha256": "2d3fe22c22a13e50bc951b7082dabf1d7d68cc75e6d8812542ab2085eff9ab63"
+        },
+        "lte_speed/pedestrian/A_2017.12.03_17.37.41.csv": {
+          "bytes": 85912,
+          "sha256": "3f2f0ade9035a1ee7a425b97135ec2062160ac180db88b2123818bfa5dcc0949"
+        },
+        "lte_speed/pedestrian/A_2017.12.03_17.52.37.csv": {
+          "bytes": 153534,
+          "sha256": "e011b3c59738e40232dc777de414d498b25e6fdd0dc0613982dee69a71fd2c01"
+        },
+        "lte_speed/pedestrian/A_2017.12.03_18.37.18.csv": {
+          "bytes": 157432,
+          "sha256": "ce4d084017c7a1153af228c92788bba8992d7ad829c2675b6e75659625718f58"
+        },
+        "lte_speed/pedestrian/A_2017.12.04_13.35.53.csv": {
+          "bytes": 240724,
+          "sha256": "7b11cf5d30e60d9ddd8f448e639c2395b310fefdd13e19918ea59eff05edca1b"
+        },
+        "lte_speed/pedestrian/A_2017.12.14_17.49.59.csv": {
+          "bytes": 64206,
+          "sha256": "5642bf125528d71aceb5074dd8afdc0e0736ad8a4195c1787c59af8dcea35498"
+        },
+        "lte_speed/pedestrian/A_2017.12.18_04.44.30.csv": {
+          "bytes": 342977,
+          "sha256": "80400706e149c3101f1baf28349c27004c768b0d8ba99d89865eabb361461ec9"
+        },
+        "lte_speed/pedestrian/A_2018.01.19_16.06.33.csv": {
+          "bytes": 112168,
+          "sha256": "12f3de073ddf3be52c3d0ed58907b1511a9d52d3e79f6191579f45c5dfbe26b0"
+        },
+        "lte_speed/pedestrian/A_2018.02.11_13.30.46.csv": {
+          "bytes": 96506,
+          "sha256": "edaac74c23dfd5bf6e09a65529ed6ed736b61946da7df78eec88e199a1205a77"
+        },
+        "lte_speed/pedestrian/B_2017.12.14_17.49.58.csv": {
+          "bytes": 83450,
+          "sha256": "0a974082a69ed703036e5dd463e5cbf8e76d8253ff33545f0522b3242b330a74"
+        },
+        "lte_speed/pedestrian/B_2017.12.17_13.53.32.csv": {
+          "bytes": 123759,
+          "sha256": "a837ea7c51c5f4b7a2e989fd381384e13f332773de3603dca465a83949ebefe2"
+        },
+        "lte_speed/pedestrian/B_2017.12.17_14.55.18.csv": {
+          "bytes": 157669,
+          "sha256": "612873dbaf934dbf38aed10a17bdcab41943fe5e4b6409d56ca8c7530ad47d42"
+        },
+        "lte_speed/pedestrian/B_2018.01.19_16.06.32.csv": {
+          "bytes": 117445,
+          "sha256": "fc07fd31c495c81cc1caec0466e02dd4e0bbf580bd625cf43e03835207774515"
+        },
+        "lte_speed/pedestrian/B_2018.02.11_13.30.46.csv": {
+          "bytes": 97949,
+          "sha256": "c7f0efb63d4b8a4067622cef584bf8b93e11ea471a530ed4f321d05b04ca6730"
+        },
+        "lte_speed/static/A_2017.11.22_10.06.58.csv": {
+          "bytes": 319750,
+          "sha256": "94fc13b325c531b0a6e23b66a3e10a99685d2429a38a831848abf68bb66366a3"
+        },
+        "lte_speed/static/A_2017.11.23_10.08.29.csv": {
+          "bytes": 98017,
+          "sha256": "298ede909869f15091f6ca4d09edd1d200be7cb9cff5e96843f610a4bfb2fca6"
+        },
+        "lte_speed/static/A_2017.11.23_13.14.40.csv": {
+          "bytes": 286662,
+          "sha256": "1dee5a41aa33e525807a285fcf752982bab50d948734c3ee3e9ab78bab405c5a"
+        },
+        "lte_speed/static/A_2017.11.28_11.55.31.csv": {
+          "bytes": 103946,
+          "sha256": "19fe5522144e00a4b593702dba088813d150aad8be7f5bce30d71d034e84e7e7"
+        },
+        "lte_speed/static/A_2017.11.30_16.15.00.csv": {
+          "bytes": 52879,
+          "sha256": "62b18259fafd0b1f141af2749246122dbecfcb3b585d23672f1c181f29fe4229"
+        },
+        "lte_speed/static/A_2017.11.30_16.15.04.csv": {
+          "bytes": 55211,
+          "sha256": "f382816727fcff93a2efffdc36b973034c6167e572b2e766515c782e0867cf30"
+        },
+        "lte_speed/static/A_2017.12.03_10.09.56.csv": {
+          "bytes": 132102,
+          "sha256": "f0f811ff83ae6ccf51645d40816ae178efacea7479a172a1e7f146c11a2893d7"
+        },
+        "lte_speed/static/A_2017.12.03_10.35.01.csv": {
+          "bytes": 144335,
+          "sha256": "c2eee54805ac3e3f071beaeb0780393cd173c8e408c4ac2c753547c0eafb0f94"
+        },
+        "lte_speed/static/A_2017.12.15_11.05.30.csv": {
+          "bytes": 70696,
+          "sha256": "b034bc2c69f18b1658adf112449b9b5c0127e305e2ff67ee3dbe3ad7bb2b7cac"
+        },
+        "lte_speed/static/A_2017.12.18_12.20.34.csv": {
+          "bytes": 78053,
+          "sha256": "69967b9206f4804442de168a4e33f9e99bacbb8c7aaffc3da6fdb44a7df9f503"
+        },
+        "lte_speed/static/A_2018.01.27_13.58.29.csv": {
+          "bytes": 103640,
+          "sha256": "b0ae7144d1fb0dfef95b2de49fac181d6ca732d0ea7d6833be5295bbc4fd7781"
+        },
+        "lte_speed/static/A_2018.02.12_16.14.02.csv": {
+          "bytes": 90212,
+          "sha256": "d7d9ba1519f5a4f720c9f0849dc27e14f2dc1726016b2a7c34c799ad4b0490c7"
+        },
+        "lte_speed/static/B_2017.12.17_14.16.19.csv": {
+          "bytes": 80113,
+          "sha256": "4c76419dde15ade0ae78460b6533e2193751665b35907058d1e9bf79ea3910a5"
+        },
+        "lte_speed/static/B_2018.01.27_13.58.28.csv": {
+          "bytes": 106808,
+          "sha256": "a86609aa72d4499f888275d86cdd2ee72c1895135cacbd908fe6632a3d5f27c4"
+        },
+        "lte_speed/static/B_2018.02.12_16.14.01.csv": {
+          "bytes": 100876,
+          "sha256": "11ab631f933956897bb687dbe77eaac161523eb03e95136e5223d683b19bd2b2"
+        },
+        "lte_speed/train/A_2017.11.24_14.34.43.csv": {
+          "bytes": 954799,
+          "sha256": "d321e831e5e61d6d3634f3093244227bdc508063bb0f934d76a3e3838fce0fd2"
+        },
+        "lte_speed/train/A_2017.11.25_12.05.26.csv": {
+          "bytes": 1312805,
+          "sha256": "11746beb6c0e6255a40e1f9c290979b0ded39be0c586c8fa5690e2a324d9f831"
+        },
+        "lte_speed/train/A_2017.12.18_06.27.00.csv": {
+          "bytes": 138374,
+          "sha256": "c719e8bfa78831a9286e117d37a39f76d8c55105b35bb7913a1cf0f11eae86af"
+        },
+        "lte_speed/train/A_2017.12.18_06.51.19.csv": {
+          "bytes": 84697,
+          "sha256": "d20e6c12d7f163d34f5f408d5682ebcb4917f221137b7eae7241827260e00826"
+        },
+        "lte_speed/train/A_2017.12.18_07.08.28.csv": {
+          "bytes": 106595,
+          "sha256": "f2daff493051c2b1880af74801ea7d83f781de3feaac66714fa2895315d74b75"
+        },
+        "lte_speed/train/A_2017.12.18_07.25.15.csv": {
+          "bytes": 249878,
+          "sha256": "558f77b6dfe9faf1e9be0b3b4167b695670b09dbd6308b122299770045b0e134"
+        },
+        "lte_speed/train/A_2018.02.02_10.28.45.csv": {
+          "bytes": 41983,
+          "sha256": "da52d1a8154af2b097f25d2bbd625e783d657115c176ee198d0efdc212595bbe"
+        },
+        "lte_speed/train/A_2018.02.02_11.21.55.csv": {
+          "bytes": 66297,
+          "sha256": "8488a944fe3727c68329cbb41c93560fe864398d345cd05398c389d84b010e21"
+        },
+        "lte_speed/train/A_2018.02.02_11.36.18.csv": {
+          "bytes": 96986,
+          "sha256": "943bb002da10593a869da2a47397ce4c65713a1da200c77eea493f1833b1a610"
+        },
+        "lte_speed/train/A_2018.02.02_12.04.45.csv": {
+          "bytes": 94754,
+          "sha256": "5d1bd312c4a7b459e4f0e691e9ca5710ff2d3bdbf1baaea7a2866e26dae04366"
+        },
+        "lte_speed/train/A_2018.02.05_13.35.50.csv": {
+          "bytes": 110951,
+          "sha256": "2fc5d410239e3d5d64752011241499310823c106183916a4580f7c0105c10683"
+        },
+        "lte_speed/train/A_2018.02.05_14.11.35.csv": {
+          "bytes": 105809,
+          "sha256": "a3caedaa27969d1682b7c5924f0dd5edcde8a6ee024668d882b0c2151054bc71"
+        },
+        "lte_speed/train/A_2018.02.05_15.07.33.csv": {
+          "bytes": 105463,
+          "sha256": "61e9341e15df5b2211aa97fbfc4a6e97002c9feca87900af7e2e29b6db9cec9d"
+        },
+        "lte_speed/train/B_2018.01.17_15.56.48.csv": {
+          "bytes": 101114,
+          "sha256": "c81ceb509b66a47dc5b42fcb1576ed036a38aa9521d5303157718868f40cc327"
+        },
+        "lte_speed/train/B_2018.02.02_10.28.45.csv": {
+          "bytes": 90146,
+          "sha256": "f74d0c820b348ec019802c4077c7b58cfc83db7fc35ef6d8933cf065b580e660"
+        },
+        "lte_speed/train/B_2018.02.02_11.21.54.csv": {
+          "bytes": 74150,
+          "sha256": "b5432194ef8d58d0c094e2dd95086e3d3c8534f48ec32679e6cbda973e0fc9bb"
+        },
+        "lte_speed/train/B_2018.02.02_12.04.44.csv": {
+          "bytes": 103666,
+          "sha256": "5cd9853114da581d2bae17355f3f41a531b0d2de9d24cde9eca0b5bbc803ea68"
+        },
+        "lte_speed/train/B_2018.02.05_13.35.50.csv": {
+          "bytes": 119996,
+          "sha256": "4b0ba7b983df81c25f577bf02cc59434fbbcc05970baecc35ea557e99e82d6d8"
+        },
+        "lte_speed/train/B_2018.02.05_14.11.33.csv": {
+          "bytes": 103856,
+          "sha256": "619696e32bba337313e597ccd27ecbf5c4621e6716ebc8d6e49565498e5a07f1"
+        },
+        "lte_speed/train/B_2018.02.05_15.07.31.csv": {
+          "bytes": 104414,
+          "sha256": "46df520db064d9ca8811e3d171a09ab8e90b080ccac656b88dc9aab0bd7b8d0d"
+        }
+      }
+    }
+  }
+}

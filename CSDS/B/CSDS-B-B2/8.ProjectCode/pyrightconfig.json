@@ -1,0 +1,6 @@
+{
+  "extraPaths": ["backend", "ml"],
+  "venvPath": ".",
+  "venv": "venv",
+  "exclude": ["venv", "frontend/node_modules", "data", "experiments", "models"]
+}

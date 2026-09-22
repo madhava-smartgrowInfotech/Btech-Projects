@@ -113,3 +113,20 @@ def test_devices_list_and_key_rotation(client, user_headers):
     assert new["api_key"].startswith("ssk_") and new["device"]["api_key_prefix"] == new["api_key"][:10]
     renamed = client.patch(f"/api/devices/{d['id']}", headers=user_headers, json={"name": "Field phone"}).json()
     assert renamed["name"] == "Field phone"
+
+
+def test_probe_endpoints(client, user_headers):
+    key = _pair(client, user_headers, "Speed-test phone")
+    h = {"X-Device-Key": key}
+    ping = client.get("/api/probe/ping")
+    assert ping.status_code == 200 and "no-store" in ping.headers["cache-control"]
+    dl = client.get("/api/probe/download?bytes=300000", headers=h)
+    assert dl.status_code == 200 and len(dl.content) == 300000 and dl.headers["content-type"] == "application/octet-stream"
+    assert client.get("/api/probe/download?bytes=300000").status_code == 401        # speed tests need a device key
+    up = client.post("/api/probe/upload", headers=h, content=b"x" * 150000)
+    assert up.status_code == 200 and up.json()["bytes"] == 150000
+    who = client.get("/api/probe/whoami", headers={**h, "CF-Connecting-IP": "49.36.0.10"})   # a Jio address, as the tunnel reports it
+    body = who.json()
+    assert body["config"]["interval_s"] > 0 and body["carrier"]["ip"].endswith(".x.x") and body["carrier"]["operator"] == "Jio"
+    local = client.get("/api/probe/whoami", headers=h).json()
+    assert local["carrier"]["kind"] in ("local", "unknown")

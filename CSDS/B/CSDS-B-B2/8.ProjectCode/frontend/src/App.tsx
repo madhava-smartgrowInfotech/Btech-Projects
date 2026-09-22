@@ -14,6 +14,7 @@ const Devices = lazy(() => import("@/pages/Devices"));
 const Profile = lazy(() => import("@/pages/Profile"));
 const AdminUsers = lazy(() => import("@/pages/admin/Users"));
 const NotFound = lazy(() => import("@/pages/NotFound"));
+const ProbeApp = lazy(() => import("@/pages/probe/ProbeApp"));
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<GuestOnly><Login /></GuestOnly>} />
         <Route path="/register" element={<GuestOnly><Register /></GuestOnly>} />
+        <Route path="/probe" element={<RequireAuth><ProbeApp /></RequireAuth>} />
         <Route path="/app" element={<RequireAuth><AppLayout /></RequireAuth>}>
           <Route index element={<Dashboard />} />
           <Route path="map" element={<CoverageMap />} />

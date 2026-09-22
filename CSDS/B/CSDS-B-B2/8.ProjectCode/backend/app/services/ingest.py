@@ -58,8 +58,8 @@ def _operator(device: Device, item: ReadingIn, carrier: CarrierInfo | None) -> t
             return item.operator.strip(), "manual", link
         if carrier and carrier.operator:
             return carrier.operator, "asn", link
-        if carrier and carrier.network_name and link == "wifi":
-            return carrier.network_name.split(" ", 1)[-1][:80], "asn", link
+        if carrier and carrier.display_name and link == "wifi":
+            return carrier.display_name[:80], "asn", link
         return "Unknown", None, link
     if device.kind in ("esp32", "simulator"):
         if any(getattr(item, f) is not None for f in RADIO_FIELDS):

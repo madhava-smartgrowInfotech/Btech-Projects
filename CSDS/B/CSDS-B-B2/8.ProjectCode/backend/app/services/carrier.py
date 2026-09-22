@@ -10,6 +10,9 @@ import bisect
 import gzip
 import ipaddress
 import logging
+import re
+import socket
+import struct
 import threading
 from dataclasses import dataclass
 
@@ -33,6 +36,16 @@ class CarrierInfo:
     operator: str | None       # short operator name when it is a known mobile network
     network_name: str | None   # the ASN's registered name
     kind: str                  # mobile / broadband / mixed / local / unknown
+
+    @property
+    def display_name(self) -> str | None:
+        """Readable network name: 'PEL-AS-IN Pioneer Elabs Ltd.' -> 'Pioneer Elabs Ltd.'."""
+        if self.kind == "local":
+            return "Local network"
+        if not self.network_name:
+            return None
+        head, _, rest = self.network_name.partition(" ")
+        return rest.strip() if rest and re.fullmatch(r"[A-Z0-9-]+", head) else self.network_name
 
     def link_for(self, browser_type: str | None) -> str:
         """cellular / wifi / unknown, combining the ASN kind with the browser's hint."""
@@ -67,8 +80,8 @@ class _AsnTable:
                 parts = line.rstrip("\n").split("\t")
                 if len(parts) < 5 or parts[2] == "0":
                     continue
-                starts.append(int(ipaddress.IPv4Address(parts[0])))
-                rows.append((int(ipaddress.IPv4Address(parts[1])), int(parts[2]), parts[3], parts[4]))
+                starts.append(_ip_to_int(parts[0]))
+                rows.append((_ip_to_int(parts[1]), int(parts[2]), parts[3], parts[4]))
         self._starts, self._rows, self._loaded = starts, rows, True
         log.info("ASN table loaded", extra={"fields": {"ranges": len(rows)}})
 
@@ -78,8 +91,8 @@ class _AsnTable:
                 if not self._loaded:
                     self._load()
         try:
-            n = int(ipaddress.IPv4Address(ip))
-        except ValueError:
+            n = _ip_to_int(ip)
+        except OSError:
             return None
         i = bisect.bisect_right(self._starts, n) - 1
         if i >= 0 and n <= self._rows[i][0]:
@@ -89,6 +102,15 @@ class _AsnTable:
 
 
 _table = _AsnTable()
+
+
+def _ip_to_int(ip: str) -> int:
+    return struct.unpack("!I", socket.inet_aton(ip))[0]
+
+
+def preload_in_background() -> None:
+    """Load the ASN table at start-up so the first phone request is not slowed down."""
+    threading.Thread(target=lambda: _table.lookup("1.1.1.1"), name="asn-preload", daemon=True).start()
 
 
 def client_ip(headers: dict, peer: str | None) -> str | None:

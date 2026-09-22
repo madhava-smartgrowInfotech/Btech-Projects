@@ -43,7 +43,7 @@ export default function Connect() {
     queryFn: async () => (await api.get<ConnectInfo>("/api/system/connect")).data,
     refetchInterval: (query) => (query.state.data?.tunnel_url ? 60_000 : 5_000),
   });
-  const phoneUrl = q.data?.tunnel_url ?? null;
+  const phoneUrl = q.data?.probe_url ?? null;
 
   return (
     <>

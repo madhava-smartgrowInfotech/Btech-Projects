@@ -10,12 +10,13 @@ from sqlalchemy.orm import Session
 from ..core.config import APP_NAME, APP_VERSION, settings
 from ..core.db import get_db, utcnow
 from ..core.security import get_current_user
+from ..ml.registry import get_models
 from ..models import User
 from ..schemas.common import _iso_utc
 
 router = APIRouter(prefix="/api", tags=["system"])
 
-MODEL_FILES = {"zone_classifier": "zone_classifier.joblib", "radio_estimate": "radio_estimate.joblib", "gp_signal": "gp_signal.joblib"}
+MODEL_FILES = ("zone_classifier", "radio_estimate", "gp_signal")
 
 
 @router.get("/health")
@@ -25,10 +26,12 @@ def health(db: Session = Depends(get_db)) -> dict:
         database = "ok"
     except Exception as exc:  # reported, not raised: health must always answer
         database = f"error: {exc.__class__.__name__}"
+    status = get_models().status()
     return {
         "status": "ok" if database == "ok" else "degraded",
         "app": APP_NAME, "version": APP_VERSION, "time": _iso_utc(utcnow()), "database": database,
-        "models": {name: (settings.models_dir / file).exists() for name, file in MODEL_FILES.items()},
+        "models": {name: status[name]["loaded"] for name in MODEL_FILES},
+        "model_versions": {name: status[name]["version"] for name in MODEL_FILES},
     }
 
 
@@ -41,7 +44,7 @@ def lan_addresses() -> list[str]:
     except OSError:
         pass
     try:
-        ips = {info[4][0] for info in socket.getaddrinfo(socket.gethostname(), None, socket.AF_INET)}
+        ips = {str(info[4][0]) for info in socket.getaddrinfo(socket.gethostname(), None, socket.AF_INET)}
         return sorted(ip for ip in ips if not ip.startswith(("127.", "169.254.")))
     except OSError:
         return []

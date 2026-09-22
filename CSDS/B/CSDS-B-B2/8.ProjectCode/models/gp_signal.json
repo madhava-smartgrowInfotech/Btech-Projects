@@ -1,0 +1,43 @@
+{
+  "version": "gp_20260922_164328",
+  "created_at": "2026-09-22T11:13:45+00:00",
+  "experiment": "experiments/gp_20260922_164328",
+  "targets": {
+    "rsrp": {
+      "params": {
+        "amp_short": 32.818255155853095,
+        "ls_short": 32.98895603389076,
+        "amp_long": 167.86518995074803,
+        "ls_long": 341.00598026093576,
+        "noise": 11.356309884530331,
+        "nu": 1.5
+      },
+      "block_cv_rmse": {
+        "Gaussian Process": 6.340931608948605,
+        "Inverse distance": 6.8250016253785875,
+        "Nearest neighbours": 7.426993277966511,
+        "Local mean": 10.947527757831153,
+        "Area mean": 10.972234649015608
+      },
+      "coverage_95": 0.9618133284799952
+    },
+    "log_dl": {
+      "params": {
+        "amp_short": 0.07641497278264964,
+        "ls_short": 25.763628476069627,
+        "amp_long": 0.15095803814627884,
+        "ls_long": 837.0763325946568,
+        "noise": 0.09794049049174136,
+        "nu": 1.5
+      },
+      "block_cv_rmse": {
+        "Gaussian Process": 0.43001681336678904,
+        "Inverse distance": 0.4411467273347289,
+        "Nearest neighbours": 0.4512301614671835,
+        "Local mean": 0.5602960069457523,
+        "Area mean": 0.5670153490528187
+      },
+      "coverage_95": 0.9413906339234723
+    }
+  }
+}

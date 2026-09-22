@@ -1,0 +1,353 @@
+{
+  "run": "gp_20260922_164328",
+  "created_at": "2026-09-22T11:13:45+00:00",
+  "quick": false,
+  "seed": 42,
+  "task": "Spatial interpolation of signal level and download speed for better-signal suggestions",
+  "dataset": {
+    "name": "4G LTE Speed Dataset (Cork)",
+    "cell_m": 10.0,
+    "block_m": 200.0,
+    "evaluation": "5-fold spatial block cross-validation (200 m blocks), local GP within 1.5 km, <=1500 points"
+  },
+  "kernel": "C_short * Matern(nu=1.5, 10-300 m) + C_long * Matern(nu=1.5, 300-10000 m) + White",
+  "targets": {
+    "rsrp": {
+      "spec": {
+        "label": "LTE signal level (RSRP)",
+        "unit": "dBm",
+        "strong_threshold": -100.0,
+        "transform": "identity"
+      },
+      "learned_per_area": [
+        {
+          "area": "Operator A / area 2883_-293",
+          "operator": "Operator A",
+          "amp_short": 44.68490538999811,
+          "ls_short": 34.81736482491707,
+          "amp_long": 68.63688039691876,
+          "ls_long": 382.01196052187163,
+          "noise": 10.300321338268725,
+          "nu": 1.5
+        },
+        {
+          "area": "Operator A / area 2882_-294",
+          "operator": "Operator A",
+          "amp_short": 20.951604921708075,
+          "ls_short": 31.16054724286445,
+          "amp_long": 267.0934995045773,
+          "ls_long": 299.99999999999994,
+          "noise": 12.412298430791937,
+          "nu": 1.5
+        }
+      ],
+      "params": {
+        "amp_short": 32.818255155853095,
+        "ls_short": 32.98895603389076,
+        "amp_long": 167.86518995074803,
+        "ls_long": 341.00598026093576,
+        "noise": 11.356309884530331,
+        "nu": 1.5
+      },
+      "params_by_operator": {
+        "Operator A": {
+          "amp_short": 32.818255155853095,
+          "ls_short": 32.98895603389076,
+          "amp_long": 167.86518995074803,
+          "ls_long": 341.00598026093576,
+          "noise": 11.356309884530331,
+          "nu": 1.5
+        }
+      },
+      "block_cv_summary": {
+        "Gaussian Process": {
+          "rmse": 6.340931608948605,
+          "mae": 4.701344281276551,
+          "strong_agreement": 0.8275862068965517
+        },
+        "Inverse distance": {
+          "rmse": 6.8250016253785875,
+          "mae": 4.8515522883400966,
+          "strong_agreement": 0.8029556650246306
+        },
+        "Nearest neighbours": {
+          "rmse": 7.426993277966511,
+          "mae": 5.450513336199008,
+          "strong_agreement": 0.7894088669950738
+        },
+        "Local mean": {
+          "rmse": 10.947527757831153,
+          "mae": 8.718341423947859,
+          "strong_agreement": 0.6403940886699507
+        },
+        "Area mean": {
+          "rmse": 10.972234649015608,
+          "mae": 8.770479370058554,
+          "strong_agreement": 0.6403940886699507
+        }
+      },
+      "gp_interval_coverage": {
+        "50%": 0.6206934206934207,
+        "68%": 0.7906269906269907,
+        "80%": 0.870685837352504,
+        "90%": 0.9310340643673978,
+        "95%": 0.9618133284799952
+      },
+      "random_holdout_gp_rmse": 5.231670862570236,
+      "areas": {
+        "Operator A / area 2883_-293": {
+          "points": 407,
+          "evaluated_points": 407,
+          "blocks_evaluated": 34,
+          "Gaussian Process": {
+            "rmse": 6.142306186320873,
+            "mae": 4.652000216391698,
+            "strong_agreement": 0.855036855036855
+          },
+          "Inverse distance": {
+            "rmse": 6.354529307385582,
+            "mae": 4.64714660889338,
+            "strong_agreement": 0.8452088452088452
+          },
+          "Nearest neighbours": {
+            "rmse": 6.822161668895508,
+            "mae": 5.088465413556137,
+            "strong_agreement": 0.8476658476658476
+          },
+          "Local mean": {
+            "rmse": 11.40200395621346,
+            "mae": 9.35937253473489,
+            "strong_agreement": 0.8525798525798526
+          },
+          "Area mean": {
+            "rmse": 11.390043465084736,
+            "mae": 9.3915346618852,
+            "strong_agreement": 0.8525798525798526
+          },
+          "gp_interval_coverage": {
+            "50%": 0.6191646191646192,
+            "68%": 0.7960687960687961,
+            "80%": 0.8722358722358723,
+            "90%": 0.9312039312039312,
+            "95%": 0.9656019656019657
+          },
+          "random_holdout_gp": {
+            "rmse": 5.227010470517487,
+            "mae": 3.6579350743546564
+          }
+        },
+        "Operator A / area 2882_-294": {
+          "points": 405,
+          "evaluated_points": 405,
+          "blocks_evaluated": 32,
+          "Gaussian Process": {
+            "rmse": 6.534458389131207,
+            "mae": 4.750932020555898,
+            "strong_agreement": 0.8
+          },
+          "Inverse distance": {
+            "rmse": 7.267177713761803,
+            "mae": 5.056967378549511,
+            "strong_agreement": 0.7604938271604939
+          },
+          "Nearest neighbours": {
+            "rmse": 7.988812688108941,
+            "mae": 5.814349149817894,
+            "strong_agreement": 0.7308641975308642
+          },
+          "Local mean": {
+            "rmse": 10.470953831629028,
+            "mae": 8.074144727428548,
+            "strong_agreement": 0.4271604938271605
+          },
+          "Area mean": {
+            "rmse": 10.535683993123723,
+            "mae": 8.146357138519186,
+            "strong_agreement": 0.4271604938271605
+          },
+          "gp_interval_coverage": {
+            "50%": 0.6222222222222222,
+            "68%": 0.7851851851851852,
+            "80%": 0.8691358024691358,
+            "90%": 0.9308641975308642,
+            "95%": 0.9580246913580247
+          },
+          "random_holdout_gp": {
+            "rmse": 5.236331254622985,
+            "mae": 3.4909089314490873
+          }
+        }
+      }
+    },
+    "log_dl": {
+      "spec": {
+        "label": "Download speed (log10 Mbps)",
+        "unit": "log10 Mbps",
+        "strong_threshold": 0.3010299956639812,
+        "transform": "log10(max(Mbps, 0.05))"
+      },
+      "learned_per_area": [
+        {
+          "area": "Operator A / area 2883_-293",
+          "operator": "Operator A",
+          "amp_short": 0.09361304144570894,
+          "ls_short": 25.117787964474385,
+          "amp_long": 0.09731428785515898,
+          "ls_long": 1158.9320898380797,
+          "noise": 0.0908661038820934,
+          "nu": 1.5
+        },
+        {
+          "area": "Operator A / area 2882_-294",
+          "operator": "Operator A",
+          "amp_short": 0.05921690411959035,
+          "ls_short": 26.409468987664866,
+          "amp_long": 0.2046017884373987,
+          "ls_long": 515.2205753512338,
+          "noise": 0.10501487710138932,
+          "nu": 1.5
+        }
+      ],
+      "params": {
+        "amp_short": 0.07641497278264964,
+        "ls_short": 25.763628476069627,
+        "amp_long": 0.15095803814627884,
+        "ls_long": 837.0763325946568,
+        "noise": 0.09794049049174136,
+        "nu": 1.5
+      },
+      "params_by_operator": {
+        "Operator A": {
+          "amp_short": 0.07641497278264964,
+          "ls_short": 25.763628476069627,
+          "amp_long": 0.15095803814627884,
+          "ls_long": 837.0763325946568,
+          "noise": 0.09794049049174136,
+          "nu": 1.5
+        }
+      },
+      "block_cv_summary": {
+        "Gaussian Process": {
+          "rmse": 0.43001681336678904,
+          "mae": 0.3326003437504242,
+          "strong_agreement": 0.7463414634146341
+        },
+        "Inverse distance": {
+          "rmse": 0.4411467273347289,
+          "mae": 0.3320548338778256,
+          "strong_agreement": 0.7439024390243902
+        },
+        "Nearest neighbours": {
+          "rmse": 0.4512301614671835,
+          "mae": 0.34071187116384655,
+          "strong_agreement": 0.751219512195122
+        },
+        "Local mean": {
+          "rmse": 0.5602960069457523,
+          "mae": 0.44827221882877394,
+          "strong_agreement": 0.6804878048780488
+        },
+        "Area mean": {
+          "rmse": 0.5670153490528187,
+          "mae": 0.45534963730118533,
+          "strong_agreement": 0.6609756097560976
+        }
+      },
+      "gp_interval_coverage": {
+        "50%": 0.5207500475918523,
+        "68%": 0.714520274129069,
+        "80%": 0.8267894536455358,
+        "90%": 0.9096944603083952,
+        "95%": 0.9413906339234723
+      },
+      "random_holdout_gp_rmse": 0.37998642346458333,
+      "areas": {
+        "Operator A / area 2883_-293": {
+          "points": 412,
+          "evaluated_points": 412,
+          "blocks_evaluated": 39,
+          "Gaussian Process": {
+            "rmse": 0.4132508658402509,
+            "mae": 0.32368751355122233,
+            "strong_agreement": 0.7233009708737864
+          },
+          "Inverse distance": {
+            "rmse": 0.41837366288370975,
+            "mae": 0.3274957726774486,
+            "strong_agreement": 0.7330097087378641
+          },
+          "Nearest neighbours": {
+            "rmse": 0.43544430789668964,
+            "mae": 0.3435513663009041,
+            "strong_agreement": 0.7233009708737864
+          },
+          "Local mean": {
+            "rmse": 0.4858795947282666,
+            "mae": 0.39611683500873485,
+            "strong_agreement": 0.5970873786407767
+          },
+          "Area mean": {
+            "rmse": 0.4955037050492313,
+            "mae": 0.40528605458020156,
+            "strong_agreement": 0.558252427184466
+          },
+          "gp_interval_coverage": {
+            "50%": 0.5169902912621359,
+            "68%": 0.7378640776699029,
+            "80%": 0.8349514563106796,
+            "90%": 0.9223300970873787,
+            "95%": 0.9563106796116505
+          },
+          "random_holdout_gp": {
+            "rmse": 0.38411277200781413,
+            "mae": 0.278350757402638
+          }
+        },
+        "Operator A / area 2882_-294": {
+          "points": 408,
+          "evaluated_points": 408,
+          "blocks_evaluated": 36,
+          "Gaussian Process": {
+            "rmse": 0.4463084707493915,
+            "mae": 0.34160055463785355,
+            "strong_agreement": 0.7696078431372549
+          },
+          "Inverse distance": {
+            "rmse": 0.46300782865064044,
+            "mae": 0.33665859175663754,
+            "strong_agreement": 0.7549019607843137
+          },
+          "Nearest neighbours": {
+            "rmse": 0.4666291853242179,
+            "mae": 0.3378445378391707,
+            "strong_agreement": 0.7794117647058824
+          },
+          "Local mean": {
+            "rmse": 0.6265361213458887,
+            "mae": 0.5009389299411664,
+            "strong_agreement": 0.7647058823529411
+          },
+          "Area mean": {
+            "rmse": 0.6310576968253867,
+            "mae": 0.5059040394606101,
+            "strong_agreement": 0.7647058823529411
+          },
+          "gp_interval_coverage": {
+            "50%": 0.5245098039215687,
+            "68%": 0.6911764705882353,
+            "80%": 0.8186274509803921,
+            "90%": 0.8970588235294118,
+            "95%": 0.9264705882352942
+          },
+          "random_holdout_gp": {
+            "rmse": 0.37586007492135254,
+            "mae": 0.27226049823014925
+          }
+        }
+      }
+    }
+  },
+  "timings_s": {
+    "total": 16.3
+  }
+}

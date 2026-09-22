@@ -14,6 +14,7 @@ from .api import admin, auth, system
 from .core.config import APP_NAME, APP_VERSION, settings
 from .core.db import SessionLocal, init_db
 from .core.logging import log_event, setup_logging
+from .ml.registry import load_models
 from .seed import seed_demo_users
 
 log = logging.getLogger("signalscout")
@@ -28,6 +29,7 @@ async def lifespan(app: FastAPI):
     if settings.seed_demo_users:
         with SessionLocal() as db:
             seed_demo_users(db)
+    load_models()
     log_event(log, "started", version=APP_VERSION, port=settings.backend_port, database=settings.database_url.rsplit("/", 1)[-1])
     yield
     log_event(log, "stopped")

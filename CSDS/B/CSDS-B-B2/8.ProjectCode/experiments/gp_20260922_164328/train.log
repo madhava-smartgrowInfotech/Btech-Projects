@@ -1,0 +1,14 @@
+16:43:29  [rsrp] 2210 cells of 10 m, 2 evaluation areas
+16:43:32  [rsrp] Operator A / area 2883_-293      short 35 m (var 44.68), long 382 m (var 68.64), noise 10.30
+16:43:35  [rsrp] Operator A / area 2882_-294      short 31 m (var 20.95), long 300 m (var 267.09), noise 12.41
+16:43:35  [rsrp] Operator A / area 2883_-293      block-CV RMSE  GP 6.142 | IDW 6.355 | kNN 6.822 | local mean 11.402 | area mean 11.390  (95% coverage 0.97)
+16:43:36  [rsrp] Operator A / area 2882_-294      block-CV RMSE  GP 6.534 | IDW 7.267 | kNN 7.989 | local mean 10.471 | area mean 10.536  (95% coverage 0.96)
+16:43:36  [rsrp] pooled block-CV RMSE: Gaussian Process 6.341, Inverse distance 6.825, Nearest neighbours 7.427, Local mean 10.948, Area mean 10.972
+16:43:36  [log_dl] 3075 cells of 10 m, 2 evaluation areas
+16:43:39  [log_dl] Operator A / area 2883_-293      short 25 m (var 0.09), long 1159 m (var 0.10), noise 0.09
+16:43:43  [log_dl] Operator A / area 2882_-294      short 26 m (var 0.06), long 515 m (var 0.20), noise 0.11
+16:43:43  [log_dl] Operator A / area 2883_-293      block-CV RMSE  GP 0.413 | IDW 0.418 | kNN 0.435 | local mean 0.486 | area mean 0.496  (95% coverage 0.96)
+16:43:44  [log_dl] Operator A / area 2882_-294      block-CV RMSE  GP 0.446 | IDW 0.463 | kNN 0.467 | local mean 0.627 | area mean 0.631  (95% coverage 0.93)
+16:43:44  [log_dl] pooled block-CV RMSE: Gaussian Process 0.430, Inverse distance 0.441, Nearest neighbours 0.451, Local mean 0.560, Area mean 0.567
+16:43:45  copied to models/gp_signal.joblib
+16:43:45  done in 16.4 s

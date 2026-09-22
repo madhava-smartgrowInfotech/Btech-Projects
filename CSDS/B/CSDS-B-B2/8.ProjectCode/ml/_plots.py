@@ -64,16 +64,20 @@ def confusion_panel(ax, cm: np.ndarray, classes: list[str], title: str) -> None:
 
 
 def grouped_bars(ax, groups: list[str], series: dict[str, list[float]], colors: list[str], ylabel: str,
-                 value_fmt: str = "{:.2f}", ylim: tuple[float, float] | None = None) -> None:
+                 value_fmt: str = "{:.2f}", ylim: tuple[float, float] | None = None,
+                 errors: dict[str, list[float]] | None = None) -> None:
     n = len(series)
     width = 0.8 / n
     x = np.arange(len(groups))
     for k, (name, vals) in enumerate(series.items()):
         pos = x - 0.4 + width * (k + 0.5)
-        bars = ax.bar(pos, vals, width * 0.9, color=colors[k], label=name, edgecolor=SURFACE, linewidth=1)
-        for b, v in zip(bars, vals):
+        err = errors.get(name) if errors else None
+        bars = ax.bar(pos, vals, width * 0.9, color=colors[k], label=name, edgecolor=SURFACE, linewidth=1,
+                      yerr=err, error_kw={"ecolor": TEXT_2, "elinewidth": 1, "capsize": 2} if err else None)
+        for i, (b, v) in enumerate(zip(bars, vals)):
             if v is not None and not np.isnan(v):
-                ax.text(b.get_x() + b.get_width() / 2, b.get_height(), value_fmt.format(v),
+                top = b.get_height() + (err[i] if err else 0)
+                ax.text(b.get_x() + b.get_width() / 2, top, value_fmt.format(v),
                         ha="center", va="bottom", fontsize=7, color=TEXT_2)
     ax.set_xticks(x, groups)
     ax.set_ylabel(ylabel)

@@ -1,0 +1,7 @@
+16:43:22  simulated speed tests: 8712 from 135 traces
+16:43:22  tests  train 6288 | val 1224 | test 1200
+16:43:22  best iteration 124, temperature 1.516
+16:43:25  test per test: accuracy 0.4933 macro-F1 0.4982 | majority 0.2106 | tuned speed threshold 0.4657
+16:43:25  test per zone (52 zones): accuracy 0.5577 macro-F1 0.5388 | bad-zone F1 0.4500
+16:43:25  copied to models/radio_estimate.joblib
+16:43:25  done in 4.7 s

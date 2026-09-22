@@ -119,9 +119,9 @@ def main() -> None:
     PROCESSED.mkdir(parents=True, exist_ok=True)
     report: dict = {}
     lte = prepare_lte(report)
-    lte.to_csv(PROCESSED / "lte_speed_clean.csv.gz", index=False, compression="gzip")
+    lte.to_csv(PROCESSED / "lte_speed_clean.csv.gz", index=False, compression={"method": "gzip", "mtime": 0})
     patna = prepare_patna(report)
-    patna.to_csv(PROCESSED / "cellular_analysis_clean.csv.gz", index=False, compression="gzip")
+    patna.to_csv(PROCESSED / "cellular_analysis_clean.csv.gz", index=False, compression={"method": "gzip", "mtime": 0})
     write_json(PROCESSED / "prep_report.json", report)
     for name, info in report.items():
         print(f"{name}: {info['steps']}  labels {info['label_share']}")

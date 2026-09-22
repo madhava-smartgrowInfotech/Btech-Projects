@@ -1,0 +1,39 @@
+16:37:45  run folder: D:\abstracts\Madhav\CSDS\B\CSDS-B-B2\8.ProjectCode\experiments\classifier_20260922_163745
+16:37:46  traces  train 95 | val 20 | test 20
+16:37:47  cross-validation on 115 development traces (548523 rows over 4 device profiles) ...
+16:38:34    fold 1/5  Random 0.819 | XGBoost 0.820 | PyTorch 0.820 | Ranges 0.680 | Tuned 0.695
+16:39:23    fold 2/5  Random 0.761 | XGBoost 0.766 | PyTorch 0.772 | Ranges 0.638 | Tuned 0.665
+16:40:13    fold 3/5  Random 0.756 | XGBoost 0.764 | PyTorch 0.766 | Ranges 0.612 | Tuned 0.622
+16:41:02    fold 4/5  Random 0.825 | XGBoost 0.822 | PyTorch 0.830 | Ranges 0.690 | Tuned 0.734
+16:41:55    fold 5/5  Random 0.744 | XGBoost 0.748 | PyTorch 0.744 | Ranges 0.598 | Tuned 0.606
+16:41:55  cv   Random Forest                mean macro-F1 0.7809 +/- 0.0342 | full 1.000+/-0.000, no_sinr_cqi 0.836+/-0.039, level_only 0.678+/-0.059, rssi_only 0.609+/-0.044
+16:41:55  cv   XGBoost                      mean macro-F1 0.7839 +/- 0.0310 | full 1.000+/-0.000, no_sinr_cqi 0.835+/-0.036, level_only 0.681+/-0.056, rssi_only 0.620+/-0.042
+16:41:55  cv   PyTorch MLP                  mean macro-F1 0.7864 +/- 0.0330 | full 1.000+/-0.000, no_sinr_cqi 0.838+/-0.034, level_only 0.688+/-0.055, rssi_only 0.619+/-0.056
+16:41:55  cv   Ranges on reported metrics   mean macro-F1 0.6436 +/- 0.0364 | full 1.000+/-0.000, no_sinr_cqi 0.698+/-0.080, level_only 0.692+/-0.079, rssi_only 0.185+/-0.019
+16:41:55  cv   Tuned single threshold       mean macro-F1 0.6644 +/- 0.0468 | full 0.674+/-0.047, no_sinr_cqi 0.674+/-0.047, level_only 0.674+/-0.047, rssi_only 0.635+/-0.049
+16:41:55  chosen model (best cross-validated mean macro-F1): PyTorch MLP
+16:41:55  final fit  train 467354 rows | val 81169 | test 81859
+16:41:55  training Random Forest ...
+16:42:11  training XGBoost ...
+16:42:39  training PyTorch MLP ...
+16:42:42    epoch  1  loss 0.4422  val macro-F1 0.7765
+16:42:43    epoch  2  loss 0.3783  val macro-F1 0.7750
+16:42:44    epoch  3  loss 0.3731  val macro-F1 0.7804
+16:42:46    epoch  4  loss 0.3706  val macro-F1 0.7770
+16:42:47    epoch  5  loss 0.3685  val macro-F1 0.7784
+16:42:49    epoch  6  loss 0.3674  val macro-F1 0.7827
+16:42:50    epoch  7  loss 0.3666  val macro-F1 0.7730
+16:42:51    epoch  8  loss 0.3660  val macro-F1 0.7736
+16:42:52    epoch  9  loss 0.3647  val macro-F1 0.7768
+16:42:54    epoch 10  loss 0.3640  val macro-F1 0.7751
+16:42:54    early stop (best val macro-F1 0.7827)
+16:42:55  temperature 0.776 (validation ECE 0.0288 -> 0.0119)
+16:42:58  test Random Forest                mean macro-F1 0.8088 | full 1.000, no_sinr_cqi 0.859, level_only 0.712, rssi_only 0.664
+16:42:58  test XGBoost                      mean macro-F1 0.8109 | full 1.000, no_sinr_cqi 0.857, level_only 0.703, rssi_only 0.684
+16:42:58  test PyTorch MLP                  mean macro-F1 0.8194 | full 1.000, no_sinr_cqi 0.861, level_only 0.726, rssi_only 0.691
+16:42:58  test Ranges on reported metrics   mean macro-F1 0.6662 | full 1.000, no_sinr_cqi 0.742, level_only 0.739, rssi_only 0.184
+16:42:58  test Tuned single threshold       mean macro-F1 0.7209 | full 0.729, no_sinr_cqi 0.729, level_only 0.727, rssi_only 0.699
+16:42:58  test chosen overall accuracy 0.8345 macro-F1 0.8269 | ECE 0.0340 -> 0.0080
+16:43:13  consistency (Patna, level only) accuracy 1.0000 macro-F1 1.0000
+16:43:15  copied to models/zone_classifier.joblib
+16:43:15  done in 330.1 s

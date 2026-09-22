@@ -102,7 +102,7 @@ export function TimeOfDayHeatmap({ cells }: { cells: TodCell[] }) {
   const map = new Map(cells.map((c) => [`${c.weekday}-${c.hour}`, c]));
   const color = (v: number) => RAMP[Math.min(RAMP.length - 1, Math.floor(v * RAMP.length))];
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto" tabIndex={0} role="region" aria-label="Weak or dead readings by weekday and hour">
       <table className="w-full min-w-[640px] table-fixed border-separate" style={{ borderSpacing: 2 }}>
         <colgroup><col className="w-10" />{Array.from({ length: 24 }, (_, h) => <col key={h} />)}</colgroup>
         <thead>

@@ -298,7 +298,7 @@ export default function ComplaintDetail() {
               <CardContent className="text-sm">
                 {c.verification ? (
                   <>
-                    <p className={cn("font-medium", c.verification.state === "verified" ? "text-zone-strong" : c.verification.state === "failed" ? "text-zone-dead" : "")}>
+                    <p className={cn("font-medium", c.verification.state === "verified" ? "text-ink-strong" : c.verification.state === "failed" ? "text-ink-dead" : "")}>
                       {{ waiting: "Waiting for new readings in this zone", verified: "Fix confirmed by new readings", failed: "New readings still weak or dead - reopened",
                          awaiting_data: "No new readings yet - verification is waiting for data", confirmed_by_engineer: "Confirmed by an engineer" }[c.verification.state] ?? c.verification.state}
                     </p>

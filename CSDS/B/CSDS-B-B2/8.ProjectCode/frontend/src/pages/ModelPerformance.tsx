@@ -37,7 +37,7 @@ function AuthImage({ run, file, alt }: { run: string; file: string; alt: string 
 
 function Table({ head, rows, highlight }: { head: string[]; rows: (string | number)[][]; highlight?: number }) {
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto" tabIndex={0} role="region" aria-label={head.join(", ")}>
       <table className="w-full min-w-[520px] text-sm">
         <thead className="text-left text-xs text-muted-foreground">
           <tr>{head.map((h) => <th key={h} className="whitespace-nowrap py-2 pr-3 font-medium">{h}</th>)}</tr>

@@ -82,7 +82,7 @@ export default function Analytics() {
         </div>
       )}
 
-      <div className="grid gap-4 xl:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
         <Block title="Service quality over time" description="Share of readings in each class per day. A growing red band means more dead-zone readings.">
           {trends.isPending ? <Skeleton className="h-60" /> : trends.isError ? <ErrorState message={apiError(trends.error)} /> :
             trends.data.some((d) => d.readings) ? <ClassShareChart data={trends.data} height={260} /> : <p className="py-16 text-center text-sm text-muted-foreground">No readings in this period.</p>}
@@ -97,7 +97,7 @@ export default function Analytics() {
           tod.data.length ? <TimeOfDayHeatmap cells={tod.data} /> : <p className="py-10 text-center text-sm text-muted-foreground">No readings in this period.</p>}
       </Block>
 
-      <div className="mt-4 grid gap-4 xl:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
+      <div className="mt-4 grid grid-cols-1 gap-4 xl:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
         <Block title="Worst areas" description="Zones with at least 15 readings, ranked by the share of weak or dead readings.">
           {worst.isPending ? <Skeleton className="h-64" /> : worst.isError ? <ErrorState message={apiError(worst.error)} /> : !worst.data.length ? (
             <EmptyState icon={ShieldCheck} title="No problem areas" description="No zone has enough readings in this period yet." className="py-8" />

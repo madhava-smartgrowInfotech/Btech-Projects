@@ -79,7 +79,7 @@ export function NodesLayer({ nodes }: { nodes: NodeInfo[] }) {
   return (
     <>
       {nodes.map((n) => (
-        <Marker key={n.id} position={[n.lat, n.lon]} icon={nodeIcon(n)}>
+        <Marker key={n.id} position={[n.lat, n.lon]} icon={nodeIcon(n)} title={`${n.name}: ${n.online ? "online" : "offline"}`} alt={n.name}>
           <Popup>
             <div className="min-w-[180px] text-xs leading-relaxed">
               <p className="text-sm font-semibold">{n.name}</p>

@@ -8,7 +8,7 @@ export function StatusBadge({ status, className }: { status: ComplaintStatus; cl
 
 export function SeverityBadge({ severity }: { severity: "weak" | "dead" }) {
   return (
-    <span className={cn("inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium", severity === "dead" ? "bg-zone-dead/15 text-zone-dead" : "bg-zone-weak/15 text-[#8a5a00] dark:text-zone-weak")}>
+    <span className={cn("inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium", severity === "dead" ? "bg-zone-dead/15 text-ink-dead" : "bg-zone-weak/15 text-ink-weak")}>
       <span className={cn("h-1.5 w-1.5 rounded-full", severity === "dead" ? "bg-zone-dead" : "bg-zone-weak")} aria-hidden />
       {severity === "dead" ? "Dead zone" : "Weak zone"}
     </span>
@@ -24,7 +24,7 @@ const STAMP: Record<ComplaintStatus, keyof Complaint> = {
 export function StatusStepper({ c }: { c: Complaint }) {
   const current = c.status === "dismissed" ? -1 : LIFECYCLE.indexOf(c.status);
   return (
-    <div className="overflow-x-auto pb-1">
+    <div className="overflow-x-auto pb-1" tabIndex={0} role="region" aria-label="Complaint progress">
       <ol className="flex min-w-[560px] items-start">
         {LIFECYCLE.map((s, i) => {
           const at = c[STAMP[s]] as string | null;

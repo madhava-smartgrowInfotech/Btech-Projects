@@ -29,7 +29,7 @@ function StatusRow({ ok, label, detail }: { ok: boolean; label: string; detail?:
         {ok ? <CheckCircle2 className="h-4 w-4 text-zone-strong" aria-hidden /> : <XCircle className="h-4 w-4 text-zone-dead" aria-hidden />}
         {label}
       </span>
-      <span className={ok ? "text-xs text-muted-foreground" : "text-xs font-medium text-zone-dead"}>{detail ?? (ok ? "Ready" : "Missing")}</span>
+      <span className={ok ? "text-xs text-muted-foreground" : "text-xs font-medium text-ink-dead"}>{detail ?? (ok ? "Ready" : "Missing")}</span>
     </li>
   );
 }
@@ -72,11 +72,11 @@ export default function Dashboard() {
         </div>
       )}
 
-      <div className="mb-4 grid gap-4 xl:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
+      <div className="mb-4 grid grid-cols-1 gap-4 xl:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
         <Card className="flex flex-col">
           <CardHeader className="pb-3">
             <CardTitle>Service quality, last 30 days</CardTitle>
-            <CardDescription>Share of readings in each class per day. <Link to="/app/analytics" className="text-primary hover:underline">Open analytics</Link></CardDescription>
+            <CardDescription>Share of readings in each class per day. <Link to="/app/analytics" className="text-primary underline underline-offset-2">Open analytics</Link></CardDescription>
           </CardHeader>
           <CardContent className="flex min-h-[300px] flex-1 flex-col">
             {trends.isPending ? <Skeleton className="flex-1" /> : trends.isError ? <ErrorState message={apiError(trends.error)} /> :

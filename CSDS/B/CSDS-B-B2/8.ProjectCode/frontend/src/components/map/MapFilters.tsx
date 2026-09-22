@@ -44,7 +44,7 @@ export function MapFilters({ value, onChange, summary }: { value: CoverageFilter
         <div className="space-y-1.5">
           <Label className="text-xs text-muted-foreground">Operator</Label>
           <Select value={value.operator ?? "all"} onValueChange={(v) => set({ operator: v === "all" ? null : v })}>
-            <SelectTrigger className="h-9">
+            <SelectTrigger className="h-9" aria-label="Operator">
               <SelectValue />
             </SelectTrigger>
             <SelectContent className="z-[1200]">
@@ -60,7 +60,7 @@ export function MapFilters({ value, onChange, summary }: { value: CoverageFilter
         <div className="space-y-1.5">
           <Label className="text-xs text-muted-foreground">Period</Label>
           <Select value={value.days ? String(value.days) : "all"} onValueChange={(v) => set({ days: PERIODS.find((p) => p.value === v)?.days ?? null })}>
-            <SelectTrigger className="h-9">
+            <SelectTrigger className="h-9" aria-label="Period">
               <SelectValue />
             </SelectTrigger>
             <SelectContent className="z-[1200]">

@@ -52,3 +52,11 @@ def test_model_performance_and_field_validation(client, user_headers):
     assert client.get(f"/api/ml/models/{zc['run']}/artifacts/..%5C..%5C.env", headers=user_headers).status_code in (400, 404)
     fv = client.get("/api/ml/field-validation", headers=user_headers).json()
     assert {"radio", "probe", "gp"} <= set(fv) and fv["probe"]["readings"] > 0
+
+
+def test_public_stats_need_no_sign_in(client):
+    r = client.get("/api/public/stats")
+    assert r.status_code == 200
+    body = r.json()
+    assert {"readings", "zones", "complaints_registered", "classifier_accuracy", "classifier_model", "predictor_gain_vs_idw"} <= set(body)
+    assert body["readings"] >= 0 and body["zones"] >= 0

@@ -194,7 +194,7 @@ export default function CoverageMap() {
               </p>
             </div>
             <div className="flex shrink-0 gap-1">
-              <Button size="sm" variant={filtersOpen ? "secondary" : "outline"} onClick={() => setFiltersOpen((o) => !o)} aria-expanded={filtersOpen}>
+              <Button size="sm" variant={filtersOpen ? "secondary" : "outline"} onClick={() => setFiltersOpen((o) => !o)} aria-expanded={filtersOpen} aria-label={filterCount ? `Filters (${filterCount} active)` : "Filters"}>
                 <SlidersHorizontal /> <span className="hidden sm:inline">Filters</span>
                 {filterCount > 0 && <span className="rounded-full bg-primary px-1.5 text-[10px] text-primary-foreground">{filterCount}</span>}
               </Button>

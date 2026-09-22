@@ -78,6 +78,7 @@ export function AppLayout() {
 
   return (
     <div className="flex min-h-dvh">
+      <a href="#main" className="sr-only z-50 rounded-md bg-primary px-3 py-2 text-sm font-medium text-primary-foreground focus:not-sr-only focus:fixed focus:left-3 focus:top-3">Skip to content</a>
       <aside className="sticky top-0 hidden h-dvh w-64 shrink-0 flex-col border-r border-sidebar-border bg-sidebar lg:flex print:hidden">
         <Link to="/app" className="flex h-16 items-center border-b border-sidebar-border px-5" aria-label="SignalScout home">
           <Logo />
@@ -131,11 +132,11 @@ export function AppLayout() {
         </AnimatePresence>
 
         {FULL_BLEED.some((p) => location.pathname.startsWith(p)) ? (
-          <main className="flex-1">
+          <main id="main" tabIndex={-1} className="flex-1 focus:outline-none">
             <Outlet />
           </main>
         ) : (
-          <main className="flex-1 px-4 py-6 sm:px-6 lg:px-8">
+          <main id="main" tabIndex={-1} className="flex-1 px-4 py-6 focus:outline-none sm:px-6 lg:px-8">
             <motion.div key={location.pathname} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.22, ease: "easeOut" }} className="mx-auto w-full max-w-7xl">
               <Outlet />
             </motion.div>

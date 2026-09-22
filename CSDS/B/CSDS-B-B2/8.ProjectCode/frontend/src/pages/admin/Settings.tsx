@@ -139,11 +139,11 @@ export default function AdminSettings() {
                 detail={ch.email.configured ? `From ${ch.email.from} to ${ch.email.desk_email ?? ch.email.from}` : "Add SMTP_USER and SMTP_PASSWORD (Gmail app password) to .env"} />
               <div className="flex items-center justify-between gap-3 text-sm">
                 <span>Send to Telegram</span>
-                <Switch checked={Boolean(draft.notify_telegram)} onCheckedChange={(v) => { setDraft({ ...draft, notify_telegram: v }); save.mutate({ notify_telegram: v }); }} />
+                <Switch aria-label="Send to Telegram" checked={Boolean(draft.notify_telegram)} onCheckedChange={(v) => { setDraft({ ...draft, notify_telegram: v }); save.mutate({ notify_telegram: v }); }} />
               </div>
               <div className="flex items-center justify-between gap-3 text-sm">
                 <span>Send email</span>
-                <Switch checked={Boolean(draft.notify_email)} onCheckedChange={(v) => { setDraft({ ...draft, notify_email: v }); save.mutate({ notify_email: v }); }} />
+                <Switch aria-label="Send email" checked={Boolean(draft.notify_email)} onCheckedChange={(v) => { setDraft({ ...draft, notify_email: v }); save.mutate({ notify_email: v }); }} />
               </div>
               <div className="flex flex-wrap gap-2 pt-1">
                 <Button variant="outline" onClick={() => link.mutate()} loading={link.isPending} disabled={!ch.telegram.token}><Link2 /> Link Telegram chat</Button>

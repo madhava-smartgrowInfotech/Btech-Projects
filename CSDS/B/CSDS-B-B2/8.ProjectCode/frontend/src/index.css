@@ -92,6 +92,13 @@
     background-size: 32px 32px;
   }
   .safe-bottom { padding-bottom: max(env(safe-area-inset-bottom), 0.75rem); }
+  /* Zone colours as text ("ink"): darker in light mode, lighter in dark mode, for AA contrast on tinted badges. */
+  .text-ink-strong { color: hsl(120 70% 24%); }
+  .text-ink-weak { color: hsl(36 90% 29%); }
+  .text-ink-dead { color: hsl(0 66% 40%); }
+  .dark .text-ink-strong { color: hsl(120 60% 62%); }
+  .dark .text-ink-weak { color: hsl(41 96% 64%); }
+  .dark .text-ink-dead { color: hsl(0 85% 74%); }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -7,7 +7,7 @@ import { ReportDialog } from "@/components/complaints/ReportDialog";
 import { EmptyState, ErrorState, PageHeader } from "@/components/common/states";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { api, apiError } from "@/lib/api";
 import { OPEN, type ComplaintPage } from "@/lib/complaints";
 
@@ -32,27 +32,31 @@ export default function MyComplaints() {
         description="Complaints raised automatically where your phone measured weak or dead service, and problems you reported. Each one carries its evidence and shows where it stands."
         actions={<Button onClick={() => setReporting(true)}><Megaphone /> Report a problem</Button>}
       />
-      <Tabs value={tab} onValueChange={(v) => setTab(v as typeof tab)} className="mb-4">
-        <TabsList>
+      <Tabs value={tab} onValueChange={(v) => setTab(v as typeof tab)}>
+        <TabsList className="mb-4">
           <TabsTrigger value="open">Open ({openCount})</TabsTrigger>
           <TabsTrigger value="closed">Closed ({closedCount})</TabsTrigger>
           <TabsTrigger value="all">All</TabsTrigger>
         </TabsList>
+        {(["open", "closed", "all"] as const).map((t) => (
+          <TabsContent key={t} value={t} className="mt-0">
+            {q.isPending ? (
+              <div className="space-y-2">{[0, 1, 2].map((i) => <Skeleton key={i} className="h-16" />)}</div>
+            ) : q.isError ? (
+              <ErrorState message={apiError(q.error)} onRetry={() => q.refetch()} />
+            ) : q.data.items.length === 0 ? (
+              <EmptyState
+                icon={FileWarning}
+                title={tab === "closed" ? "No closed complaints yet" : "No complaints"}
+                description="When your phone measures a zone that stays weak or dead, SignalScout files the complaint for you. You can also report a problem yourself."
+                action={<Button asChild variant="outline"><Link to="/probe"><Smartphone /> Open the field probe</Link></Button>}
+              />
+            ) : (
+              <ComplaintList items={q.data.items} />
+            )}
+          </TabsContent>
+        ))}
       </Tabs>
-      {q.isPending ? (
-        <div className="space-y-2">{[0, 1, 2].map((i) => <Skeleton key={i} className="h-16" />)}</div>
-      ) : q.isError ? (
-        <ErrorState message={apiError(q.error)} onRetry={() => q.refetch()} />
-      ) : q.data.items.length === 0 ? (
-        <EmptyState
-          icon={FileWarning}
-          title={tab === "closed" ? "No closed complaints yet" : "No complaints"}
-          description="When your phone measures a zone that stays weak or dead, SignalScout files the complaint for you. You can also report a problem yourself."
-          action={<Button asChild variant="outline"><Link to="/probe"><Smartphone /> Open the field probe</Link></Button>}
-        />
-      ) : (
-        <ComplaintList items={q.data.items} />
-      )}
       <ReportDialog open={reporting} onOpenChange={setReporting} />
     </>
   );

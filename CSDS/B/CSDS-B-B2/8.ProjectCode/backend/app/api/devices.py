@@ -40,7 +40,7 @@ def list_devices(user: User = Depends(get_current_user), db: Session = Depends(g
 @router.post("", response_model=DeviceWithKey, status_code=201)
 def create_device(body: DeviceCreate, user: User = Depends(get_current_user), db: Session = Depends(get_db)) -> DeviceWithKey:
     if (body.fixed_lat is None) != (body.fixed_lon is None):
-        raise HTTPException(status.HTTP_422_UNPROCESSABLE_ENTITY, detail="Give both latitude and longitude, or neither")
+        raise HTTPException(422, detail="Give both latitude and longitude, or neither")
     key, key_hash, prefix = new_device_key()
     d = Device(owner_id=user.id, kind=body.kind, name=body.name.strip(), api_key_hash=key_hash, api_key_prefix=prefix,
                fixed_lat=body.fixed_lat, fixed_lon=body.fixed_lon, config={"network_name": body.network_name} if body.network_name else {})
@@ -72,7 +72,7 @@ def update_device(device_id: int, body: DeviceUpdate, user: User = Depends(get_c
     if "fixed_lat" in data or "fixed_lon" in data:
         lat, lon = data.get("fixed_lat", d.fixed_lat), data.get("fixed_lon", d.fixed_lon)
         if (lat is None) != (lon is None):
-            raise HTTPException(status.HTTP_422_UNPROCESSABLE_ENTITY, detail="Give both latitude and longitude, or neither")
+            raise HTTPException(422, detail="Give both latitude and longitude, or neither")
         d.fixed_lat, d.fixed_lon = lat, lon
     if "network_name" in data:
         d.config = {**(d.config or {}), "network_name": data["network_name"]}

@@ -28,7 +28,7 @@ def ingest_node(body: NodeBatch, device: Device = Depends(get_current_device), d
     for r in body.readings:
         lat, lon = (r.lat, r.lon) if r.lat is not None and r.lon is not None else (device.fixed_lat, device.fixed_lon)
         if lat is None or lon is None:
-            raise HTTPException(status.HTTP_422_UNPROCESSABLE_ENTITY,
+            raise HTTPException(422,
                                 detail="The node sent no GPS position and has no fixed location - set one on the Devices page")
         ts = r.ts or now
         items.append(ReadingIn(

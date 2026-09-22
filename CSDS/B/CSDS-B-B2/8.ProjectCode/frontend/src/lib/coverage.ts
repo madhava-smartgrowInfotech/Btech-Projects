@@ -123,11 +123,23 @@ export const usePoints = (f: CoverageFilters, enabled: boolean) =>
 export const useNodes = (enabled: boolean) =>
   useQuery({ queryKey: ["coverage-nodes"], enabled, queryFn: async () => (await api.get<NodeInfo[]>("/api/coverage/nodes")).data, refetchInterval: 30_000 });
 
-/** Live events over Server-Sent Events; reconnects automatically. */
-export function useLiveStream(enabled: boolean, onReadings?: (pts: LivePoint[]) => void) {
+export interface ComplaintEventMsg {
+  id: number;
+  ref_code: string;
+  status: string;
+  event: string;
+  operator: string;
+  severity: string;
+  source: string;
+  lat: number;
+  lon: number;
+}
+
+/** Live events over Server-Sent Events (new readings, complaint changes); reconnects automatically. */
+export function useLiveStream(enabled: boolean, handlers: { readings?: (pts: LivePoint[]) => void; complaint?: (c: ComplaintEventMsg) => void }) {
   const [connected, setConnected] = useState(false);
-  const cb = useRef(onReadings);
-  cb.current = onReadings;
+  const cb = useRef(handlers);
+  cb.current = handlers;
   useEffect(() => {
     if (!enabled || typeof EventSource === "undefined") return;
     const token = safeStorage.get(TOKEN_KEY);
@@ -135,12 +147,20 @@ export function useLiveStream(enabled: boolean, onReadings?: (pts: LivePoint[]) 
     const es = new EventSource(`/api/coverage/stream?access_token=${encodeURIComponent(token)}`);
     es.onopen = () => setConnected(true);
     es.onerror = () => setConnected(false);
-    es.addEventListener("readings", (e) => {
+    const parse = (e: Event) => {
       try {
-        cb.current?.(JSON.parse((e as MessageEvent).data) as LivePoint[]);
+        return JSON.parse((e as MessageEvent).data);
       } catch {
-        /* ignore malformed event */
+        return null;
       }
+    };
+    es.addEventListener("readings", (e) => {
+      const d = parse(e);
+      if (d) cb.current.readings?.(d as LivePoint[]);
+    });
+    es.addEventListener("complaint", (e) => {
+      const d = parse(e);
+      if (d) cb.current.complaint?.(d as ComplaintEventMsg);
     });
     return () => {
       es.close();

@@ -2,11 +2,13 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { MapContainer, TileLayer, ZoomControl } from "react-leaflet";
 import { useQueryClient } from "@tanstack/react-query";
 import { AnimatePresence, motion } from "motion/react";
-import { Layers, LocateFixed, MapPinned, SlidersHorizontal, X } from "lucide-react";
+import { Layers, LocateFixed, MapPinned, Megaphone, Navigation, SlidersHorizontal, X } from "lucide-react";
 import { toast } from "sonner";
 import "@/components/map/leaflet-setup";
 import { HeatLayer } from "@/components/map/HeatLayer";
 import { FitBounds, HexLayer, LivePointsLayer, NodesLayer } from "@/components/map/layers";
+import { ComplaintsLayer, PredictedLayer, SuggestionLayer } from "@/components/map/extraLayers";
+import { ReportDialog } from "@/components/complaints/ReportDialog";
 import { MapFilters } from "@/components/map/MapFilters";
 import { ZoneDetails } from "@/components/map/ZoneDetails";
 import { Button } from "@/components/ui/button";
@@ -14,15 +16,15 @@ import { Card } from "@/components/ui/card";
 import { Sheet, SheetContent, SheetDescription, SheetTitle } from "@/components/ui/sheet";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Switch } from "@/components/ui/switch";
-import { apiError } from "@/lib/api";
+import { api, apiError } from "@/lib/api";
 import { DEFAULT_FILTERS, useCoverageSummary, useHeat, useHexes, useLiveStream, useNodes, usePoints, type CoverageFilters, type HexProps, type LivePoint } from "@/lib/coverage";
 import { cn, safeStorage } from "@/lib/utils";
 import { ZONE_COLOR, ZONE_TEXT, type ZoneLabel } from "@/lib/zones";
 
 const FILTER_KEY = "signalscout-map-filters";
 const LAYER_KEY = "signalscout-map-layers";
-type LayerKey = "hex" | "heat" | "live" | "nodes";
-const LAYER_LABEL: Record<LayerKey, string> = { hex: "Zones (hexagons)", heat: "Problem heat", live: "Recent readings", nodes: "Sensor nodes" };
+type LayerKey = "hex" | "heat" | "live" | "nodes" | "complaints" | "predicted";
+const LAYER_LABEL: Record<LayerKey, string> = { hex: "Zones (hexagons)", heat: "Problem heat", live: "Recent readings", nodes: "Sensor nodes", complaints: "Open complaints", predicted: "Predicted coverage" };
 
 function load<T>(key: string, fallback: T): T {
   try {
@@ -48,7 +50,7 @@ export default function CoverageMap() {
   const qc = useQueryClient();
   const desktop = useIsDesktop();
   const [filters, setFilters] = useState<CoverageFilters>(() => load(FILTER_KEY, DEFAULT_FILTERS));
-  const [layers, setLayers] = useState<Record<LayerKey, boolean>>(() => load(LAYER_KEY, { hex: true, heat: false, live: true, nodes: true }));
+  const [layers, setLayers] = useState<Record<LayerKey, boolean>>(() => load(LAYER_KEY, { hex: true, heat: false, live: true, nodes: true, complaints: true, predicted: false }));
   const [selected, setSelected] = useState<HexProps | null>(null);
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [layersOpen, setLayersOpen] = useState(false);
@@ -56,6 +58,10 @@ export default function CoverageMap() {
   const [fitKey, setFitKey] = useState("initial");
   const [locateBounds, setLocateBounds] = useState<[[number, number], [number, number]] | null>(null);
   const refreshTimer = useRef<number | undefined>(undefined);
+  const [suggestion, setSuggestion] = useState<{ from: [number, number]; to: [number, number] | null; message: string } | null>(null);
+  const [suggesting, setSuggesting] = useState(false);
+  const [reportAt, setReportAt] = useState<{ at: [number, number]; operator: string | null } | null>(null);
+  const [predictedInfo, setPredictedInfo] = useState<{ operator: string | null; target: string | null; cells: number } | null>(null);
 
   useEffect(() => safeStorage.set(FILTER_KEY, JSON.stringify(filters)), [filters]);
   useEffect(() => safeStorage.set(LAYER_KEY, JSON.stringify(layers)), [layers]);
@@ -78,7 +84,7 @@ export default function CoverageMap() {
     },
     [filters.operator, filters.sources, qc],
   );
-  const connected = useLiveStream(layers.live, onLive);
+  const connected = useLiveStream(layers.live, { readings: onLive });
 
   const bounds = useMemo<[[number, number], [number, number]] | null>(() => {
     const feats = hex.data?.features ?? [];
@@ -114,6 +120,32 @@ export default function CoverageMap() {
     );
   };
 
+  const mainOperator = (z: HexProps) => filters.operator ?? Object.entries(z.operators).sort((a, b) => b[1].n - a[1].n)[0]?.[0] ?? null;
+  const findBetter = async (z: HexProps) => {
+    setSuggesting(true);
+    try {
+      const { data } = await api.get<{ found: boolean; status: string; message: string; lat: number | null; lon: number | null }>("/api/suggest", {
+        params: { lat: z.center[0], lon: z.center[1], ...(mainOperator(z) ? { operator: mainOperator(z) } : {}) },
+      });
+      setSuggestion({ from: z.center, to: data.found && data.status === "found" && data.lat != null && data.lon != null ? [data.lat, data.lon] : null, message: data.message });
+    } catch (e) {
+      toast.error(apiError(e));
+    } finally {
+      setSuggesting(false);
+    }
+  };
+  const zoneActions = (z: HexProps) => (
+    <div className="space-y-2 border-t pt-4">
+      {suggestion && suggestion.from[0] === z.center[0] && suggestion.from[1] === z.center[1] && (
+        <p className="rounded-lg bg-primary/10 px-3 py-2 text-sm">{suggestion.message}</p>
+      )}
+      <div className="grid grid-cols-2 gap-2">
+        <Button variant="outline" size="sm" onClick={() => findBetter(z)} loading={suggesting}><Navigation /> Better signal</Button>
+        <Button variant="outline" size="sm" onClick={() => setReportAt({ at: z.center, operator: mainOperator(z) })}><Megaphone /> Report</Button>
+      </div>
+    </div>
+  );
+
   const filterCount = [filters.operator, filters.days, filters.hours, filters.sources.length ? 1 : null, filters.includeWifi || null].filter(Boolean).length;
   const empty = hex.isSuccess && hex.data.features.length === 0;
 
@@ -138,6 +170,9 @@ export default function CoverageMap() {
         {layers.hex && hex.data && <HexLayer data={hex.data} selected={selected?.cell ?? null} onSelect={setSelected} />}
         {layers.live && <LivePointsLayer points={live} />}
         {layers.nodes && nodes.data && <NodesLayer nodes={nodes.data} />}
+        {layers.predicted && <PredictedLayer operator={filters.operator} onInfo={setPredictedInfo} />}
+        {layers.complaints && <ComplaintsLayer />}
+        {suggestion?.to && <SuggestionLayer from={suggestion.from} to={suggestion.to} />}
       </MapContainer>
 
       {/* top bar */}
@@ -196,7 +231,7 @@ export default function CoverageMap() {
       </div>
 
       {/* legend */}
-      <Card className="absolute bottom-3 left-3 z-[1000] p-3 shadow-lg">
+      <Card className="absolute bottom-3 left-3 z-[1000] max-w-[calc(100%-5rem)] p-3 shadow-lg">
         <ul className="space-y-1.5">
           {(Object.keys(ZONE_COLOR) as ZoneLabel[]).map((z) => (
             <li key={z} className="flex items-center gap-2 text-xs">
@@ -207,6 +242,14 @@ export default function CoverageMap() {
             </li>
           ))}
         </ul>
+        {layers.predicted && (
+          <div className="mt-2 border-t pt-2 text-xs">
+            <p className="mb-1 font-medium">Predicted chance of strong signal</p>
+            <div className="h-2 w-40 rounded-full" style={{ background: "linear-gradient(90deg, rgba(24,79,149,0.08), rgba(24,79,149,0.63))" }} aria-hidden />
+            <p className="mt-1 flex w-40 justify-between text-muted-foreground"><span>0%</span><span>100%</span></p>
+            <p className="text-muted-foreground">{predictedInfo?.cells ? `${predictedInfo.operator ?? ""} · ${predictedInfo.target === "log_dl" ? "from phone speed tests" : "from signal level"}` : "Move the map over measured streets"}</p>
+          </div>
+        )}
       </Card>
 
       {/* states */}
@@ -244,7 +287,7 @@ export default function CoverageMap() {
                   <X />
                 </Button>
               </div>
-              <ZoneDetails zone={selected} />
+              <ZoneDetails zone={selected} actions={zoneActions(selected)} />
             </Card>
           </motion.div>
         )}
@@ -253,7 +296,7 @@ export default function CoverageMap() {
         <SheetContent side="bottom" className="p-5 pb-8">
           <SheetTitle className="mb-3 text-base font-semibold">Zone details</SheetTitle>
           <SheetDescription className="sr-only">Readings and metrics for the selected zone</SheetDescription>
-          <div className="overflow-y-auto">{selected && <ZoneDetails zone={selected} />}</div>
+          <div className="overflow-y-auto">{selected && <ZoneDetails zone={selected} actions={zoneActions(selected)} />}</div>
         </SheetContent>
       </Sheet>
 
@@ -270,6 +313,7 @@ export default function CoverageMap() {
           </div>
         </SheetContent>
       </Sheet>
+      <ReportDialog open={!!reportAt} onOpenChange={(o) => !o && setReportAt(null)} at={reportAt?.at ?? null} operator={reportAt?.operator ?? null} />
       <Sheet open={layersOpen} onOpenChange={setLayersOpen}>
         <SheetContent side="bottom" className="p-5 pb-8">
           <SheetTitle className="mb-4 text-base font-semibold">Map layers</SheetTitle>

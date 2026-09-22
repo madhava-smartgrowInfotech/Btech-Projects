@@ -11,6 +11,10 @@ const Dashboard = lazy(() => import("@/pages/Dashboard"));
 const Connect = lazy(() => import("@/pages/Connect"));
 const CoverageMap = lazy(() => import("@/pages/CoverageMap"));
 const Devices = lazy(() => import("@/pages/Devices"));
+const MyComplaints = lazy(() => import("@/pages/MyComplaints"));
+const ComplaintDetail = lazy(() => import("@/pages/ComplaintDetail"));
+const OperatorDesk = lazy(() => import("@/pages/desk/OperatorDesk"));
+const AdminSettings = lazy(() => import("@/pages/admin/Settings"));
 const Profile = lazy(() => import("@/pages/Profile"));
 const AdminUsers = lazy(() => import("@/pages/admin/Users"));
 const NotFound = lazy(() => import("@/pages/NotFound"));
@@ -29,6 +33,10 @@ export default function App() {
           <Route path="map" element={<CoverageMap />} />
           <Route path="connect" element={<Connect />} />
           <Route path="devices" element={<Devices />} />
+          <Route path="complaints" element={<MyComplaints />} />
+          <Route path="complaints/:id" element={<ComplaintDetail />} />
+          <Route path="desk" element={<RequireRole min="engineer"><OperatorDesk /></RequireRole>} />
+          <Route path="settings" element={<RequireRole min="admin"><AdminSettings /></RequireRole>} />
           <Route path="profile" element={<Profile />} />
           <Route path="admin/users" element={<RequireRole min="admin"><AdminUsers /></RequireRole>} />
           <Route path="*" element={<NotFound />} />

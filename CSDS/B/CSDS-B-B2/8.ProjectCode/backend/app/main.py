@@ -10,13 +10,15 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
 
-from .api import admin, auth, coverage, devices, ingest, probe, readings, suggest, system
+from .api import admin, auth, complaints, coverage, devices, ingest, probe, readings, suggest, system
 from .core.config import APP_NAME, APP_VERSION, settings
 from .core.db import SessionLocal, init_db
 from .core.logging import log_event, setup_logging
 from .ml.registry import load_models
 from .seed import seed_demo_users
+from .services import background, zone_engine
 from .services.carrier import preload_in_background
+from .services.ingest import after_ingest_hooks
 from .services.sample_data import seed_in_background
 from .services.simulator_setup import ensure_simulator_devices
 
@@ -37,10 +39,15 @@ async def lifespan(app: FastAPI):
     if settings.esp32_simulator:
         with SessionLocal() as db:
             ensure_simulator_devices(db)
+    if zone_engine.on_ingest not in after_ingest_hooks:
+        after_ingest_hooks.append(zone_engine.on_ingest)
     if settings.seed_sample_data:
         seed_in_background()
+    tasks = background.start()
     log_event(log, "started", version=APP_VERSION, port=settings.backend_port, database=settings.database_url.rsplit("/", 1)[-1])
     yield
+    for task in tasks:
+        task.cancel()
     log_event(log, "stopped")
 
 
@@ -71,7 +78,7 @@ async def request_log(request: Request, call_next):
     return response
 
 
-for router in (auth.router, system.router, admin.router, devices.router, ingest.router, readings.router, coverage.router, probe.router, suggest.router):
+for router in (auth.router, system.router, admin.router, devices.router, ingest.router, readings.router, coverage.router, probe.router, suggest.router, complaints.router):
     app.include_router(router)
 
 

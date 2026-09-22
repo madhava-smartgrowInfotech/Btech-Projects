@@ -1,14 +1,20 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
-import { ArrowRight, BrainCircuit, CheckCircle2, Database, QrCode, Server, XCircle } from "lucide-react";
-import { PageHeader, ErrorState } from "@/components/common/states";
+import { Activity, ArrowRight, BarChart3, BrainCircuit, CheckCircle2, Database, FileWarning, MapPinned, QrCode, Server, ShieldCheck, XCircle } from "lucide-react";
+import { ClassShareChart, StatTile } from "@/components/charts/charts";
+import { ComplaintList } from "@/components/complaints/ComplaintList";
+import { EmptyState, PageHeader, ErrorState } from "@/components/common/states";
 import { ROLE_LABEL } from "@/components/layout/UserMenu";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import { api, apiError, type Health } from "@/lib/api";
+import { hoursText, useSummary, useTrends, type AnalyticsFilters } from "@/lib/analytics";
+import { api, apiError, hasRole, type Health } from "@/lib/api";
 import { useAuth } from "@/lib/auth";
+import { OPEN, type ComplaintPage } from "@/lib/complaints";
+
+const FILTERS: AnalyticsFilters = { operator: null, days: 30, includeSample: true };
 
 const MODEL_NAMES: Record<string, string> = {
   zone_classifier: "Zone classifier",
@@ -31,12 +37,68 @@ function StatusRow({ ok, label, detail }: { ok: boolean; label: string; detail?:
 export default function Dashboard() {
   const { user } = useAuth();
   const health = useQuery({ queryKey: ["health"], queryFn: async () => (await api.get<Health>("/api/health")).data, refetchInterval: 30_000 });
+  const summary = useSummary(FILTERS);
+  const trends = useTrends(FILTERS);
+  const recent = useQuery({
+    queryKey: ["complaints", "dashboard"],
+    queryFn: async () => (await api.get<ComplaintPage>("/api/complaints", { params: { status: OPEN.join(","), limit: 4 } })).data,
+    refetchInterval: 30_000,
+  });
+  const engineer = hasRole(user, "engineer");
+  const s = summary.data;
   const hour = new Date().getHours();
   const greeting = hour < 12 ? "Good morning" : hour < 18 ? "Good afternoon" : "Good evening";
 
   return (
     <>
       <PageHeader title={`${greeting}, ${user?.name.split(" ")[0] ?? ""}`} description={`Signed in as ${user ? ROLE_LABEL[user.role] : ""}. Here is the state of this SignalScout installation.`} />
+
+      {summary.isError ? <ErrorState message={apiError(summary.error)} onRetry={() => summary.refetch()} className="mb-4" /> : (
+        <div className="mb-4 grid grid-cols-2 gap-3 lg:grid-cols-4">
+          {!s ? [0, 1, 2, 3].map((i) => <Skeleton key={i} className="h-28" />) : (
+            <>
+              <StatTile icon={<MapPinned className="h-4 w-4" />} label="Zones monitored" value={s.zones_monitored.toLocaleString()} hint={`${s.readings_total.toLocaleString()} readings`} />
+              <StatTile icon={<BarChart3 className="h-4 w-4" />} label="Weak or dead zones" value={s.zones_bad.toLocaleString()} tone={s.zones_dead ? "bad" : undefined}
+                hint={s.bad_zone_share != null ? `${Math.round(s.bad_zone_share * 100)}% of zones · ${s.zones_dead} dead` : "No zones yet"} />
+              <StatTile icon={<FileWarning className="h-4 w-4" />} label="Open complaints" value={s.complaints_open}
+                hint={engineer ? `${s.complaints_needing_action} waiting for action` : `${s.complaints_verified} fixes verified`} />
+              {engineer ? (
+                <StatTile icon={<ShieldCheck className="h-4 w-4" />} label="Median time to resolve" value={hoursText(s.median_hours_to_resolve)} hint={`${s.complaints_verified} fixes verified`} />
+              ) : (
+                <StatTile icon={<Activity className="h-4 w-4" />} label="Your readings" value={(s.mine?.readings ?? 0).toLocaleString()} hint={`${s.mine?.complaints ?? 0} complaints from your data`} />
+              )}
+            </>
+          )}
+        </div>
+      )}
+
+      <div className="mb-4 grid gap-4 xl:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
+        <Card className="flex flex-col">
+          <CardHeader className="pb-3">
+            <CardTitle>Service quality, last 30 days</CardTitle>
+            <CardDescription>Share of readings in each class per day. <Link to="/app/analytics" className="text-primary hover:underline">Open analytics</Link></CardDescription>
+          </CardHeader>
+          <CardContent className="flex min-h-[300px] flex-1 flex-col">
+            {trends.isPending ? <Skeleton className="flex-1" /> : trends.isError ? <ErrorState message={apiError(trends.error)} /> :
+              trends.data.some((d) => d.readings) ? <ClassShareChart data={trends.data} className="flex-1" /> : <p className="py-16 text-center text-sm text-muted-foreground">No readings in the last 30 days.</p>}
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex-row items-start justify-between gap-3 space-y-0 pb-3">
+            <div>
+              <CardTitle>Open complaints</CardTitle>
+              <CardDescription className="mt-1.5">{engineer ? "Most recently updated in the queue." : "Complaints from zones you measured."}</CardDescription>
+            </div>
+            <Button asChild variant="ghost" size="sm"><Link to={engineer ? "/app/desk" : "/app/complaints"}>View all <ArrowRight /></Link></Button>
+          </CardHeader>
+          <CardContent>
+            {recent.isPending ? <div className="space-y-2">{[0, 1, 2].map((i) => <Skeleton key={i} className="h-14" />)}</div>
+              : recent.isError ? <ErrorState message={apiError(recent.error)} onRetry={() => recent.refetch()} />
+              : recent.data.items.length ? <ComplaintList items={recent.data.items} />
+              : <EmptyState icon={ShieldCheck} title="No open complaints" description="Zones that stay weak or dead are registered here automatically." className="py-8" />}
+          </CardContent>
+        </Card>
+      </div>
 
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }}>

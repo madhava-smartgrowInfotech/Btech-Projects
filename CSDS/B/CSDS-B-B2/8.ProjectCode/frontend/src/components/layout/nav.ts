@@ -1,5 +1,5 @@
 import type { LucideIcon } from "lucide-react";
-import { Cpu, FileWarning, Headset, LayoutDashboard, Map, QrCode, Settings, Smartphone, Users } from "lucide-react";
+import { BarChart3, BrainCircuit, Cpu, FileWarning, Headset, LayoutDashboard, Map, QrCode, Settings, Smartphone, Users } from "lucide-react";
 import type { Role } from "@/lib/api";
 
 export interface NavItem {
@@ -22,6 +22,13 @@ export const NAV: NavSection[] = [
       { to: "/app", label: "Dashboard", icon: LayoutDashboard, minRole: "user", end: true },
       { to: "/app/map", label: "Coverage map", icon: Map, minRole: "user" },
       { to: "/app/complaints", label: "My complaints", icon: FileWarning, minRole: "user" },
+    ],
+  },
+  {
+    title: "Insights",
+    items: [
+      { to: "/app/analytics", label: "Analytics", icon: BarChart3, minRole: "user" },
+      { to: "/app/models", label: "Model performance", icon: BrainCircuit, minRole: "user" },
     ],
   },
   {

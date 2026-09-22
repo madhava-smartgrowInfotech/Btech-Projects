@@ -10,7 +10,7 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
 
-from .api import admin, auth, complaints, coverage, devices, ingest, probe, readings, suggest, system
+from .api import admin, analytics, auth, complaints, coverage, devices, ingest, ml, probe, readings, suggest, system
 from .core.config import APP_NAME, APP_VERSION, settings
 from .core.db import SessionLocal, init_db
 from .core.logging import log_event, setup_logging
@@ -78,7 +78,7 @@ async def request_log(request: Request, call_next):
     return response
 
 
-for router in (auth.router, system.router, admin.router, devices.router, ingest.router, readings.router, coverage.router, probe.router, suggest.router, complaints.router):
+for router in (auth.router, system.router, admin.router, devices.router, ingest.router, readings.router, coverage.router, probe.router, suggest.router, complaints.router, analytics.router, ml.router):
     app.include_router(router)
 
 

@@ -98,8 +98,9 @@ def test_readings_visibility_and_export(client, user_headers, engineer_headers):
     assert mine and all(r["source"] == "phone" for r in mine)
     everything = client.get("/api/readings?limit=500", headers=engineer_headers).json()
     assert {r["source"] for r in everything} >= {"phone", "esp32"}
+    own_devices = {d["id"] for d in client.get("/api/devices", headers=user_headers).json()}
     user_view = client.get("/api/readings?limit=500", headers=user_headers).json()
-    assert not any(r["source"] == "phone" and r["device_id"] not in {m["device_id"] for m in mine} for r in user_view)
+    assert not any(r["source"] == "phone" and r["device_id"] not in own_devices for r in user_view)   # no other people's phones
     csv = client.get("/api/readings/export.csv?mine=true", headers=user_headers)
     assert csv.status_code == 200 and csv.text.splitlines()[0].startswith("id,ts,source")
 

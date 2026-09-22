@@ -8,6 +8,8 @@ const Landing = lazy(() => import("@/pages/Landing"));
 const Login = lazy(() => import("@/pages/auth/Login"));
 const Register = lazy(() => import("@/pages/auth/Register"));
 const Dashboard = lazy(() => import("@/pages/Dashboard"));
+const Analytics = lazy(() => import("@/pages/Analytics"));
+const ModelPerformance = lazy(() => import("@/pages/ModelPerformance"));
 const Connect = lazy(() => import("@/pages/Connect"));
 const CoverageMap = lazy(() => import("@/pages/CoverageMap"));
 const Devices = lazy(() => import("@/pages/Devices"));
@@ -31,6 +33,8 @@ export default function App() {
         <Route path="/app" element={<RequireAuth><AppLayout /></RequireAuth>}>
           <Route index element={<Dashboard />} />
           <Route path="map" element={<CoverageMap />} />
+          <Route path="analytics" element={<Analytics />} />
+          <Route path="models" element={<ModelPerformance />} />
           <Route path="connect" element={<Connect />} />
           <Route path="devices" element={<Devices />} />
           <Route path="complaints" element={<MyComplaints />} />

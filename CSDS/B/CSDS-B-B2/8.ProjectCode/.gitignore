@@ -27,3 +27,6 @@ tools/
 .DS_Store
 Thumbs.db
 .vscode/
+
+# Runtime state written by the launcher (tunnel URL, stop requests)
+data/runtime/

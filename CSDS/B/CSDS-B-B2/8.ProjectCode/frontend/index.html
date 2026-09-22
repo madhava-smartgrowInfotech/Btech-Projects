@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="SignalScout finds weak and dead mobile-network zones from real readings, points you to better signal and files complaints with technical evidence." />
+    <meta name="theme-color" content="#3d5afe" />
+    <title>SignalScout</title>
+    <script>
+      // Apply the saved theme before first paint (no flash). Storage can be blocked - ignore failures.
+      (function () {
+        var t = "system";
+        try { t = localStorage.getItem("signalscout-theme") || "system"; } catch (e) {}
+        var dark = t === "dark" || (t === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches);
+        document.documentElement.classList.toggle("dark", dark);
+        document.documentElement.dataset.theme = dark ? "dark" : "light";
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

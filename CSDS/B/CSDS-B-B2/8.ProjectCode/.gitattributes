@@ -1,0 +1,11 @@
+# Datasets, models and binaries are stored byte-for-byte (checksums in data/raw/MANIFEST.json must match)
+data/** -text
+*.gz binary
+*.joblib binary
+*.png binary
+*.jpg binary
+*.ico binary
+*.woff2 binary
+
+# Windows scripts keep CRLF line endings on every platform
+*.bat text eol=crlf

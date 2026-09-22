@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* SignalScout design tokens (HSL channels). Brand: signal indigo + scan cyan.
+   Zone colours are reserved status colours and always travel with a text label. */
+@layer base {
+  :root {
+    color-scheme: light;
+    --background: 220 23% 97%;
+    --foreground: 226 32% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 226 32% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 226 32% 11%;
+    --primary: 231 90% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 222 20% 93%;
+    --secondary-foreground: 226 32% 14%;
+    --muted: 222 20% 94%;
+    --muted-foreground: 222 10% 40%;
+    --accent: 228 60% 95%;
+    --accent-foreground: 231 60% 30%;
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 222 18% 88%;
+    --input: 222 18% 86%;
+    --ring: 231 90% 60%;
+    --radius: 0.75rem;
+    --sidebar: 0 0% 100%;
+    --sidebar-foreground: 226 32% 14%;
+    --sidebar-border: 222 18% 90%;
+    --brand-cyan: 189 94% 38%;
+    --zone-strong: 120 86% 34%;
+    --zone-weak: 41 96% 54%;
+    --zone-dead: 0 62% 52%;
+    /* chart series (categorical, fixed order) */
+    --series-1: #2a78d6; --series-2: #eb6834; --series-3: #1baf7a; --series-4: #eda100;
+    --series-5: #e87ba4; --series-6: #008300; --series-7: #4a3aa7; --series-8: #e34948;
+    --chart-grid: #e4e3df; --chart-text: #52514e;
+  }
+
+  .dark {
+    color-scheme: dark;
+    --background: 228 26% 7%;
+    --foreground: 220 25% 94%;
+    --card: 228 24% 10%;
+    --card-foreground: 220 25% 94%;
+    --popover: 228 24% 11%;
+    --popover-foreground: 220 25% 94%;
+    --primary: 231 100% 72%;
+    --primary-foreground: 230 40% 9%;
+    --secondary: 228 18% 16%;
+    --secondary-foreground: 220 25% 92%;
+    --muted: 228 18% 14%;
+    --muted-foreground: 222 12% 66%;
+    --accent: 231 30% 18%;
+    --accent-foreground: 231 100% 86%;
+    --destructive: 0 70% 58%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 228 16% 19%;
+    --input: 228 16% 22%;
+    --ring: 231 100% 72%;
+    --sidebar: 228 26% 9%;
+    --sidebar-foreground: 220 25% 92%;
+    --sidebar-border: 228 16% 16%;
+    --brand-cyan: 189 85% 55%;
+    --series-1: #3987e5; --series-2: #d95926; --series-3: #199e70; --series-4: #c98500;
+    --series-5: #d55181; --series-6: #008300; --series-7: #9085e9; --series-8: #e66767;
+    --chart-grid: #2c2c2a; --chart-text: #c3c2b7;
+  }
+
+  * { @apply border-border; }
+  html { -webkit-tap-highlight-color: transparent; }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "cv11", "ss01";
+    min-height: 100dvh;
+  }
+  h1, h2, h3 { @apply font-display tracking-tight; }
+  :focus-visible { @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background; }
+}
+
+@layer utilities {
+  .tabular { font-variant-numeric: tabular-nums; }
+  .text-balance { text-wrap: balance; }
+  .bg-grid {
+    background-image: linear-gradient(hsl(var(--border) / 0.6) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.6) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  .safe-bottom { padding-bottom: max(env(safe-area-inset-bottom), 0.75rem); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}

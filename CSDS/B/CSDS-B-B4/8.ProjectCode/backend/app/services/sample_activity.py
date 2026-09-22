@@ -14,6 +14,7 @@ from sqlalchemy.orm import Session
 
 from app.core.logging import get_logger
 from app.models import IST, CollectRequest, Hold, IntentCheck, ScamReport, SmsCheck, User, utcnow
+from app.services import intent as intent_svc
 from app.services.payments import create_assessed_payment
 from app.services.sms_service import analyze_and_store
 
@@ -167,7 +168,11 @@ def generate_sample_activity(db: Session, users: dict[str, User]) -> None:
         level = assessment.level
         if level != "low" or p.purpose:
             purpose = p.purpose or rng.choice(["shopping", "family_friend", "bill"])
-            db.add(IntentCheck(transaction_id=txn.id, purpose=purpose, answers={"purpose": purpose, "asked_by_someone": p.purpose is not None}, matched_scam_type=None, escalated=False, created_at=p.t))
+            answers = {"purpose": purpose, "asked_by_someone": p.purpose is not None, "verified_by_call": True, "advance_to_online_seller": False}
+            result = intent_svc.evaluate(level, p.channel, assessment.features, answers)
+            db.add(IntentCheck(transaction_id=txn.id, purpose=result["purpose"], answers=answers, matched_scam_type=result["scam_type"], escalated=result["escalated"], created_at=p.t))
+            assessment.final_level = result["final_level"]
+            level = result["final_level"]
         done = p.t + timedelta(seconds=rng.randint(20, 90))
         outcome = p.outcome
         if assessment.action == "block":

@@ -134,4 +134,4 @@ npm run build
 ```
 
 See [09_TESTING.md](../8.ProjectCode/docs/09_TESTING.md). If something does not work, see
-[10_TROUBLESHOOTING.md](10_TROUBLESHOOTING.md).
+[10_TROUBLESHOOTING.md](../8.ProjectCode/docs/10_TROUBLESHOOTING.md).

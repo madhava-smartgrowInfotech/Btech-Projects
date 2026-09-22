@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "Noto Sans Devanagari", ui-sans-serif, system-ui, sans-serif;
+  --color-brand-50: #f0fdfa;
+  --color-brand-100: #ccfbf1;
+  --color-brand-600: #0d9488;
+  --color-brand-700: #0f766e;
+  --color-brand-800: #115e59;
+  --color-brand-900: #134e4a;
+}
+
+body {
+  @apply bg-slate-50 text-slate-800 antialiased;
+}
+
+@utility card {
+  @apply rounded-xl border border-slate-200 bg-white shadow-sm;
+}
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition disabled:cursor-not-allowed disabled:opacity-60;
+}
+@utility btn-primary {
+  @apply btn bg-brand-700 text-white hover:bg-brand-800;
+}
+@utility btn-secondary {
+  @apply btn border border-slate-300 bg-white text-slate-700 hover:bg-slate-50;
+}
+@utility btn-danger {
+  @apply btn border border-red-200 bg-white text-red-700 hover:bg-red-50;
+}
+@utility input {
+  @apply w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-100;
+}
+@utility label {
+  @apply mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500;
+}
+.leaflet-container {
+  font-family: inherit;
+}

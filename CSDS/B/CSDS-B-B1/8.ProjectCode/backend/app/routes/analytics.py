@@ -122,15 +122,15 @@ def sla(user: User = Depends(staff), db: Session = Depends(get_db)):
 
 @router.get("/trends")
 def trends(weeks: int = 12, user: User = Depends(staff), db: Session = Depends(get_db)):
+    # rolling 7-day windows ending now, so the last point is a complete week
     now = datetime.now()
-    start = (now - timedelta(weeks=weeks)).date()
-    start = start - timedelta(days=start.weekday())  # Monday
-    labels = [(start + timedelta(weeks=i)) for i in range(weeks + 1)]
-    series = defaultdict(lambda: [0] * len(labels))
-    for c in db.query(Complaint).filter(Complaint.created_at >= datetime.combine(start, datetime.min.time())).all():
-        i = (c.created_at.date() - start).days // 7
-        if 0 <= i < len(labels):
+    start = now - timedelta(days=7 * weeks)
+    labels = [start + timedelta(days=7 * i) for i in range(weeks)]
+    series = defaultdict(lambda: [0] * weeks)
+    for c in db.query(Complaint).filter(Complaint.created_at >= start).all():
+        i = int((c.created_at - start).total_seconds() // (7 * 86400))
+        if 0 <= i < weeks:
             series[_cat(c)][i] += 1
     ordered = sorted(series.items(), key=lambda kv: -sum(kv[1]))
-    return {"weeks": [d.isoformat() for d in labels],
+    return {"weeks": [d.date().isoformat() for d in labels],
             "series": [{"category": k, "counts": v, "total": sum(v)} for k, v in ordered]}

@@ -1,6 +1,7 @@
 """Seeded generator for wards, departments, accounts and SAMPLE complaint histories.
 
-Sample complaints reuse real CivicComp-HiEn complaint texts (EN / HI / Hinglish), are placed in
+Sample complaints reuse real complaint texts from the held-out test splits of CivicComp-HiEn
+(EN / HI / Hinglish) and the Citizen Grievance Dataset (land, pension, ration... -> Revenue), are placed in
 sample wards of Bengaluru (the city the texts come from), and take their resolution times from the
 real NYC 311 distribution of the same category. Every generated row has is_sample = True and is
 shown with a "Sample" badge in the UI.
@@ -8,11 +9,13 @@ shown with a "Sample" badge in the UI.
 from datetime import datetime, timedelta
 
 import numpy as np
+import pandas as pd
 
 from ..auth import hash_password
 from ..config import SEED
 from ..db import Complaint, Department, Event, SessionLocal, User, Ward
-from .taxonomy import CATEGORY_TO_DEPT, DEPARTMENTS
+from .taxonomy import CATEGORIES, CATEGORY_TO_DEPT, DEPARTMENTS
+from .textutil import detect_language
 
 # Sample city: Bengaluru localities (approximate centres)
 WARDS = [
@@ -32,6 +35,7 @@ DEMO_ACCOUNTS = [
     ("City Administrator", "admin@civicpulse.local", "Admin@123", "admin", None),
 ]
 N_SAMPLE_COMPLAINTS = 700
+N_FROM_GRIEVANCE = 90  # of which from the Citizen Grievance Dataset
 N_SAMPLE_QUEUE = 12  # most recent sample complaints left awaiting officer review
 HISTORY_DAYS = 90
 
@@ -63,11 +67,16 @@ def seed_history(db, predictor, log=print):
     """Generate sample complaint histories (only when none exist yet)."""
     if db.query(Complaint).filter_by(is_sample=True).count():
         return
-    from .datasets import load_civiccomp, load_nyc
+    from .datasets import load_civiccomp, load_grievance, load_nyc
 
     rng = np.random.default_rng(SEED)
+    # held-out test rows only -> texts the models never trained on
     cc = load_civiccomp()
-    cc = cc[cc.category.notna() & (cc.split == "test")].reset_index(drop=True)  # unseen by the models
+    cc = cc[cc.category.notna() & (cc.split == "test")]
+    gr = load_grievance()
+    gr = gr[gr.category.notna() & (gr.split == "test")].copy()
+    gr["lang"] = gr.text.map(detect_language)
+    gr["priority"] = None  # no reference priority -> the officer accepts the AI's
     nyc_days = load_nyc().groupby("category").days.apply(np.asarray).to_dict()
     wards = db.query(Ward).all()
     officer = db.query(User).filter_by(email="officer@civicpulse.local").one()
@@ -86,11 +95,13 @@ def seed_history(db, predictor, log=print):
     db.flush()
 
     # each category has a few wards where it recurs more often -> visible hotspots
-    cats = sorted(cc.category.unique())
-    hot = {c: rng.choice(len(wards), size=3, replace=False) for c in cats}
-    picks = cc.sample(N_SAMPLE_COMPLAINTS, random_state=SEED).reset_index(drop=True)
+    hot = {c: rng.choice(len(wards), size=3, replace=False) for c in CATEGORIES}
+    cols = ["text", "category", "priority", "lang"]
+    picks = pd.concat([cc.sample(N_SAMPLE_COMPLAINTS - N_FROM_GRIEVANCE, random_state=SEED)[cols],
+                       gr.sample(N_FROM_GRIEVANCE, random_state=SEED)[cols]])
+    picks = picks.sample(frac=1, random_state=SEED).reset_index(drop=True)
     now = datetime.now().replace(microsecond=0)
-    ages = np.sort(rng.gamma(2.0, HISTORY_DAYS / 5, size=N_SAMPLE_COMPLAINTS).clip(0.05, HISTORY_DAYS))[::-1]
+    ages = np.sort(rng.uniform(0.05, HISTORY_DAYS, size=N_SAMPLE_COMPLAINTS))[::-1]  # steady arrivals
     log(f"generating {N_SAMPLE_COMPLAINTS} sample complaints...")
     for i, row in picks.iterrows():
         created = now - timedelta(days=float(ages[i]), hours=float(rng.uniform(0, 3)))
@@ -111,9 +122,10 @@ def seed_history(db, predictor, log=print):
                               created_at=created))
         if not queue:
             # historical decision = the dataset's reference label
-            c.final_category, c.final_priority = row.category, row.priority
+            c.final_category = row.category
+            c.final_priority = row.priority if isinstance(row.priority, str) else ai["priority"]
             c.final_department = CATEGORY_TO_DEPT[row.category]
-            c.final_days = round(predictor.expected_days(row.category, row.priority, created)[0], 1)
+            c.final_days = round(predictor.expected_days(row.category, c.final_priority, created)[0], 1)
             c.reviewed_by, c.reviewed_at = officer.id, created + timedelta(hours=float(rng.uniform(0.5, 8)))
             c.status = "Assigned"
             c.events.append(Event(kind="status", status="Assigned", actor_id=officer.id, created_at=c.reviewed_at,

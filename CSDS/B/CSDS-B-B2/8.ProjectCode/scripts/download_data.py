@@ -175,8 +175,10 @@ def main() -> int:
         }
         print(f"[OK]   {name}: {len(files)} files, {manifest['datasets'][name]['total_bytes'] / 1e6:.1f} MB")
 
-    MANIFEST.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
-    print(f"Manifest written to {MANIFEST.relative_to(ROOT)}")
+    text = json.dumps(manifest, indent=2)
+    if not MANIFEST.exists() or MANIFEST.read_bytes().decode("utf-8") != text:
+        MANIFEST.write_text(text, encoding="utf-8", newline="\n")     # LF on every OS, so git sees no change
+        print(f"Manifest written to {MANIFEST.relative_to(ROOT)}")
     return 0
 
 

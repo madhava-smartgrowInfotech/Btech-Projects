@@ -4,6 +4,8 @@ SignalScout finds weak and dead mobile-network zones automatically from real pho
 
 This document is the engineering plan: architecture, modules, data model, API surface, ML pipeline, screens, milestones and risks.
 
+> This is the plan the product was built from. Some file names changed while it was built. For what exists now, see [11_PROJECT_STRUCTURE.md](11_PROJECT_STRUCTURE.md) and [02_ARCHITECTURE.md](02_ARCHITECTURE.md).
+
 ---
 
 ## 1. Environment check (build machine)

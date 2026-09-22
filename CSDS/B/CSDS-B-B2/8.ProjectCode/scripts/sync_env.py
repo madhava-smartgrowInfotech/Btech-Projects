@@ -25,8 +25,6 @@ def main() -> None:
         print(".env created from .env.example")
         return
     current = ENV.read_text(encoding="utf-8")
-    if f"JWT_SECRET={PLACEHOLDER}" in current:
-        current = current.replace(f"JWT_SECRET={PLACEHOLDER}", "JWT_SECRET=" + secrets.token_urlsafe(48))
     missing = [line for line in example.splitlines()
                if line.strip() and not line.lstrip().startswith("#") and "=" in line
                and line.split("=", 1)[0].strip() not in keys_of(current)]
@@ -35,6 +33,10 @@ def main() -> None:
         print(f".env: added {len(missing)} new setting(s): " + ", ".join(m.split('=', 1)[0] for m in missing))
     else:
         print(".env is up to date")
+    # after adding keys, so a JWT_SECRET line that was deleted comes back with a fresh random value
+    if f"JWT_SECRET={PLACEHOLDER}" in current:
+        current = current.replace(f"JWT_SECRET={PLACEHOLDER}", "JWT_SECRET=" + secrets.token_urlsafe(48))
+        print(".env: generated a new JWT_SECRET")
     ENV.write_text(current, encoding="utf-8")
 
 

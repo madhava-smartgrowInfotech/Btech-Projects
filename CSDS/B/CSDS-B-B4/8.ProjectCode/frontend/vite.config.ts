@@ -13,6 +13,8 @@ export default defineConfig(({ mode }) => {
 
   const proxy = {
     "/api": { target: apiTarget, changeOrigin: true, ws: true },
+    "/docs": { target: apiTarget, changeOrigin: true },
+    "/openapi.json": { target: apiTarget, changeOrigin: true },
   };
 
   return {
@@ -41,7 +43,7 @@ export default defineConfig(({ mode }) => {
         },
         workbox: {
           navigateFallback: "/index.html",
-          navigateFallbackDenylist: [/^\/api/],
+          navigateFallbackDenylist: [/^\/api/, /^\/docs/, /^\/openapi\.json/],
           globPatterns: ["**/*.{js,css,html,svg,png,woff2}"],
           maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
           runtimeCaching: [

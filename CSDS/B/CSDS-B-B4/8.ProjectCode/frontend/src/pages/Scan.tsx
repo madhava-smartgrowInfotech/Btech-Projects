@@ -223,10 +223,10 @@ export default function Scan() {
                 {result.amount && <p className="text-xs text-muted-foreground">{t("scan.preset_amount", { amount: formatINR(result.amount) })}</p>}
               </div>
               <div className="flex flex-col gap-2 sm:flex-row">
-                <Button variant="outline" size="lg" className="flex-1" onClick={() => setResult(null)}>
+                <Button variant="outline" size="lg" className="w-full sm:w-auto sm:flex-1" onClick={() => setResult(null)}>
                   {t("scan.scan_again")}
                 </Button>
-                <Button size="lg" className="flex-1" disabled={!amountOk || assess.isPending || result.is_self} onClick={() => assess.mutate()}>
+                <Button size="lg" className="w-full sm:w-auto sm:flex-1" disabled={!amountOk || assess.isPending || result.is_self} onClick={() => assess.mutate()}>
                   {assess.isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                   {t("send.check_and_pay")}
                 </Button>

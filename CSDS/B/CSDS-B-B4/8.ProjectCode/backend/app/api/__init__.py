@@ -9,6 +9,7 @@ from app.api import (
     models_info,
     notifications,
     payments,
+    public,
     qr,
     sandbox,
     settings,
@@ -20,5 +21,5 @@ from app.api import (
 )
 
 router = APIRouter()
-for module in (health, auth, wallet, payments, qr, collect, holds, trusted, trust, sms, voice, settings, notifications, admin, models_info, sandbox):
+for module in (health, auth, wallet, payments, qr, collect, holds, trusted, trust, sms, voice, settings, notifications, admin, models_info, sandbox, public):
     router.include_router(module.router)

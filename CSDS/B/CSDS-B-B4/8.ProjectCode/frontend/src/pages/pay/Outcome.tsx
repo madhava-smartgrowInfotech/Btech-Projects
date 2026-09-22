@@ -61,7 +61,7 @@ export function CancelledView({ payment }: { payment: Payment }) {
       <p className="mt-2 text-muted-foreground">{protectedByUs ? t("done.cancelled_protected", { amount: formatINR(payment.amount) }) : t("done.cancelled_plain")}</p>
       {payment.status_reason && <p className="mt-2 text-xs text-muted-foreground">{tx(`reason.${payment.status_reason}`, "")}</p>}
       <div className="mt-6 flex flex-col gap-2 sm:flex-row">
-        {protectedByUs && <ReportButton upi={payment.counterparty.upi_id} category={payment.intent?.matched_scam_type ?? "other"} className="flex-1" />}
+        {protectedByUs && <ReportButton upi={payment.counterparty.upi_id} category={payment.intent?.matched_scam_type ?? "other"} className="w-full sm:w-auto sm:flex-1" />}
         <BackHome />
       </div>
     </div>

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { Bell, Check, FlaskConical, Languages, LogOut, Menu, Monitor, Moon, Sun } from "lucide-react";
+import { Bell, Check, Download, FlaskConical, Languages, LogOut, Menu, Monitor, Moon, Sun, WifiOff } from "lucide-react";
 import { Logo } from "@/components/brand/Logo";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -23,6 +23,7 @@ import { useAuth } from "@/lib/auth";
 import { formatDateTime, initials } from "@/lib/format";
 import { LANGUAGES, useI18n, type Language } from "@/lib/i18n";
 import { useLiveUpdates } from "@/lib/live";
+import { useInstallPrompt, useOnline } from "@/lib/pwa";
 import { notificationText } from "@/lib/notifications";
 import { useTheme } from "@/lib/theme";
 import { cn } from "@/lib/utils";
@@ -302,6 +303,8 @@ export default function AppLayout() {
   const reduce = useReducedMotion();
   const [moreOpen, setMoreOpen] = useState(false);
   const badges = useBadges();
+  const { available: canInstall, install } = useInstallPrompt();
+  const online = useOnline();
   useLiveUpdates(!!user);
 
   return (
@@ -344,6 +347,12 @@ export default function AppLayout() {
             </NavLink>
             <SandboxPill className="ml-2 hidden sm:inline-flex lg:ml-0" />
             <div className="ml-auto flex items-center gap-1">
+              {canInstall && (
+                <Button variant="outline" size="sm" className="mr-1 gap-1.5" onClick={() => void install()}>
+                  <Download className="h-4 w-4" />
+                  <span className="hidden sm:inline">{t("pwa.install")}</span>
+                </Button>
+              )}
               <LanguageMenu />
               <ThemeMenu />
               <NotificationsBell unread={badges.data?.unread ?? 0} />
@@ -353,6 +362,12 @@ export default function AppLayout() {
             </div>
           </div>
         </header>
+        {!online && (
+          <div role="status" className="flex items-center justify-center gap-2 bg-caution-soft px-4 py-2 text-sm text-caution">
+            <WifiOff className="h-4 w-4" />
+            {t("common.offline")}
+          </div>
+        )}
 
         <main id="main" className="mx-auto w-full max-w-6xl px-4 pb-28 pt-5 sm:px-6 sm:pt-8 lg:pb-12">
           <AnimatePresence mode="wait" initial={false}>

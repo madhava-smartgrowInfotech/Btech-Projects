@@ -184,18 +184,18 @@ export default function PaymentFlow() {
             <div className="flex flex-col gap-2 sm:flex-row">
               {blocked ? (
                 <>
-                  <ReportButton upi={p.counterparty.upi_id} category="other" className="flex-1" />
-                  <Button variant="outline" size="lg" className="flex-1" onClick={() => cancel.mutate()} disabled={cancel.isPending}>
+                  <ReportButton upi={p.counterparty.upi_id} category="other" className="w-full sm:w-auto sm:flex-1" />
+                  <Button variant="outline" size="lg" className="w-full sm:w-auto sm:flex-1" onClick={() => cancel.mutate()} disabled={cancel.isPending}>
                     <Ban className="mr-2 h-4 w-4" />
                     {t("pay.close_blocked")}
                   </Button>
                 </>
               ) : (
                 <>
-                  <Button variant="outline" size="lg" className="flex-1" onClick={() => cancel.mutate()} disabled={cancel.isPending}>
+                  <Button variant="outline" size="lg" className="w-full sm:w-auto sm:flex-1" onClick={() => cancel.mutate()} disabled={cancel.isPending}>
                     {t("pay.cancel_payment")}
                   </Button>
-                  <Button size="lg" className={cn("flex-1", a.level === "high" && "bg-danger text-danger-foreground hover:bg-danger/90")} onClick={() => setStep(needsIntent ? "intent" : "pin")}>
+                  <Button size="lg" className={cn("w-full sm:w-auto sm:flex-1", a.level === "high" && "bg-danger text-danger-foreground hover:bg-danger/90")} onClick={() => setStep(needsIntent ? "intent" : "pin")}>
                     {needsIntent ? t("pay.to_safety_check") : t("pay.pay_amount", { amount: formatINR(p.amount) })}
                   </Button>
                 </>
@@ -250,10 +250,10 @@ export default function PaymentFlow() {
               </label>
             )}
             <div className="flex flex-col gap-2 sm:flex-row">
-              <Button size="lg" className={cn("flex-1", recommendCancel && "order-first")} variant={recommendCancel ? "default" : "outline"} onClick={() => cancel.mutate()} disabled={cancel.isPending}>
+              <Button size="lg" className={cn("w-full sm:w-auto sm:flex-1", recommendCancel && "order-first")} variant={recommendCancel ? "default" : "outline"} onClick={() => cancel.mutate()} disabled={cancel.isPending}>
                 {recommendCancel ? t("pay.cancel_recommended") : t("pay.cancel_payment")}
               </Button>
-              <Button size="lg" variant={recommendCancel ? "outline" : "default"} className="flex-1" disabled={recommendCancel && !understood} onClick={() => setStep("pin")}>
+              <Button size="lg" variant={recommendCancel ? "outline" : "default"} className="w-full sm:w-auto sm:flex-1" disabled={recommendCancel && !understood} onClick={() => setStep("pin")}>
                 {level === "high" ? t("pay.continue_with_hold") : t("common.continue")}
               </Button>
             </div>

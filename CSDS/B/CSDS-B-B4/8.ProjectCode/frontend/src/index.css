@@ -46,6 +46,20 @@
     --sidebar-foreground: 200 30% 12%;
     --sidebar-border: 170 16% 88%;
     --sidebar-accent: 168 38% 93%;
+
+    /* Charts: validated categorical slots (fixed order) + fixed status colours */
+    --series-1: #2a78d6;
+    --series-2: #eb6834;
+    --series-3: #1baf7a;
+    --series-4: #eda100;
+    --status-good: #0ca30c;
+    --status-warning: #fab219;
+    --status-serious: #ec835a;
+    --status-critical: #d03b3b;
+    --chart-grid: #e1e0d9;
+    --chart-axis: #c3c2b7;
+    --chart-ink: #52514e;
+    --chart-muted: #898781;
   }
 
   .dark {
@@ -90,6 +104,15 @@
     --sidebar-foreground: 165 20% 92%;
     --sidebar-border: 195 20% 15%;
     --sidebar-accent: 190 26% 13%;
+
+    --series-1: #3987e5;
+    --series-2: #d95926;
+    --series-3: #199e70;
+    --series-4: #c98500;
+    --chart-grid: #2c2c2a;
+    --chart-axis: #383835;
+    --chart-ink: #c3c2b7;
+    --chart-muted: #898781;
   }
 
   * {

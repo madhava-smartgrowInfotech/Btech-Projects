@@ -103,5 +103,14 @@ def seed_if_empty(db: Session) -> bool:
         )
     db.add(TrustedContact(user_id=users["demo"].id, contact_user_id=users["family"].id, relation="son", can_approve=True))
     db.flush()
+
+    from app.ml.registry import registry
+
+    if registry.available("behaviour") and registry.available("risk"):
+        from app.services.sample_activity import generate_sample_activity
+
+        generate_sample_activity(db, users)
+    else:
+        log.warning("models missing - sample activity skipped (run ml/train_all.py, then reset the sandbox)")
     log.info("sample data loaded", extra={"accounts": len(users)})
     return True

@@ -306,6 +306,18 @@ class Simulator:
                     extras["failed_before"] = int(rng.integers(1, 3))
                 events.append((t, payer.idx, payee, amount, channel, 0, "none", extras))
 
+            # Regular family support: many people send a larger amount to the same relative every month.
+            if payer.friends and rng.random() < 0.35:
+                relative = int(payer.friends[0])
+                payer.saved.add(relative)
+                base = float(rng.uniform(2000, 15000)) * payer.scale
+                day_of_month = int(rng.integers(0, 28))
+                for month in range(12):
+                    d = month * 30.4 + day_of_month + rng.normal(0, 1.5)
+                    if 0 <= d < YEAR_DAYS:
+                        amount = float(np.clip(round(base * rng.uniform(0.8, 1.25), -1), 500, 60000))
+                        events.append((d * DAY + self._hour(payer) * HOUR, payer.idx, relative, amount, "send", 0, "none", {}))
+
             # Unrelated scam-SMS checks (the user spotted a scam and did not pay) - hard negatives.
             for d in rng.uniform(0, YEAR_DAYS, size=rng.poisson(1.5)):
                 events.append((d * DAY + self._hour(payer) * HOUR, payer.idx, -1, 0.0, "sms_check", 0, "none", {"scam": rng.random() < 0.55}))

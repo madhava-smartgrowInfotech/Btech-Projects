@@ -36,7 +36,7 @@ def model_terms(bundle: dict[str, Any], text: str, top: int = 6) -> list[tuple[s
     coef = clf.coef_.ravel()[: len(word_vec.vocabulary_)]
     row = word_vec.transform([text])
     vocab = word_vec.get_feature_names_out()
-    contrib = [(vocab[j], float(row[0, j] * coef[j])) for j in row.indices]
+    contrib = [(vocab[j], float(row[0, j] * coef[j])) for j in row.indices if len(vocab[j]) >= 3 and not vocab[j].replace(" ", "").isdigit()]
     return sorted([c for c in contrib if c[1] > 0], key=lambda c: -c[1])[:top]
 
 

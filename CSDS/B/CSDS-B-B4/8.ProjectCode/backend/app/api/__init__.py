@@ -1,9 +1,24 @@
 from fastapi import APIRouter
 
-from app.api import auth, health, notifications, settings
+from app.api import (
+    admin,
+    auth,
+    collect,
+    health,
+    holds,
+    models_info,
+    notifications,
+    payments,
+    qr,
+    sandbox,
+    settings,
+    sms,
+    trust,
+    trusted,
+    voice,
+    wallet,
+)
 
 router = APIRouter()
-router.include_router(health.router)
-router.include_router(auth.router)
-router.include_router(settings.router)
-router.include_router(notifications.router)
+for module in (health, auth, wallet, payments, qr, collect, holds, trusted, trust, sms, voice, settings, notifications, admin, models_info, sandbox):
+    router.include_router(module.router)

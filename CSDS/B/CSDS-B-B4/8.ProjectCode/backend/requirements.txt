@@ -1,0 +1,23 @@
+# UPI Guardian backend + ML runtime (Python 3.11)
+fastapi==0.141.1
+uvicorn[standard]==0.53.0
+pydantic[email]==2.13.5
+SQLAlchemy==2.0.54
+PyJWT==2.14.0
+passlib[bcrypt]==1.7.4
+bcrypt==4.0.1
+python-dotenv==1.2.3
+python-multipart==0.0.32
+qrcode[pil]==8.2
+pillow==12.3.0
+gTTS==2.5.4
+numpy==2.4.6
+pandas==3.0.6
+scikit-learn==1.9.1
+xgboost==3.2.0
+shap==0.51.0
+matplotlib==3.11.2
+joblib==1.6.0
+kagglehub==1.0.2
+httpx==0.28.1
+pytest==9.1.1

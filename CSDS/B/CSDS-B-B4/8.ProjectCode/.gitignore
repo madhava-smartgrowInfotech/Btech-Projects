@@ -1,0 +1,32 @@
+# Environments and secrets
+venv/
+.venv/
+.env
+node_modules/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Build output
+dist/
+frontend/dev-dist/
+*.tsbuildinfo
+
+# Runtime files
+data/app.db
+data/app.db-journal
+data/app.db-wal
+data/app.db-shm
+data/voice_cache/
+data/processed/upi_scenarios.parquet
+logs/
+*.log.tmp
+
+# Editors and OS
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store

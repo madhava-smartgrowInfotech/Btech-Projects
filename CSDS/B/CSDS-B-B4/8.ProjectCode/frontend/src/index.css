@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 165 25% 97.5%;
+    --foreground: 200 30% 9%;
+    --card: 0 0% 100%;
+    --card-foreground: 200 30% 9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 200 30% 9%;
+    --primary: 174 86% 26%;
+    --primary-foreground: 166 60% 97%;
+    --secondary: 168 22% 92%;
+    --secondary-foreground: 196 32% 14%;
+    --muted: 168 18% 93%;
+    --muted-foreground: 198 12% 38%;
+    --accent: 168 30% 90%;
+    --accent-foreground: 196 32% 14%;
+    --destructive: 350 78% 47%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 170 16% 86%;
+    --input: 170 16% 82%;
+    --ring: 174 86% 30%;
+    --radius: 0.85rem;
+    --shadow: 196 40% 12%;
+
+    --safe: 158 78% 32%;
+    --safe-foreground: 0 0% 100%;
+    --safe-soft: 152 60% 93%;
+    --caution: 34 92% 44%;
+    --caution-foreground: 0 0% 100%;
+    --caution-soft: 42 100% 92%;
+    --danger: 350 78% 47%;
+    --danger-foreground: 0 0% 100%;
+    --danger-soft: 352 90% 95%;
+
+    --chart-1: 174 86% 30%;
+    --chart-2: 38 92% 50%;
+    --chart-3: 350 78% 52%;
+    --chart-4: 214 72% 52%;
+    --chart-5: 268 56% 58%;
+
+    --sidebar: 0 0% 100%;
+    --sidebar-foreground: 200 30% 12%;
+    --sidebar-border: 170 16% 88%;
+    --sidebar-accent: 168 38% 93%;
+  }
+
+  .dark {
+    --background: 200 32% 6%;
+    --foreground: 165 20% 94%;
+    --card: 199 28% 9%;
+    --card-foreground: 165 20% 94%;
+    --popover: 199 28% 9%;
+    --popover-foreground: 165 20% 94%;
+    --primary: 172 70% 44%;
+    --primary-foreground: 196 45% 7%;
+    --secondary: 197 22% 15%;
+    --secondary-foreground: 165 20% 92%;
+    --muted: 197 22% 14%;
+    --muted-foreground: 180 8% 64%;
+    --accent: 190 26% 17%;
+    --accent-foreground: 165 20% 94%;
+    --destructive: 350 80% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 195 20% 18%;
+    --input: 195 20% 22%;
+    --ring: 172 70% 44%;
+    --shadow: 200 60% 2%;
+
+    --safe: 156 62% 45%;
+    --safe-foreground: 196 45% 7%;
+    --safe-soft: 160 45% 13%;
+    --caution: 38 94% 56%;
+    --caution-foreground: 196 45% 7%;
+    --caution-soft: 36 60% 13%;
+    --danger: 350 86% 64%;
+    --danger-foreground: 196 45% 7%;
+    --danger-soft: 350 45% 15%;
+
+    --chart-1: 172 70% 46%;
+    --chart-2: 38 94% 58%;
+    --chart-3: 350 86% 64%;
+    --chart-4: 212 80% 64%;
+    --chart-5: 268 70% 70%;
+
+    --sidebar: 199 30% 7.5%;
+    --sidebar-foreground: 165 20% 92%;
+    --sidebar-border: 195 20% 15%;
+    --sidebar-accent: 190 26% 13%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "ss01";
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  /* Numbers line up in amounts and tables */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer components {
+  .page-title {
+    @apply font-display text-2xl font-semibold tracking-tight sm:text-3xl;
+  }
+  .page-subtitle {
+    @apply mt-1 text-sm text-muted-foreground sm:text-base;
+  }
+  .surface {
+    @apply rounded-2xl border bg-card text-card-foreground shadow-soft;
+  }
+  .grid-bg {
+    background-image:
+      linear-gradient(to right, hsl(var(--border) / 0.55) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.55) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(100deg, hsl(var(--primary)) 10%, #22d3ee 55%, #f59e0b 95%);
+  }
+}
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* html5-qrcode renders its own markup; keep it tidy inside our card */
+#qr-reader video {
+  border-radius: 1rem;
+  object-fit: cover;
+}
+#qr-reader__dashboard_section_csr button,
+#qr-reader__dashboard button {
+  @apply rounded-md bg-primary px-3 py-1.5 text-sm font-medium text-primary-foreground;
+}

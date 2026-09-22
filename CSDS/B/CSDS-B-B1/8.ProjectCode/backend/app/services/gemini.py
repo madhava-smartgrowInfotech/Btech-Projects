@@ -1,4 +1,5 @@
 """Gemini: structured detail extraction (schema-validated) and draft citizen replies."""
+import time
 from typing import Optional
 
 from google import genai
@@ -43,7 +44,9 @@ def _generate(prompt, schema=None, temperature=0.3):
             response_mime_type="application/json" if schema else "text/plain",
             response_schema=schema,
         )
-        for _ in range(2):
+        for attempt in range(3):
+            if attempt:
+                time.sleep(2 * attempt - 1)  # back off 1 s, then 3 s - overload spikes are short
             try:
                 r = client.models.generate_content(model=model, contents=prompt, config=cfg)
                 if r.text:

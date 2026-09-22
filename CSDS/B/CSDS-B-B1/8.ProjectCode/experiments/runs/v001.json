@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "trained_at": "2026-09-22T09:49:15+00:00",
+  "trained_at": "2026-09-22T10:11:08+00:00",
   "category": {
     "test": {
       "accuracy": 0.8293,
@@ -129,5 +129,5 @@
   "feedback": {
     "labels_used": 0
   },
-  "train_seconds": 173.8
+  "train_seconds": 221.5
 }

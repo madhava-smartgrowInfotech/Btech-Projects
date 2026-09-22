@@ -7,7 +7,7 @@ from sqlalchemy.orm import Mapped, mapped_column
 
 from ..core.db import Base, utcnow
 
-DEVICE_KINDS = ("phone", "esp32", "simulator")
+DEVICE_KINDS = ("phone", "esp32", "simulator", "replay")
 
 
 class Device(Base):

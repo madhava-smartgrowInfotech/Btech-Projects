@@ -10,12 +10,14 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
 
-from .api import admin, auth, system
+from .api import admin, auth, coverage, devices, ingest, readings, system
 from .core.config import APP_NAME, APP_VERSION, settings
 from .core.db import SessionLocal, init_db
 from .core.logging import log_event, setup_logging
 from .ml.registry import load_models
 from .seed import seed_demo_users
+from .services.sample_data import seed_in_background
+from .services.simulator_setup import ensure_simulator_devices
 
 log = logging.getLogger("signalscout")
 
@@ -30,6 +32,11 @@ async def lifespan(app: FastAPI):
         with SessionLocal() as db:
             seed_demo_users(db)
     load_models()
+    if settings.esp32_simulator:
+        with SessionLocal() as db:
+            ensure_simulator_devices(db)
+    if settings.seed_sample_data:
+        seed_in_background()
     log_event(log, "started", version=APP_VERSION, port=settings.backend_port, database=settings.database_url.rsplit("/", 1)[-1])
     yield
     log_event(log, "stopped")
@@ -62,7 +69,7 @@ async def request_log(request: Request, call_next):
     return response
 
 
-for router in (auth.router, system.router, admin.router):
+for router in (auth.router, system.router, admin.router, devices.router, ingest.router, readings.router, coverage.router):
     app.include_router(router)
 
 

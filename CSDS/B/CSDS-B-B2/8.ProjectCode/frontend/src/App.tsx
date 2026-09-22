@@ -9,6 +9,8 @@ const Login = lazy(() => import("@/pages/auth/Login"));
 const Register = lazy(() => import("@/pages/auth/Register"));
 const Dashboard = lazy(() => import("@/pages/Dashboard"));
 const Connect = lazy(() => import("@/pages/Connect"));
+const CoverageMap = lazy(() => import("@/pages/CoverageMap"));
+const Devices = lazy(() => import("@/pages/Devices"));
 const Profile = lazy(() => import("@/pages/Profile"));
 const AdminUsers = lazy(() => import("@/pages/admin/Users"));
 const NotFound = lazy(() => import("@/pages/NotFound"));
@@ -22,7 +24,9 @@ export default function App() {
         <Route path="/register" element={<GuestOnly><Register /></GuestOnly>} />
         <Route path="/app" element={<RequireAuth><AppLayout /></RequireAuth>}>
           <Route index element={<Dashboard />} />
+          <Route path="map" element={<CoverageMap />} />
           <Route path="connect" element={<Connect />} />
+          <Route path="devices" element={<Devices />} />
           <Route path="profile" element={<Profile />} />
           <Route path="admin/users" element={<RequireRole min="admin"><AdminUsers /></RequireRole>} />
           <Route path="*" element={<NotFound />} />

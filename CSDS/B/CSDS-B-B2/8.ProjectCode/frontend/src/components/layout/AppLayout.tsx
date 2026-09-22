@@ -12,6 +12,8 @@ import { NAV } from "./nav";
 import { ThemeToggle } from "./ThemeToggle";
 import { UserMenu } from "./UserMenu";
 
+const FULL_BLEED = ["/app/map"];   // pages that use the whole content area (no padding, no max width)
+
 function useOnline() {
   const [online, setOnline] = useState(() => navigator.onLine);
   useEffect(() => {
@@ -128,11 +130,17 @@ export function AppLayout() {
           )}
         </AnimatePresence>
 
-        <main className="flex-1 px-4 py-6 sm:px-6 lg:px-8">
-          <motion.div key={location.pathname} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.22, ease: "easeOut" }} className="mx-auto w-full max-w-7xl">
+        {FULL_BLEED.some((p) => location.pathname.startsWith(p)) ? (
+          <main className="flex-1">
             <Outlet />
-          </motion.div>
-        </main>
+          </main>
+        ) : (
+          <main className="flex-1 px-4 py-6 sm:px-6 lg:px-8">
+            <motion.div key={location.pathname} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.22, ease: "easeOut" }} className="mx-auto w-full max-w-7xl">
+              <Outlet />
+            </motion.div>
+          </main>
+        )}
       </div>
     </div>
   );

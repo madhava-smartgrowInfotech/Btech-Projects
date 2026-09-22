@@ -47,7 +47,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <ThemeProvider>
         <MotionConfig reducedMotion="user">
           <TooltipProvider delayDuration={200}>
-            <BrowserRouter>
+            <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
               <AuthProvider>
                 <App />
                 <Toaster />

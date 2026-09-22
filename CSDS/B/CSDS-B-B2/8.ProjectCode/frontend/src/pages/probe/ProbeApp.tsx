@@ -70,7 +70,7 @@ function ProbeMain({ meta, onUnpair }: { meta: ProbeMeta; onUnpair: () => void }
 
       <main className="flex-1 px-4 pb-28 pt-5">
         <motion.div key={tab} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.18 }}>
-          {tab === "live" && <LiveTab probe={probe} />}
+          {tab === "live" && <LiveTab probe={probe} onOpenSignal={() => setTab("signal")} />}
           {tab === "signal" && <SignalTab probe={probe} />}
           {tab === "log" && <LogTab probe={probe} />}
           {tab === "sync" && <SyncTab probe={probe} meta={meta} />}

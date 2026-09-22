@@ -113,12 +113,24 @@ def preload_in_background() -> None:
     threading.Thread(target=lambda: _table.lookup("1.1.1.1"), name="asn-preload", daemon=True).start()
 
 
+def _trusted_proxy(peer: str | None) -> bool:
+    """Forwarding headers are believed only from this PC (the tunnel and the web dev server run here);
+    a phone talking to the API directly cannot pick its own carrier by sending them."""
+    if not peer:
+        return True
+    try:
+        return ipaddress.ip_address(peer).is_loopback
+    except ValueError:
+        return peer == "testclient"      # the in-process test client
+
+
 def client_ip(headers: dict, peer: str | None) -> str | None:
     """The phone's public IP: Cloudflare puts it in CF-Connecting-IP; otherwise the socket peer."""
-    for key in ("cf-connecting-ip", "x-forwarded-for", "x-real-ip"):
-        value = headers.get(key)
-        if value:
-            return value.split(",")[0].strip()
+    if _trusted_proxy(peer):
+        for key in ("cf-connecting-ip", "x-forwarded-for", "x-real-ip"):
+            value = headers.get(key)
+            if value:
+                return value.split(",")[0].strip()
     return peer
 
 

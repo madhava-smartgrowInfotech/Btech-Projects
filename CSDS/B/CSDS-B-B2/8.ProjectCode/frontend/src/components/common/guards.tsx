@@ -28,9 +28,17 @@ export function RequireRole({ min, children }: { min: Role; children: ReactNode 
   return <>{children}</>;
 }
 
+/** Where to go after signing in: a safe in-app "next" path, otherwise the dashboard. */
+export function nextTarget(search: string): string {
+  const next = new URLSearchParams(search).get("next");
+  return next && next.startsWith("/") && !next.startsWith("//") ? next : "/app";
+}
+
 export function GuestOnly({ children }: { children: ReactNode }) {
   const { user, token, loading } = useAuth();
+  const location = useLocation();
   if (token && loading) return <FullPageLoader />;
-  if (user) return <Navigate to="/app" replace />;
+  // same target as the sign-in form, so the two redirects never race
+  if (user) return <Navigate to={nextTarget(location.search)} replace />;
   return <>{children}</>;
 }

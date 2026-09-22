@@ -13,10 +13,12 @@ import { MapFilters } from "@/components/map/MapFilters";
 import { ZoneDetails } from "@/components/map/ZoneDetails";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Sheet, SheetContent, SheetDescription, SheetTitle } from "@/components/ui/sheet";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Switch } from "@/components/ui/switch";
 import { api, apiError } from "@/lib/api";
+import { areaLabel, groupAreas } from "@/lib/areas";
 import { DEFAULT_FILTERS, useCoverageSummary, useHeat, useHexes, useLiveStream, useNodes, usePoints, type CoverageFilters, type HexProps, type LivePoint } from "@/lib/coverage";
 import { cn, safeStorage } from "@/lib/utils";
 import { ZONE_COLOR, ZONE_TEXT, type ZoneLabel } from "@/lib/zones";
@@ -86,18 +88,12 @@ export default function CoverageMap() {
   );
   const connected = useLiveStream(layers.live, { readings: onLive });
 
-  const bounds = useMemo<[[number, number], [number, number]] | null>(() => {
-    const feats = hex.data?.features ?? [];
-    if (feats.length) {
-      let [a, b, c, d] = [90, 180, -90, -180];
-      for (const f of feats) {
-        const [lat, lon] = f.properties.center;
-        a = Math.min(a, lat); b = Math.min(b, lon); c = Math.max(c, lat); d = Math.max(d, lon);
-      }
-      return [[a, b], [c, d]];
-    }
-    return summary.data?.bounds ?? null;
-  }, [hex.data, summary.data]);
+  // Zones can lie in several towns (for example the sample city and where you measure). Show one area at a time,
+  // starting with the one with the most recent readings.
+  const areas = useMemo(() => groupAreas(hex.data?.features ?? []), [hex.data]);
+  const [areaKey, setAreaKey] = useState<string | null>(null);
+  const area = areas.find((a) => a.key === areaKey) ?? areas[0] ?? null;
+  const bounds = area?.bounds ?? summary.data?.bounds ?? null;
 
   const totals = useMemo(() => {
     const t = { Strong: 0, Weak: 0, Dead: 0 } as Record<ZoneLabel, number>;
@@ -165,7 +161,7 @@ export default function CoverageMap() {
       <MapContainer center={[22.5, 79]} zoom={5} zoomControl={false} className="h-full w-full" preferCanvas>
         <TileLayer attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" maxZoom={19} />
         <ZoomControl position="bottomright" />
-        <FitBounds bounds={locateBounds ?? bounds} fitKey={locateBounds ? fitKey : bounds ? "data" : "none"} />
+        <FitBounds bounds={locateBounds ?? bounds} fitKey={locateBounds ? fitKey : area ? `area-${area.key}` : bounds ? "data" : "none"} />
         {layers.heat && heat.data && <HeatLayer points={heat.data.points} />}
         {layers.hex && hex.data && <HexLayer data={hex.data} selected={selected?.cell ?? null} onSelect={setSelected} />}
         {layers.live && <LivePointsLayer points={live} />}
@@ -203,6 +199,14 @@ export default function CoverageMap() {
               </Button>
             </div>
           </div>
+          {areas.length > 1 && (
+            <Select value={area?.key} onValueChange={(k) => { setAreaKey(k); setLocateBounds(null); }}>
+              <SelectTrigger className="mt-2 h-8 text-xs" aria-label="Area shown on the map"><SelectValue /></SelectTrigger>
+              <SelectContent className="z-[1200]">
+                {areas.map((a) => <SelectItem key={a.key} value={a.key} className="text-xs">{areaLabel(a)}</SelectItem>)}
+              </SelectContent>
+            </Select>
+          )}
           <AnimatePresence initial={false}>
             {filtersOpen && desktop && (
               <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden">

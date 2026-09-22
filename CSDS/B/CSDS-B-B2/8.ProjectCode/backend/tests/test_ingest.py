@@ -131,3 +131,11 @@ def test_probe_endpoints(client, user_headers):
     assert body["config"]["interval_s"] > 0 and body["carrier"]["ip"].endswith(".x.x") and body["carrier"]["operator"] == "Jio"
     local = client.get("/api/probe/whoami", headers=h).json()
     assert local["carrier"]["kind"] in ("local", "unknown")
+
+
+def test_forwarded_ip_trusted_only_from_this_pc():
+    from app.services.carrier import client_ip
+    fwd = {"cf-connecting-ip": "49.36.0.10"}
+    assert client_ip(fwd, "127.0.0.1") == "49.36.0.10"          # through the local tunnel
+    assert client_ip(fwd, "192.168.1.40") == "192.168.1.40"     # a phone on the LAN cannot choose its carrier
+    assert client_ip({}, "203.0.113.9") == "203.0.113.9"

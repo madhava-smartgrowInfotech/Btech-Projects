@@ -1,4 +1,4 @@
-"""Rebuild every model from the committed datasets, in order (about 3 minutes on a laptop CPU).
+"""Rebuild every model from the committed datasets, in order (about 6 minutes on a laptop CPU).
 
     python ml/train_all.py
 """

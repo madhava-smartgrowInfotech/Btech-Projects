@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import { CircleCheck, Compass, ExternalLink, Navigation, RefreshCw, SearchX, WifiOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { api, apiError } from "@/lib/api";
+import { bearing, compass, nearestStrong, refreshPack } from "@/lib/probe/spots";
 import { probeStore, type StrongSpotPack } from "@/lib/probe/store";
 import type { ProbeController } from "@/lib/probe/useProbe";
 import { timeAgo } from "@/lib/utils";
@@ -24,22 +25,6 @@ interface Suggestion {
   supporting_readings: number;
   operator: string | null;
 }
-
-const R = 6371008.8;
-const rad = (d: number) => (d * Math.PI) / 180;
-function distance(a: [number, number], b: [number, number]) {
-  const dphi = rad(b[0] - a[0]);
-  const dl = rad(b[1] - a[1]);
-  const h = Math.sin(dphi / 2) ** 2 + Math.cos(rad(a[0])) * Math.cos(rad(b[0])) * Math.sin(dl / 2) ** 2;
-  return 2 * R * Math.asin(Math.sqrt(h));
-}
-function bearing(a: [number, number], b: [number, number]) {
-  const y = Math.sin(rad(b[1] - a[1])) * Math.cos(rad(b[0]));
-  const x = Math.cos(rad(a[0])) * Math.sin(rad(b[0])) - Math.sin(rad(a[0])) * Math.cos(rad(b[0])) * Math.cos(rad(b[1] - a[1]));
-  return ((Math.atan2(y, x) * 180) / Math.PI + 360) % 360;
-}
-const COMPASS = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
-const compass = (b: number) => COMPASS[Math.floor((b + 22.5) / 45) % 8]!;
 
 /** Phone heading from the compass (Chrome on Android); null when unavailable. */
 function useHeading() {
@@ -82,13 +67,8 @@ export function SignalTab({ probe }: { probe: ProbeController }) {
     try {
       const params = { lat: pos[0], lon: pos[1], ...(operator ? { operator } : {}) };
       setOnline((await api.get<Suggestion>("/api/suggest", { params })).data);
-      const stale = !pack || Date.now() - pack.fetched_at > 30 * 60_000 || distance(pack.center, pos) > 1000;
-      if (stale) {
-        const area = (await api.get<Omit<StrongSpotPack, "fetched_at">>("/api/suggest/area", { params: { ...params, radius_m: 2500 } })).data;
-        const next = { ...area, fetched_at: Date.now() };
-        await probeStore.setPack(next);
-        setPack(next);
-      }
+      const next = await refreshPack(pos, operator, pack);
+      if (next !== pack) setPack(next);
     } catch (e) {
       setError(apiError(e));
     } finally {
@@ -103,19 +83,7 @@ export function SignalTab({ probe }: { probe: ProbeController }) {
   }, [pos ? Math.round(pos[0] * 1000) : null, pos ? Math.round(pos[1] * 1000) : null, probe.online]);
 
   // Offline: nearest predicted strong spot from the downloaded pack, or the nearest of this phone's own strong readings.
-  const offline = useMemo(() => {
-    if (!pos) return null;
-    const candidates: { lat: number; lon: number; kind: string }[] = [
-      ...(pack?.spots ?? []).map((s) => ({ lat: s.lat, lon: s.lon, kind: "predicted strong spot" })),
-      ...probe.records.filter((r) => (r.server?.zone_label ?? r.provisional.label) === "Strong").map((r) => ({ lat: r.reading.lat, lon: r.reading.lon, kind: "place where you had strong signal" })),
-    ];
-    let best: (typeof candidates)[number] & { d: number } | null = null;
-    for (const c of candidates) {
-      const d = distance(pos, [c.lat, c.lon]);
-      if (d > 25 && (!best || d < best.d)) best = { ...c, d };
-    }
-    return best;
-  }, [pos, pack, probe.records]);
+  const offline = useMemo(() => (pos ? nearestStrong(pos, pack, probe.records) : null), [pos, pack, probe.records]);
 
   const useOnline = probe.online && online;
   const target = useOnline && online.found && online.lat != null ? { lat: online.lat, lon: online.lon!, d: online.distance_m ?? 0 } : !probe.online && offline ? offline : null;

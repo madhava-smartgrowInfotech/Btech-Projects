@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion } from "motion/react";
-import { CircleCheck, CircleX, Clock, Gauge, MapPin, MonitorSmartphone, Play, Radio, Square, TriangleAlert, Upload, Wifi, WifiOff } from "lucide-react";
+import { ChevronRight, CircleCheck, CircleX, Clock, Gauge, MapPin, MonitorSmartphone, Navigation, Play, Radio, Square, TriangleAlert, Upload, Wifi, WifiOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { bearing, compass, nearestStrong, refreshPack } from "@/lib/probe/spots";
+import { probeStore, type StrongSpotPack } from "@/lib/probe/store";
 import type { ProbeController } from "@/lib/probe/useProbe";
 import { cn, timeAgo } from "@/lib/utils";
 import { ZONE_COLOR, type ZoneLabel } from "@/lib/zones";
@@ -35,7 +37,7 @@ function Meter({ label, confidence, provisional, measuring }: { label: ZoneLabel
   );
 }
 
-function Stat({ icon: Icon, label, value, unit }: { icon: typeof Clock; label: string; value: string | null; unit: string }) {
+function Stat({ icon: Icon, label, value, unit, hint }: { icon: typeof Clock; label: string; value: string | null; unit: string; hint?: string }) {
   return (
     <div className="rounded-xl border bg-card p-3">
       <p className="flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
@@ -44,6 +46,7 @@ function Stat({ icon: Icon, label, value, unit }: { icon: typeof Clock; label: s
       <p className="mt-1 font-mono text-lg font-semibold tabular">
         {value ?? "–"} <span className="text-xs font-normal text-muted-foreground">{value ? unit : ""}</span>
       </p>
+      {hint && <p className="text-[11px] text-muted-foreground">{hint}</p>}
     </div>
   );
 }
@@ -57,7 +60,7 @@ function Chip({ ok, children }: { ok: boolean; children: React.ReactNode }) {
   );
 }
 
-export function LiveTab({ probe }: { probe: ProbeController }) {
+export function LiveTab({ probe, onOpenSignal }: { probe: ProbeController; onOpenSignal: () => void }) {
   const [now, setNow] = useState(Date.now());
   useEffect(() => {
     const t = window.setInterval(() => setNow(Date.now()), 1000);
@@ -70,10 +73,40 @@ export function LiveTab({ probe }: { probe: ProbeController }) {
   const next = probe.nextAt ? Math.max(0, Math.ceil((probe.nextAt - now) / 1000)) : null;
   const acc = probe.position?.coords.accuracy;
   const lastSpeed = probe.records.find((x) => x.reading.dl_mbps != null)?.reading;   // speed is tested every few readings
+  // speed tiles show the last test; say how old it is when it is not from the current reading
+  const speedHint = lastSpeed && lastSpeed !== r ? `tested ${timeAgo(lastSpeed.ts)}` : undefined;
+  const pos: [number, number] | null = probe.position ? [probe.position.coords.latitude, probe.position.coords.longitude] : null;
+  const [pack, setPack] = useState<StrongSpotPack | null>(null);
+  useEffect(() => { void probeStore.getPack().then((p) => setPack(p ?? null)); }, []);
+  // keep strong spots for this area on the phone, so a dead zone can still point somewhere without a connection
+  const cell = pos ? `${pos[0].toFixed(2)},${pos[1].toFixed(2)}` : null;
+  useEffect(() => {
+    if (!pos || !probe.online || !probe.running) return;
+    const operator = probe.settings.operator ?? probe.sync?.operator ?? probe.whoami?.carrier.operator ?? null;
+    refreshPack(pos, operator, pack).then((p) => { if (p && p !== pack) setPack(p); }).catch(() => undefined);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cell, probe.online, probe.running]);
+  const better = useMemo(() => (pos && (label === "Weak" || label === "Dead") ? nearestStrong(pos, pack, probe.records) : null),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [label, pos?.[0], pos?.[1], pack, probe.records]);
 
   return (
     <div className="space-y-5">
       <Meter label={label} confidence={rec?.server?.zone_confidence ?? null} provisional={!!rec && !rec.server} measuring={probe.measuring} />
+
+      {better && pos && (
+        <motion.button type="button" onClick={onOpenSignal} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}
+          className="flex w-full items-center gap-3 rounded-2xl border border-zone-strong/40 bg-zone-strong/10 p-4 text-left">
+          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-zone-strong/20">
+            <Navigation className="h-5 w-5 fill-zone-strong text-zone-strong" style={{ transform: `rotate(${bearing(pos, [better.lat, better.lon]) - 45}deg)` }} aria-hidden />
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="block font-semibold">Better signal {Math.round(better.d)} m {compass(bearing(pos, [better.lat, better.lon]))}</span>
+            <span className="block text-xs text-muted-foreground">Nearest {better.kind}. Tap for directions.</span>
+          </span>
+          <ChevronRight className="h-5 w-5 shrink-0 text-muted-foreground" aria-hidden />
+        </motion.button>
+      )}
 
       <div className="flex flex-wrap justify-center gap-1.5">
         <Chip ok={probe.online}>{probe.online ? <>Online</> : <><WifiOff className="h-3 w-3" /> Offline</>}</Chip>
@@ -99,8 +132,8 @@ export function LiveTab({ probe }: { probe: ProbeController }) {
       <div className="grid grid-cols-2 gap-2.5">
         <Stat icon={Clock} label="Latency" value={r?.latency_ms != null ? String(Math.round(r.latency_ms)) : null} unit="ms" />
         <Stat icon={Wifi} label="Jitter · loss" value={r?.jitter_ms != null ? `${Math.round(r.jitter_ms)} · ${Math.round((r.packet_loss ?? 0) * 100)}%` : null} unit="ms" />
-        <Stat icon={Gauge} label="Download" value={lastSpeed?.dl_mbps != null ? lastSpeed.dl_mbps.toFixed(1) : null} unit="Mbps" />
-        <Stat icon={Upload} label="Upload" value={lastSpeed?.ul_mbps != null ? lastSpeed.ul_mbps.toFixed(1) : null} unit="Mbps" />
+        <Stat icon={Gauge} label="Download" value={lastSpeed?.dl_mbps != null ? lastSpeed.dl_mbps.toFixed(1) : null} unit="Mbps" hint={speedHint} />
+        <Stat icon={Upload} label="Upload" value={lastSpeed?.ul_mbps != null ? lastSpeed.ul_mbps.toFixed(1) : null} unit="Mbps" hint={speedHint} />
       </div>
 
       {rec && (

@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { nextTarget } from "@/components/common/guards";
 import { apiError } from "@/lib/api";
 import { useAuth } from "@/lib/auth";
 import { AuthLayout } from "./AuthLayout";
@@ -26,8 +27,7 @@ export default function Login() {
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
 
-  const next = params.get("next");
-  const target = next && next.startsWith("/") && !next.startsWith("//") ? next : "/app";
+  const target = nextTarget(`?${params.toString()}`);
 
   async function submit(e?: FormEvent, creds?: { email: string; password: string }) {
     e?.preventDefault();

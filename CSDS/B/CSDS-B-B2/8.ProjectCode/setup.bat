@@ -59,7 +59,7 @@ if exist "models\zone_classifier.joblib" if exist "models\radio_estimate.joblib"
   echo   models present
   goto :done
 )
-echo   training models from the datasets (about 3 minutes) ...
+echo   training models from the datasets (about 6 minutes) ...
 "venv\Scripts\python.exe" ml\train_all.py || goto :fail
 
 :done

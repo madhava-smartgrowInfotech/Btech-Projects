@@ -16,6 +16,7 @@ from ..core.security import get_current_user, has_role, require_role
 from ..models import STATUSES, Complaint, ComplaintEvent, Device, Reading, User
 from ..schemas.complaints import AssignIn, ComplaintDetail, ComplaintEventOut, ComplaintOut, ComplaintPage, NoteIn, ReportIn, TransitionIn
 from ..services import complaint_service as cs
+from ..services import opencellid
 from ..services.evidence import build_evidence, summary_text
 from ..services.suggest_service import nearby_operator
 
@@ -175,6 +176,19 @@ def evidence_csv(complaint_id: int, user: User = Depends(get_current_user), db: 
             yield buf.getvalue()
 
     return StreamingResponse(rows(), media_type="text/csv", headers={"Content-Disposition": f'attachment; filename="{c.ref_code}-readings.csv"'})
+
+
+@router.get("/{complaint_id}/towers", summary="Known cell towers near the complaint (OpenCelliD, when a key is configured)")
+def towers(complaint_id: int, user: User = Depends(get_current_user), db: Session = Depends(get_db)) -> dict:
+    c = _get(db, user, complaint_id)
+    if not opencellid.enabled():
+        return {"enabled": False, "towers": []}
+    radio = (c.evidence or {}).get("radio") or {}
+    try:
+        found = opencellid.towers_near(db, c.lat, c.lon, serving=set(radio.get("cell_ids") or []))
+    except opencellid.OpenCellIdError as exc:
+        return {"enabled": True, "towers": [], "error": str(exc)}
+    return {"enabled": True, "towers": found[:15]}
 
 
 @router.get("/meta/engineers", summary="Engineers a complaint can be assigned to")

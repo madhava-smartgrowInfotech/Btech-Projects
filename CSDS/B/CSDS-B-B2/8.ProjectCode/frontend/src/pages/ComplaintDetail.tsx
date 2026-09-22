@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { CircleMarker, MapContainer, Polygon, Polyline, TileLayer, Tooltip } from "react-leaflet";
-import { ArrowLeft, Check, Copy, Download, FileJson, FileSpreadsheet, MapPin, MessageSquarePlus, Navigation, Printer, ShieldCheck, UserRound } from "lucide-react";
+import { ArrowLeft, Check, Copy, Download, FileJson, FileSpreadsheet, MapPin, MessageSquarePlus, Navigation, Printer, RadioTower, ShieldCheck, UserRound } from "lucide-react";
 import { toast } from "sonner";
 import "@/components/map/leaflet-setup";
 import { EvidenceChart } from "@/components/complaints/EvidenceChart";
@@ -23,6 +23,12 @@ import { useAuth } from "@/lib/auth";
 import { NEXT_ACTIONS, STATUS_LABEL, type ComplaintDetail as Detail, type ComplaintStatus } from "@/lib/complaints";
 import { cn, formatDateTime, safeStorage, timeAgo } from "@/lib/utils";
 import { METHOD_LABEL, SOURCE_LABEL, ZONE_COLOR } from "@/lib/zones";
+
+interface TowerInfo {
+  enabled: boolean;
+  error?: string;
+  towers: { radio: string | null; mcc: number; mnc: number; area: number; cell: number; lat: number; lon: number; range_m: number | null; distance_m: number; serving: boolean }[];
+}
 
 function Metric({ label, value, hint }: { label: string; value: string; hint?: string }) {
   return (
@@ -64,6 +70,7 @@ export default function ComplaintDetail() {
   const [copied, setCopied] = useState(false);
 
   const q = useQuery({ queryKey: ["complaint", id], queryFn: async () => (await api.get<Detail>(`/api/complaints/${id}`)).data, refetchInterval: 20_000 });
+  const towers = useQuery({ queryKey: ["towers", id], staleTime: 3_600_000, queryFn: async () => (await api.get<TowerInfo>(`/api/complaints/${id}/towers`)).data });
   const engineers = useQuery({ queryKey: ["engineers"], enabled: isEngineer, queryFn: async () => (await api.get<{ id: number; name: string }[]>("/api/complaints/meta/engineers")).data });
   const onUpdated = (d: Detail) => {
     qc.setQueryData(["complaint", id], d);
@@ -250,6 +257,12 @@ export default function ComplaintDetail() {
                     </CircleMarker>
                   </>
                 )}
+                {towers.data?.towers.map((t) => (
+                  <CircleMarker key={`${t.mcc}-${t.mnc}-${t.area}-${t.cell}`} center={[t.lat, t.lon]} radius={t.serving ? 7 : 5}
+                    pathOptions={{ color: "#fff", weight: 1.5, fillColor: "var(--series-7)", fillOpacity: 1 }}>
+                    <Tooltip>{t.radio ?? "Cell"} tower · cell {t.cell} · {t.distance_m} m away{t.serving ? " · served these readings" : ""}</Tooltip>
+                  </CircleMarker>
+                ))}
               </MapContainer>
             </div>
             <CardContent className="space-y-2 pt-4 text-sm">
@@ -259,6 +272,22 @@ export default function ComplaintDetail() {
                   <Navigation className="mt-0.5 h-4 w-4 shrink-0 text-zone-strong" />
                   {spot.message}
                 </p>
+              )}
+              {towers.data?.enabled && (
+                <div className="border-t pt-2">
+                  <p className="flex items-center gap-2 font-medium"><RadioTower className="h-4 w-4 text-muted-foreground" /> Known towers within 1 km</p>
+                  {towers.data.error ? <p className="mt-1 text-xs text-muted-foreground">{towers.data.error}</p> : towers.data.towers.length ? (
+                    <ul className="mt-1 space-y-0.5 text-xs text-muted-foreground">
+                      {towers.data.towers.slice(0, 5).map((t) => (
+                        <li key={`${t.mcc}-${t.mnc}-${t.area}-${t.cell}`} className="flex justify-between gap-3">
+                          <span>{t.radio ?? "Cell"} · cell {t.cell}{t.serving ? " · served these readings" : ""}</span>
+                          <span className="tabular">{t.distance_m} m</span>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : <p className="mt-1 text-xs text-muted-foreground">No towers listed near this zone.</p>}
+                  <p className="mt-1 text-[11px] text-muted-foreground">Tower positions: OpenCelliD (CC BY-SA 4.0)</p>
+                </div>
               )}
             </CardContent>
           </Card>

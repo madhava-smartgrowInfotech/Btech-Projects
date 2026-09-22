@@ -33,7 +33,7 @@ function KeyReveal({ result, apiUrl, onClose }: { result: DeviceWithKey | null; 
   };
   if (!result) return null;
   const isNode = result.device.kind === "esp32";
-  const snippet = `#define SS_API_URL   "${apiUrl ?? "http://<this-pc-ip>:8202"}"\n#define SS_DEVICE_KEY "${result.api_key}"`;
+  const snippet = `#define API_BASE   "${apiUrl ?? "http://<this-pc-ip>:8202"}"\n#define DEVICE_KEY "${result.api_key}"`;
   return (
     <Dialog open onOpenChange={(o) => !o && onClose()}>
       <DialogContent>

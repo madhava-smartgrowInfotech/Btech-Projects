@@ -1,0 +1,7 @@
+fastapi==0.141.1
+uvicorn[standard]==0.53.0
+pydantic==2.13.5
+SQLAlchemy==2.0.54
+numpy==2.2.6
+scikit-learn==1.7.2
+websockets==16.1.1

@@ -8,11 +8,6 @@ node_modules/
 # Old base papers replaced during the IEEE switch (kept on disk only)
 archived_base_papers/
 
-# Real API keys / secrets (blank .env.example templates are still committed)
-.env
-.env.local
-*.env
-!.env.example
 
 # Office / Windows temporary files
 ~$*

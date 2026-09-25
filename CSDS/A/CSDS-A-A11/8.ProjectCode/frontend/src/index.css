@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    --accent: 229 165 75;
+    --surface: 11 13 16;
+  }
+
+  * {
+    @apply border-white/[0.07];
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: auto;
+  }
+
+  body {
+    @apply bg-ink-950 text-ink-100 font-sans antialiased;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'ss01';
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    @apply bg-amber-400/25 text-amber-50;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply tracking-tighter;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Lenis */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-white/10;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-white/20;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-amber-400/70 ring-offset-2 ring-offset-ink-950;
+  }
+}
+
+@layer components {
+  .panel {
+    @apply rounded-2xl border border-white/[0.07] bg-ink-900/70 backdrop-blur-xl;
+  }
+
+  .panel-inset {
+    @apply rounded-xl border border-white/[0.06] bg-white/[0.02];
+  }
+
+  .hairline {
+    @apply border-white/[0.07];
+  }
+
+  .eyebrow {
+    @apply text-[11px] font-medium uppercase tracking-[0.22em] text-ink-400;
+  }
+
+  .num {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum';
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .noise::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .mask-fade-r {
+    -webkit-mask-image: linear-gradient(to right, black 82%, transparent 100%);
+    mask-image: linear-gradient(to right, black 82%, transparent 100%);
+  }
+
+  .mask-fade-x {
+    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

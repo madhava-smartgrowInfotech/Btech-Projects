@@ -1,0 +1,22 @@
+# Python
+backend/.venv/
+__pycache__/
+*.pyc
+
+# Dataset & runtime artifacts
+backend/data/
+backend/storage/
+backend/models/*.pt
+backend/*.db
+
+# Node / frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+

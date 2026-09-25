@@ -1,8 +1,0 @@
-{
-  "include": ["backend", "ml", "scripts"],
-  "exclude": ["**/node_modules", "venv", "frontend"],
-  "extraPaths": ["backend", "."],
-  "venvPath": ".",
-  "venv": "venv",
-  "pythonVersion": "3.11"
-}

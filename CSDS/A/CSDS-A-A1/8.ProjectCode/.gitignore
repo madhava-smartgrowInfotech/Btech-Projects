@@ -9,8 +9,6 @@ __pycache__/
 node_modules/
 dist/
 
-# Secrets
-.env
 
 # Downloaded pre-trained model weights (re-created by setup.bat; see models/manifest.json)
 models/hf/

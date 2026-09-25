@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-09-22T10:04:19Z",
+  "predatory_detection": {
+    "num_examples": 40,
+    "precision": 1.0,
+    "recall": 0.941,
+    "f1": 0.97,
+    "per_rule": {
+      "restraint_of_trade": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 1,
+        "precision": 1.0,
+        "recall": 0.8
+      },
+      "penalty_clause": {
+        "tp": 5,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "unilateral_termination": {
+        "tp": 6,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "unlimited_liability": {
+        "tp": 5,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "one_sided_arbitration": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 1,
+        "precision": 1.0,
+        "recall": 0.5
+      },
+      "auto_renewal": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "ip_overreach": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "no_refund": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0
+      }
+    }
+  },
+  "cuad_classification": null
+}

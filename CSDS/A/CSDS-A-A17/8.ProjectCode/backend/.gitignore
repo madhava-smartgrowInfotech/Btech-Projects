@@ -1,0 +1,7 @@
+venv/
+__pycache__/
+*.pyc
+cropsight.db
+app/data/uploads/
+app/data/*.csv
+app/data/*.joblib

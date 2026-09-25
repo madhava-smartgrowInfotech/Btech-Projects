@@ -1,0 +1,15 @@
+{
+  "n_districts": 467,
+  "n_clusters": 3,
+  "silhouette_score": 0.5798,
+  "tier_counts": {
+    "low": 278,
+    "medium": 148,
+    "high": 41
+  },
+  "cluster_mean_crime_rate": {
+    "low": 97.76,
+    "medium": 327.92,
+    "high": 720.93
+  }
+}

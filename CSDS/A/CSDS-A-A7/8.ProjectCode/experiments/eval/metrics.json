@@ -1,0 +1,33 @@
+{
+  "n_districts_evaluated": 467,
+  "cluster_quality": {
+    "silhouette_score": 0.5798,
+    "davies_bouldin_score": 0.531
+  },
+  "route_scoring_sanity_check": {
+    "ran": true,
+    "high_risk_route_score": 5.0,
+    "low_risk_route_score": 1.0,
+    "passed": true
+  },
+  "tier_stats": {
+    "high": {
+      "count": 41,
+      "mean": 720.93,
+      "min": 537.67,
+      "max": 1191.58
+    },
+    "low": {
+      "count": 278,
+      "mean": 97.76,
+      "min": 0.0,
+      "max": 212.0
+    },
+    "medium": {
+      "count": 148,
+      "mean": 327.92,
+      "min": 215.5,
+      "max": 522.0
+    }
+  }
+}

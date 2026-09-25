@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", Georgia, serif;
+
+  --color-brand-50: #f1f8ec;
+  --color-brand-100: #dcefd1;
+  --color-brand-200: #b9dfa8;
+  --color-brand-300: #8fc978;
+  --color-brand-400: #67ad4e;
+  --color-brand-500: #4d7c0f;
+  --color-brand-600: #166534;
+  --color-brand-700: #14532d;
+  --color-brand-800: #0f3d22;
+  --color-brand-900: #0b2c19;
+  --color-brand-950: #061a0f;
+
+  --color-sand-50: #fbfaf7;
+  --color-sand-100: #f5f2ea;
+  --color-sand-200: #ece6d8;
+  --color-sand-300: #ded4bd;
+
+  --color-ink-50: #f7f6f4;
+  --color-ink-100: #ece9e3;
+  --color-ink-200: #d6d2c8;
+  --color-ink-300: #b7b1a2;
+  --color-ink-400: #8c8577;
+  --color-ink-500: #6b6459;
+  --color-ink-600: #524c43;
+  --color-ink-700: #403b33;
+  --color-ink-800: #2c2823;
+  --color-ink-900: #1c1a16;
+  --color-ink-950: #100f0c;
+
+  --animate-gradient-shift: gradient-shift 6s linear infinite;
+
+  @keyframes gradient-shift {
+    to {
+      background-position: 200% center;
+    }
+  }
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes marquee-reverse {
+    from {
+      transform: translateX(-50%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  @keyframes float-slow {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-14px);
+    }
+  }
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  background-color: var(--color-sand-50);
+  color: var(--color-ink-900);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-brand-200);
+  color: var(--color-brand-900);
+}
+
+.animate-float-slow {
+  animation: float-slow 7s ease-in-out infinite;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-ink-200);
+  border-radius: 999px;
+}

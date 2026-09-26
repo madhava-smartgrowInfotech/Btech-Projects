@@ -1,0 +1,30 @@
+# Core web app
+streamlit==1.38.0
+
+# YOLO object detection (Ultralytics YOLOv8 implementation)
+ultralytics==8.2.103
+
+# Deep learning backend
+torch==2.4.1
+torchvision==0.19.1
+
+# Computer vision / image processing
+opencv-python-headless==4.10.0.84
+Pillow==10.4.0
+
+# Data handling
+numpy==1.26.4
+pandas==2.2.2
+
+# Visualization
+matplotlib==3.9.2
+plotly==5.24.1
+
+# Metrics / evaluation helpers
+scikit-learn==1.5.2
+
+# Config files
+PyYAML==6.0.2
+
+# Env variable handling (kept for future API-key based extensions)
+python-dotenv==1.0.1

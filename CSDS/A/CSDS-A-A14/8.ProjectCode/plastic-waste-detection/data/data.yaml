@@ -1,0 +1,39 @@
+# ============================================================
+# Dataset configuration for YOLO training
+# ------------------------------------------------------------
+# REQUIRED USER INPUT:
+# This file assumes you will place your own annotated ocean
+# plastic-waste dataset inside data/images/ and data/labels/
+# following the structure below. No dataset is bundled with
+# this project — you must collect / download and annotate one.
+#
+# Recommended public sources to start from (verify licenses):
+#   - TACO (Trash Annotations in Context) dataset
+#   - Plastic Waste in Ocean / Marine Litter datasets on
+#     Roboflow Universe or Kaggle
+#
+# Folder layout expected (relative to this file's "path"):
+#   data/
+#     images/train/*.jpg
+#     images/val/*.jpg
+#     images/test/*.jpg
+#     labels/train/*.txt
+#     labels/val/*.txt
+#     labels/test/*.txt
+#
+# Each label .txt file must have one line per object:
+#   class_id x_center y_center width height
+# All values normalised to [0, 1], matching the image of the
+# same filename (image.jpg -> image.txt).
+# ============================================================
+
+path: .                # dataset root (relative to this data.yaml file)
+train: images/train
+val: images/val
+test: images/test
+
+# Class names. Start with a single "plastic" class; extend this
+# dict if your dataset distinguishes plastic categories
+# (e.g. bottle, bag, net, fishing-gear, styrofoam, misc-plastic).
+names:
+  0: plastic

@@ -1,0 +1,295 @@
+{
+  "periods": [
+    "2025-07",
+    "2025-08",
+    "2025-09",
+    "2025-10",
+    "2025-11",
+    "2025-12"
+  ],
+  "static_hubs": [
+    "Delhi",
+    "Hyderabad-W2",
+    "Mumbai-S",
+    "Bengaluru-SE",
+    "Kolkata-W",
+    "Ahmedabad-SE"
+  ],
+  "timeline": [
+    {
+      "period": "2025-07",
+      "forecast_total": 1409247,
+      "realized_total": 1453765,
+      "forecast_error_pct": 3.06,
+      "hubs": [
+        1,
+        2,
+        31,
+        41,
+        45,
+        53
+      ],
+      "hub_cities": [
+        "Mumbai",
+        "Delhi",
+        "Hyderabad-W2",
+        "Bengaluru-SE",
+        "Kolkata-W",
+        "Ahmedabad-SE"
+      ],
+      "opened": [],
+      "closed": [],
+      "solve_seconds": 4.84,
+      "adaptive": {
+        "total_cost": 45828911.0,
+        "avg_delivery_hours": 9.4,
+        "fulfilment_rate": 1.0,
+        "reliability_sla": 1.0,
+        "overloaded_hubs": 0,
+        "cost_per_order": 31.524
+      },
+      "static": {
+        "total_cost": 46479752.0,
+        "avg_delivery_hours": 10.02,
+        "fulfilment_rate": 0.9529,
+        "reliability_sla": 0.9529,
+        "overloaded_hubs": 3,
+        "cost_per_order": 31.972
+      }
+    },
+    {
+      "period": "2025-08",
+      "forecast_total": 1569092,
+      "realized_total": 1625632,
+      "forecast_error_pct": 3.48,
+      "hubs": [
+        1,
+        2,
+        31,
+        41,
+        45,
+        53
+      ],
+      "hub_cities": [
+        "Mumbai",
+        "Delhi",
+        "Hyderabad-W2",
+        "Bengaluru-SE",
+        "Kolkata-W",
+        "Ahmedabad-SE"
+      ],
+      "opened": [],
+      "closed": [],
+      "solve_seconds": 2.69,
+      "adaptive": {
+        "total_cost": 48647191.0,
+        "avg_delivery_hours": 9.21,
+        "fulfilment_rate": 0.9944,
+        "reliability_sla": 0.9944,
+        "overloaded_hubs": 2,
+        "cost_per_order": 29.925
+      },
+      "static": {
+        "total_cost": 50164846.0,
+        "avg_delivery_hours": 9.96,
+        "fulfilment_rate": 0.8846,
+        "reliability_sla": 0.8846,
+        "overloaded_hubs": 3,
+        "cost_per_order": 30.859
+      }
+    },
+    {
+      "period": "2025-09",
+      "forecast_total": 1430570,
+      "realized_total": 1521247,
+      "forecast_error_pct": 5.96,
+      "hubs": [
+        1,
+        2,
+        31,
+        41,
+        45,
+        53
+      ],
+      "hub_cities": [
+        "Mumbai",
+        "Delhi",
+        "Hyderabad-W2",
+        "Bengaluru-SE",
+        "Kolkata-W",
+        "Ahmedabad-SE"
+      ],
+      "opened": [],
+      "closed": [],
+      "solve_seconds": 3.72,
+      "adaptive": {
+        "total_cost": 46486692.0,
+        "avg_delivery_hours": 9.25,
+        "fulfilment_rate": 0.9904,
+        "reliability_sla": 0.9904,
+        "overloaded_hubs": 1,
+        "cost_per_order": 30.558
+      },
+      "static": {
+        "total_cost": 47752304.0,
+        "avg_delivery_hours": 9.97,
+        "fulfilment_rate": 0.9326,
+        "reliability_sla": 0.9326,
+        "overloaded_hubs": 4,
+        "cost_per_order": 31.39
+      }
+    },
+    {
+      "period": "2025-10",
+      "forecast_total": 2071229,
+      "realized_total": 2383534,
+      "forecast_error_pct": 13.1,
+      "hubs": [
+        1,
+        2,
+        5,
+        31,
+        41,
+        53
+      ],
+      "hub_cities": [
+        "Mumbai",
+        "Delhi",
+        "Kolkata",
+        "Hyderabad-W2",
+        "Bengaluru-SE",
+        "Ahmedabad-SE"
+      ],
+      "opened": [
+        "Kolkata"
+      ],
+      "closed": [
+        "Kolkata-W"
+      ],
+      "solve_seconds": 3.03,
+      "adaptive": {
+        "total_cost": 62155296.0,
+        "avg_delivery_hours": 8.56,
+        "fulfilment_rate": 0.9243,
+        "reliability_sla": 0.9243,
+        "overloaded_hubs": 3,
+        "cost_per_order": 26.077
+      },
+      "static": {
+        "total_cost": 67438222.0,
+        "avg_delivery_hours": 9.94,
+        "fulfilment_rate": 0.6491,
+        "reliability_sla": 0.6491,
+        "overloaded_hubs": 5,
+        "cost_per_order": 28.293
+      }
+    },
+    {
+      "period": "2025-11",
+      "forecast_total": 2145198,
+      "realized_total": 2177565,
+      "forecast_error_pct": 1.49,
+      "hubs": [
+        1,
+        2,
+        5,
+        31,
+        41,
+        53
+      ],
+      "hub_cities": [
+        "Mumbai",
+        "Delhi",
+        "Kolkata",
+        "Hyderabad-W2",
+        "Bengaluru-SE",
+        "Ahmedabad-SE"
+      ],
+      "opened": [],
+      "closed": [],
+      "solve_seconds": 4.93,
+      "adaptive": {
+        "total_cost": 58789345.0,
+        "avg_delivery_hours": 8.66,
+        "fulfilment_rate": 0.9871,
+        "reliability_sla": 0.9871,
+        "overloaded_hubs": 1,
+        "cost_per_order": 26.998
+      },
+      "static": {
+        "total_cost": 63096185.0,
+        "avg_delivery_hours": 10.01,
+        "fulfilment_rate": 0.7075,
+        "reliability_sla": 0.7075,
+        "overloaded_hubs": 5,
+        "cost_per_order": 28.976
+      }
+    },
+    {
+      "period": "2025-12",
+      "forecast_total": 1756241,
+      "realized_total": 1593341,
+      "forecast_error_pct": 10.22,
+      "hubs": [
+        1,
+        2,
+        5,
+        31,
+        41,
+        53
+      ],
+      "hub_cities": [
+        "Mumbai",
+        "Delhi",
+        "Kolkata",
+        "Hyderabad-W2",
+        "Bengaluru-SE",
+        "Ahmedabad-SE"
+      ],
+      "opened": [],
+      "closed": [],
+      "solve_seconds": 3.63,
+      "adaptive": {
+        "total_cost": 46492065.0,
+        "avg_delivery_hours": 8.51,
+        "fulfilment_rate": 1.0,
+        "reliability_sla": 1.0,
+        "overloaded_hubs": 0,
+        "cost_per_order": 29.179
+      },
+      "static": {
+        "total_cost": 49342589.0,
+        "avg_delivery_hours": 9.97,
+        "fulfilment_rate": 0.8953,
+        "reliability_sla": 0.8953,
+        "overloaded_hubs": 4,
+        "cost_per_order": 30.968
+      }
+    }
+  ],
+  "adaptive_avg": {
+    "total_cost": 51399916.6667,
+    "avg_delivery_hours": 8.9317,
+    "fulfilment_rate": 0.9827,
+    "reliability_sla": 0.9827
+  },
+  "static_avg": {
+    "total_cost": 54045649.6667,
+    "avg_delivery_hours": 9.9783,
+    "fulfilment_rate": 0.837,
+    "reliability_sla": 0.837
+  },
+  "hub_changes": 1,
+  "params": {
+    "n_hubs": 6,
+    "capacity_factor": 1.25,
+    "transport_rate": 0.04,
+    "fixed_cost_per_hub": 2500000.0,
+    "time_penalty": 1.5,
+    "truck_speed_kmph": 45.0,
+    "hub_handling_hours": 6.0,
+    "sla_hours": 48.0,
+    "sla_hard": false,
+    "time_limit": 20
+  }
+}

@@ -1,0 +1,91 @@
+region_id,city,state,lat,lon,population,tier,parent,penetration
+R001,Hyderabad,Telangana,17.385,78.487,10.5,1,Hyderabad,0.0614
+R002,Mumbai,Maharashtra,19.076,72.878,21.0,1,Mumbai,0.0615
+R003,Delhi,Delhi,28.614,77.209,32.0,1,Delhi,0.0553
+R004,Bengaluru,Karnataka,12.972,77.594,13.2,1,Bengaluru,0.052
+R005,Chennai,Tamil Nadu,13.083,80.27,11.5,1,Chennai,0.0595
+R006,Kolkata,West Bengal,22.573,88.364,15.0,1,Kolkata,0.0577
+R007,Pune,Maharashtra,18.52,73.857,7.4,1,Pune,0.0529
+R008,Ahmedabad,Gujarat,23.023,72.571,8.6,1,Ahmedabad,0.0483
+R009,Jaipur,Rajasthan,26.912,75.787,4.1,2,Jaipur,0.0408
+R010,Lucknow,Uttar Pradesh,26.847,80.947,3.9,2,Lucknow,0.0353
+R011,Nagpur,Maharashtra,21.146,79.088,3.0,2,Nagpur,0.043
+R012,Visakhapatnam,Andhra Pradesh,17.687,83.219,2.4,2,Visakhapatnam,0.035
+R013,Vijayawada,Andhra Pradesh,16.507,80.648,1.8,2,Vijayawada,0.0337
+R014,Warangal,Telangana,17.978,79.594,0.9,3,Warangal,0.0308
+R015,Indore,Madhya Pradesh,22.72,75.858,3.3,2,Indore,0.034
+R016,Bhopal,Madhya Pradesh,23.259,77.413,2.6,2,Bhopal,0.0343
+R017,Surat,Gujarat,21.17,72.831,7.0,2,Surat,0.0391
+R018,Kochi,Kerala,9.931,76.267,2.3,2,Kochi,0.0423
+R019,Coimbatore,Tamil Nadu,11.017,76.956,2.7,2,Coimbatore,0.0345
+R020,Bhubaneswar,Odisha,20.296,85.825,1.2,2,Bhubaneswar,0.0358
+R021,Patna,Bihar,25.594,85.138,2.5,2,Patna,0.0412
+R022,Guwahati,Assam,26.144,91.736,1.2,3,Guwahati,0.032
+R023,Chandigarh,Chandigarh,30.733,76.779,1.2,2,Chandigarh,0.038
+R024,Ludhiana,Punjab,30.901,75.857,1.9,3,Ludhiana,0.025
+R025,Kanpur,Uttar Pradesh,26.45,80.332,3.4,2,Kanpur,0.0325
+R026,Raipur,Chhattisgarh,21.251,81.63,1.3,3,Raipur,0.0257
+R027,Ranchi,Jharkhand,23.344,85.31,1.4,3,Ranchi,0.0249
+R028,Mysuru,Karnataka,12.296,76.639,1.2,3,Mysuru,0.0295
+R029,Tiruchirappalli,Tamil Nadu,10.79,78.705,1.1,3,Tiruchirappalli,0.0248
+R030,Dehradun,Uttarakhand,30.316,78.032,0.9,3,Dehradun,0.0281
+R031,Hyderabad-W,Telangana,17.514,77.5959,2.64,3,Hyderabad,0.0296
+R032,Hyderabad-W2,Telangana,17.2217,77.9885,2.89,3,Hyderabad,0.0287
+R033,Hyderabad-W3,Telangana,17.4703,77.2119,1.11,3,Hyderabad,0.0255
+R034,Mumbai-S,Maharashtra,18.3245,73.1342,5.57,3,Mumbai,0.0306
+R035,Mumbai-SW,Maharashtra,18.298,71.8322,3.54,3,Mumbai,0.0298
+R036,Mumbai-E,Maharashtra,19.2157,73.9043,1.95,3,Mumbai,0.03
+R037,Delhi-NW,Delhi,29.1107,76.1425,7.41,3,Delhi,0.0249
+R038,Delhi-SE,Delhi,27.7525,78.482,8.28,3,Delhi,0.0248
+R039,Delhi-W,Delhi,28.7217,76.5285,5.55,3,Delhi,0.0316
+R040,Bengaluru-N,Karnataka,13.516,77.7516,2.86,3,Bengaluru,0.0271
+R041,Bengaluru-W,Karnataka,12.9257,76.1501,1.92,3,Bengaluru,0.0263
+R042,Bengaluru-SE,Karnataka,12.3596,78.2594,1.56,3,Bengaluru,0.0279
+R043,Chennai-NE,Tamil Nadu,13.6982,80.9419,1.44,3,Chennai,0.0294
+R044,Chennai-SW,Tamil Nadu,12.6686,79.4983,2.84,3,Chennai,0.0318
+R045,Chennai-W,Tamil Nadu,12.8589,79.5578,2.83,3,Chennai,0.0262
+R046,Kolkata-W,West Bengal,22.8452,87.5414,2.06,3,Kolkata,0.0316
+R047,Kolkata-SW,West Bengal,22.3466,87.821,1.8,3,Kolkata,0.024
+R048,Kolkata-N,West Bengal,23.7924,88.4251,3.19,3,Kolkata,0.0285
+R049,Pune-W,Maharashtra,18.1824,72.6269,1.27,3,Pune,0.0291
+R050,Pune-SW,Maharashtra,18.0203,73.6141,0.76,3,Pune,0.0247
+R051,Pune-SW2,Maharashtra,18.0817,73.0359,1.43,3,Pune,0.025
+R052,Ahmedabad-W,Gujarat,23.123,71.4211,1.64,3,Ahmedabad,0.0273
+R053,Ahmedabad-S,Gujarat,22.352,72.2865,0.74,3,Ahmedabad,0.0319
+R054,Ahmedabad-SE,Gujarat,22.4442,72.8351,1.39,3,Ahmedabad,0.0288
+R055,Jaipur-NW,Rajasthan,27.3039,75.2086,0.38,3,Jaipur,0.0316
+R056,Jaipur-E,Rajasthan,26.773,76.5673,0.87,3,Jaipur,0.0306
+R057,Lucknow-S,Uttar Pradesh,25.7068,80.4684,0.83,3,Lucknow,0.0277
+R058,Lucknow-SE,Uttar Pradesh,25.8081,81.7236,0.44,3,Lucknow,0.0304
+R059,Nagpur-N,Maharashtra,21.6396,79.164,0.67,3,Nagpur,0.0239
+R060,Nagpur-S,Maharashtra,20.5899,79.2336,0.54,3,Nagpur,0.0247
+R061,Visakhapatnam-NE,Andhra Pradesh,18.336,84.1858,0.41,3,Visakhapatnam,0.0308
+R062,Visakhapatnam-SE,Andhra Pradesh,17.1606,83.7312,0.49,3,Visakhapatnam,0.0305
+R063,Vijayawada-SE,Andhra Pradesh,16.1864,81.043,0.19,3,Vijayawada,0.0258
+R064,Vijayawada-N,Andhra Pradesh,17.8153,80.3149,0.4,3,Vijayawada,0.0283
+R065,Warangal-E,Telangana,17.8377,81.0685,0.21,3,Warangal,0.0289
+R066,Indore-W,Madhya Pradesh,22.5401,74.9341,0.44,3,Indore,0.0311
+R067,Indore-NE,Madhya Pradesh,23.8221,76.6854,0.56,3,Indore,0.0289
+R068,Bhopal-E,Madhya Pradesh,23.472,78.1643,0.51,3,Bhopal,0.0273
+R069,Bhopal-NE,Madhya Pradesh,23.8331,78.6739,0.6,3,Bhopal,0.0269
+R070,Surat-W,Gujarat,21.0073,71.933,1.44,3,Surat,0.0274
+R071,Surat-SW,Gujarat,20.2384,72.2478,0.68,3,Surat,0.0293
+R072,Kochi-SE,Kerala,9.5438,76.4968,0.41,3,Kochi,0.0311
+R073,Kochi-SE2,Kerala,9.664,76.7611,0.23,3,Kochi,0.0276
+R074,Coimbatore-SW,Tamil Nadu,10.5209,76.6457,0.72,3,Coimbatore,0.0259
+R075,Coimbatore-SW2,Tamil Nadu,10.3493,76.5761,0.54,3,Coimbatore,0.0258
+R076,Bhubaneswar-N,Odisha,21.6802,86.0379,0.21,3,Bhubaneswar,0.0301
+R077,Bhubaneswar-W,Odisha,20.3963,85.3124,0.21,3,Bhubaneswar,0.0307
+R078,Patna-S,Bihar,24.2193,85.2271,0.49,3,Patna,0.0247
+R079,Patna-S2,Bihar,24.9214,85.2634,0.37,3,Patna,0.0244
+R080,Guwahati-S,Assam,25.2911,91.6119,0.1,3,Guwahati,0.0288
+R081,Chandigarh-NW,Chandigarh,31.3482,75.4021,0.13,3,Chandigarh,0.025
+R082,Chandigarh-S,Chandigarh,30.2447,76.5783,0.26,3,Chandigarh,0.0307
+R083,Ludhiana-E,Punjab,30.6887,77.1013,0.43,3,Ludhiana,0.0264
+R084,Kanpur-W,Uttar Pradesh,26.5104,79.7585,0.89,3,Kanpur,0.025
+R085,Kanpur-E,Uttar Pradesh,26.5051,80.8243,0.65,3,Kanpur,0.0315
+R086,Raipur-SE,Chhattisgarh,20.3797,82.6141,0.31,3,Raipur,0.0252
+R087,Ranchi-SE,Jharkhand,22.7738,86.6938,0.19,3,Ranchi,0.0262
+R088,Mysuru-S,Karnataka,11.6284,76.5742,0.32,3,Mysuru,0.0251
+R089,Tiruchirappalli-NE,Tamil Nadu,11.021,79.1004,0.18,3,Tiruchirappalli,0.0248
+R090,Dehradun-N,Uttarakhand,31.6437,77.9583,0.21,3,Dehradun,0.024

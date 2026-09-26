@@ -1,0 +1,24 @@
+# Attendance Magic — pinned, mutually-compatible versions (tested on Python 3.12)
+# Install:  pip install -r requirements.txt
+#
+# NOTE: mediapipe 0.10.21 is the last release that bundles the FaceMesh
+# "solutions" API; it pins protobuf 4.x and numpy 1.x, so the other packages
+# are pinned to versions that accept those. (Streamlit declares protobuf>=5 but
+# runs fine on 4.25 - pip prints a resolver warning you can ignore.)
+streamlit==1.64.0
+streamlit-js-eval>=0.1.7
+mediapipe==0.10.21
+insightface==2.0
+onnxruntime>=1.19
+onnx==1.16.2
+opencv-python-headless==4.10.0.84
+numpy==1.26.4
+protobuf==4.25.9
+SQLAlchemy>=2.0
+PyJWT>=2.8
+pandas>=2.1
+openpyxl>=3.1
+qrcode[pil]>=7.4
+pytest>=8.0
+# Optional: PostgreSQL / Supabase
+# psycopg2-binary>=2.9

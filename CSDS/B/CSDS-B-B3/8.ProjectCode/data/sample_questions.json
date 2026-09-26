@@ -1,0 +1,163 @@
+{
+  "interview_questions": [
+    {"role": "Machine Learning Engineer", "type": "Technical", "difficulty": "Medium", "question": "What is overfitting and how can you prevent it?", "keywords": "overfitting,regularization,generalization,training,validation,cross-validation,dropout"},
+    {"role": "Machine Learning Engineer", "type": "Technical", "difficulty": "Easy", "question": "Explain supervised learning with an example.", "keywords": "supervised,labeled,input,output,training data,classification,regression"},
+    {"role": "Machine Learning Engineer", "type": "Technical", "difficulty": "Medium", "question": "What is gradient descent?", "keywords": "gradient,descent,optimization,loss,minimize,learning rate,weights"},
+    {"role": "Machine Learning Engineer", "type": "Technical", "difficulty": "Easy", "question": "What is the difference between classification and regression?", "keywords": "classification,regression,discrete,continuous,categories,numeric"},
+    {"role": "Machine Learning Engineer", "type": "Technical", "difficulty": "Medium", "question": "Explain precision and recall.", "keywords": "precision,recall,true positive,false positive,false negative,f1"},
+    {"role": "Machine Learning Engineer", "type": "Coding", "difficulty": "Medium", "question": "How would you implement k-fold cross-validation from scratch?", "keywords": "k-fold,cross-validation,split,fold,train,test,average"},
+    {"role": "Data Scientist", "type": "Technical", "difficulty": "Easy", "question": "What is the difference between a Type I and Type II error?", "keywords": "type i,type ii,false positive,false negative,hypothesis,significance"},
+    {"role": "Data Scientist", "type": "Technical", "difficulty": "Medium", "question": "Explain the concept of p-value.", "keywords": "p-value,significance,null hypothesis,probability,statistical"},
+    {"role": "Data Scientist", "type": "Coding", "difficulty": "Medium", "question": "Write a SQL query to find the second highest salary.", "keywords": "sql,order by,limit,subquery,distinct,salary"},
+    {"role": "Data Scientist", "type": "Behavioral", "difficulty": "Easy", "question": "Describe a time you used data to influence a business decision.", "keywords": "data,decision,impact,insight,stakeholder,result"},
+    {"role": "Data Analyst", "type": "Technical", "difficulty": "Easy", "question": "What is the difference between INNER JOIN and LEFT JOIN?", "keywords": "inner join,left join,matching rows,null,table"},
+    {"role": "Data Analyst", "type": "Technical", "difficulty": "Easy", "question": "How do you handle missing data in a dataset?", "keywords": "missing,null,imputation,drop,mean,median,fillna"},
+    {"role": "AI Engineer", "type": "Technical", "difficulty": "Hard", "question": "Explain how a transformer's self-attention mechanism works.", "keywords": "attention,transformer,query,key,value,softmax,weights"},
+    {"role": "AI Engineer", "type": "Technical", "difficulty": "Medium", "question": "What is the difference between CNN and RNN architectures?", "keywords": "cnn,rnn,convolution,sequence,image,recurrent,spatial"},
+    {"role": "Software Developer", "type": "Technical", "difficulty": "Easy", "question": "Explain the four pillars of OOP.", "keywords": "encapsulation,inheritance,polymorphism,abstraction,class,object"},
+    {"role": "Software Developer", "type": "Coding", "difficulty": "Medium", "question": "How would you detect a cycle in a linked list?", "keywords": "cycle,linked list,fast,slow,pointer,floyd"},
+    {"role": "Software Developer", "type": "HR", "difficulty": "Easy", "question": "Why do you want to work as a software developer?", "keywords": "passion,problem solving,learning,growth,technology"},
+    {"role": "Backend Developer", "type": "Technical", "difficulty": "Medium", "question": "What is the difference between REST and GraphQL?", "keywords": "rest,graphql,endpoint,query,over-fetching,api"},
+    {"role": "Cloud Engineer", "type": "Technical", "difficulty": "Medium", "question": "Explain the difference between horizontal and vertical scaling.", "keywords": "horizontal,vertical,scaling,servers,capacity,load"},
+    {"role": "Cybersecurity Analyst", "type": "Technical", "difficulty": "Medium", "question": "What is a man-in-the-middle attack and how can it be prevented?", "keywords": "man-in-the-middle,encryption,ssl,tls,interception,certificate"},
+    {"role": "General", "type": "HR", "difficulty": "Easy", "question": "Tell me about yourself.", "keywords": "background,skills,experience,goal,strength"},
+    {"role": "General", "type": "HR", "difficulty": "Easy", "question": "What are your greatest strengths and weaknesses?", "keywords": "strength,weakness,improve,self-aware,growth"},
+    {"role": "General", "type": "Behavioral", "difficulty": "Medium", "question": "Describe a challenging project and how you handled it.", "keywords": "challenge,project,teamwork,problem,solution,result"}
+  ],
+  "coding_problems": [
+    {
+      "title": "Sum of Two Numbers",
+      "description": "Write a function `solve(a, b)` that returns the sum of two integers a and b.",
+      "difficulty": "Easy",
+      "concept_tag": "Basics",
+      "starter_code": "def solve(a, b):\n    # write your code here\n    pass\n",
+      "function_name": "solve",
+      "test_cases": [{"input": [2, 3], "expected": 5}, {"input": [-1, 1], "expected": 0}, {"input": [10, 20], "expected": 30}]
+    },
+    {
+      "title": "Reverse a String",
+      "description": "Write a function `solve(s)` that returns the reverse of the input string s.",
+      "difficulty": "Easy",
+      "concept_tag": "Strings",
+      "starter_code": "def solve(s):\n    # write your code here\n    pass\n",
+      "function_name": "solve",
+      "test_cases": [{"input": ["hello"], "expected": "olleh"}, {"input": ["ai"], "expected": "ia"}, {"input": ["a"], "expected": "a"}]
+    },
+    {
+      "title": "Find Maximum in List",
+      "description": "Write a function `solve(nums)` that returns the maximum value in a list of integers without using the built-in max().",
+      "difficulty": "Easy",
+      "concept_tag": "Arrays",
+      "starter_code": "def solve(nums):\n    # write your code here\n    pass\n",
+      "function_name": "solve",
+      "test_cases": [{"input": [[1, 5, 3]], "expected": 5}, {"input": [[-2, -1, -8]], "expected": -1}, {"input": [[7]], "expected": 7}]
+    },
+    {
+      "title": "Check Palindrome",
+      "description": "Write a function `solve(s)` that returns True if the string s is a palindrome, else False.",
+      "difficulty": "Easy",
+      "concept_tag": "Strings",
+      "starter_code": "def solve(s):\n    # write your code here\n    pass\n",
+      "function_name": "solve",
+      "test_cases": [{"input": ["madam"], "expected": true}, {"input": ["hello"], "expected": false}, {"input": ["racecar"], "expected": true}]
+    },
+    {
+      "title": "Fibonacci Number",
+      "description": "Write a function `solve(n)` that returns the nth Fibonacci number (0-indexed, fib(0)=0, fib(1)=1).",
+      "difficulty": "Medium",
+      "concept_tag": "Recursion",
+      "starter_code": "def solve(n):\n    # write your code here\n    pass\n",
+      "function_name": "solve",
+      "test_cases": [{"input": [0], "expected": 0}, {"input": [1], "expected": 1}, {"input": [10], "expected": 55}]
+    },
+    {
+      "title": "Binary Search",
+      "description": "Write a function `solve(nums, target)` that returns the index of target in a sorted list nums using binary search, or -1 if not found.",
+      "difficulty": "Medium",
+      "concept_tag": "Algorithms",
+      "starter_code": "def solve(nums, target):\n    # write your code here\n    pass\n",
+      "function_name": "solve",
+      "test_cases": [{"input": [[1, 3, 5, 7, 9], 7], "expected": 3}, {"input": [[1, 3, 5, 7, 9], 2], "expected": -1}, {"input": [[2, 4, 6], 2], "expected": 0}]
+    },
+    {
+      "title": "Two Sum",
+      "description": "Write a function `solve(nums, target)` that returns indices [i, j] of the two numbers that add up to target.",
+      "difficulty": "Medium",
+      "concept_tag": "Arrays",
+      "starter_code": "def solve(nums, target):\n    # write your code here\n    pass\n",
+      "function_name": "solve",
+      "test_cases": [{"input": [[2, 7, 11, 15], 9], "expected": [0, 1]}, {"input": [[3, 2, 4], 6], "expected": [1, 2]}]
+    },
+    {
+      "title": "Count Vowels",
+      "description": "Write a function `solve(s)` that returns the number of vowels (a,e,i,o,u, case-insensitive) in string s.",
+      "difficulty": "Easy",
+      "concept_tag": "Strings",
+      "starter_code": "def solve(s):\n    # write your code here\n    pass\n",
+      "function_name": "solve",
+      "test_cases": [{"input": ["Hello World"], "expected": 3}, {"input": ["AI"], "expected": 2}, {"input": ["xyz"], "expected": 0}]
+    },
+    {
+      "title": "Factorial",
+      "description": "Write a function `solve(n)` that returns the factorial of n using recursion or iteration.",
+      "difficulty": "Easy",
+      "concept_tag": "Recursion",
+      "starter_code": "def solve(n):\n    # write your code here\n    pass\n",
+      "function_name": "solve",
+      "test_cases": [{"input": [0], "expected": 1}, {"input": [5], "expected": 120}, {"input": [3], "expected": 6}]
+    },
+    {
+      "title": "Merge Sorted Lists",
+      "description": "Write a function `solve(a, b)` that merges two sorted lists a and b into a single sorted list.",
+      "difficulty": "Medium",
+      "concept_tag": "Algorithms",
+      "starter_code": "def solve(a, b):\n    # write your code here\n    pass\n",
+      "function_name": "solve",
+      "test_cases": [{"input": [[1, 3, 5], [2, 4, 6]], "expected": [1, 2, 3, 4, 5, 6]}, {"input": [[], [1]], "expected": [1]}]
+    }
+  ],
+  "assessment_questions": {
+    "Python": [
+      {"question": "What is the output type of `5 / 2` in Python 3?", "options": {"A": "int", "B": "float", "C": "str", "D": "complex"}, "correct": "B"},
+      {"question": "Which keyword is used to define a function in Python?", "options": {"A": "func", "B": "def", "C": "function", "D": "lambda only"}, "correct": "B"},
+      {"question": "What does `len([1,2,3])` return?", "options": {"A": "2", "B": "3", "C": "1", "D": "Error"}, "correct": "B"},
+      {"question": "Which data structure is immutable in Python?", "options": {"A": "list", "B": "dict", "C": "tuple", "D": "set"}, "correct": "C"},
+      {"question": "What does `self` refer to in a Python class method?", "options": {"A": "The class itself", "B": "The current instance", "C": "A global variable", "D": "Nothing"}, "correct": "B"}
+    ],
+    "Data Structures": [
+      {"question": "Which data structure uses LIFO order?", "options": {"A": "Queue", "B": "Stack", "C": "Array", "D": "Graph"}, "correct": "B"},
+      {"question": "What is the time complexity of accessing an element in an array by index?", "options": {"A": "O(1)", "B": "O(n)", "C": "O(log n)", "D": "O(n^2)"}, "correct": "A"},
+      {"question": "Which data structure is used in BFS traversal?", "options": {"A": "Stack", "B": "Queue", "C": "Heap", "D": "Tree"}, "correct": "B"},
+      {"question": "A binary search tree keeps elements in what order?", "options": {"A": "Random", "B": "Sorted", "C": "Reverse insertion", "D": "Hashed"}, "correct": "B"},
+      {"question": "What is the worst-case time complexity of searching in a linked list?", "options": {"A": "O(1)", "B": "O(log n)", "C": "O(n)", "D": "O(n log n)"}, "correct": "C"}
+    ],
+    "Algorithms": [
+      {"question": "What is the time complexity of binary search?", "options": {"A": "O(n)", "B": "O(log n)", "C": "O(n^2)", "D": "O(1)"}, "correct": "B"},
+      {"question": "Which sorting algorithm has the best average time complexity?", "options": {"A": "Bubble Sort", "B": "Selection Sort", "C": "Merge Sort", "D": "Insertion Sort"}, "correct": "C"},
+      {"question": "Recursion typically uses which structure internally?", "options": {"A": "Heap", "B": "Call Stack", "C": "Queue", "D": "Array"}, "correct": "B"},
+      {"question": "Dynamic programming is best suited for problems with:", "options": {"A": "No substructure", "B": "Overlapping subproblems", "C": "Random inputs", "D": "No recursion"}, "correct": "B"},
+      {"question": "What is the time complexity of Bubble Sort in the worst case?", "options": {"A": "O(n)", "B": "O(n log n)", "C": "O(n^2)", "D": "O(1)"}, "correct": "C"}
+    ],
+    "Statistics": [
+      {"question": "What does standard deviation measure?", "options": {"A": "Central tendency", "B": "Spread of data", "C": "Data type", "D": "Sample size"}, "correct": "B"},
+      {"question": "A p-value less than 0.05 typically indicates:", "options": {"A": "No significance", "B": "Statistical significance", "C": "Perfect correlation", "D": "Data error"}, "correct": "B"},
+      {"question": "The mean of a dataset is the:", "options": {"A": "Middle value", "B": "Most frequent value", "C": "Average value", "D": "Range"}, "correct": "C"},
+      {"question": "Which measures the strength of a linear relationship?", "options": {"A": "Mean", "B": "Correlation coefficient", "C": "Mode", "D": "Variance"}, "correct": "B"},
+      {"question": "A normal distribution is:", "options": {"A": "Skewed left", "B": "Skewed right", "C": "Symmetric bell-shaped", "D": "Uniform"}, "correct": "C"}
+    ],
+    "Machine Learning": [
+      {"question": "Overfitting occurs when a model:", "options": {"A": "Performs well on unseen data", "B": "Performs poorly on training data", "C": "Memorizes training data poorly generalizing", "D": "Has too few parameters"}, "correct": "C"},
+      {"question": "Which is an example of supervised learning?", "options": {"A": "K-Means Clustering", "B": "Linear Regression", "C": "PCA", "D": "Apriori Algorithm"}, "correct": "B"},
+      {"question": "What does the confusion matrix help evaluate?", "options": {"A": "Regression error", "B": "Classification performance", "C": "Clustering quality", "D": "Feature scaling"}, "correct": "B"},
+      {"question": "Which technique reduces overfitting?", "options": {"A": "Increasing model complexity", "B": "Regularization", "C": "Removing validation set", "D": "Using more epochs blindly"}, "correct": "B"},
+      {"question": "What is the purpose of a train-test split?", "options": {"A": "To speed up training", "B": "To evaluate generalization", "C": "To reduce dataset size", "D": "To remove noise"}, "correct": "B"}
+    ],
+    "SQL": [
+      {"question": "Which SQL keyword is used to filter rows?", "options": {"A": "SELECT", "B": "WHERE", "C": "ORDER BY", "D": "GROUP BY"}, "correct": "B"},
+      {"question": "Which JOIN returns all rows from both tables, matching where possible?", "options": {"A": "INNER JOIN", "B": "LEFT JOIN", "C": "FULL OUTER JOIN", "D": "CROSS JOIN"}, "correct": "C"},
+      {"question": "Which clause is used to group rows sharing a property?", "options": {"A": "GROUP BY", "B": "ORDER BY", "C": "HAVING", "D": "WHERE"}, "correct": "A"},
+      {"question": "What does the DISTINCT keyword do?", "options": {"A": "Sorts results", "B": "Removes duplicate rows", "C": "Filters null values", "D": "Joins tables"}, "correct": "B"},
+      {"question": "Which command is used to remove a table entirely?", "options": {"A": "DELETE", "B": "REMOVE", "C": "DROP TABLE", "D": "TRUNCATE ROW"}, "correct": "C"}
+    ]
+  }
+}

@@ -1,0 +1,242 @@
+{
+  "model_version": 1,
+  "trained_at": "2026-09-22T07:13:23+00:00",
+  "best_model": "xgboost",
+  "n_features": 47,
+  "train_rows": 32000,
+  "test_rows": 8000,
+  "xgboost_available": true,
+  "models": {
+    "random_forest": {
+      "accuracy": 0.9249,
+      "precision": 0.9269,
+      "recall": 0.9225,
+      "f1": 0.9247,
+      "roc_auc": 0.9776,
+      "false_positive_rate": 0.0727,
+      "confusion_matrix": {
+        "tn": 3709,
+        "fp": 291,
+        "fn": 310,
+        "tp": 3690
+      },
+      "train_seconds": 12.2,
+      "top_features": [
+        {
+          "feature": "is_common_tld",
+          "importance": 0.0885
+        },
+        {
+          "feature": "suspicious_word_count",
+          "importance": 0.0743
+        },
+        {
+          "feature": "path_length",
+          "importance": 0.0641
+        },
+        {
+          "feature": "url_entropy",
+          "importance": 0.0559
+        },
+        {
+          "feature": "num_hyphens",
+          "importance": 0.046
+        },
+        {
+          "feature": "url_length",
+          "importance": 0.044
+        },
+        {
+          "feature": "longest_token_length",
+          "importance": 0.0426
+        },
+        {
+          "feature": "domain_entropy",
+          "importance": 0.0425
+        },
+        {
+          "feature": "tld_length",
+          "importance": 0.0423
+        },
+        {
+          "feature": "letter_ratio",
+          "importance": 0.0393
+        },
+        {
+          "feature": "num_digits",
+          "importance": 0.0365
+        },
+        {
+          "feature": "is_popular_domain",
+          "importance": 0.0336
+        },
+        {
+          "feature": "domain_vowel_ratio",
+          "importance": 0.0328
+        },
+        {
+          "feature": "digit_ratio",
+          "importance": 0.0319
+        },
+        {
+          "feature": "num_slashes",
+          "importance": 0.0314
+        }
+      ]
+    },
+    "logistic_regression": {
+      "accuracy": 0.8281,
+      "precision": 0.8694,
+      "recall": 0.7722,
+      "f1": 0.818,
+      "roc_auc": 0.9218,
+      "false_positive_rate": 0.116,
+      "confusion_matrix": {
+        "tn": 3536,
+        "fp": 464,
+        "fn": 911,
+        "tp": 3089
+      },
+      "train_seconds": 0.2,
+      "top_features": [
+        {
+          "feature": "query_length",
+          "importance": 0.0639
+        },
+        {
+          "feature": "has_executable_extension",
+          "importance": 0.0634
+        },
+        {
+          "feature": "suspicious_word_count",
+          "importance": 0.0615
+        },
+        {
+          "feature": "path_depth",
+          "importance": 0.0575
+        },
+        {
+          "feature": "longest_token_length",
+          "importance": 0.0536
+        },
+        {
+          "feature": "num_hyphens",
+          "importance": 0.0495
+        },
+        {
+          "feature": "num_dots",
+          "importance": 0.043
+        },
+        {
+          "feature": "num_slashes",
+          "importance": 0.0378
+        },
+        {
+          "feature": "url_length",
+          "importance": 0.0368
+        },
+        {
+          "feature": "is_popular_domain",
+          "importance": 0.0365
+        },
+        {
+          "feature": "path_length",
+          "importance": 0.0344
+        },
+        {
+          "feature": "letter_ratio",
+          "importance": 0.029
+        },
+        {
+          "feature": "is_common_tld",
+          "importance": 0.028
+        },
+        {
+          "feature": "num_query_params",
+          "importance": 0.0267
+        },
+        {
+          "feature": "num_special_chars",
+          "importance": 0.0262
+        }
+      ]
+    },
+    "xgboost": {
+      "accuracy": 0.9293,
+      "precision": 0.9353,
+      "recall": 0.9223,
+      "f1": 0.9288,
+      "roc_auc": 0.9809,
+      "false_positive_rate": 0.0638,
+      "confusion_matrix": {
+        "tn": 3745,
+        "fp": 255,
+        "fn": 311,
+        "tp": 3689
+      },
+      "train_seconds": 2.7,
+      "top_features": [
+        {
+          "feature": "is_common_tld",
+          "importance": 0.1947
+        },
+        {
+          "feature": "is_popular_domain",
+          "importance": 0.1648
+        },
+        {
+          "feature": "suspicious_word_count",
+          "importance": 0.1212
+        },
+        {
+          "feature": "brand_outside_domain",
+          "importance": 0.056
+        },
+        {
+          "feature": "has_executable_extension",
+          "importance": 0.0478
+        },
+        {
+          "feature": "is_suspicious_tld",
+          "importance": 0.0384
+        },
+        {
+          "feature": "num_hyphens",
+          "importance": 0.0251
+        },
+        {
+          "feature": "subdomain_has_digit",
+          "importance": 0.0247
+        },
+        {
+          "feature": "domain_hyphen_count",
+          "importance": 0.0212
+        },
+        {
+          "feature": "has_at_symbol",
+          "importance": 0.0202
+        },
+        {
+          "feature": "is_ip_host",
+          "importance": 0.0178
+        },
+        {
+          "feature": "num_dots",
+          "importance": 0.0166
+        },
+        {
+          "feature": "num_underscores",
+          "importance": 0.0162
+        },
+        {
+          "feature": "num_query_params",
+          "importance": 0.0141
+        },
+        {
+          "feature": "path_length",
+          "importance": 0.014
+        }
+      ]
+    }
+  }
+}

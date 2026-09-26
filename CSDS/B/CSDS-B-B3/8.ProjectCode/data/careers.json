@@ -1,0 +1,66 @@
+[
+  {
+    "title": "Machine Learning Engineer",
+    "description": "Designs, builds and deploys machine learning models into production systems.",
+    "required_skills": "Python,Statistics,NumPy,Pandas,Machine Learning,Deep Learning,Algorithms",
+    "avg_salary_lpa": "8-18 LPA",
+    "suggested_certifications": "TensorFlow Developer Certificate,AWS ML Specialty",
+    "interview_topics": "Overfitting,Gradient Descent,Supervised vs Unsupervised,Bias-Variance,Model Evaluation"
+  },
+  {
+    "title": "Data Scientist",
+    "description": "Analyzes complex data to extract insights and build predictive models.",
+    "required_skills": "Python,Statistics,SQL,Pandas,Data Visualization,Machine Learning",
+    "avg_salary_lpa": "7-16 LPA",
+    "suggested_certifications": "Google Data Analytics,Microsoft DA-100",
+    "interview_topics": "Hypothesis Testing,A/B Testing,SQL Joins,Feature Engineering,Statistics"
+  },
+  {
+    "title": "Data Analyst",
+    "description": "Collects, cleans and visualizes data to support business decisions.",
+    "required_skills": "SQL,Pandas,Data Visualization,Statistics,Database",
+    "avg_salary_lpa": "4-9 LPA",
+    "suggested_certifications": "Excel/Power BI Certification,Google Data Analytics",
+    "interview_topics": "SQL Queries,Dashboarding,Data Cleaning,Business Metrics"
+  },
+  {
+    "title": "AI Engineer",
+    "description": "Builds intelligent systems combining ML, deep learning and software engineering.",
+    "required_skills": "Python,Machine Learning,Deep Learning,NLP,Computer Vision,AI Projects",
+    "avg_salary_lpa": "9-20 LPA",
+    "suggested_certifications": "DeepLearning.AI Specialization,NVIDIA DLI",
+    "interview_topics": "Neural Networks,Transformers,CNN vs RNN,Model Deployment"
+  },
+  {
+    "title": "Software Developer",
+    "description": "Designs and builds software applications end to end.",
+    "required_skills": "Python,Java,Data Structures,Algorithms,Git & Version Control,System Design",
+    "avg_salary_lpa": "5-14 LPA",
+    "suggested_certifications": "Oracle Java Certification,AWS Developer Associate",
+    "interview_topics": "Data Structures,OOP Concepts,Algorithms,System Design Basics"
+  },
+  {
+    "title": "Backend Developer",
+    "description": "Builds server-side logic, APIs and database systems.",
+    "required_skills": "Python,SQL,Database,Data Structures,System Design,Web Development",
+    "avg_salary_lpa": "5-13 LPA",
+    "suggested_certifications": "AWS Developer Associate,MongoDB Certification",
+    "interview_topics": "REST APIs,Database Design,Caching,Scalability"
+  },
+  {
+    "title": "Cloud Engineer",
+    "description": "Designs and manages scalable cloud infrastructure.",
+    "required_skills": "Cloud,Database,System Design,Cybersecurity,Python",
+    "avg_salary_lpa": "6-15 LPA",
+    "suggested_certifications": "AWS Solutions Architect,Azure Administrator,GCP Associate",
+    "interview_topics": "Cloud Architecture,Load Balancing,Containers,Security Groups"
+  },
+  {
+    "title": "Cybersecurity Analyst",
+    "description": "Protects systems and networks from digital threats.",
+    "required_skills": "Cybersecurity,Database,Cloud,Algorithms",
+    "avg_salary_lpa": "5-14 LPA",
+    "suggested_certifications": "CompTIA Security+,CEH,CISSP",
+    "interview_topics": "Network Security,Cryptography,OWASP Top 10,Incident Response"
+  }
+]

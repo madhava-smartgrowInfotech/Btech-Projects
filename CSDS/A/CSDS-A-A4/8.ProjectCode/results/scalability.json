@@ -1,0 +1,32 @@
+[
+  {
+    "nodes": 90,
+    "binary_vars": 8190,
+    "matheuristic_seconds": 3.13,
+    "matheuristic_objective": 57715403.0,
+    "exact_seconds": 12.74,
+    "exact_status": "Optimal",
+    "exact_objective": 57715403.0,
+    "matheuristic_gap_pct": 0.0
+  },
+  {
+    "nodes": 180,
+    "binary_vars": 32580,
+    "matheuristic_seconds": 8.31,
+    "matheuristic_objective": 55263535.0,
+    "exact_seconds": 42.94,
+    "exact_status": "Optimal",
+    "exact_objective": 55288549.0,
+    "matheuristic_gap_pct": -0.05
+  },
+  {
+    "nodes": 270,
+    "binary_vars": 73170,
+    "matheuristic_seconds": 30.53,
+    "matheuristic_objective": 55394083.0,
+    "exact_seconds": 67.14,
+    "exact_status": "Not Solved",
+    "exact_objective": 53433310.0,
+    "matheuristic_gap_pct": 3.67
+  }
+]

@@ -13,3 +13,6 @@ archived_base_papers/
 ~$*
 Thumbs.db
 desktop.ini
+
+# Large local archive (A13 is committed as real files instead)
+CSDS/A/CSDS-A-A13.zip

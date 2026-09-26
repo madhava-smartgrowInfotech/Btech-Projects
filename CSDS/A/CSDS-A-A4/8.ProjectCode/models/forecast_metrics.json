@@ -1,0 +1,647 @@
+{
+  "trained_at": "2026-09-22T09:19:08+00:00",
+  "train_rows": 2430,
+  "test_rows": 540,
+  "train_periods": "2023-04 to 2025-06",
+  "test_periods": "2025-07 to 2025-12",
+  "train_seconds": 0.7,
+  "random_forest": {
+    "mae": 1984.0,
+    "rmse": 6618.9,
+    "mape": 7.67,
+    "r2": 0.9766
+  },
+  "baseline_last_value": {
+    "mae": 4151.1,
+    "rmse": 12604.1,
+    "mape": 19.71,
+    "r2": 0.9152
+  },
+  "baseline_moving_avg_3": {
+    "mae": 3785.5,
+    "rmse": 11882.0,
+    "mape": 17.56,
+    "r2": 0.9246
+  },
+  "feature_importance": [
+    {
+      "feature": "roll_mean_3",
+      "importance": 0.3788
+    },
+    {
+      "feature": "lag_1",
+      "importance": 0.2417
+    },
+    {
+      "feature": "population",
+      "importance": 0.1547
+    },
+    {
+      "feature": "lag_2",
+      "importance": 0.0761
+    },
+    {
+      "feature": "lag_12",
+      "importance": 0.0724
+    },
+    {
+      "feature": "lag_3",
+      "importance": 0.0403
+    },
+    {
+      "feature": "roll_mean_6",
+      "importance": 0.0219
+    },
+    {
+      "feature": "lag_6",
+      "importance": 0.002
+    },
+    {
+      "feature": "tier",
+      "importance": 0.002
+    },
+    {
+      "feature": "promo",
+      "importance": 0.0019
+    },
+    {
+      "feature": "festival",
+      "importance": 0.0017
+    },
+    {
+      "feature": "month",
+      "importance": 0.0011
+    },
+    {
+      "feature": "quarter",
+      "importance": 0.0011
+    },
+    {
+      "feature": "avg_order_value",
+      "importance": 0.0011
+    },
+    {
+      "feature": "roll_std_3",
+      "importance": 0.0009
+    },
+    {
+      "feature": "return_rate",
+      "importance": 0.0009
+    },
+    {
+      "feature": "trend_3",
+      "importance": 0.0007
+    },
+    {
+      "feature": "penetration",
+      "importance": 0.0006
+    },
+    {
+      "feature": "promo_prev",
+      "importance": 0.0001
+    }
+  ],
+  "last_period": "2025-12",
+  "last_period_detail": [
+    {
+      "region_id": "R001",
+      "actual": 90287,
+      "predicted": 94041,
+      "error_pct": 4.2
+    },
+    {
+      "region_id": "R002",
+      "actual": 221572,
+      "predicted": 213541,
+      "error_pct": 3.6
+    },
+    {
+      "region_id": "R003",
+      "actual": 198567,
+      "predicted": 203588,
+      "error_pct": 2.5
+    },
+    {
+      "region_id": "R004",
+      "actual": 110218,
+      "predicted": 134144,
+      "error_pct": 21.7
+    },
+    {
+      "region_id": "R005",
+      "actual": 91473,
+      "predicted": 127143,
+      "error_pct": 39.0
+    },
+    {
+      "region_id": "R006",
+      "actual": 152417,
+      "predicted": 178681,
+      "error_pct": 17.2
+    },
+    {
+      "region_id": "R007",
+      "actual": 49748,
+      "predicted": 69578,
+      "error_pct": 39.9
+    },
+    {
+      "region_id": "R008",
+      "actual": 50647,
+      "predicted": 70566,
+      "error_pct": 39.3
+    },
+    {
+      "region_id": "R009",
+      "actual": 31146,
+      "predicted": 38366,
+      "error_pct": 23.2
+    },
+    {
+      "region_id": "R010",
+      "actual": 20536,
+      "predicted": 21942,
+      "error_pct": 6.8
+    },
+    {
+      "region_id": "R011",
+      "actual": 16419,
+      "predicted": 17551,
+      "error_pct": 6.9
+    },
+    {
+      "region_id": "R012",
+      "actual": 12643,
+      "predicted": 14475,
+      "error_pct": 14.5
+    },
+    {
+      "region_id": "R013",
+      "actual": 10160,
+      "predicted": 9327,
+      "error_pct": 8.2
+    },
+    {
+      "region_id": "R014",
+      "actual": 4810,
+      "predicted": 4700,
+      "error_pct": 2.3
+    },
+    {
+      "region_id": "R015",
+      "actual": 15113,
+      "predicted": 17485,
+      "error_pct": 15.7
+    },
+    {
+      "region_id": "R016",
+      "actual": 12417,
+      "predicted": 12020,
+      "error_pct": 3.2
+    },
+    {
+      "region_id": "R017",
+      "actual": 44806,
+      "predicted": 53949,
+      "error_pct": 20.4
+    },
+    {
+      "region_id": "R018",
+      "actual": 14434,
+      "predicted": 15378,
+      "error_pct": 6.5
+    },
+    {
+      "region_id": "R019",
+      "actual": 11112,
+      "predicted": 11398,
+      "error_pct": 2.6
+    },
+    {
+      "region_id": "R020",
+      "actual": 7205,
+      "predicted": 7571,
+      "error_pct": 5.1
+    },
+    {
+      "region_id": "R021",
+      "actual": 16746,
+      "predicted": 17905,
+      "error_pct": 6.9
+    },
+    {
+      "region_id": "R022",
+      "actual": 5762,
+      "predicted": 6244,
+      "error_pct": 8.4
+    },
+    {
+      "region_id": "R023",
+      "actual": 6391,
+      "predicted": 7499,
+      "error_pct": 17.3
+    },
+    {
+      "region_id": "R024",
+      "actual": 6104,
+      "predicted": 7649,
+      "error_pct": 25.3
+    },
+    {
+      "region_id": "R025",
+      "actual": 14334,
+      "predicted": 15688,
+      "error_pct": 9.4
+    },
+    {
+      "region_id": "R026",
+      "actual": 4056,
+      "predicted": 4392,
+      "error_pct": 8.3
+    },
+    {
+      "region_id": "R027",
+      "actual": 4902,
+      "predicted": 5024,
+      "error_pct": 2.5
+    },
+    {
+      "region_id": "R028",
+      "actual": 6219,
+      "predicted": 6379,
+      "error_pct": 2.6
+    },
+    {
+      "region_id": "R029",
+      "actual": 3871,
+      "predicted": 4131,
+      "error_pct": 6.7
+    },
+    {
+      "region_id": "R030",
+      "actual": 3157,
+      "predicted": 3682,
+      "error_pct": 16.6
+    },
+    {
+      "region_id": "R031",
+      "actual": 10229,
+      "predicted": 11621,
+      "error_pct": 13.6
+    },
+    {
+      "region_id": "R032",
+      "actual": 11524,
+      "predicted": 13553,
+      "error_pct": 17.6
+    },
+    {
+      "region_id": "R033",
+      "actual": 5502,
+      "predicted": 5035,
+      "error_pct": 8.5
+    },
+    {
+      "region_id": "R034",
+      "actual": 24169,
+      "predicted": 26082,
+      "error_pct": 7.9
+    },
+    {
+      "region_id": "R035",
+      "actual": 12883,
+      "predicted": 13211,
+      "error_pct": 2.5
+    },
+    {
+      "region_id": "R036",
+      "actual": 8806,
+      "predicted": 9459,
+      "error_pct": 7.4
+    },
+    {
+      "region_id": "R037",
+      "actual": 24195,
+      "predicted": 27993,
+      "error_pct": 15.7
+    },
+    {
+      "region_id": "R038",
+      "actual": 31681,
+      "predicted": 36896,
+      "error_pct": 16.5
+    },
+    {
+      "region_id": "R039",
+      "actual": 34558,
+      "predicted": 31724,
+      "error_pct": 8.2
+    },
+    {
+      "region_id": "R040",
+      "actual": 10474,
+      "predicted": 11120,
+      "error_pct": 6.2
+    },
+    {
+      "region_id": "R041",
+      "actual": 9332,
+      "predicted": 9407,
+      "error_pct": 0.8
+    },
+    {
+      "region_id": "R042",
+      "actual": 5376,
+      "predicted": 5772,
+      "error_pct": 7.4
+    },
+    {
+      "region_id": "R043",
+      "actual": 6425,
+      "predicted": 6316,
+      "error_pct": 1.7
+    },
+    {
+      "region_id": "R044",
+      "actual": 12885,
+      "predicted": 13930,
+      "error_pct": 8.1
+    },
+    {
+      "region_id": "R045",
+      "actual": 13037,
+      "predicted": 13239,
+      "error_pct": 1.5
+    },
+    {
+      "region_id": "R046",
+      "actual": 10768,
+      "predicted": 11130,
+      "error_pct": 3.4
+    },
+    {
+      "region_id": "R047",
+      "actual": 5392,
+      "predicted": 5919,
+      "error_pct": 9.8
+    },
+    {
+      "region_id": "R048",
+      "actual": 19207,
+      "predicted": 17139,
+      "error_pct": 10.8
+    },
+    {
+      "region_id": "R049",
+      "actual": 4401,
+      "predicted": 5371,
+      "error_pct": 22.0
+    },
+    {
+      "region_id": "R050",
+      "actual": 2915,
+      "predicted": 2988,
+      "error_pct": 2.5
+    },
+    {
+      "region_id": "R051",
+      "actual": 5347,
+      "predicted": 5635,
+      "error_pct": 5.4
+    },
+    {
+      "region_id": "R052",
+      "actual": 7992,
+      "predicted": 8010,
+      "error_pct": 0.2
+    },
+    {
+      "region_id": "R053",
+      "actual": 4323,
+      "predicted": 4238,
+      "error_pct": 2.0
+    },
+    {
+      "region_id": "R054",
+      "actual": 6435,
+      "predicted": 6518,
+      "error_pct": 1.3
+    },
+    {
+      "region_id": "R055",
+      "actual": 1910,
+      "predicted": 1805,
+      "error_pct": 5.5
+    },
+    {
+      "region_id": "R056",
+      "actual": 3160,
+      "predicted": 3256,
+      "error_pct": 3.0
+    },
+    {
+      "region_id": "R057",
+      "actual": 3287,
+      "predicted": 3380,
+      "error_pct": 2.8
+    },
+    {
+      "region_id": "R058",
+      "actual": 1949,
+      "predicted": 2095,
+      "error_pct": 7.5
+    },
+    {
+      "region_id": "R059",
+      "actual": 2162,
+      "predicted": 2392,
+      "error_pct": 10.6
+    },
+    {
+      "region_id": "R060",
+      "actual": 1646,
+      "predicted": 1599,
+      "error_pct": 2.9
+    },
+    {
+      "region_id": "R061",
+      "actual": 1843,
+      "predicted": 1791,
+      "error_pct": 2.8
+    },
+    {
+      "region_id": "R062",
+      "actual": 2287,
+      "predicted": 2245,
+      "error_pct": 1.8
+    },
+    {
+      "region_id": "R063",
+      "actual": 677,
+      "predicted": 699,
+      "error_pct": 3.2
+    },
+    {
+      "region_id": "R064",
+      "actual": 1804,
+      "predicted": 1916,
+      "error_pct": 6.2
+    },
+    {
+      "region_id": "R065",
+      "actual": 935,
+      "predicted": 1041,
+      "error_pct": 11.3
+    },
+    {
+      "region_id": "R066",
+      "actual": 2520,
+      "predicted": 2370,
+      "error_pct": 6.0
+    },
+    {
+      "region_id": "R067",
+      "actual": 2662,
+      "predicted": 2965,
+      "error_pct": 11.4
+    },
+    {
+      "region_id": "R068",
+      "actual": 2852,
+      "predicted": 2576,
+      "error_pct": 9.7
+    },
+    {
+      "region_id": "R069",
+      "actual": 2060,
+      "predicted": 2235,
+      "error_pct": 8.5
+    },
+    {
+      "region_id": "R070",
+      "actual": 5719,
+      "predicted": 6507,
+      "error_pct": 13.8
+    },
+    {
+      "region_id": "R071",
+      "actual": 2180,
+      "predicted": 2511,
+      "error_pct": 15.2
+    },
+    {
+      "region_id": "R072",
+      "actual": 1689,
+      "predicted": 1880,
+      "error_pct": 11.3
+    },
+    {
+      "region_id": "R073",
+      "actual": 1120,
+      "predicted": 1155,
+      "error_pct": 3.1
+    },
+    {
+      "region_id": "R074",
+      "actual": 2177,
+      "predicted": 2442,
+      "error_pct": 12.2
+    },
+    {
+      "region_id": "R075",
+      "actual": 2223,
+      "predicted": 2263,
+      "error_pct": 1.8
+    },
+    {
+      "region_id": "R076",
+      "actual": 1120,
+      "predicted": 1188,
+      "error_pct": 6.1
+    },
+    {
+      "region_id": "R077",
+      "actual": 1251,
+      "predicted": 1203,
+      "error_pct": 3.8
+    },
+    {
+      "region_id": "R078",
+      "actual": 1864,
+      "predicted": 1916,
+      "error_pct": 2.8
+    },
+    {
+      "region_id": "R079",
+      "actual": 1504,
+      "predicted": 1470,
+      "error_pct": 2.3
+    },
+    {
+      "region_id": "R080",
+      "actual": 503,
+      "predicted": 548,
+      "error_pct": 8.9
+    },
+    {
+      "region_id": "R081",
+      "actual": 613,
+      "predicted": 624,
+      "error_pct": 1.8
+    },
+    {
+      "region_id": "R082",
+      "actual": 1310,
+      "predicted": 1438,
+      "error_pct": 9.8
+    },
+    {
+      "region_id": "R083",
+      "actual": 1754,
+      "predicted": 1740,
+      "error_pct": 0.8
+    },
+    {
+      "region_id": "R084",
+      "actual": 3856,
+      "predicted": 3912,
+      "error_pct": 1.5
+    },
+    {
+      "region_id": "R085",
+      "actual": 2541,
+      "predicted": 2625,
+      "error_pct": 3.3
+    },
+    {
+      "region_id": "R086",
+      "actual": 1076,
+      "predicted": 1274,
+      "error_pct": 18.4
+    },
+    {
+      "region_id": "R087",
+      "actual": 813,
+      "predicted": 871,
+      "error_pct": 7.1
+    },
+    {
+      "region_id": "R088",
+      "actual": 1343,
+      "predicted": 1439,
+      "error_pct": 7.1
+    },
+    {
+      "region_id": "R089",
+      "actual": 605,
+      "predicted": 660,
+      "error_pct": 9.1
+    },
+    {
+      "region_id": "R090",
+      "actual": 1198,
+      "predicted": 1161,
+      "error_pct": 3.1
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Env / secrets
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Large model weights (comment out if you want to track them,
+# or use Git LFS instead)
+models/*.pt
+!models/.gitkeep
+
+# Dataset (usually too large / private for GitHub)
+data/images/train/*
+data/images/val/*
+data/images/test/*
+data/labels/train/*
+data/labels/val/*
+data/labels/test/*
+!data/images/**/.gitkeep
+!data/labels/**/.gitkeep
+
+# Training run outputs from ultralytics
+runs/
+
+# Generated results / reports / history db
+results/*
+!results/.gitkeep
+reports/*
+!reports/.gitkeep
+detection_history.db
+
+# Temp files
+*.tmp
+*.log

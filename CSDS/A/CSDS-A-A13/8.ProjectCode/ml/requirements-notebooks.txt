@@ -1,0 +1,5 @@
+# Optional: only needed to open or re-run notebooks/engine_benchmark.ipynb
+# venv\Scripts\python -m pip install -r ml\requirements-notebooks.txt
+ipykernel==6.30.1
+nbformat==5.10.4
+nbconvert==7.16.6

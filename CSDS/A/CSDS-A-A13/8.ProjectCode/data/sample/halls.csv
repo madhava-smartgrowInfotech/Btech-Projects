@@ -1,0 +1,15 @@
+hall_code,hall_name,building,floor,rows,columns,blocked_seats,accessible_seats,aisles_after_columns
+MB-G01,Main Hall A,Main Building,Ground,10,12,E6;E7,A1;A12,4;8
+MB-G02,Main Hall B,Main Building,Ground,10,10,,A1;A10,5
+MB-101,Room 101,Main Building,1,8,8,,,4
+MB-102,Room 102,Main Building,1,8,8,C1,,4
+MB-103,Room 103,Main Building,1,8,8,,,4
+MB-104,Room 104,Main Building,1,8,8,,,4
+EW-201,East Wing 201,East Wing,2,6,8,,,4
+EW-202,East Wing 202,East Wing,2,6,8,,,4
+EW-203,East Wing 203,East Wing,2,6,8,F8,,4
+EW-204,East Wing 204,East Wing,2,6,8,,,4
+EW-205,East Wing Lecture Room,East Wing,2,8,10,D5,A1;A2;A10,5
+AX-01,Annex Room 1,Annex,Ground,6,6,,A1,
+AX-02,Annex Room 2,Annex,Ground,6,6,,,
+AX-03,Annex Studio,Annex,Ground,7,8,,,4

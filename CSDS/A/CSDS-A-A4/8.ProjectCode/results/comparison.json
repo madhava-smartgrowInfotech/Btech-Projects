@@ -1,0 +1,4614 @@
+{
+  "params": {
+    "n_hubs": 6,
+    "capacity_factor": 1.25,
+    "transport_rate": 0.04,
+    "fixed_cost_per_hub": 2500000.0,
+    "time_penalty": 1.5,
+    "truck_speed_kmph": 45.0,
+    "hub_handling_hours": 6.0,
+    "sla_hours": 48.0,
+    "sla_hard": false,
+    "time_limit": 20
+  },
+  "realized_total_demand": 2383534,
+  "forecast_total_demand": 2067718,
+  "methods": {
+    "proposed": {
+      "label": "RF forecast + matheuristic (proposed)",
+      "status": "Matheuristic",
+      "seconds": 4.89,
+      "planned_objective": 57696328.0,
+      "planned_cost": 57696328.0,
+      "n_hubs": 6,
+      "hubs": [
+        1,
+        2,
+        5,
+        31,
+        41,
+        53
+      ],
+      "hub_cities": [
+        "Mumbai",
+        "Delhi",
+        "Kolkata",
+        "Hyderabad-W2",
+        "Bengaluru-SE",
+        "Ahmedabad-SE"
+      ],
+      "total_cost": 62157534.0,
+      "fixed_cost": 15750000.0,
+      "transport_cost": 15818196.0,
+      "time_cost": 30589338.0,
+      "cost_per_order": 26.078,
+      "avg_delivery_hours": 8.56,
+      "max_delivery_hours": 37.71,
+      "avg_distance_km": 165.9,
+      "fulfilment_rate": 0.9228,
+      "reliability_sla": 0.9228,
+      "overloaded_hubs": 3,
+      "utilisation": {
+        "1": 1.099,
+        "2": 1.218,
+        "5": 0.804,
+        "31": 0.589,
+        "41": 1.11,
+        "53": 0.712
+      },
+      "assignment": [
+        {
+          "region": "Hyderabad",
+          "region_id": "R001",
+          "hub": "Hyderabad-W2",
+          "demand": 122351,
+          "distance_km": 69.9,
+          "hours": 7.6
+        },
+        {
+          "region": "Mumbai",
+          "region_id": "R002",
+          "hub": "Mumbai",
+          "demand": 309385,
+          "distance_km": 0.0,
+          "hours": 3.0
+        },
+        {
+          "region": "Delhi",
+          "region_id": "R003",
+          "hub": "Delhi",
+          "demand": 321460,
+          "distance_km": 0.0,
+          "hours": 3.0
+        },
+        {
+          "region": "Bengaluru",
+          "region_id": "R004",
+          "hub": "Bengaluru-SE",
+          "demand": 171479,
+          "distance_km": 124.0,
+          "hours": 8.8
+        },
+        {
+          "region": "Chennai",
+          "region_id": "R005",
+          "hub": "Bengaluru-SE",
+          "demand": 165814,
+          "distance_km": 290.6,
+          "hours": 12.5
+        },
+        {
+          "region": "Kolkata",
+          "region_id": "R006",
+          "hub": "Kolkata",
+          "demand": 230594,
+          "distance_km": 0.0,
+          "hours": 3.0
+        },
+        {
+          "region": "Pune",
+          "region_id": "R007",
+          "hub": "Mumbai",
+          "demand": 75126,
+          "distance_km": 150.2,
+          "hours": 9.3
+        },
+        {
+          "region": "Ahmedabad",
+          "region_id": "R008",
+          "hub": "Ahmedabad-SE",
+          "demand": 82107,
+          "distance_km": 87.3,
+          "hours": 7.9
+        },
+        {
+          "region": "Jaipur",
+          "region_id": "R009",
+          "hub": "Ahmedabad-SE",
+          "demand": 48685,
+          "distance_km": 724.2,
+          "hours": 22.1
+        },
+        {
+          "region": "Lucknow",
+          "region_id": "R010",
+          "hub": "Delhi",
+          "demand": 30929,
+          "distance_km": 521.3,
+          "hours": 17.6
+        },
+        {
+          "region": "Nagpur",
+          "region_id": "R011",
+          "hub": "Hyderabad-W2",
+          "demand": 23525,
+          "distance_km": 564.2,
+          "hours": 18.5
+        },
+        {
+          "region": "Visakhapatnam",
+          "region_id": "R012",
+          "hub": "Hyderabad-W2",
+          "demand": 17634,
+          "distance_km": 696.5,
+          "hours": 21.5
+        },
+        {
+          "region": "Vijayawada",
+          "region_id": "R013",
+          "hub": "Hyderabad-W2",
+          "demand": 13805,
+          "distance_km": 367.4,
+          "hours": 14.2
+        },
+        {
+          "region": "Warangal",
+          "region_id": "R014",
+          "hub": "Hyderabad-W2",
+          "demand": 6512,
+          "distance_km": 237.3,
+          "hours": 11.3
+        },
+        {
+          "region": "Indore",
+          "region_id": "R015",
+          "hub": "Ahmedabad-SE",
+          "demand": 26490,
+          "distance_km": 389.8,
+          "hours": 14.7
+        },
+        {
+          "region": "Bhopal",
+          "region_id": "R016",
+          "hub": "Ahmedabad-SE",
+          "demand": 17817,
+          "distance_km": 597.2,
+          "hours": 19.3
+        },
+        {
+          "region": "Surat",
+          "region_id": "R017",
+          "hub": "Ahmedabad-SE",
+          "demand": 61734,
+          "distance_km": 177.1,
+          "hours": 9.9
+        },
+        {
+          "region": "Kochi",
+          "region_id": "R018",
+          "hub": "Bengaluru-SE",
+          "demand": 24366,
+          "distance_km": 433.3,
+          "hours": 15.6
+        },
+        {
+          "region": "Coimbatore",
+          "region_id": "R019",
+          "hub": "Bengaluru-SE",
+          "demand": 14595,
+          "distance_km": 257.5,
+          "hours": 11.7
+        },
+        {
+          "region": "Bhubaneswar",
+          "region_id": "R020",
+          "hub": "Kolkata",
+          "demand": 10743,
+          "distance_km": 456.1,
+          "hours": 16.1
+        },
+        {
+          "region": "Patna",
+          "region_id": "R021",
+          "hub": "Kolkata",
+          "demand": 27356,
+          "distance_km": 586.4,
+          "hours": 19.0
+        },
+        {
+          "region": "Guwahati",
+          "region_id": "R022",
+          "hub": "Kolkata",
+          "demand": 8921,
+          "distance_km": 654.6,
+          "hours": 20.5
+        },
+        {
+          "region": "Chandigarh",
+          "region_id": "R023",
+          "hub": "Delhi",
+          "demand": 9092,
+          "distance_km": 299.1,
+          "hours": 12.6
+        },
+        {
+          "region": "Ludhiana",
+          "region_id": "R024",
+          "hub": "Delhi",
+          "demand": 9541,
+          "distance_km": 357.3,
+          "hours": 13.9
+        },
+        {
+          "region": "Kanpur",
+          "region_id": "R025",
+          "hub": "Delhi",
+          "demand": 18916,
+          "distance_km": 488.5,
+          "hours": 16.9
+        },
+        {
+          "region": "Raipur",
+          "region_id": "R026",
+          "hub": "Hyderabad-W2",
+          "demand": 5958,
+          "distance_km": 736.1,
+          "hours": 22.4
+        },
+        {
+          "region": "Ranchi",
+          "region_id": "R027",
+          "hub": "Kolkata",
+          "demand": 6800,
+          "distance_km": 405.3,
+          "hours": 15.0
+        },
+        {
+          "region": "Mysuru",
+          "region_id": "R028",
+          "hub": "Bengaluru-SE",
+          "demand": 9209,
+          "distance_km": 220.2,
+          "hours": 10.9
+        },
+        {
+          "region": "Tiruchirappalli",
+          "region_id": "R029",
+          "hub": "Bengaluru-SE",
+          "demand": 5801,
+          "distance_km": 226.4,
+          "hours": 11.0
+        },
+        {
+          "region": "Dehradun",
+          "region_id": "R030",
+          "hub": "Delhi",
+          "demand": 5295,
+          "distance_km": 256.7,
+          "hours": 11.7
+        },
+        {
+          "region": "Hyderabad-W",
+          "region_id": "R031",
+          "hub": "Hyderabad-W2",
+          "demand": 13934,
+          "distance_km": 66.1,
+          "hours": 7.5
+        },
+        {
+          "region": "Hyderabad-W2",
+          "region_id": "R032",
+          "hub": "Hyderabad-W2",
+          "demand": 19109,
+          "distance_km": 0.0,
+          "hours": 3.0
+        },
+        {
+          "region": "Hyderabad-W3",
+          "region_id": "R033",
+          "hub": "Hyderabad-W2",
+          "demand": 6901,
+          "distance_km": 108.7,
+          "hours": 8.4
+        },
+        {
+          "region": "Mumbai-S",
+          "region_id": "R034",
+          "hub": "Mumbai",
+          "demand": 36119,
+          "distance_km": 109.8,
+          "hours": 8.4
+        },
+        {
+          "region": "Mumbai-SW",
+          "region_id": "R035",
+          "hub": "Mumbai",
+          "demand": 18351,
+          "distance_km": 175.1,
+          "hours": 9.9
+        },
+        {
+          "region": "Mumbai-E",
+          "region_id": "R036",
+          "hub": "Mumbai",
+          "demand": 12252,
+          "distance_km": 136.2,
+          "hours": 9.0
+        },
+        {
+          "region": "Delhi-NW",
+          "region_id": "R037",
+          "hub": "Delhi",
+          "demand": 34609,
+          "distance_km": 147.0,
+          "hours": 9.3
+        },
+        {
+          "region": "Delhi-SE",
+          "region_id": "R038",
+          "hub": "Delhi",
+          "demand": 45616,
+          "distance_km": 196.6,
+          "hours": 10.4
+        },
+        {
+          "region": "Delhi-W",
+          "region_id": "R039",
+          "hub": "Delhi",
+          "demand": 41442,
+          "distance_km": 84.3,
+          "hours": 7.9
+        },
+        {
+          "region": "Bengaluru-N",
+          "region_id": "R040",
+          "hub": "Bengaluru-SE",
+          "demand": 15018,
+          "distance_km": 174.8,
+          "hours": 9.9
+        },
+        {
+          "region": "Bengaluru-W",
+          "region_id": "R041",
+          "hub": "Bengaluru-SE",
+          "demand": 13301,
+          "distance_km": 296.7,
+          "hours": 12.6
+        },
+        {
+          "region": "Bengaluru-SE",
+          "region_id": "R042",
+          "hub": "Bengaluru-SE",
+          "demand": 8512,
+          "distance_km": 0.0,
+          "hours": 3.0
+        },
+        {
+          "region": "Chennai-NE",
+          "region_id": "R043",
+          "hub": "Hyderabad-W2",
+          "demand": 7864,
+          "distance_km": 629.5,
+          "hours": 20.0
+        },
+        {
+          "region": "Chennai-SW",
+          "region_id": "R044",
+          "hub": "Bengaluru-SE",
+          "demand": 20068,
+          "distance_km": 173.5,
+          "hours": 9.9
+        },
+        {
+          "region": "Chennai-W",
+          "region_id": "R045",
+          "hub": "Bengaluru-SE",
+          "demand": 16866,
+          "distance_km": 189.3,
+          "hours": 10.2
+        },
+        {
+          "region": "Kolkata-W",
+          "region_id": "R046",
+          "hub": "Kolkata",
+          "demand": 14572,
+          "distance_km": 112.1,
+          "hours": 8.5
+        },
+        {
+          "region": "Kolkata-SW",
+          "region_id": "R047",
+          "hub": "Kolkata",
+          "demand": 8762,
+          "distance_km": 76.5,
+          "hours": 7.7
+        },
+        {
+          "region": "Kolkata-N",
+          "region_id": "R048",
+          "hub": "Kolkata",
+          "demand": 23138,
+          "distance_km": 169.7,
+          "hours": 9.8
+        },
+        {
+          "region": "Pune-W",
+          "region_id": "R049",
+          "hub": "Mumbai",
+          "demand": 6382,
+          "distance_km": 128.5,
+          "hours": 8.9
+        },
+        {
+          "region": "Pune-SW",
+          "region_id": "R050",
+          "hub": "Mumbai",
+          "demand": 4092,
+          "distance_km": 175.9,
+          "hours": 9.9
+        },
+        {
+          "region": "Pune-SW2",
+          "region_id": "R051",
+          "hub": "Mumbai",
+          "demand": 7909,
+          "distance_km": 139.8,
+          "hours": 9.1
+        },
+        {
+          "region": "Ahmedabad-W",
+          "region_id": "R052",
+          "hub": "Ahmedabad-SE",
+          "demand": 10805,
+          "distance_km": 204.3,
+          "hours": 10.5
+        },
+        {
+          "region": "Ahmedabad-S",
+          "region_id": "R053",
+          "hub": "Ahmedabad-SE",
+          "demand": 5591,
+          "distance_km": 71.7,
+          "hours": 7.6
+        },
+        {
+          "region": "Ahmedabad-SE",
+          "region_id": "R054",
+          "hub": "Ahmedabad-SE",
+          "demand": 9673,
+          "distance_km": 0.0,
+          "hours": 3.0
+        },
+        {
+          "region": "Jaipur-NW",
+          "region_id": "R055",
+          "hub": "Ahmedabad-SE",
+          "demand": 2828,
+          "distance_km": 738.7,
+          "hours": 22.4
+        },
+        {
+          "region": "Jaipur-E",
+          "region_id": "R056",
+          "hub": "Ahmedabad-SE",
+          "demand": 4838,
+          "distance_km": 764.4,
+          "hours": 23.0
+        },
+        {
+          "region": "Lucknow-S",
+          "region_id": "R057",
+          "hub": "Ahmedabad-SE",
+          "demand": 5204,
+          "distance_km": 1069.3,
+          "hours": 29.8
+        },
+        {
+          "region": "Lucknow-SE",
+          "region_id": "R058",
+          "hub": "Kolkata",
+          "demand": 3083,
+          "distance_km": 954.3,
+          "hours": 27.2
+        },
+        {
+          "region": "Nagpur-N",
+          "region_id": "R059",
+          "hub": "Hyderabad-W2",
+          "demand": 3403,
+          "distance_km": 633.1,
+          "hours": 20.1
+        },
+        {
+          "region": "Nagpur-S",
+          "region_id": "R060",
+          "hub": "Hyderabad-W2",
+          "demand": 2129,
+          "distance_km": 496.0,
+          "hours": 17.0
+        },
+        {
+          "region": "Visakhapatnam-NE",
+          "region_id": "R061",
+          "hub": "Kolkata",
+          "demand": 2560,
+          "distance_km": 801.7,
+          "hours": 23.8
+        },
+        {
+          "region": "Visakhapatnam-SE",
+          "region_id": "R062",
+          "hub": "Hyderabad-W2",
+          "demand": 3267,
+          "distance_km": 762.6,
+          "hours": 22.9
+        },
+        {
+          "region": "Vijayawada-SE",
+          "region_id": "R063",
+          "hub": "Hyderabad-W2",
+          "demand": 1052,
+          "distance_km": 431.3,
+          "hours": 15.6
+        },
+        {
+          "region": "Vijayawada-N",
+          "region_id": "R064",
+          "hub": "Hyderabad-W2",
+          "demand": 2773,
+          "distance_km": 319.2,
+          "hours": 13.1
+        },
+        {
+          "region": "Warangal-E",
+          "region_id": "R065",
+          "hub": "Hyderabad-W2",
+          "demand": 1410,
+          "distance_km": 417.1,
+          "hours": 15.3
+        },
+        {
+          "region": "Indore-W",
+          "region_id": "R066",
+          "hub": "Ahmedabad-SE",
+          "demand": 3157,
+          "distance_km": 269.9,
+          "hours": 12.0
+        },
+        {
+          "region": "Indore-NE",
+          "region_id": "R067",
+          "hub": "Ahmedabad-SE",
+          "demand": 4489,
+          "distance_km": 528.1,
+          "hours": 17.7
+        },
+        {
+          "region": "Bhopal-E",
+          "region_id": "R068",
+          "hub": "Ahmedabad-SE",
+          "demand": 2946,
+          "distance_km": 696.8,
+          "hours": 21.5
+        },
+        {
+          "region": "Bhopal-NE",
+          "region_id": "R069",
+          "hub": "Ahmedabad-SE",
+          "demand": 2973,
+          "distance_km": 770.8,
+          "hours": 23.1
+        },
+        {
+          "region": "Surat-W",
+          "region_id": "R070",
+          "hub": "Ahmedabad-SE",
+          "demand": 9666,
+          "distance_km": 231.2,
+          "hours": 11.1
+        },
+        {
+          "region": "Surat-SW",
+          "region_id": "R071",
+          "hub": "Mumbai",
+          "demand": 3661,
+          "distance_km": 181.4,
+          "hours": 10.0
+        },
+        {
+          "region": "Kochi-SE",
+          "region_id": "R072",
+          "hub": "Bengaluru-SE",
+          "demand": 2955,
+          "distance_km": 459.4,
+          "hours": 16.2
+        },
+        {
+          "region": "Kochi-SE2",
+          "region_id": "R073",
+          "hub": "Bengaluru-SE",
+          "demand": 1504,
+          "distance_km": 426.8,
+          "hours": 15.5
+        },
+        {
+          "region": "Coimbatore-SW",
+          "region_id": "R074",
+          "hub": "Bengaluru-SE",
+          "demand": 3583,
+          "distance_km": 337.1,
+          "hours": 13.5
+        },
+        {
+          "region": "Coimbatore-SW2",
+          "region_id": "R075",
+          "hub": "Bengaluru-SE",
+          "demand": 3442,
+          "distance_km": 361.5,
+          "hours": 14.0
+        },
+        {
+          "region": "Bhubaneswar-N",
+          "region_id": "R076",
+          "hub": "Kolkata",
+          "demand": 1523,
+          "distance_km": 324.2,
+          "hours": 13.2
+        },
+        {
+          "region": "Bhubaneswar-W",
+          "region_id": "R077",
+          "hub": "Kolkata",
+          "demand": 1422,
+          "distance_km": 497.3,
+          "hours": 17.1
+        },
+        {
+          "region": "Patna-S",
+          "region_id": "R078",
+          "hub": "Kolkata",
+          "demand": 3011,
+          "distance_km": 460.9,
+          "hours": 16.2
+        },
+        {
+          "region": "Patna-S2",
+          "region_id": "R079",
+          "hub": "Kolkata",
+          "demand": 2253,
+          "distance_km": 512.0,
+          "hours": 17.4
+        },
+        {
+          "region": "Guwahati-S",
+          "region_id": "R080",
+          "hub": "Kolkata",
+          "demand": 650,
+          "distance_km": 559.4,
+          "hours": 18.4
+        },
+        {
+          "region": "Chandigarh-NW",
+          "region_id": "R081",
+          "hub": "Ahmedabad-SE",
+          "demand": 873,
+          "distance_km": 1277.7,
+          "hours": 34.4
+        },
+        {
+          "region": "Chandigarh-S",
+          "region_id": "R082",
+          "hub": "Delhi",
+          "demand": 1850,
+          "distance_km": 239.2,
+          "hours": 11.3
+        },
+        {
+          "region": "Ludhiana-E",
+          "region_id": "R083",
+          "hub": "Delhi",
+          "demand": 2594,
+          "distance_km": 288.7,
+          "hours": 12.4
+        },
+        {
+          "region": "Kanpur-W",
+          "region_id": "R084",
+          "hub": "Ahmedabad-SE",
+          "demand": 5513,
+          "distance_km": 1042.0,
+          "hours": 29.2
+        },
+        {
+          "region": "Kanpur-E",
+          "region_id": "R085",
+          "hub": "Delhi",
+          "demand": 3506,
+          "distance_km": 533.2,
+          "hours": 17.8
+        },
+        {
+          "region": "Raipur-SE",
+          "region_id": "R086",
+          "hub": "Hyderabad-W2",
+          "demand": 1459,
+          "distance_km": 750.3,
+          "hours": 22.7
+        },
+        {
+          "region": "Ranchi-SE",
+          "region_id": "R087",
+          "hub": "Kolkata",
+          "demand": 1133,
+          "distance_km": 216.0,
+          "hours": 10.8
+        },
+        {
+          "region": "Mysuru-S",
+          "region_id": "R088",
+          "hub": "Bengaluru-SE",
+          "demand": 1595,
+          "distance_km": 250.6,
+          "hours": 11.6
+        },
+        {
+          "region": "Tiruchirappalli-NE",
+          "region_id": "R089",
+          "hub": "Hyderabad-W2",
+          "demand": 829,
+          "distance_km": 874.8,
+          "hours": 25.4
+        },
+        {
+          "region": "Dehradun-N",
+          "region_id": "R090",
+          "hub": "Ahmedabad-SE",
+          "demand": 1474,
+          "distance_km": 1426.8,
+          "hours": 37.7
+        }
+      ],
+      "cost_vs_proposed_pct": 0.0
+    },
+    "exact_mip": {
+      "label": "RF forecast + exact MIP (CBC, time-limited)",
+      "status": "Optimal",
+      "seconds": 7.99,
+      "planned_objective": 57696328.0,
+      "planned_cost": 57696328.0,
+      "n_hubs": 6,
+      "hubs": [
+        1,
+        2,
+        5,
+        31,
+        41,
+        53
+      ],
+      "hub_cities": [
+        "Mumbai",
+        "Delhi",
+        "Kolkata",
+        "Hyderabad-W2",
+        "Bengaluru-SE",
+        "Ahmedabad-SE"
+      ],
+      "total_cost": 62157534.0,
+      "fixed_cost": 15750000.0,
+      "transport_cost": 15818196.0,
+      "time_cost": 30589338.0,
+      "cost_per_order": 26.078,
+      "avg_delivery_hours": 8.56,
+      "max_delivery_hours": 37.71,
+      "avg_distance_km": 165.9,
+      "fulfilment_rate": 0.9228,
+      "reliability_sla": 0.9228,
+      "overloaded_hubs": 3,
+      "utilisation": {
+        "1": 1.099,
+        "2": 1.218,
+        "5": 0.804,
+        "31": 0.589,
+        "41": 1.11,
+        "53": 0.712
+      },
+      "assignment": [
+        {
+          "region": "Hyderabad",
+          "region_id": "R001",
+          "hub": "Hyderabad-W2",
+          "demand": 122351,
+          "distance_km": 69.9,
+          "hours": 7.6
+        },
+        {
+          "region": "Mumbai",
+          "region_id": "R002",
+          "hub": "Mumbai",
+          "demand": 309385,
+          "distance_km": 0.0,
+          "hours": 3.0
+        },
+        {
+          "region": "Delhi",
+          "region_id": "R003",
+          "hub": "Delhi",
+          "demand": 321460,
+          "distance_km": 0.0,
+          "hours": 3.0
+        },
+        {
+          "region": "Bengaluru",
+          "region_id": "R004",
+          "hub": "Bengaluru-SE",
+          "demand": 171479,
+          "distance_km": 124.0,
+          "hours": 8.8
+        },
+        {
+          "region": "Chennai",
+          "region_id": "R005",
+          "hub": "Bengaluru-SE",
+          "demand": 165814,
+          "distance_km": 290.6,
+          "hours": 12.5
+        },
+        {
+          "region": "Kolkata",
+          "region_id": "R006",
+          "hub": "Kolkata",
+          "demand": 230594,
+          "distance_km": 0.0,
+          "hours": 3.0
+        },
+        {
+          "region": "Pune",
+          "region_id": "R007",
+          "hub": "Mumbai",
+          "demand": 75126,
+          "distance_km": 150.2,
+          "hours": 9.3
+        },
+        {
+          "region": "Ahmedabad",
+          "region_id": "R008",
+          "hub": "Ahmedabad-SE",
+          "demand": 82107,
+          "distance_km": 87.3,
+          "hours": 7.9
+        },
+        {
+          "region": "Jaipur",
+          "region_id": "R009",
+          "hub": "Ahmedabad-SE",
+          "demand": 48685,
+          "distance_km": 724.2,
+          "hours": 22.1
+        },
+        {
+          "region": "Lucknow",
+          "region_id": "R010",
+          "hub": "Delhi",
+          "demand": 30929,
+          "distance_km": 521.3,
+          "hours": 17.6
+        },
+        {
+          "region": "Nagpur",
+          "region_id": "R011",
+          "hub": "Hyderabad-W2",
+          "demand": 23525,
+          "distance_km": 564.2,
+          "hours": 18.5
+        },
+        {
+          "region": "Visakhapatnam",
+          "region_id": "R012",
+          "hub": "Hyderabad-W2",
+          "demand": 17634,
+          "distance_km": 696.5,
+          "hours": 21.5
+        },
+        {
+          "region": "Vijayawada",
+          "region_id": "R013",
+          "hub": "Hyderabad-W2",
+          "demand": 13805,
+          "distance_km": 367.4,
+          "hours": 14.2
+        },
+        {
+          "region": "Warangal",
+          "region_id": "R014",
+          "hub": "Hyderabad-W2",
+          "demand": 6512,
+          "distance_km": 237.3,
+          "hours": 11.3
+        },
+        {
+          "region": "Indore",
+          "region_id": "R015",
+          "hub": "Ahmedabad-SE",
+          "demand": 26490,
+          "distance_km": 389.8,
+          "hours": 14.7
+        },
+        {
+          "region": "Bhopal",
+          "region_id": "R016",
+          "hub": "Ahmedabad-SE",
+          "demand": 17817,
+          "distance_km": 597.2,
+          "hours": 19.3
+        },
+        {
+          "region": "Surat",
+          "region_id": "R017",
+          "hub": "Ahmedabad-SE",
+          "demand": 61734,
+          "distance_km": 177.1,
+          "hours": 9.9
+        },
+        {
+          "region": "Kochi",
+          "region_id": "R018",
+          "hub": "Bengaluru-SE",
+          "demand": 24366,
+          "distance_km": 433.3,
+          "hours": 15.6
+        },
+        {
+          "region": "Coimbatore",
+          "region_id": "R019",
+          "hub": "Bengaluru-SE",
+          "demand": 14595,
+          "distance_km": 257.5,
+          "hours": 11.7
+        },
+        {
+          "region": "Bhubaneswar",
+          "region_id": "R020",
+          "hub": "Kolkata",
+          "demand": 10743,
+          "distance_km": 456.1,
+          "hours": 16.1
+        },
+        {
+          "region": "Patna",
+          "region_id": "R021",
+          "hub": "Kolkata",
+          "demand": 27356,
+          "distance_km": 586.4,
+          "hours": 19.0
+        },
+        {
+          "region": "Guwahati",
+          "region_id": "R022",
+          "hub": "Kolkata",
+          "demand": 8921,
+          "distance_km": 654.6,
+          "hours": 20.5
+        },
+        {
+          "region": "Chandigarh",
+          "region_id": "R023",
+          "hub": "Delhi",
+          "demand": 9092,
+          "distance_km": 299.1,
+          "hours": 12.6
+        },
+        {
+          "region": "Ludhiana",
+          "region_id": "R024",
+          "hub": "Delhi",
+          "demand": 9541,
+          "distance_km": 357.3,
+          "hours": 13.9
+        },
+        {
+          "region": "Kanpur",
+          "region_id": "R025",
+          "hub": "Delhi",
+          "demand": 18916,
+          "distance_km": 488.5,
+          "hours": 16.9
+        },
+        {
+          "region": "Raipur",
+          "region_id": "R026",
+          "hub": "Hyderabad-W2",
+          "demand": 5958,
+          "distance_km": 736.1,
+          "hours": 22.4
+        },
+        {
+          "region": "Ranchi",
+          "region_id": "R027",
+          "hub": "Kolkata",
+          "demand": 6800,
+          "distance_km": 405.3,
+          "hours": 15.0
+        },
+        {
+          "region": "Mysuru",
+          "region_id": "R028",
+          "hub": "Bengaluru-SE",
+          "demand": 9209,
+          "distance_km": 220.2,
+          "hours": 10.9
+        },
+        {
+          "region": "Tiruchirappalli",
+          "region_id": "R029",
+          "hub": "Bengaluru-SE",
+          "demand": 5801,
+          "distance_km": 226.4,
+          "hours": 11.0
+        },
+        {
+          "region": "Dehradun",
+          "region_id": "R030",
+          "hub": "Delhi",
+          "demand": 5295,
+          "distance_km": 256.7,
+          "hours": 11.7
+        },
+        {
+          "region": "Hyderabad-W",
+          "region_id": "R031",
+          "hub": "Hyderabad-W2",
+          "demand": 13934,
+          "distance_km": 66.1,
+          "hours": 7.5
+        },
+        {
+          "region": "Hyderabad-W2",
+          "region_id": "R032",
+          "hub": "Hyderabad-W2",
+          "demand": 19109,
+          "distance_km": 0.0,
+          "hours": 3.0
+        },
+        {
+          "region": "Hyderabad-W3",
+          "region_id": "R033",
+          "hub": "Hyderabad-W2",
+          "demand": 6901,
+          "distance_km": 108.7,
+          "hours": 8.4
+        },
+        {
+          "region": "Mumbai-S",
+          "region_id": "R034",
+          "hub": "Mumbai",
+          "demand": 36119,
+          "distance_km": 109.8,
+          "hours": 8.4
+        },
+        {
+          "region": "Mumbai-SW",
+          "region_id": "R035",
+          "hub": "Mumbai",
+          "demand": 18351,
+          "distance_km": 175.1,
+          "hours": 9.9
+        },
+        {
+          "region": "Mumbai-E",
+          "region_id": "R036",
+          "hub": "Mumbai",
+          "demand": 12252,
+          "distance_km": 136.2,
+          "hours": 9.0
+        },
+        {
+          "region": "Delhi-NW",
+          "region_id": "R037",
+          "hub": "Delhi",
+          "demand": 34609,
+          "distance_km": 147.0,
+          "hours": 9.3
+        },
+        {
+          "region": "Delhi-SE",
+          "region_id": "R038",
+          "hub": "Delhi",
+          "demand": 45616,
+          "distance_km": 196.6,
+          "hours": 10.4
+        },
+        {
+          "region": "Delhi-W",
+          "region_id": "R039",
+          "hub": "Delhi",
+          "demand": 41442,
+          "distance_km": 84.3,
+          "hours": 7.9
+        },
+        {
+          "region": "Bengaluru-N",
+          "region_id": "R040",
+          "hub": "Bengaluru-SE",
+          "demand": 15018,
+          "distance_km": 174.8,
+          "hours": 9.9
+        },
+        {
+          "region": "Bengaluru-W",
+          "region_id": "R041",
+          "hub": "Bengaluru-SE",
+          "demand": 13301,
+          "distance_km": 296.7,
+          "hours": 12.6
+        },
+        {
+          "region": "Bengaluru-SE",
+          "region_id": "R042",
+          "hub": "Bengaluru-SE",
+          "demand": 8512,
+          "distance_km": 0.0,
+          "hours": 3.0
+        },
+        {
+          "region": "Chennai-NE",
+          "region_id": "R043",
+          "hub": "Hyderabad-W2",
+          "demand": 7864,
+          "distance_km": 629.5,
+          "hours": 20.0
+        },
+        {
+          "region": "Chennai-SW",
+          "region_id": "R044",
+          "hub": "Bengaluru-SE",
+          "demand": 20068,
+          "distance_km": 173.5,
+          "hours": 9.9
+        },
+        {
+          "region": "Chennai-W",
+          "region_id": "R045",
+          "hub": "Bengaluru-SE",
+          "demand": 16866,
+          "distance_km": 189.3,
+          "hours": 10.2
+        },
+        {
+          "region": "Kolkata-W",
+          "region_id": "R046",
+          "hub": "Kolkata",
+          "demand": 14572,
+          "distance_km": 112.1,
+          "hours": 8.5
+        },
+        {
+          "region": "Kolkata-SW",
+          "region_id": "R047",
+          "hub": "Kolkata",
+          "demand": 8762,
+          "distance_km": 76.5,
+          "hours": 7.7
+        },
+        {
+          "region": "Kolkata-N",
+          "region_id": "R048",
+          "hub": "Kolkata",
+          "demand": 23138,
+          "distance_km": 169.7,
+          "hours": 9.8
+        },
+        {
+          "region": "Pune-W",
+          "region_id": "R049",
+          "hub": "Mumbai",
+          "demand": 6382,
+          "distance_km": 128.5,
+          "hours": 8.9
+        },
+        {
+          "region": "Pune-SW",
+          "region_id": "R050",
+          "hub": "Mumbai",
+          "demand": 4092,
+          "distance_km": 175.9,
+          "hours": 9.9
+        },
+        {
+          "region": "Pune-SW2",
+          "region_id": "R051",
+          "hub": "Mumbai",
+          "demand": 7909,
+          "distance_km": 139.8,
+          "hours": 9.1
+        },
+        {
+          "region": "Ahmedabad-W",
+          "region_id": "R052",
+          "hub": "Ahmedabad-SE",
+          "demand": 10805,
+          "distance_km": 204.3,
+          "hours": 10.5
+        },
+        {
+          "region": "Ahmedabad-S",
+          "region_id": "R053",
+          "hub": "Ahmedabad-SE",
+          "demand": 5591,
+          "distance_km": 71.7,
+          "hours": 7.6
+        },
+        {
+          "region": "Ahmedabad-SE",
+          "region_id": "R054",
+          "hub": "Ahmedabad-SE",
+          "demand": 9673,
+          "distance_km": 0.0,
+          "hours": 3.0
+        },
+        {
+          "region": "Jaipur-NW",
+          "region_id": "R055",
+          "hub": "Ahmedabad-SE",
+          "demand": 2828,
+          "distance_km": 738.7,
+          "hours": 22.4
+        },
+        {
+          "region": "Jaipur-E",
+          "region_id": "R056",
+          "hub": "Ahmedabad-SE",
+          "demand": 4838,
+          "distance_km": 764.4,
+          "hours": 23.0
+        },
+        {
+          "region": "Lucknow-S",
+          "region_id": "R057",
+          "hub": "Ahmedabad-SE",
+          "demand": 5204,
+          "distance_km": 1069.3,
+          "hours": 29.8
+        },
+        {
+          "region": "Lucknow-SE",
+          "region_id": "R058",
+          "hub": "Kolkata",
+          "demand": 3083,
+          "distance_km": 954.3,
+          "hours": 27.2
+        },
+        {
+          "region": "Nagpur-N",
+          "region_id": "R059",
+          "hub": "Hyderabad-W2",
+          "demand": 3403,
+          "distance_km": 633.1,
+          "hours": 20.1
+        },
+        {
+          "region": "Nagpur-S",
+          "region_id": "R060",
+          "hub": "Hyderabad-W2",
+          "demand": 2129,
+          "distance_km": 496.0,
+          "hours": 17.0
+        },
+        {
+          "region": "Visakhapatnam-NE",
+          "region_id": "R061",
+          "hub": "Kolkata",
+          "demand": 2560,
+          "distance_km": 801.7,
+          "hours": 23.8
+        },
+        {
+          "region": "Visakhapatnam-SE",
+          "region_id": "R062",
+          "hub": "Hyderabad-W2",
+          "demand": 3267,
+          "distance_km": 762.6,
+          "hours": 22.9
+        },
+        {
+          "region": "Vijayawada-SE",
+          "region_id": "R063",
+          "hub": "Hyderabad-W2",
+          "demand": 1052,
+          "distance_km": 431.3,
+          "hours": 15.6
+        },
+        {
+          "region": "Vijayawada-N",
+          "region_id": "R064",
+          "hub": "Hyderabad-W2",
+          "demand": 2773,
+          "distance_km": 319.2,
+          "hours": 13.1
+        },
+        {
+          "region": "Warangal-E",
+          "region_id": "R065",
+          "hub": "Hyderabad-W2",
+          "demand": 1410,
+          "distance_km": 417.1,
+          "hours": 15.3
+        },
+        {
+          "region": "Indore-W",
+          "region_id": "R066",
+          "hub": "Ahmedabad-SE",
+          "demand": 3157,
+          "distance_km": 269.9,
+          "hours": 12.0
+        },
+        {
+          "region": "Indore-NE",
+          "region_id": "R067",
+          "hub": "Ahmedabad-SE",
+          "demand": 4489,
+          "distance_km": 528.1,
+          "hours": 17.7
+        },
+        {
+          "region": "Bhopal-E",
+          "region_id": "R068",
+          "hub": "Ahmedabad-SE",
+          "demand": 2946,
+          "distance_km": 696.8,
+          "hours": 21.5
+        },
+        {
+          "region": "Bhopal-NE",
+          "region_id": "R069",
+          "hub": "Ahmedabad-SE",
+          "demand": 2973,
+          "distance_km": 770.8,
+          "hours": 23.1
+        },
+        {
+          "region": "Surat-W",
+          "region_id": "R070",
+          "hub": "Ahmedabad-SE",
+          "demand": 9666,
+          "distance_km": 231.2,
+          "hours": 11.1
+        },
+        {
+          "region": "Surat-SW",
+          "region_id": "R071",
+          "hub": "Mumbai",
+          "demand": 3661,
+          "distance_km": 181.4,
+          "hours": 10.0
+        },
+        {
+          "region": "Kochi-SE",
+          "region_id": "R072",
+          "hub": "Bengaluru-SE",
+          "demand": 2955,
+          "distance_km": 459.4,
+          "hours": 16.2
+        },
+        {
+          "region": "Kochi-SE2",
+          "region_id": "R073",
+          "hub": "Bengaluru-SE",
+          "demand": 1504,
+          "distance_km": 426.8,
+          "hours": 15.5
+        },
+        {
+          "region": "Coimbatore-SW",
+          "region_id": "R074",
+          "hub": "Bengaluru-SE",
+          "demand": 3583,
+          "distance_km": 337.1,
+          "hours": 13.5
+        },
+        {
+          "region": "Coimbatore-SW2",
+          "region_id": "R075",
+          "hub": "Bengaluru-SE",
+          "demand": 3442,
+          "distance_km": 361.5,
+          "hours": 14.0
+        },
+        {
+          "region": "Bhubaneswar-N",
+          "region_id": "R076",
+          "hub": "Kolkata",
+          "demand": 1523,
+          "distance_km": 324.2,
+          "hours": 13.2
+        },
+        {
+          "region": "Bhubaneswar-W",
+          "region_id": "R077",
+          "hub": "Kolkata",
+          "demand": 1422,
+          "distance_km": 497.3,
+          "hours": 17.1
+        },
+        {
+          "region": "Patna-S",
+          "region_id": "R078",
+          "hub": "Kolkata",
+          "demand": 3011,
+          "distance_km": 460.9,
+          "hours": 16.2
+        },
+        {
+          "region": "Patna-S2",
+          "region_id": "R079",
+          "hub": "Kolkata",
+          "demand": 2253,
+          "distance_km": 512.0,
+          "hours": 17.4
+        },
+        {
+          "region": "Guwahati-S",
+          "region_id": "R080",
+          "hub": "Kolkata",
+          "demand": 650,
+          "distance_km": 559.4,
+          "hours": 18.4
+        },
+        {
+          "region": "Chandigarh-NW",
+          "region_id": "R081",
+          "hub": "Ahmedabad-SE",
+          "demand": 873,
+          "distance_km": 1277.7,
+          "hours": 34.4
+        },
+        {
+          "region": "Chandigarh-S",
+          "region_id": "R082",
+          "hub": "Delhi",
+          "demand": 1850,
+          "distance_km": 239.2,
+          "hours": 11.3
+        },
+        {
+          "region": "Ludhiana-E",
+          "region_id": "R083",
+          "hub": "Delhi",
+          "demand": 2594,
+          "distance_km": 288.7,
+          "hours": 12.4
+        },
+        {
+          "region": "Kanpur-W",
+          "region_id": "R084",
+          "hub": "Ahmedabad-SE",
+          "demand": 5513,
+          "distance_km": 1042.0,
+          "hours": 29.2
+        },
+        {
+          "region": "Kanpur-E",
+          "region_id": "R085",
+          "hub": "Delhi",
+          "demand": 3506,
+          "distance_km": 533.2,
+          "hours": 17.8
+        },
+        {
+          "region": "Raipur-SE",
+          "region_id": "R086",
+          "hub": "Hyderabad-W2",
+          "demand": 1459,
+          "distance_km": 750.3,
+          "hours": 22.7
+        },
+        {
+          "region": "Ranchi-SE",
+          "region_id": "R087",
+          "hub": "Kolkata",
+          "demand": 1133,
+          "distance_km": 216.0,
+          "hours": 10.8
+        },
+        {
+          "region": "Mysuru-S",
+          "region_id": "R088",
+          "hub": "Bengaluru-SE",
+          "demand": 1595,
+          "distance_km": 250.6,
+          "hours": 11.6
+        },
+        {
+          "region": "Tiruchirappalli-NE",
+          "region_id": "R089",
+          "hub": "Hyderabad-W2",
+          "demand": 829,
+          "distance_km": 874.8,
+          "hours": 25.4
+        },
+        {
+          "region": "Dehradun-N",
+          "region_id": "R090",
+          "hub": "Ahmedabad-SE",
+          "demand": 1474,
+          "distance_km": 1426.8,
+          "hours": 37.7
+        }
+      ],
+      "cost_vs_proposed_pct": 0.0
+    },
+    "greedy": {
+      "label": "RF forecast + greedy heuristic",
+      "status": "Heuristic",
+      "seconds": 0.01,
+      "planned_objective": 64294159.0,
+      "planned_cost": 64294159.0,
+      "n_hubs": 6,
+      "hubs": [
+        1,
+        2,
+        5,
+        31,
+        41,
+        58
+      ],
+      "hub_cities": [
+        "Mumbai",
+        "Delhi",
+        "Kolkata",
+        "Hyderabad-W2",
+        "Bengaluru-SE",
+        "Nagpur-N"
+      ],
+      "total_cost": 69309869.0,
+      "fixed_cost": 15750000.0,
+      "transport_cost": 19704080.0,
+      "time_cost": 33855789.0,
+      "cost_per_order": 29.079,
+      "avg_delivery_hours": 9.47,
+      "max_delivery_hours": 37.08,
+      "avg_distance_km": 206.7,
+      "fulfilment_rate": 0.8927,
+      "reliability_sla": 0.8927,
+      "overloaded_hubs": 3,
+      "utilisation": {
+        "1": 1.239,
+        "2": 1.245,
+        "5": 0.791,
+        "31": 0.711,
+        "41": 1.11,
+        "58": 0.437
+      },
+      "assignment": [
+        {
+          "region": "Hyderabad",
+          "region_id": "R001",
+          "hub": "Hyderabad-W2",
+          "demand": 122351,
+          "distance_km": 69.9,
+          "hours": 7.6
+        },
+        {
+          "region": "Mumbai",
+          "region_id": "R002",
+          "hub": "Mumbai",
+          "demand": 309385,
+          "distance_km": 0.0,
+          "hours": 3.0
+        },
+        {
+          "region": "Delhi",
+          "region_id": "R003",
+          "hub": "Delhi",
+          "demand": 321460,
+          "distance_km": 0.0,
+          "hours": 3.0
+        },
+        {
+          "region": "Bengaluru",
+          "region_id": "R004",
+          "hub": "Bengaluru-SE",
+          "demand": 171479,
+          "distance_km": 124.0,
+          "hours": 8.8
+        },
+        {
+          "region": "Chennai",
+          "region_id": "R005",
+          "hub": "Bengaluru-SE",
+          "demand": 165814,
+          "distance_km": 290.6,
+          "hours": 12.5
+        },
+        {
+          "region": "Kolkata",
+          "region_id": "R006",
+          "hub": "Kolkata",
+          "demand": 230594,
+          "distance_km": 0.0,
+          "hours": 3.0
+        },
+        {
+          "region": "Pune",
+          "region_id": "R007",
+          "hub": "Mumbai",
+          "demand": 75126,
+          "distance_km": 150.2,
+          "hours": 9.3
+        },
+        {
+          "region": "Ahmedabad",
+          "region_id": "R008",
+          "hub": "Mumbai",
+          "demand": 82107,
+          "distance_km": 550.1,
+          "hours": 18.2
+        },
+        {
+          "region": "Jaipur",
+          "region_id": "R009",
+          "hub": "Delhi",
+          "demand": 48685,
+          "distance_km": 294.2,
+          "hours": 12.5
+        },
+        {
+          "region": "Lucknow",
+          "region_id": "R010",
+          "hub": "Delhi",
+          "demand": 30929,
+          "distance_km": 521.3,
+          "hours": 17.6
+        },
+        {
+          "region": "Nagpur",
+          "region_id": "R011",
+          "hub": "Nagpur-N",
+          "demand": 23525,
+          "distance_km": 69.3,
+          "hours": 7.5
+        },
+        {
+          "region": "Visakhapatnam",
+          "region_id": "R012",
+          "hub": "Hyderabad-W2",
+          "demand": 17634,
+          "distance_km": 696.5,
+          "hours": 21.5
+        },
+        {
+          "region": "Vijayawada",
+          "region_id": "R013",
+          "hub": "Hyderabad-W2",
+          "demand": 13805,
+          "distance_km": 367.4,
+          "hours": 14.2
+        },
+        {
+          "region": "Warangal",
+          "region_id": "R014",
+          "hub": "Hyderabad-W2",
+          "demand": 6512,
+          "distance_km": 237.3,
+          "hours": 11.3
+        },
+        {
+          "region": "Indore",
+          "region_id": "R015",
+          "hub": "Nagpur-N",
+          "demand": 26490,
+          "distance_km": 451.2,
+          "hours": 16.0
+        },
+        {
+          "region": "Bhopal",
+          "region_id": "R016",
+          "hub": "Nagpur-N",
+          "demand": 17817,
+          "distance_km": 318.2,
+          "hours": 13.1
+        },
+        {
+          "region": "Surat",
+          "region_id": "R017",
+          "hub": "Mumbai",
+          "demand": 61734,
+          "distance_km": 291.1,
+          "hours": 12.5
+        },
+        {
+          "region": "Kochi",
+          "region_id": "R018",
+          "hub": "Bengaluru-SE",
+          "demand": 24366,
+          "distance_km": 433.3,
+          "hours": 15.6
+        },
+        {
+          "region": "Coimbatore",
+          "region_id": "R019",
+          "hub": "Bengaluru-SE",
+          "demand": 14595,
+          "distance_km": 257.5,
+          "hours": 11.7
+        },
+        {
+          "region": "Bhubaneswar",
+          "region_id": "R020",
+          "hub": "Kolkata",
+          "demand": 10743,
+          "distance_km": 456.1,
+          "hours": 16.1
+        },
+        {
+          "region": "Patna",
+          "region_id": "R021",
+          "hub": "Kolkata",
+          "demand": 27356,
+          "distance_km": 586.4,
+          "hours": 19.0
+        },
+        {
+          "region": "Guwahati",
+          "region_id": "R022",
+          "hub": "Kolkata",
+          "demand": 8921,
+          "distance_km": 654.6,
+          "hours": 20.5
+        },
+        {
+          "region": "Chandigarh",
+          "region_id": "R023",
+          "hub": "Delhi",
+          "demand": 9092,
+          "distance_km": 299.1,
+          "hours": 12.6
+        },
+        {
+          "region": "Ludhiana",
+          "region_id": "R024",
+          "hub": "Nagpur-N",
+          "demand": 9541,
+          "distance_km": 1351.4,
+          "hours": 36.0
+        },
+        {
+          "region": "Kanpur",
+          "region_id": "R025",
+          "hub": "Nagpur-N",
+          "demand": 18916,
+          "distance_km": 684.8,
+          "hours": 21.2
+        },
+        {
+          "region": "Raipur",
+          "region_id": "R026",
+          "hub": "Nagpur-N",
+          "demand": 5958,
+          "distance_km": 323.6,
+          "hours": 13.2
+        },
+        {
+          "region": "Ranchi",
+          "region_id": "R027",
+          "hub": "Kolkata",
+          "demand": 6800,
+          "distance_km": 405.3,
+          "hours": 15.0
+        },
+        {
+          "region": "Mysuru",
+          "region_id": "R028",
+          "hub": "Bengaluru-SE",
+          "demand": 9209,
+          "distance_km": 220.2,
+          "hours": 10.9
+        },
+        {
+          "region": "Tiruchirappalli",
+          "region_id": "R029",
+          "hub": "Bengaluru-SE",
+          "demand": 5801,
+          "distance_km": 226.4,
+          "hours": 11.0
+        },
+        {
+          "region": "Dehradun",
+          "region_id": "R030",
+          "hub": "Nagpur-N",
+          "demand": 5295,
+          "distance_km": 1214.2,
+          "hours": 33.0
+        },
+        {
+          "region": "Hyderabad-W",
+          "region_id": "R031",
+          "hub": "Hyderabad-W2",
+          "demand": 13934,
+          "distance_km": 66.1,
+          "hours": 7.5
+        },
+        {
+          "region": "Hyderabad-W2",
+          "region_id": "R032",
+          "hub": "Hyderabad-W2",
+          "demand": 19109,
+          "distance_km": 0.0,
+          "hours": 3.0
+        },
+        {
+          "region": "Hyderabad-W3",
+          "region_id": "R033",
+          "hub": "Hyderabad-W2",
+          "demand": 6901,
+          "distance_km": 108.7,
+          "hours": 8.4
+        },
+        {
+          "region": "Mumbai-S",
+          "region_id": "R034",
+          "hub": "Hyderabad-W2",
+          "demand": 36119,
+          "distance_km": 660.5,
+          "hours": 20.7
+        },
+        {
+          "region": "Mumbai-SW",
+          "region_id": "R035",
+          "hub": "Hyderabad-W2",
+          "demand": 18351,
+          "distance_km": 828.5,
+          "hours": 24.4
+        },
+        {
+          "region": "Mumbai-E",
+          "region_id": "R036",
+          "hub": "Hyderabad-W2",
+          "demand": 12252,
+          "distance_km": 606.2,
+          "hours": 19.5
+        },
+        {
+          "region": "Delhi-NW",
+          "region_id": "R037",
+          "hub": "Delhi",
+          "demand": 34609,
+          "distance_km": 147.0,
+          "hours": 9.3
+        },
+        {
+          "region": "Delhi-SE",
+          "region_id": "R038",
+          "hub": "Delhi",
+          "demand": 45616,
+          "distance_km": 196.6,
+          "hours": 10.4
+        },
+        {
+          "region": "Delhi-W",
+          "region_id": "R039",
+          "hub": "Delhi",
+          "demand": 41442,
+          "distance_km": 84.3,
+          "hours": 7.9
+        },
+        {
+          "region": "Bengaluru-N",
+          "region_id": "R040",
+          "hub": "Bengaluru-SE",
+          "demand": 15018,
+          "distance_km": 174.8,
+          "hours": 9.9
+        },
+        {
+          "region": "Bengaluru-W",
+          "region_id": "R041",
+          "hub": "Bengaluru-SE",
+          "demand": 13301,
+          "distance_km": 296.7,
+          "hours": 12.6
+        },
+        {
+          "region": "Bengaluru-SE",
+          "region_id": "R042",
+          "hub": "Bengaluru-SE",
+          "demand": 8512,
+          "distance_km": 0.0,
+          "hours": 3.0
+        },
+        {
+          "region": "Chennai-NE",
+          "region_id": "R043",
+          "hub": "Bengaluru-SE",
+          "demand": 7864,
+          "distance_km": 408.1,
+          "hours": 15.1
+        },
+        {
+          "region": "Chennai-SW",
+          "region_id": "R044",
+          "hub": "Bengaluru-SE",
+          "demand": 20068,
+          "distance_km": 173.5,
+          "hours": 9.9
+        },
+        {
+          "region": "Chennai-W",
+          "region_id": "R045",
+          "hub": "Bengaluru-SE",
+          "demand": 16866,
+          "distance_km": 189.3,
+          "hours": 10.2
+        },
+        {
+          "region": "Kolkata-W",
+          "region_id": "R046",
+          "hub": "Kolkata",
+          "demand": 14572,
+          "distance_km": 112.1,
+          "hours": 8.5
+        },
+        {
+          "region": "Kolkata-SW",
+          "region_id": "R047",
+          "hub": "Kolkata",
+          "demand": 8762,
+          "distance_km": 76.5,
+          "hours": 7.7
+        },
+        {
+          "region": "Kolkata-N",
+          "region_id": "R048",
+          "hub": "Kolkata",
+          "demand": 23138,
+          "distance_km": 169.7,
+          "hours": 9.8
+        },
+        {
+          "region": "Pune-W",
+          "region_id": "R049",
+          "hub": "Hyderabad-W2",
+          "demand": 6382,
+          "distance_km": 722.4,
+          "hours": 22.1
+        },
+        {
+          "region": "Pune-SW",
+          "region_id": "R050",
+          "hub": "Hyderabad-W2",
+          "demand": 4092,
+          "distance_km": 590.0,
+          "hours": 19.1
+        },
+        {
+          "region": "Pune-SW2",
+          "region_id": "R051",
+          "hub": "Hyderabad-W2",
+          "demand": 7909,
+          "distance_km": 666.7,
+          "hours": 20.8
+        },
+        {
+          "region": "Ahmedabad-W",
+          "region_id": "R052",
+          "hub": "Nagpur-N",
+          "demand": 10805,
+          "distance_km": 1016.1,
+          "hours": 28.6
+        },
+        {
+          "region": "Ahmedabad-S",
+          "region_id": "R053",
+          "hub": "Mumbai",
+          "demand": 5591,
+          "distance_km": 461.8,
+          "hours": 16.3
+        },
+        {
+          "region": "Ahmedabad-SE",
+          "region_id": "R054",
+          "hub": "Nagpur-N",
+          "demand": 9673,
+          "distance_km": 822.9,
+          "hours": 24.3
+        },
+        {
+          "region": "Jaipur-NW",
+          "region_id": "R055",
+          "hub": "Nagpur-N",
+          "demand": 2828,
+          "distance_km": 932.7,
+          "hours": 26.7
+        },
+        {
+          "region": "Jaipur-E",
+          "region_id": "R056",
+          "hub": "Nagpur-N",
+          "demand": 4838,
+          "distance_km": 785.7,
+          "hours": 23.5
+        },
+        {
+          "region": "Lucknow-S",
+          "region_id": "R057",
+          "hub": "Nagpur-N",
+          "demand": 5204,
+          "distance_km": 589.2,
+          "hours": 19.1
+        },
+        {
+          "region": "Lucknow-SE",
+          "region_id": "R058",
+          "hub": "Nagpur-N",
+          "demand": 3083,
+          "distance_km": 664.6,
+          "hours": 20.8
+        },
+        {
+          "region": "Nagpur-N",
+          "region_id": "R059",
+          "hub": "Nagpur-N",
+          "demand": 3403,
+          "distance_km": 0.0,
+          "hours": 3.0
+        },
+        {
+          "region": "Nagpur-S",
+          "region_id": "R060",
+          "hub": "Nagpur-N",
+          "demand": 2129,
+          "distance_km": 146.2,
+          "hours": 9.2
+        },
+        {
+          "region": "Visakhapatnam-NE",
+          "region_id": "R061",
+          "hub": "Nagpur-N",
+          "demand": 2560,
+          "distance_km": 800.6,
+          "hours": 23.8
+        },
+        {
+          "region": "Visakhapatnam-SE",
+          "region_id": "R062",
+          "hub": "Hyderabad-W2",
+          "demand": 3267,
+          "distance_km": 762.6,
+          "hours": 22.9
+        },
+        {
+          "region": "Vijayawada-SE",
+          "region_id": "R063",
+          "hub": "Hyderabad-W2",
+          "demand": 1052,
+          "distance_km": 431.3,
+          "hours": 15.6
+        },
+        {
+          "region": "Vijayawada-N",
+          "region_id": "R064",
+          "hub": "Hyderabad-W2",
+          "demand": 2773,
+          "distance_km": 319.2,
+          "hours": 13.1
+        },
+        {
+          "region": "Warangal-E",
+          "region_id": "R065",
+          "hub": "Hyderabad-W2",
+          "demand": 1410,
+          "distance_km": 417.1,
+          "hours": 15.3
+        },
+        {
+          "region": "Indore-W",
+          "region_id": "R066",
+          "hub": "Nagpur-N",
+          "demand": 3157,
+          "distance_km": 558.9,
+          "hours": 18.4
+        },
+        {
+          "region": "Indore-NE",
+          "region_id": "R067",
+          "hub": "Nagpur-N",
+          "demand": 4489,
+          "distance_km": 439.3,
+          "hours": 15.8
+        },
+        {
+          "region": "Bhopal-E",
+          "region_id": "R068",
+          "hub": "Nagpur-N",
+          "demand": 2946,
+          "distance_km": 285.2,
+          "hours": 12.3
+        },
+        {
+          "region": "Bhopal-NE",
+          "region_id": "R069",
+          "hub": "Nagpur-N",
+          "demand": 2973,
+          "distance_km": 311.3,
+          "hours": 12.9
+        },
+        {
+          "region": "Surat-W",
+          "region_id": "R070",
+          "hub": "Nagpur-N",
+          "demand": 9666,
+          "distance_km": 940.3,
+          "hours": 26.9
+        },
+        {
+          "region": "Surat-SW",
+          "region_id": "R071",
+          "hub": "Hyderabad-W2",
+          "demand": 3661,
+          "distance_km": 864.1,
+          "hours": 25.2
+        },
+        {
+          "region": "Kochi-SE",
+          "region_id": "R072",
+          "hub": "Hyderabad-W2",
+          "demand": 2955,
+          "distance_km": 1086.0,
+          "hours": 30.1
+        },
+        {
+          "region": "Kochi-SE2",
+          "region_id": "R073",
+          "hub": "Bengaluru-SE",
+          "demand": 1504,
+          "distance_km": 426.8,
+          "hours": 15.5
+        },
+        {
+          "region": "Coimbatore-SW",
+          "region_id": "R074",
+          "hub": "Bengaluru-SE",
+          "demand": 3583,
+          "distance_km": 337.1,
+          "hours": 13.5
+        },
+        {
+          "region": "Coimbatore-SW2",
+          "region_id": "R075",
+          "hub": "Hyderabad-W2",
+          "demand": 3442,
+          "distance_km": 974.0,
+          "hours": 27.6
+        },
+        {
+          "region": "Bhubaneswar-N",
+          "region_id": "R076",
+          "hub": "Kolkata",
+          "demand": 1523,
+          "distance_km": 324.2,
+          "hours": 13.2
+        },
+        {
+          "region": "Bhubaneswar-W",
+          "region_id": "R077",
+          "hub": "Kolkata",
+          "demand": 1422,
+          "distance_km": 497.3,
+          "hours": 17.1
+        },
+        {
+          "region": "Patna-S",
+          "region_id": "R078",
+          "hub": "Kolkata",
+          "demand": 3011,
+          "distance_km": 460.9,
+          "hours": 16.2
+        },
+        {
+          "region": "Patna-S2",
+          "region_id": "R079",
+          "hub": "Kolkata",
+          "demand": 2253,
+          "distance_km": 512.0,
+          "hours": 17.4
+        },
+        {
+          "region": "Guwahati-S",
+          "region_id": "R080",
+          "hub": "Kolkata",
+          "demand": 650,
+          "distance_km": 559.4,
+          "hours": 18.4
+        },
+        {
+          "region": "Chandigarh-NW",
+          "region_id": "R081",
+          "hub": "Delhi",
+          "demand": 873,
+          "distance_km": 437.9,
+          "hours": 15.7
+        },
+        {
+          "region": "Chandigarh-S",
+          "region_id": "R082",
+          "hub": "Nagpur-N",
+          "demand": 1850,
+          "distance_km": 1238.8,
+          "hours": 33.5
+        },
+        {
+          "region": "Ludhiana-E",
+          "region_id": "R083",
+          "hub": "Nagpur-N",
+          "demand": 2594,
+          "distance_km": 1283.7,
+          "hours": 34.5
+        },
+        {
+          "region": "Kanpur-W",
+          "region_id": "R084",
+          "hub": "Nagpur-N",
+          "demand": 5513,
+          "distance_km": 681.2,
+          "hours": 21.1
+        },
+        {
+          "region": "Kanpur-E",
+          "region_id": "R085",
+          "hub": "Delhi",
+          "demand": 3506,
+          "distance_km": 533.2,
+          "hours": 17.8
+        },
+        {
+          "region": "Raipur-SE",
+          "region_id": "R086",
+          "hub": "Nagpur-N",
+          "demand": 1459,
+          "distance_km": 480.7,
+          "hours": 16.7
+        },
+        {
+          "region": "Ranchi-SE",
+          "region_id": "R087",
+          "hub": "Kolkata",
+          "demand": 1133,
+          "distance_km": 216.0,
+          "hours": 10.8
+        },
+        {
+          "region": "Mysuru-S",
+          "region_id": "R088",
+          "hub": "Hyderabad-W2",
+          "demand": 1595,
+          "distance_km": 800.4,
+          "hours": 23.8
+        },
+        {
+          "region": "Tiruchirappalli-NE",
+          "region_id": "R089",
+          "hub": "Hyderabad-W2",
+          "demand": 829,
+          "distance_km": 874.8,
+          "hours": 25.4
+        },
+        {
+          "region": "Dehradun-N",
+          "region_id": "R090",
+          "hub": "Nagpur-N",
+          "demand": 1474,
+          "distance_km": 1398.5,
+          "hours": 37.1
+        }
+      ],
+      "cost_vs_proposed_pct": 11.51
+    },
+    "kmeans": {
+      "label": "RF forecast + k-means clustering",
+      "status": "Clustering",
+      "seconds": 0.11,
+      "planned_objective": 59768258.0,
+      "planned_cost": 59768258.0,
+      "n_hubs": 6,
+      "hubs": [
+        1,
+        2,
+        13,
+        41,
+        45,
+        53
+      ],
+      "hub_cities": [
+        "Mumbai",
+        "Delhi",
+        "Warangal",
+        "Bengaluru-SE",
+        "Kolkata-W",
+        "Ahmedabad-SE"
+      ],
+      "total_cost": 64407213.0,
+      "fixed_cost": 14250000.0,
+      "transport_cost": 17302320.0,
+      "time_cost": 32854893.0,
+      "cost_per_order": 27.022,
+      "avg_delivery_hours": 9.19,
+      "max_delivery_hours": 37.71,
+      "avg_distance_km": 181.5,
+      "fulfilment_rate": 0.9181,
+      "reliability_sla": 0.9181,
+      "overloaded_hubs": 3,
+      "utilisation": {
+        "1": 1.099,
+        "2": 1.245,
+        "13": 0.596,
+        "41": 1.11,
+        "45": 0.854,
+        "53": 0.63
+      },
+      "assignment": [
+        {
+          "region": "Hyderabad",
+          "region_id": "R001",
+          "hub": "Warangal",
+          "demand": 122351,
+          "distance_km": 168.2,
+          "hours": 9.7
+        },
+        {
+          "region": "Mumbai",
+          "region_id": "R002",
+          "hub": "Mumbai",
+          "demand": 309385,
+          "distance_km": 0.0,
+          "hours": 3.0
+        },
+        {
+          "region": "Delhi",
+          "region_id": "R003",
+          "hub": "Delhi",
+          "demand": 321460,
+          "distance_km": 0.0,
+          "hours": 3.0
+        },
+        {
+          "region": "Bengaluru",
+          "region_id": "R004",
+          "hub": "Bengaluru-SE",
+          "demand": 171479,
+          "distance_km": 124.0,
+          "hours": 8.8
+        },
+        {
+          "region": "Chennai",
+          "region_id": "R005",
+          "hub": "Bengaluru-SE",
+          "demand": 165814,
+          "distance_km": 290.6,
+          "hours": 12.5
+        },
+        {
+          "region": "Kolkata",
+          "region_id": "R006",
+          "hub": "Kolkata-W",
+          "demand": 230594,
+          "distance_km": 112.1,
+          "hours": 8.5
+        },
+        {
+          "region": "Pune",
+          "region_id": "R007",
+          "hub": "Mumbai",
+          "demand": 75126,
+          "distance_km": 150.2,
+          "hours": 9.3
+        },
+        {
+          "region": "Ahmedabad",
+          "region_id": "R008",
+          "hub": "Ahmedabad-SE",
+          "demand": 82107,
+          "distance_km": 87.3,
+          "hours": 7.9
+        },
+        {
+          "region": "Jaipur",
+          "region_id": "R009",
+          "hub": "Delhi",
+          "demand": 48685,
+          "distance_km": 294.2,
+          "hours": 12.5
+        },
+        {
+          "region": "Lucknow",
+          "region_id": "R010",
+          "hub": "Delhi",
+          "demand": 30929,
+          "distance_km": 521.3,
+          "hours": 17.6
+        },
+        {
+          "region": "Nagpur",
+          "region_id": "R011",
+          "hub": "Warangal",
+          "demand": 23525,
+          "distance_km": 445.3,
+          "hours": 15.9
+        },
+        {
+          "region": "Visakhapatnam",
+          "region_id": "R012",
+          "hub": "Warangal",
+          "demand": 17634,
+          "distance_km": 481.3,
+          "hours": 16.7
+        },
+        {
+          "region": "Vijayawada",
+          "region_id": "R013",
+          "hub": "Warangal",
+          "demand": 13805,
+          "distance_km": 247.7,
+          "hours": 11.5
+        },
+        {
+          "region": "Warangal",
+          "region_id": "R014",
+          "hub": "Warangal",
+          "demand": 6512,
+          "distance_km": 0.0,
+          "hours": 3.0
+        },
+        {
+          "region": "Indore",
+          "region_id": "R015",
+          "hub": "Ahmedabad-SE",
+          "demand": 26490,
+          "distance_km": 389.8,
+          "hours": 14.7
+        },
+        {
+          "region": "Bhopal",
+          "region_id": "R016",
+          "hub": "Ahmedabad-SE",
+          "demand": 17817,
+          "distance_km": 597.2,
+          "hours": 19.3
+        },
+        {
+          "region": "Surat",
+          "region_id": "R017",
+          "hub": "Ahmedabad-SE",
+          "demand": 61734,
+          "distance_km": 177.1,
+          "hours": 9.9
+        },
+        {
+          "region": "Kochi",
+          "region_id": "R018",
+          "hub": "Bengaluru-SE",
+          "demand": 24366,
+          "distance_km": 433.3,
+          "hours": 15.6
+        },
+        {
+          "region": "Coimbatore",
+          "region_id": "R019",
+          "hub": "Bengaluru-SE",
+          "demand": 14595,
+          "distance_km": 257.5,
+          "hours": 11.7
+        },
+        {
+          "region": "Bhubaneswar",
+          "region_id": "R020",
+          "hub": "Kolkata-W",
+          "demand": 10743,
+          "distance_km": 418.0,
+          "hours": 15.3
+        },
+        {
+          "region": "Patna",
+          "region_id": "R021",
+          "hub": "Kolkata-W",
+          "demand": 27356,
+          "distance_km": 488.6,
+          "hours": 16.9
+        },
+        {
+          "region": "Guwahati",
+          "region_id": "R022",
+          "hub": "Kolkata-W",
+          "demand": 8921,
+          "distance_km": 701.1,
+          "hours": 21.6
+        },
+        {
+          "region": "Chandigarh",
+          "region_id": "R023",
+          "hub": "Delhi",
+          "demand": 9092,
+          "distance_km": 299.1,
+          "hours": 12.6
+        },
+        {
+          "region": "Ludhiana",
+          "region_id": "R024",
+          "hub": "Ahmedabad-SE",
+          "demand": 9541,
+          "distance_km": 1233.7,
+          "hours": 33.4
+        },
+        {
+          "region": "Kanpur",
+          "region_id": "R025",
+          "hub": "Kolkata-W",
+          "demand": 18916,
+          "distance_km": 1039.2,
+          "hours": 29.1
+        },
+        {
+          "region": "Raipur",
+          "region_id": "R026",
+          "hub": "Warangal",
+          "demand": 5958,
+          "distance_km": 527.2,
+          "hours": 17.7
+        },
+        {
+          "region": "Ranchi",
+          "region_id": "R027",
+          "hub": "Kolkata-W",
+          "demand": 6800,
+          "distance_km": 293.6,
+          "hours": 12.5
+        },
+        {
+          "region": "Mysuru",
+          "region_id": "R028",
+          "hub": "Bengaluru-SE",
+          "demand": 9209,
+          "distance_km": 220.2,
+          "hours": 10.9
+        },
+        {
+          "region": "Tiruchirappalli",
+          "region_id": "R029",
+          "hub": "Bengaluru-SE",
+          "demand": 5801,
+          "distance_km": 226.4,
+          "hours": 11.0
+        },
+        {
+          "region": "Dehradun",
+          "region_id": "R030",
+          "hub": "Ahmedabad-SE",
+          "demand": 5295,
+          "distance_km": 1270.7,
+          "hours": 34.2
+        },
+        {
+          "region": "Hyderabad-W",
+          "region_id": "R031",
+          "hub": "Warangal",
+          "demand": 13934,
+          "distance_km": 272.3,
+          "hours": 12.1
+        },
+        {
+          "region": "Hyderabad-W2",
+          "region_id": "R032",
+          "hub": "Warangal",
+          "demand": 19109,
+          "distance_km": 237.3,
+          "hours": 11.3
+        },
+        {
+          "region": "Hyderabad-W3",
+          "region_id": "R033",
+          "hub": "Warangal",
+          "demand": 6901,
+          "distance_km": 323.2,
+          "hours": 13.2
+        },
+        {
+          "region": "Mumbai-S",
+          "region_id": "R034",
+          "hub": "Mumbai",
+          "demand": 36119,
+          "distance_km": 109.8,
+          "hours": 8.4
+        },
+        {
+          "region": "Mumbai-SW",
+          "region_id": "R035",
+          "hub": "Mumbai",
+          "demand": 18351,
+          "distance_km": 175.1,
+          "hours": 9.9
+        },
+        {
+          "region": "Mumbai-E",
+          "region_id": "R036",
+          "hub": "Mumbai",
+          "demand": 12252,
+          "distance_km": 136.2,
+          "hours": 9.0
+        },
+        {
+          "region": "Delhi-NW",
+          "region_id": "R037",
+          "hub": "Delhi",
+          "demand": 34609,
+          "distance_km": 147.0,
+          "hours": 9.3
+        },
+        {
+          "region": "Delhi-SE",
+          "region_id": "R038",
+          "hub": "Delhi",
+          "demand": 45616,
+          "distance_km": 196.6,
+          "hours": 10.4
+        },
+        {
+          "region": "Delhi-W",
+          "region_id": "R039",
+          "hub": "Delhi",
+          "demand": 41442,
+          "distance_km": 84.3,
+          "hours": 7.9
+        },
+        {
+          "region": "Bengaluru-N",
+          "region_id": "R040",
+          "hub": "Bengaluru-SE",
+          "demand": 15018,
+          "distance_km": 174.8,
+          "hours": 9.9
+        },
+        {
+          "region": "Bengaluru-W",
+          "region_id": "R041",
+          "hub": "Bengaluru-SE",
+          "demand": 13301,
+          "distance_km": 296.7,
+          "hours": 12.6
+        },
+        {
+          "region": "Bengaluru-SE",
+          "region_id": "R042",
+          "hub": "Bengaluru-SE",
+          "demand": 8512,
+          "distance_km": 0.0,
+          "hours": 3.0
+        },
+        {
+          "region": "Chennai-NE",
+          "region_id": "R043",
+          "hub": "Bengaluru-SE",
+          "demand": 7864,
+          "distance_km": 408.1,
+          "hours": 15.1
+        },
+        {
+          "region": "Chennai-SW",
+          "region_id": "R044",
+          "hub": "Bengaluru-SE",
+          "demand": 20068,
+          "distance_km": 173.5,
+          "hours": 9.9
+        },
+        {
+          "region": "Chennai-W",
+          "region_id": "R045",
+          "hub": "Bengaluru-SE",
+          "demand": 16866,
+          "distance_km": 189.3,
+          "hours": 10.2
+        },
+        {
+          "region": "Kolkata-W",
+          "region_id": "R046",
+          "hub": "Kolkata-W",
+          "demand": 14572,
+          "distance_km": 0.0,
+          "hours": 3.0
+        },
+        {
+          "region": "Kolkata-SW",
+          "region_id": "R047",
+          "hub": "Kolkata-W",
+          "demand": 8762,
+          "distance_km": 78.0,
+          "hours": 7.7
+        },
+        {
+          "region": "Kolkata-N",
+          "region_id": "R048",
+          "hub": "Kolkata-W",
+          "demand": 23138,
+          "distance_km": 173.4,
+          "hours": 9.9
+        },
+        {
+          "region": "Pune-W",
+          "region_id": "R049",
+          "hub": "Mumbai",
+          "demand": 6382,
+          "distance_km": 128.5,
+          "hours": 8.9
+        },
+        {
+          "region": "Pune-SW",
+          "region_id": "R050",
+          "hub": "Mumbai",
+          "demand": 4092,
+          "distance_km": 175.9,
+          "hours": 9.9
+        },
+        {
+          "region": "Pune-SW2",
+          "region_id": "R051",
+          "hub": "Mumbai",
+          "demand": 7909,
+          "distance_km": 139.8,
+          "hours": 9.1
+        },
+        {
+          "region": "Ahmedabad-W",
+          "region_id": "R052",
+          "hub": "Ahmedabad-SE",
+          "demand": 10805,
+          "distance_km": 204.3,
+          "hours": 10.5
+        },
+        {
+          "region": "Ahmedabad-S",
+          "region_id": "R053",
+          "hub": "Ahmedabad-SE",
+          "demand": 5591,
+          "distance_km": 71.7,
+          "hours": 7.6
+        },
+        {
+          "region": "Ahmedabad-SE",
+          "region_id": "R054",
+          "hub": "Ahmedabad-SE",
+          "demand": 9673,
+          "distance_km": 0.0,
+          "hours": 3.0
+        },
+        {
+          "region": "Jaipur-NW",
+          "region_id": "R055",
+          "hub": "Ahmedabad-SE",
+          "demand": 2828,
+          "distance_km": 738.7,
+          "hours": 22.4
+        },
+        {
+          "region": "Jaipur-E",
+          "region_id": "R056",
+          "hub": "Ahmedabad-SE",
+          "demand": 4838,
+          "distance_km": 764.4,
+          "hours": 23.0
+        },
+        {
+          "region": "Lucknow-S",
+          "region_id": "R057",
+          "hub": "Kolkata-W",
+          "demand": 5204,
+          "distance_km": 980.2,
+          "hours": 27.8
+        },
+        {
+          "region": "Lucknow-SE",
+          "region_id": "R058",
+          "hub": "Kolkata-W",
+          "demand": 3083,
+          "distance_km": 844.0,
+          "hours": 24.8
+        },
+        {
+          "region": "Nagpur-N",
+          "region_id": "R059",
+          "hub": "Warangal",
+          "demand": 3403,
+          "distance_km": 512.0,
+          "hours": 17.4
+        },
+        {
+          "region": "Nagpur-S",
+          "region_id": "R060",
+          "hub": "Warangal",
+          "demand": 2129,
+          "distance_km": 366.1,
+          "hours": 14.1
+        },
+        {
+          "region": "Visakhapatnam-NE",
+          "region_id": "R061",
+          "hub": "Warangal",
+          "demand": 2560,
+          "distance_km": 608.5,
+          "hours": 19.5
+        },
+        {
+          "region": "Visakhapatnam-SE",
+          "region_id": "R062",
+          "hub": "Warangal",
+          "demand": 3267,
+          "distance_km": 559.9,
+          "hours": 18.4
+        },
+        {
+          "region": "Vijayawada-SE",
+          "region_id": "R063",
+          "hub": "Warangal",
+          "demand": 1052,
+          "distance_km": 314.8,
+          "hours": 13.0
+        },
+        {
+          "region": "Vijayawada-N",
+          "region_id": "R064",
+          "hub": "Warangal",
+          "demand": 2773,
+          "distance_km": 98.0,
+          "hours": 8.2
+        },
+        {
+          "region": "Warangal-E",
+          "region_id": "R065",
+          "hub": "Warangal",
+          "demand": 1410,
+          "distance_km": 196.0,
+          "hours": 10.4
+        },
+        {
+          "region": "Indore-W",
+          "region_id": "R066",
+          "hub": "Ahmedabad-SE",
+          "demand": 3157,
+          "distance_km": 269.9,
+          "hours": 12.0
+        },
+        {
+          "region": "Indore-NE",
+          "region_id": "R067",
+          "hub": "Ahmedabad-SE",
+          "demand": 4489,
+          "distance_km": 528.1,
+          "hours": 17.7
+        },
+        {
+          "region": "Bhopal-E",
+          "region_id": "R068",
+          "hub": "Ahmedabad-SE",
+          "demand": 2946,
+          "distance_km": 696.8,
+          "hours": 21.5
+        },
+        {
+          "region": "Bhopal-NE",
+          "region_id": "R069",
+          "hub": "Ahmedabad-SE",
+          "demand": 2973,
+          "distance_km": 770.8,
+          "hours": 23.1
+        },
+        {
+          "region": "Surat-W",
+          "region_id": "R070",
+          "hub": "Ahmedabad-SE",
+          "demand": 9666,
+          "distance_km": 231.2,
+          "hours": 11.1
+        },
+        {
+          "region": "Surat-SW",
+          "region_id": "R071",
+          "hub": "Mumbai",
+          "demand": 3661,
+          "distance_km": 181.4,
+          "hours": 10.0
+        },
+        {
+          "region": "Kochi-SE",
+          "region_id": "R072",
+          "hub": "Warangal",
+          "demand": 2955,
+          "distance_km": 1244.5,
+          "hours": 33.7
+        },
+        {
+          "region": "Kochi-SE2",
+          "region_id": "R073",
+          "hub": "Bengaluru-SE",
+          "demand": 1504,
+          "distance_km": 426.8,
+          "hours": 15.5
+        },
+        {
+          "region": "Coimbatore-SW",
+          "region_id": "R074",
+          "hub": "Bengaluru-SE",
+          "demand": 3583,
+          "distance_km": 337.1,
+          "hours": 13.5
+        },
+        {
+          "region": "Coimbatore-SW2",
+          "region_id": "R075",
+          "hub": "Warangal",
+          "demand": 3442,
+          "distance_km": 1135.5,
+          "hours": 31.2
+        },
+        {
+          "region": "Bhubaneswar-N",
+          "region_id": "R076",
+          "hub": "Kolkata-W",
+          "demand": 1523,
+          "distance_km": 252.2,
+          "hours": 11.6
+        },
+        {
+          "region": "Bhubaneswar-W",
+          "region_id": "R077",
+          "hub": "Kolkata-W",
+          "demand": 1422,
+          "distance_km": 445.9,
+          "hours": 15.9
+        },
+        {
+          "region": "Patna-S",
+          "region_id": "R078",
+          "hub": "Kolkata-W",
+          "demand": 3011,
+          "distance_km": 351.4,
+          "hours": 13.8
+        },
+        {
+          "region": "Patna-S2",
+          "region_id": "R079",
+          "hub": "Kolkata-W",
+          "demand": 2253,
+          "distance_km": 408.8,
+          "hours": 15.1
+        },
+        {
+          "region": "Guwahati-S",
+          "region_id": "R080",
+          "hub": "Kolkata-W",
+          "demand": 650,
+          "distance_km": 618.3,
+          "hours": 19.7
+        },
+        {
+          "region": "Chandigarh-NW",
+          "region_id": "R081",
+          "hub": "Delhi",
+          "demand": 873,
+          "distance_km": 437.9,
+          "hours": 15.7
+        },
+        {
+          "region": "Chandigarh-S",
+          "region_id": "R082",
+          "hub": "Ahmedabad-SE",
+          "demand": 1850,
+          "distance_km": 1180.0,
+          "hours": 32.2
+        },
+        {
+          "region": "Ludhiana-E",
+          "region_id": "R083",
+          "hub": "Ahmedabad-SE",
+          "demand": 2594,
+          "distance_km": 1262.4,
+          "hours": 34.1
+        },
+        {
+          "region": "Kanpur-W",
+          "region_id": "R084",
+          "hub": "Ahmedabad-SE",
+          "demand": 5513,
+          "distance_km": 1042.0,
+          "hours": 29.2
+        },
+        {
+          "region": "Kanpur-E",
+          "region_id": "R085",
+          "hub": "Delhi",
+          "demand": 3506,
+          "distance_km": 533.2,
+          "hours": 17.8
+        },
+        {
+          "region": "Raipur-SE",
+          "region_id": "R086",
+          "hub": "Warangal",
+          "demand": 1459,
+          "distance_km": 518.3,
+          "hours": 17.5
+        },
+        {
+          "region": "Ranchi-SE",
+          "region_id": "R087",
+          "hub": "Kolkata-W",
+          "demand": 1133,
+          "distance_km": 109.1,
+          "hours": 8.4
+        },
+        {
+          "region": "Mysuru-S",
+          "region_id": "R088",
+          "hub": "Warangal",
+          "demand": 1595,
+          "distance_km": 971.3,
+          "hours": 27.6
+        },
+        {
+          "region": "Tiruchirappalli-NE",
+          "region_id": "R089",
+          "hub": "Warangal",
+          "demand": 829,
+          "distance_km": 969.3,
+          "hours": 27.5
+        },
+        {
+          "region": "Dehradun-N",
+          "region_id": "R090",
+          "hub": "Ahmedabad-SE",
+          "demand": 1474,
+          "distance_km": 1426.8,
+          "hours": 37.7
+        }
+      ],
+      "cost_vs_proposed_pct": 3.62
+    },
+    "largest": {
+      "label": "Largest markets rule (no optimisation)",
+      "status": "Rule",
+      "seconds": 0.0,
+      "planned_objective": 67813698.0,
+      "planned_cost": 67813698.0,
+      "n_hubs": 6,
+      "hubs": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "hub_cities": [
+        "Hyderabad",
+        "Mumbai",
+        "Delhi",
+        "Bengaluru",
+        "Chennai",
+        "Kolkata"
+      ],
+      "total_cost": 72151170.0,
+      "fixed_cost": 20250000.0,
+      "transport_cost": 19851402.0,
+      "time_cost": 32049768.0,
+      "cost_per_order": 30.271,
+      "avg_delivery_hours": 8.96,
+      "max_delivery_hours": 49.99,
+      "avg_distance_km": 208.2,
+      "fulfilment_rate": 0.9113,
+      "reliability_sla": 0.9069,
+      "overloaded_hubs": 3,
+      "utilisation": {
+        "0": 1.007,
+        "1": 1.239,
+        "2": 1.245,
+        "3": 0.639,
+        "4": 0.491,
+        "5": 0.912
+      },
+      "assignment": [
+        {
+          "region": "Hyderabad",
+          "region_id": "R001",
+          "hub": "Hyderabad",
+          "demand": 122351,
+          "distance_km": 0.0,
+          "hours": 3.0
+        },
+        {
+          "region": "Mumbai",
+          "region_id": "R002",
+          "hub": "Mumbai",
+          "demand": 309385,
+          "distance_km": 0.0,
+          "hours": 3.0
+        },
+        {
+          "region": "Delhi",
+          "region_id": "R003",
+          "hub": "Delhi",
+          "demand": 321460,
+          "distance_km": 0.0,
+          "hours": 3.0
+        },
+        {
+          "region": "Bengaluru",
+          "region_id": "R004",
+          "hub": "Bengaluru",
+          "demand": 171479,
+          "distance_km": 0.0,
+          "hours": 3.0
+        },
+        {
+          "region": "Chennai",
+          "region_id": "R005",
+          "hub": "Chennai",
+          "demand": 165814,
+          "distance_km": 0.0,
+          "hours": 3.0
+        },
+        {
+          "region": "Kolkata",
+          "region_id": "R006",
+          "hub": "Kolkata",
+          "demand": 230594,
+          "distance_km": 0.0,
+          "hours": 3.0
+        },
+        {
+          "region": "Pune",
+          "region_id": "R007",
+          "hub": "Mumbai",
+          "demand": 75126,
+          "distance_km": 150.2,
+          "hours": 9.3
+        },
+        {
+          "region": "Ahmedabad",
+          "region_id": "R008",
+          "hub": "Mumbai",
+          "demand": 82107,
+          "distance_km": 550.1,
+          "hours": 18.2
+        },
+        {
+          "region": "Jaipur",
+          "region_id": "R009",
+          "hub": "Delhi",
+          "demand": 48685,
+          "distance_km": 294.2,
+          "hours": 12.5
+        },
+        {
+          "region": "Lucknow",
+          "region_id": "R010",
+          "hub": "Delhi",
+          "demand": 30929,
+          "distance_km": 521.3,
+          "hours": 17.6
+        },
+        {
+          "region": "Nagpur",
+          "region_id": "R011",
+          "hub": "Hyderabad",
+          "demand": 23525,
+          "distance_km": 528.7,
+          "hours": 17.7
+        },
+        {
+          "region": "Visakhapatnam",
+          "region_id": "R012",
+          "hub": "Hyderabad",
+          "demand": 17634,
+          "distance_km": 628.5,
+          "hours": 20.0
+        },
+        {
+          "region": "Vijayawada",
+          "region_id": "R013",
+          "hub": "Hyderabad",
+          "demand": 13805,
+          "distance_km": 312.2,
+          "hours": 12.9
+        },
+        {
+          "region": "Warangal",
+          "region_id": "R014",
+          "hub": "Hyderabad",
+          "demand": 6512,
+          "distance_km": 168.2,
+          "hours": 9.7
+        },
+        {
+          "region": "Indore",
+          "region_id": "R015",
+          "hub": "Hyderabad",
+          "demand": 26490,
+          "distance_km": 817.1,
+          "hours": 24.2
+        },
+        {
+          "region": "Bhopal",
+          "region_id": "R016",
+          "hub": "Hyderabad",
+          "demand": 17817,
+          "distance_km": 828.3,
+          "hours": 24.4
+        },
+        {
+          "region": "Surat",
+          "region_id": "R017",
+          "hub": "Mumbai",
+          "demand": 61734,
+          "distance_km": 291.1,
+          "hours": 12.5
+        },
+        {
+          "region": "Kochi",
+          "region_id": "R018",
+          "hub": "Bengaluru",
+          "demand": 24366,
+          "distance_km": 459.7,
+          "hours": 16.2
+        },
+        {
+          "region": "Coimbatore",
+          "region_id": "R019",
+          "hub": "Bengaluru",
+          "demand": 14595,
+          "distance_km": 285.2,
+          "hours": 12.3
+        },
+        {
+          "region": "Bhubaneswar",
+          "region_id": "R020",
+          "hub": "Kolkata",
+          "demand": 10743,
+          "distance_km": 456.1,
+          "hours": 16.1
+        },
+        {
+          "region": "Patna",
+          "region_id": "R021",
+          "hub": "Kolkata",
+          "demand": 27356,
+          "distance_km": 586.4,
+          "hours": 19.0
+        },
+        {
+          "region": "Guwahati",
+          "region_id": "R022",
+          "hub": "Kolkata",
+          "demand": 8921,
+          "distance_km": 654.6,
+          "hours": 20.5
+        },
+        {
+          "region": "Chandigarh",
+          "region_id": "R023",
+          "hub": "Kolkata",
+          "demand": 9092,
+          "distance_km": 1830.3,
+          "hours": 46.7
+        },
+        {
+          "region": "Ludhiana",
+          "region_id": "R024",
+          "hub": "Hyderabad",
+          "demand": 9541,
+          "distance_km": 1907.8,
+          "hours": 48.4
+        },
+        {
+          "region": "Kanpur",
+          "region_id": "R025",
+          "hub": "Kolkata",
+          "demand": 18916,
+          "distance_km": 1149.5,
+          "hours": 31.5
+        },
+        {
+          "region": "Raipur",
+          "region_id": "R026",
+          "hub": "Hyderabad",
+          "demand": 5958,
+          "distance_km": 677.2,
+          "hours": 21.0
+        },
+        {
+          "region": "Ranchi",
+          "region_id": "R027",
+          "hub": "Kolkata",
+          "demand": 6800,
+          "distance_km": 405.3,
+          "hours": 15.0
+        },
+        {
+          "region": "Mysuru",
+          "region_id": "R028",
+          "hub": "Bengaluru",
+          "demand": 9209,
+          "distance_km": 160.0,
+          "hours": 9.6
+        },
+        {
+          "region": "Tiruchirappalli",
+          "region_id": "R029",
+          "hub": "Bengaluru",
+          "demand": 5801,
+          "distance_km": 338.8,
+          "hours": 13.5
+        },
+        {
+          "region": "Dehradun",
+          "region_id": "R030",
+          "hub": "Kolkata",
+          "demand": 5295,
+          "distance_km": 1675.2,
+          "hours": 43.2
+        },
+        {
+          "region": "Hyderabad-W",
+          "region_id": "R031",
+          "hub": "Hyderabad",
+          "demand": 13934,
+          "distance_km": 119.5,
+          "hours": 8.7
+        },
+        {
+          "region": "Hyderabad-W2",
+          "region_id": "R032",
+          "hub": "Hyderabad",
+          "demand": 19109,
+          "distance_km": 69.9,
+          "hours": 7.6
+        },
+        {
+          "region": "Hyderabad-W3",
+          "region_id": "R033",
+          "hub": "Hyderabad",
+          "demand": 6901,
+          "distance_km": 169.5,
+          "hours": 9.8
+        },
+        {
+          "region": "Mumbai-S",
+          "region_id": "R034",
+          "hub": "Hyderabad",
+          "demand": 36119,
+          "distance_km": 720.1,
+          "hours": 22.0
+        },
+        {
+          "region": "Mumbai-SW",
+          "region_id": "R035",
+          "hub": "Hyderabad",
+          "demand": 18351,
+          "distance_km": 889.5,
+          "hours": 25.8
+        },
+        {
+          "region": "Mumbai-E",
+          "region_id": "R036",
+          "hub": "Hyderabad",
+          "demand": 12252,
+          "distance_km": 656.1,
+          "hours": 20.6
+        },
+        {
+          "region": "Delhi-NW",
+          "region_id": "R037",
+          "hub": "Delhi",
+          "demand": 34609,
+          "distance_km": 147.0,
+          "hours": 9.3
+        },
+        {
+          "region": "Delhi-SE",
+          "region_id": "R038",
+          "hub": "Delhi",
+          "demand": 45616,
+          "distance_km": 196.6,
+          "hours": 10.4
+        },
+        {
+          "region": "Delhi-W",
+          "region_id": "R039",
+          "hub": "Delhi",
+          "demand": 41442,
+          "distance_km": 84.3,
+          "hours": 7.9
+        },
+        {
+          "region": "Bengaluru-N",
+          "region_id": "R040",
+          "hub": "Bengaluru",
+          "demand": 15018,
+          "distance_km": 78.6,
+          "hours": 7.7
+        },
+        {
+          "region": "Bengaluru-W",
+          "region_id": "R041",
+          "hub": "Bengaluru",
+          "demand": 13301,
+          "distance_km": 195.7,
+          "hours": 10.3
+        },
+        {
+          "region": "Bengaluru-SE",
+          "region_id": "R042",
+          "hub": "Bengaluru",
+          "demand": 8512,
+          "distance_km": 124.0,
+          "hours": 8.8
+        },
+        {
+          "region": "Chennai-NE",
+          "region_id": "R043",
+          "hub": "Chennai",
+          "demand": 7864,
+          "distance_km": 124.8,
+          "hours": 8.8
+        },
+        {
+          "region": "Chennai-SW",
+          "region_id": "R044",
+          "hub": "Chennai",
+          "demand": 20068,
+          "distance_km": 119.4,
+          "hours": 8.7
+        },
+        {
+          "region": "Chennai-W",
+          "region_id": "R045",
+          "hub": "Chennai",
+          "demand": 16866,
+          "distance_km": 101.4,
+          "hours": 8.3
+        },
+        {
+          "region": "Kolkata-W",
+          "region_id": "R046",
+          "hub": "Kolkata",
+          "demand": 14572,
+          "distance_km": 112.1,
+          "hours": 8.5
+        },
+        {
+          "region": "Kolkata-SW",
+          "region_id": "R047",
+          "hub": "Kolkata",
+          "demand": 8762,
+          "distance_km": 76.5,
+          "hours": 7.7
+        },
+        {
+          "region": "Kolkata-N",
+          "region_id": "R048",
+          "hub": "Kolkata",
+          "demand": 23138,
+          "distance_km": 169.7,
+          "hours": 9.8
+        },
+        {
+          "region": "Pune-W",
+          "region_id": "R049",
+          "hub": "Hyderabad",
+          "demand": 6382,
+          "distance_km": 783.4,
+          "hours": 23.4
+        },
+        {
+          "region": "Pune-SW",
+          "region_id": "R050",
+          "hub": "Hyderabad",
+          "demand": 4092,
+          "distance_km": 651.2,
+          "hours": 20.5
+        },
+        {
+          "region": "Pune-SW2",
+          "region_id": "R051",
+          "hub": "Hyderabad",
+          "demand": 7909,
+          "distance_km": 728.1,
+          "hours": 22.2
+        },
+        {
+          "region": "Ahmedabad-W",
+          "region_id": "R052",
+          "hub": "Delhi",
+          "demand": 10805,
+          "distance_km": 1051.5,
+          "hours": 29.4
+        },
+        {
+          "region": "Ahmedabad-S",
+          "region_id": "R053",
+          "hub": "Mumbai",
+          "demand": 5591,
+          "distance_km": 461.8,
+          "hours": 16.3
+        },
+        {
+          "region": "Ahmedabad-SE",
+          "region_id": "R054",
+          "hub": "Hyderabad",
+          "demand": 9673,
+          "distance_km": 1019.5,
+          "hours": 28.7
+        },
+        {
+          "region": "Jaipur-NW",
+          "region_id": "R055",
+          "hub": "Hyderabad",
+          "demand": 2828,
+          "distance_km": 1441.4,
+          "hours": 38.0
+        },
+        {
+          "region": "Jaipur-E",
+          "region_id": "R056",
+          "hub": "Hyderabad",
+          "demand": 4838,
+          "distance_km": 1328.0,
+          "hours": 35.5
+        },
+        {
+          "region": "Lucknow-S",
+          "region_id": "R057",
+          "hub": "Kolkata",
+          "demand": 5204,
+          "distance_km": 1091.8,
+          "hours": 30.3
+        },
+        {
+          "region": "Lucknow-SE",
+          "region_id": "R058",
+          "hub": "Kolkata",
+          "demand": 3083,
+          "distance_km": 954.3,
+          "hours": 27.2
+        },
+        {
+          "region": "Nagpur-N",
+          "region_id": "R059",
+          "hub": "Hyderabad",
+          "demand": 3403,
+          "distance_km": 598.0,
+          "hours": 19.3
+        },
+        {
+          "region": "Nagpur-S",
+          "region_id": "R060",
+          "hub": "Hyderabad",
+          "demand": 2129,
+          "distance_km": 456.1,
+          "hours": 16.1
+        },
+        {
+          "region": "Visakhapatnam-NE",
+          "region_id": "R061",
+          "hub": "Hyderabad",
+          "demand": 2560,
+          "distance_km": 765.4,
+          "hours": 23.0
+        },
+        {
+          "region": "Visakhapatnam-SE",
+          "region_id": "R062",
+          "hub": "Hyderabad",
+          "demand": 3267,
+          "distance_km": 696.7,
+          "hours": 21.5
+        },
+        {
+          "region": "Vijayawada-SE",
+          "region_id": "R063",
+          "hub": "Hyderabad",
+          "demand": 1052,
+          "distance_km": 378.7,
+          "hours": 14.4
+        },
+        {
+          "region": "Vijayawada-N",
+          "region_id": "R064",
+          "hub": "Hyderabad",
+          "demand": 2773,
+          "distance_km": 249.4,
+          "hours": 11.5
+        },
+        {
+          "region": "Warangal-E",
+          "region_id": "R065",
+          "hub": "Hyderabad",
+          "demand": 1410,
+          "distance_km": 347.7,
+          "hours": 13.7
+        },
+        {
+          "region": "Indore-W",
+          "region_id": "R066",
+          "hub": "Hyderabad",
+          "demand": 3157,
+          "distance_km": 853.6,
+          "hours": 25.0
+        },
+        {
+          "region": "Indore-NE",
+          "region_id": "R067",
+          "hub": "Hyderabad",
+          "demand": 4489,
+          "distance_km": 924.9,
+          "hours": 26.6
+        },
+        {
+          "region": "Bhopal-E",
+          "region_id": "R068",
+          "hub": "Hyderabad",
+          "demand": 2946,
+          "distance_km": 847.1,
+          "hours": 24.8
+        },
+        {
+          "region": "Bhopal-NE",
+          "region_id": "R069",
+          "hub": "Hyderabad",
+          "demand": 2973,
+          "distance_km": 896.6,
+          "hours": 25.9
+        },
+        {
+          "region": "Surat-W",
+          "region_id": "R070",
+          "hub": "Hyderabad",
+          "demand": 9666,
+          "distance_km": 996.6,
+          "hours": 28.1
+        },
+        {
+          "region": "Surat-SW",
+          "region_id": "R071",
+          "hub": "Hyderabad",
+          "demand": 3661,
+          "distance_km": 911.5,
+          "hours": 26.3
+        },
+        {
+          "region": "Kochi-SE",
+          "region_id": "R072",
+          "hub": "Bengaluru",
+          "demand": 2955,
+          "distance_km": 499.4,
+          "hours": 17.1
+        },
+        {
+          "region": "Kochi-SE2",
+          "region_id": "R073",
+          "hub": "Bengaluru",
+          "demand": 1504,
+          "distance_km": 473.6,
+          "hours": 16.5
+        },
+        {
+          "region": "Coimbatore-SW",
+          "region_id": "R074",
+          "hub": "Bengaluru",
+          "demand": 3583,
+          "distance_km": 364.3,
+          "hours": 14.1
+        },
+        {
+          "region": "Coimbatore-SW2",
+          "region_id": "R075",
+          "hub": "Bengaluru",
+          "demand": 3442,
+          "distance_km": 390.0,
+          "hours": 14.7
+        },
+        {
+          "region": "Bhubaneswar-N",
+          "region_id": "R076",
+          "hub": "Kolkata",
+          "demand": 1523,
+          "distance_km": 324.2,
+          "hours": 13.2
+        },
+        {
+          "region": "Bhubaneswar-W",
+          "region_id": "R077",
+          "hub": "Kolkata",
+          "demand": 1422,
+          "distance_km": 497.3,
+          "hours": 17.1
+        },
+        {
+          "region": "Patna-S",
+          "region_id": "R078",
+          "hub": "Kolkata",
+          "demand": 3011,
+          "distance_km": 460.9,
+          "hours": 16.2
+        },
+        {
+          "region": "Patna-S2",
+          "region_id": "R079",
+          "hub": "Kolkata",
+          "demand": 2253,
+          "distance_km": 512.0,
+          "hours": 17.4
+        },
+        {
+          "region": "Guwahati-S",
+          "region_id": "R080",
+          "hub": "Kolkata",
+          "demand": 650,
+          "distance_km": 559.4,
+          "hours": 18.4
+        },
+        {
+          "region": "Chandigarh-NW",
+          "region_id": "R081",
+          "hub": "Hyderabad",
+          "demand": 873,
+          "distance_km": 1979.4,
+          "hours": 50.0
+        },
+        {
+          "region": "Chandigarh-S",
+          "region_id": "R082",
+          "hub": "Hyderabad",
+          "demand": 1850,
+          "distance_km": 1803.7,
+          "hours": 46.1
+        },
+        {
+          "region": "Ludhiana-E",
+          "region_id": "R083",
+          "hub": "Delhi",
+          "demand": 2594,
+          "distance_km": 288.7,
+          "hours": 12.4
+        },
+        {
+          "region": "Kanpur-W",
+          "region_id": "R084",
+          "hub": "Kolkata",
+          "demand": 5513,
+          "distance_km": 1217.5,
+          "hours": 33.1
+        },
+        {
+          "region": "Kanpur-E",
+          "region_id": "R085",
+          "hub": "Kolkata",
+          "demand": 3506,
+          "distance_km": 1098.5,
+          "hours": 30.4
+        },
+        {
+          "region": "Raipur-SE",
+          "region_id": "R086",
+          "hub": "Hyderabad",
+          "demand": 1459,
+          "distance_km": 683.9,
+          "hours": 21.2
+        },
+        {
+          "region": "Ranchi-SE",
+          "region_id": "R087",
+          "hub": "Kolkata",
+          "demand": 1133,
+          "distance_km": 216.0,
+          "hours": 10.8
+        },
+        {
+          "region": "Mysuru-S",
+          "region_id": "R088",
+          "hub": "Bengaluru",
+          "demand": 1595,
+          "distance_km": 232.5,
+          "hours": 11.2
+        },
+        {
+          "region": "Tiruchirappalli-NE",
+          "region_id": "R089",
+          "hub": "Chennai",
+          "demand": 829,
+          "distance_km": 327.7,
+          "hours": 13.3
+        },
+        {
+          "region": "Dehradun-N",
+          "region_id": "R090",
+          "hub": "Kolkata",
+          "demand": 1474,
+          "distance_km": 1800.0,
+          "hours": 46.0
+        }
+      ],
+      "cost_vs_proposed_pct": 16.08
+    },
+    "fixed_avg": {
+      "label": "Historical-average demand + matheuristic (no forecast)",
+      "status": "Matheuristic",
+      "seconds": 3.6,
+      "planned_objective": 41580486.0,
+      "planned_cost": 41580486.0,
+      "n_hubs": 6,
+      "hubs": [
+        2,
+        31,
+        33,
+        41,
+        45,
+        53
+      ],
+      "hub_cities": [
+        "Delhi",
+        "Hyderabad-W2",
+        "Mumbai-S",
+        "Bengaluru-SE",
+        "Kolkata-W",
+        "Ahmedabad-SE"
+      ],
+      "total_cost": 67172111.0,
+      "fixed_cost": 12750000.0,
+      "transport_cost": 18988804.0,
+      "time_cost": 35433307.0,
+      "cost_per_order": 28.182,
+      "avg_delivery_hours": 9.91,
+      "max_delivery_hours": 34.05,
+      "avg_distance_km": 199.2,
+      "fulfilment_rate": 0.6604,
+      "reliability_sla": 0.6604,
+      "overloaded_hubs": 5,
+      "utilisation": {
+        "2": 1.729,
+        "31": 0.916,
+        "33": 1.779,
+        "41": 1.83,
+        "45": 1.528,
+        "53": 1.178
+      },
+      "assignment": [
+        {
+          "region": "Hyderabad",
+          "region_id": "R001",
+          "hub": "Hyderabad-W2",
+          "demand": 122351,
+          "distance_km": 69.9,
+          "hours": 7.6
+        },
+        {
+          "region": "Mumbai",
+          "region_id": "R002",
+          "hub": "Mumbai-S",
+          "demand": 309385,
+          "distance_km": 109.8,
+          "hours": 8.4
+        },
+        {
+          "region": "Delhi",
+          "region_id": "R003",
+          "hub": "Delhi",
+          "demand": 321460,
+          "distance_km": 0.0,
+          "hours": 3.0
+        },
+        {
+          "region": "Bengaluru",
+          "region_id": "R004",
+          "hub": "Bengaluru-SE",
+          "demand": 171479,
+          "distance_km": 124.0,
+          "hours": 8.8
+        },
+        {
+          "region": "Chennai",
+          "region_id": "R005",
+          "hub": "Bengaluru-SE",
+          "demand": 165814,
+          "distance_km": 290.6,
+          "hours": 12.5
+        },
+        {
+          "region": "Kolkata",
+          "region_id": "R006",
+          "hub": "Kolkata-W",
+          "demand": 230594,
+          "distance_km": 112.1,
+          "hours": 8.5
+        },
+        {
+          "region": "Pune",
+          "region_id": "R007",
+          "hub": "Mumbai-S",
+          "demand": 75126,
+          "distance_km": 99.1,
+          "hours": 8.2
+        },
+        {
+          "region": "Ahmedabad",
+          "region_id": "R008",
+          "hub": "Ahmedabad-SE",
+          "demand": 82107,
+          "distance_km": 87.3,
+          "hours": 7.9
+        },
+        {
+          "region": "Jaipur",
+          "region_id": "R009",
+          "hub": "Ahmedabad-SE",
+          "demand": 48685,
+          "distance_km": 724.2,
+          "hours": 22.1
+        },
+        {
+          "region": "Lucknow",
+          "region_id": "R010",
+          "hub": "Kolkata-W",
+          "demand": 30929,
+          "distance_km": 1000.3,
+          "hours": 28.2
+        },
+        {
+          "region": "Nagpur",
+          "region_id": "R011",
+          "hub": "Hyderabad-W2",
+          "demand": 23525,
+          "distance_km": 564.2,
+          "hours": 18.5
+        },
+        {
+          "region": "Visakhapatnam",
+          "region_id": "R012",
+          "hub": "Hyderabad-W2",
+          "demand": 17634,
+          "distance_km": 696.5,
+          "hours": 21.5
+        },
+        {
+          "region": "Vijayawada",
+          "region_id": "R013",
+          "hub": "Hyderabad-W2",
+          "demand": 13805,
+          "distance_km": 367.4,
+          "hours": 14.2
+        },
+        {
+          "region": "Warangal",
+          "region_id": "R014",
+          "hub": "Hyderabad-W2",
+          "demand": 6512,
+          "distance_km": 237.3,
+          "hours": 11.3
+        },
+        {
+          "region": "Indore",
+          "region_id": "R015",
+          "hub": "Ahmedabad-SE",
+          "demand": 26490,
+          "distance_km": 389.8,
+          "hours": 14.7
+        },
+        {
+          "region": "Bhopal",
+          "region_id": "R016",
+          "hub": "Ahmedabad-SE",
+          "demand": 17817,
+          "distance_km": 597.2,
+          "hours": 19.3
+        },
+        {
+          "region": "Surat",
+          "region_id": "R017",
+          "hub": "Ahmedabad-SE",
+          "demand": 61734,
+          "distance_km": 177.1,
+          "hours": 9.9
+        },
+        {
+          "region": "Kochi",
+          "region_id": "R018",
+          "hub": "Bengaluru-SE",
+          "demand": 24366,
+          "distance_km": 433.3,
+          "hours": 15.6
+        },
+        {
+          "region": "Coimbatore",
+          "region_id": "R019",
+          "hub": "Bengaluru-SE",
+          "demand": 14595,
+          "distance_km": 257.5,
+          "hours": 11.7
+        },
+        {
+          "region": "Bhubaneswar",
+          "region_id": "R020",
+          "hub": "Kolkata-W",
+          "demand": 10743,
+          "distance_km": 418.0,
+          "hours": 15.3
+        },
+        {
+          "region": "Patna",
+          "region_id": "R021",
+          "hub": "Kolkata-W",
+          "demand": 27356,
+          "distance_km": 488.6,
+          "hours": 16.9
+        },
+        {
+          "region": "Guwahati",
+          "region_id": "R022",
+          "hub": "Kolkata-W",
+          "demand": 8921,
+          "distance_km": 701.1,
+          "hours": 21.6
+        },
+        {
+          "region": "Chandigarh",
+          "region_id": "R023",
+          "hub": "Delhi",
+          "demand": 9092,
+          "distance_km": 299.1,
+          "hours": 12.6
+        },
+        {
+          "region": "Ludhiana",
+          "region_id": "R024",
+          "hub": "Ahmedabad-SE",
+          "demand": 9541,
+          "distance_km": 1233.7,
+          "hours": 33.4
+        },
+        {
+          "region": "Kanpur",
+          "region_id": "R025",
+          "hub": "Kolkata-W",
+          "demand": 18916,
+          "distance_km": 1039.2,
+          "hours": 29.1
+        },
+        {
+          "region": "Raipur",
+          "region_id": "R026",
+          "hub": "Hyderabad-W2",
+          "demand": 5958,
+          "distance_km": 736.1,
+          "hours": 22.4
+        },
+        {
+          "region": "Ranchi",
+          "region_id": "R027",
+          "hub": "Kolkata-W",
+          "demand": 6800,
+          "distance_km": 293.6,
+          "hours": 12.5
+        },
+        {
+          "region": "Mysuru",
+          "region_id": "R028",
+          "hub": "Bengaluru-SE",
+          "demand": 9209,
+          "distance_km": 220.2,
+          "hours": 10.9
+        },
+        {
+          "region": "Tiruchirappalli",
+          "region_id": "R029",
+          "hub": "Bengaluru-SE",
+          "demand": 5801,
+          "distance_km": 226.4,
+          "hours": 11.0
+        },
+        {
+          "region": "Dehradun",
+          "region_id": "R030",
+          "hub": "Delhi",
+          "demand": 5295,
+          "distance_km": 256.7,
+          "hours": 11.7
+        },
+        {
+          "region": "Hyderabad-W",
+          "region_id": "R031",
+          "hub": "Hyderabad-W2",
+          "demand": 13934,
+          "distance_km": 66.1,
+          "hours": 7.5
+        },
+        {
+          "region": "Hyderabad-W2",
+          "region_id": "R032",
+          "hub": "Hyderabad-W2",
+          "demand": 19109,
+          "distance_km": 0.0,
+          "hours": 3.0
+        },
+        {
+          "region": "Hyderabad-W3",
+          "region_id": "R033",
+          "hub": "Hyderabad-W2",
+          "demand": 6901,
+          "distance_km": 108.7,
+          "hours": 8.4
+        },
+        {
+          "region": "Mumbai-S",
+          "region_id": "R034",
+          "hub": "Mumbai-S",
+          "demand": 36119,
+          "distance_km": 0.0,
+          "hours": 3.0
+        },
+        {
+          "region": "Mumbai-SW",
+          "region_id": "R035",
+          "hub": "Mumbai-S",
+          "demand": 18351,
+          "distance_km": 171.8,
+          "hours": 9.8
+        },
+        {
+          "region": "Mumbai-E",
+          "region_id": "R036",
+          "hub": "Mumbai-S",
+          "demand": 12252,
+          "distance_km": 160.0,
+          "hours": 9.6
+        },
+        {
+          "region": "Delhi-NW",
+          "region_id": "R037",
+          "hub": "Delhi",
+          "demand": 34609,
+          "distance_km": 147.0,
+          "hours": 9.3
+        },
+        {
+          "region": "Delhi-SE",
+          "region_id": "R038",
+          "hub": "Delhi",
+          "demand": 45616,
+          "distance_km": 196.6,
+          "hours": 10.4
+        },
+        {
+          "region": "Delhi-W",
+          "region_id": "R039",
+          "hub": "Delhi",
+          "demand": 41442,
+          "distance_km": 84.3,
+          "hours": 7.9
+        },
+        {
+          "region": "Bengaluru-N",
+          "region_id": "R040",
+          "hub": "Bengaluru-SE",
+          "demand": 15018,
+          "distance_km": 174.8,
+          "hours": 9.9
+        },
+        {
+          "region": "Bengaluru-W",
+          "region_id": "R041",
+          "hub": "Bengaluru-SE",
+          "demand": 13301,
+          "distance_km": 296.7,
+          "hours": 12.6
+        },
+        {
+          "region": "Bengaluru-SE",
+          "region_id": "R042",
+          "hub": "Bengaluru-SE",
+          "demand": 8512,
+          "distance_km": 0.0,
+          "hours": 3.0
+        },
+        {
+          "region": "Chennai-NE",
+          "region_id": "R043",
+          "hub": "Bengaluru-SE",
+          "demand": 7864,
+          "distance_km": 408.1,
+          "hours": 15.1
+        },
+        {
+          "region": "Chennai-SW",
+          "region_id": "R044",
+          "hub": "Bengaluru-SE",
+          "demand": 20068,
+          "distance_km": 173.5,
+          "hours": 9.9
+        },
+        {
+          "region": "Chennai-W",
+          "region_id": "R045",
+          "hub": "Bengaluru-SE",
+          "demand": 16866,
+          "distance_km": 189.3,
+          "hours": 10.2
+        },
+        {
+          "region": "Kolkata-W",
+          "region_id": "R046",
+          "hub": "Kolkata-W",
+          "demand": 14572,
+          "distance_km": 0.0,
+          "hours": 3.0
+        },
+        {
+          "region": "Kolkata-SW",
+          "region_id": "R047",
+          "hub": "Kolkata-W",
+          "demand": 8762,
+          "distance_km": 78.0,
+          "hours": 7.7
+        },
+        {
+          "region": "Kolkata-N",
+          "region_id": "R048",
+          "hub": "Kolkata-W",
+          "demand": 23138,
+          "distance_km": 173.4,
+          "hours": 9.9
+        },
+        {
+          "region": "Pune-W",
+          "region_id": "R049",
+          "hub": "Mumbai-S",
+          "demand": 6382,
+          "distance_km": 69.8,
+          "hours": 7.6
+        },
+        {
+          "region": "Pune-SW",
+          "region_id": "R050",
+          "hub": "Mumbai-S",
+          "demand": 4092,
+          "distance_km": 76.2,
+          "hours": 7.7
+        },
+        {
+          "region": "Pune-SW2",
+          "region_id": "R051",
+          "hub": "Mumbai-S",
+          "demand": 7909,
+          "distance_km": 36.2,
+          "hours": 6.8
+        },
+        {
+          "region": "Ahmedabad-W",
+          "region_id": "R052",
+          "hub": "Ahmedabad-SE",
+          "demand": 10805,
+          "distance_km": 204.3,
+          "hours": 10.5
+        },
+        {
+          "region": "Ahmedabad-S",
+          "region_id": "R053",
+          "hub": "Ahmedabad-SE",
+          "demand": 5591,
+          "distance_km": 71.7,
+          "hours": 7.6
+        },
+        {
+          "region": "Ahmedabad-SE",
+          "region_id": "R054",
+          "hub": "Ahmedabad-SE",
+          "demand": 9673,
+          "distance_km": 0.0,
+          "hours": 3.0
+        },
+        {
+          "region": "Jaipur-NW",
+          "region_id": "R055",
+          "hub": "Ahmedabad-SE",
+          "demand": 2828,
+          "distance_km": 738.7,
+          "hours": 22.4
+        },
+        {
+          "region": "Jaipur-E",
+          "region_id": "R056",
+          "hub": "Ahmedabad-SE",
+          "demand": 4838,
+          "distance_km": 764.4,
+          "hours": 23.0
+        },
+        {
+          "region": "Lucknow-S",
+          "region_id": "R057",
+          "hub": "Kolkata-W",
+          "demand": 5204,
+          "distance_km": 980.2,
+          "hours": 27.8
+        },
+        {
+          "region": "Lucknow-SE",
+          "region_id": "R058",
+          "hub": "Kolkata-W",
+          "demand": 3083,
+          "distance_km": 844.0,
+          "hours": 24.8
+        },
+        {
+          "region": "Nagpur-N",
+          "region_id": "R059",
+          "hub": "Hyderabad-W2",
+          "demand": 3403,
+          "distance_km": 633.1,
+          "hours": 20.1
+        },
+        {
+          "region": "Nagpur-S",
+          "region_id": "R060",
+          "hub": "Hyderabad-W2",
+          "demand": 2129,
+          "distance_km": 496.0,
+          "hours": 17.0
+        },
+        {
+          "region": "Visakhapatnam-NE",
+          "region_id": "R061",
+          "hub": "Kolkata-W",
+          "demand": 2560,
+          "distance_km": 763.7,
+          "hours": 23.0
+        },
+        {
+          "region": "Visakhapatnam-SE",
+          "region_id": "R062",
+          "hub": "Hyderabad-W2",
+          "demand": 3267,
+          "distance_km": 762.6,
+          "hours": 22.9
+        },
+        {
+          "region": "Vijayawada-SE",
+          "region_id": "R063",
+          "hub": "Hyderabad-W2",
+          "demand": 1052,
+          "distance_km": 431.3,
+          "hours": 15.6
+        },
+        {
+          "region": "Vijayawada-N",
+          "region_id": "R064",
+          "hub": "Hyderabad-W2",
+          "demand": 2773,
+          "distance_km": 319.2,
+          "hours": 13.1
+        },
+        {
+          "region": "Warangal-E",
+          "region_id": "R065",
+          "hub": "Hyderabad-W2",
+          "demand": 1410,
+          "distance_km": 417.1,
+          "hours": 15.3
+        },
+        {
+          "region": "Indore-W",
+          "region_id": "R066",
+          "hub": "Ahmedabad-SE",
+          "demand": 3157,
+          "distance_km": 269.9,
+          "hours": 12.0
+        },
+        {
+          "region": "Indore-NE",
+          "region_id": "R067",
+          "hub": "Ahmedabad-SE",
+          "demand": 4489,
+          "distance_km": 528.1,
+          "hours": 17.7
+        },
+        {
+          "region": "Bhopal-E",
+          "region_id": "R068",
+          "hub": "Ahmedabad-SE",
+          "demand": 2946,
+          "distance_km": 696.8,
+          "hours": 21.5
+        },
+        {
+          "region": "Bhopal-NE",
+          "region_id": "R069",
+          "hub": "Ahmedabad-SE",
+          "demand": 2973,
+          "distance_km": 770.8,
+          "hours": 23.1
+        },
+        {
+          "region": "Surat-W",
+          "region_id": "R070",
+          "hub": "Ahmedabad-SE",
+          "demand": 9666,
+          "distance_km": 231.2,
+          "hours": 11.1
+        },
+        {
+          "region": "Surat-SW",
+          "region_id": "R071",
+          "hub": "Mumbai-S",
+          "demand": 3661,
+          "distance_km": 290.3,
+          "hours": 12.5
+        },
+        {
+          "region": "Kochi-SE",
+          "region_id": "R072",
+          "hub": "Bengaluru-SE",
+          "demand": 2955,
+          "distance_km": 459.4,
+          "hours": 16.2
+        },
+        {
+          "region": "Kochi-SE2",
+          "region_id": "R073",
+          "hub": "Bengaluru-SE",
+          "demand": 1504,
+          "distance_km": 426.8,
+          "hours": 15.5
+        },
+        {
+          "region": "Coimbatore-SW",
+          "region_id": "R074",
+          "hub": "Bengaluru-SE",
+          "demand": 3583,
+          "distance_km": 337.1,
+          "hours": 13.5
+        },
+        {
+          "region": "Coimbatore-SW2",
+          "region_id": "R075",
+          "hub": "Bengaluru-SE",
+          "demand": 3442,
+          "distance_km": 361.5,
+          "hours": 14.0
+        },
+        {
+          "region": "Bhubaneswar-N",
+          "region_id": "R076",
+          "hub": "Kolkata-W",
+          "demand": 1523,
+          "distance_km": 252.2,
+          "hours": 11.6
+        },
+        {
+          "region": "Bhubaneswar-W",
+          "region_id": "R077",
+          "hub": "Kolkata-W",
+          "demand": 1422,
+          "distance_km": 445.9,
+          "hours": 15.9
+        },
+        {
+          "region": "Patna-S",
+          "region_id": "R078",
+          "hub": "Kolkata-W",
+          "demand": 3011,
+          "distance_km": 351.4,
+          "hours": 13.8
+        },
+        {
+          "region": "Patna-S2",
+          "region_id": "R079",
+          "hub": "Kolkata-W",
+          "demand": 2253,
+          "distance_km": 408.8,
+          "hours": 15.1
+        },
+        {
+          "region": "Guwahati-S",
+          "region_id": "R080",
+          "hub": "Kolkata-W",
+          "demand": 650,
+          "distance_km": 618.3,
+          "hours": 19.7
+        },
+        {
+          "region": "Chandigarh-NW",
+          "region_id": "R081",
+          "hub": "Delhi",
+          "demand": 873,
+          "distance_km": 437.9,
+          "hours": 15.7
+        },
+        {
+          "region": "Chandigarh-S",
+          "region_id": "R082",
+          "hub": "Ahmedabad-SE",
+          "demand": 1850,
+          "distance_km": 1180.0,
+          "hours": 32.2
+        },
+        {
+          "region": "Ludhiana-E",
+          "region_id": "R083",
+          "hub": "Ahmedabad-SE",
+          "demand": 2594,
+          "distance_km": 1262.4,
+          "hours": 34.1
+        },
+        {
+          "region": "Kanpur-W",
+          "region_id": "R084",
+          "hub": "Ahmedabad-SE",
+          "demand": 5513,
+          "distance_km": 1042.0,
+          "hours": 29.2
+        },
+        {
+          "region": "Kanpur-E",
+          "region_id": "R085",
+          "hub": "Kolkata-W",
+          "demand": 3506,
+          "distance_km": 988.9,
+          "hours": 28.0
+        },
+        {
+          "region": "Raipur-SE",
+          "region_id": "R086",
+          "hub": "Kolkata-W",
+          "demand": 1459,
+          "distance_km": 723.0,
+          "hours": 22.1
+        },
+        {
+          "region": "Ranchi-SE",
+          "region_id": "R087",
+          "hub": "Kolkata-W",
+          "demand": 1133,
+          "distance_km": 109.1,
+          "hours": 8.4
+        },
+        {
+          "region": "Mysuru-S",
+          "region_id": "R088",
+          "hub": "Bengaluru-SE",
+          "demand": 1595,
+          "distance_km": 250.6,
+          "hours": 11.6
+        },
+        {
+          "region": "Tiruchirappalli-NE",
+          "region_id": "R089",
+          "hub": "Bengaluru-SE",
+          "demand": 829,
+          "distance_km": 218.4,
+          "hours": 10.9
+        },
+        {
+          "region": "Dehradun-N",
+          "region_id": "R090",
+          "hub": "Delhi",
+          "demand": 1474,
+          "distance_km": 430.6,
+          "hours": 15.6
+        }
+      ],
+      "cost_vs_proposed_pct": 8.07
+    }
+  }
+}

@@ -1,0 +1,14 @@
+fastapi==0.115.6
+uvicorn==0.32.1
+sqlalchemy==2.0.36
+pyjwt==2.10.1
+bcrypt==4.2.1
+python-dotenv==1.0.1
+python-multipart==0.0.20
+requests==2.32.3
+numpy==1.26.4
+pillow==11.0.0
+matplotlib==3.9.2
+biopython==1.84
+timm==1.0.12
+kagglehub==0.3.6

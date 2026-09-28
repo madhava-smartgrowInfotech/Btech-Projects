@@ -1,8 +1,9 @@
 """Gemini assistant: plain-language report explanations, treatment summaries and health questions."""
 from fastapi import HTTPException
 from google import genai
+from google.genai import types
 
-from ..config import GEMINI_API_KEY, GEMINI_MODEL
+from ..config import GEMINI_API_KEY, GEMINI_FALLBACK_MODEL, GEMINI_MODEL
 
 LIPID_CODES = {"2093-3", "2571-8", "18262-6", "2085-9", "13457-7"}
 SAFETY = ("You support patients and clinicians. You never give a final diagnosis and never change a prescription; "
@@ -16,14 +17,22 @@ def generate(prompt: str) -> str:
     global _client
     if not GEMINI_API_KEY:
         raise HTTPException(503, "AI assistant is not configured: set GEMINI_API_KEY in .env")
-    try:
-        if _client is None:
-            _client = genai.Client(api_key=GEMINI_API_KEY)
-        resp = _client.models.generate_content(model=GEMINI_MODEL, contents=prompt,
-                                               config={"system_instruction": SAFETY, "temperature": 0.3})
-        return resp.text or ""
-    except Exception as e:
-        raise HTTPException(502, f"AI assistant unavailable: {str(e)[:300]}")
+    if _client is None:
+        _client = genai.Client(api_key=GEMINI_API_KEY, http_options=types.HttpOptions(timeout=45_000))
+    error = None
+    # Free-tier keys have small per-model rate limits and models can be overloaded: try the fallbacks in order.
+    models = [GEMINI_MODEL] + [m.strip() for m in GEMINI_FALLBACK_MODEL.split(",") if m.strip()]
+    for model in dict.fromkeys(models):
+        try:
+            resp = _client.models.generate_content(model=model, contents=prompt,
+                                                   config={"system_instruction": SAFETY, "temperature": 0.3})
+            return resp.text or ""
+        except Exception as e:
+            error = e
+            busy = ("429", "RESOURCE_EXHAUSTED", "404", "503", "UNAVAILABLE", "timed out", "Timeout")
+            if not any(code in f"{e.__class__.__name__} {e}" for code in busy):
+                break
+    raise HTTPException(502, f"AI assistant unavailable (Gemini busy or over quota, try again shortly): {str(error)[:250]}")
 
 
 def report_lines(timeline: list[dict], report_id: str | None) -> tuple[str, list[str]]:

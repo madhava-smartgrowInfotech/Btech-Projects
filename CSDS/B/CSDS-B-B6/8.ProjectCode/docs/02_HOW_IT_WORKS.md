@@ -80,14 +80,15 @@ training median and labelled as such. **Top factors** come from occlusion: each 
 the model re-scored, so the change in probability shows how much that value raises or lowers this patient's risk.
 
 ## 7. Assistant and reminders (F8)
-`services/assistant.py` sends Gemini (`GEMINI_MODEL`, default `gemini-2.5-flash`) a compact, structured extract of
+`services/assistant.py` sends Gemini (`GEMINI_MODEL`, default `gemini-flash-latest`) a compact, structured extract of
 the record and asks for an answer in the chosen language (English, Telugu, Hindi, and others). There are three actions:
 - Explain a lab report. It uses the report's result values, or the latest lipid panel.
 - Summarise treatment across hospitals.
 - Answer a question, including general medication guidance.
 
-A system instruction forbids diagnoses and prescription changes. If the key is missing or rejected, the API returns a
-clear error; nothing is faked. Reminders are created from active MedicationRequests (daily medication) and active
+A system instruction forbids diagnoses and prescription changes. If the main model is rate-limited or overloaded, the
+models in `GEMINI_FALLBACK_MODEL` are tried in order, with a 45 s limit on each. If the key is missing or every model is busy, the
+API returns a clear error; nothing is faked. Reminders are created from active MedicationRequests (daily medication) and active
 CarePlans (follow-up dates) when the patient opens their record or a hospital syncs a summary. Patients can add
 their own reminders and tick them off.
 

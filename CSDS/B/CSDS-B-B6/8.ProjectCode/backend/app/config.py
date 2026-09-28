@@ -12,7 +12,8 @@ MODELS_DIR = ROOT / "models"
 EXPERIMENTS_DIR = ROOT / "experiments"
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-flash-latest")
+GEMINI_FALLBACK_MODEL = os.getenv("GEMINI_FALLBACK_MODEL", "gemini-flash-lite-latest,gemini-3.7-flash,gemini-3.5-flash")
 JWT_SECRET = os.getenv("JWT_SECRET", "dev-secret-change-me")
 HOSPITAL_SHARED_SECRET = os.getenv("HOSPITAL_SHARED_SECRET", "dev-hospital-secret")
 BACKEND_PORT = int(os.getenv("BACKEND_PORT", "8206"))

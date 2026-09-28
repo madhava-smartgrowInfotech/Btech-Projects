@@ -76,8 +76,8 @@
     }
   },
   "fhir_validation": {
-    "resources_validated": 11732,
-    "valid": 11732,
+    "resources_validated": 11740,
+    "valid": 11740,
     "valid_rate": 1.0,
     "fhir_version": "R4 (fhir.resources R4B models)"
   },
@@ -119,8 +119,8 @@
       {
         "patient": "patient",
         "hospitals": 3,
-        "resources_at_hospitals": 869,
-        "timeline_items": 869
+        "resources_at_hospitals": 877,
+        "timeline_items": 877
       },
       {
         "patient": "patient2",
@@ -136,14 +136,14 @@
       }
     ],
     "record_retrieval_ms": {
-      "median": 75,
-      "max": 234
+      "median": 45,
+      "max": 96
     },
     "ledger_after_evaluation": {
       "intact": true,
-      "entries": 162,
-      "head": "117fe078ace8db2f34220a0532a49f7639a83fff3feaa20df8ef911ea86082dd"
+      "entries": 255,
+      "head": "e8aae1f240287c477d7dc2af3ff12c541ce07566f233a477f99cd0a43367b409"
     },
-    "assistant_status": "error 502: AI assistant unavailable: 401 UNAUTHENTICATED. {'error': {'code': 401, 'message': 'Request had invalid authentication credentials. Expected OAuth 2 access token"
+    "assistant_status": "error 502: AI assistant unavailable (Gemini busy or over quota, try again shortly): 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experienci"
   }
 }

@@ -69,7 +69,7 @@ At a stricter threshold of 0.90, recall drops to 0.85. The typo-tolerant scoring
 
 The models use only values that exist in a FHIR record, such as blood pressure, cholesterol, glucose, BMI, age and sex. They do not use exercise-test fields. This keeps the heart model usable on real records at a moderate AUC.
 
-**AI assistant** - the live check is recorded as `assistant_status` in the metrics file. It needs a valid `GEMINI_API_KEY`.
+**AI assistant** - verified live: the smoke test's "explain the lipid panel in Telugu" check passed with a real Gemini response. Free-tier keys allow about 5 requests per minute per model and a small daily allowance, and Google sometimes returns "high demand". UniHealth then tries the fallback models in `GEMINI_FALLBACK_MODEL` and, if all are busy, shows a clear error within seconds. It never shows a made-up answer.
 
 ## Tests
 ```

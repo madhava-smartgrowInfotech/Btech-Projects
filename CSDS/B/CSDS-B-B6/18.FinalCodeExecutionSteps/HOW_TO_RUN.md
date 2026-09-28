@@ -67,4 +67,5 @@ To reset the hospitals to the original sample, delete `data\hospital_*.db` and `
 | "Port 5206 is already in use" | Another copy is running - close the old "UniHealth" windows |
 | Hospital shows "offline" | Its window was closed. Re-run `run.bat` |
 | Assistant says "not configured" or "401" | Put a valid key in `GEMINI_API_KEY` in `.env` and restart `run.bat` |
+| Assistant says "Gemini busy or over quota" | Free-tier rate limit or Google overload - wait a minute and try again, or use a paid key |
 | `python` not found | Reinstall Python with "Add to PATH" ticked |

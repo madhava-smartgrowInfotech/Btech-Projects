@@ -24,7 +24,7 @@ You will take it from this almost-empty folder to a complete, polished, fully wo
 4. **Stay on purpose.** Build exactly the product in section 4.4. Small polish is welcome; changing the product's stated purpose or core technique is not.
 5. **Local Windows first.** One-command setup and start (`setup.bat`, `run.bat`). Docker is optional - use it only if a component genuinely needs it, and say why.
 6. **Everything is committed** (section 14): code, notebooks, training logs, metrics, result plots, trained models, datasets (full or sample - section 8) and all docs. Only `venv/`, `node_modules/` and `.env` stay out.
-7. **Secrets** live only in `.env` (git-ignored). Commit a complete `.env.example` listing every key with a comment on where to get it. Never hard-code keys.
+7. **Secrets** live only in `.env`, never hard-coded in source. In this repository `.env` **is committed** (the repository is private and the owner wants it to run out of the box), and the **Gemini key is already filled in** - `GEMINI_API_KEY`, with `GEMINI_MODEL=gemini-flash-latest` and `GEMINI_EMBED_MODEL=gemini-embedding-001`. Keep `.env.example` complete and up to date, with placeholder values and a comment on where each key comes from.
 8. **Ask, don't guess.** When anything outside the code is needed (keys, files, hardware, a decision), ask - and explain exactly how to get it, step by step, for a non-expert.
 9. **Documentation is part of the product** (section 13).
 10. **Leave `2.ABSTRACT.docx` in this folder untouched** and do not reference it anywhere in the product. Do not modify anything outside this folder except the final copy step in Phase 8.
@@ -176,7 +176,7 @@ Save for every trained model: the model file, a metrics JSON (with the dataset s
 
 ## 9. What you must get from the user (ask in Phase 2)
 
-1. Gemini API key - https://aistudio.google.com/apikey
+1. **Gemini API key - already provided.** It is set in this folder's `.env` as `GEMINI_API_KEY`, with `GEMINI_MODEL=gemini-flash-latest` and `GEMINI_EMBED_MODEL=gemini-embedding-001`. Do not ask the user for a key - just confirm `.env` exists and make one test call.
 2. Optional: Telegram bot token or Gmail app password for reminders (guided).
 3. Confirm three fictional hospital names (defaults are generated).
 

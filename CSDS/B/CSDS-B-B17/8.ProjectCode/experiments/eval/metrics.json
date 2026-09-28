@@ -1,0 +1,271 @@
+{
+  "intent": {
+    "bitext_holdout": {
+      "test_size": 5375,
+      "accuracy": 0.9983,
+      "macro_f1": 0.9983
+    },
+    "sample_calls_end_to_end": {
+      "n": 10,
+      "accuracy": 0.8,
+      "macro_f1": 0.8
+    }
+  },
+  "sentiment": {
+    "airline_holdout": {
+      "test_size": 2928,
+      "accuracy": 0.8012,
+      "macro_f1": 0.7502
+    },
+    "sample_call_script_lines": {
+      "n": 86,
+      "accuracy": 0.7326,
+      "macro_f1": 0.7166
+    },
+    "sample_call_customer_turns_end_to_end": {
+      "n": 38,
+      "accuracy": 0.8421,
+      "macro_f1": 0.8407
+    },
+    "call_center_reference_transcripts": {
+      "n": 20,
+      "accuracy": 0.6,
+      "macro_f1": 0.6179
+    },
+    "call_center_asr_transcripts": {
+      "n": 20,
+      "accuracy": 0.6,
+      "macro_f1": 0.6179
+    }
+  },
+  "transcription": {
+    "model": "faster-whisper small (int8, CPU)",
+    "wer_sample_calls": 0.0045,
+    "wer_call_center_recordings": 0.0474,
+    "speaker_attribution_accuracy_sample_calls": 1.0
+  },
+  "voice_emotion": {
+    "model": "superb/wav2vec2-base-superb-er",
+    "ravdess": {
+      "n": 40,
+      "accuracy": 0.475,
+      "macro_f1": 0.421
+    },
+    "cremad": {
+      "n": 40,
+      "accuracy": 0.425,
+      "macro_f1": 0.3482
+    }
+  },
+  "sample_calls": [
+    {
+      "call": "cancel_order",
+      "intent_true": "cancel_order",
+      "intent_pred": "cancel_order",
+      "intent_confidence": 0.4,
+      "score": 84,
+      "customer_emotions": [
+        "concerned",
+        "concerned",
+        "neutral",
+        "neutral"
+      ],
+      "script_customer_sentiment": [
+        "negative",
+        "neutral",
+        "positive",
+        "positive"
+      ],
+      "wer": 0.0,
+      "seconds": 74.8
+    },
+    {
+      "call": "change_address",
+      "intent_true": "change_shipping_address",
+      "intent_pred": "change_shipping_address",
+      "intent_confidence": 0.886,
+      "score": 95,
+      "customer_emotions": [
+        "concerned",
+        "neutral",
+        "relieved",
+        "neutral"
+      ],
+      "script_customer_sentiment": [
+        "neutral",
+        "neutral",
+        "positive",
+        "positive"
+      ],
+      "wer": 0.0,
+      "seconds": 56.6
+    },
+    {
+      "call": "complaint",
+      "intent_true": "complaint",
+      "intent_pred": "complaint",
+      "intent_confidence": 0.589,
+      "score": 65,
+      "customer_emotions": [
+        "angry",
+        "angry",
+        "angry",
+        "relieved"
+      ],
+      "script_customer_sentiment": [
+        "negative",
+        "negative",
+        "negative",
+        "negative"
+      ],
+      "wer": 0.0,
+      "seconds": 45.8
+    },
+    {
+      "call": "delete_account",
+      "intent_true": "delete_account",
+      "intent_pred": "delete_account",
+      "intent_confidence": 0.617,
+      "score": 81,
+      "customer_emotions": [
+        "frustrated",
+        "frustrated",
+        "relieved"
+      ],
+      "script_customer_sentiment": [
+        "neutral",
+        "neutral",
+        "positive"
+      ],
+      "wer": 0.0,
+      "seconds": 53.2
+    },
+    {
+      "call": "get_invoice",
+      "intent_true": "get_invoice",
+      "intent_pred": "check_invoice",
+      "intent_confidence": 0.336,
+      "score": 80,
+      "customer_emotions": [
+        "frustrated",
+        "concerned",
+        "relieved"
+      ],
+      "script_customer_sentiment": [
+        "neutral",
+        "neutral",
+        "positive"
+      ],
+      "wer": 0.0116,
+      "seconds": 39.4
+    },
+    {
+      "call": "payment_issue",
+      "intent_true": "payment_issue",
+      "intent_pred": "contact_customer_service",
+      "intent_confidence": 0.293,
+      "score": 33,
+      "customer_emotions": [
+        "angry",
+        "angry",
+        "neutral",
+        "angry",
+        "angry"
+      ],
+      "script_customer_sentiment": [
+        "negative",
+        "negative",
+        "negative",
+        "negative"
+      ],
+      "wer": 0.0377,
+      "seconds": 24.9
+    },
+    {
+      "call": "recover_password",
+      "intent_true": "recover_password",
+      "intent_pred": "recover_password",
+      "intent_confidence": 0.806,
+      "score": 94,
+      "customer_emotions": [
+        "angry",
+        "angry",
+        "relieved",
+        "relieved"
+      ],
+      "script_customer_sentiment": [
+        "negative",
+        "negative",
+        "positive",
+        "positive"
+      ],
+      "wer": 0.0,
+      "seconds": 34.5
+    },
+    {
+      "call": "refund_request",
+      "intent_true": "get_refund",
+      "intent_pred": "get_refund",
+      "intent_confidence": 0.712,
+      "score": 98,
+      "customer_emotions": [
+        "angry",
+        "angry",
+        "relieved",
+        "neutral"
+      ],
+      "script_customer_sentiment": [
+        "negative",
+        "negative",
+        "positive",
+        "positive"
+      ],
+      "wer": 0.0,
+      "seconds": 46.8
+    },
+    {
+      "call": "track_order",
+      "intent_true": "track_order",
+      "intent_pred": "track_order",
+      "intent_confidence": 0.536,
+      "score": 68,
+      "customer_emotions": [
+        "concerned",
+        "neutral",
+        "neutral",
+        "relieved"
+      ],
+      "script_customer_sentiment": [
+        "neutral",
+        "neutral",
+        "positive",
+        "positive"
+      ],
+      "wer": 0.0,
+      "seconds": 23.1
+    },
+    {
+      "call": "track_refund",
+      "intent_true": "track_refund",
+      "intent_pred": "track_refund",
+      "intent_confidence": 0.557,
+      "score": 88,
+      "customer_emotions": [
+        "angry",
+        "concerned",
+        "relieved",
+        "frustrated"
+      ],
+      "script_customer_sentiment": [
+        "negative",
+        "neutral",
+        "positive",
+        "positive"
+      ],
+      "wer": 0.0,
+      "seconds": 20.5
+    }
+  ],
+  "notes": "Sample calls are synthetic (offline voices) and clearly labelled; call-centre recordings are real audio from the Call Center Transcripts dataset. WER uses lower-case text without punctuation, with digits spelled out.",
+  "runtime_seconds": 665
+}

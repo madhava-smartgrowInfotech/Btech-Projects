@@ -9,6 +9,7 @@ secret) whose audience is this hospital and whose SMART-style scope covers the a
 import json
 import os
 import sys
+import threading
 import uuid
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -25,6 +26,7 @@ from hospitals.store import connect, upsert  # noqa: E402
 KEY = os.getenv("HOSPITAL_KEY", "A").upper()
 HOSP = HOSPITALS[KEY]
 conn = connect(HOSP["db"])
+db_lock = threading.Lock()  # one shared SQLite connection, used from FastAPI's thread pool
 app = FastAPI(title=f"{HOSP['name']} FHIR R4 server")
 
 SEARCHABLE = {"Patient", "Encounter", "Condition", "MedicationRequest", "Observation",
@@ -63,7 +65,9 @@ def searchset(resources: list[dict]) -> dict:
 
 
 def rows(sql: str, args=()) -> list[dict]:
-    return [json.loads(r["json"]) for r in conn.execute(sql, args).fetchall()]
+    with db_lock:
+        fetched = conn.execute(sql, args).fetchall()
+    return [json.loads(r["json"]) for r in fetched]
 
 
 @app.get("/fhir/metadata")
@@ -78,7 +82,8 @@ def metadata():
 
 @app.get("/fhir/stats")
 def stats(_=Depends(require_scope("system/*.read"))):
-    counts = {r["type"]: r["n"] for r in conn.execute("SELECT type, COUNT(*) n FROM resources GROUP BY type")}
+    with db_lock:
+        counts = {r["type"]: r["n"] for r in conn.execute("SELECT type, COUNT(*) n FROM resources GROUP BY type")}
     return {"hospital": KEY, "name": HOSP["name"], "counts": counts}
 
 
@@ -131,9 +136,11 @@ async def transaction(request: Request, _=Depends(require_scope("system/*.write"
         pid = subject.split("/")[-1]
         if not rows("SELECT json FROM resources WHERE type='Patient' AND id=?", (pid,)):
             outcome(404, f"Unknown patient {subject}")
-        upsert(conn, res, pid)
+        with db_lock:
+            upsert(conn, res, pid)
         responses.append({"response": {"status": "201 Created", "location": f"{res['resourceType']}/{res['id']}"}})
-    conn.commit()
+    with db_lock:
+        conn.commit()
     return {"resourceType": "Bundle", "type": "transaction-response", "entry": responses}
 
 

@@ -1,6 +1,7 @@
 """Consent checks, FHIR retrieval from every hospital that holds a person's records, and the merged timeline."""
 import json
 import uuid
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 
 from fastapi import HTTPException
@@ -71,13 +72,21 @@ def patient_person_id(db: Session, user: User) -> str:
 def fetch_resources(db: Session, person_id: str, categories: list[str]) -> tuple[list[tuple[str, dict]], list[dict]]:
     """Pull resources over FHIR REST from each linked hospital. Falls back to synced summaries if a hospital is down."""
     types = [t for c in categories for t in CATEGORIES[c]]
+    links = mpi.links(db, person_id)
+
+    def fetch(link, t):
+        return fhir_client.bundle_resources(fhir_client.get(link.hospital_key, f"/{t}", patient=f"Patient/{link.local_id}"))
+
+    # All hospital x resource-type searches run in parallel.
+    with ThreadPoolExecutor(max_workers=16) as pool:
+        futures = {(l.hospital_key, t): pool.submit(fetch, l, t) for l in links for t in types}
     out, sources = [], []
-    for link in mpi.links(db, person_id):
+    for link in links:
         src = {"hospital": link.hospital_key, "name": HOSPITALS[link.hospital_key]["name"], "local_id": link.local_id,
                "confidence": link.score, "status": "online", "counts": {}}
         try:
             for t in types:
-                res = fhir_client.bundle_resources(fhir_client.get(link.hospital_key, f"/{t}", patient=f"Patient/{link.local_id}"))
+                res = futures[(link.hospital_key, t)].result()
                 src["counts"][t] = len(res)
                 out += [(link.hospital_key, r) for r in res]
         except fhir_client.HospitalError as e:

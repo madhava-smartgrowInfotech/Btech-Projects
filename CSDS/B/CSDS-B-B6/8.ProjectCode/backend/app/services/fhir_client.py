@@ -7,6 +7,9 @@ import jwt
 from ..config import HOSPITAL_SHARED_SECRET, HOSPITALS
 
 
+_http = httpx.Client(timeout=30, limits=httpx.Limits(max_connections=30))  # shared keep-alive pool
+
+
 class HospitalError(Exception):
     pass
 
@@ -20,7 +23,7 @@ def service_token(hkey: str, scope: str) -> str:
 def _call(method: str, hkey: str, path: str, scope: str, **kw) -> dict:
     url = f"{HOSPITALS[hkey]['base_url']}{path}"
     try:
-        r = httpx.request(method, url, headers={"Authorization": f"Bearer {service_token(hkey, scope)}"}, timeout=30, **kw)
+        r = _http.request(method, url, headers={"Authorization": f"Bearer {service_token(hkey, scope)}"}, **kw)
     except httpx.HTTPError as e:
         raise HospitalError(f"{HOSPITALS[hkey]['name']} is unreachable ({e.__class__.__name__})")
     if r.status_code >= 400:

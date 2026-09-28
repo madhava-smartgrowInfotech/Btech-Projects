@@ -1,0 +1,149 @@
+{
+  "risk_models_cv5": {
+    "heart": {
+      "rows": 303,
+      "features": [
+        "age",
+        "sex",
+        "trestbps",
+        "chol",
+        "fbs"
+      ],
+      "accuracy": 0.677,
+      "precision": 0.668,
+      "recall": 0.619,
+      "f1": 0.634,
+      "roc_auc": 0.731
+    },
+    "diabetes": {
+      "rows": 768,
+      "features": [
+        "Pregnancies",
+        "Glucose",
+        "BloodPressure",
+        "BMI",
+        "Age"
+      ],
+      "accuracy": 0.771,
+      "precision": 0.699,
+      "recall": 0.619,
+      "f1": 0.654,
+      "roc_auc": 0.834
+    }
+  },
+  "mpi_linkage": {
+    "hospital_records": 92,
+    "true_persons": 60,
+    "true_link_pairs": 40,
+    "threshold": 0.8,
+    "at_threshold": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "persons_found": 60
+    },
+    "threshold_sweep": {
+      "0.70": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "persons_found": 60
+      },
+      "0.75": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "persons_found": 60
+      },
+      "0.80": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "persons_found": 60
+      },
+      "0.85": {
+        "precision": 1.0,
+        "recall": 0.975,
+        "f1": 0.987,
+        "persons_found": 61
+      },
+      "0.90": {
+        "precision": 1.0,
+        "recall": 0.85,
+        "f1": 0.919,
+        "persons_found": 64
+      }
+    }
+  },
+  "fhir_validation": {
+    "resources_validated": 11732,
+    "valid": 11732,
+    "valid_rate": 1.0,
+    "fhir_version": "R4 (fhir.resources R4B models)"
+  },
+  "ledger_tamper_detection": {
+    "chain_length": 200,
+    "tamper_trials_per_attack": 50,
+    "detection_rate": {
+      "edit_detail": 1.0,
+      "edit_actor": 1.0,
+      "delete_entry": 1.0,
+      "swap_entries": 1.0
+    },
+    "false_alarms_on_intact_chain": 0
+  },
+  "online": {
+    "consent_enforcement": {
+      "denied_without_consent": {
+        "trials": 9,
+        "correct": 9,
+        "rate": 1.0
+      },
+      "allowed_with_consent": {
+        "trials": 9,
+        "correct": 9,
+        "rate": 1.0
+      },
+      "denied_after_revoke": {
+        "trials": 9,
+        "correct": 9,
+        "rate": 1.0
+      },
+      "category_filter_respected": {
+        "trials": 9,
+        "correct": 9,
+        "rate": 1.0
+      }
+    },
+    "unified_record": [
+      {
+        "patient": "patient",
+        "hospitals": 3,
+        "resources_at_hospitals": 869,
+        "timeline_items": 869
+      },
+      {
+        "patient": "patient2",
+        "hospitals": 2,
+        "resources_at_hospitals": 104,
+        "timeline_items": 104
+      },
+      {
+        "patient": "patient3",
+        "hospitals": 1,
+        "resources_at_hospitals": 248,
+        "timeline_items": 248
+      }
+    ],
+    "record_retrieval_ms": {
+      "median": 75,
+      "max": 234
+    },
+    "ledger_after_evaluation": {
+      "intact": true,
+      "entries": 162,
+      "head": "117fe078ace8db2f34220a0532a49f7639a83fff3feaa20df8ef911ea86082dd"
+    },
+    "assistant_status": "error 502: AI assistant unavailable: 401 UNAUTHENTICATED. {'error': {'code': 401, 'message': 'Request had invalid authentication credentials. Expected OAuth 2 access token"
+  }
+}

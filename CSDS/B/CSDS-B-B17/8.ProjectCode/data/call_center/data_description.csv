@@ -1,0 +1,8 @@
+Field,Type,Description
+id,String,"Unique identifier for each call recording. Values are strings (e.g., ""call_recording_01"", ""call_recording_02"", ...)."
+Type,String,"Type of call. Values can be one of the following: ""Product Inquiry"", ""Complaint"", ""Technical Issue"", ""Compliment"", ""Order Placement""."
+Sentiment,String,"The sentiment expressed in the call. Values can be one of the following: ""Neutral"", ""Angry"", ""Frustrated"", ""Happy"", ""Confused""."
+Name,String,"Name of the caller. Values are strings (e.g., ""Sarah Miller"", ""John Davis"", ...)."
+Order Number,String,"Order number associated with the call. Values are strings (e.g., ""123456"", ""N/A"", ...)."
+Product Number,String,"Product number discussed in the call. Values are strings (e.g., ""AC-7892"", "OFFICE-CHAIR-X5 & DESK-L-SHAPE-Y7 & FILING-CABINET-Z9", ...). "
+Transcript,String,"The full transcript of the call. Values are strings containing the conversation text."

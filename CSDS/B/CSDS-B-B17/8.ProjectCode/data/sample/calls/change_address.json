@@ -1,0 +1,74 @@
+{
+ "id": "change_address",
+ "title": "Change the shipping address",
+ "intent": "change_shipping_address",
+ "agent": "sam@callsense.local",
+ "day_offset": 6,
+ "lines": [
+  {
+   "speaker": "agent",
+   "text": "Hi, thank you for calling, you are speaking with Sam. How can I help you today?",
+   "sentiment": "neutral",
+   "start": 0.4,
+   "end": 6.26
+  },
+  {
+   "speaker": "customer",
+   "text": "Hi Sam. I moved house last week and I need to change the shipping address on my order.",
+   "sentiment": "neutral",
+   "start": 6.9,
+   "end": 12.48
+  },
+  {
+   "speaker": "agent",
+   "text": "No problem at all, I can update the shipping address for you. What is the new address?",
+   "sentiment": "neutral",
+   "start": 13.27,
+   "end": 19.01
+  },
+  {
+   "speaker": "customer",
+   "text": "It is twelve River Road, Springfield.",
+   "sentiment": "neutral",
+   "start": 19.4,
+   "end": 22.0
+  },
+  {
+   "speaker": "agent",
+   "text": "Thank you. I have changed the delivery address on your order to twelve River Road.",
+   "sentiment": "neutral",
+   "start": 22.58,
+   "end": 27.64
+  },
+  {
+   "speaker": "customer",
+   "text": "Brilliant, thank you. That was easy.",
+   "sentiment": "positive",
+   "start": 28.17,
+   "end": 31.37
+  },
+  {
+   "speaker": "agent",
+   "text": "Glad I could help. Anything else?",
+   "sentiment": "neutral",
+   "start": 31.81,
+   "end": 34.7
+  },
+  {
+   "speaker": "customer",
+   "text": "No thanks, have a nice day.",
+   "sentiment": "positive",
+   "start": 35.44,
+   "end": 37.56
+  },
+  {
+   "speaker": "agent",
+   "text": "You too, goodbye.",
+   "sentiment": "positive",
+   "start": 38.15,
+   "end": 39.49
+  }
+ ],
+ "duration": 40.29,
+ "sample": true
+}

@@ -1,0 +1,178 @@
+[
+  {
+    "id": "refund_request",
+    "title": "Refund request - returned headphones",
+    "intent": "get_refund",
+    "agent": "agent@callsense.local",
+    "day_offset": 1,
+    "lines": [
+      ["A", "Thank you for calling customer support, my name is Alex. How can I help you today?", "neutral"],
+      ["C", "Hi. I returned a pair of headphones three weeks ago and I still have not received my refund. This is really frustrating.", "negative"],
+      ["A", "I am sorry to hear that, I understand how frustrating it is to wait that long. Can I have your order number please?", "neutral"],
+      ["C", "It is order four five seven two. I have called twice already and nobody fixed it. I just want my money back.", "negative"],
+      ["A", "Thank you. I can see the return arrived at our warehouse, but the refund was never released. I apologize for that.", "neutral"],
+      ["A", "I have now issued the refund of eighty nine dollars to your card. You will see it within three to five business days.", "neutral"],
+      ["C", "Oh, that is great news. Thank you, that is a real relief.", "positive"],
+      ["A", "You are welcome. I will also email you the refund confirmation. Is there anything else I can help you with?", "neutral"],
+      ["C", "No, that is everything. Thanks a lot for sorting this out so quickly.", "positive"],
+      ["A", "My pleasure. Have a wonderful day.", "positive"]
+    ]
+  },
+  {
+    "id": "track_order",
+    "title": "Where is my order",
+    "intent": "track_order",
+    "agent": "sam@callsense.local",
+    "day_offset": 2,
+    "lines": [
+      ["A", "Good morning, thanks for calling, this is Sam. How can I help?", "neutral"],
+      ["C", "Hello, I ordered a desk lamp last week and I would like to know where my order is right now.", "neutral"],
+      ["A", "Of course, I can check that for you. What is the order number?", "neutral"],
+      ["C", "The order number is eight eight one three.", "neutral"],
+      ["A", "Thanks. Your package left our warehouse yesterday and it is with the courier now. It should arrive on Thursday.", "neutral"],
+      ["C", "Perfect, that is good to know. Can I get the tracking link?", "positive"],
+      ["A", "Sure, I have just sent the tracking link to your email address.", "neutral"],
+      ["C", "Great, thank you very much for your help.", "positive"],
+      ["A", "You are welcome, enjoy your new lamp.", "positive"]
+    ]
+  },
+  {
+    "id": "cancel_order",
+    "title": "Cancel an order placed by mistake",
+    "intent": "cancel_order",
+    "agent": "jordan@callsense.local",
+    "day_offset": 3,
+    "lines": [
+      ["A", "Hello, thank you for calling, my name is Jordan. What can I do for you?", "neutral"],
+      ["C", "Hi, I placed an order this morning by mistake and I need to cancel it before it ships. I am a bit worried it is too late.", "negative"],
+      ["A", "I understand, let me take a look straight away. Could you give me the order number?", "neutral"],
+      ["C", "Yes, it is order two zero nine one.", "neutral"],
+      ["A", "Good news, the order has not been packed yet, so I have cancelled it for you. There is no cancellation fee.", "neutral"],
+      ["C", "Okay, thank you. That is a relief.", "positive"],
+      ["A", "The payment will be returned to your card within two days. Anything else today?", "neutral"],
+      ["C", "No, that is all. Thanks.", "positive"],
+      ["A", "Thank you for calling, goodbye.", "neutral"]
+    ]
+  },
+  {
+    "id": "recover_password",
+    "title": "Locked out - password reset",
+    "intent": "recover_password",
+    "agent": "agent@callsense.local",
+    "day_offset": 4,
+    "lines": [
+      ["A", "Thank you for calling customer support, this is Alex speaking. How can I help you?", "neutral"],
+      ["C", "I forgot my password and the reset email never arrives. I have tried five times and I am locked out of my account.", "negative"],
+      ["A", "I am sorry about that, being locked out is annoying. Let me help you recover your password.", "neutral"],
+      ["C", "Please do, I need to access my account today and this is getting ridiculous.", "negative"],
+      ["A", "I can see the reset emails were going to an old address. I have updated it and sent a new reset link just now.", "neutral"],
+      ["C", "Okay, I got it. I have set a new password and I am logged in. Thank you so much.", "positive"],
+      ["A", "Wonderful. Is there anything else I can help with?", "neutral"],
+      ["C", "No, that is all, thanks for your help.", "positive"],
+      ["A", "Have a great day.", "positive"]
+    ]
+  },
+  {
+    "id": "payment_issue",
+    "title": "Double charge - escalation",
+    "intent": "payment_issue",
+    "agent": "jordan@callsense.local",
+    "day_offset": 5,
+    "lines": [
+      ["A", "Yes, what is the problem?", "neutral"],
+      ["C", "I was charged twice for the same payment on my card and I want this fixed now. This is completely unacceptable.", "negative"],
+      ["A", "Account number.", "neutral"],
+      ["C", "It is seven seven four zero. I have been a customer for years and this is the worst service I have ever had.", "negative"],
+      ["A", "The system shows one payment.", "neutral", {"pause_before": 6.0}],
+      ["C", "That is not true, my bank statement shows two payments. I want to speak to your manager.", "negative", {"overlap": 0.6}],
+      ["A", "I can raise a ticket with the payments team. They will look at it within seven days.", "neutral"],
+      ["C", "Seven days? That is ridiculous. I am going to file a complaint.", "negative"],
+      ["A", "The ticket is raised.", "neutral"]
+    ]
+  },
+  {
+    "id": "change_address",
+    "title": "Change the shipping address",
+    "intent": "change_shipping_address",
+    "agent": "sam@callsense.local",
+    "day_offset": 6,
+    "lines": [
+      ["A", "Hi, thank you for calling, you are speaking with Sam. How can I help you today?", "neutral"],
+      ["C", "Hi Sam. I moved house last week and I need to change the shipping address on my order.", "neutral"],
+      ["A", "No problem at all, I can update the shipping address for you. What is the new address?", "neutral"],
+      ["C", "It is twelve River Road, Springfield.", "neutral"],
+      ["A", "Thank you. I have changed the delivery address on your order to twelve River Road.", "neutral"],
+      ["C", "Brilliant, thank you. That was easy.", "positive"],
+      ["A", "Glad I could help. Anything else?", "neutral"],
+      ["C", "No thanks, have a nice day.", "positive"],
+      ["A", "You too, goodbye.", "positive"]
+    ]
+  },
+  {
+    "id": "delete_account",
+    "title": "Close my account",
+    "intent": "delete_account",
+    "agent": "agent@callsense.local",
+    "day_offset": 7,
+    "lines": [
+      ["A", "Good afternoon, thank you for calling, my name is Alex. How can I help?", "neutral"],
+      ["C", "Hello. I would like to delete my account and remove my personal data please.", "neutral"],
+      ["A", "I can help with that. May I ask why you want to close the account?", "neutral"],
+      ["C", "I just do not use the service anymore.", "neutral"],
+      ["A", "I understand. I have submitted the request to delete your account. You will get a confirmation email within twenty four hours.", "neutral"],
+      ["C", "Okay, that is fine. Thank you.", "positive"],
+      ["A", "Thank you for being a customer. Goodbye.", "neutral"]
+    ]
+  },
+  {
+    "id": "complaint",
+    "title": "Complaint about a rude courier",
+    "intent": "complaint",
+    "agent": "jordan@callsense.local",
+    "day_offset": 8,
+    "lines": [
+      ["A", "Hello, this is Jordan, how can I help?", "neutral"],
+      ["C", "I want to make a complaint. Your courier was extremely rude to me and threw the parcel at my door.", "negative"],
+      ["A", "Okay. What is the order number?", "neutral"],
+      ["C", "Order five five one two. The box is damaged and nobody seems to care. I am very disappointed.", "negative"],
+      ["A", "I will pass the complaint to the delivery team.", "neutral"],
+      ["C", "Is that it? I expected an apology at least. This is terrible customer service.", "negative"],
+      ["A", "The delivery team will contact you.", "neutral"],
+      ["C", "Fine. Goodbye.", "negative"]
+    ]
+  },
+  {
+    "id": "get_invoice",
+    "title": "Invoice for a business purchase",
+    "intent": "get_invoice",
+    "agent": "sam@callsense.local",
+    "day_offset": 9,
+    "lines": [
+      ["A", "Thank you for calling, this is Sam. How may I help you?", "neutral"],
+      ["C", "Hi, I need an invoice for my last purchase so I can claim it as a business expense.", "neutral"],
+      ["A", "Certainly. Can I have the email address on the account?", "neutral"],
+      ["C", "Sure, it is the one ending in office dot com.", "neutral"],
+      ["A", "Thanks. I have generated the invoice and emailed it to you. It includes the tax details.", "neutral"],
+      ["C", "Excellent, I can see it in my inbox. Thanks for the quick help.", "positive"],
+      ["A", "You are welcome, have a great day.", "positive"]
+    ]
+  },
+  {
+    "id": "track_refund",
+    "title": "Refund status check",
+    "intent": "track_refund",
+    "agent": "agent@callsense.local",
+    "day_offset": 10,
+    "lines": [
+      ["A", "Thank you for calling, my name is Alex. How can I help you today?", "neutral"],
+      ["C", "Hello, I was promised a refund ten days ago and I want to check the status of my refund. I am getting worried.", "negative"],
+      ["A", "I understand your concern, let me check the refund status for you right now.", "neutral"],
+      ["C", "Thank you. The order number is three one one eight.", "neutral"],
+      ["A", "The refund was processed yesterday. It is on its way to your bank and should appear within two days.", "neutral"],
+      ["C", "Oh good, that is a relief. Thank you for checking.", "positive"],
+      ["A", "Happy to help. Is there anything else?", "neutral"],
+      ["C", "No, that is all. Thanks again.", "positive"],
+      ["A", "Have a lovely day.", "positive"]
+    ]
+  }
+]

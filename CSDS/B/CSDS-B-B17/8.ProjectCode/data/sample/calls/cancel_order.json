@@ -1,0 +1,74 @@
+{
+ "id": "cancel_order",
+ "title": "Cancel an order placed by mistake",
+ "intent": "cancel_order",
+ "agent": "jordan@callsense.local",
+ "day_offset": 3,
+ "lines": [
+  {
+   "speaker": "agent",
+   "text": "Hello, thank you for calling, my name is Jordan. What can I do for you?",
+   "sentiment": "neutral",
+   "start": 0.4,
+   "end": 5.92
+  },
+  {
+   "speaker": "customer",
+   "text": "Hi, I placed an order this morning by mistake and I need to cancel it before it ships. I am a bit worried it is too late.",
+   "sentiment": "negative",
+   "start": 6.34,
+   "end": 12.92
+  },
+  {
+   "speaker": "agent",
+   "text": "I understand, let me take a look straight away. Could you give me the order number?",
+   "sentiment": "neutral",
+   "start": 13.54,
+   "end": 19.0
+  },
+  {
+   "speaker": "customer",
+   "text": "Yes, it is order two zero nine one.",
+   "sentiment": "neutral",
+   "start": 19.72,
+   "end": 22.47
+  },
+  {
+   "speaker": "agent",
+   "text": "Good news, the order has not been packed yet, so I have cancelled it for you. There is no cancellation fee.",
+   "sentiment": "neutral",
+   "start": 22.96,
+   "end": 30.19
+  },
+  {
+   "speaker": "customer",
+   "text": "Okay, thank you. That is a relief.",
+   "sentiment": "positive",
+   "start": 30.85,
+   "end": 34.1
+  },
+  {
+   "speaker": "agent",
+   "text": "The payment will be returned to your card within two days. Anything else today?",
+   "sentiment": "neutral",
+   "start": 34.66,
+   "end": 39.52
+  },
+  {
+   "speaker": "customer",
+   "text": "No, that is all. Thanks.",
+   "sentiment": "positive",
+   "start": 40.27,
+   "end": 43.22
+  },
+  {
+   "speaker": "agent",
+   "text": "Thank you for calling, goodbye.",
+   "sentiment": "neutral",
+   "start": 43.82,
+   "end": 45.83
+  }
+ ],
+ "duration": 46.62,
+ "sample": true
+}

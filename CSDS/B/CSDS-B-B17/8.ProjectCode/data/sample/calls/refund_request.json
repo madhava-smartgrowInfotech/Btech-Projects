@@ -1,0 +1,81 @@
+{
+ "id": "refund_request",
+ "title": "Refund request - returned headphones",
+ "intent": "get_refund",
+ "agent": "agent@callsense.local",
+ "day_offset": 1,
+ "lines": [
+  {
+   "speaker": "agent",
+   "text": "Thank you for calling customer support, my name is Alex. How can I help you today?",
+   "sentiment": "neutral",
+   "start": 0.4,
+   "end": 6.3
+  },
+  {
+   "speaker": "customer",
+   "text": "Hi. I returned a pair of headphones three weeks ago and I still have not received my refund. This is really frustrating.",
+   "sentiment": "negative",
+   "start": 7.03,
+   "end": 14.18
+  },
+  {
+   "speaker": "agent",
+   "text": "I am sorry to hear that, I understand how frustrating it is to wait that long. Can I have your order number please?",
+   "sentiment": "neutral",
+   "start": 14.8,
+   "end": 22.32
+  },
+  {
+   "speaker": "customer",
+   "text": "It is order four five seven two. I have called twice already and nobody fixed it. I just want my money back.",
+   "sentiment": "negative",
+   "start": 22.8,
+   "end": 29.62
+  },
+  {
+   "speaker": "agent",
+   "text": "Thank you. I can see the return arrived at our warehouse, but the refund was never released. I apologize for that.",
+   "sentiment": "neutral",
+   "start": 29.99,
+   "end": 38.33
+  },
+  {
+   "speaker": "agent",
+   "text": "I have now issued the refund of eighty nine dollars to your card. You will see it within three to five business days.",
+   "sentiment": "neutral",
+   "start": 39.12,
+   "end": 46.02
+  },
+  {
+   "speaker": "customer",
+   "text": "Oh, that is great news. Thank you, that is a real relief.",
+   "sentiment": "positive",
+   "start": 46.63,
+   "end": 51.3
+  },
+  {
+   "speaker": "agent",
+   "text": "You are welcome. I will also email you the refund confirmation. Is there anything else I can help you with?",
+   "sentiment": "neutral",
+   "start": 52.01,
+   "end": 59.34
+  },
+  {
+   "speaker": "customer",
+   "text": "No, that is everything. Thanks a lot for sorting this out so quickly.",
+   "sentiment": "positive",
+   "start": 60.1,
+   "end": 64.96
+  },
+  {
+   "speaker": "agent",
+   "text": "My pleasure. Have a wonderful day.",
+   "sentiment": "positive",
+   "start": 65.62,
+   "end": 68.26
+  }
+ ],
+ "duration": 69.06,
+ "sample": true
+}

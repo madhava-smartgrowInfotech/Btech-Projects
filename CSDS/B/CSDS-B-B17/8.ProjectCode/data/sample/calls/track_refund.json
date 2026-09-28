@@ -1,0 +1,74 @@
+{
+ "id": "track_refund",
+ "title": "Refund status check",
+ "intent": "track_refund",
+ "agent": "agent@callsense.local",
+ "day_offset": 10,
+ "lines": [
+  {
+   "speaker": "agent",
+   "text": "Thank you for calling, my name is Alex. How can I help you today?",
+   "sentiment": "neutral",
+   "start": 0.4,
+   "end": 5.32
+  },
+  {
+   "speaker": "customer",
+   "text": "Hello, I was promised a refund ten days ago and I want to check the status of my refund. I am getting worried.",
+   "sentiment": "negative",
+   "start": 5.91,
+   "end": 12.12
+  },
+  {
+   "speaker": "agent",
+   "text": "I understand your concern, let me check the refund status for you right now.",
+   "sentiment": "neutral",
+   "start": 12.85,
+   "end": 17.44
+  },
+  {
+   "speaker": "customer",
+   "text": "Thank you. The order number is three one one eight.",
+   "sentiment": "neutral",
+   "start": 18.13,
+   "end": 21.61
+  },
+  {
+   "speaker": "agent",
+   "text": "The refund was processed yesterday. It is on its way to your bank and should appear within two days.",
+   "sentiment": "neutral",
+   "start": 22.11,
+   "end": 28.04
+  },
+  {
+   "speaker": "customer",
+   "text": "Oh good, that is a relief. Thank you for checking.",
+   "sentiment": "positive",
+   "start": 28.66,
+   "end": 32.64
+  },
+  {
+   "speaker": "agent",
+   "text": "Happy to help. Is there anything else?",
+   "sentiment": "neutral",
+   "start": 33.08,
+   "end": 36.21
+  },
+  {
+   "speaker": "customer",
+   "text": "No, that is all. Thanks again.",
+   "sentiment": "positive",
+   "start": 36.63,
+   "end": 39.66
+  },
+  {
+   "speaker": "agent",
+   "text": "Have a lovely day.",
+   "sentiment": "positive",
+   "start": 40.24,
+   "end": 41.25
+  }
+ ],
+ "duration": 42.05,
+ "sample": true
+}

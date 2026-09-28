@@ -1,0 +1,60 @@
+{
+ "id": "get_invoice",
+ "title": "Invoice for a business purchase",
+ "intent": "get_invoice",
+ "agent": "sam@callsense.local",
+ "day_offset": 9,
+ "lines": [
+  {
+   "speaker": "agent",
+   "text": "Thank you for calling, this is Sam. How may I help you?",
+   "sentiment": "neutral",
+   "start": 0.4,
+   "end": 4.8
+  },
+  {
+   "speaker": "customer",
+   "text": "Hi, I need an invoice for my last purchase so I can claim it as a business expense.",
+   "sentiment": "neutral",
+   "start": 5.53,
+   "end": 10.55
+  },
+  {
+   "speaker": "agent",
+   "text": "Certainly. Can I have the email address on the account?",
+   "sentiment": "neutral",
+   "start": 11.18,
+   "end": 15.0
+  },
+  {
+   "speaker": "customer",
+   "text": "Sure, it is the one ending in office dot com.",
+   "sentiment": "neutral",
+   "start": 15.41,
+   "end": 18.48
+  },
+  {
+   "speaker": "agent",
+   "text": "Thanks. I have generated the invoice and emailed it to you. It includes the tax details.",
+   "sentiment": "neutral",
+   "start": 18.99,
+   "end": 25.55
+  },
+  {
+   "speaker": "customer",
+   "text": "Excellent, I can see it in my inbox. Thanks for the quick help.",
+   "sentiment": "positive",
+   "start": 26.0,
+   "end": 30.7
+  },
+  {
+   "speaker": "agent",
+   "text": "You are welcome, have a great day.",
+   "sentiment": "positive",
+   "start": 31.08,
+   "end": 33.24
+  }
+ ],
+ "duration": 34.04,
+ "sample": true
+}

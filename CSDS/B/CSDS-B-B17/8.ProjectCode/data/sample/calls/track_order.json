@@ -1,0 +1,74 @@
+{
+ "id": "track_order",
+ "title": "Where is my order",
+ "intent": "track_order",
+ "agent": "sam@callsense.local",
+ "day_offset": 2,
+ "lines": [
+  {
+   "speaker": "agent",
+   "text": "Good morning, thanks for calling, this is Sam. How can I help?",
+   "sentiment": "neutral",
+   "start": 0.4,
+   "end": 5.45
+  },
+  {
+   "speaker": "customer",
+   "text": "Hello, I ordered a desk lamp last week and I would like to know where my order is right now.",
+   "sentiment": "neutral",
+   "start": 6.23,
+   "end": 11.17
+  },
+  {
+   "speaker": "agent",
+   "text": "Of course, I can check that for you. What is the order number?",
+   "sentiment": "neutral",
+   "start": 11.68,
+   "end": 16.01
+  },
+  {
+   "speaker": "customer",
+   "text": "The order number is eight eight one three.",
+   "sentiment": "neutral",
+   "start": 16.71,
+   "end": 18.76
+  },
+  {
+   "speaker": "agent",
+   "text": "Thanks. Your package left our warehouse yesterday and it is with the courier now. It should arrive on Thursday.",
+   "sentiment": "neutral",
+   "start": 19.38,
+   "end": 26.81
+  },
+  {
+   "speaker": "customer",
+   "text": "Perfect, that is good to know. Can I get the tracking link?",
+   "sentiment": "positive",
+   "start": 27.3,
+   "end": 31.45
+  },
+  {
+   "speaker": "agent",
+   "text": "Sure, I have just sent the tracking link to your email address.",
+   "sentiment": "neutral",
+   "start": 32.22,
+   "end": 36.08
+  },
+  {
+   "speaker": "customer",
+   "text": "Great, thank you very much for your help.",
+   "sentiment": "positive",
+   "start": 36.82,
+   "end": 39.45
+  },
+  {
+   "speaker": "agent",
+   "text": "You are welcome, enjoy your new lamp.",
+   "sentiment": "positive",
+   "start": 39.96,
+   "end": 42.43
+  }
+ ],
+ "duration": 43.23,
+ "sample": true
+}

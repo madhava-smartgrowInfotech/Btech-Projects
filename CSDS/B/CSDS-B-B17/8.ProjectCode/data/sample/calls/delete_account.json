@@ -1,0 +1,60 @@
+{
+ "id": "delete_account",
+ "title": "Close my account",
+ "intent": "delete_account",
+ "agent": "agent@callsense.local",
+ "day_offset": 7,
+ "lines": [
+  {
+   "speaker": "agent",
+   "text": "Good afternoon, thank you for calling, my name is Alex. How can I help?",
+   "sentiment": "neutral",
+   "start": 0.4,
+   "end": 6.25
+  },
+  {
+   "speaker": "customer",
+   "text": "Hello. I would like to delete my account and remove my personal data please.",
+   "sentiment": "neutral",
+   "start": 7.04,
+   "end": 12.03
+  },
+  {
+   "speaker": "agent",
+   "text": "I can help with that. May I ask why you want to close the account?",
+   "sentiment": "neutral",
+   "start": 12.4,
+   "end": 16.83
+  },
+  {
+   "speaker": "customer",
+   "text": "I just do not use the service anymore.",
+   "sentiment": "neutral",
+   "start": 17.24,
+   "end": 19.58
+  },
+  {
+   "speaker": "agent",
+   "text": "I understand. I have submitted the request to delete your account. You will get a confirmation email within twenty four hours.",
+   "sentiment": "neutral",
+   "start": 20.14,
+   "end": 28.49
+  },
+  {
+   "speaker": "customer",
+   "text": "Okay, that is fine. Thank you.",
+   "sentiment": "positive",
+   "start": 29.28,
+   "end": 32.37
+  },
+  {
+   "speaker": "agent",
+   "text": "Thank you for being a customer. Goodbye.",
+   "sentiment": "neutral",
+   "start": 32.78,
+   "end": 35.68
+  }
+ ],
+ "duration": 36.48,
+ "sample": true
+}

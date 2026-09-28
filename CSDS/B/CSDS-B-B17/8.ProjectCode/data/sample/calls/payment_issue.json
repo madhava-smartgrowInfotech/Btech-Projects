@@ -1,0 +1,76 @@
+{
+ "id": "payment_issue",
+ "title": "Double charge - escalation",
+ "intent": "payment_issue",
+ "agent": "jordan@callsense.local",
+ "day_offset": 5,
+ "lines": [
+  {
+   "speaker": "agent",
+   "text": "Yes, what is the problem?",
+   "sentiment": "neutral",
+   "start": 0.4,
+   "end": 2.24
+  },
+  {
+   "speaker": "customer",
+   "text": "I was charged twice for the same payment on my card and I want this fixed now. This is completely unacceptable.",
+   "sentiment": "negative",
+   "start": 2.97,
+   "end": 8.88
+  },
+  {
+   "speaker": "agent",
+   "text": "Account number.",
+   "sentiment": "neutral",
+   "start": 9.54,
+   "end": 10.48
+  },
+  {
+   "speaker": "customer",
+   "text": "It is seven seven four zero. I have been a customer for years and this is the worst service I have ever had.",
+   "sentiment": "negative",
+   "start": 10.93,
+   "end": 16.4
+  },
+  {
+   "speaker": "agent",
+   "text": "The system shows one payment.",
+   "sentiment": "neutral",
+   "pause_before": 6.0,
+   "start": 22.4,
+   "end": 24.09
+  },
+  {
+   "speaker": "customer",
+   "text": "That is not true, my bank statement shows two payments. I want to speak to your manager.",
+   "sentiment": "negative",
+   "overlap": 0.6,
+   "start": 23.49,
+   "end": 28.78
+  },
+  {
+   "speaker": "agent",
+   "text": "I can raise a ticket with the payments team. They will look at it within seven days.",
+   "sentiment": "neutral",
+   "start": 29.46,
+   "end": 34.47
+  },
+  {
+   "speaker": "customer",
+   "text": "Seven days? That is ridiculous. I am going to file a complaint.",
+   "sentiment": "negative",
+   "start": 35.15,
+   "end": 39.95
+  },
+  {
+   "speaker": "agent",
+   "text": "The ticket is raised.",
+   "sentiment": "neutral",
+   "start": 40.49,
+   "end": 41.75
+  }
+ ],
+ "duration": 42.55,
+ "sample": true
+}

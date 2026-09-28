@@ -1,0 +1,18 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+fastapi
+uvicorn[standard]
+python-multipart
+sqlalchemy>=2
+pyjwt
+bcrypt
+python-dotenv
+torch
+numpy
+pandas
+PyWavelets
+opencv-python-headless
+scikit-image
+scikit-learn
+shap
+reportlab
+kagglehub

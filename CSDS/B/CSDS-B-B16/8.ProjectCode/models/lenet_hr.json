@@ -1,0 +1,8 @@
+{
+  "architecture": "LeNet (3 conv + 3 FC) on 8-channel 2-level Haar wavelet stack, 128x128",
+  "input": "CLAHE green channel, 256x256, per-image standardised",
+  "threshold": 0.5181,
+  "best_val_auc": 0.7879,
+  "epochs": 60,
+  "optimizer": "Adam"
+}

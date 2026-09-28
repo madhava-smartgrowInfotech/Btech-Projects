@@ -1,0 +1,130 @@
+{
+  "model": "Random Forest (300 trees, max depth 6)",
+  "dataset": "Heart Disease Dataset: 1025 rows, 302 unique after removing duplicates",
+  "split": {
+    "train": 226,
+    "test": 76
+  },
+  "cv_roc_auc_mean": 0.9176,
+  "cv_roc_auc_std": 0.0213,
+  "test": {
+    "n": 76,
+    "threshold": 0.5,
+    "accuracy": 0.8158,
+    "sensitivity": 0.8,
+    "specificity": 0.8293,
+    "precision": 0.8,
+    "f1": 0.8,
+    "roc_auc": 0.885,
+    "confusion_matrix": {
+      "tn": 34,
+      "fp": 7,
+      "fn": 7,
+      "tp": 28
+    },
+    "roc_curve": {
+      "fpr": [
+        0.0,
+        0.0,
+        0.0,
+        0.0244,
+        0.0244,
+        0.0488,
+        0.0488,
+        0.0732,
+        0.0732,
+        0.0976,
+        0.0976,
+        0.2195,
+        0.2195,
+        0.3415,
+        0.3415,
+        0.4634,
+        0.4634,
+        0.5366,
+        0.5366,
+        0.7073,
+        0.7073,
+        1.0
+      ],
+      "tpr": [
+        0.0,
+        0.0286,
+        0.2857,
+        0.2857,
+        0.4,
+        0.4,
+        0.6571,
+        0.6571,
+        0.6857,
+        0.6857,
+        0.8,
+        0.8,
+        0.8571,
+        0.8571,
+        0.8857,
+        0.8857,
+        0.9143,
+        0.9143,
+        0.9714,
+        0.9714,
+        1.0,
+        1.0
+      ]
+    }
+  },
+  "feature_importance": [
+    {
+      "feature": "ca",
+      "importance": 0.1718
+    },
+    {
+      "feature": "cp",
+      "importance": 0.1284
+    },
+    {
+      "feature": "oldpeak",
+      "importance": 0.1282
+    },
+    {
+      "feature": "thal",
+      "importance": 0.1111
+    },
+    {
+      "feature": "thalach",
+      "importance": 0.1066
+    },
+    {
+      "feature": "exang",
+      "importance": 0.0942
+    },
+    {
+      "feature": "age",
+      "importance": 0.067
+    },
+    {
+      "feature": "chol",
+      "importance": 0.055
+    },
+    {
+      "feature": "slope",
+      "importance": 0.0458
+    },
+    {
+      "feature": "trestbps",
+      "importance": 0.0431
+    },
+    {
+      "feature": "sex",
+      "importance": 0.0285
+    },
+    {
+      "feature": "restecg",
+      "importance": 0.015
+    },
+    {
+      "feature": "fbs",
+      "importance": 0.0055
+    }
+  ]
+}

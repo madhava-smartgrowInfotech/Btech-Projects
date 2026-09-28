@@ -1,0 +1,298 @@
+{
+  "model": "LeNet on Haar wavelet sub-bands",
+  "dataset": "Hypertension & Hypertensive Retinopathy Dataset (HRDC task 2), 712 fundus images",
+  "split": {
+    "train": 498,
+    "val": 107,
+    "test": 107
+  },
+  "epochs": 25,
+  "train_seconds": 101.8,
+  "threshold": 0.4951,
+  "best_val_auc": 0.7662,
+  "test": {
+    "n": 107,
+    "threshold": 0.4951,
+    "accuracy": 0.6449,
+    "sensitivity": 0.8182,
+    "specificity": 0.5238,
+    "precision": 0.5455,
+    "f1": 0.6545,
+    "roc_auc": 0.7154,
+    "confusion_matrix": {
+      "tn": 33,
+      "fp": 30,
+      "fn": 8,
+      "tp": 36
+    },
+    "roc_curve": {
+      "fpr": [
+        0.0,
+        0.0159,
+        0.0159,
+        0.0635,
+        0.0635,
+        0.1111,
+        0.1111,
+        0.127,
+        0.127,
+        0.1429,
+        0.1429,
+        0.1905,
+        0.1905,
+        0.2063,
+        0.2063,
+        0.2222,
+        0.2222,
+        0.2381,
+        0.2381,
+        0.254,
+        0.254,
+        0.3175,
+        0.3175,
+        0.3333,
+        0.3333,
+        0.3492,
+        0.3492,
+        0.3968,
+        0.3968,
+        0.4127,
+        0.4127,
+        0.4286,
+        0.4286,
+        0.5079,
+        0.5079,
+        0.5556,
+        0.5556,
+        0.6032,
+        0.6032,
+        0.6508,
+        0.6508,
+        0.8254,
+        0.8254,
+        1.0
+      ],
+      "tpr": [
+        0.0,
+        0.0,
+        0.0909,
+        0.0909,
+        0.1591,
+        0.1591,
+        0.2273,
+        0.2273,
+        0.2727,
+        0.2727,
+        0.2955,
+        0.2955,
+        0.3182,
+        0.3182,
+        0.3864,
+        0.3864,
+        0.4091,
+        0.4091,
+        0.5455,
+        0.5455,
+        0.5909,
+        0.5909,
+        0.6591,
+        0.6591,
+        0.6818,
+        0.6818,
+        0.7045,
+        0.7045,
+        0.7273,
+        0.7273,
+        0.7727,
+        0.7727,
+        0.8182,
+        0.8182,
+        0.8636,
+        0.8636,
+        0.9091,
+        0.9091,
+        0.9318,
+        0.9318,
+        0.9773,
+        0.9773,
+        1.0,
+        1.0
+      ]
+    }
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.9233,
+      "val_auc": 0.6631,
+      "val_accuracy": 0.5888
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.8368,
+      "val_auc": 0.5942,
+      "val_accuracy": 0.5981
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.8162,
+      "val_auc": 0.6869,
+      "val_accuracy": 0.6075
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.7885,
+      "val_auc": 0.6584,
+      "val_accuracy": 0.6449
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.7986,
+      "val_auc": 0.6923,
+      "val_accuracy": 0.6262
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.7882,
+      "val_auc": 0.6962,
+      "val_accuracy": 0.6262
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.7856,
+      "val_auc": 0.7009,
+      "val_accuracy": 0.5794
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.7536,
+      "val_auc": 0.7186,
+      "val_accuracy": 0.6729
+    },
+    {
+      "epoch": 9,
+      "train_loss": 0.7732,
+      "val_auc": 0.715,
+      "val_accuracy": 0.6822
+    },
+    {
+      "epoch": 10,
+      "train_loss": 0.7778,
+      "val_auc": 0.7125,
+      "val_accuracy": 0.6449
+    },
+    {
+      "epoch": 11,
+      "train_loss": 0.7468,
+      "val_auc": 0.7244,
+      "val_accuracy": 0.7009
+    },
+    {
+      "epoch": 12,
+      "train_loss": 0.7359,
+      "val_auc": 0.7204,
+      "val_accuracy": 0.5981
+    },
+    {
+      "epoch": 13,
+      "train_loss": 0.7436,
+      "val_auc": 0.7413,
+      "val_accuracy": 0.6822
+    },
+    {
+      "epoch": 14,
+      "train_loss": 0.7273,
+      "val_auc": 0.7388,
+      "val_accuracy": 0.6168
+    },
+    {
+      "epoch": 15,
+      "train_loss": 0.7227,
+      "val_auc": 0.7464,
+      "val_accuracy": 0.6729
+    },
+    {
+      "epoch": 16,
+      "train_loss": 0.7255,
+      "val_auc": 0.7406,
+      "val_accuracy": 0.6916
+    },
+    {
+      "epoch": 17,
+      "train_loss": 0.7436,
+      "val_auc": 0.7532,
+      "val_accuracy": 0.6168
+    },
+    {
+      "epoch": 18,
+      "train_loss": 0.7316,
+      "val_auc": 0.7662,
+      "val_accuracy": 0.6822
+    },
+    {
+      "epoch": 19,
+      "train_loss": 0.7043,
+      "val_auc": 0.7637,
+      "val_accuracy": 0.6729
+    },
+    {
+      "epoch": 20,
+      "train_loss": 0.7156,
+      "val_auc": 0.7641,
+      "val_accuracy": 0.6636
+    },
+    {
+      "epoch": 21,
+      "train_loss": 0.7212,
+      "val_auc": 0.7605,
+      "val_accuracy": 0.6729
+    },
+    {
+      "epoch": 22,
+      "train_loss": 0.7251,
+      "val_auc": 0.7594,
+      "val_accuracy": 0.6822
+    },
+    {
+      "epoch": 23,
+      "train_loss": 0.7088,
+      "val_auc": 0.7641,
+      "val_accuracy": 0.6636
+    },
+    {
+      "epoch": 24,
+      "train_loss": 0.718,
+      "val_auc": 0.7644,
+      "val_accuracy": 0.6636
+    },
+    {
+      "epoch": 25,
+      "train_loss": 0.6974,
+      "val_auc": 0.7633,
+      "val_accuracy": 0.6636
+    }
+  ],
+  "quality_stats": {
+    "sharpness": {
+      "1": 311.96,
+      "5": 371.07,
+      "50": 465.95,
+      "95": 740.92,
+      "99": 943.2
+    },
+    "brightness": {
+      "1": 32.41,
+      "5": 40.2,
+      "50": 58.7,
+      "95": 93.82,
+      "99": 114.85
+    },
+    "clipped_fraction": {
+      "1": 0.0,
+      "5": 0.0,
+      "50": 0.0,
+      "95": 0.01,
+      "99": 0.04
+    }
+  }
+}

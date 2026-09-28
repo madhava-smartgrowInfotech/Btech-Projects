@@ -1,0 +1,254 @@
+{
+  "generated_at": "2026-09-28T11:53:56.039886+00:00",
+  "retina": {
+    "model": "LeNet CNN on 2-level Haar wavelet sub-bands",
+    "dataset": "Hypertension & Hypertensive Retinopathy Dataset (HRDC task 2, 712 images)",
+    "evaluated_on": "held-out test split of the full dataset",
+    "split": {
+      "train": 498,
+      "val": 107,
+      "test": 107
+    },
+    "epochs": 60,
+    "train_seconds": 261.7,
+    "test": {
+      "n": 107,
+      "threshold": 0.5181,
+      "accuracy": 0.6449,
+      "sensitivity": 0.6591,
+      "specificity": 0.6349,
+      "precision": 0.5577,
+      "f1": 0.6042,
+      "roc_auc": 0.7247,
+      "confusion_matrix": {
+        "tn": 40,
+        "fp": 23,
+        "fn": 15,
+        "tp": 29
+      },
+      "roc_curve": {
+        "fpr": [
+          0.0,
+          0.0159,
+          0.0317,
+          0.0317,
+          0.0476,
+          0.0476,
+          0.0635,
+          0.0635,
+          0.1111,
+          0.1111,
+          0.127,
+          0.127,
+          0.1587,
+          0.1587,
+          0.1746,
+          0.1746,
+          0.1905,
+          0.1905,
+          0.2063,
+          0.2063,
+          0.2698,
+          0.2698,
+          0.3651,
+          0.3651,
+          0.3968,
+          0.3968,
+          0.4127,
+          0.4127,
+          0.4286,
+          0.4286,
+          0.4921,
+          0.4921,
+          0.5079,
+          0.5079,
+          0.619,
+          0.619,
+          0.6825,
+          0.6825,
+          0.7302,
+          0.7302,
+          0.8254,
+          0.8254,
+          1.0
+        ],
+        "tpr": [
+          0.0,
+          0.0,
+          0.0,
+          0.0455,
+          0.0455,
+          0.1591,
+          0.1591,
+          0.2045,
+          0.2045,
+          0.25,
+          0.25,
+          0.4091,
+          0.4091,
+          0.4318,
+          0.4318,
+          0.4545,
+          0.4545,
+          0.4773,
+          0.4773,
+          0.5682,
+          0.5682,
+          0.6136,
+          0.6136,
+          0.6591,
+          0.6591,
+          0.7045,
+          0.7045,
+          0.7273,
+          0.7273,
+          0.75,
+          0.75,
+          0.8864,
+          0.8864,
+          0.9091,
+          0.9091,
+          0.9318,
+          0.9318,
+          0.9545,
+          0.9545,
+          0.9773,
+          0.9773,
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "notes": "Threshold chosen on the validation split (Youden's J). Small CPU model; results are for decision support only."
+  },
+  "heart": {
+    "model": "Random Forest (300 trees, max depth 6)",
+    "dataset": "Heart Disease Dataset: 1025 rows, 302 unique after removing duplicates",
+    "split": {
+      "train": 226,
+      "test": 76
+    },
+    "cv_roc_auc_mean": 0.9176,
+    "test": {
+      "n": 76,
+      "threshold": 0.5,
+      "accuracy": 0.8158,
+      "sensitivity": 0.8,
+      "specificity": 0.8293,
+      "precision": 0.8,
+      "f1": 0.8,
+      "roc_auc": 0.885,
+      "confusion_matrix": {
+        "tn": 34,
+        "fp": 7,
+        "fn": 7,
+        "tp": 28
+      },
+      "roc_curve": {
+        "fpr": [
+          0.0,
+          0.0,
+          0.0,
+          0.0244,
+          0.0244,
+          0.0488,
+          0.0488,
+          0.0732,
+          0.0732,
+          0.0976,
+          0.0976,
+          0.2195,
+          0.2195,
+          0.3415,
+          0.3415,
+          0.4634,
+          0.4634,
+          0.5366,
+          0.5366,
+          0.7073,
+          0.7073,
+          1.0
+        ],
+        "tpr": [
+          0.0,
+          0.0286,
+          0.2857,
+          0.2857,
+          0.4,
+          0.4,
+          0.6571,
+          0.6571,
+          0.6857,
+          0.6857,
+          0.8,
+          0.8,
+          0.8571,
+          0.8571,
+          0.8857,
+          0.8857,
+          0.9143,
+          0.9143,
+          0.9714,
+          0.9714,
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "feature_importance": [
+      {
+        "feature": "ca",
+        "importance": 0.1718
+      },
+      {
+        "feature": "cp",
+        "importance": 0.1284
+      },
+      {
+        "feature": "oldpeak",
+        "importance": 0.1282
+      },
+      {
+        "feature": "thal",
+        "importance": 0.1111
+      },
+      {
+        "feature": "thalach",
+        "importance": 0.1066
+      },
+      {
+        "feature": "exang",
+        "importance": 0.0942
+      },
+      {
+        "feature": "age",
+        "importance": 0.067
+      },
+      {
+        "feature": "chol",
+        "importance": 0.055
+      },
+      {
+        "feature": "slope",
+        "importance": 0.0458
+      },
+      {
+        "feature": "trestbps",
+        "importance": 0.0431
+      },
+      {
+        "feature": "sex",
+        "importance": 0.0285
+      },
+      {
+        "feature": "restecg",
+        "importance": 0.015
+      },
+      {
+        "feature": "fbs",
+        "importance": 0.0055
+      }
+    ],
+    "notes": "5-fold cross-validated ROC-AUC on the training part: 0.918. Duplicate rows removed before splitting; label aligned with the UCI source (1 = heart disease)."
+  }
+}

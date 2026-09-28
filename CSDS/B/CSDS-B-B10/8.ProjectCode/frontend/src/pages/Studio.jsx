@@ -90,7 +90,7 @@ export default function Studio() {
                 </div>
                 <div className="grid gap-3 sm:grid-cols-4">
                   <Stat label="Size" value={`${enc.job.width}×${enc.job.height}`} sub={`${enc.job.channels} channel(s)`} />
-                  <Stat label="Encryption" value={`${fmt(enc.job.enc_ms, 1)} ms`} />
+                  <Stat label="Encryption" value={`${fmt(enc.job.enc_ms, 1)} ms`} sub={`+ ${fmt(enc.key_setup_ms, 0)} ms one-off key setup`} />
                   <Stat label="Key fingerprint" value={<span className="font-mono text-base">{enc.job.key_fp}</span>} />
                   <Stat label="Nonce" value={<span className="break-all font-mono text-xs">{enc.job.nonce}</span>} />
                 </div>

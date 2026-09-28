@@ -33,7 +33,7 @@ function Metrics({ r }) {
           <Stat label="Decrypted PSNR" value={dq.psnr === 'inf' ? '∞ dB' : `${fmt(dq.psnr, 2)} dB`} sub={`MSE ${fmt(dq.mse, 2)} · SSIM ${fmt(dq.ssim, 3)}`} good={dq.identical} />
           <Stat label="Cipher vs original" value={`${fmt(r.quality.cipher_vs_plain.psnr, 2)} dB`} sub={`MSE ${fmt(r.quality.cipher_vs_plain.mse, 0)} · SSIM ${fmt(r.quality.cipher_vs_plain.ssim, 3)}`} />
           <Stat label="Key space" value={`2^${r.key_space.key_bits}`} sub={`+ ${r.key_space.nonce_bits}-bit public nonce`} good />
-          <Stat label="Timing" value={`${fmt(r.timing.encrypt_ms, 1)} / ${fmt(r.timing.decrypt_ms, 1)} ms`} sub={`enc / dec · ${fmt(r.timing.throughput_mbps, 2)} MB/s`} />
+          <Stat label="Timing" value={`${fmt(r.timing.encrypt_ms, 1)} / ${fmt(r.timing.decrypt_ms, 1)} ms`} sub={`enc / dec · ${fmt(r.timing.throughput_mbps, 2)} MB/s${r.timing.key_setup_ms !== undefined ? ` · key setup ${fmt(r.timing.key_setup_ms, 0)} ms` : ''}`} />
         </div>
         <div className={`rounded-lg p-3 text-sm ${dq.identical ? 'bg-emerald-50 text-emerald-700' : 'bg-rose-50 text-rose-700'}`}>
           {dq.identical ? 'Decryption is bit-identical to the original (SHA-256 match).' : 'Decryption did not reproduce the original.'}

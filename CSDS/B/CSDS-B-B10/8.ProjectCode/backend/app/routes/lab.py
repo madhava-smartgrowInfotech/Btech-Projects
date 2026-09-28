@@ -137,6 +137,6 @@ Cipher vs original: MSE {_f(q['cipher_vs_plain']['mse'], 1)}, PSNR {_f(q['cipher
 <h2>Key sensitivity (single-bit key changes)</h2><table><tr><th>Flipped</th><th>Cipher NPCR</th><th>Cipher UACI</th>
 <th>Wrong-key decryption PSNR</th></tr>{keyrows}</table>
 <p>Key space: 2<sup>{d['key_space']['key_bits']}</sup> (plus a {d['key_space']['nonce_bits']}-bit public nonce per image).</p>
-<h2>Timing</h2><p>Encryption {_f(d['timing']['encrypt_ms'], 1)} ms &middot; decryption {_f(d['timing']['decrypt_ms'], 1)} ms
+<h2>Timing</h2><p>Key setup (once per key) {_f(d['timing'].get('key_setup_ms', 0), 1)} ms &middot; encryption {_f(d['timing']['encrypt_ms'], 1)} ms &middot; decryption {_f(d['timing']['decrypt_ms'], 1)} ms
 &middot; {_f(d['timing']['throughput_mbps'], 2)} MB/s</p>{att}
 </body></html>"""

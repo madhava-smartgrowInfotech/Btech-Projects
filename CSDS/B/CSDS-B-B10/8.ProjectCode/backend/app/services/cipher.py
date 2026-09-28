@@ -3,9 +3,9 @@
 Pipeline (encryption):
   1. Integer Haar lifting DWT in Z_256 on every channel -> LL | HL / LH | HH quadrants (exactly reversible).
   2. Key-driven permutation of all coefficients (Henon map key stream, argsort).
-  3. XOR diffusion with 2-D logistic (sine-modulated) key streams, chained with modular addition and a
-     3-bit rotation (add-rotate-xor), forward then backward, two rounds -> a one-pixel change spreads over
-     every byte and every bit-plane of the cipher image.
+  3. XOR diffusion with 2-D logistic (sine-modulated) key streams: each byte is XORed with the key stream,
+     passed through a key-dependent 8-bit substitution box and chained to its neighbour by modular addition,
+     forward then backward, three rounds -> a one-pixel change spreads over every byte of the cipher image.
 
 Decryption applies the exact inverse of every step, so the recovered image is bit-identical.
 Key: 256 bits. Nonce: 128 bits, public, one per image / video frame (so key streams never repeat).
@@ -20,10 +20,11 @@ KEY_BYTES = 32
 NONCE_BYTES = 16
 LANES = 4096          # independent chaotic trajectories iterated in parallel (vectorised)
 BURN_IN = 64          # iterations discarded before key stream bytes are taken
-ROUNDS = 2            # diffusion rounds (each = forward + backward chained pass)
-ROT = 3               # bit rotation applied after every diffusion pass
+ROUNDS = 3            # diffusion rounds (each = forward + backward chained pass); with 3, a region left
+                      # unmixed by a chance cancellation of differences needs p ~ 1/256^2 instead of 1/256
 
 _perm_cache: "OrderedDict[tuple, tuple]" = OrderedDict()
+_sbox_cache: "OrderedDict[bytes, tuple]" = OrderedDict()
 
 
 # ---------------------------------------------------------------- keys
@@ -137,6 +138,23 @@ def permutation(key: bytes, n: int) -> tuple:
     return perm, inv
 
 
+def sbox(key: bytes) -> tuple:
+    """Key-dependent bijective 8-bit substitution from the 2-D logistic map (cached per key)."""
+    if key in _sbox_cache:
+        return _sbox_cache[key]
+    x, y = _lane_seeds(key, b"", b"sbox")
+    x, y = 0.01 + 0.98 * x[:256], 0.01 + 0.98 * y[:256]
+    for _ in range(BURN_IN):
+        x, y = _slmm(x, y)
+    s = np.argsort(x, kind="stable").astype(np.uint8)
+    inv = np.empty(256, dtype=np.uint8)
+    inv[s] = np.arange(256, dtype=np.uint8)
+    _sbox_cache[key] = (s, inv)
+    if len(_sbox_cache) > 16:
+        _sbox_cache.popitem(last=False)
+    return s, inv
+
+
 # ---------------------------------------------------------------- integer Haar lifting (mod 256)
 def _lift_1d(a, axis):
     ev = np.take(a, np.arange(0, a.shape[axis], 2), axis=axis)
@@ -193,33 +211,25 @@ def dwt_inverse(coef: np.ndarray) -> np.ndarray:
 
 
 # ---------------------------------------------------------------- diffusion
-def _fwd(x, k, iv):
-    # running sum mod 256 chains every byte to all bytes before it
-    return np.cumsum(x ^ k, dtype=np.uint8) + np.uint8(iv)
+def _fwd(x, k, iv, s):
+    # XOR with the key stream, substitute (non-linear, so differences cannot drift in small steps),
+    # then a running sum mod 256 chains every byte to all bytes before it
+    return np.cumsum(s[x ^ k], dtype=np.uint8) + np.uint8(iv)
 
 
-def _fwd_inv(c, k, iv):
+def _fwd_inv(c, k, iv, s_inv):
     prev = np.empty_like(c)
     prev[0] = iv
     prev[1:] = c[:-1]
-    return (c - prev) ^ k
+    return s_inv[c - prev] ^ k
 
 
-def _bwd(x, k, iv):
-    return _fwd(x[::-1], k[::-1], iv)[::-1]
+def _bwd(x, k, iv, s):
+    return _fwd(x[::-1], k[::-1], iv, s)[::-1]
 
 
-def _bwd_inv(c, k, iv):
-    return _fwd_inv(c[::-1], k[::-1], iv)[::-1]
-
-
-def _rotl(x, r=ROT):
-    # byte rotation moves carry bits into low bit-planes (add-rotate-xor), so no bit-plane is left unmixed
-    return (x << np.uint8(r)) | (x >> np.uint8(8 - r))
-
-
-def _rotr(x, r=ROT):
-    return (x >> np.uint8(r)) | (x << np.uint8(8 - r))
+def _bwd_inv(c, k, iv, s_inv):
+    return _fwd_inv(c[::-1], k[::-1], iv, s_inv)[::-1]
 
 
 def _streams(key: bytes, nonce: bytes, n: int):
@@ -237,9 +247,10 @@ def encrypt(img: np.ndarray, key_hex: str, nonce_hex: str) -> np.ndarray:
     perm, _ = permutation(key, n)
     x = flat[perm]
     ks, ivs = _streams(key, nonce, n)
+    s, _ = sbox(key)
     for r in range(ROUNDS):
-        x = _rotl(_fwd(x, ks[2 * r], ivs[2 * r]))
-        x = _rotl(_bwd(x, ks[2 * r + 1], ivs[2 * r + 1]))
+        x = _fwd(x, ks[2 * r], ivs[2 * r], s)
+        x = _bwd(x, ks[2 * r + 1], ivs[2 * r + 1], s)
     return x.reshape(img.shape)
 
 
@@ -249,9 +260,10 @@ def decrypt(cipher: np.ndarray, key_hex: str, nonce_hex: str) -> np.ndarray:
     x = cipher.reshape(-1)
     n = x.size
     ks, ivs = _streams(key, nonce, n)
+    _, s_inv = sbox(key)
     for r in reversed(range(ROUNDS)):
-        x = _bwd_inv(_rotr(x), ks[2 * r + 1], ivs[2 * r + 1])
-        x = _fwd_inv(_rotr(x), ks[2 * r], ivs[2 * r])
+        x = _bwd_inv(x, ks[2 * r + 1], ivs[2 * r + 1], s_inv)
+        x = _fwd_inv(x, ks[2 * r], ivs[2 * r], s_inv)
     _, inv = permutation(key, n)
     coef = x[inv].reshape(cipher.shape)
     return dwt_inverse(coef)

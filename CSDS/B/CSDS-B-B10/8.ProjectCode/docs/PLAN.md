@@ -5,7 +5,7 @@ Live link: UAV sender node -> WebSocket uplink (ciphertext only) -> ground-stati
 
 **Cipher path (F1):** image (uint8) -> integer Haar lifting DWT in Z_256 (exactly reversible, LL/HL/LH/HH
 quadrants) -> key-driven Henon permutation -> 2-D logistic (sine-modulated) key streams -> XOR diffusion
-chained with modular addition, forward + backward, 2 rounds. 256-bit key + public per-image/per-frame nonce.
+with a key-dependent S-box, chained with modular addition, forward + backward, 3 rounds. 256-bit key + public per-image/per-frame nonce.
 
 **Endpoints:**
 - `POST /api/auth/register`, `POST /api/auth/login`, `GET /api/auth/me`

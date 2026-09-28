@@ -46,9 +46,12 @@ async def encrypt(file: Optional[UploadFile] = File(None), sample_kind: str = Fo
     img, name, source, resized = await load_input(db, user, file, sample_kind, sample_name)
     key = key_or_new(key)
     nonce = C.new_nonce()
+    ts = time.perf_counter()
+    C.permutation(C.parse_key(key), img.size)   # one-off key setup, cached for this key and size
     t0 = time.perf_counter()
     enc = C.encrypt(img, key, nonce)
     enc_ms = (time.perf_counter() - t0) * 1000
+    key_setup_ms = (t0 - ts) * 1000
     coef = C.dwt_forward(img)
 
     stem = uuid.uuid4().hex
@@ -62,7 +65,7 @@ async def encrypt(file: Optional[UploadFile] = File(None), sample_kind: str = Fo
     db.add(job)
     db.commit()
     return {
-        "job": _job_out(job), "key": key, "resized": resized,
+        "job": _job_out(job), "key": key, "resized": resized, "key_setup_ms": key_setup_ms,
         "plain": preview_b64(img), "cipher": preview_b64(enc), "coefficients": preview_b64(coef),
         "subbands": subband_views(img),
         "histograms": {"plain": histograms(img), "cipher": histograms(enc)},

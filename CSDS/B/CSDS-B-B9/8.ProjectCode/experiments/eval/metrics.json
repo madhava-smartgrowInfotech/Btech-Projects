@@ -1,0 +1,145 @@
+{
+ "O1_practice_and_judge": {
+  "judge_cases": 105,
+  "judge_verdict_accuracy": 1.0,
+  "judge_by_verdict": {
+   "Accepted": {
+    "cases": 34,
+    "correct": 34
+   },
+   "Wrong Answer": {
+    "cases": 32,
+    "correct": 32
+   },
+   "Runtime Error": {
+    "cases": 32,
+    "correct": 32
+   },
+   "Time Limit Exceeded": {
+    "cases": 5,
+    "correct": 5
+   },
+   "Compile Error": {
+    "cases": 2,
+    "correct": 2
+   }
+  },
+  "judge_mismatches": [],
+  "judge_mean_seconds_per_submission": 0.39,
+  "languages_available": {
+   "python": true,
+   "cpp": true,
+   "java": true
+  },
+  "problems": 32,
+  "hidden_tests_total": 267,
+  "question_bank": {
+   "total": 613,
+   "aptitude": 463,
+   "technical": 150,
+   "technical_topics": [
+    "Computer Networks",
+    "DBMS",
+    "Data Structures & Algorithms",
+    "Operating Systems",
+    "Programming"
+   ],
+   "aptitude_topics": 10
+  }
+ },
+ "O2_contest_ratings": {
+  "simulated_players": 30,
+  "simulated_contests": 15,
+  "performance_noise_sd": 250,
+  "spearman_skill_vs_rating_after_1": 0.7811,
+  "spearman_skill_vs_rating_final": 0.9515,
+  "spearman_by_contest": [
+   0.7811,
+   0.8977,
+   0.9132,
+   0.9377,
+   0.9128,
+   0.9097,
+   0.9057,
+   0.9399,
+   0.9453,
+   0.9591,
+   0.9537,
+   0.956,
+   0.9533,
+   0.9666,
+   0.9515
+  ],
+  "rating_sum_drift": -3
+ },
+ "O3_levels_and_interview_nlp": {
+  "sample_cohort": 24,
+  "level_funnel_reached": {
+   "L1 Foundation": 24,
+   "L2 Aptitude": 17,
+   "L3 Coder": 15,
+   "L4 Interview-ready": 0,
+   "L5 Job-ready": 0
+  },
+  "nlp_relevance_auc_on_vs_off_topic": 0.875,
+  "nlp_pairs": 96
+ },
+ "O4_resume_analysis": {
+  "classifier_accuracy": 0.6841,
+  "classifier_macro_f1": 0.6346,
+  "classifier_top3_accuracy": 0.8833,
+  "classes": 24,
+  "ats_mean_true_role": 66.9,
+  "ats_mean_wrong_role": 45.3,
+  "ats_auc_true_vs_wrong_role": 0.9566,
+  "ats_resumes_evaluated": 150,
+  "mean_role_skill_coverage": 0.423,
+  "sample_pdfs": 24,
+  "pdf_parse_rate": 1.0,
+  "sample_pdf_top3_role_hit_rate": 1.0
+ },
+ "O5_recruiter_shortlisting": {
+  "level3_python": {
+   "shortlisted": 17,
+   "eligible": 17,
+   "precision": 1.0,
+   "recall": 1.0,
+   "spearman_score_vs_readiness": 0.995
+  },
+  "level2_sql": {
+   "shortlisted": 8,
+   "eligible": 8,
+   "precision": 1.0,
+   "recall": 1.0,
+   "spearman_score_vs_readiness": 1.0
+  },
+  "level1_excel": {
+   "shortlisted": 4,
+   "eligible": 4,
+   "precision": 1.0,
+   "recall": 1.0,
+   "spearman_score_vs_readiness": 1.0
+  }
+ },
+ "O6_readiness_analytics": {
+  "cohort": 27,
+  "candidates_with_readiness": 26,
+  "avg_readiness": 55.4,
+  "weak_topics_top3": [
+   [
+    "Averages & Ages",
+    28.6
+   ],
+   [
+    "Percentages",
+    34.2
+   ],
+   [
+    "Programming",
+    49.5
+   ]
+  ],
+  "topics_tracked": 15
+ },
+ "eval_seconds": 30.6
+}

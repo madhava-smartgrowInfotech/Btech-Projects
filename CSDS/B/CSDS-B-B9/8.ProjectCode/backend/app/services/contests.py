@@ -49,6 +49,17 @@ def standings(db, c):
     return table
 
 
+def rating_deltas(ratings, ranks):
+    """Elo-style update: actual pairwise score (win=1, tie=0.5) minus expected score, times K."""
+    n = len(ratings)
+    out = []
+    for i in range(n):
+        exp = sum(1 / (1 + 10 ** ((ratings[j] - ratings[i]) / 400)) for j in range(n) if j != i) / (n - 1)
+        actual = sum(1.0 if ranks[j] > ranks[i] else 0.5 if ranks[j] == ranks[i] else 0.0 for j in range(n) if j != i) / (n - 1)
+        out.append(round(K * (actual - exp)))
+    return out
+
+
 def apply_ratings(db, c):
     """Rate a finished contest once: expected vs actual pairwise score, K-factor update."""
     if c.rated or status(c) != "ended":
@@ -58,13 +69,8 @@ def apply_ratings(db, c):
     changes = {}
     if n >= 2:
         users = {u.id: u for u in db.scalars(select(User).where(User.id.in_([r["user_id"] for r in table]))).all()}
-        for r in table:
-            me = users[r["user_id"]]
-            exp = sum(1 / (1 + 10 ** ((users[o["user_id"]].rating - me.rating) / 400)) for o in table if o is not r) / (n - 1)
-            better = sum(1 for o in table if o["rank"] > r["rank"])
-            ties = sum(1 for o in table if o["rank"] == r["rank"] and o is not r)
-            actual = (better + 0.5 * ties) / (n - 1)
-            changes[str(me.id)] = round(K * (actual - exp))
+        deltas = rating_deltas([users[r["user_id"]].rating for r in table], [r["rank"] for r in table])
+        changes = {str(r["user_id"]): d for r, d in zip(table, deltas)}
         for uid, d in changes.items():
             u = users[int(uid)]
             u.rating += d

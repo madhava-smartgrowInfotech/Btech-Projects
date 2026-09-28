@@ -1,0 +1,159 @@
+{
+ "model": "TF-IDF (1-2 gram) + LogisticRegression",
+ "dataset": "Kaggle Resume Dataset (snehaanbhawal/resume-dataset)",
+ "n_train": 1986,
+ "n_test": 497,
+ "n_classes": 24,
+ "seed": 42,
+ "accuracy": 0.6841,
+ "macro_f1": 0.6346,
+ "weighted_f1": 0.6686,
+ "top3_accuracy": 0.8833,
+ "per_class": {
+  "ACCOUNTANT": {
+   "precision": 0.741,
+   "recall": 0.833,
+   "f1-score": 0.784,
+   "support": 24.0
+  },
+  "ADVOCATE": {
+   "precision": 0.441,
+   "recall": 0.625,
+   "f1-score": 0.517,
+   "support": 24.0
+  },
+  "AGRICULTURE": {
+   "precision": 0.857,
+   "recall": 0.462,
+   "f1-score": 0.6,
+   "support": 13.0
+  },
+  "APPAREL": {
+   "precision": 0.429,
+   "recall": 0.158,
+   "f1-score": 0.231,
+   "support": 19.0
+  },
+  "ARTS": {
+   "precision": 0.667,
+   "recall": 0.476,
+   "f1-score": 0.556,
+   "support": 21.0
+  },
+  "AUTOMOBILE": {
+   "precision": 1.0,
+   "recall": 0.286,
+   "f1-score": 0.444,
+   "support": 7.0
+  },
+  "AVIATION": {
+   "precision": 0.9,
+   "recall": 0.75,
+   "f1-score": 0.818,
+   "support": 24.0
+  },
+  "BANKING": {
+   "precision": 0.8,
+   "recall": 0.696,
+   "f1-score": 0.744,
+   "support": 23.0
+  },
+  "BPO": {
+   "precision": 0.0,
+   "recall": 0.0,
+   "f1-score": 0.0,
+   "support": 4.0
+  },
+  "BUSINESS-DEVELOPMENT": {
+   "precision": 0.553,
+   "recall": 0.875,
+   "f1-score": 0.677,
+   "support": 24.0
+  },
+  "CHEF": {
+   "precision": 0.818,
+   "recall": 0.75,
+   "f1-score": 0.783,
+   "support": 24.0
+  },
+  "CONSTRUCTION": {
+   "precision": 0.783,
+   "recall": 0.818,
+   "f1-score": 0.8,
+   "support": 22.0
+  },
+  "CONSULTANT": {
+   "precision": 0.833,
+   "recall": 0.217,
+   "f1-score": 0.345,
+   "support": 23.0
+  },
+  "DESIGNER": {
+   "precision": 0.864,
+   "recall": 0.905,
+   "f1-score": 0.884,
+   "support": 21.0
+  },
+  "DIGITAL-MEDIA": {
+   "precision": 0.714,
+   "recall": 0.526,
+   "f1-score": 0.606,
+   "support": 19.0
+  },
+  "ENGINEERING": {
+   "precision": 0.739,
+   "recall": 0.708,
+   "f1-score": 0.723,
+   "support": 24.0
+  },
+  "FINANCE": {
+   "precision": 0.826,
+   "recall": 0.792,
+   "f1-score": 0.809,
+   "support": 24.0
+  },
+  "FITNESS": {
+   "precision": 0.762,
+   "recall": 0.696,
+   "f1-score": 0.727,
+   "support": 23.0
+  },
+  "HEALTHCARE": {
+   "precision": 0.682,
+   "recall": 0.652,
+   "f1-score": 0.667,
+   "support": 23.0
+  },
+  "HR": {
+   "precision": 0.741,
+   "recall": 0.909,
+   "f1-score": 0.816,
+   "support": 22.0
+  },
+  "INFORMATION-TECHNOLOGY": {
+   "precision": 0.667,
+   "recall": 1.0,
+   "f1-score": 0.8,
+   "support": 24.0
+  },
+  "PUBLIC-RELATIONS": {
+   "precision": 0.548,
+   "recall": 0.773,
+   "f1-score": 0.642,
+   "support": 22.0
+  },
+  "SALES": {
+   "precision": 0.433,
+   "recall": 0.565,
+   "f1-score": 0.491,
+   "support": 23.0
+  },
+  "TEACHER": {
+   "precision": 0.667,
+   "recall": 0.9,
+   "f1-score": 0.766,
+   "support": 20.0
+  }
+ },
+ "train_seconds": 19.3
+}

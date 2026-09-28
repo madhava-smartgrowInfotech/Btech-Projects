@@ -1,0 +1,114 @@
+{
+  "model": "KMeans",
+  "features": [
+    "p_share",
+    "c_share",
+    "f_share",
+    "fibre_100kcal",
+    "sugar_100kcal",
+    "log_sodium_100kcal",
+    "log_density"
+  ],
+  "n_dishes": 890,
+  "k_grid": [
+    {
+      "k": 6,
+      "inertia": 2491.18,
+      "silhouette": 0.2395
+    },
+    {
+      "k": 8,
+      "inertia": 2093.44,
+      "silhouette": 0.2592
+    },
+    {
+      "k": 10,
+      "inertia": 1817.9,
+      "silhouette": 0.2634
+    },
+    {
+      "k": 12,
+      "inertia": 1596.45,
+      "silhouette": 0.2691
+    },
+    {
+      "k": 14,
+      "inertia": 1449.75,
+      "silhouette": 0.2551
+    },
+    {
+      "k": 16,
+      "inertia": 1312.18,
+      "silhouette": 0.2662
+    },
+    {
+      "k": 18,
+      "inertia": 1202.6,
+      "silhouette": 0.2667
+    },
+    {
+      "k": 20,
+      "inertia": 1131.18,
+      "silhouette": 0.2776
+    },
+    {
+      "k": 22,
+      "inertia": 1073.15,
+      "silhouette": 0.2652
+    },
+    {
+      "k": 24,
+      "inertia": 1014.28,
+      "silhouette": 0.2523
+    },
+    {
+      "k": 26,
+      "inertia": 962.28,
+      "silhouette": 0.2591
+    },
+    {
+      "k": 28,
+      "inertia": 939.35,
+      "silhouette": 0.2559
+    },
+    {
+      "k": 30,
+      "inertia": 887.35,
+      "silhouette": 0.2502
+    }
+  ],
+  "chosen_k": 20,
+  "silhouette": 0.2776,
+  "davies_bouldin": 1.1055,
+  "calinski_harabasz": 206.4,
+  "cluster_sizes": {
+    "0": 32,
+    "1": 30,
+    "2": 25,
+    "3": 44,
+    "4": 61,
+    "5": 30,
+    "6": 21,
+    "7": 110,
+    "8": 35,
+    "9": 59,
+    "10": 16,
+    "11": 31,
+    "12": 70,
+    "13": 4,
+    "14": 14,
+    "15": 71,
+    "16": 82,
+    "17": 35,
+    "18": 34,
+    "19": 86
+  },
+  "swap_check": {
+    "plan_dishes": 571,
+    "with_same_cluster_swap_pct": 97.5,
+    "mean_macro_split_difference_pct": 5.2,
+    "mean_kcal_error_after_portioning_pct": 9.25
+  },
+  "train_seconds": 1.83,
+  "seed": 42
+}

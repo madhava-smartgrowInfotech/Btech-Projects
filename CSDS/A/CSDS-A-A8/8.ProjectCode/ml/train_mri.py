@@ -47,10 +47,16 @@ def load_data():
     d = np.load(DATA)
     X, Y, split = d["X"], d["Y"], d["split"]
     tr, te = np.where(split == "train")[0], np.where(split == "test")[0]
-    xf = X[tr].astype(np.float32) / 255.0
-    mean = xf.mean(axis=(0, 1, 2)).tolist()
-    std = xf.std(axis=(0, 1, 2)).tolist()
-    return X, Y, tr, te, {"mean": mean, "std": std}
+    # channel statistics in chunks (avoids a full float copy of the training set)
+    s1, s2, n = np.zeros(3), np.zeros(3), 0
+    for i in range(0, len(tr), 256):
+        xf = X[tr[i:i + 256]].astype(np.float64) / 255.0
+        s1 += xf.sum(axis=(0, 1, 2))
+        s2 += (xf ** 2).sum(axis=(0, 1, 2))
+        n += xf.shape[0] * xf.shape[1] * xf.shape[2]
+    mean = s1 / n
+    std = np.sqrt(s2 / n - mean ** 2)
+    return X, Y, tr, te, {"mean": mean.tolist(), "std": std.tolist()}
 
 
 def to_tensor(xb, norm):
@@ -86,9 +92,16 @@ def pretrain_jepa(X, tr, norm, epochs, bs):
     opt = torch.optim.AdamW(params, lr=5e-4, weight_decay=0.04)
     steps_per_epoch = len(tr) // bs
     total = epochs * steps_per_epoch
-    step, hist = 0, []
+    step, hist, start = 0, [], 0
+    ck_path = MODELS / "_resume_jepa.pt"
+    if ck_path.exists():
+        ck = torch.load(ck_path, map_location="cpu")
+        enc.load_state_dict(ck["enc"]); tgt.load_state_dict(ck["tgt"]); pred.load_state_dict(ck["pred"])
+        opt.load_state_dict(ck["opt"])
+        step, hist, start = ck["step"], ck["hist"], ck["epoch"]
+        print(f"[jepa] resuming after epoch {start}", flush=True)
     t0 = time.time()
-    for ep in range(epochs):
+    for ep in range(start, epochs):
         losses = []
         for b in batches(tr, bs, rng):
             x = to_tensor(X[b], norm)
@@ -115,8 +128,11 @@ def pretrain_jepa(X, tr, norm, epochs, bs):
         hist.append({"epoch": ep + 1, "loss": float(np.mean(losses)), "target_feature_std": feat_std})
         print(f"[jepa] epoch {ep + 1}/{epochs} loss={hist[-1]['loss']:.4f} feat_std={feat_std:.3f} "
               f"({time.time() - t0:.0f}s)", flush=True)
+        torch.save({"enc": enc.state_dict(), "tgt": tgt.state_dict(), "pred": pred.state_dict(),
+                    "opt": opt.state_dict(), "step": step, "hist": hist, "epoch": ep + 1}, ck_path)
     # the EMA target encoder is the one kept for downstream use (as in I-JEPA)
     torch.save({"encoder": tgt.cpu().state_dict(), "norm": norm}, MODELS / "mri_jepa_encoder.pt")
+    ck_path.unlink(missing_ok=True)
     return {"epochs": epochs, "history": hist, "seconds": round(time.time() - t0, 1)}
 
 
@@ -156,9 +172,15 @@ def pretrain_mae(X, tr, norm, epochs, bs):
     n = IMG_GRID[0] * IMG_GRID[1]
     steps_per_epoch = len(tr) // bs
     total = epochs * steps_per_epoch
-    step, hist = 0, []
+    step, hist, start = 0, [], 0
+    ck_path = MODELS / "_resume_mae.pt"
+    if ck_path.exists():
+        ck = torch.load(ck_path, map_location="cpu")
+        enc.load_state_dict(ck["enc"]); dec.load_state_dict(ck["dec"]); opt.load_state_dict(ck["opt"])
+        step, hist, start = ck["step"], ck["hist"], ck["epoch"]
+        print(f"[mae] resuming after epoch {start}", flush=True)
     t0 = time.time()
-    for ep in range(epochs):
+    for ep in range(start, epochs):
         losses = []
         for b in batches(tr, bs, rng):
             x = to_tensor(X[b], norm)
@@ -180,7 +202,10 @@ def pretrain_mae(X, tr, norm, epochs, bs):
             step += 1
         hist.append({"epoch": ep + 1, "loss": float(np.mean(losses))})
         print(f"[mae] epoch {ep + 1}/{epochs} loss={hist[-1]['loss']:.4f} ({time.time() - t0:.0f}s)", flush=True)
+        torch.save({"enc": enc.state_dict(), "dec": dec.state_dict(), "opt": opt.state_dict(), "step": step,
+                    "hist": hist, "epoch": ep + 1}, ck_path)
     torch.save({"encoder": enc.cpu().state_dict(), "norm": norm}, MODELS / "mri_mae_encoder.pt")
+    ck_path.unlink(missing_ok=True)
     return {"epochs": epochs, "history": hist, "seconds": round(time.time() - t0, 1)}
 
 

@@ -5,3 +5,5 @@ __pycache__/
 dist/
 data/app.db
 data/raw/
+.env
+_resume_*.pt

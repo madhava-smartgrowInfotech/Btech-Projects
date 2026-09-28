@@ -3,3 +3,4 @@ train slices=3169 test slices=760 threads=5
 [jepa] epoch 2/10 loss=0.1231 feat_std=0.463 (411s)
 [jepa] epoch 3/10 loss=0.1086 feat_std=0.477 (670s)
 [jepa] epoch 4/10 loss=0.1098 feat_std=0.490 (838s)
+[jepa] epoch 5/10 loss=0.1057 feat_std=0.497 (967s)

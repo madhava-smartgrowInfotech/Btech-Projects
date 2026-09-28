@@ -50,8 +50,7 @@ def booking_status(db: Session, b: Booking) -> dict:
     queue = ordered_waiting(db, b.hospital_id, b.date)
     pos = next(i for i, q in enumerate(queue) if q.id == b.id)
     m = consult_minutes(db, h, b.date)
-    in_room = 1 if current_called(db, b.hospital_id, b.date) else 0
-    wait = in_room * m / 2 + sum((1 - q.noshow_prob) * m for q in queue[:pos])
+    wait = sum((1 - q.noshow_prob) * m for q in queue[:pos])
     now = datetime.now()
     hh, mm = map(int, h.op_start.split(":"))
     opening = datetime.fromisoformat(b.date).replace(hour=hh, minute=mm)

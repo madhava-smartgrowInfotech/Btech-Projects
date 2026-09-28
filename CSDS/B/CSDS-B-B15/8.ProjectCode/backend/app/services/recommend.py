@@ -40,7 +40,8 @@ def recommend(db: Session, lat: float, lon: float, severity: str, specialty: str
             continue
         dist = haversine_km(lat, lon, h.lat, h.lon)
         s = day_stats(db, h.id, day.isoformat())
-        free = max(hard_cap(h) - s["booked"], 0)
+        free = max(h.op_limit - s["booked"], 0)
+        overbook_left = max(hard_cap(h) - s["booked"], 0)
         avail = min(free / max(h.op_limit, 1), 1.0)
         emerg = 1.0 if h.has_emergency else 0.0
         if severity == "critical" and not h.has_emergency:
@@ -51,7 +52,12 @@ def recommend(db: Session, lat: float, lon: float, severity: str, specialty: str
             why.append(f"has {specialty}")
         elif spec_score:
             why.append("General Medicine OP")
-        why.append(f"{free} slots free" if free else "full on this day - next day will be used")
+        if free:
+            why.append(f"{free} of {h.op_limit} slots free")
+        elif overbook_left:
+            why.append("OP limit reached - no-show-adjusted slots may remain")
+        else:
+            why.append("full on this day - next free day will be used")
         if h.has_emergency:
             why.append("24x7 emergency")
         out.append({"id": h.id, "name": h.name, "lat": h.lat, "lon": h.lon, "address": h.address,

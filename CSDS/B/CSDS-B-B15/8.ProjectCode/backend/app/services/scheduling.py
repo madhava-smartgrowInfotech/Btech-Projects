@@ -65,7 +65,7 @@ def allocate(db: Session, h: Hospital, requested: date, p_new: float, severity: 
     chosen = days[i]
     s = stats[i]
     if i == 0:
-        reason = (f"slot {s['booked'] + 1} of {h.op_limit}"
+        reason = (f"OP booking {s['booked'] + 1} of {h.op_limit} for {chosen.isoformat()}"
                   + (" (overbooked - no-show adjusted)" if s["booked"] + 1 > h.op_limit else ""))
     elif not feasible[0]:
         reason = f"{requested.isoformat()} is full - moved automatically to {chosen.isoformat()}"

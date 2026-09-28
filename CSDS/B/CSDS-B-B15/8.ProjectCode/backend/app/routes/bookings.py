@@ -22,6 +22,7 @@ def booking_dict(db: Session, b: Booking) -> dict:
             "symptoms": [triage.label(s) for s in json.loads(b.symptoms)], "condition": b.condition,
             "specialty": b.specialty, "noshow_prob": b.noshow_prob, "uses_quota": b.uses_quota,
             "is_sample": b.is_sample, "referral_id": b.referral_id, "notes": b.notes,
+            "has_account": b.patient_id is not None,
             "created_at": b.created_at.isoformat(timespec="minutes")}
 
 

@@ -1,0 +1,30 @@
+{
+  "length_of_stay": {
+    "train_rows": 74481,
+    "test_rows": 25256,
+    "regression": {
+      "mae_days": 0.3111744821071625,
+      "rmse_days": 0.4193934109394419,
+      "r2": 0.9680793881416321,
+      "baseline_mean_mae_days": 1.905609742020632
+    },
+    "classification": {
+      "long_stay_threshold_days": 5,
+      "accuracy": 0.9661466582198289,
+      "precision": 0.945662386470404,
+      "recall": 0.9224072094088895,
+      "f1": 0.9338900487125957,
+      "roc_auc": 0.9961312807396373,
+      "long_stay_rate": 0.259225530566994
+    }
+  },
+  "admissions": {
+    "series": 25,
+    "train_samples": 78750,
+    "test_samples": 27300,
+    "mae": 2.3635350331631337,
+    "naive_7d_mean_mae": 2.4834850863422298,
+    "naive_last_day_mae": 3.235091575091575
+  },
+  "train_seconds": 4.5
+}

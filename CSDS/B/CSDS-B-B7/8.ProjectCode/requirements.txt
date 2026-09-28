@@ -1,0 +1,14 @@
+fastapi==0.141.1
+uvicorn[standard]==0.54.0
+SQLAlchemy==2.1.1
+PyJWT==2.15.0
+bcrypt==5.0.0
+python-dotenv==1.2.3
+pandas==3.0.6
+numpy==2.4.6
+scikit-learn==1.9.1
+xgboost==3.2.0
+shap==0.51.0
+ortools==9.15.6755
+kagglehub==1.0.2
+requests==2.34.2

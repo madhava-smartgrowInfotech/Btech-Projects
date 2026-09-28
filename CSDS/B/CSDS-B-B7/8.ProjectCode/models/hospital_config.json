@@ -1,0 +1,291 @@
+{
+  "seed": 42,
+  "ward_mix": {
+    "ICU": 0.11075029909417193,
+    "Surgical": 0.2881558707913177,
+    "Paediatric": 0.07229664801311401,
+    "Maternity": 0.12
+  },
+  "equipment_rates": {
+    "General": {
+      "Ventilator": 0.0,
+      "Cardiac monitor": 0.1,
+      "Infusion pump": 0.5,
+      "Dialysis machine": 0.026
+    },
+    "Surgical": {
+      "Ventilator": 0.0,
+      "Cardiac monitor": 0.3,
+      "Infusion pump": 0.8,
+      "Dialysis machine": 0.025
+    },
+    "Maternity": {
+      "Ventilator": 0.0,
+      "Cardiac monitor": 0.1,
+      "Infusion pump": 0.4,
+      "Dialysis machine": 0.018
+    },
+    "Paediatric": {
+      "Ventilator": 0.0,
+      "Cardiac monitor": 0.1,
+      "Infusion pump": 0.5,
+      "Dialysis machine": 0.026
+    },
+    "ICU": {
+      "Ventilator": 0.097,
+      "Cardiac monitor": 1.0,
+      "Infusion pump": 2.0,
+      "Dialysis machine": 0.129
+    }
+  },
+  "capacity": {
+    "A": {
+      "General": 116,
+      "Surgical": 85,
+      "Maternity": 34,
+      "Paediatric": 22,
+      "ICU": 54
+    },
+    "B": {
+      "General": 119,
+      "Surgical": 87,
+      "Maternity": 34,
+      "Paediatric": 20,
+      "ICU": 55
+    },
+    "C": {
+      "General": 32,
+      "Surgical": 25,
+      "Maternity": 8,
+      "Paediatric": 6,
+      "ICU": 13
+    },
+    "D": {
+      "General": 31,
+      "Surgical": 22,
+      "Maternity": 10,
+      "Paediatric": 5,
+      "ICU": 13
+    },
+    "E": {
+      "General": 197,
+      "Surgical": 138,
+      "Maternity": 42,
+      "Paediatric": 34,
+      "ICU": 75
+    }
+  },
+  "roster": {
+    "A": {
+      "General": {
+        "Day": 18,
+        "Evening": 18,
+        "Night": 14
+      },
+      "Surgical": {
+        "Day": 15,
+        "Evening": 15,
+        "Night": 11
+      },
+      "Maternity": {
+        "Day": 7,
+        "Evening": 7,
+        "Night": 6
+      },
+      "Paediatric": {
+        "Day": 5,
+        "Evening": 5,
+        "Night": 4
+      },
+      "ICU": {
+        "Day": 24,
+        "Evening": 24,
+        "Night": 24
+      }
+    },
+    "B": {
+      "General": {
+        "Day": 18,
+        "Evening": 18,
+        "Night": 14
+      },
+      "Surgical": {
+        "Day": 16,
+        "Evening": 16,
+        "Night": 11
+      },
+      "Maternity": {
+        "Day": 8,
+        "Evening": 8,
+        "Night": 6
+      },
+      "Paediatric": {
+        "Day": 4,
+        "Evening": 4,
+        "Night": 3
+      },
+      "ICU": {
+        "Day": 24,
+        "Evening": 24,
+        "Night": 24
+      }
+    },
+    "C": {
+      "General": {
+        "Day": 5,
+        "Evening": 5,
+        "Night": 4
+      },
+      "Surgical": {
+        "Day": 4,
+        "Evening": 4,
+        "Night": 3
+      },
+      "Maternity": {
+        "Day": 2,
+        "Evening": 2,
+        "Night": 2
+      },
+      "Paediatric": {
+        "Day": 1,
+        "Evening": 1,
+        "Night": 1
+      },
+      "ICU": {
+        "Day": 5,
+        "Evening": 5,
+        "Night": 5
+      }
+    },
+    "D": {
+      "General": {
+        "Day": 5,
+        "Evening": 5,
+        "Night": 4
+      },
+      "Surgical": {
+        "Day": 4,
+        "Evening": 4,
+        "Night": 3
+      },
+      "Maternity": {
+        "Day": 2,
+        "Evening": 2,
+        "Night": 2
+      },
+      "Paediatric": {
+        "Day": 1,
+        "Evening": 1,
+        "Night": 1
+      },
+      "ICU": {
+        "Day": 5,
+        "Evening": 5,
+        "Night": 5
+      }
+    },
+    "E": {
+      "General": {
+        "Day": 31,
+        "Evening": 31,
+        "Night": 23
+      },
+      "Surgical": {
+        "Day": 25,
+        "Evening": 25,
+        "Night": 18
+      },
+      "Maternity": {
+        "Day": 9,
+        "Evening": 9,
+        "Night": 8
+      },
+      "Paediatric": {
+        "Day": 7,
+        "Evening": 7,
+        "Night": 6
+      },
+      "ICU": {
+        "Day": 33,
+        "Evening": 33,
+        "Night": 33
+      }
+    }
+  },
+  "inventory": {
+    "A": {
+      "Ventilator": 6,
+      "Cardiac monitor": 96,
+      "Infusion pump": 257,
+      "Dialysis machine": 14
+    },
+    "B": {
+      "Ventilator": 6,
+      "Cardiac monitor": 99,
+      "Infusion pump": 262,
+      "Dialysis machine": 14
+    },
+    "C": {
+      "Ventilator": 2,
+      "Cardiac monitor": 21,
+      "Infusion pump": 57,
+      "Dialysis machine": 3
+    },
+    "D": {
+      "Ventilator": 1,
+      "Cardiac monitor": 20,
+      "Infusion pump": 55,
+      "Dialysis machine": 3
+    },
+    "E": {
+      "Ventilator": 8,
+      "Cardiac monitor": 146,
+      "Infusion pump": 400,
+      "Dialysis machine": 21
+    }
+  },
+  "mean_census_90d": {
+    "A": {
+      "General": 107.0,
+      "Surgical": 71.3,
+      "Maternity": 27.3,
+      "Paediatric": 17.5,
+      "ICU": 46.5
+    },
+    "B": {
+      "General": 106.4,
+      "Surgical": 75.7,
+      "Maternity": 28.4,
+      "Paediatric": 14.7,
+      "ICU": 47.6
+    },
+    "C": {
+      "General": 25.6,
+      "Surgical": 17.2,
+      "Maternity": 5.3,
+      "Paediatric": 3.9,
+      "ICU": 9.3
+    },
+    "D": {
+      "General": 24.6,
+      "Surgical": 17.5,
+      "Maternity": 6.1,
+      "Paediatric": 2.7,
+      "ICU": 8.8
+    },
+    "E": {
+      "General": 183.0,
+      "Surgical": 123.8,
+      "Maternity": 35.2,
+      "Paediatric": 27.4,
+      "ICU": 64.5
+    }
+  },
+  "ward_counts": {
+    "General": 42498,
+    "Surgical": 29843,
+    "ICU": 11044,
+    "Maternity": 10010,
+    "Paediatric": 6342
+  }
+}

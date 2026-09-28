@@ -1,0 +1,49 @@
+{
+  "generated_at": "2026-09-28T10:37:32.465620+00:00",
+  "targets_evaluated": 2,
+  "overall_detection_rate": 93.8,
+  "total_known_vulns": 16,
+  "total_detected": 15,
+  "total_false_positives": 0,
+  "per_target": [
+    {
+      "target": "DemoPay",
+      "base_url": "http://localhost:12130",
+      "endpoints": 11,
+      "score": 38,
+      "grade": "D",
+      "findings": 12,
+      "detection_rate": 100.0,
+      "detected": 12,
+      "known_total": 12,
+      "missed": 0,
+      "missed_items": [],
+      "false_positives": 0,
+      "ai_tests": 3,
+      "ai_vulnerable": 3,
+      "ai_generator": "builtin"
+    },
+    {
+      "target": "VulnBank",
+      "base_url": "http://localhost:12131",
+      "endpoints": 5,
+      "score": 80,
+      "grade": "B",
+      "findings": 3,
+      "detection_rate": 75.0,
+      "detected": 3,
+      "known_total": 4,
+      "missed": 1,
+      "missed_items": [
+        {
+          "key": "bola:/statements/{ref}",
+          "name": "BOLA on /statements/{ref} (unguessable id)"
+        }
+      ],
+      "false_positives": 0,
+      "ai_tests": 0,
+      "ai_vulnerable": 0,
+      "ai_generator": "builtin"
+    }
+  ]
+}

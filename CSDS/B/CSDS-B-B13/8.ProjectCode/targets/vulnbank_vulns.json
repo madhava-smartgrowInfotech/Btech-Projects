@@ -1,0 +1,21 @@
+{
+  "target": "VulnBank",
+  "base_url": "http://localhost:12131",
+  "known_vulns": [
+    {"key": "bola:/loans/{loan_id}", "name": "BOLA on /loans/{loan_id}", "severity": "critical", "owasp": "API1"},
+    {"key": "excessive_data:/loans/{loan_id}", "name": "Excessive data exposure on /loans/{loan_id}", "severity": "high", "owasp": "API3"},
+    {"key": "rate_limit:/login", "name": "Missing rate limiting on /login", "severity": "high", "owasp": "API4"},
+    {"key": "bola:/statements/{ref}", "name": "BOLA on /statements/{ref} (unguessable id)", "severity": "high", "owasp": "API1"}
+  ],
+  "auth": {
+    "type": "login",
+    "login_path": "/login",
+    "username_field": "username",
+    "password_field": "password",
+    "token_field": "token",
+    "header_name": "Authorization",
+    "scheme": "Bearer",
+    "user_a": {"username": "carol", "password": "password123"},
+    "user_b": {"username": "dave", "password": "password123"}
+  }
+}

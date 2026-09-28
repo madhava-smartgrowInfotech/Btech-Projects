@@ -1,0 +1,29 @@
+{
+  "target": "DemoPay",
+  "base_url": "http://localhost:12130",
+  "known_vulns": [
+    {"key": "bola:/accounts/{account_id}", "name": "BOLA on /accounts/{account_id}", "severity": "critical", "owasp": "API1"},
+    {"key": "bola:/transactions/{tx_id}", "name": "BOLA on /transactions/{tx_id}", "severity": "critical", "owasp": "API1"},
+    {"key": "broken_auth:/me", "name": "JWT signature not verified on /me", "severity": "critical", "owasp": "API2"},
+    {"key": "excessive_data:/accounts/{account_id}", "name": "Excessive data exposure (card/CVV/SSN)", "severity": "high", "owasp": "API3"},
+    {"key": "mass_assignment:/accounts", "name": "Mass assignment on POST /accounts", "severity": "high", "owasp": "API3"},
+    {"key": "function_auth:/admin/users", "name": "Broken function-level authorization on /admin/users", "severity": "high", "owasp": "API5"},
+    {"key": "injection:/accounts/search", "name": "SQL injection on /accounts/search", "severity": "high", "owasp": "API8"},
+    {"key": "rate_limit:/login", "name": "Missing rate limiting on /login", "severity": "high", "owasp": "API4"},
+    {"key": "cors", "name": "Wildcard CORS with credentials", "severity": "medium", "owasp": "API8"},
+    {"key": "security_headers", "name": "Missing security headers", "severity": "medium", "owasp": "API8"},
+    {"key": "verbose_errors", "name": "Verbose error messages / stack traces", "severity": "medium", "owasp": "API8"},
+    {"key": "weak_jwt", "name": "Weak JWT signing secret", "severity": "medium", "owasp": "API2"}
+  ],
+  "auth": {
+    "type": "login",
+    "login_path": "/login",
+    "username_field": "username",
+    "password_field": "password",
+    "token_field": "token",
+    "header_name": "Authorization",
+    "scheme": "Bearer",
+    "user_a": {"username": "alice", "password": "password123"},
+    "user_b": {"username": "bob", "password": "password123"}
+  }
+}

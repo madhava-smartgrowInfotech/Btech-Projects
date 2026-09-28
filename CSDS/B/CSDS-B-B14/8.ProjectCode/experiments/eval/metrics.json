@@ -1,0 +1,87 @@
+{
+ "quality": {
+  "test_rows": 656,
+  "stacking_ensemble": {
+   "accuracy": 0.6707,
+   "f1": 0.4433,
+   "roc_auc": 0.661,
+   "confusion_matrix": [
+    [
+     354,
+     46
+    ],
+    [
+     170,
+     86
+    ]
+   ]
+  },
+  "members": {
+   "random_forest": {
+    "accuracy": 0.6738,
+    "f1": 0.4456,
+    "roc_auc": 0.6648
+   },
+   "xgboost": {
+    "accuracy": 0.6433,
+    "f1": 0.4455,
+    "roc_auc": 0.6444
+   },
+   "gradient_boosting": {
+    "accuracy": 0.654,
+    "f1": 0.4073,
+    "roc_auc": 0.6568
+   },
+   "decision_tree": {
+    "accuracy": 0.6341,
+    "f1": 0.3717,
+    "roc_auc": 0.6011
+   }
+  }
+ },
+ "demand": {
+  "horizon_days": 7,
+  "origins": 12,
+  "test_days": 90,
+  "xgboost_mape": 2.33,
+  "seasonal_naive_mape": 6.37
+ },
+ "leaks": {
+  "scenarios": 300,
+  "leak_size_lps": [
+   2,
+   20
+  ],
+  "candidate_pipes": 82,
+  "detection": {
+   "precision": 1.0,
+   "recall": 0.98,
+   "f1": 0.9899,
+   "roc_auc": 0.9998
+  },
+  "localisation": {
+   "top1_accuracy": 0.4667,
+   "top3_accuracy": 0.76,
+   "zone_accuracy": 1.0
+  }
+ },
+ "anomaly": {
+  "meter_days": 6750,
+  "day_level": {
+   "precision": 0.716,
+   "recall": 0.938
+  },
+  "meter_level_last_7_days": {
+   "precision": 0.9167,
+   "recall": 1.0
+  }
+ },
+ "imbalance": {
+  "equity_before": 87.2,
+  "nrw_before_pct": 9.26,
+  "equity_after": 98.9,
+  "nrw_after_pct": 10.93,
+  "action": "run PUMP1 at 115% speed",
+  "worst_zone": "Z3"
+ }
+}

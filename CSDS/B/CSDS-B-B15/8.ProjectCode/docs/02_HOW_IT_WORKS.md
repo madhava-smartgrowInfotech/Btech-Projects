@@ -28,7 +28,7 @@ models/  triage_model.joblib, noshow_model.joblib
 ## 1. Severity classification (F3)
 
 1. **Symptom input.** Patients pick from 131 symptoms, or type free text. Free text goes to Gemini
-   (`gemini-2.5-flash`, JSON mode) with the exact vocabulary; only vocabulary keys are accepted. Without a key or if
+   (`gemini-flash-latest` by default, with backup models if it is busy; JSON mode) with the exact vocabulary; only vocabulary keys are accepted. Without a key or if
    the call fails, a keyword + synonym matcher is used (the UI says which one ran).
 2. **Symptom model.** `ml/train_triage.py` trains a multinomial logistic regression on multi-hot symptom vectors
    from the Disease Symptom Prediction dataset (41 conditions). Unique symptom combinations are split 80/20; the

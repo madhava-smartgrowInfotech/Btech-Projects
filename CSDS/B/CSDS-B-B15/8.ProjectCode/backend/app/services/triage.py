@@ -4,15 +4,18 @@ Also maps free text to the symptom vocabulary with Gemini (keyword matching as f
 """
 import csv
 import json
+import logging
 import re
+import urllib.error
 import urllib.request
 from functools import lru_cache
 
 import joblib
 import numpy as np
 
-from ..config import DATA, DISCLAIMER, GEMINI_API_KEY, GEMINI_MODEL, MODELS
+from ..config import DATA, DISCLAIMER, GEMINI_API_KEY, GEMINI_FALLBACK_MODELS, GEMINI_MODEL, MODELS
 
+log = logging.getLogger("uvicorn.error")
 LEVELS = ["mild", "moderate", "severe", "critical"]
 PRIORITY = {"critical": 0, "severe": 1, "moderate": 2, "mild": 2}
 HIDDEN = {"prognosis", "foul_smell_ofurine"}  # dataset artefacts, not real symptoms
@@ -183,6 +186,11 @@ def keyword_map(text: str) -> list[str]:
     for phrase, s in SYNONYMS.items():
         if phrase in t and s in vocab:
             found.add(s)
+    if re.search(r"chest\w*\b.{0,30}\b(tight|pain|pressure|heavy|heaviness|hurts?|burning)|"
+                 r"(tight|pain|pressure|heavy|heaviness)\w*\b.{0,15}\bchest", t):
+        found.add("chest_pain")
+    if re.search(r"(can ?not|can't|cant|unable to|difficult\w*|trouble|hard|struggl\w*|short\w*)\b.{0,20}\bbreath", t):
+        found.add("breathlessness")
     if "mild_fever" in found:
         found.discard("high_fever")
     return sorted(found)
@@ -204,16 +212,25 @@ def gemini_map(text: str) -> list[str] | None:
         "contents": [{"parts": [{"text": prompt}]}],
         "generationConfig": {"responseMimeType": "application/json", "temperature": 0},
     }).encode()
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MODEL}:generateContent"
-    req = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json",
-                                                           "x-goog-api-key": GEMINI_API_KEY})
-    try:
-        with urllib.request.urlopen(req, timeout=20) as r:
-            data = json.loads(r.read())
-        out = json.loads(data["candidates"][0]["content"]["parts"][0]["text"])
-        return sorted({s for s in out.get("symptoms", []) if s in allowed})
-    except Exception:
-        return None
+    # busy / rate-limited / retired models are skipped in favour of the next one in the list
+    for model in [GEMINI_MODEL, *GEMINI_FALLBACK_MODELS]:
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
+        req = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json",
+                                                               "x-goog-api-key": GEMINI_API_KEY})
+        try:
+            with urllib.request.urlopen(req, timeout=20) as r:
+                data = json.loads(r.read())
+            out = json.loads(data["candidates"][0]["content"]["parts"][0]["text"])
+            return sorted({s for s in out.get("symptoms", []) if s in allowed})
+        except urllib.error.HTTPError as e:
+            msg = e.read()[:160].decode(errors="ignore").replace(chr(10), " ")
+            log.warning("Gemini %s HTTP %s: %s", model, e.code, msg)
+            if e.code not in (404, 429, 500, 503):
+                break
+        except Exception as e:
+            log.warning("Gemini %s unavailable (%s)", model, type(e).__name__)
+    log.warning("Gemini not reachable - using keyword matching")
+    return None
 
 
 def map_text(text: str) -> dict:

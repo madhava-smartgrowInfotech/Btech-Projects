@@ -14,7 +14,9 @@ BACKEND_PORT = int(os.getenv("BACKEND_PORT", "8215"))
 JWT_SECRET = os.getenv("JWT_SECRET") or "dev-only-secret-set-JWT_SECRET-in-.env"
 JWT_HOURS = 24
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "").strip()
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash").strip()
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-flash-latest").strip()
+GEMINI_FALLBACK_MODELS = [m.strip() for m in os.getenv(
+    "GEMINI_FALLBACK_MODELS", "gemini-3.8-flash,gemini-3.5-flash").split(",") if m.strip()]
 MAX_OVERBOOK = float(os.getenv("MAX_OVERBOOK", "0.15"))
 BOOKING_HORIZON_DAYS = 7
 DISCLAIMER = ("Decision support only - this is not a diagnosis. A qualified clinician confirms "

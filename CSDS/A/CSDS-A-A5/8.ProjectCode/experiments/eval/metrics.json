@@ -1,0 +1,278 @@
+{
+  "dataset": "data/generated (seed 42, synthetic sample data)",
+  "model": "models/jepa.pt",
+  "config": {
+    "risk_weights": {
+      "jepa": 0.75,
+      "behaviour": 0.6,
+      "network": 0.7,
+      "invoice": 0.6
+    },
+    "flag_threshold": 0.5,
+    "invoice_flag_threshold": 0.5
+  },
+  "detection": {
+    "n_taxpayers": 600,
+    "n_fraud": 79,
+    "ks": [
+      10,
+      25,
+      50,
+      79
+    ],
+    "taxpayer": {
+      "model": {
+        "precision_at_k": {
+          "10": 1.0,
+          "25": 1.0,
+          "50": 1.0,
+          "79": 0.9494
+        },
+        "recall_at_k": {
+          "10": 0.1266,
+          "25": 0.3165,
+          "50": 0.6329,
+          "79": 0.9494
+        },
+        "roc_auc": 0.9974,
+        "average_precision": 0.986,
+        "at_threshold": {
+          "precision": 0.9615,
+          "recall": 0.9494,
+          "f1": 0.9554,
+          "tp": 75,
+          "fp": 3,
+          "fn": 4,
+          "flagged": 78
+        }
+      },
+      "rule_baseline": {
+        "precision_at_k": {
+          "10": 1.0,
+          "25": 0.88,
+          "50": 0.84,
+          "79": 0.6203
+        },
+        "recall_at_k": {
+          "10": 0.1266,
+          "25": 0.2785,
+          "50": 0.5316,
+          "79": 0.6203
+        },
+        "roc_auc": 0.8762,
+        "average_precision": 0.7008,
+        "at_threshold": {
+          "precision": 0.2881,
+          "recall": 0.8608,
+          "f1": 0.4317,
+          "tp": 68,
+          "fp": 168,
+          "fn": 11,
+          "flagged": 236
+        }
+      },
+      "ablation": {
+        "jepa_only": {
+          "precision_at_k": {
+            "10": 0.8,
+            "25": 0.84,
+            "50": 0.58,
+            "79": 0.481
+          },
+          "recall_at_k": {
+            "10": 0.1013,
+            "25": 0.2658,
+            "50": 0.3671,
+            "79": 0.481
+          },
+          "roc_auc": 0.8427,
+          "average_precision": 0.5305,
+          "at_threshold": {
+            "precision": 0.8421,
+            "recall": 0.2025,
+            "f1": 0.3265,
+            "tp": 16,
+            "fp": 3,
+            "fn": 63,
+            "flagged": 19
+          }
+        },
+        "graph_and_invoice_only": {
+          "precision_at_k": {
+            "10": 1.0,
+            "25": 1.0,
+            "50": 1.0,
+            "79": 0.8481
+          },
+          "recall_at_k": {
+            "10": 0.1266,
+            "25": 0.3165,
+            "50": 0.6329,
+            "79": 0.8481
+          },
+          "roc_auc": 0.9403,
+          "average_precision": 0.9033,
+          "at_threshold": {
+            "precision": 1.0,
+            "recall": 0.7975,
+            "f1": 0.8873,
+            "tp": 63,
+            "fp": 0,
+            "fn": 16,
+            "flagged": 63
+          }
+        },
+        "without_invoice_layer": {
+          "precision_at_k": {
+            "10": 1.0,
+            "25": 1.0,
+            "50": 0.98,
+            "79": 0.9494
+          },
+          "recall_at_k": {
+            "10": 0.1266,
+            "25": 0.3165,
+            "50": 0.6203,
+            "79": 0.9494
+          },
+          "roc_auc": 0.996,
+          "average_precision": 0.9771
+        },
+        "full_model": {
+          "precision_at_k": {
+            "10": 1.0,
+            "25": 1.0,
+            "50": 1.0,
+            "79": 0.9494
+          },
+          "recall_at_k": {
+            "10": 0.1266,
+            "25": 0.3165,
+            "50": 0.6329,
+            "79": 0.9494
+          },
+          "roc_auc": 0.9974,
+          "average_precision": 0.986
+        }
+      }
+    },
+    "per_pattern": {
+      "circular_trading": {
+        "count": 21,
+        "model_recall": 1.0,
+        "baseline_recall": 0.8571,
+        "pattern_named": 1.0
+      },
+      "shell_entity": {
+        "count": 27,
+        "model_recall": 1.0,
+        "baseline_recall": 1.0,
+        "pattern_named": 1.0
+      },
+      "fake_invoice_buyer": {
+        "count": 19,
+        "model_recall": 0.8947,
+        "baseline_recall": 0.5789,
+        "pattern_named": 1.0
+      },
+      "itc_spike": {
+        "count": 12,
+        "model_recall": 0.8333,
+        "baseline_recall": 1.0,
+        "pattern_named": 1.0
+      }
+    },
+    "invoice": {
+      "n_invoices": 64474,
+      "n_fraud": 530,
+      "model": {
+        "at_threshold": {
+          "precision": 0.883,
+          "recall": 0.9679,
+          "f1": 0.9235,
+          "tp": 513,
+          "fp": 68,
+          "fn": 17,
+          "flagged": 581
+        },
+        "precision_at_k": {
+          "100": 1.0,
+          "500": 0.936,
+          "530": 0.9302
+        },
+        "recall_at_k": {
+          "100": 0.1887,
+          "500": 0.883,
+          "530": 0.9302
+        },
+        "roc_auc": 0.9997,
+        "average_precision": 0.969
+      },
+      "rule_baseline": {
+        "at_threshold": {
+          "precision": 0.1195,
+          "recall": 0.2415,
+          "f1": 0.1599,
+          "tp": 128,
+          "fp": 943,
+          "fn": 402,
+          "flagged": 1071
+        },
+        "rule": "invoice not reported by the supplier in GSTR-1 (2B mismatch)"
+      }
+    },
+    "rings": {
+      "injected": 5,
+      "recovered": 5,
+      "recall": 1.0,
+      "detected": 9,
+      "detected_with_fraud_members": 7,
+      "detected_without_fraud_members": 2
+    },
+    "chains": {
+      "total": 16,
+      "precision_top10": 1.0
+    }
+  },
+  "stats": {
+    "taxpayers": 600,
+    "invoices": 64474,
+    "flagged": 78,
+    "rings": 9,
+    "suspicious_clusters": 7,
+    "chains": 16
+  },
+  "paysim": {
+    "rows": 100000,
+    "fraud_rows": 134,
+    "train_seconds": 5.9,
+    "epochs": 15,
+    "roc_auc": 0.9354,
+    "average_precision": 0.0895,
+    "precision_at_k": {
+      "100": 0.31,
+      "500": 0.082,
+      "134": 0.2612
+    },
+    "recall_at_k": {
+      "100": 0.2313,
+      "500": 0.306,
+      "134": 0.2612
+    },
+    "amount_baseline": {
+      "roc_auc": 0.7897,
+      "average_precision": 0.0128,
+      "precision_at_k": {
+        "100": 0.02,
+        "500": 0.026,
+        "134": 0.0373
+      }
+    },
+    "note": "Unsupervised: labels are used only for scoring. Baseline ranks transactions by amount."
+  },
+  "explanations": {
+    "evaluated": 0,
+    "note": "GEMINI_API_KEY not set - explanation quality not measured. Add the key to .env and rerun: python -m ml.eval"
+  },
+  "seconds": 9.8
+}

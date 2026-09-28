@@ -37,6 +37,7 @@ LABELS = {
 TRAIN_END_DAY = 274  # admissions before this day train the models; later ones are held out
 HORIZON_MAX = 14
 Z90 = 1.645
+WARN_Z = 1.0  # early warning when P(census > capacity) is about 1 in 6 or more (tuned in ml/eval.py)
 
 
 def los_frame(df: pd.DataFrame) -> pd.DataFrame:
@@ -77,12 +78,13 @@ ARRIVAL_FEATURES = ["facility", "ward", "weekday", "horizon", "mean_7d", "mean_2
 
 
 def ward_survival(patients: pd.DataFrame) -> dict:
-    """S_w[k] = P(length of stay > k) per ward, k = 0..40 (training admissions only)."""
+    """S[(facility, ward)][k] = P(length of stay > k), k = 0..40 (training admissions only)."""
     out = {}
     tr = patients[patients.admit_day < TRAIN_END_DAY]
-    for w in WARDS:
-        los = tr[tr.ward == w].lengthofstay.values
-        out[w] = np.array([(los > k).mean() for k in range(41)])
+    for f in FACILITIES:
+        for w in WARDS:
+            los = tr[(tr.facid == f) & (tr.ward == w)].lengthofstay.values
+            out[(f, w)] = np.array([(los > k).mean() for k in range(41)])
     return out
 
 
@@ -146,7 +148,7 @@ class Engine:
         pred = self.arr.predict(X).clip(0, None).reshape(len(keys), HORIZON_MAX)
         return {k: pred[i] for i, k in enumerate(keys)}
 
-    def _stay_probs(self, pred_los: np.ndarray, elapsed: np.ndarray, wards: np.ndarray, horizon: int) -> np.ndarray:
+    def _stay_probs(self, pred_los: np.ndarray, elapsed: np.ndarray, keys: list, horizon: int) -> np.ndarray:
         """P(patient still in bed at day origin+k), k=1..horizon; shape (n, horizon)."""
         samples = np.clip(np.rint(pred_los[:, None] + self.residuals[None, :]), 1, None)  # stays are whole days
         denom = (samples > elapsed[:, None]).mean(axis=1)
@@ -156,7 +158,7 @@ class Engine:
         ok = denom > 0
         out[ok] /= denom[ok, None]
         for i in np.where(~ok)[0]:  # model says the stay should be over: fall back to ward curve
-            s = self.survival[wards[i]]
+            s = self.survival[keys[i]]
             e = min(int(elapsed[i]), 39)
             out[i] = [s[min(e + k, 40)] / max(s[e], 1e-6) for k in range(1, horizon + 1)]
         return out
@@ -168,7 +170,7 @@ class Engine:
         if extra is not None and len(extra):
             h = pd.concat([h, extra[["facid", "ward", "pred_los", "elapsed"]]], ignore_index=True)
         probs = self._stay_probs(h.pred_los.values.astype(float), h.elapsed.values.astype(float),
-                                 h.ward.values, horizon)
+                                 list(zip(h.facid, h.ward)), horizon)
         arrivals = self.forecast_arrivals(origin)
         out = {}
         for f in FACILITIES:
@@ -178,7 +180,7 @@ class Engine:
                 mean = p.sum(axis=0)
                 var = (p * (1 - p)).sum(axis=0)
                 lam = arrivals[(f, w)][:horizon]
-                s = self.survival[w]
+                s = self.survival[(f, w)]
                 for k in range(1, horizon + 1):
                     contrib = sum(lam[j - 1] * s[k - j] for j in range(1, k + 1))
                     mean[k - 1] += contrib

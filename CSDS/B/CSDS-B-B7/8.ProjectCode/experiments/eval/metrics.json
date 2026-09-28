@@ -1,0 +1,103 @@
+{
+  "length_of_stay": {
+    "test_patients": 25256,
+    "mae_days": 0.3111744821071625,
+    "rmse_days": 0.4193934109394419,
+    "r2": 0.9680793881416321,
+    "baseline_mean_mae_days": 1.905609742020632,
+    "within_1_day": 0.9740655685777637,
+    "long_stay_accuracy": 0.9661466582198289,
+    "long_stay_f1": 0.9338900487125957,
+    "long_stay_auc": 0.9961312807396373,
+    "mae_by_ward": {
+      "General": 0.307,
+      "Surgical": 0.306,
+      "Maternity": 0.293,
+      "Paediatric": 0.307,
+      "ICU": 0.362
+    }
+  },
+  "census_forecast": {
+    "origins": 20,
+    "series": 25,
+    "horizon_days": 14,
+    "mae_by_horizon": {
+      "1": {
+        "model": 2.587,
+        "persistence": 3.266,
+        "mean_28d": 4.821
+      },
+      "3": {
+        "model": 3.88,
+        "persistence": 5.142,
+        "mean_28d": 4.919
+      },
+      "7": {
+        "model": 4.836,
+        "persistence": 6.374,
+        "mean_28d": 5.097
+      },
+      "14": {
+        "model": 4.915,
+        "persistence": 6.616,
+        "mean_28d": 5.084
+      }
+    },
+    "mae_overall": {
+      "model": 4.484669351796197,
+      "persistence": 5.910285714285714,
+      "mean_28d": 5.008775510204082
+    },
+    "improvement_vs_persistence": 0.24120938164523398,
+    "improvement_vs_mean_28d": 0.10463758204777884,
+    "band_90_coverage": 0.8921428571428571,
+    "icu_alerts": {
+      "over_capacity": {
+        "tp": 3,
+        "fp": 1,
+        "fn": 12,
+        "tn": 84,
+        "precision": 0.75,
+        "recall": 0.2
+      },
+      "early_warning": {
+        "tp": 12,
+        "fp": 33,
+        "fn": 3,
+        "tn": 52,
+        "precision": 0.26666666666666666,
+        "recall": 0.8
+      }
+    }
+  },
+  "resource_use": {
+    "static": {
+      "patient_days_without_bed": 1083,
+      "nurse_shifts_short": 4610,
+      "nurse_shifts_idle": 6814,
+      "equipment_unit_days_short": 239,
+      "nurse_shifts_rostered": 110740
+    },
+    "optimised": {
+      "patient_days_without_bed": 919,
+      "nurse_shifts_short": 2446,
+      "nurse_shifts_idle": 10568,
+      "equipment_unit_days_short": 165,
+      "nurse_shifts_rostered": 116655
+    },
+    "reduction": {
+      "patient_days_without_bed": 0.1514,
+      "nurse_shifts_short": 0.4694,
+      "nurse_shifts_idle": -0.5509,
+      "equipment_unit_days_short": 0.3096
+    },
+    "plans": 20,
+    "days_scored_per_plan": 7,
+    "mean_solve_seconds": 0.137
+  },
+  "backtest_origin_days": [
+    292,
+    349
+  ],
+  "eval_seconds": 4.9
+}

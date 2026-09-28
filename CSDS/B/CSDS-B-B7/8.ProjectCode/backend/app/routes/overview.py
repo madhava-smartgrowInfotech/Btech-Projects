@@ -1,5 +1,6 @@
 """Meta, dashboard and model-performance endpoints."""
 import json
+import math
 
 from fastapi import APIRouter, Depends
 from sqlalchemy import select
@@ -10,7 +11,7 @@ from ..config import (EQUIPMENT, EXPERIMENTS_DIR, FACILITIES, LONG_STAY_DAYS, NU
                       WARDS, day_to_date)
 from ..db import Admission, AllocationPlan, User, get_db
 from ..services import planning
-from ..services.engine import LABELS, get_engine
+from ..services.engine import LABELS, Z90, get_engine
 
 router = APIRouter(prefix="/api", tags=["overview"])
 
@@ -41,10 +42,13 @@ def dashboard(user: User = Depends(current_user), db: Session = Depends(get_db))
     occ = sum(x["occupied"] for x in facilities)
     icu_beds = sum(x["icu_beds"] for x in facilities)
     icu_occ = sum(x["icu_occupied"] for x in facilities)
-    daily = [{"date": fc[("A", "General")]["series"][k]["date"],
-              "mean": round(sum(fc[(f, w)]["series"][k]["mean"] for f in FACILITIES for w in WARDS), 1),
-              "upper": round(sum(fc[(f, w)]["series"][k]["upper"] for f in FACILITIES for w in WARDS), 1),
-              "icu": round(sum(fc[(f, "ICU")]["series"][k]["mean"] for f in FACILITIES), 1)} for k in range(14)]
+    daily = []
+    for k in range(14):
+        rows = [fc[(f, w)]["series"][k] for f in FACILITIES for w in WARDS]
+        mean, sd = sum(r["mean"] for r in rows), math.sqrt(sum(r["sd"] ** 2 for r in rows))
+        daily.append({"date": rows[0]["date"], "mean": round(mean, 1), "lower": round(mean - Z90 * sd, 1),
+                      "upper": round(mean + Z90 * sd, 1),
+                      "icu": round(sum(fc[(f, "ICU")]["series"][k]["mean"] for f in FACILITIES), 1)})
     in_house = eng.in_house(OPERATING_DAY)
     pred = list(in_house.pred_los) + [a.predicted_days for a in app_adm]
     latest = db.scalar(select(AllocationPlan).order_by(AllocationPlan.id.desc()).limit(1))

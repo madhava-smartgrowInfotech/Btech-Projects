@@ -8,7 +8,7 @@ from sqlalchemy.orm import Session
 
 from ..config import EQUIPMENT, FACILITIES, NURSE_RATIO, OPERATING_DAY, SHIFTS, WARDS, day_to_date
 from ..db import Admission, EquipmentInventory, NurseRoster, WardCapacity
-from .engine import Z90, get_engine
+from .engine import WARN_Z, Z90, get_engine
 
 
 def load_state(db: Session):
@@ -42,7 +42,8 @@ def forecast(db: Session, horizon: int = 14):
         mean, lower, upper = x["mean"], np.clip(x["mean"] - Z90 * sd, 0, None), x["mean"] + Z90 * sd
         cap = capacity[f][w]
         over_mean = np.where(mean > cap)[0]
-        over_upper = np.where(upper > cap)[0]
+        warn_curve = mean + WARN_Z * sd
+        over_upper = np.where(warn_curve > cap)[0]
         level, first = None, None
         if len(over_mean):
             level, first = "critical", int(over_mean[0])
@@ -51,13 +52,14 @@ def forecast(db: Session, horizon: int = 14):
         out[(f, w)] = {
             "facility": f, "ward": w, "capacity": cap, "current": x["current"],
             "series": [{"date": dates[k], "day": k + 1, "mean": round(float(mean[k]), 1),
-                        "lower": round(float(lower[k]), 1), "upper": round(float(upper[k]), 1),
+                        "lower": round(float(lower[k]), 1), "upper": round(float(upper[k]), 1), "sd": round(float(sd[k]), 3),
                         "arrivals": round(float(x["arrivals"][k]), 1)} for k in range(horizon)],
             "peak": round(float(mean.max()), 1), "peak_day": int(mean.argmax()) + 1,
             "peak_upper": round(float(upper.max()), 1),
             "alert": None if level is None else {
                 "level": level, "day": first + 1, "date": dates[first],
-                "expected": round(float(mean[first]), 1), "upper": round(float(upper[first]), 1)},
+                "expected": round(float(mean[first]), 1), "upper": round(float(upper[first]), 1),
+                "risk_level": round(float(warn_curve[first]), 1)},
         }
     return out
 
@@ -67,8 +69,8 @@ def alert_message(x):
     if a["level"] == "critical":
         return (f"Facility {x['facility']} {x['ward']}: expected {a['expected']:.0f} patients on day {a['day']} "
                 f"({a['date']}) - above {x['capacity']} beds.")
-    return (f"Facility {x['facility']} {x['ward']}: may reach {a['upper']:.0f} patients (90% upper band) on day "
-            f"{a['day']} ({a['date']}) - capacity {x['capacity']} beds.")
+    return (f"Facility {x['facility']} {x['ward']}: about a 1-in-6 chance of passing {x['capacity']} beds on day "
+            f"{a['day']} ({a['date']}) - expected {a['expected']:.0f}, up to {a['upper']:.0f} (90% band).")
 
 
 def alerts(fc: dict, wards=None):

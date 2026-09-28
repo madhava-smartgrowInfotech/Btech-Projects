@@ -1,0 +1,91 @@
+{
+  "seed": 7,
+  "objective_1_online_booking": {
+    "simulated_requests": 1200,
+    "hospitals": 60,
+    "booked": 1200,
+    "booking_success_rate": 1.0,
+    "requests_by_severity": {
+      "mild": 111,
+      "moderate": 551,
+      "severe": 459,
+      "critical": 79
+    }
+  },
+  "objective_2_limits_and_quotas": {
+    "capacity_scale_used_for_stress_test": 0.04,
+    "demand_per_day": 400,
+    "district_capacity_per_day": 368,
+    "moved_to_later_day": 193,
+    "moved_rate": 0.1608,
+    "emergency_quota_bookings": 17,
+    "hard_cap_violations": 0,
+    "expected_attendance_violations": 0,
+    "emergency_quota_violations": 0
+  },
+  "objective_2_calibrated_overbooking": {
+    "noshow_model": {
+      "roc_auc": 0.7281,
+      "brier_uncalibrated": 0.1441,
+      "brier_calibrated": 0.1442,
+      "ece_uncalibrated": 0.0035,
+      "ece_calibrated": 0.0029,
+      "base_no_show_rate": 0.2019
+    },
+    "daily_op_limit": 40,
+    "simulated_days": 300,
+    "utilisation_fixed_booking": 0.7935,
+    "utilisation_calibrated_overbooking": 0.9114,
+    "overflow_days_rate": 0.04,
+    "mean_extra_bookings_per_day": 6.0
+  },
+  "objective_3_severity": {
+    "condition_model_held_out_3_symptoms": {
+      "n": 305,
+      "top1_accuracy": 0.9115,
+      "top3_accuracy": 0.9934,
+      "macro_f1": 0.8206
+    },
+    "condition_model_held_out_full_symptoms": {
+      "n": 61,
+      "top1_accuracy": 1.0,
+      "top3_accuracy": 1.0,
+      "macro_f1": 1.0
+    },
+    "severity_cases": 912,
+    "severity_agreement_with_reference_acuity": 0.5515,
+    "under_triage_rate": 0.0592,
+    "at_or_above_reference_by_level": {
+      "mild": 1.0,
+      "moderate": 1.0,
+      "severe": 0.8065,
+      "critical": 1.0
+    },
+    "red_flag_critical_recall": 1.0,
+    "demo_case_fever_cough_breathlessness": "severe"
+  },
+  "objective_4_recommendation": {
+    "specialty_match_rate": 0.9775,
+    "mean_distance_km": 3.76,
+    "nearest_policy_mean_distance_km": 2.52,
+    "load_cv_mediqueue": 0.138,
+    "load_cv_nearest_policy": 1.073,
+    "max_load_mediqueue": 1.0,
+    "max_load_nearest_policy": 5.87,
+    "note": "load = day-1 bookings / OP limit; CV = coefficient of variation across hospitals (lower = better spread)"
+  },
+  "objective_5_queue_wait": {
+    "simulated_queues": 150,
+    "patients_per_queue": 60,
+    "consult_minutes_mean": 4.0,
+    "wait_mae_min_no_show_aware": 9.44,
+    "wait_mae_min_naive_position_x_consult": 24.81,
+    "wait_mae_min_after_live_update_mid_session": 6.7
+  },
+  "objective_6_referrals": {
+    "referral_cases": 200,
+    "target_specialty_match_rate": 1.0,
+    "mean_referral_distance_km": 2.49,
+    "consent_gate": "summary hidden from receiving hospital until patient consent (verified in scripts/smoke_test.py)"
+  }
+}

@@ -77,8 +77,10 @@ class Recognizer:
         self.recent_latency = deque(maxlen=300)  # server-side ms per frame
 
     def reset(self, sid):
+        """New camera session: forget the segment and restart landmark tracking."""
         with self.lock:
             self.sessions.pop(sid, None)
+            self.extractor.reset()
 
     def _state(self, sid):
         now = time.time()

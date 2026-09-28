@@ -29,7 +29,7 @@ RAW, DATA, SAMPLE = ROOT / "data" / "raw", ROOT / "data", ROOT / "data" / "sampl
 SEED = 42
 LETTER_IMAGES_PER_CLASS = 300
 INCLUDE_ASPECT = 16 / 9  # INCLUDE source videos are 1920x1080
-SAMPLE_CLIPS = {"GOOD": "MVI_9268", "SICK": "MVI_5252", "TODAY": "MVI_4616"}
+SAMPLE_CLIPS = {"GOOD": "MVI_9268", "MORNING": "MVI_5061", "TIME": "MVI_5078"}
 
 
 # ---------------------------------------------------------------- letters

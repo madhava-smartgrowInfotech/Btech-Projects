@@ -32,32 +32,9 @@ class Extractor:
     def frame(self, bgr):
         """BGR image -> (body-coordinate frame (49,2), raw dict for drawing / letters)."""
         h, w = bgr.shape[:2]
-        rgb = cv2.cvtColor(bgr, cv2.COLOR_BGR2RGB)
-        res = self.holistic.process(rgb)
+        res = self.holistic.process(cv2.cvtColor(bgr, cv2.COLOR_BGR2RGB))
         pose, lh, rh = _arr(res.pose_landmarks), _arr(res.left_hand_landmarks), _arr(res.right_hand_landmarks)
-        if lh is None or rh is None:
-            lh, rh = self._fill_hands(rgb, pose, lh, rh)
         return body_frame(pose, lh, rh, w / h), {"pose": pose, "left": lh, "right": rh, "aspect": w / h}
-
-    def _fill_hands(self, rgb, pose, lh, rh):
-        """Holistic finds hands through the pose; when it misses one, ask the stand-alone hand detector
-        and give each found hand to the nearest pose wrist (15 = signer's left, 16 = right)."""
-        if not hasattr(self, "hands"):
-            self.hands = mp.solutions.hands.Hands(static_image_mode=False, max_num_hands=2,
-                                                  min_detection_confidence=0.4, min_tracking_confidence=0.4)
-        found = [_arr(x) for x in (self.hands.process(rgb).multi_hand_landmarks or [])]
-        for hand in found:
-            if pose is not None:
-                d_left = np.linalg.norm(hand[0] - pose[15, :2])
-                d_right = np.linalg.norm(hand[0] - pose[16, :2])
-                is_left = d_left < d_right
-            else:  # camera is not mirrored: the signer's left hand is on the image right
-                is_left = hand[0, 0] > 0.5
-            if is_left and lh is None:
-                lh = hand
-            elif not is_left and rh is None:
-                rh = hand
-        return lh, rh
 
 
 class HandExtractor:

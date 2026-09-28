@@ -73,7 +73,8 @@ def main():
     # F1: word signs from a real sample clip, streamed frame by frame, then hands down
     session = uuid.uuid4().hex[:10]
     signs, latencies = [], []
-    for clip in ("GOOD", "SICK", "TODAY"):  # held-out clips
+    for clip in ("GOOD", "MORNING", "TIME"):  # held-out clips
+        requests.post(f"{BASE}/recognize/reset", params={"session": session}, headers=H)
         cap = cv2.VideoCapture(str(ROOT / "data" / "sample" / "word_videos" / f"{clip}.MOV"))
         frames = []
         while True:
@@ -83,16 +84,18 @@ def main():
             frames.append(img)
         rest = np.full_like(frames[0], 235)  # empty scene - no hands
         for img in frames + [rest] * 8:
+            # the sample clips are tiny (224 px), so send them losslessly
             r = requests.post(f"{BASE}/recognize/frame", params={"session": session, "mode": "words"},
-                              data=jpeg(img), headers={**H, "Content-Type": "image/jpeg"})
+                              data=cv2.imencode(".png", img)[1].tobytes(), headers={**H, "Content-Type": "image/png"})
             r.raise_for_status()
             d = r.json()
             latencies.append(d["latency_ms"]["total"])
             signs += [(clip, e) for e in d["events"] if e["type"] == "sign"]
-            time.sleep(0.07)  # ~10 fps like the sample clips
+            if img is rest:
+                time.sleep(0.08)  # hands lowered long enough to close the sign
     got = [(c, e["gloss"], e["confidence"]) for c, e in signs]
-    check("word signs recognised", len(signs) >= 2, str(got))
-    check("sample signs correct", sum(c == g for c, g, _ in got) >= 2, str(got))
+    check("word signs recognised", len(signs) == 3, str(got))
+    check("sample signs correct", all(c == g for c, g, _ in got), str(got))
     check("frame latency reported", np.mean(latencies) > 0, f"avg {np.mean(latencies):.0f} ms/frame")
 
     # F1: fingerspelling from sample letter images

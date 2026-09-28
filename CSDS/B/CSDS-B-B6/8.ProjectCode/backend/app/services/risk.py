@@ -13,6 +13,7 @@ PREGNANCY_CODES = {"72892002", "77386006"}  # normal pregnancy, pregnancy
 def model(name: str) -> dict:
     if name not in _models:
         _models[name] = joblib.load(MODELS_DIR / f"{name}_rf.joblib")
+        _models[name]["model"].n_jobs = 1  # single-row scoring is faster without a thread pool
     return _models[name]
 
 

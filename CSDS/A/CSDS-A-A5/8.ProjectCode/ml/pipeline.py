@@ -268,7 +268,8 @@ def run_pipeline(data_dir, model_path=None, train=True, epochs=100, seed=42, pro
                                         or year_cash_ratio[i] < 0.05):
             patterns.append("shell_entity")
         in_val = F["purch_v"][i].sum()
-        in_flag_share = sum(r["taxable_value"] for r in in_flagged) / in_val if in_val else 0
+        # ring invoices are already covered by the circular-trading pattern
+        in_flag_share = sum(r["taxable_value"] for r in in_flagged if "ring_edge" not in r["flags"]) / in_val if in_val else 0
         if "shell_entity" not in patterns and (exposure[i].max() >= 0.1 or in_flag_share >= 0.15):
             patterns.append("fake_invoices")
         if spike_months:

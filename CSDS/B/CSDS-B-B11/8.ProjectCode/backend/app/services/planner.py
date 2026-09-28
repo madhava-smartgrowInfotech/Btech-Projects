@@ -113,7 +113,7 @@ def solve_day(pools, targets, rng, pref, tol=KCAL_TOL, use_shares=True):
 
     # energy
     E = total("kcal")
-    prob += E >= (1 - tol) * T
+    prob += E >= max((1 - tol) * T, targets.get("calorie_floor", 0))  # never below the safe floor
     prob += E <= (1 + tol) * T
     if use_shares:
         for slot, (lo, hi) in SLOT_SHARE.items():

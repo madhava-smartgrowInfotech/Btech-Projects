@@ -47,7 +47,10 @@ def add_weight(body: WeightIn, p: Profile = Depends(require_profile), db: Sessio
     fresh = db.scalars(select(WeightLog).where(WeightLog.user_id == p.user_id, WeightLog.created_at > p.last_recalc_at)).all()
     recalc = None
     if len(fresh) >= 4 and (max(w.date for w in fresh) - min(w.date for w in fresh)).days >= 6:
-        recalc = run_recalc(p, db, [(w.date, w.weight_kg) for w in fresh])
+        # trend is fitted on the last 14 days of weights for a steadier estimate
+        latest = max(w.date for w in fresh)
+        window = db.scalars(select(WeightLog).where(WeightLog.user_id == p.user_id)).all()
+        recalc = run_recalc(p, db, [(w.date, w.weight_kg) for w in window if 0 <= (latest - w.date).days <= 13])
     return {"ok": True, "recalculated": recalc, "target_kcal": targets_for(p)["kcal"]}
 
 

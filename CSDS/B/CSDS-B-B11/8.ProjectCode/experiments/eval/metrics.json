@@ -1,0 +1,81 @@
+{
+  "seed": 2024,
+  "requirements": {
+    "profiles": 500,
+    "bmr_max_abs_error_kcal": 0.5,
+    "calorie_floor_respected_pct": 100.0,
+    "demo_profile_target_kcal": 1650
+  },
+  "meal_plans": {
+    "profiles": 30,
+    "plans_built": 30,
+    "failures": 0,
+    "days": 210,
+    "days_within_5pct_kcal_pct": 100.0,
+    "mean_abs_kcal_error_pct": 0.61,
+    "max_abs_kcal_error_pct": 3.86,
+    "mean_abs_protein_error_pct": 11.49,
+    "mean_abs_carbs_error_pct": 2.6,
+    "mean_abs_fat_error_pct": 3.17,
+    "days_meeting_90pct_fibre_target_pct": 100.0,
+    "mean_unique_dishes_per_week": 34.8,
+    "mean_solve_seconds_per_week": 7.04,
+    "safety": {
+      "allergen_violations": 0,
+      "diet_or_condition_exclusion_violations": 0,
+      "sodium_cap_violations": 0,
+      "glycaemic_load_cap_violations": 0,
+      "diabetic_days_checked": 49
+    },
+    "failed_profiles": []
+  },
+  "swaps": {
+    "items_tested": 120,
+    "options_returned": 574,
+    "mean_options_per_item": 4.78,
+    "mean_abs_kcal_difference_pct": 17.89,
+    "median_abs_kcal_difference_pct": 3.17,
+    "same_cluster_pct": 63.6,
+    "unsafe_suggestions": 0
+  },
+  "dish_matching": {
+    "queries": 300,
+    "top1_accuracy_pct": 95.0,
+    "top3_accuracy_pct": 96.0,
+    "note": "Measures the dish-name matcher applied to Gemini's photo labels; Gemini's visual recognition itself needs an API key and labelled photos."
+  },
+  "adaptation": {
+    "simulated_users": 40,
+    "weeks": 10,
+    "true_needs_vs_estimate": "uniform 85-115%",
+    "final_4wk_rate_error_kg_week_with_adaptation": 0.071,
+    "final_4wk_rate_error_kg_week_without_adaptation": 0.168,
+    "error_reduction_pct": 57.8
+  },
+  "swap_model": {
+    "chosen_k": 20,
+    "silhouette": 0.2776,
+    "davies_bouldin": 1.1055,
+    "swap_check": {
+      "plan_dishes": 571,
+      "with_same_cluster_swap_pct": 97.5,
+      "mean_macro_split_difference_pct": 5.2,
+      "mean_kcal_error_after_portioning_pct": 9.25
+    }
+  },
+  "food_database": {
+    "dishes": 890,
+    "allergens_tracked": [
+      "peanut",
+      "tree_nut",
+      "dairy",
+      "gluten",
+      "egg",
+      "soy",
+      "fish",
+      "shellfish",
+      "sesame"
+    ]
+  },
+  "eval_seconds": 239.8
+}

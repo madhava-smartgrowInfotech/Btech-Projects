@@ -8,6 +8,7 @@ from .targets import GOAL_RATE_KG_WEEK
 KCAL_PER_KG = 7700
 MAX_STEP = 250      # kcal/day change allowed per recalculation
 MAX_TOTAL = 500     # total adaptive correction allowed
+DAMPING = 0.5       # apply half of the measured gap per week, so noisy weigh-ins are not chased
 
 
 def day_score(kcal: float, protein: float, target_kcal: float, target_protein: float) -> float:
@@ -45,14 +46,14 @@ def weight_trend(points):
 
 
 def recalculation(points, goal: str, prev_adjust: float):
-    """Given >= 3 weights spanning >= 6 days, return the new adaptive adjustment and an explanation."""
+    """Given >= 3 weights spanning >= 6 days (ideally the last 14 days), return the new adaptive adjustment and an explanation."""
     points = sorted(points)
     if len(points) < 3 or (points[-1][0] - points[0][0]).days < 6:
         return None
     observed = weight_trend(points)
     expected = GOAL_RATE_KG_WEEK.get(goal, 0.0)
     gap = observed - expected                      # kg/week faster gain (or slower loss) than planned
-    step = float(np.clip(-gap * KCAL_PER_KG / 7, -MAX_STEP, MAX_STEP))
+    step = float(np.clip(-DAMPING * gap * KCAL_PER_KG / 7, -MAX_STEP, MAX_STEP))
     new_adjust = float(np.clip(prev_adjust + step, -MAX_TOTAL, MAX_TOTAL))
     reason = (f"Weekly recalculation: weight trend {observed:+.2f} kg/week vs planned {expected:+.2f} kg/week; "
               f"calorie correction {step:+.0f} kcal/day; latest weight {points[-1][1]:.1f} kg.")

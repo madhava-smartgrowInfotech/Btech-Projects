@@ -1,0 +1,462 @@
+[
+ {
+  "hospital": "A",
+  "local_id": "NBG-787277",
+  "person_key": "7af6b271-f16d-21e1-882a-7bff71005a7b"
+ },
+ {
+  "hospital": "B",
+  "local_id": "RMC-623481",
+  "person_key": "7af6b271-f16d-21e1-882a-7bff71005a7b"
+ },
+ {
+  "hospital": "C",
+  "local_id": "LVC-883300",
+  "person_key": "7af6b271-f16d-21e1-882a-7bff71005a7b"
+ },
+ {
+  "hospital": "A",
+  "local_id": "NBG-892495",
+  "person_key": "3eec36b2-71cc-13c4-489a-495c45318bc3"
+ },
+ {
+  "hospital": "B",
+  "local_id": "RMC-149405",
+  "person_key": "3eec36b2-71cc-13c4-489a-495c45318bc3"
+ },
+ {
+  "hospital": "C",
+  "local_id": "LVC-590785",
+  "person_key": "3eec36b2-71cc-13c4-489a-495c45318bc3"
+ },
+ {
+  "hospital": "C",
+  "local_id": "LVC-216970",
+  "person_key": "c38b96b6-90ae-fabe-6f3c-cfd91d0fb21d"
+ },
+ {
+  "hospital": "B",
+  "local_id": "RMC-407757",
+  "person_key": "c38b96b6-90ae-fabe-6f3c-cfd91d0fb21d"
+ },
+ {
+  "hospital": "A",
+  "local_id": "NBG-898975",
+  "person_key": "c38b96b6-90ae-fabe-6f3c-cfd91d0fb21d"
+ },
+ {
+  "hospital": "B",
+  "local_id": "RMC-728038",
+  "person_key": "8ece28c6-f931-b0e0-5c0e-72b8d8d3c86a"
+ },
+ {
+  "hospital": "A",
+  "local_id": "NBG-439902",
+  "person_key": "8ece28c6-f931-b0e0-5c0e-72b8d8d3c86a"
+ },
+ {
+  "hospital": "C",
+  "local_id": "LVC-189814",
+  "person_key": "8ece28c6-f931-b0e0-5c0e-72b8d8d3c86a"
+ },
+ {
+  "hospital": "B",
+  "local_id": "RMC-653306",
+  "person_key": "96de62ae-1b00-58d8-77f9-cd25414e16be"
+ },
+ {
+  "hospital": "A",
+  "local_id": "NBG-736059",
+  "person_key": "96de62ae-1b00-58d8-77f9-cd25414e16be"
+ },
+ {
+  "hospital": "C",
+  "local_id": "LVC-781446",
+  "person_key": "96de62ae-1b00-58d8-77f9-cd25414e16be"
+ },
+ {
+  "hospital": "A",
+  "local_id": "NBG-340062",
+  "person_key": "e142981b-3577-4115-584d-d9676df7fcff"
+ },
+ {
+  "hospital": "C",
+  "local_id": "LVC-170674",
+  "person_key": "e142981b-3577-4115-584d-d9676df7fcff"
+ },
+ {
+  "hospital": "B",
+  "local_id": "RMC-665427",
+  "person_key": "e142981b-3577-4115-584d-d9676df7fcff"
+ },
+ {
+  "hospital": "C",
+  "local_id": "LVC-544154",
+  "person_key": "6095681c-dfc1-8f20-411c-42cef37189fa"
+ },
+ {
+  "hospital": "B",
+  "local_id": "RMC-531071",
+  "person_key": "6095681c-dfc1-8f20-411c-42cef37189fa"
+ },
+ {
+  "hospital": "A",
+  "local_id": "NBG-863587",
+  "person_key": "6095681c-dfc1-8f20-411c-42cef37189fa"
+ },
+ {
+  "hospital": "B",
+  "local_id": "RMC-564656",
+  "person_key": "dc77ef0d-1846-94fd-cce5-a7a555009d17"
+ },
+ {
+  "hospital": "A",
+  "local_id": "NBG-947272",
+  "person_key": "dc77ef0d-1846-94fd-cce5-a7a555009d17"
+ },
+ {
+  "hospital": "C",
+  "local_id": "LVC-976638",
+  "person_key": "dc77ef0d-1846-94fd-cce5-a7a555009d17"
+ },
+ {
+  "hospital": "A",
+  "local_id": "NBG-102260",
+  "person_key": "ba47a33b-ffb6-25b9-e8bf-e7eabeaee1be"
+ },
+ {
+  "hospital": "B",
+  "local_id": "RMC-509386",
+  "person_key": "ba47a33b-ffb6-25b9-e8bf-e7eabeaee1be"
+ },
+ {
+  "hospital": "B",
+  "local_id": "RMC-299122",
+  "person_key": "e7c068bb-6d29-27d3-0b8b-ec0406cc91b7"
+ },
+ {
+  "hospital": "A",
+  "local_id": "NBG-411120",
+  "person_key": "e7c068bb-6d29-27d3-0b8b-ec0406cc91b7"
+ },
+ {
+  "hospital": "C",
+  "local_id": "LVC-159642",
+  "person_key": "2fb99851-6f31-04a6-be96-6fef4663e208"
+ },
+ {
+  "hospital": "A",
+  "local_id": "NBG-632496",
+  "person_key": "2fb99851-6f31-04a6-be96-6fef4663e208"
+ },
+ {
+  "hospital": "C",
+  "local_id": "LVC-707040",
+  "person_key": "adec1419-cf81-6640-abe6-cac7c0c1b9d4"
+ },
+ {
+  "hospital": "A",
+  "local_id": "NBG-723398",
+  "person_key": "adec1419-cf81-6640-abe6-cac7c0c1b9d4"
+ },
+ {
+  "hospital": "C",
+  "local_id": "LVC-350280",
+  "person_key": "ad48e669-959c-b6f8-8ddb-dda7a6d37473"
+ },
+ {
+  "hospital": "B",
+  "local_id": "RMC-378517",
+  "person_key": "ad48e669-959c-b6f8-8ddb-dda7a6d37473"
+ },
+ {
+  "hospital": "C",
+  "local_id": "LVC-176819",
+  "person_key": "9a3814bb-f5b0-05f3-928e-fe6640d5aa2a"
+ },
+ {
+  "hospital": "A",
+  "local_id": "NBG-663750",
+  "person_key": "9a3814bb-f5b0-05f3-928e-fe6640d5aa2a"
+ },
+ {
+  "hospital": "B",
+  "local_id": "RMC-741390",
+  "person_key": "31f368d9-3fdc-a15f-ccdc-fafa74a860e9"
+ },
+ {
+  "hospital": "C",
+  "local_id": "LVC-946305",
+  "person_key": "31f368d9-3fdc-a15f-ccdc-fafa74a860e9"
+ },
+ {
+  "hospital": "B",
+  "local_id": "RMC-212235",
+  "person_key": "e34a6a5e-1d77-508d-8be3-8816e9df8046"
+ },
+ {
+  "hospital": "A",
+  "local_id": "NBG-878480",
+  "person_key": "e34a6a5e-1d77-508d-8be3-8816e9df8046"
+ },
+ {
+  "hospital": "B",
+  "local_id": "RMC-363319",
+  "person_key": "8b9df7af-24b3-66ee-afeb-2734ebcbd33c"
+ },
+ {
+  "hospital": "C",
+  "local_id": "LVC-987204",
+  "person_key": "8b9df7af-24b3-66ee-afeb-2734ebcbd33c"
+ },
+ {
+  "hospital": "B",
+  "local_id": "RMC-877236",
+  "person_key": "82623afe-e51c-e02e-1dd7-15a4394d0e92"
+ },
+ {
+  "hospital": "A",
+  "local_id": "NBG-563298",
+  "person_key": "82623afe-e51c-e02e-1dd7-15a4394d0e92"
+ },
+ {
+  "hospital": "C",
+  "local_id": "LVC-672092",
+  "person_key": "3732fde5-efc6-d57a-517b-0500f2177181"
+ },
+ {
+  "hospital": "A",
+  "local_id": "NBG-137778",
+  "person_key": "3732fde5-efc6-d57a-517b-0500f2177181"
+ },
+ {
+  "hospital": "A",
+  "local_id": "NBG-320281",
+  "person_key": "029c95e2-d252-d8d3-3626-7f347182d6d7"
+ },
+ {
+  "hospital": "B",
+  "local_id": "RMC-815198",
+  "person_key": "029c95e2-d252-d8d3-3626-7f347182d6d7"
+ },
+ {
+  "hospital": "A",
+  "local_id": "NBG-938742",
+  "person_key": "ccaa0537-4e7f-99d8-8b79-c7c94c749579"
+ },
+ {
+  "hospital": "C",
+  "local_id": "LVC-950155",
+  "person_key": "ccaa0537-4e7f-99d8-8b79-c7c94c749579"
+ },
+ {
+  "hospital": "C",
+  "local_id": "LVC-501124",
+  "person_key": "4be6b5fb-2a19-943a-9249-7068445be4cc"
+ },
+ {
+  "hospital": "A",
+  "local_id": "NBG-140605",
+  "person_key": "4be6b5fb-2a19-943a-9249-7068445be4cc"
+ },
+ {
+  "hospital": "C",
+  "local_id": "LVC-517821",
+  "person_key": "babc4b97-d859-0fe4-2874-fb6fe493ae6b"
+ },
+ {
+  "hospital": "A",
+  "local_id": "NBG-444207",
+  "person_key": "babc4b97-d859-0fe4-2874-fb6fe493ae6b"
+ },
+ {
+  "hospital": "A",
+  "local_id": "NBG-373903",
+  "person_key": "7132442e-b0b9-a886-e28d-f83700e5a3bd"
+ },
+ {
+  "hospital": "C",
+  "local_id": "LVC-287241",
+  "person_key": "7132442e-b0b9-a886-e28d-f83700e5a3bd"
+ },
+ {
+  "hospital": "A",
+  "local_id": "NBG-428914",
+  "person_key": "fd0d7b3a-307d-07b8-9d7e-2424e1feb9e4"
+ },
+ {
+  "hospital": "B",
+  "local_id": "RMC-557592",
+  "person_key": "5780b82b-0419-ffe6-fde4-a2fcce9695f5"
+ },
+ {
+  "hospital": "C",
+  "local_id": "LVC-735656",
+  "person_key": "239b0c86-371a-3080-fcd9-8379b296bc9a"
+ },
+ {
+  "hospital": "A",
+  "local_id": "NBG-636265",
+  "person_key": "f67eaca3-2366-7ee2-6887-a5bd449b54a6"
+ },
+ {
+  "hospital": "B",
+  "local_id": "RMC-221263",
+  "person_key": "765bd034-e8d7-f102-eb1c-4b7792fc5684"
+ },
+ {
+  "hospital": "C",
+  "local_id": "LVC-503906",
+  "person_key": "e503e9b3-d149-653b-92df-ca4a8cb68e16"
+ },
+ {
+  "hospital": "A",
+  "local_id": "NBG-704596",
+  "person_key": "edb5a2e3-a981-d33c-5eac-1ca8adde82d3"
+ },
+ {
+  "hospital": "B",
+  "local_id": "RMC-299312",
+  "person_key": "3a9c6df2-621a-6239-0760-e58544d252f6"
+ },
+ {
+  "hospital": "C",
+  "local_id": "LVC-367095",
+  "person_key": "46fcc34a-97a1-f038-9bb1-4ae87116ae61"
+ },
+ {
+  "hospital": "A",
+  "local_id": "NBG-146542",
+  "person_key": "bd4e49cb-391b-d08a-c7ab-b585e7bd5758"
+ },
+ {
+  "hospital": "B",
+  "local_id": "RMC-843215",
+  "person_key": "1dabc422-e007-d5ee-791f-9e08a8fd9b6a"
+ },
+ {
+  "hospital": "C",
+  "local_id": "LVC-557239",
+  "person_key": "0f3d04a2-f42e-1429-acef-0becd0a0fcea"
+ },
+ {
+  "hospital": "A",
+  "local_id": "NBG-101773",
+  "person_key": "30ed72f3-240e-4973-a0b8-25369e1a9c1e"
+ },
+ {
+  "hospital": "B",
+  "local_id": "RMC-645175",
+  "person_key": "cc3eac4a-34a7-9a15-1522-8087135631b7"
+ },
+ {
+  "hospital": "C",
+  "local_id": "LVC-945687",
+  "person_key": "b50c66af-4d1c-7987-03d7-e5b65fdf880f"
+ },
+ {
+  "hospital": "A",
+  "local_id": "NBG-664607",
+  "person_key": "afb99eee-0bd5-8853-8a32-fad74da7b103"
+ },
+ {
+  "hospital": "B",
+  "local_id": "RMC-820221",
+  "person_key": "5dae1e9e-46fb-5537-54f4-8837a56dd3d5"
+ },
+ {
+  "hospital": "C",
+  "local_id": "LVC-854377",
+  "person_key": "1426480f-ccc7-2393-40bd-f92ccf2b74b2"
+ },
+ {
+  "hospital": "A",
+  "local_id": "NBG-877991",
+  "person_key": "887e4b4e-a3e1-b573-4a16-38386d3e0b88"
+ },
+ {
+  "hospital": "B",
+  "local_id": "RMC-872840",
+  "person_key": "a406f356-c8b4-54ad-e79c-54a5e15ffc19"
+ },
+ {
+  "hospital": "C",
+  "local_id": "LVC-803204",
+  "person_key": "f30304ab-8e45-1cbd-9833-cadf568373b4"
+ },
+ {
+  "hospital": "A",
+  "local_id": "NBG-306606",
+  "person_key": "97e39468-6488-ca8f-fac2-235a80b4dcf7"
+ },
+ {
+  "hospital": "B",
+  "local_id": "RMC-481913",
+  "person_key": "3099d813-4f5c-fc43-31d8-7bba5dc84bed"
+ },
+ {
+  "hospital": "C",
+  "local_id": "LVC-552248",
+  "person_key": "3314e296-2326-2826-271d-a7be5b896db9"
+ },
+ {
+  "hospital": "A",
+  "local_id": "NBG-173372",
+  "person_key": "f6359fe4-4340-2820-8b76-593a45f5186c"
+ },
+ {
+  "hospital": "B",
+  "local_id": "RMC-796503",
+  "person_key": "6a703775-432b-ba7d-d53a-c4d7bb0f5b58"
+ },
+ {
+  "hospital": "C",
+  "local_id": "LVC-446239",
+  "person_key": "3fa46c70-b194-f14c-3d51-e06cfa4bb9e2"
+ },
+ {
+  "hospital": "A",
+  "local_id": "NBG-753425",
+  "person_key": "ca443842-f546-d34c-a69b-b044cfe007d9"
+ },
+ {
+  "hospital": "B",
+  "local_id": "RMC-429164",
+  "person_key": "573cbfa8-8fca-a716-bcea-2ab35f906251"
+ },
+ {
+  "hospital": "C",
+  "local_id": "LVC-795612",
+  "person_key": "d537941e-1fb7-9868-939a-a26252da8be1"
+ },
+ {
+  "hospital": "A",
+  "local_id": "NBG-989208",
+  "person_key": "f870c432-0887-125e-f778-cf5110d3de1d"
+ },
+ {
+  "hospital": "B",
+  "local_id": "RMC-230679",
+  "person_key": "a45aa142-d1e9-d944-f2c7-05015c90762d"
+ },
+ {
+  "hospital": "C",
+  "local_id": "LVC-854717",
+  "person_key": "72b1ca95-c4f0-269d-28bf-ba36b25a9aa6"
+ },
+ {
+  "hospital": "A",
+  "local_id": "NBG-414910",
+  "person_key": "06476266-59b1-ded7-4138-3c7543fd4981"
+ },
+ {
+  "hospital": "B",
+  "local_id": "RMC-631756",
+  "person_key": "65cbad6a-eb9d-420e-9bab-b4f9c6aab7db"
+ },
+ {
+  "hospital": "C",
+  "local_id": "LVC-424308",
+  "person_key": "197ec76f-0730-2587-9ff9-a0f60104a782"
+ }
+]

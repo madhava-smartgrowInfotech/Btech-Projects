@@ -1,0 +1,32 @@
+[
+ {
+  "username": "patient",
+  "hospital": "A",
+  "local_id": "NBG-787277",
+  "hospitals": [
+   "A",
+   "B",
+   "C"
+  ],
+  "name": "Benedict Gibson"
+ },
+ {
+  "username": "patient2",
+  "hospital": "A",
+  "local_id": "NBG-102260",
+  "hospitals": [
+   "A",
+   "B"
+  ],
+  "name": "Maximo Jake Pagac"
+ },
+ {
+  "username": "patient3",
+  "hospital": "A",
+  "local_id": "NBG-428914",
+  "hospitals": [
+   "A"
+  ],
+  "name": "Ken Edison Grant"
+ }
+]

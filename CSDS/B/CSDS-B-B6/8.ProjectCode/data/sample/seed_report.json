@@ -1,0 +1,37 @@
+{
+ "seed": 42,
+ "source": "synthea_sample_data_fhir_latest.zip",
+ "patients": 60,
+ "in_three_hospitals": 8,
+ "in_two_hospitals": 16,
+ "resources_per_hospital": {
+  "A": {
+   "AllergyIntolerance": 28,
+   "Condition": 422,
+   "DiagnosticReport": 148,
+   "Encounter": 538,
+   "MedicationRequest": 276,
+   "Observation": 2571,
+   "Patient": 33
+  },
+  "B": {
+   "AllergyIntolerance": 26,
+   "Condition": 317,
+   "DiagnosticReport": 139,
+   "Encounter": 466,
+   "MedicationRequest": 154,
+   "Observation": 2630,
+   "Patient": 28
+  },
+  "C": {
+   "AllergyIntolerance": 23,
+   "Condition": 397,
+   "DiagnosticReport": 156,
+   "Encounter": 559,
+   "MedicationRequest": 281,
+   "Observation": 2501,
+   "Patient": 31
+  }
+ },
+ "failed_fhir_validation": {}
+}

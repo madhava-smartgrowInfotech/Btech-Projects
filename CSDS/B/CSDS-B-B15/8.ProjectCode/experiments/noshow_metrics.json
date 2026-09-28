@@ -1,0 +1,23 @@
+{
+  "model": "HistGradientBoosting + isotonic calibration",
+  "n_train": 88417,
+  "n_test": 22105,
+  "base_no_show_rate": 0.2019,
+  "roc_auc": 0.7281,
+  "brier_uncalibrated": 0.1441,
+  "brier_calibrated": 0.1442,
+  "ece_uncalibrated": 0.0035,
+  "ece_calibrated": 0.0029,
+  "features": [
+    "age",
+    "is_female",
+    "lead_days",
+    "weekday",
+    "sms_received",
+    "scholarship",
+    "hypertension",
+    "diabetes",
+    "alcoholism",
+    "handicap"
+  ]
+}

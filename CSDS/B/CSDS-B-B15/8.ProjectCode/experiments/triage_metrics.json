@@ -1,0 +1,20 @@
+{
+  "model": "LogisticRegression (multinomial) on multi-hot symptoms",
+  "n_symptoms": 133,
+  "n_conditions": 41,
+  "unique_train_combinations": 243,
+  "unique_test_combinations": 61,
+  "augmented_train_rows": 5103,
+  "test_full_symptoms": {
+    "n": 61,
+    "top1_accuracy": 1.0,
+    "top3_accuracy": 1.0,
+    "macro_f1": 1.0
+  },
+  "test_3_symptoms": {
+    "n": 305,
+    "top1_accuracy": 0.9115,
+    "top3_accuracy": 0.9934,
+    "macro_f1": 0.8206
+  }
+}

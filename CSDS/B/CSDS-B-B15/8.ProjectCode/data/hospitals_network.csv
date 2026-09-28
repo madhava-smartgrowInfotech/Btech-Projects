@@ -1,0 +1,61 @@
+osm_id,name,lat,lon,address,ownership,specialties,has_emergency,op_limit,emergency_quota,avg_consult_min,op_start
+way/1484466808,Adithya Hospital,17.591931,78.417844,,private,"General Medicine,Pulmonology,Cardiology,Neurology,Gastroenterology,Hepatology,Endocrinology,Rheumatology,Gynecology,Allergy,Vascular Surgery",1,190,24,4.1,09:00
+node/1985544651,Anupama Hospital,17.485604,78.390326,,private,"General Medicine,Pulmonology,Cardiology,Neurology,Gastroenterology,Hepatology,Endocrinology,Dermatology,ENT,Rheumatology,Gynecology,Pediatrics,Allergy,Vascular Surgery",1,123,17,3.4,09:00
+node/1553576934,Apollo Emergency Hospital,17.399396,78.479201,,private,"General Medicine,Neurology,Gastroenterology,Hepatology,Endocrinology,Rheumatology,Pediatrics",1,139,13,4.2,09:00
+way/413292045,Apollo Hospitals,17.43956,78.504704,"Secunderabad, Pollicetty Towers, St Johns Rd, Regimental Bazaar, Shivaji Nagar",private,"General Medicine,Cardiology,Neurology,Hepatology,Endocrinology,Rheumatology,Allergy",1,147,15,4.2,09:00
+node/13423743515,Arete Hospitals,17.427674,78.374907,,private,"General Medicine,Pulmonology,Cardiology,Neurology,Gastroenterology,Hepatology,Endocrinology,Dermatology,ENT,Rheumatology,Vascular Surgery",1,120,13,4.4,09:00
+node/6487288564,Aware gleneagles Global Hospital,17.345958,78.539913,,private,"General Medicine,Pulmonology,Cardiology,Neurology,Gastroenterology,Hepatology,Endocrinology,ENT,Allergy",1,237,20,4.1,09:00
+way/31549640,Axon Hospital,17.439328,78.442376,,private,"General Medicine,Pulmonology,Cardiology,Neurology,Gastroenterology,ENT,Rheumatology,Allergy",1,240,33,4.4,09:00
+node/6811749152,BBR Super Speciality Hospital,17.464246,78.457112,,private,"General Medicine,Cardiology,Hepatology,Endocrinology,Dermatology,ENT,Rheumatology,Gynecology,Pediatrics,Allergy,Vascular Surgery",1,212,28,3.2,09:00
+node/6481952537,Care Hospital,17.385431,78.474711,Nampally,private,"General Medicine,Neurology,Gastroenterology,Hepatology,Dermatology,Allergy,Vascular Surgery",1,231,25,4.0,09:00
+node/13707203217,Chetana Hospital,17.436006,78.483215,,private,"General Medicine,Cardiology,Neurology,Hepatology,Dermatology,ENT,Rheumatology,Gynecology,Pediatrics,Allergy",1,150,19,3.5,09:00
+node/6536715097,Citizens Specialty Hospital,17.470774,78.311311,,private,"General Medicine,Pulmonology,Cardiology,Neurology,Gastroenterology,Hepatology,Endocrinology,Dermatology,ENT,Rheumatology,Gynecology,Pediatrics,Allergy,Vascular Surgery",1,155,21,3.2,09:00
+way/254295845,Continental Hospitals,17.417665,78.339131,,private,"General Medicine,Neurology,Gastroenterology,Hepatology,Endocrinology,Dermatology,ENT,Gynecology,Pediatrics,Allergy,Vascular Surgery",1,180,25,4.5,09:00
+node/6482035085,Disha Children's Hospital,17.352518,78.555116,,private,"General Medicine,Pediatrics",0,92,8,3.7,09:00
+way/357057519,Gleneagles Global Hospital,17.405273,78.463144,,private,"General Medicine,Pulmonology,Cardiology,Neurology,Gastroenterology,Hepatology,Endocrinology,ENT,Rheumatology,Pediatrics,Vascular Surgery",1,238,25,4.4,09:00
+way/200173462,Government Area Hospital,17.463137,78.353015,Sri Ram Nagar,government,"General Medicine,Pulmonology,Hepatology,Endocrinology,ENT,Rheumatology,Pediatrics",1,171,23,4.4,09:00
+node/11936671649,Government Chest Hospital,17.445428,78.434959,Erragadda,government,"General Medicine,Pulmonology,Neurology,Gastroenterology,Hepatology,Endocrinology,Dermatology,ENT,Rheumatology,Gynecology",1,227,23,3.8,09:00
+node/13597379930,Govt street Hospital,17.332793,78.536748,"Hyderabad, bupeshgupta nagar",government,"General Medicine,Pulmonology,Cardiology,Neurology,Gastroenterology,Hepatology,Endocrinology,Gynecology,Pediatrics,Vascular Surgery",1,175,24,4.0,09:00
+node/5118590649,Guru Nanak Care Hospital,17.415398,78.497989,,private,"General Medicine,Cardiology,Neurology,Hepatology,Endocrinology,Dermatology,Rheumatology,Vascular Surgery",1,203,26,3.5,09:00
+node/6531290879,Healing Touch Hospital,17.390334,78.45148,,private,"General Medicine,ENT",0,70,9,3.7,09:00
+node/8763119685,K K Reddy Hospital,17.491999,78.397239,,private,"General Medicine,Pulmonology,Allergy,Vascular Surgery",0,93,9,4.0,09:00
+way/274482470,KIMS Hospital,17.43717,78.482478,Minister Road,private,"General Medicine,Cardiology,Neurology,Gastroenterology,Gynecology,Pediatrics,Vascular Surgery",1,150,13,3.0,09:00
+node/6484775841,Kiran Hospital,17.345276,78.528248,,private,"General Medicine,Rheumatology",0,69,10,4.3,09:00
+node/6308345580,Krishnaveni Hospitals,17.328667,78.599351,,private,"General Medicine,Gastroenterology,ENT,Rheumatology",0,101,9,3.5,09:00
+node/1435322445,L.K. Hospitals,17.451385,78.535252,,private,"General Medicine,Pulmonology,Cardiology,Neurology,Hepatology,Dermatology,ENT,Rheumatology,Vascular Surgery",1,224,33,3.3,09:00
+way/902925307,Lakshmi hospital,17.490585,78.337403,"hyderabad, Manjira Pipeline Road",private,"General Medicine,Cardiology,Neurology,Gastroenterology,Hepatology,Dermatology,Rheumatology,Pediatrics,Allergy,Vascular Surgery",1,183,20,4.3,09:00
+way/251804751,Lotus Hospitals,17.491028,78.393124,Kukatpally,private,"General Medicine,Pulmonology,Cardiology,Neurology,Gastroenterology,Dermatology,Pediatrics,Allergy,Vascular Surgery",1,196,29,4.0,09:00
+way/413327528,Medicover Hospitals Secunderabad,17.440505,78.504593,"Secunderabad, Sarojini Devi Rd, Regimental Bazaar, Shivaji Nagar",private,"General Medicine,Pulmonology,Cardiology,Neurology,Gastroenterology,Hepatology,Endocrinology,Dermatology,ENT,Rheumatology,Gynecology,Pediatrics,Allergy,Vascular Surgery",1,175,23,3.7,09:00
+way/417247417,Medwin Hospital,17.393587,78.471941,,private,"General Medicine,Pulmonology,Cardiology,Neurology,Gastroenterology,Hepatology,Endocrinology,Dermatology,ENT,Rheumatology,Gynecology,Pediatrics,Allergy,Vascular Surgery",1,184,24,3.8,09:00
+node/6528301302,Meenakshi Mother and Child Hospital,17.513097,78.554149,,private,"General Medicine,Dermatology,Gynecology,Pediatrics",1,164,20,3.6,09:00
+node/6497026146,Mythri Multi Speciality Hospital,17.498235,78.314448,,private,"General Medicine,Cardiology,Neurology,Dermatology,Pediatrics",0,44,5,3.6,09:00
+node/6549215300,NAVJEEVAN HOSPITAL,17.45558,78.498173,Secunderabad,private,"General Medicine,Cardiology,Neurology,Hepatology,Endocrinology,Dermatology,ENT,Pediatrics,Allergy,Vascular Surgery",1,145,17,4.4,09:00
+node/6505556901,NEO BBC Childrens Hospital,17.403052,78.510062,,private,"General Medicine,Pediatrics",1,214,25,3.3,09:00
+way/237976870,Nizam's Institute Of Medical Sciences,17.421908,78.451549,,government,"General Medicine,Pulmonology,Cardiology,Neurology,Gastroenterology,Endocrinology,Dermatology,Pediatrics,Allergy,Vascular Surgery",1,212,26,4.3,09:00
+node/8760672940,OMNI Hospitals,17.485384,78.410957,,private,"General Medicine,Gastroenterology",0,70,9,4.4,09:00
+way/182703660,Olive Hospital,17.393625,78.427292,,private,"General Medicine,Pulmonology,Neurology,Gastroenterology,Hepatology,Endocrinology,Dermatology,ENT,Vascular Surgery",1,133,11,3.1,09:00
+node/11770988839,Omega Hospitals,17.436425,78.367581,,private,"General Medicine,Gastroenterology",0,106,10,3.4,09:00
+way/364871053,Owaisi Hospital and Research Centre,17.340922,78.506786,,private,"General Medicine,Pulmonology,Cardiology,Neurology,Gastroenterology,Dermatology,Rheumatology,Gynecology,Pediatrics,Allergy",1,133,18,4.3,09:00
+node/902311398,Oxygen Hospital,17.455698,78.498403,Vikrampuri,private,"General Medicine,Pulmonology,Hepatology,Dermatology,ENT,Rheumatology,Gynecology,Pediatrics,Vascular Surgery",1,183,22,4.3,09:00
+node/6518192361,RBM Multi-Speciality Hospital,17.418378,78.583535,"Hyderabad, West Hanuman Nagar",private,"General Medicine,Pulmonology,Cardiology,Endocrinology,Gynecology,Allergy,Vascular Surgery",1,229,22,3.9,09:00
+node/8082315379,Raaj Hospital,17.404416,78.483836,"Hyderabad, Street No.5, Himayathnagar",private,"General Medicine,Pulmonology,Gastroenterology,Dermatology,Rheumatology,Gynecology,Pediatrics,Allergy",1,241,36,3.2,09:00
+node/6504110557,Rainbow Childrens Hospital,17.499785,78.384153,,private,"General Medicine,Cardiology,Neurology,Gastroenterology,ENT,Pediatrics",1,218,25,3.3,09:00
+node/13227662859,Renova Hospitals,17.373368,78.414395,,private,"General Medicine,Neurology,ENT",0,59,6,3.3,09:00
+node/12669348711,Revive Multispeciality Hospital,17.486528,78.449755,"Hyderabad, Sumithra Nagar, Gudement Nagar, IDPL Colony, Balanagar",private,"General Medicine,Pulmonology,Cardiology,Neurology,Gastroenterology,Hepatology,Endocrinology,Dermatology,ENT,Rheumatology,Gynecology,Pediatrics,Allergy,Vascular Surgery",1,212,28,4.3,09:00
+node/6811749182,SAI RAM MULTI SPECIALITY HOSPITAL (ARK HEALTH CARE PVT LTD),17.365936,78.525526,,private,"General Medicine,Pulmonology,ENT,Allergy",0,76,11,3.5,09:00
+node/6549292101,SHINE CHILDREN'S HOSPITAL,17.34825,78.552046,,private,"General Medicine,Pediatrics",0,56,6,3.7,09:00
+node/6484770861,Sankhya Hospital,17.487645,78.400075,,private,"General Medicine,Cardiology,Neurology,Gastroenterology,Hepatology,Endocrinology,Dermatology,Gynecology,Pediatrics,Allergy,Vascular Surgery",1,234,22,4.4,09:00
+node/6485603800,Shalini Hospitals,17.392533,78.495764,,private,"General Medicine,Pediatrics,Allergy",0,44,6,3.0,09:00
+way/361374554,Shenoy Hospital,17.447836,78.508961,,private,"General Medicine,Pulmonology,Cardiology,Neurology,Gastroenterology,Dermatology,ENT,Gynecology,Pediatrics,Allergy",1,244,33,3.4,09:00
+node/6505167632,Shiva Sai Hospital,17.400472,78.566655,Hyderabad,private,"General Medicine,Pulmonology,Neurology,ENT",0,99,14,3.9,09:00
+node/6811749150,Shobha Hospital,17.400359,78.382573,,private,"General Medicine,Gastroenterology,Dermatology",0,63,9,4.3,09:00
+node/6505570504,Soumya Multispeciality Hospital,17.459133,78.500777,,private,"General Medicine,Cardiology,Endocrinology,Dermatology",0,81,12,3.8,09:00
+way/356464777,Sowmya Children's Hospital,17.443029,78.443824,,private,"General Medicine,Pediatrics",1,229,32,3.4,09:00
+node/6235740285,Sriven Hospital,17.485891,78.387531,,private,"General Medicine,Cardiology,Gynecology,Allergy",0,79,11,3.1,09:00
+node/11821271825,Sunridge Multi-Speciality Hospital,17.453862,78.421752,"HYDERABAD, Kalyan Nagar",private,"General Medicine,Cardiology,Neurology,Gastroenterology,Hepatology,Dermatology,ENT,Rheumatology,Gynecology,Pediatrics,Allergy,Vascular Surgery",1,134,12,4.5,09:00
+node/6549145506,Times Hospital,17.420571,78.441686,,private,"General Medicine,Gastroenterology,Endocrinology,ENT",0,41,3,3.1,09:00
+node/6484873593,V.M.R Hospital,17.491893,78.397227,,private,"General Medicine,Pediatrics,Allergy",0,82,10,4.0,09:00
+node/6485621541,Vivek Hospital,17.359854,78.504485,,private,"General Medicine,Cardiology",0,44,6,4.4,09:00
+node/2429955121,Yashoda Super Speciality Hospital,17.374656,78.499872,,private,"General Medicine,Pulmonology,Cardiology,Gastroenterology,Endocrinology,Gynecology,Pediatrics",1,191,28,3.4,09:00
+way/645162358,Yashoda Super Speciality Hospitals,17.424544,78.456953,Raj Bhavan Road,private,"General Medicine,Cardiology,Neurology,Endocrinology,Dermatology,ENT,Rheumatology,Gynecology,Pediatrics,Vascular Surgery",1,181,20,3.6,09:00
+node/7025820786,lifespan hospitals,17.44582,78.392417,"hyderabad, Near SBI Bank",private,"General Medicine,Pulmonology,Cardiology,Gastroenterology,ENT,Gynecology,Allergy,Vascular Surgery",1,125,11,4.0,09:00

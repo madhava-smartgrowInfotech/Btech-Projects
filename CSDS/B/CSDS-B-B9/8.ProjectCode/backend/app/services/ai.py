@@ -4,7 +4,7 @@ import re
 
 from fastapi import HTTPException
 
-from ..config import GEMINI_API_KEY, GEMINI_MODEL
+from ..config import GEMINI_API_KEY, GEMINI_FALLBACK_MODELS, GEMINI_MODEL
 
 _client = None
 
@@ -31,21 +31,32 @@ def _parse_json(text):
     return json.loads(text)
 
 
+RETRYABLE = ("429", "503", "404", "RESOURCE_EXHAUSTED", "UNAVAILABLE", "NOT_FOUND", "overloaded", "high demand")
+
+
 def generate_json(prompt, temperature=0.4):
+    """Call Gemini in JSON mode; on busy / quota / retired-model errors fall through the fallback models."""
     from google.genai import types
     client = _get_client()
-    last = None
-    for _ in range(2):
-        try:
-            resp = client.models.generate_content(
-                model=GEMINI_MODEL, contents=prompt,
-                config=types.GenerateContentConfig(response_mime_type="application/json", temperature=temperature))
-            return _parse_json(resp.text)
-        except (ValueError, json.JSONDecodeError) as e:
-            last = e
-        except Exception as e:  # network / quota / auth errors from the API
-            raise HTTPException(502, f"Gemini request failed: {str(e)[:300]}")
-    raise HTTPException(502, f"Gemini returned malformed JSON: {last}")
+    models = [GEMINI_MODEL] + [m for m in GEMINI_FALLBACK_MODELS if m != GEMINI_MODEL]
+    errors = []
+    for model in models:
+        for _ in range(2):  # one retry for malformed JSON
+            try:
+                resp = client.models.generate_content(
+                    model=model, contents=prompt,
+                    config=types.GenerateContentConfig(response_mime_type="application/json", temperature=temperature))
+                return _parse_json(resp.text)
+            except (ValueError, json.JSONDecodeError) as e:
+                errors.append(f"{model}: malformed JSON ({e})")
+            except Exception as e:  # network / quota / auth errors from the API
+                msg = str(e)
+                errors.append(f"{model}: {msg[:160]}")
+                if not any(k in msg for k in RETRYABLE):
+                    raise HTTPException(502, f"Gemini request failed: {msg[:300]}")
+                break  # try the next model
+    raise HTTPException(502, "Gemini is unavailable right now (all models busy or over quota) - please retry shortly. "
+                             + " | ".join(errors[-3:]))
 
 
 def interview_questions(role, level, count, skills=None, kind="mixed"):

@@ -11,7 +11,9 @@ MODELS = ROOT / "models"
 DB_PATH = DATA / "app.db"
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "").strip()
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash").strip() or "gemini-2.5-flash"
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.7-flash").strip() or "gemini-3.7-flash"
+GEMINI_FALLBACK_MODELS = [m.strip() for m in os.getenv(
+    "GEMINI_FALLBACK_MODELS", "gemini-3.6-flash,gemini-3.1-flash-lite,gemini-flash-lite-latest").split(",") if m.strip()]
 JWT_SECRET = os.getenv("JWT_SECRET", "").strip() or "dev-only-secret-set-JWT_SECRET-in-env"
 BACKEND_PORT = int(os.getenv("BACKEND_PORT", "8209"))
 FRONTEND_PORT = int(os.getenv("FRONTEND_PORT", "5209"))

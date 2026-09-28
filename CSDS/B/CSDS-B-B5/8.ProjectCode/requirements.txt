@@ -1,0 +1,22 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+fastapi==0.141.1
+uvicorn[standard]==0.54.0
+SQLAlchemy==2.1.1
+PyJWT==2.15.0
+bcrypt==5.0.0
+python-dotenv==1.2.3
+python-multipart==0.0.32
+mediapipe==0.10.14
+onnxruntime==1.30.0
+faster-whisper==1.2.1
+pyttsx3==2.99
+google-genai==2.25.0
+numpy==2.4.6
+pandas==3.0.6
+matplotlib==3.11.2
+requests==2.34.2
+# training / data preparation
+torch==2.14.0+cpu
+onnx==1.22.0
+kagglehub==1.0.2
+pyarrow==25.0.1

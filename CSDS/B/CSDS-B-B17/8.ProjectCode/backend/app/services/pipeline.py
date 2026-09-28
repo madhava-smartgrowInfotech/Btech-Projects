@@ -23,7 +23,7 @@ def _set(call_id, **fields):
         db.commit()
 
 
-def analyse(path, progress=lambda stage: None):
+def analyse(path, progress=lambda stage: None, with_summary=True):
     """Run the full pipeline on one recording and return the fields to store."""
     progress("Decoding audio")
     mono, stereo = speech.load_audio(path)
@@ -67,7 +67,8 @@ def analyse(path, progress=lambda stage: None):
     progress("Summary (Gemini)")
     summary, summary_error = None, ""
     try:
-        summary = summarise(segments, intent.get("intent"))
+        if with_summary:
+            summary = summarise(segments, intent.get("intent"))
     except SummaryError as e:
         summary_error = str(e)
 

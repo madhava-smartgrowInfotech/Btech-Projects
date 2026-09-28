@@ -1,0 +1,41 @@
+{
+ "test_days": 90,
+ "features": [
+  "zone_id",
+  "dow",
+  "month",
+  "r_lag1",
+  "r_lag7",
+  "r_roll7",
+  "tmax",
+  "tmin",
+  "precip",
+  "tmax_anom"
+ ],
+ "xgboost": {
+  "mape_1day": 1.96,
+  "mape_7day_recursive": 2.33,
+  "mape_7day_by_zone": {
+   "Z1": 2.33,
+   "Z2": 2.0,
+   "Z3": 2.61,
+   "Z4": 2.54,
+   "Z5": 2.18
+  }
+ },
+ "seasonal_naive_lag7": {
+  "mape_1day": 6.34
+ },
+ "feature_importance": {
+  "zone_id": 0.0243,
+  "dow": 0.2284,
+  "month": 0.0186,
+  "r_lag1": 0.1067,
+  "r_lag7": 0.0066,
+  "r_roll7": 0.0082,
+  "tmax": 0.0084,
+  "tmin": 0.0077,
+  "precip": 0.0834,
+  "tmax_anom": 0.5078
+ }
+}

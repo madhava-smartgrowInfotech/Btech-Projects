@@ -1,0 +1,32 @@
+{
+ "dataset": "Kaggle Water Potability",
+ "rows": 3276,
+ "test_rows": 656,
+ "stacking_ensemble": {
+  "accuracy": 0.6707,
+  "f1": 0.4433,
+  "roc_auc": 0.661
+ },
+ "members": {
+  "random_forest": {
+   "accuracy": 0.6738,
+   "f1": 0.4456,
+   "roc_auc": 0.6648
+  },
+  "xgboost": {
+   "accuracy": 0.6433,
+   "f1": 0.4455,
+   "roc_auc": 0.6444
+  },
+  "gradient_boosting": {
+   "accuracy": 0.654,
+   "f1": 0.4073,
+   "roc_auc": 0.6568
+  },
+  "decision_tree": {
+   "accuracy": 0.6341,
+   "f1": 0.3717,
+   "roc_auc": 0.6011
+  }
+ }
+}

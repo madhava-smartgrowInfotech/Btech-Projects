@@ -1,0 +1,20 @@
+{
+ "meter_days": 6750,
+ "true_anomalous_days": 129,
+ "day_level": {
+  "precision": 0.716,
+  "recall": 0.938
+ },
+ "type_accuracy": 0.9339,
+ "recall_by_type": {
+  "burst": 1.0,
+  "night_flow": 0.871,
+  "theft": 1.0
+ },
+ "meter_level_last_7_days": {
+  "flagged": 12,
+  "truly_anomalous": 11,
+  "precision": 0.9167,
+  "recall": 1.0
+ }
+}

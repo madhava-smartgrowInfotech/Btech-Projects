@@ -1,0 +1,41 @@
+{
+ "scenarios": 1400,
+ "test_scenarios": 350,
+ "candidate_pipes": 82,
+ "sensors": {
+  "pressure_loggers": 16,
+  "zone_inlet_meters": 5
+ },
+ "detection": {
+  "precision": 0.9943,
+  "recall": 0.9886,
+  "f1": 0.9914,
+  "roc_auc": 0.9997,
+  "recall_by_size_lps": {
+   "(0, 4]": 0.9286,
+   "(4, 8]": 0.9762,
+   "(8, 14]": 1.0,
+   "(14, 21]": 1.0
+  }
+ },
+ "localisation": {
+  "top1_accuracy": 0.5829,
+  "top3_accuracy": 0.8571,
+  "zone_accuracy": 1.0,
+  "leak_scenarios": 175
+ },
+ "localisation_variants": {
+  "raw": {
+   "top1_accuracy": 0.5886,
+   "top3_accuracy": 0.84,
+   "zone_accuracy": 1.0,
+   "leak_scenarios": 175
+  },
+  "pressure_centered": {
+   "top1_accuracy": 0.5829,
+   "top3_accuracy": 0.8571,
+   "zone_accuracy": 1.0,
+   "leak_scenarios": 175
+  }
+ }
+}

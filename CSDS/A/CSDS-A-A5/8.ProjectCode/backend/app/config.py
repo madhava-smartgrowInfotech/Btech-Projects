@@ -12,8 +12,8 @@ def _get(key, default=""):
 
 
 GEMINI_API_KEY = _get("GEMINI_API_KEY")
-GEMINI_MODEL = _get("GEMINI_MODEL", "gemini-2.5-flash")
-GEMINI_FALLBACK_MODELS = [m.strip() for m in _get("GEMINI_FALLBACK_MODELS", "gemini-2.5-flash-lite").split(",") if m.strip()]
+GEMINI_MODEL = _get("GEMINI_MODEL", "gemini-3.8-flash")
+GEMINI_FALLBACK_MODELS = [m.strip() for m in _get("GEMINI_FALLBACK_MODELS", "gemini-3.5-flash-lite,gemini-flash-latest").split(",") if m.strip()]
 GEMINI_TIMEOUT_SECONDS = int(_get("GEMINI_TIMEOUT_SECONDS", "60"))
 JWT_SECRET = _get("JWT_SECRET") or "change-me-run-setup-bat"
 JWT_EXPIRE_MINUTES = int(_get("JWT_EXPIRE_MINUTES", "720"))

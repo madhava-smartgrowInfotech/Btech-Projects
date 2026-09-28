@@ -54,7 +54,7 @@ The model flags 78 taxpayers (75 correct, 3 false alarms). The rule baseline fla
 - Anomalous-invoice flags: precision 0.88, recall 0.97, F1 **0.92** (vs 0.16 for the "not in supplier's GSTR-1" check); ROC-AUC 0.9997.
 - Circular-trading rings recovered: **5 / 5**. Top-10 invoice chains that are fraud: **100%**.
 - PaySim transfer check (100k transactions, unlabelled training): JEPA ROC-AUC **0.935** vs 0.790 for ranking by amount; precision@100 0.31 vs 0.02.
-- Explanation quality (citations, invalid citations, evidence coverage, numeric grounding) is measured by `python -m ml.eval` once `GEMINI_API_KEY` is set, and appears on the Model performance page.
+- Explanation quality (Gemini case notes for the top-ranked flagged cases; 6 of 10 completed before the free-tier quota ran out): **0 invalid citations**, ~10.8 citations per note, **100%** of evidence items and of high-severity items cited, 84% of the numbers in the text traced to the evidence, all three sections present, suspected pattern named in 100%. Rerun `python -m ml.eval` when quota allows to cover all 10.
 
 The data is synthetic sample data. See the limits in [docs/02_HOW_IT_WORKS.md](docs/02_HOW_IT_WORKS.md#9-limits).
 

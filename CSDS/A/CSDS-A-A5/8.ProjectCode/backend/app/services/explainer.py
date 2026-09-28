@@ -1,6 +1,7 @@
 """Investigator-style narratives from the evidence, written by Gemini and checked for grounding."""
 import json
 import re
+import time
 
 from ..config import GEMINI_API_KEY, GEMINI_FALLBACK_MODELS, GEMINI_MODEL, GEMINI_TIMEOUT_SECONDS
 
@@ -49,7 +50,11 @@ def generate(prompt):
                           http_options=types.HttpOptions(timeout=GEMINI_TIMEOUT_SECONDS * 1000))
     errors = []
     for model in [GEMINI_MODEL] + [m for m in GEMINI_FALLBACK_MODELS if m != GEMINI_MODEL]:
-        for thinking in (True, False):
+        # thinking_budget=0 keeps 2.5 models fast; newer models manage thinking themselves
+        attempts = [True, False] if "2.5" in model else [False]
+        retried = False
+        while attempts:
+            thinking = attempts[0]
             cfg = dict(system_instruction=SYSTEM, temperature=0.2, max_output_tokens=2048)
             if thinking:
                 cfg["thinking_config"] = types.ThinkingConfig(thinking_budget=0)
@@ -61,12 +66,17 @@ def generate(prompt):
                     return text, model
                 errors.append(f"{model}: empty response")
                 break
-            except Exception as e:  # try without the thinking config, then the next model
+            except Exception as e:
                 msg = str(e)
                 errors.append(f"{model}: {msg[:200]}")
-                if thinking and ("thinking" in msg.lower() or "INVALID_ARGUMENT" in msg):
+                if not retried and ("503" in msg or "429" in msg):  # busy or rate-limited: one short retry
+                    retried = True
+                    time.sleep(3)
                     continue
-                break
+                if thinking and ("thinking" in msg.lower() or "INVALID_ARGUMENT" in msg):
+                    attempts.pop(0)  # try without the thinking config
+                    continue
+                break  # next model
     raise ExplainError("Gemini request failed - " + " | ".join(errors))
 
 

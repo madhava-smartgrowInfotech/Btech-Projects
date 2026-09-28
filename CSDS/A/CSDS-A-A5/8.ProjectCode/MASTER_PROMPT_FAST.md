@@ -6,7 +6,7 @@
 >
 > **Before you start (do this first - it saves the most time):**
 > - Kaggle account and API token (dataset download).
-> - Gemini API key - https://aistudio.google.com/apikey
+> - **Gemini API key - already provided.** It is set in this folder's `.env` as `GEMINI_API_KEY`, with `GEMINI_MODEL=gemini-flash-latest` and `GEMINI_EMBED_MODEL=gemini-embedding-001`. Do not ask the user for a key - just confirm `.env` exists and make one test call.
 > - Confirm the fraud patterns for the generator (shown at the Start step).
 > - In the session, switch to **accept-edits** mode, and when it first asks to run `pip`, `npm`, `python` or `git`, choose **"Yes, and don't ask again"**. Waiting for approvals is the biggest hidden time cost.
 
@@ -31,7 +31,7 @@ You are the lead engineer for **TaxSentinel** - self-supervised detection and pl
    - Timebox: if something still fails after 3 attempts, switch to a simpler approach that works and note it in the summary.
    - Testing = one smoke-test script that drives the real API, plus a frontend production build (`npm run build`). No large unit-test suites.
    - Run the backend and frontend in the background while you work; never block on them.
-5. **Secrets** live only in `.env` (git-ignored); commit a complete `.env.example` listing every key and where to get it. Never hard-code keys.
+5. **Secrets** live only in `.env`, never hard-coded in source. Here `.env` **is committed** (private repository, so the project runs out of the box) and the **Gemini key is already in it** - `GEMINI_API_KEY`, plus `GEMINI_MODEL=gemini-flash-latest` and `GEMINI_EMBED_MODEL=gemini-embedding-001`. Keep `.env.example` complete, with placeholders.
 6. **Leave `2.ABSTRACT.docx` and `MASTER_PROMPT.md` in this folder untouched**, and don't reference them in the product.
 7. **Fixed ports** (other products may run on this PC at the same time): backend **8105**, frontend **5105** (`strictPort: true`). Any extra local service uses a port in **11050-11059**. Put them in `.env` / `.env.example`; never use the defaults 8000 / 5173.
 8. **Everything is committed** (code, sample data, model/eval results, docs) except `venv/`, `node_modules/`, `.env`, `dist/`, and the full dataset when only a sample is committed.

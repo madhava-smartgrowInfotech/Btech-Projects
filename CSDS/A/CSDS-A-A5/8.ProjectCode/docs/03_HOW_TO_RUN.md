@@ -16,7 +16,7 @@ Open the `8.ProjectCode` folder and double-click **`setup.bat`** (or run it from
 
 Then open `.env` and paste your key:
 ```
-GEMINI_API_KEY=AIza...
+GEMINI_API_KEY=your-key-here
 ```
 Without the key everything works except the *Write explanation* button, which shows a clear message.
 

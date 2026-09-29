@@ -9,6 +9,7 @@ Usage:  python ml/train_dna.py
 """
 import csv
 import json
+import os
 import sys
 import time
 from pathlib import Path
@@ -22,11 +23,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from nets import (DNA_GRID, DNA_TOKENS, MASK_ID, MultiScalePredictor, SeqClassifier, dna_encoder,  # noqa: E402
                   ema_copy, ema_update, kmer_tokens, span_mask_1d)
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(os.getenv("BIOSIGHT_ROOT", Path(__file__).resolve().parents[1]))
 DNA = ROOT / "data" / "dna"
 MODELS = ROOT / "models"
 EXP = ROOT / "experiments"
 SEED = 42
+DEV = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 REPEAT_LABELS = ["none", "dinucleotide", "trinucleotide", "tetranucleotide", "pentanucleotide"]
 
 
@@ -60,13 +62,13 @@ def pretrain(kind, pool, epochs=15, bs=64):
     torch.manual_seed(SEED)
     rng = np.random.default_rng(SEED)
     gen = torch.Generator().manual_seed(SEED)
-    enc = dna_encoder()
+    enc = dna_encoder().to(DEV)
     if kind == "jepa":
         tgt = ema_copy(enc)
-        pred = MultiScalePredictor(enc.dim, DNA_GRID, (1, 4), dim=96, depth=2)
+        pred = MultiScalePredictor(enc.dim, DNA_GRID, (1, 4), dim=96, depth=2).to(DEV)
         extra = pred
     else:
-        extra = nn.Linear(enc.dim, 4 ** 4)
+        extra = nn.Linear(enc.dim, 4 ** 4).to(DEV)
     params = list(enc.parameters()) + list(extra.parameters())
     opt = torch.optim.AdamW(params, lr=5e-4, weight_decay=0.04)
     steps = epochs * (len(pool) // bs)
@@ -76,8 +78,8 @@ def pretrain(kind, pool, epochs=15, bs=64):
         losses = []
         perm = rng.permutation(len(pool))
         for i in range(0, len(perm) - bs + 1, bs):
-            x = pool[perm[i:i + bs]]
-            ctx_idx, tgt_idx = span_mask_1d(DNA_TOKENS, gen)
+            x = pool[perm[i:i + bs]].to(DEV)
+            ctx_idx, tgt_idx = (t.to(DEV) for t in span_mask_1d(DNA_TOKENS, gen))
             if kind == "jepa":
                 with torch.no_grad():
                     h = tgt(x)
@@ -105,7 +107,7 @@ def pretrain(kind, pool, epochs=15, bs=64):
             print(f"[dna-{kind}] epoch {ep + 1}/{epochs} loss={hist[-1]['loss']:.4f} ({time.time() - t0:.0f}s)",
                   flush=True)
     keep_enc = tgt if kind == "jepa" else enc
-    torch.save({"encoder": keep_enc.state_dict()}, MODELS / f"dna_{kind}_encoder.pt")
+    torch.save({"encoder": keep_enc.cpu().state_dict()}, MODELS / f"dna_{kind}_encoder.pt")
     return {"epochs": epochs, "history": hist, "seconds": round(time.time() - t0, 1)}
 
 
@@ -127,6 +129,7 @@ def finetune(task, name, init, frac, steps, probe=False, bs=64):
     model = SeqClassifier(dna_encoder(), len(labels))
     if init != "scratch":
         model.encoder.load_state_dict(torch.load(MODELS / f"dna_{init}_encoder.pt", map_location="cpu")["encoder"])
+    model.to(DEV)
     if probe:
         for p in model.encoder.parameters():
             p.requires_grad_(False)
@@ -145,7 +148,7 @@ def finetune(task, name, init, frac, steps, probe=False, bs=64):
             if step >= steps:
                 break
             b = perm[i:i + bs]
-            loss = F.cross_entropy(model(X[b]), y[b])
+            loss = F.cross_entropy(model(X[b].to(DEV)), y[b].to(DEV))
             opt.zero_grad()
             loss.backward()
             opt.step()
@@ -153,7 +156,8 @@ def finetune(task, name, init, frac, steps, probe=False, bs=64):
             step += 1
     model.eval()
     with torch.no_grad():
-        pred = model(X[te]).argmax(1).numpy()
+        pred = model(X[te].to(DEV)).argmax(1).cpu().numpy()
+    model.cpu()
     yt = y[te].numpy()
     k = len(labels)
     cm = np.zeros((k, k), dtype=int)

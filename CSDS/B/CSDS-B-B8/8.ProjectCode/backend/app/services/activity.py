@@ -16,6 +16,7 @@ def load_bundle():
         if not ACTIVITY_MODEL.exists():
             raise RuntimeError("Activity model missing - run: python ml/train.py")
         _bundle = joblib.load(ACTIVITY_MODEL)
+        _bundle["model"].n_jobs = 1  # one window at a time: thread start-up would cost more than the trees
     return _bundle
 
 

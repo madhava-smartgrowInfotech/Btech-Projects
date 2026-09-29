@@ -1,0 +1,111 @@
+{
+  "model": "RandomForest(300 trees) over 20-frame YOLO11n-pose keypoint windows",
+  "classes": [
+    "walking",
+    "standing",
+    "sitting",
+    "lying",
+    "drinking",
+    "picking_up"
+  ],
+  "train_windows": 9000,
+  "own_clip_train_windows": 0,
+  "base_poses_train": {
+    "standing": 281,
+    "sitting": 2063,
+    "lying": 2139,
+    "drinking": 1679
+  },
+  "base_poses_test": {
+    "standing": 11,
+    "sitting": 225,
+    "lying": 311,
+    "drinking": 170
+  },
+  "test_windows": 1800,
+  "test_accuracy": 0.8706,
+  "macro_f1": 0.8694,
+  "per_class": {
+    "walking": {
+      "precision": 0.9457,
+      "recall": 0.9867,
+      "f1-score": 0.9657
+    },
+    "standing": {
+      "precision": 0.8613,
+      "recall": 0.89,
+      "f1-score": 0.8754
+    },
+    "sitting": {
+      "precision": 0.7404,
+      "recall": 0.7033,
+      "f1-score": 0.7214
+    },
+    "lying": {
+      "precision": 0.848,
+      "recall": 0.8367,
+      "f1-score": 0.8423
+    },
+    "drinking": {
+      "precision": 0.8231,
+      "recall": 0.8067,
+      "f1-score": 0.8148
+    },
+    "picking_up": {
+      "precision": 0.9934,
+      "recall": 1.0,
+      "f1-score": 0.9967
+    }
+  },
+  "confusion_matrix": [
+    [
+      296,
+      1,
+      3,
+      0,
+      0,
+      0
+    ],
+    [
+      11,
+      267,
+      22,
+      0,
+      0,
+      0
+    ],
+    [
+      3,
+      32,
+      211,
+      23,
+      31,
+      0
+    ],
+    [
+      1,
+      3,
+      23,
+      251,
+      21,
+      1
+    ],
+    [
+      2,
+      7,
+      26,
+      22,
+      242,
+      1
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      300
+    ]
+  ],
+  "train_seconds": 29.7
+}

@@ -131,6 +131,16 @@ class Monitor:
 
     # --- main loop -----------------------------------------------------------------------------------
     def loop(self):
+        try:
+            self._loop()
+        except Exception as e:  # surface the problem on the Live monitor instead of dying silently
+            self.error = f"Monitoring stopped: {e}"
+            print(self.error)
+            self.running = False
+            with self.lock:
+                self.state = {**self.state, "running": False, "activity": "stopped", "keypoints": []}
+
+    def _loop(self):
         est = get_estimator()
         s = get_settings()
         fall = FallDetector(confirm_seconds=s["confirm_seconds"])
@@ -163,7 +173,11 @@ class Monitor:
             label, conf, probs = self.recog.update(t, k)
             ev = fall.update(t, k, probs.get("lying", 0.0))
             if ev and ev["type"] == "fall":
-                self.raise_fall_alert(img, ev, s)
+                try:
+                    self.raise_fall_alert(img, ev, s)
+                except Exception as e:  # never let one bad write stop monitoring
+                    self.error = f"Could not save fall alert: {e}"
+                    print(self.error)
 
             # activity timeline (a label must hold for 1 s before the segment changes)
             if label != "detecting":

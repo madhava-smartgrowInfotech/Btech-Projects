@@ -37,8 +37,8 @@ class FallDetector:
         centre = down = up = None
         if g is not None:
             centre, scale, angle, aspect, _, h = g
-            down = angle > 50 or aspect < 0.45 or p_lying > 0.6
-            up = angle < 30 and aspect > 0.6 and p_lying < 0.5
+            down = angle > 50 or aspect < 0.4 or p_lying > 0.6
+            up = angle < 30 and aspect > 0.45 and p_lying < 0.5
             if up:
                 self.heights.append((t, h))
             while self.heights and t - self.heights[0][0] > 15:
@@ -51,14 +51,14 @@ class FallDetector:
         if self.state == "normal":
             if g is None or not down or len(self.hist) < 2:
                 return None
-            H = self.body_height(g[1])
+            H = self.body_height(max(s for *_, s in self.hist))
             drop = centre[1] - min(y for _, y, *_ in self.hist)
             if drop / H > self.drop_ratio:
                 self.state = "possible_fall"
                 self.impact_t = t
                 self.after = []
                 self.up_since = None
-                return {"type": "possible_fall", "t": t, "drop": round(drop / H, 2)}
+                return {"type": "possible_fall", "t": t, "drop": round(float(drop / H), 2)}
             return None
 
         if self.state == "possible_fall":
@@ -87,7 +87,7 @@ class FallDetector:
             if down_frac >= 0.6 and (speed < self.still_speed or elapsed >= 3 * self.confirm_seconds):
                 self.state = "confirmed"
                 return {"type": "fall", "t": t, "impact_t": self.impact_t,
-                        "latency": elapsed, "speed": round(speed, 3)}
+                        "latency": float(elapsed), "speed": round(float(speed), 3)}
             if down_frac < 0.3:
                 self.state = "normal"
                 return {"type": "recovered", "t": t}

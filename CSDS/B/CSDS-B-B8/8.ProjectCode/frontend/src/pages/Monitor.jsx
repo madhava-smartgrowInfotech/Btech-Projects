@@ -92,8 +92,9 @@ export default function Monitor() {
   const from = new Date(now.getTime() - 30 * 60 * 1000)
   const live = [...segments]
   if (st?.segment) live.push({ activity: st.segment.activity, start: st.segment.start, end: now.toISOString() })
-  const [fallText, fallCls] = FALL_TEXT[st?.fall_state] || FALL_TEXT.normal
-  const probs = Object.entries(st?.probs || {}).sort((a, b) => b[1] - a[1])
+  const [fallText, fallCls] = running ? FALL_TEXT[st?.fall_state] || FALL_TEXT.normal
+    : ['', 'text-slate-600 bg-white border-slate-200']
+  const probs = st?.running ? Object.entries(st?.probs || {}).sort((a, b) => b[1] - a[1]) : []
 
   return (
     <div>
@@ -144,7 +145,7 @@ export default function Monitor() {
             <div className="text-3xl font-semibold capitalize mt-1" style={{ color: ACTIVITY_COLORS[st?.activity] || '#334155' }}>
               {st?.activity === 'no_person' ? 'Nobody in view' : label(st?.activity)}
             </div>
-            {st?.confidence > 0 && <div className="text-sm text-slate-500">{Math.round(st.confidence * 100)}% confidence</div>}
+            {running && st?.confidence > 0 && <div className="text-sm text-slate-500">{Math.round(st.confidence * 100)}% confidence</div>}
             <div className="mt-3 space-y-1.5">
               {probs.map(([k, v]) => (
                 <div key={k} className="flex items-center gap-2 text-xs">

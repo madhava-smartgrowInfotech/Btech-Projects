@@ -19,7 +19,7 @@ sys.path.insert(0, str(ROOT / "backend"))
 from sequences import LOWER, Builder, canon, load_poses, own_clip_windows, pose_pool  # noqa: E402
 from train import CLASSES, build_set  # noqa: E402
 from app.services.fall import FallDetector  # noqa: E402
-from app.services.features import WINDOW, window_features  # noqa: E402
+from app.services.features import WINDOW, body_geometry, window_features  # noqa: E402
 from app.services.pose import PoseEstimator, maybe_enhance  # noqa: E402
 
 SEED = 7
@@ -96,9 +96,13 @@ def smoothed_lying_probs(model, t, frames):
 
 def fall_eval(model, d):
     b = Builder(SEED)
-    stand = pose_pool(d, "standing", "test", ["normal", "gt"])
-    lie = pose_pool(d, "lying", "test", ["normal", "gt"])
-    sit = pose_pool(d, "sitting", "test", ["normal", "gt"])
+    # starting poses: clean upright skeletons from both splits (the fall detector is rule-based, not trained)
+    stand = [k for split in ("train", "test") for k in pose_pool(d, "standing", split, ["normal", "gt"], min_vis=12)
+             if body_geometry(k)[2] < 20 and body_geometry(k)[3] > 0.6]
+    # people on the floor (CCTV + fall dataset); HAR 'sleeping' is mostly shot from above in bed
+    lie = pose_pool(d, "lying", "test", ["normal", "gt"], sources=["cctv", "fall_detection"])
+    # sitting photos cropped above the feet would be placed hips-on-floor, so require visible ankles
+    sit = [k for k in pose_pool(d, "sitting", "test", ["normal", "gt"]) if (k[[15, 16], 2] > 0.3).all()]
     pick = lambda pool: canon(pool[b.rng.integers(len(pool))])  # noqa: E731
 
     def trans(target_pool, dur, ease, scale=1.0, occl=False):
@@ -110,6 +114,15 @@ def fall_eval(model, d):
                 k[LOWER, 2] = 0
         return t, frames, t_end
 
+    def lie_down():
+        """Going to lie on a sofa/bed: stand -> sit, pause, then lie back slowly."""
+        size, pos = b.scene()
+        t1, f1, _ = b.transition(pick(stand), pick(sit), size, pos, b.rng.uniform(1.0, 2.0), 20,
+                                 int(b.rng.uniform(1.0, 2.5) * FPS), FPS, ease="cosine", target_scale=0.72)
+        t2, f2, _ = b.transition(b.last_target, pick(lie), size, pos, b.rng.uniform(1.5, 3.0), 0, 80, FPS,
+                                 ease="cosine")
+        return np.r_[t1, t2 + t1[-1] + 1.0 / FPS], f1 + f2, None
+
     def activity(maker, n=80):
         t, frames = maker(n)
         return t, frames, None
@@ -119,7 +132,7 @@ def fall_eval(model, d):
         "fall_slow_collapse": (True, lambda: trans(lie, b.rng.uniform(0.8, 1.4), "gravity")),
         "fall_legs_occluded": (True, lambda: trans(lie, b.rng.uniform(0.3, 1.0), "gravity", occl=True)),
         "sit_down": (False, lambda: trans(sit, b.rng.uniform(0.8, 2.0), "cosine", scale=0.72)),
-        "lie_down_slowly": (False, lambda: trans(lie, b.rng.uniform(3.5, 6.0), "cosine")),
+        "sit_then_lie_down": (False, lie_down),
         "pick_up_object": (False, lambda: activity(lambda n: b.picking_up(stand, n))),
         "walking": (False, lambda: activity(lambda n: b.walking(stand, n))),
         "standing": (False, lambda: activity(lambda n: b.still(stand, n))),
@@ -174,6 +187,7 @@ def latency_eval(model):
         p = est.main_person(est.detect(img))
         kp.append(p["kpts"] if p else None)
     pose_ms = (time.perf_counter() - t0) * 1000 / len(frames)
+    model.n_jobs = 1  # as in the live recogniser
     win = [(i / FPS, k) for i, k in enumerate(kp[:WINDOW]) if k is not None]
     t0 = time.perf_counter()
     for _ in range(20):

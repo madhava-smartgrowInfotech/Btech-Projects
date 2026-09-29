@@ -10,7 +10,7 @@ from .features import body_geometry
 
 
 class FallDetector:
-    def __init__(self, confirm_seconds=3.0, drop_ratio=0.35, drop_window=2.0, still_speed=0.35):
+    def __init__(self, confirm_seconds=3.0, drop_ratio=0.35, drop_window=1.2, still_speed=0.35):
         self.confirm_seconds = confirm_seconds
         self.drop_ratio = drop_ratio
         self.drop_window = drop_window
@@ -43,7 +43,7 @@ class FallDetector:
                 self.heights.append((t, h))
             while self.heights and t - self.heights[0][0] > 15:
                 self.heights.popleft()
-            self.hist.append((t, float(centre[1]), down, up, scale))
+            self.hist.append((t, float(centre[1]), down, up, scale, angle, h))
             self.last_down = down
         while self.hist and t - self.hist[0][0] > self.drop_window:
             self.hist.popleft()
@@ -51,14 +51,18 @@ class FallDetector:
         if self.state == "normal":
             if g is None or not down or len(self.hist) < 2:
                 return None
-            H = self.body_height(max(s for *_, s in self.hist))
-            drop = centre[1] - min(y for _, y, *_ in self.hist)
-            if drop / H > self.drop_ratio:
+            H = self.body_height(max(h[4] for h in self.hist))
+            drop = (centre[1] - min(h[1] for h in self.hist)) / H
+            # torso swung from upright to near-horizontal inside the window (seen from a wall camera a
+            # person on the floor still spans image height, so the centre drops less than a full body)
+            # ...but only from a full standing height, so sitting on a sofa and lying back is not a fall
+            tipped = g[2] > 60 and any(x[5] < 30 and x[6] > 0.85 * H for x in self.hist)
+            if drop > self.drop_ratio or (tipped and drop > 0.15):
                 self.state = "possible_fall"
                 self.impact_t = t
                 self.after = []
                 self.up_since = None
-                return {"type": "possible_fall", "t": t, "drop": round(float(drop / H), 2)}
+                return {"type": "possible_fall", "t": t, "drop": round(float(drop), 2)}
             return None
 
         if self.state == "possible_fall":

@@ -33,8 +33,12 @@ setting resumes it after a restart.
   exponentially smoothed. A new timeline segment starts only once a label has held for 1 s.
 
 ## Fall detection (`backend/app/services/fall.py`)
-1. **Impact.** The body centre drops more than 0.35 x the person's upright body height within 2 s, and the
-   posture is now "down" (torso > 50 deg from vertical, a wide body box, or the classifier says lying).
+1. **Impact.** Within 1.2 s, the posture turns "down" (torso > 50 deg from vertical, a wide body box, or the
+   classifier says lying), and one of these is true:
+   - the body centre dropped more than 0.35 x the person's upright body height; or
+   - the torso tipped from upright (< 30 deg), at full standing height, to near-horizontal (> 60 deg), with a
+     drop of at least 0.15 x body height. Seen from a wall camera, a person on the floor still spans image
+     height, so the centre drops less than a full body.
 2. **Confirmation window (default 3 s).** The person stays down at least 60% of the time and is still (centre
    speed < 0.35 body-heights/s). Someone struggling on the floor is still confirmed after 9 s. If the person
    stands back up for 1 s, the fall is cancelled.
@@ -46,8 +50,11 @@ If the person disappears after the impact (for example, behind a sofa), their la
 occluded fall is still confirmed.
 
 ## Low light (F4)
-- **At runtime:** if the frame's mean brightness is below 80, the frame gets a gamma lift and CLAHE before pose
-  estimation. The live view shows the "Low-light enhancement on" badge.
+- **At runtime:** if the frame's mean brightness is below 80, the frame gets a light 5x5 blur, a gamma 0.5
+  lift and gentle CLAHE (clip 1.5) before pose estimation. The live view shows the "Low-light enhancement on"
+  badge. The blur-first order was chosen by measurement. On 159 held-out images, darkened, the person was
+  found in 96% of frames with it, 94% with no enhancement, and 89% with the first version (gamma + CLAHE clip
+  2.5), which amplified sensor noise.
 - **In training:** every image is processed three ways: normal, *dark* (exposure x0.18-0.35, gamma 1.5-2.2,
   sensor noise) and *dark + enhanced*. Poses from all three train the classifier.
 - **Occlusion:** training windows randomly hide the legs or one arm, and drop up to 12% of keypoints.
@@ -89,13 +96,30 @@ Every test window is built only from held-out images.
 - **Activity:** accuracy (per-class recall) and F1 under four conditions: normal light, dim without
   enhancement, dim with CareWatch enhancement, and legs occluded. It also reports the person detection rate
   per lighting condition.
-- **Falls:** 640 simulated sequences built from held-out real poses, run through the real `FallDetector` with
-  the classifier's smoothed lying probability. There are 3 fall types (fast, slow collapse, legs occluded)
-  and 5 non-fall types (sit down, lie down slowly, pick up, walk, stand), 80 of each. It reports sensitivity,
-  specificity, and impact-to-confirmation latency.
+- **Falls:** 640 simulated 10 fps sequences built from real poses, run through the real `FallDetector` with
+  the classifier's smoothed lying probability. There are 3 fall types (fast 0.3-0.6 s, slow collapse
+  0.8-1.4 s, legs hidden after the fall) and 5 non-fall types (sit down; sit, then lie back on a sofa; pick
+  up; walk; stand), 80 of each. It reports sensitivity, specificity, and impact-to-confirmation latency.
+  The fallen poses come from the CCTV and fall datasets (people on the floor). The starting poses are clean
+  upright skeletons, and the sitting poses must show the ankles. Cropped photos would otherwise put the
+  hips on the floor.
 - **Latency:** pose-model time per frame on CPU, classifier time, pipeline fps, and alert delivery time
   (measured on real deliveries once Telegram and Gmail are configured). End-to-end latency is confirmation +
   countdown + delivery.
+
+## Limitations
+- **No real video yet.** The public data is still images. Walking, picking up and falls are evaluated on
+  sequences that add seeded motion to real poses, not on real video. Recording clips in the app (keypoints
+  only, including `fall` clips on a mat) adds real sequences, and `ml/train.py` / `ml/eval.py` pick them up.
+- **Few standing poses.** Standing has only about 290 base poses, so standing and sitting are the weakest
+  classes, especially with the legs hidden.
+- **Falls from a chair or bed are not targeted.** The detector looks for a fall from standing height.
+  Sitting down and then lying back quickly on a sofa can still raise a countdown (20 of 80 simulated cases),
+  which is what the 'I'm OK' button is for.
+- **One main person per camera.** The largest detected person is tracked. Multi-camera rooms are out of scope
+  for this build.
+- **Enhancement trade-off.** On heavily darkened stills, enhancement loses a few pose detections (92.0% ->
+  88.4%) but improves recognition of the people it finds.
 
 ## API
 | Method | Path | Purpose |

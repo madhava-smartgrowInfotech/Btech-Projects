@@ -11,10 +11,10 @@
   "train_windows": 9000,
   "own_clip_train_windows": 0,
   "base_poses_train": {
-    "standing": 281,
-    "sitting": 2063,
-    "lying": 2139,
-    "drinking": 1679
+    "standing": 287,
+    "sitting": 2087,
+    "lying": 2255,
+    "drinking": 1711
   },
   "base_poses_test": {
     "standing": 11,
@@ -23,8 +23,8 @@
     "drinking": 170
   },
   "test_windows": 1800,
-  "test_accuracy": 0.8706,
-  "macro_f1": 0.8694,
+  "test_accuracy": 0.8689,
+  "macro_f1": 0.8675,
   "per_class": {
     "walking": {
       "precision": 0.9457,
@@ -32,24 +32,24 @@
       "f1-score": 0.9657
     },
     "standing": {
-      "precision": 0.8613,
-      "recall": 0.89,
-      "f1-score": 0.8754
+      "precision": 0.8535,
+      "recall": 0.8933,
+      "f1-score": 0.873
     },
     "sitting": {
-      "precision": 0.7404,
-      "recall": 0.7033,
-      "f1-score": 0.7214
+      "precision": 0.7367,
+      "recall": 0.69,
+      "f1-score": 0.7126
     },
     "lying": {
-      "precision": 0.848,
-      "recall": 0.8367,
-      "f1-score": 0.8423
+      "precision": 0.8503,
+      "recall": 0.8333,
+      "f1-score": 0.8418
     },
     "drinking": {
-      "precision": 0.8231,
-      "recall": 0.8067,
-      "f1-score": 0.8148
+      "precision": 0.8209,
+      "recall": 0.81,
+      "f1-score": 0.8154
     },
     "picking_up": {
       "precision": 0.9934,
@@ -68,34 +68,34 @@
     ],
     [
       11,
-      267,
-      22,
+      268,
+      19,
       0,
-      0,
+      2,
       0
     ],
     [
-      3,
+      4,
       32,
-      211,
-      23,
-      31,
+      207,
+      27,
+      30,
       0
     ],
     [
       1,
-      3,
+      4,
       23,
-      251,
+      250,
       21,
       1
     ],
     [
-      2,
-      7,
-      26,
-      22,
-      242,
+      1,
+      9,
+      29,
+      17,
+      243,
       1
     ],
     [
@@ -107,5 +107,5 @@
       300
     ]
   ],
-  "train_seconds": 29.7
+  "train_seconds": 30.7
 }

@@ -28,10 +28,12 @@ def load_poses():
     return {k: d[k] for k in d.files}
 
 
-def pose_pool(d, label, split, variants=None, min_vis=6):
+def pose_pool(d, label, split, variants=None, min_vis=6, sources=None):
     m = (d["label"] == label) & (d["split"] == split)
     if variants is not None:
         m &= np.isin(d["variant"], variants)
+    if sources is not None:
+        m &= np.isin(d["source"], sources)
     ks = [k for k in d["kpts"][m] if (k[:, 2] > VIS).sum() >= min_vis and body_geometry(k) is not None]
     return ks
 
@@ -204,6 +206,7 @@ class Builder:
             b[:, :2] = b[:, :2] / L * target_scale
             b[:, 1] += floor - b[vis_b, 1].max() - 0.02
             b[:, 0] += self.rng.uniform(-0.2, 0.2)
+        self.last_target = b.copy()
         dt = 1.0 / fps
         n_tr = max(2, int(round(dur * fps)))
         frames, times = [], []

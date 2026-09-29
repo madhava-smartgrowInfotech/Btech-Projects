@@ -120,7 +120,7 @@ class Monitor:
         if persist:
             update_settings({"monitor_running": False})
         with self.lock:
-            self.state = {**self.state, "running": False, "activity": "stopped", "keypoints": [], "person": False}
+            self.state = {**self.state, "running": False, "activity": "stopped", "keypoints": [], "probs": {}, "confidence": 0, "fall_state": "normal", "segment": None, "recording": None, "person": False}
 
     def record(self, label, seconds):
         if label not in CLIP_LABELS:
@@ -138,7 +138,7 @@ class Monitor:
             print(self.error)
             self.running = False
             with self.lock:
-                self.state = {**self.state, "running": False, "activity": "stopped", "keypoints": []}
+                self.state = {**self.state, "running": False, "activity": "stopped", "keypoints": [], "probs": {}, "confidence": 0, "fall_state": "normal", "segment": None, "recording": None}
 
     def _loop(self):
         est = get_estimator()
@@ -249,9 +249,11 @@ class Monitor:
         if warning_id is not None:
             self.close_warning(warning_id)
         self.running = False
+        ended = self.grabber.ended if self.grabber else False
+        if ended:  # a video file finished: nothing to resume after a restart
+            update_settings({"monitor_running": False})
         with self.lock:
-            ended = self.grabber.ended if self.grabber else False
-            self.state = {**self.state, "running": False, "activity": "stopped", "keypoints": [],
+            self.state = {**self.state, "running": False, "activity": "stopped", "keypoints": [], "probs": {}, "confidence": 0, "fall_state": "normal", "segment": None, "recording": None,
                           "person": False, "ended": ended}
 
     # --- helpers -------------------------------------------------------------------------------------

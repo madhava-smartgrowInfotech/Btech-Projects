@@ -1,0 +1,236 @@
+{
+  "activity": {
+    "classes": [
+      "walking",
+      "standing",
+      "sitting",
+      "lying",
+      "drinking",
+      "picking_up"
+    ],
+    "conditions": {
+      "normal": {
+        "windows": 1500,
+        "accuracy": 0.8627,
+        "macro_f1": 0.8617,
+        "per_class": {
+          "walking": {
+            "accuracy": 0.98,
+            "f1": 0.9722
+          },
+          "standing": {
+            "accuracy": 0.904,
+            "f1": 0.8709
+          },
+          "sitting": {
+            "accuracy": 0.712,
+            "f1": 0.7192
+          },
+          "lying": {
+            "accuracy": 0.812,
+            "f1": 0.8252
+          },
+          "drinking": {
+            "accuracy": 0.768,
+            "f1": 0.7885
+          },
+          "picking_up": {
+            "accuracy": 1.0,
+            "f1": 0.994
+          }
+        },
+        "base_poses": {
+          "standing": 11,
+          "sitting": 225,
+          "lying": 311,
+          "drinking": 170
+        }
+      },
+      "dim_no_enhancement": {
+        "windows": 1500,
+        "accuracy": 0.854,
+        "macro_f1": 0.8535,
+        "per_class": {
+          "walking": {
+            "accuracy": 0.996,
+            "f1": 0.9842
+          },
+          "standing": {
+            "accuracy": 0.856,
+            "f1": 0.8509
+          },
+          "sitting": {
+            "accuracy": 0.7,
+            "f1": 0.6958
+          },
+          "lying": {
+            "accuracy": 0.776,
+            "f1": 0.7984
+          },
+          "drinking": {
+            "accuracy": 0.796,
+            "f1": 0.7976
+          },
+          "picking_up": {
+            "accuracy": 1.0,
+            "f1": 0.994
+          }
+        },
+        "base_poses": {
+          "standing": 7,
+          "sitting": 220,
+          "lying": 212,
+          "drinking": 159
+        }
+      },
+      "dim_enhanced": {
+        "windows": 1500,
+        "accuracy": 0.862,
+        "macro_f1": 0.8618,
+        "per_class": {
+          "walking": {
+            "accuracy": 0.996,
+            "f1": 0.9881
+          },
+          "standing": {
+            "accuracy": 0.848,
+            "f1": 0.833
+          },
+          "sitting": {
+            "accuracy": 0.74,
+            "f1": 0.7198
+          },
+          "lying": {
+            "accuracy": 0.828,
+            "f1": 0.8398
+          },
+          "drinking": {
+            "accuracy": 0.76,
+            "f1": 0.7983
+          },
+          "picking_up": {
+            "accuracy": 1.0,
+            "f1": 0.9921
+          }
+        },
+        "base_poses": {
+          "standing": 7,
+          "sitting": 213,
+          "lying": 205,
+          "drinking": 162
+        }
+      },
+      "occluded_legs": {
+        "windows": 1500,
+        "accuracy": 0.7913,
+        "macro_f1": 0.7908,
+        "per_class": {
+          "walking": {
+            "accuracy": 0.98,
+            "f1": 0.9496
+          },
+          "standing": {
+            "accuracy": 0.62,
+            "f1": 0.6596
+          },
+          "sitting": {
+            "accuracy": 0.576,
+            "f1": 0.5507
+          },
+          "lying": {
+            "accuracy": 0.792,
+            "f1": 0.8032
+          },
+          "drinking": {
+            "accuracy": 0.78,
+            "f1": 0.7895
+          },
+          "picking_up": {
+            "accuracy": 1.0,
+            "f1": 0.9921
+          }
+        },
+        "base_poses": {
+          "standing": 11,
+          "sitting": 225,
+          "lying": 311,
+          "drinking": 170
+        }
+      }
+    },
+    "person_detection_rate": {
+      "normal": 0.9916,
+      "dark": 0.9202,
+      "dark_enh": 0.8838
+    },
+    "note": "Test windows come from held-out images (never used in training). Motion is added to real extracted poses by the seeded sequence builder; 'dim' uses darkened copies of the test images."
+  },
+  "fall": {
+    "positives": 240,
+    "negatives": 400,
+    "tp": 157,
+    "fn": 83,
+    "tn": 369,
+    "fp": 31,
+    "sensitivity": 0.6542,
+    "specificity": 0.9225,
+    "by_scenario": {
+      "fall_fast": {
+        "is_fall": true,
+        "n": 80,
+        "alerts": 54
+      },
+      "fall_slow_collapse": {
+        "is_fall": true,
+        "n": 80,
+        "alerts": 57
+      },
+      "fall_legs_occluded": {
+        "is_fall": true,
+        "n": 80,
+        "alerts": 46
+      },
+      "sit_down": {
+        "is_fall": false,
+        "n": 80,
+        "alerts": 10
+      },
+      "sit_then_lie_down": {
+        "is_fall": false,
+        "n": 80,
+        "alerts": 20
+      },
+      "pick_up_object": {
+        "is_fall": false,
+        "n": 80,
+        "alerts": 1
+      },
+      "walking": {
+        "is_fall": false,
+        "n": 80,
+        "alerts": 0
+      },
+      "standing": {
+        "is_fall": false,
+        "n": 80,
+        "alerts": 0
+      }
+    },
+    "detection_latency_s": {
+      "mean": 4.18,
+      "median": 3.0,
+      "p95": 9.0,
+      "max": 9.6
+    },
+    "confirm_window_s": 3.0
+  },
+  "latency": {
+    "pose_ms_per_frame": 29.6,
+    "classifier_ms_per_window": 12.37,
+    "pipeline_fps": 23.8,
+    "countdown_s": 20,
+    "dispatch_ms": null,
+    "dispatch_note": "Telegram/email not configured yet - measured on live alerts once keys are set",
+    "end_to_end_s": 24.18
+  }
+}

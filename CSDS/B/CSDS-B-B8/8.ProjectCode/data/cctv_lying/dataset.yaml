@@ -1,0 +1,9 @@
+path: /
+train: images
+val: images
+kpt_shape:
+- 17
+- 3
+names:
+  0: laying
+  1: standing

@@ -1,0 +1,11 @@
+venv/
+node_modules/
+__pycache__/
+*.pyc
+dist/
+data/app.db
+data/raw/
+data/snapshots/
+data/*.log
+.env
+data/keypoints/partial.pkl

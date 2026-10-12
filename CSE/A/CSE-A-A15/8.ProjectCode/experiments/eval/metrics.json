@@ -1,0 +1,914 @@
+{
+  "key_bits": 3072,
+  "scheme": "AES-256-GCM + RSA-OAEP-SHA256 + 1-bit LSB, sequential, RGB",
+  "summary": {
+    "runs": 22,
+    "runs_skipped_too_large": 8,
+    "psnr_db_min": 52.479,
+    "psnr_db_mean": 61.731,
+    "ssim_min": 0.995806,
+    "ssim_mean": 0.999039,
+    "all_round_trips_byte_exact": true,
+    "median_encrypt_ms": 0.15,
+    "median_embed_ms": 0.25,
+    "median_extract_ms": 0.05,
+    "median_decrypt_ms": 86.37,
+    "max_capacity_bits_per_pixel": 3.0,
+    "robustness_payload": "accounts.csv"
+  },
+  "capacity": [
+    {
+      "cover": "astronaut_512x512.png",
+      "width": 512,
+      "height": 512,
+      "pixels": 262144,
+      "max_bundle_bytes": 98300,
+      "max_bundle_kib": 96.0,
+      "max_bits_per_pixel": 3.0
+    },
+    {
+      "cover": "cat_451x300.png",
+      "width": 451,
+      "height": 300,
+      "pixels": 135300,
+      "max_bundle_bytes": 50733,
+      "max_bundle_kib": 49.5,
+      "max_bits_per_pixel": 3.0
+    },
+    {
+      "cover": "coffee_600x400.png",
+      "width": 600,
+      "height": 400,
+      "pixels": 240000,
+      "max_bundle_bytes": 89996,
+      "max_bundle_kib": 87.9,
+      "max_bits_per_pixel": 3.0
+    },
+    {
+      "cover": "coffee_small_200x200.png",
+      "width": 200,
+      "height": 200,
+      "pixels": 40000,
+      "max_bundle_bytes": 14996,
+      "max_bundle_kib": 14.6,
+      "max_bits_per_pixel": 2.999
+    },
+    {
+      "cover": "generated_landscape_1280x720.png",
+      "width": 1280,
+      "height": 720,
+      "pixels": 921600,
+      "max_bundle_bytes": 345596,
+      "max_bundle_kib": 337.5,
+      "max_bits_per_pixel": 3.0
+    },
+    {
+      "cover": "rocket_640x427.png",
+      "width": 640,
+      "height": 427,
+      "pixels": 273280,
+      "max_bundle_bytes": 102476,
+      "max_bundle_kib": 100.1,
+      "max_bits_per_pixel": 3.0
+    }
+  ],
+  "quality_and_speed": [
+    {
+      "cover": "astronaut_512x512.png",
+      "payload_bytes": 1024,
+      "fits": true,
+      "pixels": 262144,
+      "used_pct": 1.584,
+      "bits_per_pixel": 0.04752,
+      "psnr_db": 69.171,
+      "ssim": 0.999941,
+      "changed_pct": 0.7871,
+      "encrypt_ms": 0.131,
+      "embed_ms": 0.115,
+      "extract_ms": 0.034,
+      "decrypt_ms": 87.481,
+      "round_trip_ok": true
+    },
+    {
+      "cover": "astronaut_512x512.png",
+      "payload_bytes": 4096,
+      "fits": true,
+      "pixels": 262144,
+      "used_pct": 4.709,
+      "bits_per_pixel": 0.14127,
+      "psnr_db": 64.423,
+      "ssim": 0.999767,
+      "changed_pct": 2.3485,
+      "encrypt_ms": 0.19,
+      "embed_ms": 0.222,
+      "extract_ms": 0.047,
+      "decrypt_ms": 86.009,
+      "round_trip_ok": true
+    },
+    {
+      "cover": "astronaut_512x512.png",
+      "payload_bytes": 16384,
+      "fits": true,
+      "pixels": 262144,
+      "used_pct": 17.211,
+      "bits_per_pixel": 0.5163,
+      "psnr_db": 58.754,
+      "ssim": 0.999256,
+      "changed_pct": 8.6623,
+      "encrypt_ms": 0.154,
+      "embed_ms": 0.183,
+      "extract_ms": 0.091,
+      "decrypt_ms": 88.198,
+      "round_trip_ok": true
+    },
+    {
+      "cover": "astronaut_512x512.png",
+      "payload_bytes": 65536,
+      "fits": true,
+      "pixels": 262144,
+      "used_pct": 67.213,
+      "bits_per_pixel": 2.0163,
+      "psnr_db": 52.865,
+      "ssim": 0.996392,
+      "changed_pct": 33.6185,
+      "encrypt_ms": 0.211,
+      "embed_ms": 0.684,
+      "extract_ms": 0.178,
+      "decrypt_ms": 85.482,
+      "round_trip_ok": true
+    },
+    {
+      "cover": "astronaut_512x512.png",
+      "payload_bytes": 131072,
+      "fits": false
+    },
+    {
+      "cover": "cat_451x300.png",
+      "payload_bytes": 1024,
+      "fits": true,
+      "pixels": 135300,
+      "used_pct": 3.069,
+      "bits_per_pixel": 0.09206,
+      "psnr_db": 66.217,
+      "ssim": 0.999934,
+      "changed_pct": 1.5536,
+      "encrypt_ms": 0.12,
+      "embed_ms": 0.102,
+      "extract_ms": 0.028,
+      "decrypt_ms": 86.946,
+      "round_trip_ok": true
+    },
+    {
+      "cover": "cat_451x300.png",
+      "payload_bytes": 4096,
+      "fits": true,
+      "pixels": 135300,
+      "used_pct": 9.124,
+      "bits_per_pixel": 0.2737,
+      "psnr_db": 61.531,
+      "ssim": 0.999764,
+      "changed_pct": 4.5708,
+      "encrypt_ms": 0.158,
+      "embed_ms": 0.112,
+      "extract_ms": 0.03,
+      "decrypt_ms": 84.322,
+      "round_trip_ok": true
+    },
+    {
+      "cover": "cat_451x300.png",
+      "payload_bytes": 16384,
+      "fits": true,
+      "pixels": 135300,
+      "used_pct": 33.347,
+      "bits_per_pixel": 1.00033,
+      "psnr_db": 55.898,
+      "ssim": 0.999078,
+      "changed_pct": 16.7219,
+      "encrypt_ms": 0.146,
+      "embed_ms": 0.17,
+      "extract_ms": 0.059,
+      "decrypt_ms": 86.181,
+      "round_trip_ok": true
+    },
+    {
+      "cover": "cat_451x300.png",
+      "payload_bytes": 65536,
+      "fits": false
+    },
+    {
+      "cover": "cat_451x300.png",
+      "payload_bytes": 131072,
+      "fits": false
+    },
+    {
+      "cover": "coffee_600x400.png",
+      "payload_bytes": 1024,
+      "fits": true,
+      "pixels": 240000,
+      "used_pct": 1.73,
+      "bits_per_pixel": 0.0519,
+      "psnr_db": 68.74,
+      "ssim": 0.999948,
+      "changed_pct": 0.869,
+      "encrypt_ms": 0.138,
+      "embed_ms": 0.175,
+      "extract_ms": 0.028,
+      "decrypt_ms": 93.163,
+      "round_trip_ok": true
+    },
+    {
+      "cover": "coffee_600x400.png",
+      "payload_bytes": 4096,
+      "fits": true,
+      "pixels": 240000,
+      "used_pct": 5.144,
+      "bits_per_pixel": 0.1543,
+      "psnr_db": 63.993,
+      "ssim": 0.999786,
+      "changed_pct": 2.5926,
+      "encrypt_ms": 0.139,
+      "embed_ms": 0.266,
+      "extract_ms": 0.037,
+      "decrypt_ms": 85.139,
+      "round_trip_ok": true
+    },
+    {
+      "cover": "coffee_600x400.png",
+      "payload_bytes": 16384,
+      "fits": true,
+      "pixels": 240000,
+      "used_pct": 18.799,
+      "bits_per_pixel": 0.56393,
+      "psnr_db": 58.409,
+      "ssim": 0.999195,
+      "changed_pct": 9.3788,
+      "encrypt_ms": 0.153,
+      "embed_ms": 0.374,
+      "extract_ms": 0.066,
+      "decrypt_ms": 87.478,
+      "round_trip_ok": true
+    },
+    {
+      "cover": "coffee_600x400.png",
+      "payload_bytes": 65536,
+      "fits": true,
+      "pixels": 240000,
+      "used_pct": 73.414,
+      "bits_per_pixel": 2.20233,
+      "psnr_db": 52.479,
+      "ssim": 0.997186,
+      "changed_pct": 36.7397,
+      "encrypt_ms": 0.21,
+      "embed_ms": 0.828,
+      "extract_ms": 0.234,
+      "decrypt_ms": 84.241,
+      "round_trip_ok": true
+    },
+    {
+      "cover": "coffee_600x400.png",
+      "payload_bytes": 131072,
+      "fits": false
+    },
+    {
+      "cover": "coffee_small_200x200.png",
+      "payload_bytes": 1024,
+      "fits": true,
+      "pixels": 40000,
+      "used_pct": 10.383,
+      "bits_per_pixel": 0.3114,
+      "psnr_db": 61.014,
+      "ssim": 0.99977,
+      "changed_pct": 5.1483,
+      "encrypt_ms": 0.129,
+      "embed_ms": 0.095,
+      "extract_ms": 0.022,
+      "decrypt_ms": 87.388,
+      "round_trip_ok": true
+    },
+    {
+      "cover": "coffee_small_200x200.png",
+      "payload_bytes": 4096,
+      "fits": true,
+      "pixels": 40000,
+      "used_pct": 30.868,
+      "bits_per_pixel": 0.9258,
+      "psnr_db": 56.264,
+      "ssim": 0.999166,
+      "changed_pct": 15.37,
+      "encrypt_ms": 0.14,
+      "embed_ms": 0.121,
+      "extract_ms": 0.051,
+      "decrypt_ms": 89.865,
+      "round_trip_ok": true
+    },
+    {
+      "cover": "coffee_small_200x200.png",
+      "payload_bytes": 16384,
+      "fits": false
+    },
+    {
+      "cover": "coffee_small_200x200.png",
+      "payload_bytes": 65536,
+      "fits": false
+    },
+    {
+      "cover": "coffee_small_200x200.png",
+      "payload_bytes": 131072,
+      "fits": false
+    },
+    {
+      "cover": "generated_landscape_1280x720.png",
+      "payload_bytes": 1024,
+      "fits": true,
+      "pixels": 921600,
+      "used_pct": 0.451,
+      "bits_per_pixel": 0.01352,
+      "psnr_db": 74.615,
+      "ssim": 0.99999,
+      "changed_pct": 0.2247,
+      "encrypt_ms": 0.135,
+      "embed_ms": 0.55,
+      "extract_ms": 0.03,
+      "decrypt_ms": 92.94,
+      "round_trip_ok": true
+    },
+    {
+      "cover": "generated_landscape_1280x720.png",
+      "payload_bytes": 4096,
+      "fits": true,
+      "pixels": 921600,
+      "used_pct": 1.339,
+      "bits_per_pixel": 0.04018,
+      "psnr_db": 69.876,
+      "ssim": 0.999931,
+      "changed_pct": 0.6691,
+      "encrypt_ms": 0.174,
+      "embed_ms": 0.595,
+      "extract_ms": 0.059,
+      "decrypt_ms": 85.656,
+      "round_trip_ok": true
+    },
+    {
+      "cover": "generated_landscape_1280x720.png",
+      "payload_bytes": 16384,
+      "fits": true,
+      "pixels": 921600,
+      "used_pct": 4.895,
+      "bits_per_pixel": 0.14686,
+      "psnr_db": 64.234,
+      "ssim": 0.999664,
+      "changed_pct": 2.4529,
+      "encrypt_ms": 0.145,
+      "embed_ms": 0.565,
+      "extract_ms": 0.066,
+      "decrypt_ms": 87.522,
+      "round_trip_ok": true
+    },
+    {
+      "cover": "generated_landscape_1280x720.png",
+      "payload_bytes": 65536,
+      "fits": true,
+      "pixels": 921600,
+      "used_pct": 19.118,
+      "bits_per_pixel": 0.57352,
+      "psnr_db": 58.321,
+      "ssim": 0.998598,
+      "changed_pct": 9.5715,
+      "encrypt_ms": 0.212,
+      "embed_ms": 0.796,
+      "extract_ms": 0.208,
+      "decrypt_ms": 85.791,
+      "round_trip_ok": true
+    },
+    {
+      "cover": "generated_landscape_1280x720.png",
+      "payload_bytes": 131072,
+      "fits": true,
+      "pixels": 921600,
+      "used_pct": 38.081,
+      "bits_per_pixel": 1.14242,
+      "psnr_db": 55.333,
+      "ssim": 0.99718,
+      "changed_pct": 19.0434,
+      "encrypt_ms": 0.367,
+      "embed_ms": 1.674,
+      "extract_ms": 0.507,
+      "decrypt_ms": 95.645,
+      "round_trip_ok": true
+    },
+    {
+      "cover": "rocket_640x427.png",
+      "payload_bytes": 1024,
+      "fits": true,
+      "pixels": 273280,
+      "used_pct": 1.519,
+      "bits_per_pixel": 0.04558,
+      "psnr_db": 69.365,
+      "ssim": 0.999941,
+      "changed_pct": 0.7526,
+      "encrypt_ms": 0.176,
+      "embed_ms": 0.138,
+      "extract_ms": 0.033,
+      "decrypt_ms": 84.905,
+      "round_trip_ok": true
+    },
+    {
+      "cover": "rocket_640x427.png",
+      "payload_bytes": 4096,
+      "fits": true,
+      "pixels": 273280,
+      "used_pct": 4.517,
+      "bits_per_pixel": 0.13551,
+      "psnr_db": 64.581,
+      "ssim": 0.999723,
+      "changed_pct": 2.2646,
+      "encrypt_ms": 0.205,
+      "embed_ms": 0.242,
+      "extract_ms": 0.042,
+      "decrypt_ms": 85.478,
+      "round_trip_ok": true
+    },
+    {
+      "cover": "rocket_640x427.png",
+      "payload_bytes": 16384,
+      "fits": true,
+      "pixels": 273280,
+      "used_pct": 16.509,
+      "bits_per_pixel": 0.49526,
+      "psnr_db": 58.955,
+      "ssim": 0.998853,
+      "changed_pct": 8.2708,
+      "encrypt_ms": 0.144,
+      "embed_ms": 0.315,
+      "extract_ms": 0.084,
+      "decrypt_ms": 86.566,
+      "round_trip_ok": true
+    },
+    {
+      "cover": "rocket_640x427.png",
+      "payload_bytes": 65536,
+      "fits": true,
+      "pixels": 273280,
+      "used_pct": 64.474,
+      "bits_per_pixel": 1.93413,
+      "psnr_db": 53.049,
+      "ssim": 0.995806,
+      "changed_pct": 32.2204,
+      "encrypt_ms": 0.213,
+      "embed_ms": 0.543,
+      "extract_ms": 0.17,
+      "decrypt_ms": 84.287,
+      "round_trip_ok": true
+    },
+    {
+      "cover": "rocket_640x427.png",
+      "payload_bytes": 131072,
+      "fits": false
+    }
+  ],
+  "robustness": [
+    {
+      "attack": "png_resave",
+      "label": "Lossless PNG re-save",
+      "recovered": 6,
+      "lost": 0,
+      "mean_bit_error_rate": 0.0
+    },
+    {
+      "attack": "jpeg_q95",
+      "label": "JPEG quality 95",
+      "recovered": 0,
+      "lost": 6,
+      "mean_bit_error_rate": 0.4973
+    },
+    {
+      "attack": "jpeg_q75",
+      "label": "JPEG quality 75",
+      "recovered": 0,
+      "lost": 6,
+      "mean_bit_error_rate": 0.4999
+    },
+    {
+      "attack": "jpeg_q50",
+      "label": "JPEG quality 50",
+      "recovered": 0,
+      "lost": 6,
+      "mean_bit_error_rate": 0.5032
+    },
+    {
+      "attack": "noise_s1",
+      "label": "Gaussian noise sigma 1",
+      "recovered": 0,
+      "lost": 6,
+      "mean_bit_error_rate": 0.4935
+    },
+    {
+      "attack": "noise_s3",
+      "label": "Gaussian noise sigma 3",
+      "recovered": 0,
+      "lost": 6,
+      "mean_bit_error_rate": 0.4988
+    },
+    {
+      "attack": "resize_90",
+      "label": "Resize to 90%",
+      "recovered": 0,
+      "lost": 6,
+      "mean_bit_error_rate": 0.501
+    },
+    {
+      "attack": "crop_bottom_10",
+      "label": "Crop bottom 10%",
+      "recovered": 6,
+      "lost": 0,
+      "mean_bit_error_rate": 0.0
+    },
+    {
+      "attack": "crop_left_10",
+      "label": "Crop left 10%",
+      "recovered": 0,
+      "lost": 6,
+      "mean_bit_error_rate": 0.4995
+    }
+  ],
+  "robustness_detail": [
+    {
+      "cover": "astronaut_512x512.png",
+      "attack": "png_resave",
+      "label": "Lossless PNG re-save",
+      "status": "recovered",
+      "bit_error_rate": 0.0
+    },
+    {
+      "cover": "astronaut_512x512.png",
+      "attack": "jpeg_q95",
+      "label": "JPEG quality 95",
+      "status": "lost",
+      "bit_error_rate": 0.4994
+    },
+    {
+      "cover": "astronaut_512x512.png",
+      "attack": "jpeg_q75",
+      "label": "JPEG quality 75",
+      "status": "lost",
+      "bit_error_rate": 0.499
+    },
+    {
+      "cover": "astronaut_512x512.png",
+      "attack": "jpeg_q50",
+      "label": "JPEG quality 50",
+      "status": "lost",
+      "bit_error_rate": 0.5067
+    },
+    {
+      "cover": "astronaut_512x512.png",
+      "attack": "noise_s1",
+      "label": "Gaussian noise sigma 1",
+      "status": "lost",
+      "bit_error_rate": 0.4929
+    },
+    {
+      "cover": "astronaut_512x512.png",
+      "attack": "noise_s3",
+      "label": "Gaussian noise sigma 3",
+      "status": "lost",
+      "bit_error_rate": 0.4989
+    },
+    {
+      "cover": "astronaut_512x512.png",
+      "attack": "resize_90",
+      "label": "Resize to 90%",
+      "status": "lost",
+      "bit_error_rate": 0.5034
+    },
+    {
+      "cover": "astronaut_512x512.png",
+      "attack": "crop_bottom_10",
+      "label": "Crop bottom 10%",
+      "status": "recovered",
+      "bit_error_rate": 0.0
+    },
+    {
+      "cover": "astronaut_512x512.png",
+      "attack": "crop_left_10",
+      "label": "Crop left 10%",
+      "status": "lost",
+      "bit_error_rate": 0.5007
+    },
+    {
+      "cover": "cat_451x300.png",
+      "attack": "png_resave",
+      "label": "Lossless PNG re-save",
+      "status": "recovered",
+      "bit_error_rate": 0.0
+    },
+    {
+      "cover": "cat_451x300.png",
+      "attack": "jpeg_q95",
+      "label": "JPEG quality 95",
+      "status": "lost",
+      "bit_error_rate": 0.4994
+    },
+    {
+      "cover": "cat_451x300.png",
+      "attack": "jpeg_q75",
+      "label": "JPEG quality 75",
+      "status": "lost",
+      "bit_error_rate": 0.5031
+    },
+    {
+      "cover": "cat_451x300.png",
+      "attack": "jpeg_q50",
+      "label": "JPEG quality 50",
+      "status": "lost",
+      "bit_error_rate": 0.5033
+    },
+    {
+      "cover": "cat_451x300.png",
+      "attack": "noise_s1",
+      "label": "Gaussian noise sigma 1",
+      "status": "lost",
+      "bit_error_rate": 0.4938
+    },
+    {
+      "cover": "cat_451x300.png",
+      "attack": "noise_s3",
+      "label": "Gaussian noise sigma 3",
+      "status": "lost",
+      "bit_error_rate": 0.499
+    },
+    {
+      "cover": "cat_451x300.png",
+      "attack": "resize_90",
+      "label": "Resize to 90%",
+      "status": "lost",
+      "bit_error_rate": 0.5031
+    },
+    {
+      "cover": "cat_451x300.png",
+      "attack": "crop_bottom_10",
+      "label": "Crop bottom 10%",
+      "status": "recovered",
+      "bit_error_rate": 0.0
+    },
+    {
+      "cover": "cat_451x300.png",
+      "attack": "crop_left_10",
+      "label": "Crop left 10%",
+      "status": "lost",
+      "bit_error_rate": 0.4977
+    },
+    {
+      "cover": "coffee_600x400.png",
+      "attack": "png_resave",
+      "label": "Lossless PNG re-save",
+      "status": "recovered",
+      "bit_error_rate": 0.0
+    },
+    {
+      "cover": "coffee_600x400.png",
+      "attack": "jpeg_q95",
+      "label": "JPEG quality 95",
+      "status": "lost",
+      "bit_error_rate": 0.5033
+    },
+    {
+      "cover": "coffee_600x400.png",
+      "attack": "jpeg_q75",
+      "label": "JPEG quality 75",
+      "status": "lost",
+      "bit_error_rate": 0.498
+    },
+    {
+      "cover": "coffee_600x400.png",
+      "attack": "jpeg_q50",
+      "label": "JPEG quality 50",
+      "status": "lost",
+      "bit_error_rate": 0.5041
+    },
+    {
+      "cover": "coffee_600x400.png",
+      "attack": "noise_s1",
+      "label": "Gaussian noise sigma 1",
+      "status": "lost",
+      "bit_error_rate": 0.4938
+    },
+    {
+      "cover": "coffee_600x400.png",
+      "attack": "noise_s3",
+      "label": "Gaussian noise sigma 3",
+      "status": "lost",
+      "bit_error_rate": 0.499
+    },
+    {
+      "cover": "coffee_600x400.png",
+      "attack": "resize_90",
+      "label": "Resize to 90%",
+      "status": "lost",
+      "bit_error_rate": 0.4948
+    },
+    {
+      "cover": "coffee_600x400.png",
+      "attack": "crop_bottom_10",
+      "label": "Crop bottom 10%",
+      "status": "recovered",
+      "bit_error_rate": 0.0
+    },
+    {
+      "cover": "coffee_600x400.png",
+      "attack": "crop_left_10",
+      "label": "Crop left 10%",
+      "status": "lost",
+      "bit_error_rate": 0.5023
+    },
+    {
+      "cover": "coffee_small_200x200.png",
+      "attack": "png_resave",
+      "label": "Lossless PNG re-save",
+      "status": "recovered",
+      "bit_error_rate": 0.0
+    },
+    {
+      "cover": "coffee_small_200x200.png",
+      "attack": "jpeg_q95",
+      "label": "JPEG quality 95",
+      "status": "lost",
+      "bit_error_rate": 0.4969
+    },
+    {
+      "cover": "coffee_small_200x200.png",
+      "attack": "jpeg_q75",
+      "label": "JPEG quality 75",
+      "status": "lost",
+      "bit_error_rate": 0.5017
+    },
+    {
+      "cover": "coffee_small_200x200.png",
+      "attack": "jpeg_q50",
+      "label": "JPEG quality 50",
+      "status": "lost",
+      "bit_error_rate": 0.5048
+    },
+    {
+      "cover": "coffee_small_200x200.png",
+      "attack": "noise_s1",
+      "label": "Gaussian noise sigma 1",
+      "status": "lost",
+      "bit_error_rate": 0.4934
+    },
+    {
+      "cover": "coffee_small_200x200.png",
+      "attack": "noise_s3",
+      "label": "Gaussian noise sigma 3",
+      "status": "lost",
+      "bit_error_rate": 0.4986
+    },
+    {
+      "cover": "coffee_small_200x200.png",
+      "attack": "resize_90",
+      "label": "Resize to 90%",
+      "status": "lost",
+      "bit_error_rate": 0.5041
+    },
+    {
+      "cover": "coffee_small_200x200.png",
+      "attack": "crop_bottom_10",
+      "label": "Crop bottom 10%",
+      "status": "recovered",
+      "bit_error_rate": 0.0
+    },
+    {
+      "cover": "coffee_small_200x200.png",
+      "attack": "crop_left_10",
+      "label": "Crop left 10%",
+      "status": "lost",
+      "bit_error_rate": 0.4959
+    },
+    {
+      "cover": "generated_landscape_1280x720.png",
+      "attack": "png_resave",
+      "label": "Lossless PNG re-save",
+      "status": "recovered",
+      "bit_error_rate": 0.0
+    },
+    {
+      "cover": "generated_landscape_1280x720.png",
+      "attack": "jpeg_q95",
+      "label": "JPEG quality 95",
+      "status": "lost",
+      "bit_error_rate": 0.5032
+    },
+    {
+      "cover": "generated_landscape_1280x720.png",
+      "attack": "jpeg_q75",
+      "label": "JPEG quality 75",
+      "status": "lost",
+      "bit_error_rate": 0.5023
+    },
+    {
+      "cover": "generated_landscape_1280x720.png",
+      "attack": "jpeg_q50",
+      "label": "JPEG quality 50",
+      "status": "lost",
+      "bit_error_rate": 0.4994
+    },
+    {
+      "cover": "generated_landscape_1280x720.png",
+      "attack": "noise_s1",
+      "label": "Gaussian noise sigma 1",
+      "status": "lost",
+      "bit_error_rate": 0.4938
+    },
+    {
+      "cover": "generated_landscape_1280x720.png",
+      "attack": "noise_s3",
+      "label": "Gaussian noise sigma 3",
+      "status": "lost",
+      "bit_error_rate": 0.499
+    },
+    {
+      "cover": "generated_landscape_1280x720.png",
+      "attack": "resize_90",
+      "label": "Resize to 90%",
+      "status": "lost",
+      "bit_error_rate": 0.5034
+    },
+    {
+      "cover": "generated_landscape_1280x720.png",
+      "attack": "crop_bottom_10",
+      "label": "Crop bottom 10%",
+      "status": "recovered",
+      "bit_error_rate": 0.0
+    },
+    {
+      "cover": "generated_landscape_1280x720.png",
+      "attack": "crop_left_10",
+      "label": "Crop left 10%",
+      "status": "lost",
+      "bit_error_rate": 0.4998
+    },
+    {
+      "cover": "rocket_640x427.png",
+      "attack": "png_resave",
+      "label": "Lossless PNG re-save",
+      "status": "recovered",
+      "bit_error_rate": 0.0
+    },
+    {
+      "cover": "rocket_640x427.png",
+      "attack": "jpeg_q95",
+      "label": "JPEG quality 95",
+      "status": "lost",
+      "bit_error_rate": 0.4814
+    },
+    {
+      "cover": "rocket_640x427.png",
+      "attack": "jpeg_q75",
+      "label": "JPEG quality 75",
+      "status": "lost",
+      "bit_error_rate": 0.4953
+    },
+    {
+      "cover": "rocket_640x427.png",
+      "attack": "jpeg_q50",
+      "label": "JPEG quality 50",
+      "status": "lost",
+      "bit_error_rate": 0.5012
+    },
+    {
+      "cover": "rocket_640x427.png",
+      "attack": "noise_s1",
+      "label": "Gaussian noise sigma 1",
+      "status": "lost",
+      "bit_error_rate": 0.4931
+    },
+    {
+      "cover": "rocket_640x427.png",
+      "attack": "noise_s3",
+      "label": "Gaussian noise sigma 3",
+      "status": "lost",
+      "bit_error_rate": 0.4985
+    },
+    {
+      "cover": "rocket_640x427.png",
+      "attack": "resize_90",
+      "label": "Resize to 90%",
+      "status": "lost",
+      "bit_error_rate": 0.4969
+    },
+    {
+      "cover": "rocket_640x427.png",
+      "attack": "crop_bottom_10",
+      "label": "Crop bottom 10%",
+      "status": "recovered",
+      "bit_error_rate": 0.0
+    },
+    {
+      "cover": "rocket_640x427.png",
+      "attack": "crop_left_10",
+      "label": "Crop left 10%",
+      "status": "lost",
+      "bit_error_rate": 0.5007
+    }
+  ]
+}

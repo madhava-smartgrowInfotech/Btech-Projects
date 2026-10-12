@@ -1,0 +1,5 @@
+Sample meeting notes (synthetic)
+
+1. Release moves to the 14th.
+2. Rotate the signing keys before launch.
+3. Share the client list only over the protected channel.

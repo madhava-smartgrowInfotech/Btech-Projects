@@ -1,0 +1,6 @@
+{
+  "service": "demo",
+  "region": "eu-west",
+  "retries": 3,
+  "note": "synthetic sample"
+}

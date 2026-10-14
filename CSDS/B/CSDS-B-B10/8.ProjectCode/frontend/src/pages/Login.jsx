@@ -1,55 +1,79 @@
+import { LogIn, UserPlus } from 'lucide-react'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { LockKeyhole } from 'lucide-react'
-import api, { errMsg } from '../api'
-import { ErrorBox, Spinner } from '../components/ui'
+import { Link, Navigate, useLocation } from 'react-router-dom'
+import api, { describeError } from '../api'
+import Backdrop from '../components/reactbits/Backdrop'
+import { SlideUp } from '../components/motion'
+import { Button, Input } from '../components/ui/controls'
+import { Card } from '../components/ui/display'
+import { ErrorState, useToast } from '../components/ui/feedback'
+import Logo from '../components/ui/Logo'
+import { Tabs } from '../components/ui/nav'
+import { useAuth } from '../lib/auth'
 
-export default function Login({ onAuth }) {
+// The demo account from the README. Pre-filled, as in the original sign-in page.
+const DEMO = { email: 'demo@skycipher.app', password: 'SkyCipher@2026' }
+
+export default function Login() {
+  const { user, signIn } = useAuth()
+  const location = useLocation()
+  const toast = useToast()
   const [mode, setMode] = useState('login')
-  const [form, setForm] = useState({ name: '', email: 'demo@skycipher.app', password: 'SkyCipher@2026' })
+  const [form, setForm] = useState({ name: '', email: DEMO.email, password: DEMO.password })
   const [busy, setBusy] = useState(false)
-  const [error, setError] = useState('')
-  const set = (k) => (e) => setForm({ ...form, [k]: e.target.value })
+  const [error, setError] = useState(null)
 
-  const submit = async (e) => {
+  if (user) return <Navigate to={location.state?.from || '/studio'} replace />
+
+  const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }))
+
+  async function submit(e) {
     e.preventDefault()
     setBusy(true)
-    setError('')
+    setError(null)
     try {
       const body = mode === 'login' ? { email: form.email, password: form.password } : form
-      onAuth((await api.post(`/auth/${mode}`, body)).data)
+      const r = await api.post(`/auth/${mode}`, body)
+      signIn(r.data)
+      toast({ tone: 'ok', title: mode === 'login' ? 'Signed in' : 'Account created', body: `welcome, ${r.data.user.name}` })
     } catch (err) {
-      setError(errMsg(err))
+      setError(describeError(err, mode === 'login' ? 'Sign-in failed' : 'Could not create the account'))
     } finally {
       setBusy(false)
     }
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-slate-900 px-4">
-      <form onSubmit={submit} className="w-full max-w-sm space-y-4 rounded-xl bg-white p-6 shadow-xl">
-        <Link to="/" className="flex items-center gap-2 text-lg font-semibold text-slate-900">
-          <LockKeyhole className="h-5 w-5 text-sky-600" /> SkyCipher
-        </Link>
-        <div className="flex rounded-lg bg-slate-100 p-1 text-sm">
-          {['login', 'register'].map((m) => (
-            <button type="button" key={m} onClick={() => { setMode(m); setError('') }}
-              className={`flex-1 rounded-md py-1.5 ${mode === m ? 'bg-white font-medium shadow' : 'text-slate-500'}`}>
-              {m === 'login' ? 'Sign in' : 'Create account'}
-            </button>
-          ))}
-        </div>
-        {mode === 'register' && (
-          <div><label className="label">Name</label><input className="input" value={form.name} onChange={set('name')} required /></div>
-        )}
-        <div><label className="label">Email</label><input className="input" type="email" value={form.email} onChange={set('email')} required /></div>
-        <div><label className="label">Password</label><input className="input" type="password" value={form.password} onChange={set('password')} required minLength={6} /></div>
-        <ErrorBox error={error} />
-        <button className="btn-primary w-full" disabled={busy}>
-          {busy ? <Spinner label="Please wait..." /> : mode === 'login' ? 'Sign in' : 'Create account'}
-        </button>
-        {mode === 'login' && <p className="text-center text-xs text-slate-500">Demo account is pre-filled.</p>}
-      </form>
+    <div className="relative min-h-screen overflow-hidden">
+      <Backdrop intensity={0.4} className="fixed inset-0 z-0 fade-mask opacity-60" />
+      <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-md flex-col justify-center px-4 py-10">
+        <Link to="/" className="mb-8 self-start"><Logo /></Link>
+        <SlideUp>
+          <Card title={mode === 'login' ? 'Sign in' : 'Create account'} eyebrow="SkyCipher">
+            <Tabs id="auth" label="Account" value={mode} onChange={(m) => { setMode(m); setError(null) }}
+              tabs={[{ id: 'login', label: 'Sign in' }, { id: 'register', label: 'Create account' }]} />
+            <form onSubmit={submit} className="mt-5 space-y-4" noValidate>
+              {mode === 'register' && (
+                <Input id="name" label="Name" autoComplete="name" value={form.name} onChange={set('name')} required />
+              )}
+              <Input id="email" type="email" label="Email" autoComplete="email" value={form.email} onChange={set('email')} required />
+              <Input id="password" type="password" label="Password" autoComplete={mode === 'login' ? 'current-password' : 'new-password'}
+                value={form.password} onChange={set('password')} required minLength={mode === 'register' ? 6 : undefined}
+                hint={mode === 'register' ? 'At least 6 characters.' : undefined} />
+              {error && <ErrorState error={error} />}
+              <Button type="submit" size="lg" className="w-full" loading={busy}
+                icon={mode === 'login' ? LogIn : UserPlus}>
+                {mode === 'login' ? 'Sign in' : 'Create account'}
+              </Button>
+            </form>
+            {mode === 'login' && (
+              <p className="mt-4 text-xs text-muted">
+                The demo account is filled in. Create your own account to keep a separate history of jobs and reports.
+              </p>
+            )}
+          </Card>
+        </SlideUp>
+      </div>
     </div>
   )
 }

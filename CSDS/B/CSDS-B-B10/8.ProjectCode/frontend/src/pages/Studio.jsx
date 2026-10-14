@@ -1,193 +1,307 @@
+import { Download, Lock, Unlock } from 'lucide-react'
 import { useEffect, useState } from 'react'
-import { CheckCircle2, Download, KeyRound, Lock, Unlock, XCircle } from 'lucide-react'
-import api, { download, errMsg, sourceForm } from '../api'
-import { ErrorBox, Figure, Histogram, KeyInput, SourcePicker, Spinner, Stat, fmt } from '../components/ui'
+import api, { describeError, download, sourceForm } from '../api'
+import ImagePanel from '../components/product/ImagePanel'
+import KeyField, { keyReady } from '../components/product/KeyField'
+import SourcePicker from '../components/product/SourcePicker'
+import { HistogramChart } from '../components/product/charts'
+import { PageHeader } from '../components/ui/AppShell'
+import { Button, FileDrop, Input, Select } from '../components/ui/controls'
+import { EmptyState, ErrorState, Skeleton, useToast } from '../components/ui/feedback'
+import { Badge, Card, KeyValueList } from '../components/ui/display'
+import Table from '../components/ui/Table'
+import { flipBit, HEX32, ms, num, when } from '../format'
 
-function flipBit(hex) {
-  const first = parseInt(hex.slice(0, 2), 16) ^ 1
-  return first.toString(16).padStart(2, '0') + hex.slice(2)
-}
+const BANDS = ['LH', 'HL', 'HH']
 
 export default function Studio() {
-  const [src, setSrc] = useState(null)
-  const [key, setKey] = useState('')
-  const [enc, setEnc] = useState(null)
-  const [dec, setDec] = useState(null)
-  const [decKey, setDecKey] = useState('')
-  const [busy, setBusy] = useState('')
-  const [error, setError] = useState('')
-  const [jobs, setJobs] = useState([])
-  const [fileDec, setFileDec] = useState({ file: null, nonce: '', key: '' })
-  const [fileRes, setFileRes] = useState(null)
+  const toast = useToast()
 
-  const loadJobs = () => api.get('/studio/jobs').then((r) => setJobs(r.data)).catch(() => {})
+  // encrypt
+  const [src, setSrc] = useState({})
+  const [key, setKey] = useState('')
+  const [busy, setBusy] = useState(false)
+  const [error, setError] = useState(null)
+  const [result, setResult] = useState(null)
+
+  // saved jobs
+  const [jobs, setJobs] = useState(null)
+  const [jobsError, setJobsError] = useState(null)
+
+  // decrypt a saved job
+  const [decJob, setDecJob] = useState('')
+  const [decKey, setDecKey] = useState('')
+  const [decBusy, setDecBusy] = useState(null) // 'ok' | 'wrong' while a request runs
+  const [decError, setDecError] = useState(null)
+  const [decResult, setDecResult] = useState(null)
+
+  // decrypt an uploaded cipher file
+  const [file, setFile] = useState(null)
+  const [nonce, setNonce] = useState('')
+  const [fileKey, setFileKey] = useState('')
+  const [fileBusy, setFileBusy] = useState(false)
+  const [fileError, setFileError] = useState(null)
+  const [fileResult, setFileResult] = useState(null)
+
+  const ready = !!(src.file || src.kind)
+
+  function loadJobs() {
+    return api.get('/studio/jobs')
+      .then((r) => { setJobs(r.data); setJobsError(null) })
+      .catch((e) => setJobsError(describeError(e, 'Could not load saved jobs')))
+  }
   useEffect(() => { loadJobs() }, [])
 
-  const run = async (label, fn) => {
-    setBusy(label)
-    setError('')
-    try { await fn() } catch (e) { setError(errMsg(e)) } finally { setBusy('') }
+  async function encrypt(e) {
+    e.preventDefault()
+    setBusy(true)
+    setError(null)
+    setResult(null)
+    setDecResult(null)
+    try {
+      const r = await api.post('/studio/encrypt', sourceForm(src, key))
+      setResult(r.data)
+      setKey(r.data.key)
+      setDecJob(String(r.data.job.id))
+      setDecKey(r.data.key)
+      toast({ tone: 'ok', title: 'Encrypted and saved', body: `job #${r.data.job.id} · ${r.data.job.width}×${r.data.job.height}` })
+      loadJobs()
+    } catch (err) {
+      setError(describeError(err, 'Encryption failed'))
+    } finally {
+      setBusy(false)
+    }
   }
 
-  const encrypt = () => run('encrypt', async () => {
-    const r = await api.post('/studio/encrypt', sourceForm(src, key))
-    setEnc(r.data)
-    setKey(r.data.key)
-    setDecKey(r.data.key)
-    setDec(null)
-    loadJobs()
-  })
-
-  const decrypt = (k) => run('decrypt', async () => {
+  async function decrypt(wrong) {
     const fd = new FormData()
-    fd.append('job_id', enc.job.id)
-    fd.append('key', k)
-    setDecKey(k)
-    setDec((await api.post('/studio/decrypt', fd)).data)
-  })
+    fd.append('key', wrong ? flipBit(decKey) : decKey)
+    fd.append('job_id', decJob)
+    setDecBusy(wrong ? 'wrong' : 'ok')
+    setDecError(null)
+    try {
+      const r = await api.post('/studio/decrypt', fd)
+      setDecResult({ wrong, ...r.data })
+      if (!wrong) {
+        toast(r.data.match
+          ? { tone: 'ok', title: 'Checksum matches', body: 'decrypted pixels are identical to the original' }
+          : { tone: 'alert', title: 'Checksum does not match', body: 'the key or the stored job does not fit' })
+      }
+    } catch (err) {
+      setDecError(describeError(err, 'Decryption failed'))
+    } finally {
+      setDecBusy(null)
+    }
+  }
 
-  const decryptFile = () => run('file', async () => {
+  async function decryptFile(e) {
+    e.preventDefault()
     const fd = new FormData()
-    fd.append('file', fileDec.file)
-    fd.append('nonce', fileDec.nonce)
-    fd.append('key', fileDec.key)
-    setFileRes((await api.post('/studio/decrypt', fd)).data)
-  })
+    fd.append('file', file)
+    fd.append('nonce', nonce)
+    fd.append('key', fileKey)
+    setFileBusy(true)
+    setFileError(null)
+    setFileResult(null)
+    try {
+      const r = await api.post('/studio/decrypt', fd)
+      setFileResult(r.data)
+    } catch (err) {
+      setFileError(describeError(err, 'Decryption failed'))
+    } finally {
+      setFileBusy(false)
+    }
+  }
+
+  async function downloadPng(job) {
+    try {
+      await download(`/studio/jobs/${job.id}/cipher.png`, `cipher_${job.id}_${job.nonce}.png`)
+      toast({ tone: 'ok', title: 'Cipher PNG downloaded', body: `job #${job.id}` })
+    } catch (err) {
+      toast({ tone: 'alert', title: 'Download failed', body: describeError(err).message })
+    }
+  }
+
+  const decReady = !!decJob && keyReady(decKey) && !decBusy
+  const fileReady = !!file && HEX32.test(nonce) && keyReady(fileKey) && !fileBusy
 
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold text-slate-900">Image studio</h1>
-        <p className="text-sm text-slate-500">Encrypt a drone image, inspect the wavelet sub-bands and the cipher, then decrypt it and verify the checksum.</p>
-      </div>
-      <div className="grid gap-6 lg:grid-cols-[320px_1fr]">
-        <div className="card h-fit space-y-4">
-          <SourcePicker value={src} onChange={setSrc} />
-          <KeyInput value={key} onChange={setKey} allowEmpty />
-          <button className="btn-primary w-full" onClick={encrypt} disabled={!src || !!busy || (key && !/^[0-9a-fA-F]{64}$/.test(key))}>
-            {busy === 'encrypt' ? <Spinner label="Encrypting..." /> : <><Lock className="h-4 w-4" /> Encrypt</>}
-          </button>
-          <ErrorBox error={error} />
+    <>
+      <PageHeader eyebrow="encrypt · decrypt"
+        title="Image studio"
+        subtitle="Encrypt a drone image and inspect every stage: wavelet sub-bands, the cipher image and both histograms. Then check that decryption restores it bit for bit." />
+
+      <div className="grid gap-6 xl:grid-cols-[minmax(0,360px)_minmax(0,1fr)]">
+        <div className="space-y-5">
+          <Card title="1 · Image">
+            <SourcePicker value={src} onChange={setSrc} id="studio-source" />
+          </Card>
+          <Card title="2 · Key">
+            <KeyField id="enc-key" value={key} onChange={setKey} optional />
+            <p className="mt-2 text-xs text-muted">Leave it empty to make a new key. Keep the key: decryption needs it.</p>
+          </Card>
+          <form onSubmit={encrypt} className="space-y-3">
+            <Button type="submit" size="lg" icon={Lock} loading={busy} disabled={!ready || !keyReady(key, true)} className="w-full">
+              Encrypt image
+            </Button>
+            {!ready && <p className="text-center font-mono text-[11px] text-dim">choose an image to enable encryption</p>}
+            {error && <ErrorState error={error} />}
+          </form>
         </div>
 
-        <div className="space-y-6">
-          {!enc && !busy && <div className="card text-sm text-slate-500">Pick an image and press Encrypt. Leave the key empty to generate a fresh 256-bit key.</div>}
-          {busy === 'encrypt' && !enc && <div className="card"><Spinner label="Running the wavelet + chaos pipeline..." /></div>}
-          {enc && (
-            <>
-              <div className="card space-y-4">
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <h2 className="h2">Encryption result - {enc.job.name}</h2>
-                  <button className="btn-secondary" onClick={() => download(`/studio/jobs/${enc.job.id}/cipher.png`, `cipher_${enc.job.id}_${enc.job.nonce}.png`)}>
-                    <Download className="h-4 w-4" /> Cipher PNG
-                  </button>
-                </div>
-                {enc.resized && <p className="text-xs text-amber-700">The upload was scaled to 1024 px on the long side before encryption.</p>}
-                <div className="grid gap-3 sm:grid-cols-3">
-                  <Figure src={enc.plain} caption="Original" pixel={false} />
-                  <Figure src={enc.coefficients} caption="Integer Haar DWT coefficients (LL | HL / LH | HH)" />
-                  <Figure src={enc.cipher} caption="Cipher image" />
-                </div>
-                <div className="grid gap-3 sm:grid-cols-4">
-                  <Stat label="Size" value={`${enc.job.width}×${enc.job.height}`} sub={`${enc.job.channels} channel(s)`} />
-                  <Stat label="Encryption" value={`${fmt(enc.job.enc_ms, 1)} ms`} sub={`+ ${fmt(enc.key_setup_ms, 0)} ms one-off key setup`} />
-                  <Stat label="Key fingerprint" value={<span className="font-mono text-base">{enc.job.key_fp}</span>} />
-                  <Stat label="Nonce" value={<span className="break-all font-mono text-xs">{enc.job.nonce}</span>} />
-                </div>
-                <div className="rounded-lg bg-amber-50 p-3 text-xs text-amber-800">
-                  <KeyRound className="mr-1 inline h-3.5 w-3.5" /> Key (keep it secret - it is not stored on the server):
-                  <div className="mt-1 break-all font-mono">{enc.key}</div>
-                </div>
-                <div className="text-xs text-slate-500">Original SHA-256: <span className="font-mono">{enc.job.plain_sha256}</span></div>
-              </div>
-
-              <div className="card">
-                <h2 className="h2 mb-3">Wavelet sub-bands (PyWavelets Haar, luminance)</h2>
-                <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-                  {['LL', 'LH', 'HL', 'HH'].map((b) => <Figure key={b} src={enc.subbands[b]} caption={b === 'LL' ? 'LL - approximation' : `${b} - detail`} />)}
-                </div>
-              </div>
-
-              <div className="card grid gap-4 sm:grid-cols-2">
-                <Histogram data={enc.histograms.plain} title="Histogram - original" />
-                <Histogram data={enc.histograms.cipher} title="Histogram - cipher (flat = good)" />
-              </div>
-
-              <div className="card space-y-3">
-                <h2 className="h2">Decrypt</h2>
-                <KeyInput value={decKey} onChange={setDecKey} label="Decryption key" />
-                <div className="flex flex-wrap gap-2">
-                  <button className="btn-primary" onClick={() => decrypt(decKey)} disabled={!!busy || !/^[0-9a-fA-F]{64}$/.test(decKey)}>
-                    {busy === 'decrypt' ? <Spinner label="Decrypting..." /> : <><Unlock className="h-4 w-4" /> Decrypt</>}
-                  </button>
-                  <button className="btn-secondary" onClick={() => decrypt(flipBit(enc.key))} disabled={!!busy}>
-                    Try a key with 1 bit flipped
-                  </button>
-                  <button className="btn-secondary" onClick={() => decrypt(enc.key)} disabled={!!busy}>Use the original key</button>
-                </div>
-                {dec && (
-                  <div className="grid gap-4 sm:grid-cols-[1fr_1fr]">
-                    <Figure src={dec.decrypted} caption={`Decrypted in ${fmt(dec.dec_ms, 1)} ms`} pixel={false} />
-                    <div className="space-y-3">
-                      <div className={`flex items-center gap-2 rounded-lg p-3 text-sm font-medium ${dec.match ? 'bg-emerald-50 text-emerald-700' : 'bg-rose-50 text-rose-700'}`}>
-                        {dec.match ? <CheckCircle2 className="h-5 w-5" /> : <XCircle className="h-5 w-5" />}
-                        {dec.match ? 'Checksum matches - image recovered bit-for-bit' : 'Checksum does not match - wrong key'}
-                      </div>
-                      <div className="text-xs text-slate-500">Decrypted SHA-256: <span className="break-all font-mono">{dec.sha256}</span></div>
-                      <Histogram data={dec.histogram} title="Histogram - decrypted" />
-                    </div>
-                  </div>
-                )}
-              </div>
-            </>
+        <div className="min-w-0 space-y-5">
+          {busy && (
+            <Card title="Encrypting">
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4"><Skeleton className="aspect-square" /><Skeleton className="aspect-square" /><Skeleton className="aspect-square" /><Skeleton className="aspect-square" /></div>
+            </Card>
           )}
 
-          <div className="card space-y-3">
-            <h2 className="h2">Decrypt a cipher file</h2>
-            <p className="text-xs text-slate-500">Upload a cipher PNG downloaded earlier, with its nonce (in the file name) and the key.</p>
-            <div className="grid gap-3 sm:grid-cols-3">
-              <input type="file" accept="image/png" className="input" onChange={(e) => {
-                const f = e.target.files[0]
-                const m = f?.name.match(/_([0-9a-f]{32})\.png$/)
-                setFileDec({ ...fileDec, file: f, nonce: m ? m[1] : fileDec.nonce })
-              }} />
-              <input className="input font-mono text-xs" placeholder="nonce (32 hex)" value={fileDec.nonce} onChange={(e) => setFileDec({ ...fileDec, nonce: e.target.value.trim() })} />
-              <input className="input font-mono text-xs" placeholder="key (64 hex)" value={fileDec.key} onChange={(e) => setFileDec({ ...fileDec, key: e.target.value.trim() })} />
-            </div>
-            <button className="btn-secondary" onClick={decryptFile} disabled={!fileDec.file || !fileDec.nonce || !fileDec.key || !!busy}>
-              {busy === 'file' ? <Spinner label="Decrypting..." /> : 'Decrypt file'}
-            </button>
-            {fileRes && (
-              <div className="grid gap-3 sm:grid-cols-2">
-                <Figure src={fileRes.decrypted} caption={`Decrypted in ${fmt(fileRes.dec_ms, 1)} ms`} pixel={false} />
-                <div className="text-xs text-slate-500">SHA-256 of the result: <span className="break-all font-mono">{fileRes.sha256}</span>
-                  <p className="mt-2">Compare it with the original checksum in the job list below.</p></div>
-              </div>
-            )}
-          </div>
+          {!busy && !result && (
+            <Card>
+              <EmptyState icon={Lock} title="No encryption yet"
+                body="Pick an image and press Encrypt. The result shows the wavelet sub-bands, the cipher image and the histograms before and after." />
+            </Card>
+          )}
 
-          <div className="card">
-            <h2 className="h2 mb-3">Recent encryptions</h2>
-            {jobs.length === 0 ? <p className="text-sm text-slate-500">No encryptions yet.</p> : (
-              <div className="overflow-x-auto">
-                <table className="w-full text-left text-sm">
-                  <thead className="text-xs uppercase text-slate-500"><tr><th className="py-2">#</th><th>Image</th><th>Size</th><th>Enc ms</th><th>Key fp</th><th>Original SHA-256</th><th /></tr></thead>
-                  <tbody>
-                    {jobs.map((j) => (
-                      <tr key={j.id} className="border-t border-slate-100">
-                        <td className="py-2">{j.id}</td><td className="max-w-[180px] truncate">{j.name}</td><td>{j.width}×{j.height}</td>
-                        <td>{fmt(j.enc_ms, 1)}</td><td className="font-mono text-xs">{j.key_fp}</td>
-                        <td className="font-mono text-xs">{j.plain_sha256.slice(0, 16)}…</td>
-                        <td><button className="text-sky-600 hover:underline" onClick={() => download(`/studio/jobs/${j.id}/cipher.png`, `cipher_${j.id}_${j.nonce}.png`)}>cipher</button></td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+          {result && (
+            <Card title={`Encryption result · job #${result.job.id}`} eyebrow={result.resized ? 'image resized to fit 1024 px' : 'original resolution'}>
+              <KeyValueList cols={2} items={[
+                ['Image', result.job.name],
+                ['Size', `${result.job.width} × ${result.job.height}, ${result.job.channels} channel${result.job.channels > 1 ? 's' : ''}`],
+                ['Nonce', <code key="n" className="break-all">{result.job.nonce}</code>],
+                ['Key fingerprint', <code key="f" className="break-all">{result.job.key_fp}</code>],
+                ['Key setup (once per key)', ms(result.key_setup_ms)],
+                ['Encryption', ms(result.job.enc_ms)],
+              ]} />
+
+              <div className="mt-5 grid grid-cols-2 gap-3 md:grid-cols-4">
+                <ImagePanel src={result.plain} caption="Original" />
+                <ImagePanel src={result.cipher} caption="Cipher" />
+                <ImagePanel src={result.coefficients} caption="Wavelet coefficients" />
+                <ImagePanel src={result.subbands.LL} caption="Sub-band LL" />
+                {BANDS.map((b) => <ImagePanel key={b} src={result.subbands[b]} caption={`Sub-band ${b}`} />)}
+              </div>
+
+              <div className="mt-6 grid gap-5 md:grid-cols-2">
+                <div>
+                  <div className="mb-2 font-mono text-[11px] uppercase tracking-[0.12em] text-dim">Original histogram</div>
+                  <HistogramChart hist={result.histograms.plain} label="Original histogram" />
+                </div>
+                <div>
+                  <div className="mb-2 font-mono text-[11px] uppercase tracking-[0.12em] text-dim">Cipher histogram</div>
+                  <HistogramChart hist={result.histograms.cipher} label="Cipher histogram" />
+                </div>
+              </div>
+
+              <div className="mt-5 flex flex-wrap gap-2">
+                <Button variant="secondary" icon={Download} onClick={() => downloadPng(result.job)}>Download cipher PNG</Button>
+              </div>
+            </Card>
+          )}
+
+          <Card title="Decrypt a saved job" eyebrow="checksum check">
+            {jobs === null && !jobsError ? <Skeleton className="h-40 w-full" /> : (
+              <div className="space-y-4">
+                {jobsError && <ErrorState error={jobsError} compact onRetry={loadJobs} />}
+                <Select id="dec-job" label="Encrypted image" value={decJob}
+                  onChange={(e) => { setDecJob(e.target.value); setDecResult(null) }}
+                  options={[['', jobs?.length ? 'choose a job…' : 'no saved jobs yet'],
+                    ...(jobs || []).map((j) => [String(j.id), `#${j.id} · ${j.name} · ${j.width}×${j.height}`])]} />
+                <KeyField id="dec-key" value={decKey} onChange={(v) => { setDecKey(v); setDecResult(null) }}
+                  label="Key used to encrypt this image" allowNew={false} />
+                <div className="flex flex-wrap gap-2">
+                  <Button icon={Unlock} loading={decBusy === 'ok'} disabled={!decReady} onClick={() => decrypt(false)}>Decrypt</Button>
+                  <Button variant="secondary" icon={Lock} loading={decBusy === 'wrong'} disabled={!decReady} onClick={() => decrypt(true)}>
+                    Try a key with 1 bit flipped
+                  </Button>
+                </div>
+                {decError && <ErrorState error={decError} compact />}
+                {decResult && <DecryptResult r={decResult} />}
               </div>
             )}
-          </div>
+          </Card>
+
+          <Card title="Decrypt a cipher file" eyebrow="upload + nonce">
+            <form onSubmit={decryptFile} className="space-y-4">
+              <FileDrop label="Drop a cipher PNG here" accept="image/png" multiple={false}
+                onFiles={(files) => setFile(files[0] || null)} />
+              <Input id="file-nonce" label="Nonce (32 hex characters)" value={nonce} onChange={(e) => setNonce(e.target.value.trim())}
+                spellCheck={false} autoComplete="off" maxLength={32} className="font-mono"
+                error={nonce && !HEX32.test(nonce) ? 'Needs exactly 32 hex characters' : undefined}
+                hint="The downloaded PNG is named cipher_<job>_<nonce>.png, so the nonce is in its file name." />
+              <KeyField id="file-key" value={fileKey} onChange={setFileKey} label="Key" allowNew={false} />
+              <Button type="submit" icon={Unlock} loading={fileBusy} disabled={!fileReady}>Decrypt file</Button>
+              {fileError && <ErrorState error={fileError} compact />}
+              {fileResult && (
+                <div className="space-y-3 rounded-[6px] border border-line p-3">
+                  <ImagePanel src={fileResult.decrypted} caption="Decrypted" className="max-w-xs" />
+                  <KeyValueList items={[['SHA-256 of decrypted pixels', <code key="s" className="break-all">{fileResult.sha256}</code>],
+                    ['Decryption time', ms(fileResult.dec_ms)]]} />
+                  <p className="text-xs text-muted">Uploaded cipher files have no stored checksum. Compare the result with the original yourself.</p>
+                </div>
+              )}
+            </form>
+          </Card>
+
+          <Card title="Recent encryptions" bodyClass="p-0">
+            <div className="px-4 pb-4 pt-3">
+              {jobsError && !jobs && <ErrorState error={jobsError} compact onRetry={loadJobs} />}
+              <Table
+                loading={!jobs && !jobsError}
+                rowKey={(j) => j.id}
+                rows={jobs}
+                empty={<EmptyState title="No encrypted images yet" body="Encrypt an image above and it appears here." />}
+                columns={[
+                  { key: 'id', label: '#', render: (j) => <span className="font-mono">{j.id}</span> },
+                  { key: 'name', label: 'Image', className: 'max-w-[200px] truncate' },
+                  { key: 'size', label: 'Size', render: (j) => `${j.width}×${j.height}` },
+                  { key: 'created', label: 'Created', render: (j) => when(j.created_at) },
+                  { key: 'actions', label: '', align: 'right', render: (j) => (
+                    <span className="inline-flex gap-1.5">
+                      <Button size="sm" variant="ghost" icon={Download} onClick={() => downloadPng(j)}>PNG</Button>
+                      <Button size="sm" variant="ghost" icon={Unlock} onClick={() => { setDecJob(String(j.id)); setDecResult(null) }}>Decrypt</Button>
+                    </span>
+                  ) },
+                ]}
+              />
+            </div>
+          </Card>
         </div>
       </div>
+    </>
+  )
+}
+
+// Result of a checksum decrypt. A wrong key is expected to fail: that is the test.
+function DecryptResult({ r }) {
+  let badge
+  if (r.wrong) badge = <Badge tone={r.match === false ? 'alert' : 'warn'}>{r.match === false ? 'wrong key: decryption failed' : 'unexpected match'}</Badge>
+  else if (r.match === true) badge = <Badge tone="ok" dot>checksum matches</Badge>
+  else if (r.match === false) badge = <Badge tone="alert" dot>checksum does not match</Badge>
+  else badge = <Badge>no stored checksum</Badge>
+  return (
+    <div className="space-y-3 rounded-[6px] border border-line p-3">
+      <div className="flex flex-wrap items-center gap-2">
+        {badge}
+        {r.wrong && <span className="text-xs text-muted">Flipping one key bit should turn the image into noise.</span>}
+      </div>
+      <ImagePanel src={r.decrypted} caption={r.wrong ? 'Decrypted with 1-bit-wrong key' : 'Decrypted'} className="max-w-xs" />
+      <KeyValueList items={[
+        ['SHA-256 of decrypted pixels', <code key="s" className="break-all">{r.sha256}</code>],
+        ['SHA-256 stored with the job', r.expected_sha256 ? <code key="e" className="break-all">{r.expected_sha256}</code> : '—'],
+        ['Key matches the job', r.key_matches_job === null ? '—' : r.key_matches_job ? 'yes' : 'no'],
+        ['Decryption time', ms(r.dec_ms)],
+        ['Mean brightness (decrypted)', num(meanOf(r.histogram), 1)],
+      ]} />
     </div>
   )
+}
+
+// Mean pixel value from a histogram ({ gray: [256] } or { r, g, b }).
+function meanOf(hist) {
+  const bins = hist?.gray || hist?.r
+  if (!bins) return null
+  const total = bins.reduce((a, b) => a + b, 0)
+  if (!total) return null
+  return bins.reduce((a, c, v) => a + c * v, 0) / total
 }

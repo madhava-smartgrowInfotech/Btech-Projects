@@ -37,8 +37,9 @@ cd frontend && npm run dev
 
 ## Demo walkthrough
 
-1. **Image studio** - pick a drone image, press *Encrypt*. The cipher looks like noise and its histogram is
-   flat. Press *Decrypt*: "Checksum matches". Press *Try a key with 1 bit flipped*: decryption fails.
+1. **Image studio** - pick a drone image, press *Encrypt image*. The cipher looks like noise and its histogram is
+   flat. In *Decrypt a saved job*, press *Decrypt*: "Checksum matches". Press *Try a key with 1 bit flipped*:
+   decryption fails.
 2. **Security lab** - press *Run security analysis*: entropy ~7.999, NPCR ~99.61 %, UACI ~33.46 %,
    correlation ~0. Press *Run attack tests* to see how much survives noise and cropping. Export the report
    as HTML.

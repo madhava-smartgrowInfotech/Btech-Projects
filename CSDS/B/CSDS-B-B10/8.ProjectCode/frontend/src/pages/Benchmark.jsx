@@ -1,74 +1,151 @@
+import { Gauge, Play } from 'lucide-react'
 import { useEffect, useState } from 'react'
-import { Gauge } from 'lucide-react'
-import api, { errMsg } from '../api'
-import { Bars, ErrorBox, Spinner, fmt } from '../components/ui'
+import api, { describeError } from '../api'
+import { BenchChart } from '../components/product/charts'
+import { PageHeader } from '../components/ui/AppShell'
+import { Button, Select, Input } from '../components/ui/controls'
+import { Badge, Card, KeyValueList } from '../components/ui/display'
+import { EmptyState, ErrorState, Skeleton, useToast } from '../components/ui/feedback'
+import Table from '../components/ui/Table'
+import { num, when } from '../format'
 
-function Result({ run }) {
-  return (
-    <div className="card space-y-5">
-      <div>
-        <h2 className="h2">Run #{run.id} - {run.images} image(s) at {run.size}×{run.size} RGB</h2>
-        <p className="text-xs text-slate-500">{new Date(/Z|[+-]\d\d:\d\d$/.test(run.created_at) ? run.created_at : run.created_at + 'Z').toLocaleString()} · median of {run.repeats} repeat(s) per image · {(run.bytes_per_image / 1024).toFixed(0)} KB per image · {run.cpu} CPU threads</p>
-      </div>
-      <div className="overflow-x-auto">
-        <table className="w-full text-left text-sm">
-          <thead className="text-xs uppercase text-slate-500">
-            <tr><th className="py-1">Algorithm</th><th>Encrypt ms</th><th>Decrypt ms</th><th>Enc MB/s</th><th>Dec MB/s</th><th>Frames/s (enc+dec)</th><th>Cipher entropy</th><th>|Corr. H|</th><th>Lossless</th></tr>
-          </thead>
-          <tbody>{run.results.map((r) => (
-            <tr key={r.algorithm} className={`border-t border-slate-100 ${r.algorithm === 'SkyCipher' ? 'font-medium' : ''}`}>
-              <td className="py-1.5">{r.algorithm}</td><td>{fmt(r.enc_ms, 2)}</td><td>{fmt(r.dec_ms, 2)}</td>
-              <td>{fmt(r.enc_mbps, 1)}</td><td>{fmt(r.dec_mbps, 1)}</td><td>{fmt(r.fps_capacity, 1)}</td>
-              <td>{fmt(r.cipher_entropy, 4)}</td><td>{fmt(r.cipher_corr_h, 4)}</td><td>{r.lossless ? 'yes' : 'no'}</td>
-            </tr>
-          ))}</tbody>
-        </table>
-      </div>
-      <div className="grid gap-6 md:grid-cols-2">
-        <Bars rows={run.results} valueKey="enc_ms" label="Encryption time per image (lower is faster)" unit="ms" />
-        <Bars rows={run.results} valueKey="dec_ms" label="Decryption time per image" unit="ms" />
-      </div>
-      <p className="text-xs text-slate-500">AES-256-CTR and ChaCha20 run as optimised native code (OpenSSL via the cryptography package) and treat the image as a byte stream. SkyCipher runs in NumPy and adds the wavelet transform, permutation and image-aware diffusion; the frames/s column shows whether it keeps up with a live video link.</p>
-    </div>
-  )
-}
+const SIZES = [256, 512, 1024]
 
 export default function Benchmark() {
-  const [cfg, setCfg] = useState({ size: 512, images: 5, repeats: 3 })
-  const [runs, setRuns] = useState([])
+  const toast = useToast()
+  const [size, setSize] = useState(512)
+  const [images, setImages] = useState(5)
+  const [repeats, setRepeats] = useState(3)
   const [busy, setBusy] = useState(false)
-  const [error, setError] = useState('')
-  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+  const [result, setResult] = useState(null)
+  const [runs, setRuns] = useState(null)
+  const [runsError, setRunsError] = useState(null)
 
-  useEffect(() => { api.get('/bench/runs').then((r) => setRuns(r.data)).catch((e) => setError(errMsg(e))).finally(() => setLoading(false)) }, [])
+  const imagesOk = Number(images) >= 1 && Number(images) <= 20
+  const repeatsOk = Number(repeats) >= 1 && Number(repeats) <= 10
+  const canRun = imagesOk && repeatsOk && !busy
 
-  const run = async () => {
-    setBusy(true); setError('')
+  function loadRuns() {
+    return api.get('/bench/runs')
+      .then((r) => { setRuns(r.data); setRunsError(null) })
+      .catch((e) => setRunsError(describeError(e, 'Could not load past runs')))
+  }
+  useEffect(() => { loadRuns() }, [])
+
+  async function run(e) {
+    e.preventDefault()
+    setBusy(true)
+    setError(null)
     try {
-      const r = await api.post('/bench/run', cfg)
-      setRuns([r.data, ...runs])
-    } catch (e) { setError(errMsg(e)) } finally { setBusy(false) }
+      const r = await api.post('/bench/run', { size: Number(size), images: Number(images), repeats: Number(repeats) })
+      setResult(r.data)
+      toast({ tone: 'ok', title: 'Benchmark finished', body: `${r.data.images} images at ${r.data.size}×${r.data.size}` })
+      loadRuns()
+    } catch (err) {
+      setError(describeError(err, 'Benchmark failed'))
+    } finally {
+      setBusy(false)
+    }
   }
 
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold text-slate-900">Benchmark</h1>
-        <p className="text-sm text-slate-500">Encryption and decryption time of SkyCipher against AES-256-CTR and ChaCha20 on the same drone images.</p>
+    <>
+      <PageHeader eyebrow="speed · same images, same machine"
+        title="Benchmark"
+        subtitle="SkyCipher against AES-256-CTR and ChaCha20 on the same drone images. Times are the mean of the repeats, per image." />
+
+      <div className="grid gap-6 xl:grid-cols-[minmax(0,360px)_minmax(0,1fr)]">
+        <div className="space-y-5">
+          <Card title="Run">
+            <form onSubmit={run} className="space-y-4">
+              <Select id="bench-size" label="Image size (square)" value={size} onChange={(e) => setSize(e.target.value)}
+                options={SIZES.map((s) => [String(s), `${s} × ${s}`])} />
+              <Input id="bench-images" type="number" min={1} max={20} label="Images (1 to 20)" value={images}
+                onChange={(e) => setImages(e.target.value)} error={imagesOk ? undefined : 'Use 1 to 20'} />
+              <Input id="bench-repeats" type="number" min={1} max={10} label="Repeats (1 to 10)" value={repeats}
+                onChange={(e) => setRepeats(e.target.value)} error={repeatsOk ? undefined : 'Use 1 to 10'}
+                hint="The first images of the bundled VisDrone set are used." />
+              <Button type="submit" size="lg" icon={Play} loading={busy} disabled={!canRun} className="w-full">Run benchmark</Button>
+              {error && <ErrorState error={error} compact />}
+            </form>
+          </Card>
+        </div>
+
+        <div className="min-w-0 space-y-5">
+          {busy && (
+            <Card title="Running">
+              <div className="space-y-3"><Skeleton className="h-64 w-full" /><Skeleton className="h-40 w-full" /></div>
+            </Card>
+          )}
+
+          {!busy && !result && (
+            <Card>
+              <EmptyState icon={Gauge} title="No benchmark on screen"
+                body="Choose a size and run it, or open a past run below." />
+            </Card>
+          )}
+
+          {result && !busy && (
+            <Card title={`Run #${result.id}`} eyebrow={when(result.created_at)}>
+              <KeyValueList cols={2} items={[
+                ['Image size', `${result.size} × ${result.size}`],
+                ['Images × repeats', `${result.images} × ${result.repeats}`],
+                ['Bytes per image', `${result.bytes_per_image.toLocaleString('en-GB')} B`],
+                ['CPU threads', String(result.cpu)],
+              ]} />
+              <div className="mt-5"><BenchChart rows={result.results} label="Encrypt and decrypt time per image, lower is better" /></div>
+              <div className="mt-5 -mx-4 overflow-x-auto px-4">
+                <ResultsTable rows={result.results} />
+              </div>
+            </Card>
+          )}
+
+          <Card title="Past runs" bodyClass="p-0">
+            <div className="px-4 pb-4 pt-3">
+              {runsError && <ErrorState error={runsError} compact onRetry={loadRuns} />}
+              <Table
+                loading={!runs && !runsError}
+                rowKey={(r) => r.id}
+                rows={runs}
+                empty={<EmptyState title="No runs yet" body="Run the benchmark: each run is saved here." />}
+                columns={[
+                  { key: 'when', label: 'When', render: (r) => when(r.created_at) },
+                  { key: 'size', label: 'Size', render: (r) => `${r.size}²` },
+                  { key: 'images', label: 'Images', align: 'right', render: (r) => `${r.images} × ${r.repeats}` },
+                  { key: 'sky', label: 'SkyCipher enc', align: 'right', render: (r) => `${num(r.results[0]?.enc_ms, 1)} ms` },
+                  { key: 'aes', label: 'AES enc', align: 'right', render: (r) => `${num(r.results[1]?.enc_ms, 2)} ms` },
+                  { key: 'cha', label: 'ChaCha enc', align: 'right', render: (r) => `${num(r.results[2]?.enc_ms, 2)} ms` },
+                  { key: 'open', label: '', align: 'right', render: (r) => (
+                    <Button size="sm" variant="ghost" onClick={() => setResult(r)}>Open</Button>
+                  ) },
+                ]}
+              />
+            </div>
+          </Card>
+        </div>
       </div>
-      <div className="card flex flex-wrap items-end gap-4">
-        <div><label className="label">Image size</label>
-          <select className="input" value={cfg.size} onChange={(e) => setCfg({ ...cfg, size: Number(e.target.value) })}>
-            {[256, 512, 1024].map((s) => <option key={s} value={s}>{s}×{s}</option>)}
-          </select></div>
-        <div><label className="label">Images</label><input type="number" min="1" max="20" className="input w-24" value={cfg.images} onChange={(e) => setCfg({ ...cfg, images: Number(e.target.value) })} /></div>
-        <div><label className="label">Repeats</label><input type="number" min="1" max="10" className="input w-24" value={cfg.repeats} onChange={(e) => setCfg({ ...cfg, repeats: Number(e.target.value) })} /></div>
-        <button className="btn-primary" onClick={run} disabled={busy}>{busy ? <Spinner label="Benchmarking..." /> : <><Gauge className="h-4 w-4" /> Run benchmark</>}</button>
-        <div className="w-full"><ErrorBox error={error} /></div>
-      </div>
-      {loading && <Spinner label="Loading previous runs..." />}
-      {!loading && runs.length === 0 && !busy && <div className="card text-sm text-slate-500">No benchmark runs yet.</div>}
-      {runs.map((r) => <Result key={r.id} run={r} />)}
-    </div>
+    </>
+  )
+}
+
+// Per-algorithm numbers. Lossless = decrypted pixels equal the original on every image.
+function ResultsTable({ rows }) {
+  return (
+    <Table
+      rowKey={(r) => r.algorithm}
+      columns={[
+        { key: 'algorithm', label: 'Algorithm' },
+        { key: 'enc', label: 'Encrypt', align: 'right', render: (r) => `${num(r.enc_ms, 2)} ms` },
+        { key: 'dec', label: 'Decrypt', align: 'right', render: (r) => `${num(r.dec_ms, 2)} ms` },
+        { key: 'encmb', label: 'Encrypt MB/s', align: 'right', render: (r) => num(r.enc_mbps, 1) },
+        { key: 'decmb', label: 'Decrypt MB/s', align: 'right', render: (r) => num(r.dec_mbps, 1) },
+        { key: 'fps', label: 'Frames/s (enc+dec)', align: 'right', render: (r) => num(r.fps_capacity, 1) },
+        { key: 'ent', label: 'Cipher entropy', align: 'right', render: (r) => num(r.cipher_entropy, 4) },
+        { key: 'corr', label: '|corr H|', align: 'right', render: (r) => num(r.cipher_corr_h, 4) },
+        { key: 'lossless', label: 'Lossless', render: (r) => (r.lossless ? <Badge tone="ok">yes</Badge> : <Badge tone="alert">no</Badge>) },
+      ]}
+      rows={rows}
+    />
   )
 }

@@ -1,53 +1,97 @@
+import { ArrowRight, Gauge, Image as ImageIcon, Radio, ShieldCheck } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { Activity, Gauge, ImageIcon, Layers, LockKeyhole, Radio, ShieldCheck, Zap } from 'lucide-react'
+import Backdrop from '../components/reactbits/Backdrop'
+import { FadeIn, Reveal, SlideUp, Stagger } from '../components/motion'
+import { Button } from '../components/ui/controls'
+import { StatCard, StatusDot } from '../components/ui/display'
+import Logo from '../components/ui/Logo'
+import Typewriter from '../components/ui/Typewriter'
+import { useAuth } from '../lib/auth'
 
-const features = [
-  [Layers, 'Wavelet + chaos engine', 'Integer Haar lifting splits every frame into LL / LH / HL / HH sub-bands; Henon and 2-D logistic key streams drive permutation and XOR diffusion. Decryption is bit-exact.'],
-  [ImageIcon, 'Image studio', 'Encrypt and decrypt drone imagery, inspect the sub-bands, the cipher image and the histograms, and verify the SHA-256 checksum.'],
-  [ShieldCheck, 'Security lab', 'Entropy, histogram uniformity, correlation, NPCR, UACI, PSNR, MSE, SSIM, key sensitivity and key space - exportable as a report.'],
-  [Activity, 'Attack tests', 'Salt-and-pepper noise, Gaussian noise and cropping applied to the cipher image, with the recovered quality measured.'],
-  [Radio, 'Live UAV link', 'A sender streams encrypted drone frames over a WebSocket; the ground station decrypts them with FPS, latency and throughput on screen.'],
-  [Gauge, 'Benchmark', 'Encryption and decryption time against AES-256-CTR and ChaCha20 on the same images.'],
+// Numbers from README "Evaluation results" (66 images, experiments/eval/metrics.json). Static, not live.
+const EVIDENCE = [
+  { label: 'Entropy, cipher', value: 7.9996, format: (v) => v.toFixed(4), sub: 'ideal 8' },
+  { label: 'Correlation, adjacent', value: 0.0001, format: (v) => v.toFixed(4), sub: 'horizontal · ideal 0' },
+  { label: 'NPCR, 1-pixel change', value: 99.61, format: (v) => `${v.toFixed(2)}%`, sub: 'ideal 99.61%' },
+  { label: 'UACI, 1-pixel change', value: 33.46, format: (v) => `${v.toFixed(2)}%`, sub: 'ideal 33.46%' },
 ]
 
-export default function Landing({ user }) {
+const FEATURES = [
+  { icon: ImageIcon, title: 'Wavelet and chaos', body: 'Integer Haar wavelet, Henon-map permutation, logistic key streams and XOR diffusion with a key-dependent S-box. The key is 256 bits, with a public 128-bit nonce per image.' },
+  { icon: ShieldCheck, title: 'Security lab', body: 'Entropy, chi-square, neighbour correlation, NPCR and UACI, key sensitivity, and attack tests on the cipher. Each report exports as HTML or JSON.' },
+  { icon: Radio, title: 'Live UAV link', body: 'A sender streams encrypted drone frames over a WebSocket. The ground station decrypts with its own key and shows frame rate, latency and throughput.' },
+  { icon: Gauge, title: 'Benchmark', body: 'Encryption and decryption time against AES-256-CTR and ChaCha20 on the same images, with the lossless check on every run.' },
+]
+
+export default function Landing() {
+  const { user } = useAuth()
+  const target = user ? '/studio' : '/login'
+
   return (
-    <div className="min-h-screen bg-slate-900 text-white">
-      <header className="mx-auto flex max-w-6xl items-center justify-between px-4 py-5">
-        <div className="flex items-center gap-2 text-lg font-semibold"><LockKeyhole className="h-6 w-6 text-sky-400" /> SkyCipher</div>
-        <Link to={user ? '/studio' : '/login'} className="btn-primary">{user ? 'Open console' : 'Sign in'}</Link>
+    <div className="relative min-h-screen overflow-hidden">
+      <Backdrop intensity={0.7} className="absolute inset-x-0 top-0 z-0 h-[95vh] fade-mask opacity-80" />
+
+      <header className="relative z-10 mx-auto flex max-w-[1200px] items-center justify-between gap-4 px-4 py-5 sm:px-6">
+        <Logo />
+        <nav className="flex items-center gap-2" aria-label="Account">
+          <Link to={target}><Button variant={user ? 'primary' : 'secondary'} size="sm">{user ? 'Open studio' : 'Sign in'}</Button></Link>
+        </nav>
       </header>
-      <section className="mx-auto max-w-6xl px-4 pb-16 pt-12">
-        <p className="mb-3 inline-flex items-center gap-2 rounded-full bg-sky-500/10 px-3 py-1 text-xs font-medium text-sky-300">
-          <Zap className="h-3.5 w-3.5" /> Real-time image encryption for drone links
-        </p>
-        <h1 className="max-w-3xl text-4xl font-bold leading-tight sm:text-5xl">
-          Lightweight, chaos-based encryption for every frame your UAV sends.
+
+      <section className="relative z-10 mx-auto max-w-[1200px] px-4 pb-16 pt-10 sm:px-6 sm:pt-16">
+        <FadeIn>
+          <div className="mb-4 flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-ok">
+            <StatusDot tone="ok" ring /> SkyCipher · drone link encryption
+          </div>
+        </FadeIn>
+        <h1 className="max-w-4xl font-mono text-3xl font-semibold leading-tight tracking-tight text-fg sm:text-5xl">
+          <Typewriter text="Encrypt drone video before it leaves the aircraft." speed={22} />
         </h1>
-        <p className="mt-5 max-w-2xl text-lg text-slate-300">
-          SkyCipher decomposes imagery with a wavelet transform, scrambles it with chaotic key streams and diffuses it
-          with XOR - fast enough for live video, and backed by a full security lab so auditors can check the numbers.
-        </p>
-        <div className="mt-8 flex flex-wrap gap-3">
-          <Link to={user ? '/studio' : '/login'} className="btn-primary px-6 py-3 text-base">Get started</Link>
-          <Link to={user ? '/live' : '/login'} className="btn px-6 py-3 text-base border border-slate-600 text-slate-200 hover:bg-slate-800">See the live link</Link>
-        </div>
+        <SlideUp delay={0.15}>
+          <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
+            Chaos-based image encryption built on a Haar wavelet transform and XOR diffusion. It is light enough for live
+            transmission, and every decryption is checked bit for bit with SHA-256.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link to={target}>
+              <Button size="lg" icon={ArrowRight}>{user ? 'Open the image studio' : 'Sign in to start'}</Button>
+            </Link>
+            <Link to="/live"><Button size="lg" variant="secondary" icon={Radio}>Live link</Button></Link>
+          </div>
+        </SlideUp>
       </section>
-      <section className="bg-slate-50 py-14 text-slate-900">
-        <div className="mx-auto grid max-w-6xl gap-5 px-4 sm:grid-cols-2 lg:grid-cols-3">
-          {features.map(([Icon, title, text]) => (
-            <div key={title} className="card">
-              <Icon className="h-6 w-6 text-sky-600" />
-              <h3 className="mt-3 font-semibold">{title}</h3>
-              <p className="mt-1 text-sm text-slate-600">{text}</p>
+
+      <section className="relative z-10 mx-auto max-w-[1200px] px-4 pb-16 sm:px-6" aria-labelledby="evidence-title">
+        <h2 id="evidence-title" className="mb-4 font-mono text-[11px] uppercase tracking-[0.16em] text-dim">
+          Evaluation · 66 images · from the README
+        </h2>
+        <Reveal stagger={0.08} className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+          {EVIDENCE.map((e) => (
+            <StatCard key={e.label} label={e.label} value={e.value} format={e.format} sub={e.sub} tone="ok" />
+          ))}
+        </Reveal>
+        <p className="mt-3 font-mono text-[11px] text-dim">
+          Decryption is bit-identical on all 66 images. Key space 2^256 plus a 128-bit nonce.
+        </p>
+      </section>
+
+      <section className="relative z-10 mx-auto max-w-[1200px] px-4 pb-24 sm:px-6" aria-labelledby="features-title">
+        <h2 id="features-title" className="mb-4 font-mono text-[11px] uppercase tracking-[0.16em] text-dim">What is in the app</h2>
+        <Stagger className="grid gap-3 sm:grid-cols-2">
+          {FEATURES.map(({ icon: Icon, title, body }) => (
+            <div key={title} className="panel scan h-full p-5">
+              <div className="relative z-[1] flex items-center gap-2 font-mono text-sm text-fg">
+                <Icon size={16} className="text-ok" aria-hidden="true" /> {title}
+              </div>
+              <p className="relative z-[1] mt-2 text-sm leading-relaxed text-muted">{body}</p>
             </div>
           ))}
-        </div>
-        <p className="mx-auto mt-10 max-w-6xl px-4 text-sm text-slate-500">
-          Built for drone operators in survey, agriculture, inspection and disaster response, ground-station crews, and
-          security auditors validating the link.
-        </p>
+        </Stagger>
       </section>
+
+      <footer className="relative z-10 border-t border-line px-4 py-6 text-center font-mono text-[11px] text-dim sm:px-6">
+        Sample images: VisDrone and USC-SIPI · demo account on the sign-in page
+      </footer>
     </div>
   )
 }

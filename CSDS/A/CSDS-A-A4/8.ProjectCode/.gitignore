@@ -1,0 +1,9 @@
+# local secrets and ports
+.env
+
+# frontend build output / deps
+frontend/node_modules/
+frontend/dist/
+
+__pycache__/
+*.pyc

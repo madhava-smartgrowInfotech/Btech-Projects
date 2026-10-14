@@ -1,7 +1,16 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { ArrowRight, CheckCircle2, Loader2, Play, RotateCcw } from 'lucide-react'
+import { ArrowRight, CheckCircle2, Play, RotateCcw, Workflow } from 'lucide-react'
 import api, { errorMessage } from '../api'
-import { Badge, ErrorBox, Loading, PageHeader } from '../components/ui'
+import { useAuth } from '../lib/auth'
+import { TONE_COLOR } from '../lib/hospi'
+import { useToast } from '../components/ui/Toast'
+import { PageHeader } from '../components/ui/Layout'
+import { Button } from '../components/ui/Button'
+import { Select } from '../components/ui/Form'
+import { Badge, Card, StatCard } from '../components/ui/Display'
+import { Alert, EmptyState, ErrorState, SkeletonBlock } from '../components/ui/Feedback'
+import { Modal } from '../components/ui/Feedback'
+import { Table } from '../components/ui/Table'
 
 const GROUPS = [
   ['bed_conversion', 'Bed conversions'],
@@ -11,68 +20,97 @@ const GROUPS = [
   ['equipment_transfer', 'Equipment transfers'],
 ]
 
+const HORIZON_OPTS = [
+  { value: 3, label: 'Next 3 days' },
+  { value: 7, label: 'Next 7 days' },
+  { value: 14, label: 'Next 14 days' },
+]
+const LEVEL_OPTS = [
+  { value: 'expected', label: 'Expected peak' },
+  { value: 'p90', label: '90% upper band (cautious)' },
+]
+
 function describe(a) {
   switch (a.type) {
     case 'bed_conversion':
-      return <>Facility {a.facility}: {a.from_ward} <ArrowRight size={12} className="inline" /> {a.to_ward} beds</>
+      return (
+        <>
+          Facility {a.facility}: {a.from_ward} <ArrowRight size={12} aria-hidden="true" className="inline" /> {a.to_ward} beds
+        </>
+      )
     case 'diversion':
-      return <>{a.ward} admissions: Facility {a.facility} <ArrowRight size={12} className="inline" /> Facility {a.to_facility}</>
+      return (
+        <>
+          {a.ward} admissions: Facility {a.facility} <ArrowRight size={12} aria-hidden="true" /> Facility {a.to_facility}
+        </>
+      )
     case 'nurse_float':
-      return <>Facility {a.facility} {a.shift}: {a.from_ward} <ArrowRight size={12} className="inline" /> {a.to_ward} nurses</>
+      return (
+        <>
+          Facility {a.facility} {a.shift}: {a.from_ward} <ArrowRight size={12} aria-hidden="true" /> {a.to_ward} nurses
+        </>
+      )
     case 'extra_shift':
-      return <>Facility {a.facility} {a.ward}: extra {a.shift} nurses</>
+      return (
+        <>
+          Facility {a.facility} {a.ward}: extra {a.shift} nurses
+        </>
+      )
     case 'equipment_transfer':
-      return <>{a.item}: Facility {a.facility} <ArrowRight size={12} className="inline" /> Facility {a.to_facility}</>
+      return (
+        <>
+          {a.item}: Facility {a.facility} <ArrowRight size={12} aria-hidden="true" /> Facility {a.to_facility}
+        </>
+      )
     default:
       return a.type
   }
 }
 
 function Compare({ label, before, after }) {
-  const better = after < before
-  return (
-    <div className="card p-4">
-      <div className="text-xs font-medium text-slate-500 uppercase tracking-wide">{label}</div>
-      <div className="flex items-baseline gap-2 mt-2">
-        <span className="text-xl font-semibold text-slate-400 line-through decoration-1">{before}</span>
-        <ArrowRight size={14} className="text-slate-400" />
-        <span className={`text-2xl font-semibold ${after === 0 ? 'text-teal-700' : better ? 'text-amber-700' : 'text-red-700'}`}>{after}</span>
-      </div>
-      <div className="text-xs text-slate-500 mt-1">current allocation vs with plan (at forecast peak)</div>
-    </div>
-  )
+  const delta = after === before ? 'No change' : after < before ? `${after - before}` : `+${after - before}`
+  const tone = after < before ? TONE_COLOR.ok : after > before ? TONE_COLOR.critical : undefined
+  return <StatCard label={label} value={after} hint={`Current allocation: ${before}`} delta={delta} deltaTone={tone} />
 }
 
-export default function Allocation({ user }) {
+export default function Allocation() {
+  const { user } = useAuth()
+  const toast = useToast()
   const isAdmin = user.role === 'admin'
   const [plans, setPlans] = useState(null)
-  const [plan, setPlan] = useState(null)
+  const [plansError, setPlansError] = useState('')
+  const [loading, setLoading] = useState(true)
+  const [selectedId, setSelectedId] = useState(null)
   const [edits, setEdits] = useState({})
   const [horizon, setHorizon] = useState(7)
   const [level, setLevel] = useState('expected')
   const [busy, setBusy] = useState('')
   const [error, setError] = useState('')
   const [notice, setNotice] = useState('')
-  const [loading, setLoading] = useState(true)
+  const [confirmOpen, setConfirmOpen] = useState(false)
 
   const loadPlans = useCallback(async (selectId) => {
     setLoading(true)
-    setError('')
+    setPlansError('')
     try {
       const { data } = await api.get('/allocation/plans')
       setPlans(data)
-      const pick = data.find((p) => p.id === selectId) || data[0] || null
-      setPlan(pick)
+      setSelectedId(selectId ?? data[0]?.id ?? null)
       setEdits({})
     } catch (err) {
-      setError(errorMessage(err))
+      setPlansError(errorMessage(err))
     } finally {
       setLoading(false)
     }
   }, [])
+
   useEffect(() => {
     loadPlans()
   }, [loadPlans])
+
+  const plan = useMemo(() => plans?.find((p) => p.id === selectedId) ?? plans?.[0] ?? null, [plans, selectedId])
+  const editable = isAdmin && plan?.status === 'proposed'
+  const changed = plan ? Object.entries(edits).filter(([id, q]) => plan.actions.find((a) => a.id === Number(id))?.quantity !== Number(q)).length : 0
 
   const run = async () => {
     setBusy('run')
@@ -80,8 +118,12 @@ export default function Allocation({ user }) {
     setNotice('')
     try {
       const { data } = await api.post('/allocation/run', { horizon_days: horizon, planning_level: level })
-      await loadPlans(data.id)
-      setNotice(`Plan #${data.id} generated in ${data.summary.solve_seconds}s (${data.summary.solver_status.toLowerCase()} solution).`)
+      setPlans((ps) => [data, ...(ps || [])])
+      setSelectedId(data.id)
+      setEdits({})
+      const msg = `Plan #${data.id} generated in ${data.summary.solve_seconds}s (${String(data.summary.solver_status).toLowerCase()} solution).`
+      setNotice(msg)
+      toast.success(msg)
     } catch (err) {
       setError(errorMessage(err))
     } finally {
@@ -96,10 +138,15 @@ export default function Allocation({ user }) {
     try {
       const actions = Object.entries(edits).map(([id, quantity]) => ({ id: Number(id), quantity: Number(quantity) }))
       const { data } = await api.post(`/allocation/plans/${plan.id}/accept`, { actions })
-      await loadPlans(data.id)
-      setNotice(`Plan #${data.id} accepted${data.modified ? ' with your changes' : ''}. Bed capacity, rosters and equipment stock are updated.`)
+      setPlans((ps) => ps.map((p) => (p.id === data.id ? data : p)))
+      setEdits({})
+      setConfirmOpen(false)
+      const msg = `Plan #${data.id} accepted${data.modified ? ' with your changes' : ''}. Bed capacity, rosters and equipment stock are updated.`
+      setNotice(msg)
+      toast.success(msg)
     } catch (err) {
       setError(errorMessage(err))
+      setConfirmOpen(false)
     } finally {
       setBusy('')
     }
@@ -109,147 +156,188 @@ export default function Allocation({ user }) {
     if (!plan) return []
     return GROUPS.map(([type, label]) => [label, plan.actions.filter((a) => a.type === type)]).filter(([, xs]) => xs.length)
   }, [plan])
-  const editable = isAdmin && plan?.status === 'proposed'
-  const changed = Object.entries(edits).filter(([id, q]) => plan?.actions.find((a) => a.id === Number(id))?.quantity !== Number(q)).length
+
+  const quantityOf = (a) => (edits[a.id] !== undefined ? edits[a.id] : a.quantity)
 
   return (
-    <div>
-      <PageHeader title="Allocation recommendations" subtitle="Optimised beds, nurse shifts and equipment for the forecast peak, with the trade-off explained" />
-      <ErrorBox message={error} />
+    <>
+      <PageHeader
+        eyebrow="Allocation"
+        title="Allocation recommendations"
+        description="Optimised beds, nurse shifts and equipment for the forecast peak, with the trade-off explained."
+      />
+
+      {error && (
+        <div style={{ marginBottom: 20 }}>
+          <Alert tone="error">{error}</Alert>
+        </div>
+      )}
       {notice && (
-        <div className="flex items-center gap-2 rounded-lg bg-teal-50 text-teal-900 text-sm p-3 mb-4">
-          <CheckCircle2 size={16} /> {notice}
+        <div style={{ marginBottom: 20 }}>
+          <Alert tone="success">
+            <CheckCircle2 size={16} aria-hidden="true" style={{ verticalAlign: '-3px', marginRight: 6 }} />
+            {notice}
+          </Alert>
+        </div>
+      )}
+      {!isAdmin && (
+        <div style={{ marginBottom: 20 }}>
+          <Alert tone="info">Only administrators can generate and accept plans. You can review every plan here.</Alert>
         </div>
       )}
 
-      <div className="card p-4 mb-6 flex flex-wrap items-end gap-4">
-        <div>
-          <label className="label">Planning horizon</label>
-          <select className="input" value={horizon} onChange={(e) => setHorizon(Number(e.target.value))} disabled={!isAdmin}>
-            <option value={3}>Next 3 days</option>
-            <option value={7}>Next 7 days</option>
-            <option value={14}>Next 14 days</option>
-          </select>
+      <Card className="allocation-controls" style={{ marginBottom: 28 }}>
+        <div className="row" style={{ alignItems: 'flex-end' }}>
+          <Select label="Planning horizon" options={HORIZON_OPTS} value={horizon} onChange={(e) => setHorizon(Number(e.target.value))} disabled={!isAdmin || !!busy} />
+          <Select label="Plan for" options={LEVEL_OPTS} value={level} onChange={(e) => setLevel(e.target.value)} disabled={!isAdmin || !!busy} />
+          <Button variant="primary" icon={Play} onClick={run} loading={busy === 'run'} disabled={!isAdmin || (!!busy && busy !== 'run')}>
+            Run optimiser
+          </Button>
+          {plans?.length > 0 && (
+            <div style={{ marginLeft: 'auto' }}>
+              <Select
+                label="Plan history"
+                value={plan?.id ?? ''}
+                onChange={(e) => {
+                  setSelectedId(Number(e.target.value))
+                  setEdits({})
+                }}
+                options={plans.map((p) => ({
+                  value: p.id,
+                  label: `#${p.id} · ${p.status} · ${p.created_at.slice(0, 16).replace('T', ' ')}`,
+                }))}
+              />
+            </div>
+          )}
         </div>
-        <div>
-          <label className="label">Plan for</label>
-          <select className="input" value={level} onChange={(e) => setLevel(e.target.value)} disabled={!isAdmin}>
-            <option value="expected">Expected peak</option>
-            <option value="p90">90% upper band (cautious)</option>
-          </select>
-        </div>
-        <button className="btn-primary" onClick={run} disabled={!isAdmin || !!busy}>
-          {busy === 'run' ? <Loader2 size={16} className="animate-spin" /> : <Play size={16} />} Run optimiser
-        </button>
-        {!isAdmin && <span className="text-xs text-slate-500">Only administrators can generate and accept plans.</span>}
-        {plans?.length > 0 && (
-          <div className="ml-auto">
-            <label className="label">Plan history</label>
-            <select className="input" value={plan?.id || ''} onChange={(e) => { setPlan(plans.find((p) => p.id === Number(e.target.value))); setEdits({}) }}>
-              {plans.map((p) => (
-                <option key={p.id} value={p.id}>
-                  #{p.id} - {p.status} - {p.created_at.slice(0, 16).replace('T', ' ')}
-                </option>
-              ))}
-            </select>
-          </div>
-        )}
-      </div>
+      </Card>
 
-      {loading && !plans ? (
-        <Loading />
-      ) : busy === 'run' ? (
-        <Loading label="Forecasting the peak and solving the allocation..." />
-      ) : !plan ? (
-        <div className="card p-8 text-center text-sm text-slate-500">No plans yet. {isAdmin ? 'Run the optimiser to generate one.' : 'An administrator can generate one.'}</div>
-      ) : (
+      {loading && !plans && <SkeletonBlock rows={6} label="Loading plans" />}
+      {plansError && !plans && <ErrorState title="Plans could not load" error={plansError} onRetry={() => loadPlans()} />}
+      {busy === 'run' && <SkeletonBlock rows={6} label="Forecasting the peak and solving the allocation" />}
+
+      {plans && !plan && busy !== 'run' && (
+        <EmptyState icon={Workflow} title="No plans yet" action={isAdmin ? <Button variant="primary" icon={Play} onClick={run}>Run optimiser</Button> : undefined}>
+          {isAdmin ? 'Run the optimiser to generate the first plan for the forecast peak.' : 'An administrator can generate a plan from the forecast.'}
+        </EmptyState>
+      )}
+
+      {plan && busy !== 'run' && (
         <>
-          <div className="flex flex-wrap items-center gap-2 mb-3">
-            <h2 className="text-lg font-semibold text-slate-900">Plan #{plan.id}</h2>
-            <Badge tone={plan.status === 'accepted' ? 'teal' : 'amber'}>{plan.status}</Badge>
-            {plan.modified && <Badge tone="blue">modified</Badge>}
-            <span className="text-xs text-slate-500">
-              {plan.horizon_days}-day horizon, {plan.planning_level === 'p90' ? '90% upper band' : 'expected peak'} - by {plan.created_by}
+          <div className="row" style={{ marginBottom: 14 }}>
+            <h2 className="display-sm">Plan #{plan.id}</h2>
+            <Badge tone={plan.status === 'accepted' ? 'pass' : 'closed'}>{plan.status}</Badge>
+            {plan.modified && <Badge tone="info">modified</Badge>}
+            <span className="small muted">
+              {plan.horizon_days}-day horizon, {plan.planning_level === 'p90' ? '90% upper band' : 'expected peak'}, by {plan.created_by}
               {plan.accepted_by && `, accepted by ${plan.accepted_by}`}
             </span>
           </div>
-          <div className="grid sm:grid-cols-3 gap-4 mb-4">
+
+          <div className="grid grid-3" style={{ '--gap': '16px', marginBottom: 20 }}>
             <Compare label="Patients without a bed" before={plan.summary.before.bed_shortfall} after={plan.summary.after.bed_shortfall} />
             <Compare label="Nurse shifts short" before={plan.summary.before.nurse_shift_gap} after={plan.summary.after.nurse_shift_gap} />
             <Compare label="Equipment units short" before={plan.summary.before.equipment_gap} after={plan.summary.after.equipment_gap} />
           </div>
-          <div className="card p-4 mb-6">
-            <h3 className="font-semibold text-slate-900 mb-1">Trade-off</h3>
-            <p className="text-sm text-slate-700">{plan.summary.text}</p>
-            <p className="text-xs text-slate-500 mt-2">
-              Cost order used by the optimiser: a patient without a bed &gt; a nurse shift short &gt; an equipment unit short &gt; diverting an admission &gt; an
-              extra nurse shift &gt; moving equipment &gt; converting a bed &gt; floating a nurse. Recommendations support, and do not replace, the judgement of the
-              bed manager.
-            </p>
-          </div>
 
-          {grouped.map(([label, actions]) => (
-            <div key={label} className="card overflow-x-auto mb-4">
-              <h3 className="font-semibold text-slate-900 px-4 pt-4 pb-2">
-                {label} <span className="text-slate-400 font-normal">({actions.reduce((s, a) => s + a.quantity, 0)})</span>
-              </h3>
-              <table className="w-full min-w-[640px]">
-                <thead>
-                  <tr>
-                    <th className="th w-72">Action</th>
-                    <th className="th w-28">Quantity</th>
-                    <th className="th">Why</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {actions.map((a) => (
-                    <tr key={a.id}>
-                      <td className="td">{describe(a)}</td>
-                      <td className="td">
-                        {editable ? (
+          <Card title="Trade-off" style={{ marginBottom: 24 }}>
+            <p>{plan.summary.text}</p>
+            <p className="tiny muted" style={{ marginTop: 12 }}>
+              Cost order used by the optimiser: a patient without a bed is worse than a nurse shift short, which is worse than an equipment unit short,
+              then diverting an admission, an extra nurse shift, moving equipment, converting a bed and floating a nurse. Recommendations support, and do
+              not replace, the judgement of the bed manager.
+            </p>
+          </Card>
+
+          {grouped.length === 0 && (
+            <Card>
+              <p>No changes needed. The current allocation covers the forecast peak.</p>
+            </Card>
+          )}
+
+          <div className="stack" style={{ '--gap': '20px' }}>
+            {grouped.map(([label, actions]) => (
+              <Card key={label} title={`${label} (${actions.reduce((s, a) => s + a.quantity, 0)})`} className="table-scroll-x">
+                <Table
+                  caption={label}
+                  rows={actions}
+                  rowKey={(a) => a.id}
+                  pageSize={10}
+                  columns={[
+                    { key: 'action', label: 'Action', sortable: false, render: (a) => describe(a) },
+                    {
+                      key: 'quantity',
+                      label: 'Quantity',
+                      sortable: false,
+                      numeric: true,
+                      render: (a) =>
+                        editable ? (
                           <input
                             type="number"
                             min={0}
-                            className="input w-20 py-1"
-                            value={edits[a.id] ?? a.quantity}
-                            onChange={(e) => setEdits({ ...edits, [a.id]: e.target.value === '' ? 0 : Math.max(0, Number(e.target.value)) })}
+                            className="input"
+                            style={{ width: 96, padding: '6px 8px' }}
+                            aria-label={`Quantity for ${a.type.replace('_', ' ')} ${a.id}`}
+                            value={quantityOf(a)}
+                            onChange={(e) => setEdits((x) => ({ ...x, [a.id]: e.target.value === '' ? 0 : Math.max(0, Number(e.target.value)) }))}
                           />
                         ) : (
                           <span>
                             {a.quantity}
-                            {a.original_quantity != null && <span className="text-xs text-slate-400 ml-1">(was {a.original_quantity})</span>}
+                            {a.original_quantity != null && <span className="tiny muted"> (was {a.original_quantity})</span>}
                           </span>
-                        )}
-                      </td>
-                      <td className="td text-xs text-slate-600">{a.reason}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          ))}
-          {plan.actions.length === 0 && <div className="card p-6 text-sm text-slate-500">No changes needed - the current allocation covers the forecast peak.</div>}
+                        ),
+                    },
+                    { key: 'reason', label: 'Why', sortable: false, render: (a) => <span className="small">{a.reason}</span> },
+                  ]}
+                />
+              </Card>
+            ))}
+          </div>
 
           {editable && (
-            <div className="sticky bottom-4 card p-4 flex flex-wrap items-center gap-3 shadow-lg">
-              <span className="text-sm text-slate-600">
-                {changed ? `${changed} action(s) modified. Set a quantity to 0 to drop an action.` : 'Edit any quantity (0 drops an action), then accept.'}
-              </span>
-              <div className="ml-auto flex gap-2">
-                {changed > 0 && (
-                  <button className="btn-secondary" onClick={() => setEdits({})} disabled={!!busy}>
-                    <RotateCcw size={16} /> Reset edits
-                  </button>
-                )}
-                <button className="btn-primary" onClick={accept} disabled={!!busy}>
-                  {busy === 'accept' ? <Loader2 size={16} className="animate-spin" /> : <CheckCircle2 size={16} />}
-                  {changed ? 'Accept modified plan' : 'Accept plan'}
-                </button>
+            <Card flat className="plan-actions" style={{ marginTop: 24 }}>
+              <div className="row" style={{ justifyContent: 'space-between' }}>
+                <span className="small">
+                  {changed ? `${changed} action(s) changed. A quantity of 0 drops the action.` : 'Edit any quantity (0 drops an action), then accept the plan.'}
+                </span>
+                <div className="row">
+                  {changed > 0 && (
+                    <Button icon={RotateCcw} onClick={() => setEdits({})} disabled={!!busy}>
+                      Reset edits
+                    </Button>
+                  )}
+                  <Button variant="primary" icon={CheckCircle2} onClick={() => setConfirmOpen(true)} disabled={!!busy}>
+                    {changed ? 'Accept modified plan' : 'Accept plan'}
+                  </Button>
+                </div>
               </div>
-            </div>
+            </Card>
           )}
         </>
       )}
-    </div>
+
+      <Modal
+        open={confirmOpen}
+        onClose={() => setConfirmOpen(false)}
+        title={`Accept plan #${plan?.id ?? ''}?`}
+        describedBy="accept-copy"
+        footer={
+          <>
+            <Button onClick={() => setConfirmOpen(false)} disabled={busy === 'accept'}>
+              Cancel
+            </Button>
+            <Button variant="primary" icon={CheckCircle2} onClick={accept} loading={busy === 'accept'}>
+              Accept
+            </Button>
+          </>
+        }
+      >
+        <p id="accept-copy">
+          This updates bed capacity, nurse rosters and equipment stock to the plan{changed ? ', with your changes' : ''}. It cannot be undone from this
+          screen.
+        </p>
+      </Modal>
+    </>
   )
 }

@@ -1,68 +1,45 @@
-import { useCallback, useEffect, useState } from 'react'
-import { RefreshCw } from 'lucide-react'
-import api, { errorMessage } from '../api'
-import ForecastChart, { shortDate } from '../components/ForecastChart'
-import { AlertList, Badge, ErrorBox, Loading, PageHeader } from '../components/ui'
+import { useState } from 'react'
+import { BedDouble, HeartPulse, RefreshCw, Users } from 'lucide-react'
+import useFetch from '../lib/useFetch'
+import { shortDate } from '../lib/hospi'
+import { PageHeader } from '../components/ui/Layout'
+import { Button } from '../components/ui/Button'
+import { Select } from '../components/ui/Form'
+import { Badge, Card } from '../components/ui/Display'
+import { Tabs } from '../components/ui/Navigation'
+import { ErrorState, SkeletonBlock } from '../components/ui/Feedback'
+import { Table } from '../components/ui/Table'
+import ForecastBand from '../components/charts/ForecastBand'
+import AlertList from '../components/AlertList'
 
-const FACILITIES = ['A', 'B', 'C', 'D', 'E']
+const FACILITY_OPTS = ['A', 'B', 'C', 'D', 'E'].map((f) => ({ value: f, label: `Facility ${f}` }))
+const SHIFTS = ['Day', 'Evening', 'Night']
+
 const TABS = [
-  ['occupancy', 'Ward occupancy'],
-  ['icu', 'ICU demand'],
-  ['resources', 'Staff and equipment'],
+  { id: 'occupancy', label: 'Ward occupancy', icon: BedDouble },
+  { id: 'icu', label: 'ICU demand', icon: HeartPulse },
+  { id: 'resources', label: 'Staff and equipment', icon: Users },
 ]
 
-function useFetch(url, params) {
-  const [state, setState] = useState({ data: null, error: '', loading: true })
-  const key = JSON.stringify(params)
-  const load = useCallback(async () => {
-    setState((s) => ({ ...s, loading: true, error: '' }))
-    try {
-      const { data } = await api.get(url, { params: JSON.parse(key) })
-      setState({ data, error: '', loading: false })
-    } catch (err) {
-      setState({ data: null, error: errorMessage(err), loading: false })
-    }
-  }, [url, key])
-  useEffect(() => {
-    load()
-  }, [load])
-  return { ...state, reload: load }
-}
-
-function FacilityPicker({ value, onChange }) {
-  return (
-    <div className="flex rounded-lg border border-slate-300 overflow-hidden bg-white">
-      {FACILITIES.map((f) => (
-        <button key={f} onClick={() => onChange(f)} className={`px-3 py-1.5 text-sm cursor-pointer ${value === f ? 'bg-teal-700 text-white' : 'text-slate-700 hover:bg-slate-50'}`}>
-          {f}
-        </button>
-      ))}
-    </div>
-  )
-}
-
-function WardCard({ w }) {
+/** One ward or one facility's ICU: the 14-day census with its 90% band and the bed capacity line. */
+function SeriesCard({ title, w }) {
   const pts = w.series.map((p) => ({ label: shortDate(p.date), mean: p.mean, lower: p.lower, upper: p.upper }))
+  const status = w.alert ? (w.alert.level === 'critical' ? 'Over capacity' : 'Early warning') : 'Within capacity'
   return (
-    <div className="card p-4">
-      <div className="flex items-center justify-between mb-1">
-        <h3 className="font-semibold text-slate-900">
-          {w.facility === undefined ? '' : `Facility ${w.facility} - `}
-          {w.ward}
-        </h3>
-        {w.alert ? (
-          <Badge tone={w.alert.level === 'critical' ? 'red' : 'amber'}>
-            {w.alert.level === 'critical' ? 'Over capacity' : 'Early warning'} day {w.alert.day}
-          </Badge>
-        ) : (
-          <Badge tone="teal">Within capacity</Badge>
-        )}
-      </div>
-      <div className="text-xs text-slate-500 mb-2">
-        Now {w.current} / {w.capacity} beds - peak {w.peak} expected on day {w.peak_day} (90% upper {w.peak_upper})
-      </div>
-      <ForecastChart points={pts} capacity={w.capacity} current={w.current} height={170} />
-    </div>
+    <Card
+      title={title}
+      actions={
+        <Badge tone={w.alert ? 'closed' : 'pass'}>
+          {status}
+          {w.alert ? ` on day ${w.alert.day}` : ''}
+        </Badge>
+      }
+    >
+      <p className="small muted" style={{ marginBottom: 12 }}>
+        Now {w.current} of {w.capacity} beds. Expected peak {w.peak} on day {w.peak_day} (90% upper {w.peak_upper}).
+      </p>
+      <ForecastBand data={pts} capacity={w.capacity} name="Expected" height={200} />
+    </Card>
   )
 }
 
@@ -71,51 +48,55 @@ function Occupancy() {
   const { data, error, loading, reload } = useFetch('/forecast', { facility, days: 14 })
   return (
     <>
-      <div className="flex flex-wrap items-center gap-3 mb-4">
-        <FacilityPicker value={facility} onChange={setFacility} />
-        <button className="btn-secondary" onClick={reload} disabled={loading}>
-          <RefreshCw size={16} className={loading ? 'animate-spin' : ''} /> Refresh
-        </button>
+      <div className="row">
+        <Select label="Facility" options={FACILITY_OPTS} value={facility} onChange={(e) => setFacility(e.target.value)} />
+        <Button icon={RefreshCw} onClick={reload} loading={loading && !!data}>
+          Refresh
+        </Button>
       </div>
-      <ErrorBox message={error} onRetry={reload} />
-      {loading && !data ? (
-        <Loading label="Forecasting occupancy..." />
-      ) : data ? (
+      {error && !data && <ErrorState title="Occupancy forecast could not load" error={error} onRetry={reload} />}
+      {error && data && <ErrorState title="Showing the last loaded forecast" error={error} onRetry={reload} />}
+      {!data && !error && <SkeletonBlock rows={6} label="Forecasting occupancy" />}
+      {data && (
         <>
-          <div className="card p-4 mb-4">
-            <h2 className="font-semibold text-slate-900 mb-2">Facility {facility} alerts</h2>
-            <AlertList alerts={data.alerts} />
-          </div>
-          <div className="grid md:grid-cols-2 gap-4">
+          <Card title={`Facility ${facility} alerts`}>
+            <AlertList alerts={data.alerts} empty="No ward in this facility is forecast to pass capacity in the next 14 days." />
+          </Card>
+          <div className="grid grid-2" style={{ '--gap': '20px' }}>
             {data.wards.map((w) => (
-              <WardCard key={w.ward} w={{ ...w, facility: undefined }} />
+              <SeriesCard key={w.ward} title={w.ward} w={w} />
             ))}
           </div>
-          <p className="text-xs text-slate-500 mt-3">
-            Expected census = current patients still in bed (from each patient's predicted stay) + forecast admissions still in bed.
-            Shaded area: 90% band. Dashed red line: bed capacity.
+          <p className="tiny muted">
+            Expected census = current patients still in bed (from each patient&apos;s predicted stay) plus forecast admissions still in bed. Shaded
+            area: 90% band. Red line: bed capacity.
           </p>
         </>
-      ) : null}
+      )}
     </>
   )
 }
 
 function Icu() {
   const { data, error, loading, reload } = useFetch('/forecast/icu', { days: 14 })
-  if (loading && !data) return <Loading label="Forecasting ICU demand..." />
   return (
     <>
-      <ErrorBox message={error} onRetry={reload} />
+      <div className="row">
+        <Button icon={RefreshCw} onClick={reload} loading={loading && !!data}>
+          Refresh
+        </Button>
+      </div>
+      {error && !data && <ErrorState title="ICU forecast could not load" error={error} onRetry={reload} />}
+      {error && data && <ErrorState title="Showing the last loaded forecast" error={error} onRetry={reload} />}
+      {!data && !error && <SkeletonBlock rows={6} label="Forecasting ICU demand" />}
       {data && (
         <>
-          <div className="card p-4 mb-4">
-            <h2 className="font-semibold text-slate-900 mb-2">ICU early warnings</h2>
+          <Card title="ICU early warnings">
             <AlertList alerts={data.alerts} empty="ICU demand stays within capacity at every facility for the next 14 days." />
-          </div>
-          <div className="grid md:grid-cols-2 gap-4">
-            {data.facilities.map((w) => (
-              <WardCard key={w.facility} w={w} />
+          </Card>
+          <div className="grid grid-2" style={{ '--gap': '20px' }}>
+            {data.facilities.map((f) => (
+              <SeriesCard key={f.facility} title={`Facility ${f.facility}, ICU`} w={f} />
             ))}
           </div>
         </>
@@ -124,87 +105,89 @@ function Icu() {
   )
 }
 
+function ShiftCell({ row, shift }) {
+  const s = row.shifts.find((x) => x.shift === shift)
+  if (!s) return '—'
+  return (
+    <span className="row" style={{ '--gap': '6px', flexWrap: 'nowrap' }}>
+      <span style={{ fontWeight: s.gap ? 700 : 400 }}>{s.needed}</span>
+      <span className="muted">/ {s.rostered}</span>
+      {s.gap > 0 && <Badge tone="closed">short {s.gap}</Badge>}
+    </span>
+  )
+}
+
 function Resources() {
   const [facility, setFacility] = useState('A')
   const [day, setDay] = useState(0)
   const { data, error, loading, reload } = useFetch('/forecast/resources', { facility, days: 7 })
-  const d = data?.days[day]
+  const d = data?.days[Math.min(day, (data?.days.length || 1) - 1)]
+  const dayOpts = data?.days.map((x, i) => ({
+    value: i,
+    label: `Day ${x.day}, ${x.date}${x.nurse_gap + x.equipment_gap ? ' (gaps)' : ''}`,
+  }))
+
   return (
     <>
-      <div className="flex flex-wrap items-center gap-3 mb-4">
-        <FacilityPicker value={facility} onChange={setFacility} />
-        {data && (
-          <select className="input w-auto" value={day} onChange={(e) => setDay(Number(e.target.value))}>
-            {data.days.map((x, i) => (
-              <option key={i} value={i}>
-                Day {x.day} - {x.date} {x.nurse_gap + x.equipment_gap ? '(gaps)' : ''}
-              </option>
-            ))}
-          </select>
-        )}
+      <div className="row">
+        <Select label="Facility" options={FACILITY_OPTS} value={facility} onChange={(e) => setFacility(e.target.value)} />
+        {dayOpts && <Select label="Day" options={dayOpts} value={day} onChange={(e) => setDay(Number(e.target.value))} />}
+        <Button icon={RefreshCw} onClick={reload} loading={loading && !!data}>
+          Refresh
+        </Button>
       </div>
-      <ErrorBox message={error} onRetry={reload} />
-      {loading && !data ? (
-        <Loading label="Calculating staff and equipment demand..." />
-      ) : d ? (
-        <div className="grid lg:grid-cols-3 gap-4">
-          <div className="card overflow-x-auto lg:col-span-2">
-            <h2 className="font-semibold text-slate-900 px-4 pt-4 pb-2">Nurses per shift - {d.date}</h2>
-            <table className="w-full min-w-[520px]">
-              <thead>
-                <tr>
-                  <th className="th">Ward</th>
-                  <th className="th">Expected patients</th>
-                  {['Day', 'Evening', 'Night'].map((s) => (
-                    <th key={s} className="th">{s} need / rostered</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {d.nurses.map((n) => (
-                  <tr key={n.ward}>
-                    <td className="td font-medium">{n.ward}</td>
-                    <td className="td">{n.patients}</td>
-                    {n.shifts.map((s) => (
-                      <td key={s.shift} className="td">
-                        <span className={s.gap ? 'text-red-700 font-semibold' : ''}>{s.needed}</span> / {s.rostered}
-                        {s.gap > 0 && <Badge tone="red">-{s.gap}</Badge>}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            <p className="text-xs text-slate-500 px-4 py-3">
-              Ratios (patients per nurse, day/evening/night): {Object.entries(data.ratios).map(([w, r]) => `${w} ${r.Day}/${r.Evening}/${r.Night}`).join(' - ')}
+      {error && !data && <ErrorState title="Staff and equipment forecast could not load" error={error} onRetry={reload} />}
+      {error && data && <ErrorState title="Showing the last loaded forecast" error={error} onRetry={reload} />}
+      {!d && !error && <SkeletonBlock rows={6} label="Calculating staff and equipment demand" />}
+      {d && (
+        <div className="grid" style={{ '--gap': '20px', gridTemplateColumns: 'minmax(0, 2fr) minmax(260px, 1fr)' }}>
+          <Card title={`Nurses per shift, ${d.date}`} className="table-scroll-x">
+            <Table
+              caption="Nurses needed and rostered per ward and shift"
+              rows={d.nurses}
+              rowKey={(n) => n.ward}
+              pageSize={10}
+              columns={[
+                { key: 'ward', label: 'Ward' },
+                { key: 'patients', label: 'Expected patients', numeric: true, render: (n) => n.patients },
+                ...SHIFTS.map((s) => ({ key: s, label: `${s} need / rostered`, sortable: false, render: (n) => <ShiftCell row={n} shift={s} /> })),
+              ]}
+            />
+            <p className="tiny muted" style={{ marginTop: 12 }}>
+              Safe ratios, patients per nurse (day / evening / night):{' '}
+              {Object.entries(data.ratios)
+                .map(([w, r]) => `${w} ${r.Day}/${r.Evening}/${r.Night}`)
+                .join(', ')}
             </p>
-          </div>
-          <div className="card overflow-x-auto">
-            <h2 className="font-semibold text-slate-900 px-4 pt-4 pb-2">Critical equipment</h2>
-            <table className="w-full">
-              <thead>
-                <tr>
-                  <th className="th">Item</th>
-                  <th className="th">Needed</th>
-                  <th className="th">Available</th>
-                </tr>
-              </thead>
-              <tbody>
-                {d.equipment.map((e) => (
-                  <tr key={e.item}>
-                    <td className="td font-medium">{e.item}</td>
-                    <td className="td">{e.needed}</td>
-                    <td className="td">
-                      {e.available} {e.gap > 0 && <Badge tone="red">-{e.gap}</Badge>}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            <p className="text-xs text-slate-500 px-4 py-3">Needed = expected patients per ward x usage rate per occupied bed.</p>
-          </div>
+          </Card>
+          <Card title="Critical equipment">
+            <Table
+              caption="Equipment needed and available"
+              rows={d.equipment}
+              rowKey={(e) => e.item}
+              pageSize={10}
+              columns={[
+                { key: 'item', label: 'Item' },
+                { key: 'needed', label: 'Needed', numeric: true },
+                {
+                  key: 'available',
+                  label: 'Available',
+                  numeric: true,
+                  render: (e) => (
+                    <span className="row" style={{ '--gap': '6px', flexWrap: 'nowrap' }}>
+                      {e.available}
+                      {e.gap > 0 && <Badge tone="closed">short {e.gap}</Badge>}
+                    </span>
+                  ),
+                },
+              ]}
+            />
+            <p className="tiny muted" style={{ marginTop: 12 }}>
+              Needed = expected patients on each ward multiplied by the usage rate per occupied bed.
+            </p>
+          </Card>
         </div>
-      ) : null}
+      )}
     </>
   )
 }
@@ -212,22 +195,18 @@ function Resources() {
 export default function Forecasts() {
   const [tab, setTab] = useState('occupancy')
   return (
-    <div>
-      <PageHeader title="Occupancy and ICU forecasts" subtitle="Next 14 days per facility and ward, from current patients' predicted stays and forecast admissions" />
-      <div className="flex gap-1 border-b border-slate-200 mb-5 overflow-x-auto">
-        {TABS.map(([k, label]) => (
-          <button
-            key={k}
-            onClick={() => setTab(k)}
-            className={`px-4 py-2 text-sm font-medium border-b-2 -mb-px whitespace-nowrap cursor-pointer ${tab === k ? 'border-teal-700 text-teal-800' : 'border-transparent text-slate-500 hover:text-slate-800'}`}
-          >
-            {label}
-          </button>
-        ))}
+    <>
+      <PageHeader
+        eyebrow="Forecast"
+        title="Occupancy and ICU forecasts"
+        description="The next 14 days per facility and ward, from current patients' predicted stays and forecast admissions."
+      />
+      <Tabs tabs={TABS} value={tab} onChange={setTab} label="Forecast views" />
+      <div className="stack" style={{ '--gap': '20px', marginTop: 24 }}>
+        {tab === 'occupancy' && <Occupancy />}
+        {tab === 'icu' && <Icu />}
+        {tab === 'resources' && <Resources />}
       </div>
-      {tab === 'occupancy' && <Occupancy />}
-      {tab === 'icu' && <Icu />}
-      {tab === 'resources' && <Resources />}
-    </div>
+    </>
   )
 }

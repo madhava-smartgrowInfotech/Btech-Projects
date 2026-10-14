@@ -1,0 +1,127 @@
+/* HospiSense-specific styles on top of the kit. Colours and borders come from the kit tokens so both themes work. */
+
+.reason-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+.reason-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 6px 12px;
+  align-items: center;
+  font-size: 0.92rem;
+}
+.reason-row .reason-label {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.reason-row .reason-value {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.reason-track {
+  grid-column: 1 / -1;
+  position: relative;
+  height: 14px;
+  border: 2px solid var(--line);
+  background: var(--surface-2);
+}
+.reason-track::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: var(--line);
+}
+.reason-bar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border: 0 solid var(--line);
+}
+.reason-bar.up {
+  left: 50%;
+  background: var(--coral);
+  border-left-width: 2px;
+}
+.reason-bar.down {
+  right: 50%;
+  background: var(--lime);
+  border-right-width: 2px;
+}
+
+.fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+.fieldset > legend {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+  padding: 0;
+}
+
+.big-number {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 6vw, 4rem);
+  line-height: 0.9;
+}
+
+.bar-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+.bar-row {
+  display: grid;
+  grid-template-columns: minmax(90px, 40%) minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  font-size: 0.9rem;
+}
+.bar-label {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.bar-track {
+  height: 14px;
+  border: 2px solid var(--line);
+  background: var(--surface-2);
+}
+.bar-fill {
+  display: block;
+  height: 100%;
+  border-right: 2px solid var(--line);
+}
+.bar-value {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Sticky accept bar on the allocation screen: stays reachable while a long plan scrolls. */
+.plan-actions {
+  position: sticky;
+  bottom: 16px;
+  z-index: 5;
+}
+
+/* Wide tables scroll sideways inside their card instead of pushing the page wider than the screen. */
+.table-scroll-x {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}

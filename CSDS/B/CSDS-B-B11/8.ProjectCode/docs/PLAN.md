@@ -12,7 +12,7 @@ K-Means on nutrient profiles -> `models/swap_kmeans.joblib` + `experiments/metri
 **Endpoints (`/api`):** auth/register, auth/login, me | profile GET/PUT, targets GET |
 plans POST (generate week), plans/latest GET, plans/{id}/swap-options GET, plans/{id}/swap POST |
 recipes/{food_id} GET | foods/search, foods/usda GET | logs GET/POST/DELETE, logs/photo POST |
-weights POST, progress GET, progress/recalculate POST | health.
+weights POST, progress GET, progress/recalculate POST | evaluation GET (read-only metrics) | health.
 
 **Tables:** users, profiles, plans (JSON week), food_logs, weight_logs, target_history, recipe_cache.
 

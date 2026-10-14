@@ -35,9 +35,9 @@ To stop NutriSense, close the two server windows.
 
 ## 4. Demo walkthrough
 1. Log in with the sample account. The dashboard shows a 1650 kcal target and the macro split.
-2. Open **Weekly plan** and click **Generate my plan**. Every day is within 5 % of the target, with no peanut dishes.
+2. Open **Weekly plan** and click **Generate my weekly plan**. Every day is within 5 % of the target, with no peanut dishes.
 3. Click **Swap** on any dish and pick an alternative. Click **Recipe** to see AI-written steps.
-4. Open **Food log**, then **Log by photo**. Upload `data/sample/photos/masala_dosa.jpg`, click **Recognise dish**, and click **Log** on the match. The intake bars update.
+4. Open **Food log**, then the **From a photo** tab. Upload `data/sample/photos/masala_dosa.jpg`, click **Recognise dish**, and click **Log** on the match. The day totals update.
 5. Open **Progress** and log a week of weights (e.g. 66.0, 65.9, 65.9, 65.8, 65.8, 65.7, 65.7 on seven consecutive dates ending today). After the seventh entry the target is recalculated and shown in the target history.
 
 ## 5. Checks (optional)
@@ -63,4 +63,5 @@ venv\Scripts\python ml\train_swaps.py          :: K-Means swap model -> models\,
 | "Cannot reach the NutriSense server" | The API window closed or failed. Re-run `run.bat` and read the API window for errors. |
 | Recipe or photo says "Gemini is not configured" | Add `GEMINI_API_KEY` to `.env`, then restart with `run.bat`. |
 | USDA search unavailable | The shared `DEMO_KEY` is rate-limited. Add your own free key to `.env`. |
+| Recipe or photo shows "Gemini request failed" | Gemini is busy (503) or a fallback model in `GEMINI_FALLBACK_MODELS` has been retired (404). Wait and retry, or set `GEMINI_MODEL` / `GEMINI_FALLBACK_MODELS` in `.env` to current model names, then restart. |
 | Start from a clean database | Stop the app and delete `data\app.db`. It is recreated, with the sample account, on the next start. |

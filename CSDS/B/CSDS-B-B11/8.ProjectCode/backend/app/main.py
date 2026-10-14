@@ -8,7 +8,7 @@ from sqlalchemy import select
 from .auth import hash_password
 from .config import DEMO_EMAIL, DEMO_PASSWORD, FRONTEND_PORT, GEMINI_API_KEY, MODEL_PATH
 from .db import Profile, SessionLocal, TargetHistory, User, WeightLog, init_db
-from .routes import auth, foods, logs, plans, profile, progress, recipes
+from .routes import auth, evaluation, foods, logs, plans, profile, progress, recipes
 from .services.foods import food_db
 from .services.targets import compute_targets
 
@@ -44,7 +44,7 @@ async def lifespan(_app):
 app = FastAPI(title="NutriSense API", version="1.0.0", lifespan=lifespan)
 app.add_middleware(CORSMiddleware, allow_origins=[f"http://localhost:{FRONTEND_PORT}", f"http://127.0.0.1:{FRONTEND_PORT}"],
                    allow_methods=["*"], allow_headers=["*"])
-for r in (auth, profile, plans, recipes, foods, logs, progress):
+for r in (auth, profile, plans, recipes, foods, logs, progress, evaluation):
     app.include_router(r.router)
 
 

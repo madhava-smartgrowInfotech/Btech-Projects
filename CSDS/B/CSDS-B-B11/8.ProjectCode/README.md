@@ -55,14 +55,14 @@ Notes:
 - Gemini's visual recognition needs an API key and labelled photos. The table measures the database-matching step that follows it; `scripts/smoke_test.py` exercises the full photo path when a key is set.
 
 ## Tech stack
-- **Frontend:** React + Vite (JavaScript), Tailwind CSS, react-router-dom, axios, lucide-react
+- **Frontend:** React 18 + Vite + TypeScript, Tailwind CSS v4, React Router 7, TanStack Query, axios, Recharts, Framer Motion, GSAP, Radix UI (Aurora Glass design kit V1)
 - **Backend:** FastAPI + Uvicorn, SQLAlchemy 2 + SQLite, PyJWT + bcrypt, python-dotenv
 - **Intelligence:** PuLP (CBC) optimiser, scikit-learn K-Means, Google Gemini (recipes + photos), USDA FoodData Central
 
 ## Project layout
 ```
 backend/app/     main.py, db.py, auth.py, routes/, services/
-frontend/src/    pages/, components/, api.js
+frontend/src/    pages/, components/, lib/ (TypeScript; Aurora Glass kit under components/ui, motion, charts)
 ml/              build_foods.py, train_swaps.py, eval.py
 scripts/         smoke_test.py, download_data.py
 data/            raw/ (Kaggle datasets), processed/foods.csv, sample/photos/

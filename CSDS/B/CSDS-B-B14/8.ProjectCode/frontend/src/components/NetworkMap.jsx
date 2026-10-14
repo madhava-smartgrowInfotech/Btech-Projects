@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import L from 'leaflet'
-import { ZONE_COLORS, pressureColor } from './ui.jsx'
+import 'leaflet/dist/leaflet.css'
+import { ZONE_COLORS, pressureColor } from '../lib/aqua'
 
 // Leaflet map of the twin: pipes coloured by zone (or flow), nodes by pressure, ranked leak suspects highlighted.
 export default function NetworkMap({ nodes, links, suspects = [], activeLeaks = [], onPipeClick, selectedPipe, height = 480, colorBy = 'zone' }) {
@@ -32,15 +33,15 @@ export default function NetworkMap({ nodes, links, suspects = [], activeLeaks = 
     links.forEach((l) => {
       const r = rank[l.id]
       const isSel = selectedPipe === l.id
-      let color = colorBy === 'flow' ? '#0369a1' : ZONE_COLORS[l.zone] || '#475569'
+      let color = colorBy === 'flow' ? '#1F6AAE' : ZONE_COLORS[l.zone] || '#4E5566'
       let weight = l.type === 'Pipe' ? 2 + ((l.diameter_mm || 150) / 450) * 5 : 4
       if (colorBy === 'flow') weight = 2 + (Math.abs(l.flow_lps || 0) / maxFlow) * 8
       if (r) {
-        color = r === 1 ? '#e11d48' : r <= 3 ? '#f97316' : '#facc15'
+        color = r === 1 ? '#B13A55' : r <= 3 ? '#A9541A' : '#8A6D00'
         weight = r === 1 ? 9 : 7
       }
       if (isSel) {
-        color = '#0f172a'
+        color = '#14171F'
         weight = 8
       }
       const line = L.polyline(l.coords, { color, weight, opacity: r || isSel ? 1 : 0.8, dashArray: l.type === 'Pump' ? '6 4' : null })
@@ -70,13 +71,13 @@ export default function NetworkMap({ nodes, links, suspects = [], activeLeaks = 
       if (n.type === 'Junction') {
         L.circleMarker([n.lat, n.lon], {
           radius: n.sensor ? 6 : 4,
-          color: n.sensor ? '#0f172a' : '#ffffff',
+          color: n.sensor ? '#14171F' : '#ffffff',
           weight: n.sensor ? 2 : 1,
           fillColor: pressureColor(n.pressure),
           fillOpacity: 1,
         })
           .bindTooltip(
-            `<b>${n.id}</b> - ${n.zone}${n.sensor ? ' (pressure logger)' : ''}<br/>Elevation ${n.elevation} m<br/>Pressure ${n.pressure ?? '-'} m (08:00)`
+            `<b>${n.id}</b> - ${n.zone}${n.sensor ? ' (pressure logger)' : ''}<br/>Elevation ${n.elevation} m<br/>Pressure ${n.pressure ?? '-'} m (08:00)`,
           )
           .addTo(g)
       } else {
@@ -84,7 +85,7 @@ export default function NetworkMap({ nodes, links, suspects = [], activeLeaks = 
         L.marker([n.lat, n.lon], {
           icon: L.divIcon({
             className: '',
-            html: `<div style="background:#0f172a;color:white;border-radius:6px;padding:2px 6px;font-size:11px;font-weight:700;white-space:nowrap">${label}</div>`,
+            html: `<div style="background:#14171F;color:white;border-radius:6px;padding:2px 6px;font-size:11px;font-weight:700;white-space:nowrap">${label}</div>`,
             iconAnchor: [20, 10],
           }),
         })
@@ -98,28 +99,46 @@ export default function NetworkMap({ nodes, links, suspects = [], activeLeaks = 
     }
   }, [nodes, links, suspects, activeLeaks, selectedPipe, colorBy, onPipeClick])
 
-  return <div ref={el} style={{ height }} className="w-full rounded-xl overflow-hidden border border-slate-200 z-0" />
+  return (
+    <div
+      ref={el}
+      role="region"
+      aria-label="Water network map"
+      style={{ height, position: 'relative', zIndex: 0, borderRadius: 'var(--r)', overflow: 'hidden', border: '1px solid var(--border)' }}
+    />
+  )
 }
 
 export function MapLegend({ colorBy = 'zone', zones = [] }) {
-  const dot = (cls, text) => (
-    <span className="flex items-center gap-1.5">
-      <span className={`w-2.5 h-2.5 rounded-full inline-block ${cls}`} /> {text}
-    </span>
-  )
   return (
-    <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-600 mt-2">
+    <div className="legend map-legend" style={{ marginTop: 12 }} aria-label="Map legend">
       {colorBy === 'zone' &&
         zones.map((z) => (
-          <span key={z.id} className="flex items-center gap-1.5">
-            <span className="w-3 h-1.5 rounded inline-block" style={{ background: ZONE_COLORS[z.id] }} /> {z.name}
+          <span key={z.id}>
+            <i style={{ background: ZONE_COLORS[z.id] }} />
+            {z.name}
           </span>
         ))}
-      {dot('bg-rose-600', 'below 20 m')}
-      {dot('bg-amber-500', '20-28 m')}
-      {dot('bg-emerald-500', '28-45 m')}
-      {dot('bg-sky-600', 'above 45 m')}
-      {dot('border-2 border-slate-900', 'pressure logger')}
+      <span>
+        <i style={{ background: '#B13A55' }} />
+        below 20 m
+      </span>
+      <span>
+        <i style={{ background: '#B7791F' }} />
+        20–28 m
+      </span>
+      <span>
+        <i style={{ background: '#1C7A50' }} />
+        28–45 m
+      </span>
+      <span>
+        <i style={{ background: '#1F6AAE' }} />
+        above 45 m
+      </span>
+      <span>
+        <i style={{ background: 'var(--surface)', border: '2px solid #14171F' }} />
+        pressure logger
+      </span>
     </div>
   )
 }

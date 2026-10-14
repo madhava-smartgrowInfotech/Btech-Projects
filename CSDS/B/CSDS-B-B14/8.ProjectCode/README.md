@@ -53,7 +53,7 @@ About these numbers:
 
 ```
 backend/app/     FastAPI app: main.py, db.py, auth.py, routes/, services/ (twin, quality, demand, leaks, imbalance, anomaly)
-frontend/src/    React + Vite + Tailwind: pages/, components/, api.js
+frontend/src/    React + Vite, kit V4 UI (components/ui, motion, charts, styles/): pages/, lib/, api.js
 ml/              training scripts and eval.py
 scripts/         data generators, weather/dataset download, smoke_test.py
 data/            water_potability.csv, weather cache, network, sample data

@@ -1,87 +1,140 @@
 import { useState } from 'react'
-import { CloudRain, Flame, TrendingUp } from 'lucide-react'
+import { CalendarDays, CloudRain, Flame, Gauge, TrendingUp } from 'lucide-react'
 import useApi from '../useApi'
-import { Badge, ErrorBox, Kpi, Loading, PageHeader, dayLabel, fmt } from '../components/ui.jsx'
-import { LineChart } from '../components/Charts.jsx'
+import { Badge, Card, ErrorState, PageHeader, PageSkeleton, Select, Skeleton, StatCard, Table } from '../components/ui'
+import { LineCompare } from '../components/charts'
+import { fmtInt, fmtNum, fmtSigned } from '../lib/format'
+import { dayLabel } from '../lib/aqua'
+import { useChartTheme } from '../lib/palette'
 
 export default function Forecast() {
+  const t = useChartTheme()
   const [zone, setZone] = useState('Z3')
   const zones = useApi('/forecast/zones')
   const { data, loading, error, reload } = useApi(`/forecast?zone=${zone}`)
 
-  let chart = null
-  if (data) {
-    const hist = data.history.slice(-21)
-    const labels = [...hist.map((h) => h.date), ...data.forecast.map((f) => f.date)].map((d) => dayLabel(d).replace(/^\w+ /, ''))
-    const n = hist.length
-    const peakIdx = n + data.forecast.findIndex((f) => f.date === data.peak.date)
-    chart = (
-      <LineChart
-        labels={labels}
-        height={280}
-        yUnit="m3/day"
-        rightUnit="max temp C"
-        highlight={peakIdx}
-        bands={[{ from: n, to: labels.length - 1, color: '#f0f9ff' }]}
-        series={[
-          { name: 'Billed consumption', color: '#475569', values: [...hist.map((h) => h.consumption_m3), ...data.forecast.map(() => null)], dots: false },
-          { name: 'Forecast', color: '#0284c7', dashed: true, dots: true, values: [...hist.map((_, i) => (i === n - 1 ? hist[i].consumption_m3 : null)), ...data.forecast.map((f) => f.forecast_m3)] },
-        ]}
-        right={[{ name: 'Max temperature', color: '#f97316', values: [...hist.map((h) => h.tmax), ...data.forecast.map((f) => f.tmax)] }]}
-      />
+  const header = (
+    <PageHeader
+      eyebrow="Demand"
+      icon={TrendingUp}
+      title="Demand forecast"
+      lead="Next 7 days per zone, from consumption history and weather (XGBoost, recursive 7-day forecast)."
+      actions={
+        zones.loading && !zones.data ? (
+          <Skeleton width={180} height={50} radius={16} />
+        ) : zones.error ? (
+          <ErrorState compact title="Zones did not load" error={zones.error} onRetry={zones.reload} />
+        ) : (
+          <Select id="zone" label="Zone" value={zone} onChange={(e) => setZone(e.target.value)} options={(zones.data || []).map((z) => ({ value: z.id, label: z.name }))} />
+        )
+      }
+    />
+  )
+
+  if (loading) {
+    return (
+      <>
+        {header}
+        <PageSkeleton kpis={4} blocks={1} />
+      </>
     )
   }
+  if (error) {
+    return (
+      <>
+        {header}
+        <ErrorState title="The forecast did not load" error={error} onRetry={reload} />
+      </>
+    )
+  }
+  if (!data) return header
+
+  const avg = data.avg_last_7
+  const hist = data.history.slice(-21)
+  const rows = [
+    ...hist.map((h) => ({ x: dayLabel(h.date), billed: h.consumption_m3, forecast: null })),
+    ...data.forecast.map((f) => ({ x: dayLabel(f.date), billed: null, forecast: f.forecast_m3 })),
+  ]
+  // Join the two lines at the last observed day so the forecast starts from the real value.
+  if (hist.length) rows[hist.length - 1].forecast = hist[hist.length - 1].consumption_m3
 
   return (
-    <div>
-      <PageHeader title="Demand forecast" subtitle="Next 7 days per zone from consumption history and Open-Meteo weather (XGBoost)">
-        <select className="input !w-auto" value={zone} onChange={(e) => setZone(e.target.value)}>
-          {(zones.data || [{ id: 'Z3', name: 'Zone 3' }]).map((z) => (
-            <option key={z.id} value={z.id}>{z.name}</option>
-          ))}
-        </select>
-      </PageHeader>
-      <ErrorBox error={error || zones.error} onRetry={reload} />
-      {loading && <Loading text="Fetching weather and forecasting demand..." />}
-      {data && !loading && (
-        <div className="space-y-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Kpi icon={TrendingUp} label="Peak day" value={dayLabel(data.peak.date)} hint={`${fmt(data.peak.forecast_m3)} m3 at ${data.peak.tmax} C`} tone="rose" />
-            <Kpi icon={Flame} label="Hottest day" value={dayLabel(data.hottest.date)} hint={`${data.hottest.tmax} C max`} tone="amber" />
-            <Kpi label="7-day total" value={fmt(data.week_totals[zone])} unit="m3" hint={`last 7 days avg ${fmt(data.avg_last_7)} m3/day`} />
-            <Kpi label="Model error (MAPE)" value={data.mape ?? '-'} unit="%" hint="7-day recursive, last 90 days" tone="emerald" />
-          </div>
-          <div className="card p-4">
-            <div className="flex flex-wrap justify-between gap-2 mb-2">
-              <h2 className="font-semibold text-slate-800">{data.zone_name} - last 3 weeks and next 7 days</h2>
-              <span className="text-xs text-slate-500">Data up to {dayLabel(data.data_until)} - weather: {data.weather_source}</span>
-            </div>
-            {chart}
-          </div>
-          <div className="card overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr><th className="th">Day</th><th className="th">Forecast m3</th><th className="th">vs last-week avg</th><th className="th">Max / min C</th><th className="th">Rain mm</th><th className="th"></th></tr>
-              </thead>
-              <tbody>
-                {data.forecast.map((f) => (
-                  <tr key={f.date} className={f.date === data.peak.date ? 'bg-rose-50/60' : ''}>
-                    <td className="td font-medium">{dayLabel(f.date)}</td>
-                    <td className="td">{fmt(f.forecast_m3)}</td>
-                    <td className="td">{f.forecast_m3 >= data.avg_last_7 ? '+' : ''}{fmt(((f.forecast_m3 - data.avg_last_7) / data.avg_last_7) * 100, 1)}%</td>
-                    <td className="td">{f.tmax} / {f.tmin}</td>
-                    <td className="td">{f.precip > 0 ? <span className="inline-flex items-center gap-1"><CloudRain className="w-3.5 h-3.5 text-sky-500" />{f.precip}</span> : '0'}</td>
-                    <td className="td space-x-1">
-                      {f.date === data.peak.date && <Badge tone="rose">peak demand</Badge>}
-                      {f.date === data.hottest.date && <Badge tone="amber">hottest</Badge>}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+    <>
+      {header}
+      <div className="stack" style={{ '--gap': '24px' }}>
+        <div className="grid-kpi">
+          <StatCard label="Peak day" display={dayLabel(data.peak.date)} icon={TrendingUp} tone="peach" foot={`${fmtInt(data.peak.forecast_m3)} m³ at ${data.peak.tmax} °C`} />
+          <StatCard label="Hottest day" display={dayLabel(data.hottest.date)} icon={Flame} tone="rose" foot={`${data.hottest.tmax} °C maximum`} />
+          <StatCard
+            label="7-day total"
+            display={`${fmtInt(data.week_totals[zone])} m³`}
+            icon={CalendarDays}
+            tone="sky"
+            foot={`last 7 days averaged ${fmtInt(avg)} m³/day`}
+          />
+          <StatCard
+            label="Model error (MAPE)"
+            display={data.mape == null ? '–' : `${fmtNum(data.mape, 2)}%`}
+            icon={Gauge}
+            tone="mint"
+            foot="7-day recursive, last 90 days"
+          />
         </div>
-      )}
-    </div>
+
+        <Card title={`${data.zone_name}: last three weeks and next seven days`} subtitle={`Data up to ${dayLabel(data.data_until)} · weather: ${data.weather_source}`}>
+          <LineCompare
+            label={`Billed consumption and forecast for ${data.zone_name}, cubic metres per day`}
+            data={rows}
+            series={[
+              { key: 'billed', name: 'Billed consumption (m³/day)', color: t.axis },
+              { key: 'forecast', name: 'Forecast (m³/day)', color: t.lavender, dashed: true },
+            ]}
+            yFormat={(v) => fmtInt(v)}
+            valueFormat={(v) => `${fmtInt(v)} m³`}
+            height={300}
+          />
+        </Card>
+
+        <Card title="Day by day" subtitle="Each forecast day against the last-week average">
+          <Table
+            caption="Seven-day demand forecast"
+            rows={data.forecast}
+            rowKey={(f) => f.date}
+            pageSize={0}
+            columns={[
+              { key: 'date', label: 'Day', sortable: false, render: (f) => <strong>{dayLabel(f.date)}</strong> },
+              { key: 'forecast_m3', label: 'Forecast m³', numeric: true, render: (f) => fmtInt(f.forecast_m3) },
+              { key: 'vs', label: 'vs last week', numeric: true, sortable: false, render: (f) => fmtSigned(((f.forecast_m3 - avg) / avg) * 100, 1, '%') },
+              { key: 'temp', label: 'Max / min °C', sortable: false, render: (f) => `${f.tmax} / ${f.tmin}` },
+              {
+                key: 'rain',
+                label: 'Rain mm',
+                sortable: false,
+                render: (f) =>
+                  f.precip > 0 ? (
+                    <span className="row" style={{ '--gap': '6px' }}>
+                      <CloudRain size={15} aria-hidden="true" color="var(--sky-ink)" />
+                      {f.precip}
+                    </span>
+                  ) : (
+                    '0'
+                  ),
+              },
+              {
+                key: 'flags',
+                label: 'Flags',
+                sortable: false,
+                render: (f) => (
+                  <span className="row" style={{ '--gap': '6px' }}>
+                    {f.date === data.peak.date && <Badge tone="rose">peak demand</Badge>}
+                    {f.date === data.hottest.date && <Badge tone="peach">hottest</Badge>}
+                  </span>
+                ),
+              },
+            ]}
+          />
+        </Card>
+      </div>
+    </>
   )
 }

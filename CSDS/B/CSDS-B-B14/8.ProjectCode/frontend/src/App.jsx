@@ -1,31 +1,44 @@
-import { Navigate, Route, Routes } from 'react-router-dom'
+import { lazy, Suspense } from 'react'
+import { Navigate, Outlet, Route, Routes, useLocation } from 'react-router-dom'
 import { useAuth } from './auth.jsx'
-import Layout from './components/Layout.jsx'
+import { AppShell, PageSkeleton } from './components/ui'
 import Landing from './pages/Landing.jsx'
 import Login from './pages/Login.jsx'
-import Dashboard from './pages/Dashboard.jsx'
-import Quality from './pages/Quality.jsx'
-import NetworkPage from './pages/NetworkPage.jsx'
-import Forecast from './pages/Forecast.jsx'
-import Leaks from './pages/Leaks.jsx'
 
-function Protected({ children }) {
-  const { user } = useAuth()
-  if (!user) return <Navigate to="/login" replace />
-  return <Layout>{children}</Layout>
+// Screens load on first visit, so the Leaflet map and the chart code only ship with the pages that use them.
+const Dashboard = lazy(() => import('./pages/Dashboard.jsx'))
+const Quality = lazy(() => import('./pages/Quality.jsx'))
+const NetworkPage = lazy(() => import('./pages/NetworkPage.jsx'))
+const Forecast = lazy(() => import('./pages/Forecast.jsx'))
+const Leaks = lazy(() => import('./pages/Leaks.jsx'))
+const Evaluation = lazy(() => import('./pages/Evaluation.jsx'))
+
+function Protected() {
+  const { user, ready } = useAuth()
+  const loc = useLocation()
+  if (!ready) return <PageSkeleton kpis={3} blocks={1} />
+  if (!user) return <Navigate to="/login" replace state={{ from: loc.pathname }} />
+  return <Outlet />
 }
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Landing />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/dashboard" element={<Protected><Dashboard /></Protected>} />
-      <Route path="/quality" element={<Protected><Quality /></Protected>} />
-      <Route path="/network" element={<Protected><NetworkPage /></Protected>} />
-      <Route path="/forecast" element={<Protected><Forecast /></Protected>} />
-      <Route path="/leaks" element={<Protected><Leaks /></Protected>} />
-      <Route path="*" element={<Navigate to="/" replace />} />
-    </Routes>
+    <Suspense fallback={<PageSkeleton kpis={3} blocks={1} />}>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/login" element={<Login />} />
+        <Route element={<Protected />}>
+          <Route element={<AppShell />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/quality" element={<Quality />} />
+            <Route path="/network" element={<NetworkPage />} />
+            <Route path="/forecast" element={<Forecast />} />
+            <Route path="/leaks" element={<Leaks />} />
+            <Route path="/evaluation" element={<Evaluation />} />
+          </Route>
+        </Route>
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </Suspense>
   )
 }

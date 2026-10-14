@@ -4,9 +4,17 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="AquaVision - water quality, demand, leak and imbalance intelligence on a digital twin of the city network." />
     <title>AquaVision - Water Utility Intelligence</title>
+    <script>
+      // Apply the saved theme before first paint, so dark-mode visitors do not see a flash of light.
+      try {
+        var t = localStorage.getItem('aquavision-theme');
+        if (t === 'dark' || t === 'light') document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    </script>
   </head>
-  <body class="bg-slate-50">
+  <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

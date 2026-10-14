@@ -3,7 +3,10 @@ import L from 'leaflet'
 
 const HYDERABAD = [17.385, 78.4867]
 
-/** Leaflet + OpenStreetMap map. markers: [{id, lat, lon, color, label, popup, radius}] */
+/**
+ * Leaflet + OpenStreetMap map, styled with the kit tokens (tiles darken in dark mode via .mq-map in index.css).
+ * markers: [{ id, lat, lon, color, label, permanentLabel, popup, radius }]
+ */
 export default function MapView({ markers = [], user, height = 320, onSelect }) {
   const el = useRef(null)
   const map = useRef(null)
@@ -26,19 +29,19 @@ export default function MapView({ markers = [], user, height = 320, onSelect }) 
     markers.forEach((m) => {
       const c = L.circleMarker([m.lat, m.lon], {
         radius: m.radius || 9,
-        color: '#fff',
-        weight: 2,
-        fillColor: m.color || '#0f766e',
+        color: '#0d0d0f',
+        weight: 1.5,
+        fillColor: m.color || '#4ade80',
         fillOpacity: 0.9,
       }).addTo(g)
-      if (m.label) c.bindTooltip(String(m.label), { permanent: !!m.permanentLabel, direction: 'top' })
+      if (m.label) c.bindTooltip(String(m.label), { permanent: !!m.permanentLabel, direction: 'top', className: 'mq-tip' })
       if (m.popup) c.bindPopup(m.popup)
       if (onSelect) c.on('click', () => onSelect(m.id))
       pts.push([m.lat, m.lon])
     })
     if (user) {
-      L.circleMarker([user.lat, user.lon], { radius: 7, color: '#1d4ed8', weight: 3, fillColor: '#60a5fa', fillOpacity: 1 })
-        .bindTooltip('You', { permanent: true, direction: 'bottom' })
+      L.circleMarker([user.lat, user.lon], { radius: 7, color: '#0d0d0f', weight: 2, fillColor: '#67e8f9', fillOpacity: 1 })
+        .bindTooltip('You', { permanent: true, direction: 'bottom', className: 'mq-tip' })
         .addTo(g)
       pts.push([user.lat, user.lon])
     }
@@ -46,5 +49,5 @@ export default function MapView({ markers = [], user, height = 320, onSelect }) 
     else if (pts.length === 1) map.current.setView(pts[0], 13)
   }, [markers, user, onSelect])
 
-  return <div ref={el} style={{ height }} className="w-full rounded-xl border border-slate-200 z-0" />
+  return <div ref={el} style={{ height }} className="mq-map w-full overflow-hidden rounded-[6px] border border-line z-0" />
 }

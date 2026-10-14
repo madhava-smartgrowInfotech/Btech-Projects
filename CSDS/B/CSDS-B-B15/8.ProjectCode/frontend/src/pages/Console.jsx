@@ -1,258 +1,291 @@
-import { useCallback, useEffect, useState } from 'react'
-import { AlertOctagon, Check, GitBranch, PhoneForwarded, Radio, Settings, UserX } from 'lucide-react'
-import api, { errMsg, todayStr } from '../api'
+import { useEffect, useState } from 'react'
+import { AlertOctagon, Check, GitBranch, PhoneForwarded, Settings, UserX, Users } from 'lucide-react'
+import api, { describeError, todayStr } from '../api'
 import { useAuth } from '../auth'
 import ReferModal from '../components/ReferModal'
+import SeverityMix from '../components/SeverityMix'
 import useQueueSocket from '../components/useQueueSocket'
-import { ErrorBox, SeverityBadge, SeverityBar, Spinner, Stat, StatusPill } from '../components/ui'
+import { PageHeader } from '../components/ui/AppShell'
+import { Button, Input, Select } from '../components/ui/controls'
+import { Badge, Card, StatCard, StatusDot } from '../components/ui/display'
+import { EmptyState, ErrorState, Modal, Skeleton, useToast } from '../components/ui/feedback'
+import Table from '../components/ui/Table'
+import { SEVERITY_TONE, STATUS_TONE, statusLabel } from '../format'
+import useApi from '../lib/useApi'
+
+const GENDER = [
+  ['', 'Gender'],
+  ['F', 'Female'],
+  ['M', 'Male'],
+]
+
+const sourceLabel = (b) => {
+  const base = b.is_sample ? 'sample data' : b.kind === 'emergency' ? 'emergency' : b.moved ? `moved from ${b.requested_date}` : 'booked online'
+  return b.referral_id && b.kind !== 'emergency' ? `${base} - referral` : base
+}
+
+// Done / No-show / Refer buttons, shared by the table row and the mobile card
+function RowActions({ b, busy, onStatus, onRefer, compact = false }) {
+  return (
+    <div className={`flex items-center gap-3 ${compact ? 'flex-wrap' : 'justify-end'}`}>
+      <button type="button" className="font-mono text-[11px] uppercase tracking-[0.1em] text-alert hover:underline disabled:opacity-40" disabled={!!busy} onClick={() => onStatus(b, 'no_show')}>
+        No-show
+      </button>
+      <button type="button" className="font-mono text-[11px] uppercase tracking-[0.1em] text-info hover:underline" onClick={() => onRefer(b)}>
+        Refer
+      </button>
+    </div>
+  )
+}
 
 export default function Console() {
   const { user } = useAuth()
-  const [hospitals, setHospitals] = useState([])
-  const [hid, setHid] = useState(user.hospital_id || Number(localStorage.getItem('mq_console_hid')) || null)
+  const toast = useToast()
+  const [hid, setHid] = useState(() => user.hospital_id || Number(localStorage.getItem('mq_console_hid')) || null)
   const [date, setDate] = useState(todayStr())
-  const [q, setQ] = useState(null)
-  const [error, setError] = useState('')
   const [busy, setBusy] = useState('')
-  const [notice, setNotice] = useState('')
   const [refer, setRefer] = useState(null)
-  const [showEmergency, setShowEmergency] = useState(false)
-  const [showSettings, setShowSettings] = useState(false)
+  const [emergencyOpen, setEmergencyOpen] = useState(false)
+  const [limitsOpen, setLimitsOpen] = useState(false)
   const isToday = date === todayStr()
 
+  const hospitals = useApi(
+    () => (user.role === 'admin' ? api.get('/hospitals').then((r) => r.data) : Promise.resolve([])),
+    [user.role],
+  )
   useEffect(() => {
-    if (user.role !== 'admin') return
-    api
-      .get('/hospitals')
-      .then((r) => {
-        setHospitals(r.data)
-        if (!hid && r.data.length) setHid(r.data[0].id)
-      })
-      .catch((e) => setError(errMsg(e)))
-  }, [user.role]) // eslint-disable-line react-hooks/exhaustive-deps
-
-  const load = useCallback(() => {
-    if (!hid) return
-    api
-      .get(`/console/${hid}`, { params: { date } })
-      .then((r) => {
-        setQ(r.data)
-        setError('')
-      })
-      .catch((e) => setError(errMsg(e)))
-  }, [hid, date])
+    if (!hid && hospitals.data?.length) setHid(hospitals.data[0].id)
+  }, [hid, hospitals.data])
   useEffect(() => {
-    setQ(null)
-    load()
     if (hid) localStorage.setItem('mq_console_hid', hid)
-  }, [load, hid])
-  const live = useQueueSocket(hid, load)
+  }, [hid])
 
+  const queue = useApi(
+    () => (hid ? api.get(`/console/${hid}`, { params: { date } }).then((r) => r.data) : Promise.resolve(null)),
+    [hid, date],
+  )
+  const q = queue.data
+  const live = useQueueSocket(hid, queue.reload)
+
+  // every queue action: toast on success or failure, then refresh the queue
   const act = async (label, fn, msg) => {
     setBusy(label)
-    setError('')
     try {
       const r = await fn()
-      if (msg) setNotice(typeof msg === 'function' ? msg(r.data) : msg)
-      load()
+      toast({ tone: 'ok', title: typeof msg === 'function' ? msg(r.data) : msg })
+      queue.reload()
     } catch (e) {
-      setError(errMsg(e))
+      toast({ tone: 'alert', title: 'Action failed', body: describeError(e).message })
     } finally {
       setBusy('')
     }
   }
-
   const callNext = () =>
-    act('next', () => api.post(`/console/${hid}/call-next`), (d) => (d.called ? `Calling token ${d.called.token} - ${d.called.patient_name}` : 'Queue is empty'))
-  const setStatus = (b, status) =>
-    act(`s${b.id}`, () => api.post(`/console/bookings/${b.id}/status`, { status }), `Token ${b.token} marked ${status.replace('_', '-')}`)
+    act(
+      'next',
+      () => api.post(`/console/${hid}/call-next`),
+      (d) => (d.called ? `Calling token ${d.called.token} - ${d.called.patient_name}` : 'Queue is empty'),
+    )
+  const setStatus = (b, status) => act(`s${b.id}`, () => api.post(`/console/bookings/${b.id}/status`, { status }), `Token ${b.token} marked ${statusLabel(status)}`)
 
-  if (!hid) return error ? <ErrorBox error={error} /> : <Spinner />
+  if (!hid) {
+    return hospitals.error ? <ErrorState error={hospitals.error} onRetry={hospitals.reload} /> : <Skeleton className="h-64 w-full" />
+  }
 
   return (
-    <div className="space-y-4">
-      <div className="flex flex-wrap items-end gap-3">
-        <div className="flex-1 min-w-60">
-          <div className="text-xs text-slate-500 uppercase tracking-wide font-semibold">Hospital console</div>
-          {user.role === 'admin' ? (
-            <select className="input mt-1 !text-base font-semibold" value={hid} onChange={(e) => setHid(Number(e.target.value))}>
-              {hospitals.map((h) => (
-                <option key={h.id} value={h.id}>
-                  {h.name}
-                </option>
-              ))}
-            </select>
-          ) : (
-            <h1 className="text-xl font-bold">{q?.hospital.name || '...'}</h1>
-          )}
+    <div>
+      <PageHeader
+        eyebrow={user.role === 'admin' ? 'admin - any hospital' : 'hospital desk'}
+        title={q?.hospital.name || 'Hospital console'}
+        subtitle="Today's queue, live. Call patients in, record outcomes, add emergencies and refer on."
+        actions={
+          <>
+            {user.role === 'admin' && hospitals.data && (
+              <Select
+                label="Hospital"
+                value={String(hid)}
+                onChange={(e) => setHid(Number(e.target.value))}
+                options={hospitals.data.map((h) => [String(h.id), h.name])}
+                className="min-w-56"
+              />
+            )}
+            <Input label="Date" type="date" value={date} onChange={(e) => setDate(e.target.value)} className="w-40" />
+            <StatusDot tone={live ? 'ok' : 'warn'} label={live ? 'live' : 'offline'} blink={live} />
+            <Button variant="secondary" icon={Settings} disabled={!q} onClick={() => setLimitsOpen(true)}>
+              Limits
+            </Button>
+            <Button variant="danger" icon={AlertOctagon} disabled={!isToday || !q} onClick={() => setEmergencyOpen(true)}>
+              Emergency
+            </Button>
+          </>
+        }
+      />
+
+      {queue.error && <div className="mb-5"><ErrorState error={queue.error} onRetry={queue.reload} /></div>}
+      {!isToday && <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.1em] text-warn">Viewing {date}. Queue actions are available for today only.</p>}
+
+      {!q ? (
+        <div className="grid gap-4">
+          <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">{[0, 1, 2, 3].map((i) => <Skeleton key={i} className="h-28" />)}</div>
+          <Skeleton className="h-96 w-full" />
         </div>
-        <input type="date" className="input !w-auto" value={date} onChange={(e) => setDate(e.target.value)} />
-        <span className={`inline-flex items-center gap-1 text-xs ${live ? 'text-emerald-600' : 'text-slate-400'}`}>
-          <Radio className="h-3.5 w-3.5" /> {live ? 'Live' : 'Offline'}
-        </span>
-        <button className="btn-outline" onClick={() => setShowSettings(!showSettings)}>
-          <Settings className="h-4 w-4" /> Limits
-        </button>
-      </div>
-
-      <ErrorBox error={error} onRetry={load} />
-      {notice && (
-        <div className="card px-4 py-2 text-sm bg-teal-50 border-teal-200 text-teal-900 flex justify-between">
-          {notice}
-          <button onClick={() => setNotice('')}>x</button>
-        </div>
-      )}
-      {!q && !error && <Spinner />}
-
-      {q && showSettings && <SettingsPanel q={q} onSaved={(m) => { setNotice(m); setShowSettings(false); load() }} />}
-
-      {q && (
-        <>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            <Stat label="OP booked" value={`${q.booked} / ${q.hospital.op_limit}`} sub={`expected to attend: ${q.expected_attendance}`} />
-            <Stat label="Waiting" value={q.waiting.length} sub={`consult ~${q.consult_min} min each`} />
-            <Stat
+      ) : (
+        <div className="space-y-5">
+          <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+            <StatCard
+              live
+              label="OP booked"
+              value={q.booked}
+              format={(v) => `${Math.round(v)} / ${q.hospital.op_limit}`}
+              sub={`expected to attend ${q.expected_attendance}`}
+              icon={Users}
+            />
+            <StatCard label="Waiting" value={q.waiting.length} sub={`consult ~${q.consult_min} min each`} />
+            <StatCard
               label="Emergency quota"
-              value={`${q.quota_used} / ${q.hospital.emergency_quota}`}
-              tone={q.quota_used >= q.hospital.emergency_quota ? 'text-red-600' : 'text-slate-900'}
+              value={q.quota_used}
+              format={(v) => `${Math.round(v)} / ${q.hospital.emergency_quota}`}
+              tone={q.quota_used >= q.hospital.emergency_quota ? 'alert' : 'ok'}
+              sub="reserved slots used"
             />
-            <Stat
-              label="Severity mix"
-              value={<SeverityBar mix={q.severity_mix} />}
-              sub={['critical', 'severe', 'moderate', 'mild'].map((l) => `${l[0].toUpperCase()}:${q.severity_mix[l] || 0}`).join('  ')}
-            />
+            <Card title="Severity mix" bodyClass="p-4">
+              <SeverityMix counts={q.severity_mix} height="h-2.5" showLegend={false} />
+              <div className="mt-2 font-mono text-[11px] text-muted">{Object.values(q.severity_mix).reduce((s, n) => s + n, 0)} today</div>
+            </Card>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-4">
+          <div className="grid gap-5 lg:grid-cols-3">
             <div className="space-y-4">
-              <div className="card p-4 space-y-3">
-                <div className="text-sm font-semibold">Now serving</div>
-                {q.called.length === 0 && <div className="text-sm text-slate-400">Nobody in the consultation room</div>}
-                {q.called.map((b) => (
-                  <div key={b.id} className="rounded-xl bg-emerald-50 border border-emerald-200 p-3">
-                    <div className="flex items-center gap-3">
-                      <div className="text-3xl font-bold text-emerald-700">{b.token}</div>
-                      <div className="flex-1">
-                        <div className="font-medium">{b.patient_name}</div>
-                        <div className="text-xs text-slate-500">
-                          {b.age ?? '-'} {b.gender ?? ''} - {b.condition || 'no AI suggestion'}
-                        </div>
-                      </div>
-                      <SeverityBadge level={b.severity} />
-                    </div>
-                    <div className="grid grid-cols-3 gap-2 mt-3">
-                      <button className="btn-outline !px-2 text-xs" disabled={!!busy} onClick={() => setStatus(b, 'done')}>
-                        <Check className="h-3.5 w-3.5" /> Done
-                      </button>
-                      <button className="btn-outline !px-2 text-xs" disabled={!!busy} onClick={() => setStatus(b, 'no_show')}>
-                        <UserX className="h-3.5 w-3.5" /> No-show
-                      </button>
-                      <button className="btn-outline !px-2 text-xs" onClick={() => setRefer(b)}>
-                        <GitBranch className="h-3.5 w-3.5" /> Refer
-                      </button>
-                    </div>
-                  </div>
-                ))}
-                <button className="btn-primary w-full !py-3" disabled={!isToday || busy === 'next'} onClick={callNext}>
-                  <PhoneForwarded className="h-4 w-4" /> {busy === 'next' ? 'Calling...' : 'Call next'}
-                </button>
-                <button className="btn-danger w-full" disabled={!isToday} onClick={() => setShowEmergency(!showEmergency)}>
-                  <AlertOctagon className="h-4 w-4" /> Add emergency
-                </button>
-                {!isToday && <p className="text-xs text-slate-500">Queue actions are available for today only.</p>}
-              </div>
-              {showEmergency && (
-                <EmergencyForm
-                  hid={hid}
-                  onDone={(d) => {
-                    setShowEmergency(false)
-                    setNotice(`Emergency token ${d.token} added at the front of the queue (${d.quota_note})`)
-                    load()
-                  }}
-                />
-              )}
-            </div>
-
-            <div className="lg:col-span-2 card overflow-hidden">
-              <div className="px-4 py-3 border-b border-slate-200 text-sm font-semibold flex justify-between">
-                Waiting queue <span className="text-slate-400 font-normal">ordered by priority, then token</span>
-              </div>
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm">
-                  <thead className="bg-slate-50 text-xs text-slate-500 uppercase">
-                    <tr>
-                      <th className="px-3 py-2 text-left">#</th>
-                      <th className="px-3 py-2 text-left">Token</th>
-                      <th className="px-3 py-2 text-left">Patient</th>
-                      <th className="px-3 py-2 text-left">Severity</th>
-                      <th className="px-3 py-2 text-left hidden md:table-cell">AI suggestion</th>
-                      <th className="px-3 py-2 text-right">Wait</th>
-                      <th className="px-3 py-2 text-right hidden sm:table-cell">No-show</th>
-                      <th className="px-3 py-2"></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {q.waiting.length === 0 && (
-                      <tr>
-                        <td colSpan={8} className="px-3 py-8 text-center text-slate-400">
-                          No one waiting
-                        </td>
-                      </tr>
-                    )}
-                    {q.waiting.map((b) => (
-                      <tr key={b.id} className={`border-t border-slate-100 ${b.kind === 'emergency' ? 'bg-red-50' : ''}`}>
-                        <td className="px-3 py-2 text-slate-400">{b.position}</td>
-                        <td className="px-3 py-2 font-bold">{b.token}</td>
-                        <td className="px-3 py-2">
-                          <div className="font-medium">{b.patient_name}</div>
-                          <div className="text-xs text-slate-400">
-                            {b.is_sample ? 'sample data' : b.kind === 'emergency' ? 'emergency' : b.moved ? `moved from ${b.requested_date}` : 'booked online'}
-                            {b.referral_id && b.kind !== 'emergency' ? ' - referral' : ''}
+              <Card title="Now serving" eyebrow="consultation room">
+                <div className="space-y-3">
+                  {q.called.length === 0 && (
+                    <EmptyState icon={Users} title="Nobody in the room" body="Call the next patient when you are ready." className="py-6" />
+                  )}
+                  {q.called.map((b) => (
+                    <div key={b.id} className="rounded-[6px] border border-ok/40 bg-ok/[0.07] p-3">
+                      <div className="flex items-center gap-3">
+                        <div className="font-mono text-3xl font-semibold tabular-nums text-ok">{b.token}</div>
+                        <div className="min-w-0 flex-1">
+                          <div className="truncate font-medium text-fg">{b.patient_name}</div>
+                          <div className="truncate font-mono text-[11px] text-muted">
+                            {b.age ?? '-'} {b.gender ?? ''} - {b.condition || 'no AI suggestion'}
                           </div>
-                        </td>
-                        <td className="px-3 py-2">
-                          <SeverityBadge level={b.severity} />
-                        </td>
-                        <td className="px-3 py-2 hidden md:table-cell text-xs text-slate-600">{b.condition}</td>
-                        <td className="px-3 py-2 text-right whitespace-nowrap">{b.wait_min} min</td>
-                        <td className="px-3 py-2 text-right hidden sm:table-cell text-xs text-slate-500">{Math.round(b.noshow_prob * 100)}%</td>
-                        <td className="px-3 py-2 text-right whitespace-nowrap">
-                          <button className="text-xs text-rose-600 hover:underline mr-2" disabled={!!busy} onClick={() => setStatus(b, 'no_show')}>
-                            No-show
-                          </button>
-                          <button className="text-xs text-violet-700 hover:underline" onClick={() => setRefer(b)}>
-                            Refer
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+                        </div>
+                        <Badge tone={SEVERITY_TONE[b.severity]}>{b.severity}</Badge>
+                      </div>
+                      <div className="mt-3 grid grid-cols-3 gap-2">
+                        <Button size="sm" variant="secondary" icon={Check} disabled={!!busy} onClick={() => setStatus(b, 'done')}>
+                          Done
+                        </Button>
+                        <Button size="sm" variant="secondary" icon={UserX} disabled={!!busy} onClick={() => setStatus(b, 'no_show')}>
+                          No-show
+                        </Button>
+                        <Button size="sm" variant="secondary" icon={GitBranch} onClick={() => setRefer(b)}>
+                          Refer
+                        </Button>
+                      </div>
+                    </div>
+                  ))}
+                  <Button size="lg" className="w-full" icon={PhoneForwarded} loading={busy === 'next'} disabled={!isToday || !!busy} onClick={callNext}>
+                    Call next
+                  </Button>
+                </div>
+              </Card>
+
               {q.finished.length > 0 && (
-                <details className="border-t border-slate-200">
-                  <summary className="px-4 py-2 text-sm cursor-pointer text-slate-600">Finished today ({q.finished.length})</summary>
-                  <div className="px-4 pb-3 flex flex-wrap gap-2">
+                <Card title={`Finished (${q.finished.length})`} eyebrow="outcomes recorded today">
+                  <div className="flex flex-wrap gap-2">
                     {q.finished.map((b) => (
-                      <span key={b.id} className="text-xs border rounded-lg px-2 py-1 flex items-center gap-1">
-                        <b>{b.token}</b> {b.patient_name} <StatusPill status={b.status} />
+                      <span key={b.id} className="inline-flex items-center gap-2 rounded-[4px] border border-line-strong px-2 py-1 font-mono text-[11px] text-muted">
+                        <b className="text-fg">{b.token}</b> {b.patient_name}
+                        <Badge tone={STATUS_TONE[b.status]}>{statusLabel(b.status)}</Badge>
                       </span>
                     ))}
                   </div>
-                </details>
+                </Card>
               )}
             </div>
+
+            <Card title="Waiting queue" eyebrow="ordered by priority, then token" className="lg:col-span-2" bodyClass="p-4">
+              <Table
+                caption="Waiting queue"
+                rows={q.waiting}
+                rowKey={(b) => b.id}
+                loading={queue.loading}
+                empty={<EmptyState icon={Users} title="No one waiting" body="Patients who book online appear here in priority order." />}
+                columns={[
+                  { key: 'position', label: '#', render: (b) => <span className="text-dim tabular-nums">{b.position}</span> },
+                  { key: 'token', label: 'Token', render: (b) => <span className="font-mono font-semibold">{b.token}</span> },
+                  {
+                    key: 'patient_name',
+                    label: 'Patient',
+                    render: (b) => (
+                      <div>
+                        <div className="font-medium text-fg">{b.patient_name}</div>
+                        <div className="font-mono text-[10px] text-dim">{sourceLabel(b)}</div>
+                      </div>
+                    ),
+                  },
+                  { key: 'severity', label: 'Severity', render: (b) => <Badge tone={SEVERITY_TONE[b.severity]}>{b.severity}</Badge> },
+                  { key: 'condition', label: 'AI suggestion', className: 'hidden md:table-cell', render: (b) => <span className="text-xs text-muted">{b.condition || '-'}</span> },
+                  { key: 'wait_min', label: 'Wait', align: 'right', render: (b) => <span className="whitespace-nowrap font-mono text-xs">{b.wait_min} min</span> },
+                  { key: 'noshow_prob', label: 'No-show', align: 'right', className: 'hidden sm:table-cell', render: (b) => <span className="font-mono text-xs text-muted">{Math.round(b.noshow_prob * 100)}%</span> },
+                  { key: 'actions', label: '', align: 'right', render: (b) => <RowActions b={b} busy={busy} onStatus={setStatus} onRefer={setRefer} /> },
+                ]}
+                cards={(b) => (
+                  <div className="panel p-3">
+                    <div className="flex items-center gap-3">
+                      <span className="font-mono text-xl font-semibold">{b.token}</span>
+                      <div className="min-w-0 flex-1">
+                        <div className="truncate font-medium text-fg">{b.patient_name}</div>
+                        <div className="font-mono text-[10px] text-dim">{sourceLabel(b)}</div>
+                      </div>
+                      <Badge tone={SEVERITY_TONE[b.severity]}>{b.severity}</Badge>
+                    </div>
+                    <div className="mt-2 flex items-center justify-between font-mono text-[11px] text-muted">
+                      <span>{b.wait_min} min wait</span>
+                      <RowActions b={b} busy={busy} onStatus={setStatus} onRefer={setRefer} compact />
+                    </div>
+                  </div>
+                )}
+              />
+            </Card>
           </div>
-        </>
+        </div>
       )}
+
+      <Modal open={emergencyOpen} onClose={() => setEmergencyOpen(false)} title="Emergency arrival" size="md">
+        <EmergencyForm
+          hid={hid}
+          onDone={(d) => {
+            setEmergencyOpen(false)
+            toast({ tone: 'ok', title: `Emergency token ${d.token} added at the front`, body: d.quota_note })
+            queue.reload()
+          }}
+        />
+      </Modal>
+
+      <Modal open={limitsOpen} onClose={() => setLimitsOpen(false)} title="Limits and departments" size="lg">
+        {q && (
+          <LimitsForm
+            h={q.hospital}
+            onSaved={() => {
+              setLimitsOpen(false)
+              toast({ tone: 'ok', title: 'Hospital limits saved' })
+              queue.reload()
+            }}
+          />
+        )}
+      </Modal>
+
       {refer && (
         <ReferModal
           booking={refer}
           onClose={() => setRefer(null)}
           onDone={(r) => {
             setRefer(null)
-            setNotice(`Referral #${r.id} to ${r.to_hospital.name} created (${r.status.replace('_', ' ')})`)
-            load()
+            toast({ tone: 'ok', title: `Referral #${r.id} created`, body: `to ${r.to_hospital.name} - ${statusLabel(r.status)}` })
+            queue.reload()
           }}
         />
       )}
@@ -263,15 +296,17 @@ export default function Console() {
 function EmergencyForm({ hid, onDone }) {
   const [f, setF] = useState({ patient_name: '', age: '', gender: '', text: '', notes: '' })
   const [busy, setBusy] = useState(false)
-  const [error, setError] = useState('')
+  const [error, setError] = useState(null)
+  const set = (k) => (e) => setF({ ...f, [k]: e.target.value })
+
   const submit = async (e) => {
     e.preventDefault()
     setBusy(true)
-    setError('')
+    setError(null)
     try {
       const symptoms = f.text.trim() ? (await api.post('/triage/map-text', { text: f.text })).data.symptoms : []
       const { data } = await api.post(`/console/${hid}/emergency`, {
-        patient_name: f.patient_name,
+        patient_name: f.patient_name.trim(),
         age: f.age === '' ? null : Number(f.age),
         gender: f.gender || null,
         symptoms,
@@ -279,46 +314,43 @@ function EmergencyForm({ hid, onDone }) {
       })
       onDone(data)
     } catch (err) {
-      setError(errMsg(err))
+      setError(describeError(err))
     } finally {
       setBusy(false)
     }
   }
+
   return (
-    <form onSubmit={submit} className="card p-4 space-y-2 border-red-300">
-      <div className="text-sm font-semibold text-red-700">Emergency arrival</div>
-      <input className="input" placeholder="Patient name" required value={f.patient_name} onChange={(e) => setF({ ...f, patient_name: e.target.value })} />
-      <div className="grid grid-cols-2 gap-2">
-        <input className="input" type="number" placeholder="Age" min="0" max="120" value={f.age} onChange={(e) => setF({ ...f, age: e.target.value })} />
-        <select className="input" value={f.gender} onChange={(e) => setF({ ...f, gender: e.target.value })}>
-          <option value="">Gender</option>
-          <option value="F">Female</option>
-          <option value="M">Male</option>
-        </select>
+    <form onSubmit={submit} className="space-y-4 p-4">
+      <Input label="Patient name" value={f.patient_name} onChange={set('patient_name')} required minLength={1} autoFocus />
+      <div className="grid grid-cols-2 gap-3">
+        <Input label="Age" type="number" min="0" max="120" value={f.age} onChange={set('age')} />
+        <Select label="Gender" options={GENDER} value={f.gender} onChange={set('gender')} />
       </div>
-      <input className="input" placeholder="Symptoms (optional, e.g. chest pain, sweating)" value={f.text} onChange={(e) => setF({ ...f, text: e.target.value })} />
-      <input className="input" placeholder="Notes (optional)" value={f.notes} onChange={(e) => setF({ ...f, notes: e.target.value })} />
-      <ErrorBox error={error} />
-      <button className="btn-danger w-full" disabled={busy}>
-        {busy ? 'Adding...' : 'Insert at front of queue'}
-      </button>
+      <Input label="Symptoms (optional)" placeholder="e.g. chest pain, sweating" value={f.text} onChange={set('text')} hint="Read by the same symptom mapper as the booking screen." />
+      <Input label="Notes (optional)" value={f.notes} onChange={set('notes')} />
+      {error && <ErrorState error={error} />}
+      <div className="flex justify-end">
+        <Button variant="danger" type="submit" loading={busy} icon={AlertOctagon}>
+          Insert at front of queue
+        </Button>
+      </div>
     </form>
   )
 }
 
-function SettingsPanel({ q, onSaved }) {
-  const h = q.hospital
+function LimitsForm({ h, onSaved }) {
   const [f, setF] = useState({ op_limit: h.op_limit, emergency_quota: h.emergency_quota, avg_consult_min: h.avg_consult_min, op_start: h.op_start })
   const [specs, setSpecs] = useState(h.specialties)
-  const [all, setAll] = useState([])
+  const all = useApi(() => api.get('/specialties').then((r) => r.data), [])
   const [busy, setBusy] = useState(false)
-  const [error, setError] = useState('')
-  useEffect(() => {
-    api.get('/specialties').then((r) => setAll(r.data)).catch(() => {})
-  }, [])
-  const save = async () => {
+  const [error, setError] = useState(null)
+  const set = (k) => (e) => setF({ ...f, [k]: e.target.value })
+
+  const save = async (e) => {
+    e.preventDefault()
     setBusy(true)
-    setError('')
+    setError(null)
     try {
       await api.patch(`/hospitals/${h.id}`, {
         op_limit: Number(f.op_limit),
@@ -327,50 +359,53 @@ function SettingsPanel({ q, onSaved }) {
         op_start: f.op_start,
         specialties: specs,
       })
-      onSaved('Hospital limits saved')
-    } catch (e) {
-      setError(errMsg(e))
+      onSaved()
+    } catch (err) {
+      setError(describeError(err))
     } finally {
       setBusy(false)
     }
   }
+
   return (
-    <div className="card p-4 space-y-3">
-      <div className="text-sm font-semibold">Daily limits and departments</div>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-        {[
-          ['op_limit', 'Daily OP limit', 'number'],
-          ['emergency_quota', 'Emergency quota / day', 'number'],
-          ['avg_consult_min', 'Avg consult (min)', 'number'],
-          ['op_start', 'OP opens', 'time'],
-        ].map(([k, label, type]) => (
-          <div key={k}>
-            <label className="label">{label}</label>
-            <input className="input" type={type} step={k === 'avg_consult_min' ? '0.1' : '1'} value={f[k]} onChange={(e) => setF({ ...f, [k]: e.target.value })} />
-          </div>
-        ))}
+    <form onSubmit={save} className="space-y-5 p-4">
+      <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+        <Input label="Daily OP limit" type="number" min="1" value={f.op_limit} onChange={set('op_limit')} />
+        <Input label="Emergency quota / day" type="number" min="0" value={f.emergency_quota} onChange={set('emergency_quota')} />
+        <Input label="Avg consult (min)" type="number" step="0.1" min="0.5" value={f.avg_consult_min} onChange={set('avg_consult_min')} />
+        <Input label="OP opens" type="time" value={f.op_start} onChange={set('op_start')} />
       </div>
-      <div className="flex flex-wrap gap-2">
-        {all.map((s) => (
-          <label key={s} className={`text-xs rounded-full border px-2.5 py-1 cursor-pointer ${specs.includes(s) ? 'bg-teal-50 border-teal-400 text-teal-800' : 'border-slate-200 text-slate-500'}`}>
-            <input
-              type="checkbox"
-              className="hidden"
-              checked={specs.includes(s)}
-              onChange={() => setSpecs(specs.includes(s) ? specs.filter((x) => x !== s) : [...specs, s])}
-            />
-            {s}
-          </label>
-        ))}
+      <div>
+        <div className="mb-2 font-mono text-[11px] uppercase tracking-[0.12em] text-muted">Departments</div>
+        {all.error && <ErrorState error={all.error} onRetry={all.reload} compact />}
+        <div className="flex flex-wrap gap-2">
+          {(all.data || specs).map((s) => {
+            const on = specs.includes(s)
+            return (
+              <button
+                key={s}
+                type="button"
+                aria-pressed={on}
+                onClick={() => setSpecs(on ? specs.filter((x) => x !== s) : [...specs, s])}
+                className="rounded-[4px] border px-2.5 py-1 font-mono text-[11px] transition-colors"
+                style={on ? { borderColor: 'var(--ok)', color: 'var(--ok)', background: 'color-mix(in oklab, var(--ok) 10%, transparent)' } : { borderColor: 'var(--line-strong)', color: 'var(--muted)' }}
+              >
+                {s}
+              </button>
+            )
+          })}
+        </div>
       </div>
-      <p className="text-xs text-slate-500">
-        When a day reaches its limit (allowing up to 15% overbooking where predicted no-shows leave room), new bookings move to the next
-        day with space automatically. Critical cases use the emergency quota.
+      <p className="text-xs text-muted">
+        When a day reaches its limit (with up to 15% overbooking where predicted no-shows leave room), new bookings move to the next day with space
+        automatically. Critical cases use the emergency quota.
       </p>
-      <ErrorBox error={error} />
-      <button className="btn-primary" disabled={busy} onClick={save}>
-        {busy ? 'Saving...' : 'Save'}
-      </button>
-    </div>
+      {error && <ErrorState error={error} />}
+      <div className="flex justify-end">
+        <Button type="submit" loading={busy}>
+          Save limits
+        </Button>
+      </div>
+    </form>
   )
 }

@@ -1,16 +1,28 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link, useLocation, useParams } from 'react-router-dom'
-import { ArrowLeft, BellRing, CalendarClock, Radio } from 'lucide-react'
-import api, { errMsg } from '../api'
+import { ArrowLeft, CalendarClock } from 'lucide-react'
+import api, { describeError } from '../api'
+import { useAuth } from '../auth'
 import useQueueSocket from '../components/useQueueSocket'
-import { Disclaimer, ErrorBox, SeverityBadge, Spinner, StatusPill } from '../components/ui'
+import { PageHeader } from '../components/ui/AppShell'
+import { Badge, KeyValueList, StatCard, StatusDot } from '../components/ui/display'
+import { ErrorState, Skeleton, useToast } from '../components/ui/feedback'
+import { SEVERITY_TONE, STATUS_TONE, statusLabel } from '../format'
+
+const MESSAGE = {
+  called: 'You are being called now. Please proceed to the consultation room.',
+  done: 'Consultation completed.',
+  no_show: 'Marked as not attended. Please book again if you still need a visit.',
+  referred: 'You were referred to another hospital - see Referrals.',
+}
 
 export default function TokenDetail() {
   const { id } = useParams()
   const { state } = useLocation()
+  const { user } = useAuth()
+  const toast = useToast()
   const [b, setB] = useState(state?.justBooked || null)
-  const [error, setError] = useState('')
-  const [flash, setFlash] = useState('')
+  const [error, setError] = useState(null)
   const prev = useRef(null)
 
   const load = useCallback(() => {
@@ -18,96 +30,115 @@ export default function TokenDetail() {
       .get(`/bookings/${id}`)
       .then((r) => {
         const p = prev.current
-        if (p && p.position && r.data.position !== p.position) {
-          setFlash(r.data.position < p.position ? 'You moved up the queue' : 'An urgent case was placed ahead of you')
-          setTimeout(() => setFlash(''), 4000)
+        if (p && r.data.status === 'called' && p.status !== 'called') {
+          toast({ tone: 'ok', title: "It's your turn", body: 'Please go to the consultation room.' })
+        } else if (p && p.position && r.data.position && r.data.position !== p.position) {
+          const up = r.data.position < p.position
+          toast({ tone: up ? 'ok' : 'warn', title: up ? 'You moved up the queue' : 'An urgent case was placed ahead of you' })
         }
-        if (p && p.status !== 'called' && r.data.status === 'called') setFlash("It's your turn - please go to the consultation room")
         prev.current = r.data
         setB(r.data)
-        setError('')
+        setError(null)
       })
-      .catch((e) => setError(errMsg(e)))
-  }, [id])
+      .catch((e) => setError(describeError(e)))
+  }, [id, toast])
 
-  useEffect(load, [load])
+  useEffect(() => {
+    load()
+  }, [load])
   const live = useQueueSocket(b?.hospital_id, load)
 
-  if (!b) return error ? <ErrorBox error={error} onRetry={load} /> : <Spinner />
+  const back = user.role === 'patient' ? '/tokens' : '/console'
+
+  if (!b) {
+    return error ? (
+      <div className="mx-auto max-w-2xl">
+        <ErrorState error={error} onRetry={load} />
+      </div>
+    ) : (
+      <div className="mx-auto max-w-2xl space-y-4">
+        <Skeleton className="h-64 w-full" />
+        <Skeleton className="h-40 w-full" />
+      </div>
+    )
+  }
+
+  const waiting = b.status === 'waiting'
+  const justBooked = state?.justBooked?.allocation
 
   return (
-    <div className="max-w-md mx-auto space-y-4">
-      <Link to="/tokens" className="text-sm text-slate-500 inline-flex items-center gap-1">
-        <ArrowLeft className="h-4 w-4" /> My tokens
+    <div className="mx-auto max-w-2xl space-y-5">
+      <Link to={back} className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.12em] text-muted hover:text-ok">
+        <ArrowLeft size={14} aria-hidden="true" /> {user.role === 'patient' ? 'My tokens' : 'Hospital console'}
       </Link>
-      <ErrorBox error={error} onRetry={load} />
-      {state?.justBooked?.allocation && (
-        <div className={`card p-3 text-sm ${state.justBooked.moved ? 'bg-amber-50 border-amber-300 text-amber-900' : 'bg-teal-50 border-teal-200 text-teal-900'}`}>
-          <CalendarClock className="h-4 w-4 inline mr-1" />
+
+      {error && <ErrorState error={error} onRetry={load} />}
+
+      {justBooked && (
+        <div
+          className="flex items-center gap-2 rounded-[6px] border p-3 text-sm text-fg"
+          style={{
+            borderColor: state.justBooked.moved ? 'var(--warn)' : 'var(--ok)',
+            background: `color-mix(in oklab, ${state.justBooked.moved ? 'var(--warn)' : 'var(--ok)'} 9%, var(--panel))`,
+          }}
+        >
+          <CalendarClock size={16} className={state.justBooked.moved ? 'text-warn' : 'text-ok'} aria-hidden="true" />
           Booked: {state.justBooked.allocation}
         </div>
       )}
-      {flash && (
-        <div className="card p-3 text-sm bg-sky-50 border-sky-300 text-sky-900 flex items-center gap-2">
-          <BellRing className="h-4 w-4" /> {flash}
+
+      <section className="panel scan overflow-hidden">
+        <div className="relative z-[1] border-b border-line px-6 py-8 text-center">
+          <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-dim">Your token</div>
+          <div className="mt-1 font-mono text-7xl font-semibold tabular-nums tracking-tight text-ok">{b.token}</div>
+          <div className="mt-2 text-sm text-fg">{b.hospital}</div>
+          <div className="font-mono text-[11px] text-muted">
+            {b.date}
+            {b.moved && ` - moved from ${b.requested_date} because that day was full`}
+          </div>
         </div>
-      )}
-      <div className="card overflow-hidden">
-        <div className={`px-6 py-8 text-center text-white ${b.status === 'called' ? 'bg-emerald-600' : 'bg-teal-700'}`}>
-          <div className="text-xs uppercase tracking-widest opacity-80">Your token</div>
-          <div className="text-7xl font-bold my-1">{b.token}</div>
-          <div className="text-sm opacity-90">{b.hospital}</div>
-          <div className="text-xs opacity-75 mt-1">{b.date}</div>
-        </div>
-        <div className="p-5 space-y-4">
-          {b.status === 'waiting' ? (
-            <div className="grid grid-cols-2 gap-3 text-center">
-              <div className="rounded-xl bg-slate-50 p-3">
-                <div className="text-xs text-slate-500">Position</div>
-                <div className="text-3xl font-bold">{b.position}</div>
-                <div className="text-xs text-slate-400">{b.ahead} ahead of you</div>
-              </div>
-              <div className="rounded-xl bg-slate-50 p-3">
-                <div className="text-xs text-slate-500">Estimated wait</div>
-                <div className="text-3xl font-bold">
-                  {b.wait_min}
-                  <span className="text-base font-medium"> min</span>
-                </div>
-                <div className="text-xs text-slate-400">around {b.eta?.slice(11)}</div>
-              </div>
+
+        <div className="relative z-[1] space-y-5 p-5">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <Badge tone={STATUS_TONE[b.status]} dot>
+              {statusLabel(b.status)}
+            </Badge>
+            <StatusDot tone={live ? 'ok' : 'warn'} label={live ? 'live' : 'reconnecting'} blink={live} />
+          </div>
+
+          {waiting ? (
+            <div className="grid grid-cols-2 gap-3">
+              <StatCard label="Position" value={b.position} sub={`${b.ahead} ahead of you`} />
+              <StatCard label="Est. wait" value={b.wait_min} format={(v) => `${Math.round(v)} min`} sub={`around ${b.eta?.slice(11, 16)}`} />
             </div>
           ) : (
-            <div className="text-center py-2">
-              <StatusPill status={b.status} />
-              <p className="text-sm text-slate-600 mt-2">
-                {b.status === 'called' && 'You are being called now. Please proceed to the consultation room.'}
-                {b.status === 'done' && 'Consultation completed.'}
-                {b.status === 'no_show' && 'Marked as not attended. Please book again if you still need a visit.'}
-                {b.status === 'referred' && 'You were referred to another hospital - see Referrals.'}
-              </p>
-            </div>
+            <p className="text-sm text-muted">{MESSAGE[b.status]}</p>
           )}
-          <div className="flex items-center justify-between text-sm">
-            <SeverityBadge level={b.severity} />
-            <span className={`inline-flex items-center gap-1 text-xs ${live ? 'text-emerald-600' : 'text-slate-400'}`}>
-              <Radio className="h-3.5 w-3.5" /> {live ? 'Live updates on' : 'Reconnecting...'}
-            </span>
-          </div>
-          {b.symptoms?.length > 0 && (
-            <div className="text-sm text-slate-600">
-              <span className="label inline">Symptoms: </span>
-              {b.symptoms.join(', ')}
-            </div>
-          )}
-          {b.status === 'waiting' && (
-            <p className="text-xs text-slate-500">
-              The wait estimate uses today's actual consultation times and the chance that patients ahead do not turn up. Urgent
-              cases may be seen first.
+
+          <KeyValueList
+            items={[
+              ['Severity', <Badge key="s" tone={SEVERITY_TONE[b.severity]}>{b.severity}</Badge>],
+              ['Department', b.specialty || '-'],
+              ['Symptoms', b.symptoms?.length ? b.symptoms.join(', ') : '-'],
+            ]}
+          />
+
+          {waiting && (
+            <p className="text-xs text-muted">
+              The wait estimate uses today&apos;s actual consultation times and the chance that patients ahead do not turn up. Urgent cases may be
+              seen first.
             </p>
           )}
-          <Disclaimer />
+          {b.severity === 'critical' && (
+            <p className="rounded-[4px] border border-alert/40 bg-alert/10 p-2 text-xs text-fg">
+              Critical: if your symptoms get worse, call <b>108</b> or go to the nearest emergency department now.
+            </p>
+          )}
+          <p className="border-l-2 border-line-strong pl-3 text-xs text-muted">
+            Decision support only - this is not a diagnosis. A qualified clinician confirms severity at the hospital. In an emergency call 108.
+          </p>
         </div>
-      </div>
+      </section>
     </div>
   )
 }

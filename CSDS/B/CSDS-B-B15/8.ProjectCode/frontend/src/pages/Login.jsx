@@ -1,19 +1,33 @@
 import { useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { Building2, LayoutDashboard, LogIn, User } from 'lucide-react'
-import { errMsg } from '../api'
+import { describeError } from '../api'
 import { homeFor, useAuth } from '../auth'
-import { ErrorBox } from '../components/ui'
+import { SlideUp } from '../components/motion'
+import { Button, Input, Select } from '../components/ui/controls'
+import { Card } from '../components/ui/display'
+import { ErrorState, useToast } from '../components/ui/feedback'
+import { Tabs, TabPanel } from '../components/ui/nav'
 
 const DEMOS = [
   ['patient', User, 'Patient', 'patient@mediqueue.app'],
-  ['staff', Building2, 'Hospital staff', 'desk1@mediqueue.app'],
+  ['staff', Building2, 'Hospital desk', 'desk1@mediqueue.app'],
   ['admin', LayoutDashboard, 'District admin', 'admin@mediqueue.app'],
+]
+const TABS = [
+  { id: 'login', label: 'Log in' },
+  { id: 'register', label: 'Create patient account' },
+]
+const GENDER = [
+  ['', 'Not stated'],
+  ['F', 'Female'],
+  ['M', 'Male'],
 ]
 
 export default function Login() {
   const { login, register } = useAuth()
   const nav = useNavigate()
+  const toast = useToast()
   const [params] = useSearchParams()
   const [mode, setMode] = useState('login')
   const [form, setForm] = useState({
@@ -25,13 +39,18 @@ export default function Login() {
     phone: '',
   })
   const [busy, setBusy] = useState(false)
-  const [error, setError] = useState('')
+  const [error, setError] = useState(null)
   const set = (k) => (e) => setForm({ ...form, [k]: e.target.value })
+
+  const finish = (u) => {
+    toast({ tone: 'ok', title: mode === 'login' ? `Signed in as ${u.name}` : 'Account created', body: 'Opening your workspace' })
+    nav(homeFor(u))
+  }
 
   const submit = async (e) => {
     e?.preventDefault()
     setBusy(true)
-    setError('')
+    setError(null)
     try {
       const u =
         mode === 'login'
@@ -44,9 +63,9 @@ export default function Login() {
               gender: form.gender || null,
               phone: form.phone || null,
             })
-      nav(homeFor(u))
+      finish(u)
     } catch (err) {
-      setError(errMsg(err))
+      setError(describeError(err))
     } finally {
       setBusy(false)
     }
@@ -54,95 +73,74 @@ export default function Login() {
 
   const demo = async (email) => {
     setBusy(true)
-    setError('')
+    setError(null)
     try {
-      nav(homeFor(await login(email, 'demo1234')))
+      finish(await login(email, 'demo1234'))
     } catch (err) {
-      setError(errMsg(err))
+      setError(describeError(err))
     } finally {
       setBusy(false)
     }
   }
 
   return (
-    <div className="max-w-md mx-auto space-y-4">
-      <div className="card p-6">
-        <div className="flex rounded-lg bg-slate-100 p-1 mb-5">
-          {['login', 'register'].map((m) => (
-            <button
-              key={m}
-              className={`flex-1 rounded-md py-1.5 text-sm font-medium ${mode === m ? 'bg-white shadow text-teal-800' : 'text-slate-500'}`}
-              onClick={() => setMode(m)}
-            >
-              {m === 'login' ? 'Log in' : 'Create patient account'}
-            </button>
-          ))}
-        </div>
-        <form onSubmit={submit} className="space-y-3">
-          {mode === 'register' && (
-            <>
-              <div>
-                <label className="label">Full name</label>
-                <input className="input" value={form.name} onChange={set('name')} required minLength={2} />
-              </div>
-              <div className="grid grid-cols-3 gap-2">
-                <div>
-                  <label className="label">Age</label>
-                  <input className="input" type="number" min="0" max="120" value={form.age} onChange={set('age')} />
-                </div>
-                <div>
-                  <label className="label">Gender</label>
-                  <select className="input" value={form.gender} onChange={set('gender')}>
-                    <option value="">-</option>
-                    <option value="F">Female</option>
-                    <option value="M">Male</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="label">Phone</label>
-                  <input className="input" value={form.phone} onChange={set('phone')} />
-                </div>
-              </div>
-            </>
-          )}
-          <div>
-            <label className="label">Email</label>
-            <input className="input" type="email" value={form.email} onChange={set('email')} required autoComplete="username" />
-          </div>
-          <div>
-            <label className="label">Password</label>
-            <input
-              className="input"
-              type="password"
-              value={form.password}
-              onChange={set('password')}
-              required
-              minLength={mode === 'register' ? 6 : 1}
-              autoComplete={mode === 'login' ? 'current-password' : 'new-password'}
-            />
-          </div>
-          <ErrorBox error={error} />
-          <button className="btn-primary w-full" disabled={busy}>
-            <LogIn className="h-4 w-4" /> {busy ? 'Please wait...' : mode === 'login' ? 'Log in' : 'Create account'}
-          </button>
-        </form>
-      </div>
+    <div className="mx-auto max-w-md space-y-5">
+      <SlideUp>
+        <Card title={mode === 'login' ? 'Sign in' : 'New patient account'} eyebrow="MediQueue - OP booking">
+          <Tabs id="auth" tabs={TABS} value={mode} onChange={(m) => { setMode(m); setError(null) }} label="Log in or register" />
+          <TabPanel tabsId="auth" value={mode}>
+            <form onSubmit={submit} className="mt-5 space-y-4" noValidate={false}>
+              {mode === 'register' && (
+                <>
+                  <Input label="Full name" value={form.name} onChange={set('name')} required minLength={2} autoComplete="name" />
+                  <div className="grid grid-cols-3 gap-2">
+                    <Input label="Age" type="number" min="0" max="120" value={form.age} onChange={set('age')} />
+                    <Select label="Gender" options={GENDER} value={form.gender} onChange={set('gender')} />
+                    <Input label="Phone" type="tel" value={form.phone} onChange={set('phone')} autoComplete="tel" />
+                  </div>
+                </>
+              )}
+              <Input label="Email" type="email" value={form.email} onChange={set('email')} required autoComplete="username" />
+              <Input
+                label="Password"
+                type="password"
+                value={form.password}
+                onChange={set('password')}
+                required
+                minLength={mode === 'register' ? 6 : 1}
+                autoComplete={mode === 'login' ? 'current-password' : 'new-password'}
+                hint={mode === 'register' ? 'At least 6 characters' : undefined}
+              />
+              <ErrorState error={error} />
+              <Button type="submit" icon={LogIn} loading={busy} className="w-full" size="lg">
+                {mode === 'login' ? 'Log in' : 'Create account'}
+              </Button>
+            </form>
+          </TabPanel>
+        </Card>
+      </SlideUp>
 
-      <div className="card p-5">
-        <div className="text-sm font-semibold mb-1">Demo accounts</div>
-        <p className="text-xs text-slate-500 mb-3">
-          Password <code className="bg-slate-100 px-1 rounded">demo1234</code>. Each hospital has an OP desk login{' '}
-          <code className="bg-slate-100 px-1 rounded">desk&lt;id&gt;@mediqueue.app</code>.
-        </p>
-        <div className="grid grid-cols-3 gap-2">
-          {DEMOS.map(([key, Icon, label, email]) => (
-            <button key={key} className="btn-outline flex-col !py-3" disabled={busy} onClick={() => demo(email)}>
-              <Icon className="h-5 w-5 text-teal-700" />
-              <span className="text-xs">{label}</span>
-            </button>
-          ))}
-        </div>
-      </div>
+      <SlideUp delay={0.1}>
+        <Card title="Demo accounts" eyebrow="password demo1234">
+          <p className="mb-4 text-xs text-muted">
+            Each hospital has an OP desk login: <span className="font-mono text-fg">desk&lt;id&gt;@mediqueue.app</span>.
+          </p>
+          <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
+            {DEMOS.map(([key, Icon, label, email]) => (
+              <button
+                key={key}
+                type="button"
+                disabled={busy}
+                onClick={() => demo(email)}
+                className="flex flex-col items-center gap-2 rounded-[6px] border border-line-strong bg-panel-2 px-3 py-4 font-mono text-[11px] uppercase tracking-[0.1em] text-muted transition-colors hover:border-ok/60 hover:text-fg disabled:opacity-50"
+              >
+                <Icon size={18} className="text-ok" aria-hidden="true" />
+                {label}
+              </button>
+            ))}
+          </div>
+        </Card>
+      </SlideUp>
     </div>
   )
 }

@@ -1,66 +1,90 @@
-import { useCallback, useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { ChevronRight, Plus, ShieldCheck } from 'lucide-react'
-import api, { errMsg } from '../api'
-import { ErrorBox, SeverityBadge, Spinner, StatusPill } from '../components/ui'
+import { Link, useNavigate } from 'react-router-dom'
+import { ChevronRight, Plus, ShieldCheck, Ticket } from 'lucide-react'
+import api from '../api'
+import { PageHeader } from '../components/ui/AppShell'
+import { Button } from '../components/ui/controls'
+import { Badge } from '../components/ui/display'
+import { EmptyState, ErrorState, Skeleton } from '../components/ui/feedback'
+import { SEVERITY_TONE, STATUS_TONE, statusLabel } from '../format'
+import useApi from '../lib/useApi'
 
 export default function MyTokens() {
-  const [rows, setRows] = useState(null)
-  const [pending, setPending] = useState([])
-  const [error, setError] = useState('')
-
-  const load = useCallback(() => {
-    setError('')
-    Promise.all([api.get('/bookings/mine'), api.get('/referrals')])
-      .then(([b, r]) => {
-        setRows(b.data)
-        setPending(r.data.filter((x) => x.status === 'pending_consent'))
-      })
-      .catch((e) => setError(errMsg(e)))
-  }, [])
-  useEffect(load, [load])
+  const nav = useNavigate()
+  const data = useApi(
+    () => Promise.all([api.get('/bookings/mine'), api.get('/referrals')]).then(([b, r]) => ({
+      bookings: b.data,
+      pending: r.data.filter((x) => x.status === 'pending_consent').length,
+    })),
+    [],
+  )
+  const { bookings, pending } = data.data || {}
 
   return (
-    <div className="max-w-2xl mx-auto space-y-4">
-      <div className="flex items-center justify-between">
-        <h1 className="text-xl font-bold">My tokens</h1>
-        <Link to="/book" className="btn-primary">
-          <Plus className="h-4 w-4" /> New booking
-        </Link>
-      </div>
-      {pending.length > 0 && (
-        <Link to="/referrals" className="card p-4 flex items-center gap-3 border-amber-300 bg-amber-50">
-          <ShieldCheck className="h-5 w-5 text-amber-700" />
-          <div className="flex-1 text-sm text-amber-900">
-            {pending.length} referral{pending.length > 1 ? 's' : ''} waiting for your consent to share your summary.
-          </div>
-          <ChevronRight className="h-4 w-4" />
+    <div className="mx-auto max-w-3xl">
+      <PageHeader
+        eyebrow="patient"
+        title="My tokens"
+        subtitle="Every visit you have booked. Open a token for its live position and estimated wait."
+        actions={
+          <Button icon={Plus} onClick={() => nav('/book')}>
+            New booking
+          </Button>
+        }
+      />
+
+      {pending > 0 && (
+        <Link to="/referrals" className="mb-5 flex items-center gap-3 rounded-[6px] border border-warn/40 bg-warn/10 p-4 text-sm text-fg hover:border-warn">
+          <ShieldCheck size={18} className="shrink-0 text-warn" aria-hidden="true" />
+          <span className="flex-1">
+            {pending} referral{pending > 1 ? 's are' : ' is'} waiting for your consent to share your summary.
+          </span>
+          <ChevronRight size={16} className="text-warn" aria-hidden="true" />
         </Link>
       )}
-      <ErrorBox error={error} onRetry={load} />
-      {!rows && !error && <Spinner />}
-      {rows?.length === 0 && <div className="card p-8 text-center text-slate-500">No bookings yet.</div>}
-      {rows?.map((b) => (
-        <Link key={b.id} to={`/tokens/${b.id}`} className="card p-4 flex items-center gap-4 hover:border-teal-400">
-          <div className="text-center w-16">
-            <div className="text-[10px] uppercase text-slate-400">Token</div>
-            <div className="text-2xl font-bold text-teal-800">{b.token}</div>
-          </div>
-          <div className="flex-1 min-w-0">
-            <div className="font-medium truncate">{b.hospital}</div>
-            <div className="text-xs text-slate-500">
-              {b.date} {b.moved && <span className="text-amber-700">(moved from {b.requested_date})</span>}
-              {b.referral_id && <span className="text-violet-700"> - referral</span>}
-            </div>
-            <div className="mt-1 flex gap-2 items-center">
-              <SeverityBadge level={b.severity} />
-              <StatusPill status={b.status} />
-              {b.status === 'waiting' && <span className="text-xs text-slate-500">#{b.position} - ~{b.wait_min} min</span>}
-            </div>
-          </div>
-          <ChevronRight className="h-4 w-4 text-slate-400" />
-        </Link>
-      ))}
+
+      {data.error && <ErrorState error={data.error} onRetry={data.reload} />}
+      {!bookings && !data.error && (
+        <div className="space-y-3">
+          {[0, 1, 2].map((i) => (
+            <Skeleton key={i} className="h-24 w-full" />
+          ))}
+        </div>
+      )}
+      {bookings?.length === 0 && (
+        <EmptyState
+          icon={Ticket}
+          title="No tokens yet"
+          body="Describe your symptoms and we will suggest a hospital and a visit date."
+          action={<Button onClick={() => nav('/book')}>Book a visit</Button>}
+        />
+      )}
+
+      <ul className="space-y-3">
+        {bookings?.map((b) => (
+          <li key={b.id}>
+            <Link to={`/tokens/${b.id}`} className="panel-link flex items-center gap-4 p-4">
+              <div className="w-16 shrink-0 text-center">
+                <div className="font-mono text-[10px] uppercase tracking-[0.12em] text-dim">Token</div>
+                <div className="font-mono text-2xl font-semibold text-ok tabular-nums">{b.token}</div>
+              </div>
+              <div className="min-w-0 flex-1">
+                <div className="truncate font-medium text-fg">{b.hospital}</div>
+                <div className="mt-0.5 font-mono text-[11px] text-muted">
+                  {b.date}
+                  {b.moved && <span className="text-warn"> - moved from {b.requested_date}</span>}
+                  {b.referral_id && <span className="text-cyan"> - referral</span>}
+                </div>
+                <div className="mt-2 flex flex-wrap items-center gap-2">
+                  <Badge tone={SEVERITY_TONE[b.severity]}>{b.severity}</Badge>
+                  <Badge tone={STATUS_TONE[b.status]}>{statusLabel(b.status)}</Badge>
+                  {b.status === 'waiting' && <span className="font-mono text-[11px] text-muted">#{b.position} - ~{b.wait_min} min</span>}
+                </div>
+              </div>
+              <ChevronRight size={16} className="shrink-0 text-dim" aria-hidden="true" />
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }

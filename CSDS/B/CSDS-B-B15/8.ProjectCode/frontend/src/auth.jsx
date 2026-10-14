@@ -36,6 +36,11 @@ export function homeFor(user) {
   return { patient: '/book', staff: '/console', admin: '/dashboard' }[user.role] || '/'
 }
 
+export function RequireUser({ children }) {
+  const { user } = useAuth()
+  return user ? children : <Navigate to="/login" replace />
+}
+
 export function RequireRole({ roles, children }) {
   const { user } = useAuth()
   if (!user) return <Navigate to="/login" replace />

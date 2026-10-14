@@ -10,7 +10,7 @@ from sqlalchemy import select
 from .auth import hash_password
 from .config import CORS_ORIGINS, DEMO_EMAIL, DEMO_PASSWORD, GEMINI_API_KEY
 from .db import SessionLocal, User, init_db
-from .routes import auth, explanations, investigate, pipeline
+from .routes import auth, explanations, investigate, pipeline, series
 from .services.state import store
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
@@ -31,7 +31,7 @@ async def lifespan(app):
 app = FastAPI(title="TaxSentinel API", version="1.0.0", lifespan=lifespan)
 app.add_middleware(CORSMiddleware, allow_origins=CORS_ORIGINS, allow_credentials=True, allow_methods=["*"],
                    allow_headers=["*"])
-for r in (auth.router, pipeline.router, investigate.router, explanations.router):
+for r in (auth.router, pipeline.router, investigate.router, explanations.router, series.router):
     app.include_router(r)
 
 

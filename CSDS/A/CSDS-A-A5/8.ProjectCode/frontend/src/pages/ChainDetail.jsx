@@ -1,55 +1,71 @@
-import { ArrowLeft } from 'lucide-react'
-import { Link, useParams } from 'react-router-dom'
+import { FileText, IndianRupee, Receipt, Users } from 'lucide-react'
+import { lazy, Suspense, useMemo } from 'react'
+import { useParams } from 'react-router-dom'
 import { useApi } from '../api'
-import GraphView from '../components/GraphView'
-import { Card, ErrorBox, Loading, PatternTag, RiskBadge, Stat } from '../components/ui'
-import { inr, pct } from '../format'
-import { InvoiceTable } from './TaxpayerProfile'
+import { InvoiceTable, TaxpayerLink } from '../components/domain/blocks'
+import { Stagger } from '../components/motion'
+import { PageHeader } from '../components/ui/AppShell'
+import { Card, PatternTag, RiskBadge, StatCard } from '../components/ui/display'
+import { ErrorState, PageSkeleton, Skeleton } from '../components/ui/feedback'
+import { Breadcrumbs } from '../components/ui/nav'
+import Table from '../components/ui/Table'
+import { inr, num, pct } from '../format'
+
+const GraphView = lazy(() => import('../components/domain/GraphView'))
 
 export default function ChainDetail() {
   const { id } = useParams()
   const { data, error, loading, reload } = useApi(`/chains/${id}`)
   const graph = useApi(`/graph?chain=${id}`)
-  if (loading && !data) return <Loading />
-  if (error) return <ErrorBox error={error} onRetry={reload} />
+  // Per-month series from the chain's own invoices (feeds the KPI sparklines)
+  const months = useMemo(() => {
+    if (!data) return []
+    const m = new Map()
+    data.invoices.forEach((r) => {
+      const k = r.invoice_date.slice(0, 7)
+      const v = m.get(k) || { month: k, invoices: 0, value: 0, tax: 0, parties: new Set() }
+      v.invoices += 1
+      v.value += r.taxable_value
+      v.tax += r.tax_amount
+      v.parties.add(r.seller_gstin).add(r.buyer_gstin)
+      m.set(k, v)
+    })
+    return [...m.values()].sort((a, b) => a.month.localeCompare(b.month)).map((v) => ({ ...v, parties: v.parties.size }))
+  }, [data])
+
+  const crumbs = [{ label: 'Fraud rings', to: '/app/graph' }, { label: `Chain ${id}` }]
+  if (error) return <div className="space-y-4"><Breadcrumbs items={crumbs} /><ErrorState error={error} onRetry={reload} title={`Could not load chain ${id}`} /></div>
+  if (loading && !data) return <PageSkeleton />
   const circular = data.type === 'circular_trading'
+  const partyCols = [
+    { key: 'legal_name', label: 'Taxpayer', sortable: true, defaultDir: 'asc', render: (p) => <TaxpayerLink gstin={p.gstin} name={p.legal_name} /> },
+    { key: 'patterns', label: 'Patterns', render: (p) => <div className="flex flex-wrap gap-1">{p.patterns.map((x) => <PatternTag key={x} p={x} />)}</div> },
+    { key: 'risk', label: 'Risk', align: 'right', sortable: true, render: (p) => <RiskBadge risk={p.risk} /> },
+  ]
   return (
     <div className="space-y-5">
-      <Link to="/app/graph" className="inline-flex items-center gap-1 text-sm text-slate-500 hover:text-indigo-600"><ArrowLeft size={15} /> Fraud rings</Link>
-      <div className="flex flex-wrap items-center gap-3">
-        <h1 className="text-xl font-semibold">Invoice chain {data.id}</h1>
-        <PatternTag p={circular ? 'circular_trading' : 'shell_entity'} />
-        <RiskBadge risk={data.score} />
-      </div>
-      <p className="text-sm text-slate-600">{data.summary}. Route: {data.path.map((p) => p.legal_name).join(' → ')}</p>
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-        <Stat label="Invoices" value={data.invoices_total} />
-        <Stat label="Taxable value" value={inr(data.value)} />
-        <Stat label="ITC passed" value={inr(data.itc)} tone="amber" />
-        <Stat label="Parties" value={data.n_parties} sub={`injected-fraud share ${pct(data.label_fraud_share)} (sample labels)`} />
-      </div>
-      <div className="grid lg:grid-cols-2 gap-5">
+      <Breadcrumbs items={crumbs} />
+      <PageHeader eyebrow={`// invoice chain · rank #${data.rank}`} title={`Invoice chain ${data.id}`}
+        subtitle={`${data.summary}. Route: ${data.path.map((p) => p.legal_name).join(' → ')}`}
+        actions={<><PatternTag p={circular ? 'circular_trading' : 'shell_entity'} /><RiskBadge risk={data.score} /></>} />
+      <Stagger className="grid grid-cols-1 gap-3 min-[420px]:grid-cols-2 xl:grid-cols-4">
+        <StatCard icon={FileText} label="Invoices" value={data.invoices_total} format={num} tone="cyan" spark={months} sparkKey="invoices" sparkLabel="invoices / month (shown)" />
+        <StatCard icon={IndianRupee} label="Taxable value" value={data.value} format={inr} spark={months} sparkKey="value" sparkLabel="value / month (shown)" />
+        <StatCard icon={Receipt} label="ITC passed" value={data.itc} format={inr} tone="warn" spark={months} sparkKey="tax" sparkLabel="tax / month (shown)" live />
+        <StatCard icon={Users} label="Parties" value={data.n_parties} format={num} tone="info" sub={`injected-fraud share ${pct(data.label_fraud_share)} (sample labels)`} spark={months} sparkKey="parties" sparkLabel="active parties / month" />
+      </Stagger>
+      <div className="grid grid-cols-1 gap-5 xl:grid-cols-2">
         <Card title="Chain graph">
-          {graph.loading && !graph.data ? <Loading /> : graph.error ? <ErrorBox error={graph.error} onRetry={graph.reload} /> : <GraphView data={graph.data} height={420} />}
+          {graph.error ? <ErrorState error={graph.error} onRetry={graph.reload} title="Could not load the graph" />
+            : !graph.data ? <Skeleton className="h-[420px]" />
+              : <Suspense fallback={<Skeleton className="h-[420px]" />}><GraphView data={graph.data} height={420} /></Suspense>}
         </Card>
-        <Card title="Parties">
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead><tr className="text-left text-xs text-slate-500"><th className="pb-2">Taxpayer</th><th className="pb-2">Patterns</th><th className="pb-2 text-right">Risk</th></tr></thead>
-              <tbody>
-                {data.parties.map((p) => (
-                  <tr key={p.gstin} className="border-t border-slate-100">
-                    <td className="py-1.5"><Link to={`/app/taxpayers/${p.gstin}`} className="hover:text-indigo-600">{p.legal_name}</Link></td>
-                    <td className="py-1.5"><div className="flex flex-wrap gap-1">{p.patterns.map((x) => <PatternTag key={x} p={x} />)}</div></td>
-                    <td className="py-1.5 text-right"><RiskBadge risk={p.risk} /></td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+        <Card title={`Parties (${data.parties.length})`}>
+          <Table columns={partyCols} rows={data.parties} rowKey={(p) => p.gstin} initialSort={{ key: 'risk', dir: 'desc' }} dense />
         </Card>
       </div>
-      <InvoiceTable title={`Invoices in the chain (${data.invoices.length} of ${data.invoices_total} shown, by date)`} rows={data.invoices} />
+      <InvoiceTable title={`Invoices in the chain · ${data.invoices.length} of ${num(data.invoices_total)} shown, by date`} rows={data.invoices}
+        footer={`${data.invoices.length} invoices loaded (the API returns the first 150 by date)`} />
     </div>
   )
 }

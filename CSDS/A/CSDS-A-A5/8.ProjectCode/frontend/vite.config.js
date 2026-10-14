@@ -15,5 +15,21 @@ export default defineConfig(({ mode }) => {
       proxy: { '/api': { target: `http://127.0.0.1:${backend}`, changeOrigin: true } },
     },
     preview: { port, strictPort: true },
+    build: {
+      // three.js (~510 kB) is its own lazy chunk, loaded only for the background grid
+      chunkSizeWarningLimit: 600,
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (!id.includes('node_modules')) return
+            if (/[\\/]three[\\/]/.test(id)) return 'vendor-three'
+            if (/force-graph|d3-force|kapsule|canvas-color-tracker|bezier-js|float-tooltip/.test(id)) return 'vendor-graph'
+            if (/recharts|[\\/]d3-|victory-vendor|decimal\.js|redux|immer|reselect/.test(id)) return 'vendor-charts'
+            if (/framer-motion|motion-dom|motion-utils|[\\/]gsap[\\/]|[\\/]lenis[\\/]/.test(id)) return 'vendor-motion'
+            if (/[\\/](react|react-dom|react-router|react-router-dom|scheduler|@remix-run)[\\/]/.test(id)) return 'vendor-react'
+          },
+        },
+      },
+    },
   }
 })

@@ -29,11 +29,17 @@ Sign in with the demo account **demo@taxsentinel.app / Demo@1234**, or create yo
 To stop, close the two server windows.
 
 ## 3. Demo walkthrough
-1. **Overview** → *Generate & analyse* (seed 42, 600 taxpayers; about 20-40 s). The counts, flagged taxpayers, patterns and chains refresh.
-2. Open the **top-ranked taxpayer**: layer scores, the monthly GSTR-2B vs GSTR-3B chart, evidence (ITC spikes, mismatches, anomalous invoices) and the network graph with its circular-trading loop in red.
-3. **Open case & explanation** → *Write explanation*. Gemini's case note cites the evidence; click an `E#` to jump to it.
+1. **Overview** → *Generate & analyse* (seed 42, 600 taxpayers; about 20-40 s). The stage stepper and the activity log follow the run; the counts, flagged taxpayers, patterns and chains refresh when it finishes.
+2. Open the **top-ranked taxpayer**: the *Signals* tab has the layer scores and the monthly GSTR-2B vs GSTR-3B chart; *Evidence*, *Network* (graph with its circular-trading loop in red, partners, shared-identity cluster) and *Invoices* are the other tabs.
+3. **Open case & explanation** → *Write explanation*. Gemini's case note cites the evidence; click an `E#` to highlight it.
 4. **Fraud rings**: every loop, shell cluster and ranked invoice chain; click a chain for its invoices.
 5. **Model performance**: precision@k and recall vs the rule baseline, ablations, per-pattern recall.
+6. **Run history**: the last ten generations and the ecosystem currently loaded.
+
+**Keyboard:** `/` search taxpayers or jump to a screen · `g` then `o` overview, `t` taxpayers, `r` fraud rings,
+`p` performance, `h` run history, `l` activity log · `?` all shortcuts · `Esc` closes any overlay.
+The sun/moon button in the top bar switches light and dark mode (remembered; the first visit follows the OS setting).
+With *reduce motion* turned on in the OS, animations become plain fades and the 3D background becomes a static grid.
 
 ## 4. Command line (optional)
 From `8.ProjectCode` with the venv:

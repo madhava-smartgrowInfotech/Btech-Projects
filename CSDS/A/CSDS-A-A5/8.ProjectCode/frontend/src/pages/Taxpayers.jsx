@@ -1,11 +1,18 @@
-import { ChevronLeft, ChevronRight, Search } from 'lucide-react'
+import { FilterX, SearchX } from 'lucide-react'
 import { useEffect, useState } from 'react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 import { useApi } from '../api'
-import { Card, ErrorBox, Loading, PageHeader, PATTERN_LABELS, PatternTag, RiskBadge } from '../components/ui'
-import { inr, SECTORS } from '../format'
+import { TaxpayerLink } from '../components/domain/blocks'
+import { PageHeader } from '../components/ui/AppShell'
+import { Button, SearchField, Select } from '../components/ui/controls'
+import { Card, PatternTag, RiskBadge } from '../components/ui/display'
+import { EmptyState, ErrorState } from '../components/ui/feedback'
+import Table from '../components/ui/Table'
+import { inr, num, PATTERN_LABELS, riskVar, SECTORS } from '../format'
 
 const PAGE = 25
+const SORTS = [['risk', 'Sort: risk'], ['jepa', 'Sort: JEPA deviation'], ['network', 'Sort: network'], ['invoice', 'Sort: invoice'], ['itc', 'Sort: ITC at risk'], ['name', 'Sort: name']]
+const score = (v) => <span className="font-mono text-xs tabular-nums" style={{ color: riskVar(v) }}>{v.toFixed(2)}</span>
 
 export default function Taxpayers() {
   const [params, setParams] = useSearchParams()
@@ -29,77 +36,55 @@ export default function Taxpayers() {
   const qs = new URLSearchParams({ q: params.get('q') || '', pattern, sector, sort, limit: PAGE, offset: page * PAGE })
   if (flagged) qs.set('flagged', flagged)
   const { data, error, loading, reload } = useApi(`/taxpayers?${qs}`)
-  const select = 'rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-sm'
+  const filtered = !!(params.get('q') || pattern || sector || flagged)
+  const clear = () => { setQ(''); setParams(sort !== 'risk' ? { sort } : {}) }
+
+  const columns = [
+    { key: 'rank', label: '#', render: (t) => <span className="font-mono text-xs text-dim">{t.rank}</span> },
+    { key: 'name', label: 'Taxpayer', sortable: true, render: (t) => <TaxpayerLink gstin={t.gstin} name={t.legal_name} /> },
+    { key: 'sector', label: 'Sector', render: (t) => <span className="whitespace-nowrap text-xs text-muted">{SECTORS[t.sector]}</span> },
+    { key: 'patterns', label: 'Patterns', render: (t) => <div className="flex flex-wrap gap-1">{t.patterns.map((p) => <PatternTag key={p} p={p} />)}</div> },
+    { key: 'jepa', label: 'JEPA', align: 'right', sortable: true, render: (t) => score(Math.max(t.jepa, t.behaviour)) },
+    { key: 'network', label: 'Network', align: 'right', sortable: true, render: (t) => score(t.network) },
+    { key: 'invoice', label: 'Invoice', align: 'right', sortable: true, render: (t) => score(t.invoice) },
+    { key: 'itc', label: 'ITC at risk', align: 'right', sortable: true, render: (t) => <span className="whitespace-nowrap font-mono text-xs">{inr(t.itc_at_risk)}</span> },
+    { key: 'risk', label: 'Risk', align: 'right', sortable: true, render: (t) => <RiskBadge risk={t.risk} /> },
+  ]
+  // The API sorts one way per key (scores high→low, name A→Z)
+  const activeSort = { key: sort, dir: sort === 'name' ? 'asc' : 'desc' }
 
   return (
     <div className="space-y-5">
-      <PageHeader title="Taxpayers" subtitle="Ranked by combined risk from the JEPA deviation, network and invoice layers" />
-      <Card>
-        <div className="flex flex-wrap gap-2 mb-4">
-          <div className="relative flex-1 min-w-[200px]">
-            <Search size={16} className="absolute left-2.5 top-2.5 text-slate-400" />
-            <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search name or GSTIN"
-              className="w-full rounded-lg border border-slate-300 pl-8 pr-3 py-1.5 text-sm" />
-          </div>
-          <select value={pattern} onChange={(e) => set('pattern', e.target.value)} className={select}>
-            <option value="">All patterns</option>
-            {Object.entries(PATTERN_LABELS).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
-          </select>
-          <select value={sector} onChange={(e) => set('sector', e.target.value)} className={select}>
-            <option value="">All sectors</option>
-            {Object.entries(SECTORS).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
-          </select>
-          <select value={flagged} onChange={(e) => set('flagged', e.target.value)} className={select}>
-            <option value="">Flagged + clear</option><option value="true">Flagged only</option><option value="false">Not flagged</option>
-          </select>
-          <select value={sort} onChange={(e) => set('sort', e.target.value)} className={select}>
-            <option value="risk">Sort: risk</option><option value="jepa">Sort: JEPA deviation</option>
-            <option value="network">Sort: network</option><option value="invoice">Sort: invoice</option>
-            <option value="itc">Sort: ITC at risk</option><option value="name">Sort: name</option>
-          </select>
+      <PageHeader eyebrow="// risk ranking" title="Taxpayers"
+        subtitle="Ranked by combined risk from the JEPA deviation, network and invoice layers. Filters live in the URL, so a view can be shared." />
+      <Card title={data ? `${num(data.total)} taxpayers${filtered ? ' match' : ''}` : 'Ranking'}
+        action={filtered && <Button variant="ghost" size="sm" icon={FilterX} onClick={clear}>Clear filters</Button>}>
+        <div className="mb-4 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr_1fr]">
+          <SearchField value={q} onChange={setQ} placeholder="Search name or GSTIN" label="Search taxpayers by name or GSTIN" className="sm:col-span-2 lg:col-span-1" />
+          <Select srLabel="Pattern" value={pattern} onChange={(e) => set('pattern', e.target.value)} options={[['', 'All patterns'], ...Object.entries(PATTERN_LABELS)]} />
+          <Select srLabel="Sector" value={sector} onChange={(e) => set('sector', e.target.value)} options={[['', 'All sectors'], ...Object.entries(SECTORS)]} />
+          <Select srLabel="Flag status" value={flagged} onChange={(e) => set('flagged', e.target.value)} options={[['', 'Flagged + clear'], ['true', 'Flagged only'], ['false', 'Not flagged']]} />
+          <Select srLabel="Sort by" value={sort} onChange={(e) => set('sort', e.target.value === 'risk' ? '' : e.target.value)} options={SORTS} />
         </div>
-        <ErrorBox error={error} onRetry={reload} />
-        {loading && !data ? <Loading /> : data && (
-          <>
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="text-left text-xs text-slate-500 border-b border-slate-200">
-                    <th className="py-2 pr-2">#</th><th className="py-2 pr-2">Taxpayer</th><th className="py-2 pr-2">Sector</th>
-                    <th className="py-2 pr-2">Patterns</th><th className="py-2 pr-2 text-right">JEPA</th><th className="py-2 pr-2 text-right">Network</th>
-                    <th className="py-2 pr-2 text-right">Invoice</th><th className="py-2 pr-2 text-right">ITC at risk</th><th className="py-2 text-right">Risk</th>
-                  </tr>
-                </thead>
-                <tbody className={loading ? 'opacity-50' : ''}>
-                  {data.items.map((t) => (
-                    <tr key={t.gstin} className="border-b border-slate-100 hover:bg-slate-50">
-                      <td className="py-2 pr-2 text-slate-400">{t.rank}</td>
-                      <td className="py-2 pr-2">
-                        <Link to={`/app/taxpayers/${t.gstin}`} className="font-medium text-slate-800 hover:text-indigo-600">{t.legal_name}</Link>
-                        <div className="text-xs text-slate-400 font-mono">{t.gstin}</div>
-                      </td>
-                      <td className="py-2 pr-2 text-slate-600">{SECTORS[t.sector]}</td>
-                      <td className="py-2 pr-2"><div className="flex flex-wrap gap-1">{t.patterns.map((p) => <PatternTag key={p} p={p} />)}</div></td>
-                      <td className="py-2 pr-2 text-right font-mono text-slate-600">{Math.max(t.jepa, t.behaviour).toFixed(2)}</td>
-                      <td className="py-2 pr-2 text-right font-mono text-slate-600">{t.network.toFixed(2)}</td>
-                      <td className="py-2 pr-2 text-right font-mono text-slate-600">{t.invoice.toFixed(2)}</td>
-                      <td className="py-2 pr-2 text-right">{inr(t.itc_at_risk)}</td>
-                      <td className="py-2 text-right"><RiskBadge risk={t.risk} /></td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-              {data.items.length === 0 && <p className="py-8 text-center text-sm text-slate-500">No taxpayers match these filters.</p>}
-            </div>
-            <div className="flex items-center justify-between mt-3 text-sm text-slate-600">
-              <span>{data.total} taxpayers</span>
-              <div className="flex items-center gap-2">
-                <button disabled={page === 0} onClick={() => set('page', String(page - 1))} className="p-1 rounded border border-slate-300 disabled:opacity-40"><ChevronLeft size={16} /></button>
-                <span>Page {page + 1} of {Math.max(1, Math.ceil(data.total / PAGE))}</span>
-                <button disabled={(page + 1) * PAGE >= data.total} onClick={() => set('page', String(page + 1))} className="p-1 rounded border border-slate-300 disabled:opacity-40"><ChevronRight size={16} /></button>
+        {error ? <ErrorState error={error} onRetry={reload} title="Could not load the ranking" /> : (
+          <Table columns={columns} rows={data?.items} rowKey={(t) => t.gstin} loading={loading} caption="Taxpayers ranked by risk"
+            sort={activeSort} onSort={(k) => set('sort', k === 'risk' ? '' : k)}
+            page={page} pageSize={PAGE} total={data?.total || 0} onPage={(p) => set('page', p ? String(p) : '')}
+            footer={data && `showing ${data.total ? page * PAGE + 1 : 0}-${Math.min(data.total, (page + 1) * PAGE)} of ${num(data.total)}`}
+            empty={<EmptyState icon={SearchX} title="No taxpayers match these filters" body="Try a shorter search or widen the pattern / sector filters." action={<Button variant="secondary" size="sm" icon={FilterX} onClick={clear}>Clear filters</Button>} />}
+            cards={(t) => (
+              <div className="rounded-[6px] border border-line bg-panel-2 p-3">
+                <div className="flex items-start justify-between gap-2">
+                  <div className="flex min-w-0 gap-2"><span className="pt-0.5 font-mono text-xs text-dim">{t.rank}</span><TaxpayerLink gstin={t.gstin} name={t.legal_name} /></div>
+                  <RiskBadge risk={t.risk} />
+                </div>
+                <div className="mt-2 flex flex-wrap gap-1">{t.patterns.map((p) => <PatternTag key={p} p={p} />)}</div>
+                <div className="mt-2 grid grid-cols-4 gap-1 font-mono text-[10px] uppercase text-dim">
+                  <span>jepa {score(Math.max(t.jepa, t.behaviour))}</span><span>net {score(t.network)}</span><span>inv {score(t.invoice)}</span>
+                  <span className="text-right normal-case text-muted">{inr(t.itc_at_risk)}</span>
+                </div>
               </div>
-            </div>
-          </>
+            )} />
         )}
       </Card>
     </div>

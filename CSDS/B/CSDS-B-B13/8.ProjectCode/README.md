@@ -65,8 +65,8 @@ AI-generated business-logic tests found **3/3** abuse cases on DemoPay
 (negative amount, foreign-account transfer, replayed payment).
 
 ## Tech stack
-- **Frontend:** React + Vite (JavaScript), Tailwind CSS, react-router-dom, axios,
-  lucide-react. Ports: frontend **5213**, backend **8213**.
+- **Frontend:** React 19 + Vite (JavaScript), design-token CSS (Depth Studio kit V3),
+  react-router-dom, axios, lucide-react, Recharts, three.js (landing hero, lazy-loaded). Ports: frontend **5213**, backend **8213**.
 - **Backend:** Python 3.11+, FastAPI + Uvicorn, SQLAlchemy 2 + SQLite, PyJWT +
   bcrypt, httpx, Typer (CLI), Jinja2 + ReportLab (reports), Gemini (AI tests).
 

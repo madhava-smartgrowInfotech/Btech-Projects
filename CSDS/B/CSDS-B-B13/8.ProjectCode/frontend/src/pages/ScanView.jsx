@@ -1,91 +1,154 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useEffect, useRef, useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
 import {
-  ChevronDown, ChevronRight, Bot, FileText, Download, ListChecks,
-  Bug, CheckCircle2, XCircle, AlertTriangle,
+  AlertTriangle, Bot, Bug, CheckCircle2, ChevronDown, ChevronRight, Copy, Download, FileText, ListChecks, ShieldCheck, XCircle,
 } from 'lucide-react'
 import api, { errMsg } from '../api'
-import { ErrorBox, Spinner, ScoreRing, GradeBadge, SeverityTag } from '../components/ui'
+import { useAsync } from '../lib/useAsync'
+import {
+  Badge, Breadcrumbs, Button, Card, CardHeader, EmptyState, ErrorState, IconButton, PageHeader, ProgressBar, Skeleton, StatCard,
+  Tabs, useToast,
+} from '../components/ui'
+import { ChartCard, DonutChart, HBarChart, useChartColors } from '../components/charts'
+import { FadeIn } from '../components/motion'
+import { SeverityBadge, StatusBadge } from '../components/scan'
 
 const TABS = [
-  { key: 'findings', label: 'Findings', icon: Bug },
-  { key: 'ai', label: 'AI tests', icon: Bot },
-  { key: 'validation', label: 'Validation', icon: ListChecks },
-  { key: 'report', label: 'Report', icon: FileText },
+  { value: 'findings', label: 'Findings', icon: Bug },
+  { value: 'ai', label: 'AI tests', icon: Bot },
+  { value: 'validation', label: 'Validation', icon: ListChecks },
+  { value: 'report', label: 'Report', icon: FileText },
 ]
+
+const POLL_MS = 1500
 
 export default function ScanView() {
   const { id } = useParams()
+  const toast = useToast()
+  const colors = useChartColors()
   const [scan, setScan] = useState(null)
   const [error, setError] = useState('')
+  const [attempt, setAttempt] = useState(0)
   const [tab, setTab] = useState('findings')
-  const timer = useRef(null)
+  const lastStatus = useRef(null)
 
-  const poll = useCallback(() => {
-    api.get(`/scans/${id}`)
-      .then((r) => {
-        setScan(r.data)
-        if (['done', 'error'].includes(r.data.status) && timer.current) {
-          clearInterval(timer.current); timer.current = null
-        }
-      })
-      .catch((e) => setError(errMsg(e)))
-  }, [id])
-
+  // Poll the scan until it finishes. The timer chain stops on done/error and on unmount.
   useEffect(() => {
-    poll()
-    timer.current = setInterval(poll, 1500)
-    return () => timer.current && clearInterval(timer.current)
-  }, [poll])
+    let cancelled = false
+    let timer = null
+    const load = async () => {
+      try {
+        const r = await api.get(`/scans/${id}`)
+        if (cancelled) return
+        const s = r.data
+        setScan(s)
+        setError('')
+        if (lastStatus.current && lastStatus.current !== 'done' && s.status === 'done') {
+          toast({ title: `Scan #${s.id} finished`, message: `${s.target.name}: ${s.score}/100 (${s.grade})` })
+        }
+        lastStatus.current = s.status
+        if (s.status !== 'done' && s.status !== 'error') timer = setTimeout(load, POLL_MS)
+      } catch (e) {
+        if (!cancelled) setError(errMsg(e))
+      }
+    }
+    load()
+    return () => {
+      cancelled = true
+      clearTimeout(timer)
+    }
+    // toast is stable from the provider; only the scan id and a manual retry restart polling
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id, attempt])
 
-  if (error) return <ErrorBox message={error} />
-  if (!scan) return <Spinner />
+  const crumbs = [{ label: 'Scans', to: '/app/scans' }, { label: `Scan #${id}` }]
+
+  if (error && !scan) {
+    return (
+      <>
+        <Breadcrumbs items={crumbs} />
+        <ErrorState
+          title="Could not load this scan"
+          error={{ message: error }}
+          onRetry={() => {
+            setError('')
+            setAttempt((a) => a + 1)
+          }}
+        />
+      </>
+    )
+  }
+
+  if (!scan) {
+    return (
+      <>
+        <Breadcrumbs items={crumbs} />
+        <Card spotlight={false} pad style={{ marginTop: 16 }}>
+          <Skeleton width="40%" height={24} />
+          <Skeleton width="70%" height={14} style={{ marginTop: 12 }} />
+          <Skeleton width="100%" height={10} radius={999} style={{ marginTop: 24 }} />
+        </Card>
+      </>
+    )
+  }
+
+  const counts = scan.severity_counts || {}
+  const running = scan.status === 'pending' || scan.status === 'running'
 
   return (
-    <div>
-      <Link to="/app/scans" className="text-sm text-brand-600">← All scans</Link>
-      <div className="card p-6 mt-2">
-        <div className="flex flex-wrap items-center gap-6">
-          <div>
-            <h1 className="text-2xl font-extrabold">{scan.target.name}</h1>
-            <div className="text-slate-500 text-sm break-all">{scan.target.base_url}</div>
-            <div className="text-slate-400 text-xs mt-1">Scan #{scan.id}</div>
-          </div>
-          {scan.status === 'done' && (
-            <div className="flex items-center gap-5 ml-auto">
-              <ScoreRing score={scan.score} grade={scan.grade} />
-              <div>
-                <div className="flex items-center gap-2 mb-2">
-                  <GradeBadge grade={scan.grade} />
-                  <span className="text-slate-500 text-sm">Grade</span>
-                </div>
-                <SeverityCounts counts={scan.severity_counts} />
-              </div>
-            </div>
-          )}
-        </div>
+    <FadeIn>
+      <PageHeader
+        crumbs={crumbs}
+        title={scan.target.name}
+        description={<span className="mono break">{scan.target.base_url}</span>}
+        actions={<StatusBadge status={scan.status} progress={scan.progress} />}
+      />
 
-        {['pending', 'running'].includes(scan.status) && (
-          <Progress scan={scan} />
-        )}
-        {scan.status === 'error' && (
-          <ErrorBox message={`Scan failed: ${scan.error}`} />
-        )}
-      </div>
+      {running && (
+        <Card spotlight={false} pad>
+          <ProgressBar label={scan.current_step || 'Starting…'} valueLabel={`${scan.progress}%`} value={scan.progress} max={100} />
+          <p className="faint" style={{ marginTop: 12 }}>
+            This page updates on its own. You can leave and come back later.
+          </p>
+        </Card>
+      )}
+
+      {scan.status === 'error' && (
+        <ErrorState title="Scan failed" error={{ message: scan.error || 'The scan stopped before it finished.' }}>
+          <p className="faint">Check the target is running and reachable, then start a new scan from Targets.</p>
+          <div className="row">
+            <Button as={Link} to="/app/targets" variant="ghost">
+              Back to targets
+            </Button>
+          </div>
+        </ErrorState>
+      )}
 
       {scan.status === 'done' && (
         <>
-          <div className="flex gap-1 mt-6 border-b border-slate-200">
-            {TABS.map((t) => (
-              <button key={t.key} onClick={() => setTab(t.key)}
-                className={`flex items-center gap-2 px-4 py-2 font-semibold text-sm border-b-2 -mb-px ${
-                  tab === t.key ? 'border-brand-500 text-brand-700'
-                    : 'border-transparent text-slate-500 hover:text-slate-700'}`}>
-                <t.icon size={16} /> {t.label}
-              </button>
-            ))}
+          <div className="summary-grid">
+            <ChartCard title="Security score" subtitle="Out of 100" height={200}>
+              <DonutChart
+                data={[
+                  { name: 'Score', value: scan.score, color: colors.accent },
+                  { name: 'Points lost', value: Math.max(0, 100 - scan.score), color: colors.grid },
+                ]}
+                centerValue={scan.score}
+                centerLabel={`Grade ${scan.grade}`}
+              />
+            </ChartCard>
+            <div className="stat-pair">
+              <StatCard label="Total findings" value={scan.finding_count} icon={ShieldCheck} />
+              <StatCard label="Critical and high" value={(counts.critical || 0) + (counts.high || 0)} icon={Bug} tone="danger" />
+              <StatCard label="Medium" value={counts.medium || 0} icon={AlertTriangle} tone="warn" />
+              <StatCard label="Low" value={counts.low || 0} icon={CheckCircle2} tone="info" />
+            </div>
           </div>
-          <div className="mt-5">
+
+          <div style={{ marginTop: 20 }}>
+            <Tabs label="Scan sections" tabs={TABS} value={tab} onChange={setTab} />
+          </div>
+          <div className="tab-panel">
             {tab === 'findings' && <Findings scanId={id} />}
             {tab === 'ai' && <AITests scanId={id} />}
             {tab === 'validation' && <Validation scanId={id} />}
@@ -93,272 +156,354 @@ export default function ScanView() {
           </div>
         </>
       )}
-    </div>
-  )
-}
-
-function Progress({ scan }) {
-  return (
-    <div className="mt-6">
-      <div className="flex justify-between text-sm text-slate-600 mb-1">
-        <span>{scan.current_step || 'Starting…'}</span>
-        <span>{scan.progress}%</span>
-      </div>
-      <div className="h-3 bg-slate-100 rounded-full overflow-hidden">
-        <div className="h-full bg-brand-500 transition-all duration-500"
-          style={{ width: `${scan.progress}%` }} />
-      </div>
-      <div className="flex items-center gap-2 text-slate-500 text-sm mt-3">
-        <Spinner label="Scanning target…" />
-      </div>
-    </div>
-  )
-}
-
-function SeverityCounts({ counts }) {
-  const order = ['critical', 'high', 'medium', 'low', 'info']
-  const items = order.filter((k) => counts[k])
-  if (items.length === 0) return <span className="text-green-700 font-semibold">No findings</span>
-  return (
-    <div className="flex flex-wrap gap-1.5">
-      {items.map((k) => (
-        <span key={k}><SeverityTag severity={k} /> <b className="text-sm">{counts[k]}</b></span>
-      ))}
-    </div>
+    </FadeIn>
   )
 }
 
 function Findings({ scanId }) {
-  const [rows, setRows] = useState(null)
+  const findings = useAsync(() => api.get(`/scans/${scanId}/findings`).then((r) => r.data), [scanId])
   const [open, setOpen] = useState({})
-  const [error, setError] = useState('')
+  const colors = useChartColors()
 
-  useEffect(() => {
-    api.get(`/scans/${scanId}/findings`)
-      .then((r) => setRows(r.data)).catch((e) => setError(errMsg(e)))
-  }, [scanId])
+  if (findings.error && !findings.data) {
+    return <ErrorState title="Could not load findings" error={{ message: errMsg(findings.error) }} onRetry={findings.reload} />
+  }
+  if (!findings.data) {
+    return (
+      <div className="stack-list">
+        {[0, 1, 2].map((i) => (
+          <Card key={i} spotlight={false} pad>
+            <Skeleton width="60%" height={18} />
+          </Card>
+        ))}
+      </div>
+    )
+  }
 
-  if (error) return <ErrorBox message={error} />
-  if (!rows) return <Spinner />
-  const real = rows.filter((f) => f.severity !== 'info')
-  if (real.length === 0) return <div className="text-slate-500">No findings.</div>
+  const real = findings.data.filter((f) => f.severity !== 'info')
+  if (real.length === 0) {
+    return (
+      <EmptyState icon={ShieldCheck} title="No findings">
+        No issues were detected in this scan.
+      </EmptyState>
+    )
+  }
+
+  // Findings per endpoint, computed from the findings list (the API has no separate breakdown).
+  const byEndpoint = Object.values(
+    real.reduce((acc, f) => {
+      const key = f.endpoint || 'Unspecified'
+      acc[key] = acc[key] || { endpoint: key, count: 0 }
+      acc[key].count += 1
+      return acc
+    }, {}),
+  ).sort((a, b) => b.count - a.count)
 
   return (
-    <div className="space-y-2">
+    <div className="stack-list">
+      <ChartCard title="Findings per endpoint" subtitle="Grouped by the endpoint each finding was raised against" height={Math.max(160, byEndpoint.length * 44 + 40)}>
+        <HBarChart data={byEndpoint} labelKey="endpoint" valueKey="count" color={colors.danger} />
+      </ChartCard>
+
       {real.map((f) => {
-        const isOpen = open[f.id]
+        const isOpen = !!open[f.id]
+        const panelId = `finding-${f.id}`
         return (
-          <div key={f.id} className="card overflow-hidden">
-            <button onClick={() => setOpen((o) => ({ ...o, [f.id]: !o[f.id] }))}
-              className="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-slate-50">
-              {isOpen ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
-              <SeverityTag severity={f.severity} />
-              <span className="font-semibold flex-1">{f.title}</span>
-              <span className="text-xs text-slate-500 hidden sm:block">
+          <Card key={f.id} as="article" spotlight={false}>
+            <button
+              type="button"
+              className="acc-toggle"
+              aria-expanded={isOpen}
+              aria-controls={panelId}
+              onClick={() => setOpen((o) => ({ ...o, [f.id]: !o[f.id] }))}
+            >
+              {isOpen ? <ChevronDown size={16} aria-hidden="true" /> : <ChevronRight size={16} aria-hidden="true" />}
+              <SeverityBadge severity={f.severity} />
+              <span className="finding-title">{f.title}</span>
+              <span className="faint hide-sm">
                 {f.owasp_id} · {f.source === 'ai' ? 'AI' : 'OWASP'}
               </span>
             </button>
-            {isOpen && <FindingDetail f={f} />}
-          </div>
+            {isOpen && <FindingDetail id={panelId} f={f} />}
+          </Card>
         )
       })}
     </div>
   )
 }
 
-function FindingDetail({ f }) {
+function FindingDetail({ id, f }) {
   return (
-    <div className="px-4 pb-4 pt-1 border-t border-slate-100 space-y-3 text-sm">
-      <div className="text-slate-500">
-        <b>{f.owasp_id}</b> — {f.owasp_name}
-        {f.endpoint && <> · <code className="bg-slate-100 px-1 rounded">{f.endpoint}</code></>}
-      </div>
+    <div id={id} className="finding-body">
+      <p className="muted">
+        <strong>{f.owasp_id}</strong> — {f.owasp_name}
+        {f.endpoint && (
+          <>
+            {' '}
+            · <code>{f.endpoint}</code>
+          </>
+        )}
+      </p>
       <p>{f.description}</p>
 
       {f.curl && (
         <div>
-          <div className="text-slate-500 font-medium mb-1">Reproduce (curl)</div>
-          <pre className="bg-ink text-slate-100 p-3 rounded-lg overflow-auto text-xs">{f.curl}</pre>
+          <h4>Reproduce (curl)</h4>
+          <CodeBlock text={f.curl} label="Copy curl" />
         </div>
       )}
 
       <div>
-        <div className="text-slate-500 font-medium mb-1">Evidence</div>
-        <pre className="bg-slate-50 border border-slate-200 p-3 rounded-lg overflow-auto text-xs
-          max-h-52">{JSON.stringify(f.evidence, null, 2)}</pre>
+        <h4>Evidence</h4>
+        <CodeBlock text={JSON.stringify(f.evidence, null, 2)} label="Copy evidence" />
       </div>
 
-      <div className="rounded-lg bg-green-50 border border-green-200 p-3">
-        <div className="text-green-800 font-semibold mb-1">Recommended fix</div>
-        <p className="text-green-900">{f.recommendation}</p>
-        {f.fix_snippet && (
-          <pre className="bg-ink text-slate-100 p-3 rounded-lg overflow-auto text-xs mt-2">{f.fix_snippet}</pre>
-        )}
+      <div className="fix-box">
+        <h4 style={{ color: 'var(--safe)' }}>Recommended fix</h4>
+        <p>{f.recommendation}</p>
+        {f.fix_snippet && <pre className="code-block" style={{ marginTop: 10 }}>{f.fix_snippet}</pre>}
       </div>
     </div>
   )
 }
 
-function AITests({ scanId }) {
-  const [rows, setRows] = useState(null)
-  const [busy, setBusy] = useState(false)
-  const [error, setError] = useState('')
-  const [gen, setGen] = useState('')
+function CodeBlock({ text, label }) {
+  const toast = useToast()
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(text)
+      toast({ title: 'Copied to clipboard' })
+    } catch {
+      toast({ title: 'Copy failed', message: 'Select the text and copy it manually.', tone: 'error' })
+    }
+  }
+  return (
+    <div className="code-wrap">
+      <pre className="code-block">{text}</pre>
+      <IconButton icon={Copy} label={label} size="sm" className="code-copy" onClick={copy} />
+    </div>
+  )
+}
 
-  const load = useCallback(() => {
-    api.get(`/scans/${scanId}/ai-tests`).then((r) => {
-      setRows(r.data)
-      if (r.data[0]) setGen(r.data[0].generator)
-    }).catch((e) => setError(errMsg(e)))
-  }, [scanId])
-  useEffect(load, [load])
+const RESULT = {
+  vulnerable: { tone: 'danger', label: 'Vulnerable', icon: XCircle, color: 'var(--danger)' },
+  safe: { tone: 'safe', label: 'Safe', icon: CheckCircle2, color: 'var(--safe)' },
+}
+const RESULT_DEFAULT = { tone: 'warn', label: 'Skipped', icon: AlertTriangle, color: 'var(--warn)' }
+
+function AITests({ scanId }) {
+  const toast = useToast()
+  const tests = useAsync(() => api.get(`/scans/${scanId}/ai-tests`).then((r) => r.data), [scanId])
+  const config = useAsync(() => api.get('/config').then((r) => r.data), [])
+  const [busy, setBusy] = useState(false)
+  const [runError, setRunError] = useState('')
 
   const run = async () => {
-    setBusy(true); setError('')
-    try { const r = await api.post(`/scans/${scanId}/ai-tests`); setGen(r.data.generator); load() }
-    catch (e) { setError(errMsg(e)) } finally { setBusy(false) }
+    setBusy(true)
+    setRunError('')
+    try {
+      const r = await api.post(`/scans/${scanId}/ai-tests`)
+      const gen = r.data.generator === 'gemini' ? 'Gemini' : 'built-in generator'
+      toast({ title: `${r.data.count} AI tests ran`, message: `Generator: ${gen}` })
+      await tests.reload()
+    } catch (e) {
+      setRunError(errMsg(e))
+    } finally {
+      setBusy(false)
+    }
   }
 
+  const generatorBadge = config.data ? (
+    config.data.gemini_enabled ? (
+      <Badge tone="info" dot>Gemini enabled</Badge>
+    ) : (
+      <Badge dot>Built-in generator (no Gemini key)</Badge>
+    )
+  ) : null
+
   return (
-    <div>
-      <div className="flex items-center gap-3 mb-4">
-        <p className="text-sm text-slate-600 flex-1">
-          Gemini reads the API spec and proposes business-logic abuse tests, which the
-          scanner then runs against the live target. {gen && <span className="text-slate-400">
-            (generator: {gen})</span>}
-        </p>
-        <button className="btn-primary" onClick={run} disabled={busy}>
-          <Bot size={16} /> {busy ? 'Generating…' : rows?.length ? 'Re-run' : 'Generate & run'}
-        </button>
-      </div>
-      <ErrorBox message={error} />
-      {rows === null ? <Spinner /> : rows.length === 0 ? (
-        <div className="text-slate-500">No AI tests yet — click “Generate & run”.</div>
-      ) : (
-        <div className="space-y-2">
-          {rows.map((t) => (
-            <div key={t.id} className="card p-4">
-              <div className="flex items-center gap-2">
-                {t.result === 'vulnerable'
-                  ? <XCircle size={18} className="text-red-600" />
-                  : t.result === 'safe'
-                    ? <CheckCircle2 size={18} className="text-green-600" />
-                    : <AlertTriangle size={18} className="text-amber-500" />}
-                <span className="font-semibold flex-1">{t.name}</span>
-                <span className={`text-xs font-bold uppercase px-2 py-0.5 rounded-full ${
-                  t.result === 'vulnerable' ? 'bg-red-100 text-red-700'
-                    : t.result === 'safe' ? 'bg-green-100 text-green-700'
-                      : 'bg-amber-100 text-amber-700'}`}>{t.result}</span>
-              </div>
-              <div className="text-sm text-slate-500 mt-1">
-                <code className="bg-slate-100 px-1 rounded">{t.endpoint}</code> · {t.category}
-              </div>
-              {t.rationale && <p className="text-sm mt-2">{t.rationale}</p>}
-              {t.detail && <p className="text-xs text-slate-500 mt-1">{t.detail}</p>}
-            </div>
-          ))}
+    <div className="stack-list">
+      <Card spotlight={false} pad>
+        <div className="ai-head">
+          <p className="muted">
+            Gemini reads the API spec and proposes business-logic abuse tests. The scanner then runs them against the live
+            target. Without a key, a built-in generator produces the same kinds of tests.
+          </p>
+          <div className="row" style={{ gap: 10, flexWrap: 'wrap' }}>
+            {generatorBadge}
+            <Button variant="primary" icon={Bot} loading={busy} onClick={run}>
+              {tests.data?.length ? 'Re-run' : 'Generate & run'}
+            </Button>
+          </div>
         </div>
+        {runError && (
+          <p className="form-error" role="alert" style={{ marginTop: 12 }}>
+            {runError}
+          </p>
+        )}
+      </Card>
+
+      {tests.error && !tests.data ? (
+        <ErrorState title="Could not load AI tests" error={{ message: errMsg(tests.error) }} onRetry={tests.reload} />
+      ) : !tests.data ? (
+        <Card spotlight={false} pad>
+          <Skeleton width="50%" height={18} />
+        </Card>
+      ) : tests.data.length === 0 ? (
+        <EmptyState icon={Bot} title="No AI tests yet">
+          Use “Generate & run” to create business-logic abuse tests for this API and run them against the target.
+        </EmptyState>
+      ) : (
+        tests.data.map((t) => {
+          const r = RESULT[t.result] || RESULT_DEFAULT
+          const Icon = r.icon
+          return (
+            <Card key={t.id} as="article" spotlight={false} pad>
+              <div className="result-row">
+                <Icon size={18} color={r.color} aria-hidden="true" />
+                <h3>{t.name}</h3>
+                <Badge tone={r.tone} dot>
+                  {r.label}
+                </Badge>
+              </div>
+              <p className="faint" style={{ marginTop: 8 }}>
+                <code>{t.endpoint}</code> · {t.category}
+              </p>
+              {t.rationale && <p style={{ marginTop: 10 }}>{t.rationale}</p>}
+              {t.detail && <p className="faint" style={{ marginTop: 6 }}>{t.detail}</p>}
+            </Card>
+          )
+        })
       )}
     </div>
   )
 }
 
 function Validation({ scanId }) {
-  const [v, setV] = useState(null)
-  const [error, setError] = useState('')
-  useEffect(() => {
-    api.get(`/scans/${scanId}/validation`)
-      .then((r) => setV(r.data)).catch((e) => setError(errMsg(e)))
-  }, [scanId])
-  if (error) return <ErrorBox message={error} />
-  if (!v) return <Spinner />
-  if (!v.has_known_list) {
-    return <div className="text-slate-500">
-      This target has no known-vulnerability list to validate against.</div>
+  const v = useAsync(() => api.get(`/scans/${scanId}/validation`).then((r) => r.data), [scanId])
+
+  if (v.error && !v.data) {
+    return <ErrorState title="Could not load validation" error={{ message: errMsg(v.error) }} onRetry={v.reload} />
   }
-  return (
-    <div>
-      <div className="grid sm:grid-cols-3 gap-4 mb-5">
-        <Stat label="Detection rate" value={`${v.detection_rate}%`}
-          sub={`${v.detected_count}/${v.total_known} known vulns`} accent="brand" />
-        <Stat label="Missed" value={v.missed_count} sub="not detected" accent="amber" />
-        <Stat label="False positives" value={v.false_positive_count}
-          sub="findings not in known list" accent="slate" />
+  if (!v.data) {
+    return (
+      <div className="target-grid">
+        <Card spotlight={false} pad>
+          <Skeleton width="60%" height={28} />
+        </Card>
+        <Card spotlight={false} pad>
+          <Skeleton width="60%" height={28} />
+        </Card>
       </div>
-      <div className="grid sm:grid-cols-2 gap-4">
-        <ListCard title="Detected" items={v.detected.map((d) => d.name)} tone="green" />
-        <ListCard title="Missed" items={v.missed.map((d) => d.name)} tone="amber" />
+    )
+  }
+  if (!v.data.has_known_list) {
+    return (
+      <EmptyState icon={ListChecks} title="No known-vulnerability list">
+        This target has no known-vulnerability list to validate against. Add one (the “Known vulnerabilities” field) when you
+        import the target.
+      </EmptyState>
+    )
+  }
+
+  const d = v.data
+  return (
+    <div className="stack-list">
+      <div className="stat-pair" style={{ gridTemplateColumns: 'repeat(3, minmax(0, 1fr))' }}>
+        <StatCard label="Detection rate" value={`${d.detection_rate}%`} delta={`${d.detected_count}/${d.total_known} known vulns`} icon={ShieldCheck} tone="safe" />
+        <StatCard label="Missed" value={d.missed_count} icon={AlertTriangle} tone="warn" />
+        <StatCard label="False positives" value={d.false_positive_count} icon={XCircle} tone="info" />
       </div>
-    </div>
-  )
-}
-
-function Stat({ label, value, sub, accent }) {
-  const color = { brand: 'text-brand-600', amber: 'text-amber-600', slate: 'text-slate-700' }[accent]
-  return (
-    <div className="card p-4">
-      <div className="text-slate-500 text-sm">{label}</div>
-      <div className={`text-3xl font-extrabold ${color}`}>{value}</div>
-      <div className="text-xs text-slate-400">{sub}</div>
-    </div>
-  )
-}
-
-function ListCard({ title, items, tone }) {
-  const dot = tone === 'green' ? 'bg-green-500' : 'bg-amber-500'
-  return (
-    <div className="card p-4">
-      <h4 className="font-bold mb-2">{title}</h4>
-      {items.length === 0 ? <p className="text-sm text-slate-400">None</p> : (
-        <ul className="space-y-1 text-sm">
-          {items.map((i) => (
-            <li key={i} className="flex items-start gap-2">
-              <span className={`w-2 h-2 rounded-full mt-1.5 ${dot}`} /> {i}
-            </li>
-          ))}
-        </ul>
+      <div className="stat-pair">
+        <Card spotlight={false} pad>
+          <h3 style={{ fontSize: 16, marginBottom: 12 }}>Detected</h3>
+          <ListItems items={d.detected.map((x) => x.name)} tone="safe" empty="None" />
+        </Card>
+        <Card spotlight={false} pad>
+          <h3 style={{ fontSize: 16, marginBottom: 12 }}>Missed</h3>
+          <ListItems items={d.missed.map((x) => x.name)} tone="warn" empty="None" />
+        </Card>
+      </div>
+      {d.false_positives.length > 0 && (
+        <Card spotlight={false} pad>
+          <h3 style={{ fontSize: 16, marginBottom: 12 }}>False positives</h3>
+          <ListItems items={d.false_positives} tone="neutral" empty="None" />
+        </Card>
       )}
     </div>
   )
 }
 
+function ListItems({ items, tone, empty }) {
+  if (items.length === 0) return <p className="faint">{empty}</p>
+  return (
+    <ul className="plain-list">
+      {items.map((i) => (
+        <li key={i}>
+          <span className={`pip ${tone}`} aria-hidden="true" />
+          <span>{i}</span>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
 function Reports({ scanId }) {
-  const [error, setError] = useState('')
+  const toast = useToast()
   const [busy, setBusy] = useState('')
+  const [error, setError] = useState('')
 
   const openHtml = async () => {
-    setBusy('html'); setError('')
+    setBusy('html')
+    setError('')
     try {
       const r = await api.get(`/scans/${scanId}/report.html`, { responseType: 'text' })
       const url = URL.createObjectURL(new Blob([r.data], { type: 'text/html' }))
-      window.open(url, '_blank')
-    } catch (e) { setError(errMsg(e)) } finally { setBusy('') }
+      const win = window.open(url, '_blank')
+      if (!win) toast({ title: 'Pop-up blocked', message: 'Allow pop-ups for this site to view the report.', tone: 'error' })
+      setTimeout(() => URL.revokeObjectURL(url), 60000)
+    } catch (e) {
+      setError(errMsg(e))
+    } finally {
+      setBusy('')
+    }
   }
+
   const downloadPdf = async () => {
-    setBusy('pdf'); setError('')
+    setBusy('pdf')
+    setError('')
     try {
       const r = await api.get(`/scans/${scanId}/report.pdf`, { responseType: 'blob' })
       const url = URL.createObjectURL(r.data)
       const a = document.createElement('a')
-      a.href = url; a.download = `apisentry-scan-${scanId}.pdf`; a.click()
-      URL.revokeObjectURL(url)
-    } catch (e) { setError(errMsg(e)) } finally { setBusy('') }
+      a.href = url
+      a.download = `apisentry-scan-${scanId}.pdf`
+      a.click()
+      setTimeout(() => URL.revokeObjectURL(url), 1000)
+      toast({ title: 'PDF downloaded', message: `apisentry-scan-${scanId}.pdf` })
+    } catch (e) {
+      setError(errMsg(e))
+    } finally {
+      setBusy('')
+    }
   }
 
   return (
-    <div>
-      <p className="text-sm text-slate-600 mb-4">
-        Share a full report with evidence, curl reproductions, OWASP mapping and fixes.
-      </p>
-      <ErrorBox message={error} />
-      <div className="flex gap-3">
-        <button className="btn-primary" onClick={openHtml} disabled={busy}>
-          <FileText size={16} /> {busy === 'html' ? 'Opening…' : 'Open HTML report'}
-        </button>
-        <button className="btn-ghost" onClick={downloadPdf} disabled={busy}>
-          <Download size={16} /> {busy === 'pdf' ? 'Preparing…' : 'Download PDF'}
-        </button>
+    <Card spotlight={false} pad>
+      <CardHeader title="Share a report" subtitle="Evidence, curl reproductions, OWASP mapping and fixes in one document." as="h3" />
+      <div className="report-actions" style={{ marginTop: 16 }}>
+        <Button variant="primary" icon={FileText} loading={busy === 'html'} onClick={openHtml}>
+          Open HTML report
+        </Button>
+        <Button variant="ghost" icon={Download} loading={busy === 'pdf'} onClick={downloadPdf}>
+          Download PDF
+        </Button>
       </div>
-    </div>
+      {error && (
+        <p className="form-error" role="alert" style={{ marginTop: 14 }}>
+          {error}
+        </p>
+      )}
+    </Card>
   )
 }

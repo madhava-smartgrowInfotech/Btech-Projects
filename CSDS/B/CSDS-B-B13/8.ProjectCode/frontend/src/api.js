@@ -21,7 +21,13 @@ api.interceptors.response.use(
   }
 )
 
-export const errMsg = (e) =>
-  e?.response?.data?.detail || e?.message || 'Something went wrong'
+// FastAPI returns `detail` as a string for our errors and as a list for validation errors.
+export const errMsg = (e) => {
+  const d = e?.response?.data?.detail
+  if (typeof d === 'string') return d
+  if (Array.isArray(d)) return d.map((x) => x.msg).join('; ')
+  if (!e?.response && e?.message) return `Cannot reach the API (${e.message}). Is the backend running on port 8213?`
+  return e?.message || 'Something went wrong'
+}
 
 export default api

@@ -15,7 +15,7 @@ specs, runs OWASP API Top 10 checks + AI-generated business-logic tests, scores 
 - **Reports** Jinja2 HTML + ReportLab PDF. **CLI** Typer `apisentry scan --spec ...`.
 - **Targets** `targets/demopay.py` (deliberately vulnerable payment API, port 12130) +
   `targets/vulnbank.py` (second target, port 12131) each ship a known-vuln list.
-- **Frontend** React+Vite (JS) + Tailwind (port 5213), axios, react-router.
+- **Frontend** React 19 + Vite (JS), Depth Studio kit V3 (`frontend/src/components`, `styles`), axios, react-router (port 5213).
 
 ## Endpoints (/api)
 - auth: POST /auth/register, /auth/login, GET /auth/me

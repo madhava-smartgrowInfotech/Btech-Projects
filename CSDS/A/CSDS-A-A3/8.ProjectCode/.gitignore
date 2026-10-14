@@ -1,0 +1,11 @@
+# secrets and local runtime data
+.env
+data/threat_intel.db
+models/_backup/
+
+# frontend build artefacts
+frontend/node_modules/
+frontend/dist/
+
+__pycache__/
+*.pyc

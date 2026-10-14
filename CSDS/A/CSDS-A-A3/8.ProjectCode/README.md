@@ -21,6 +21,9 @@ python run.py train          # trains & compares Random Forest, XGBoost, Logisti
 python run.py serve          # web interface at http://127.0.0.1:5000
 ```
 
+**React frontend (new):** `run.bat` starts the API on port 8103 (`backend/server.py`) and the redesigned
+UI on port 5103 (`frontend/`). See [docs/03_HOW_TO_RUN.md](docs/03_HOW_TO_RUN.md).
+
 Other commands:
 
 ```bash

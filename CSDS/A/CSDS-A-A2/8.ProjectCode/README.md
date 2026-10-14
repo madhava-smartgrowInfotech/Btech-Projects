@@ -49,6 +49,12 @@ The first run downloads the InsightFace `buffalo_l` model (~280 MB) to `~/.insig
 Seeded students have **no enrolled face**; either register a new student (the form takes a reference
 photo) or let faculty re-enrol them in the *Students* tab. For a quick trial set `AM_REQUIRE_ENROLLMENT=false`.
 
+### React frontend (Neo Brutal Grid)
+
+A React UI (`frontend/`) over a thin FastAPI layer (`backend/api.py`, which only calls `core/`) runs alongside the
+Streamlit app: `setup.bat` once, then `run.bat` → http://localhost:5102. Details in `docs/03_HOW_TO_RUN.md`;
+screen map and verification in `docs/FRONTEND_PLAN.md`.
+
 ### Headless demo (no camera needed)
 
 ```bash

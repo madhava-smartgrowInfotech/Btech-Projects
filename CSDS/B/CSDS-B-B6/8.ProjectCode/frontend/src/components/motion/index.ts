@@ -1,0 +1,10 @@
+export { CountUp } from "./CountUp";
+export { FadeIn, FadeInView } from "./FadeIn";
+export { MagneticButton } from "./MagneticButton";
+export { Marquee } from "./Marquee";
+export { PageTransition } from "./PageTransition";
+export { Parallax } from "./Parallax";
+export { Reveal } from "./Reveal";
+export { SlideUp } from "./SlideUp";
+export { SmoothScroll } from "./SmoothScroll";
+export { Stagger, StaggerItem } from "./Stagger";

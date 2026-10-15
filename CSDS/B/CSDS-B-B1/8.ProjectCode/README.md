@@ -16,7 +16,7 @@ and **explains every suggestion**. Officers make the final decision, and their o
 - **Hotspot map and analytics** - ward hotspots, recurring issues, SLA compliance by department, category trends, live refresh.
 - **Draft reply** - Gemini drafts a reply in the citizen's language for the officer to edit and send.
 
-Stack: React + Vite + Tailwind + Leaflet · FastAPI + SQLAlchemy + SQLite · scikit-learn, XGBoost, LIME, SHAP · Gemini.
+Stack: React + TypeScript + Vite + Tailwind (Aurora Glass UI kit) + Leaflet · FastAPI + SQLAlchemy + SQLite · scikit-learn, XGBoost, LIME, SHAP · Gemini.
 
 ## Quick start (Windows)
 
@@ -59,7 +59,7 @@ Details and limitations: [docs/02_HOW_IT_WORKS.md](docs/02_HOW_IT_WORKS.md#evalu
 ## Checks
 
 ```bat
-venv\Scripts\python scripts\smoke_test.py   :: end-to-end API flow, 25 checks (backend must be running)
+venv\Scripts\python scripts\smoke_test.py   :: end-to-end API flow, 26 checks (backend must be running)
 cd frontend && npm run build                :: production build
 ```
 
@@ -76,7 +76,7 @@ cd frontend && npm run build                :: production build
 
 ```
 backend/app/      FastAPI app: main.py, db.py, auth.py, routes/, services/
-frontend/src/     React screens (pages/), components/, api.js
+frontend/src/     React + TypeScript: pages/ (screens), components/ (ui, motion, charts, domain, map), lib/ (api, auth, queries)
 ml/               train.py, eval.py
 scripts/          download_data.py, smoke_test.py
 data/raw/         datasets (see docs/02_HOW_IT_WORKS.md#data)

@@ -176,6 +176,10 @@ check(call("GET", "/api/analytics/sla", officer), "SLA table by department")
 tr = call("GET", "/api/analytics/trends", officer)
 check(tr["series"], f"category trends over {len(tr['weeks'])} weeks")
 
+# --- 8b. public landing-page numbers ---
+ps = call("GET", "/api/public/stats")
+check(ps["available"] and 0 < ps["category"]["accuracy"] < 1, f"public stats: category accuracy {ps['category']['accuracy']:.1%}")
+
 # --- 9. admin edits an SLA ---
 depts = call("GET", "/api/meta")["departments"]
 roads = next(x for x in depts if x["name"] == "Roads")

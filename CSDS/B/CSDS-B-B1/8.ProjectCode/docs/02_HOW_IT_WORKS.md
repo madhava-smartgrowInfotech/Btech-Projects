@@ -12,7 +12,7 @@ Browser (React + Vite, :5201) --/api proxy--> FastAPI (:8201) --> SQLite  data/a
 |---|---|
 | `backend/app/` | `main.py` (app + startup seeding), `db.py` (tables), `auth.py` (JWT + bcrypt), `routes/`, `services/` |
 | `backend/app/services/` | `taxonomy.py` (categories, departments, dataset mappings), `datasets.py`, `training.py`, `predictor.py` (inference + LIME / SHAP), `gemini.py`, `textutil.py` (language detection, urgency cues), `seed.py` (sample data) |
-| `frontend/src/` | `pages/` (7 screens), `components/`, `api.js`, `auth.jsx` |
+| `frontend/src/` | `pages/` (7 screens), `components/` (Aurora Glass kit: ui, motion, charts, landing + domain, map), `lib/` (api.ts, auth.tsx, queries.ts, theme.tsx) |
 | `ml/` | `train.py` (train everything), `eval.py` (objective evaluation) |
 | `scripts/` | `download_data.py`, `smoke_test.py` |
 | `models/`, `experiments/` | trained models, `metrics.json`, per-version runs, `eval/metrics.json` |

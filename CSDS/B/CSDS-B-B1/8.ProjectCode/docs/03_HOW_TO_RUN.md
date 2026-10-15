@@ -85,11 +85,11 @@ With the backend running:
 
 ```bat
 venv\Scripts\python scripts\smoke_test.py
-cd frontend && npm run build
+cd frontend && npm run build   # type-checks (tsc) then bundles
 ```
 
 The smoke test drives the whole flow through the real API (including Gemini and a retrain) and prints
-`ALL 25 CHECKS PASSED`. Note that it retrains the live model; run `venv\Scripts\python ml\train.py` afterwards
+`ALL 26 CHECKS PASSED`. Note that it retrains the live model; run `venv\Scripts\python ml\train.py` afterwards
 to return to the original v1 models.
 
 ## 7. Models and evaluation

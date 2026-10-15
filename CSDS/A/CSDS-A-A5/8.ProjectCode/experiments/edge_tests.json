@@ -1,0 +1,335 @@
+{
+ "base": "http://127.0.0.1:8105",
+ "total": 41,
+ "passed": 41,
+ "rows": [
+  {
+   "area": "Authentication",
+   "case": "demo login with correct password",
+   "expected": 200,
+   "observed": 200,
+   "passed": true,
+   "note": ""
+  },
+  {
+   "area": "Authentication",
+   "case": "wrong password",
+   "expected": 401,
+   "observed": 401,
+   "passed": true,
+   "note": "{'detail': 'Wrong email or password'}"
+  },
+  {
+   "area": "Authentication",
+   "case": "unknown e-mail",
+   "expected": 401,
+   "observed": 401,
+   "passed": true,
+   "note": ""
+  },
+  {
+   "area": "Authentication",
+   "case": "e-mail is case-insensitive and trimmed",
+   "expected": 200,
+   "observed": 200,
+   "passed": true,
+   "note": ""
+  },
+  {
+   "area": "Validation",
+   "case": "password shorter than 8 characters",
+   "expected": 422,
+   "observed": 422,
+   "passed": true,
+   "note": ""
+  },
+  {
+   "area": "Validation",
+   "case": "malformed e-mail",
+   "expected": 422,
+   "observed": 422,
+   "passed": true,
+   "note": ""
+  },
+  {
+   "area": "Validation",
+   "case": "empty name",
+   "expected": 422,
+   "observed": 422,
+   "passed": true,
+   "note": ""
+  },
+  {
+   "area": "Validation",
+   "case": "duplicate registration",
+   "expected": 409,
+   "observed": 409,
+   "passed": true,
+   "note": ""
+  },
+  {
+   "area": "Authentication",
+   "case": "valid registration",
+   "expected": 200,
+   "observed": 200,
+   "passed": true,
+   "note": ""
+  },
+  {
+   "area": "Validation",
+   "case": "malformed JSON body",
+   "expected": 422,
+   "observed": 422,
+   "passed": true,
+   "note": ""
+  },
+  {
+   "area": "Authorisation",
+   "case": "no token",
+   "expected": 401,
+   "observed": 401,
+   "passed": true,
+   "note": ""
+  },
+  {
+   "area": "Authorisation",
+   "case": "garbage token",
+   "expected": 401,
+   "observed": 401,
+   "passed": true,
+   "note": ""
+  },
+  {
+   "area": "Authorisation",
+   "case": "token with altered signature",
+   "expected": 401,
+   "observed": 401,
+   "passed": true,
+   "note": ""
+  },
+  {
+   "area": "Authorisation",
+   "case": "GET /api/taxpayers without token",
+   "expected": 401,
+   "observed": 401,
+   "passed": true,
+   "note": ""
+  },
+  {
+   "area": "Authorisation",
+   "case": "GET /api/chains without token",
+   "expected": 401,
+   "observed": 401,
+   "passed": true,
+   "note": ""
+  },
+  {
+   "area": "Authorisation",
+   "case": "GET /api/structures without token",
+   "expected": 401,
+   "observed": 401,
+   "passed": true,
+   "note": ""
+  },
+  {
+   "area": "Authorisation",
+   "case": "GET /api/graph without token",
+   "expected": 401,
+   "observed": 401,
+   "passed": true,
+   "note": ""
+  },
+  {
+   "area": "Authorisation",
+   "case": "GET /api/metrics without token",
+   "expected": 401,
+   "observed": 401,
+   "passed": true,
+   "note": ""
+  },
+  {
+   "area": "Authorisation",
+   "case": "GET /api/pipeline/status without token",
+   "expected": 401,
+   "observed": 401,
+   "passed": true,
+   "note": ""
+  },
+  {
+   "area": "Authorisation",
+   "case": "GET /api/pipeline/runs without token",
+   "expected": 401,
+   "observed": 401,
+   "passed": true,
+   "note": ""
+  },
+  {
+   "area": "Authorisation",
+   "case": "POST /api/pipeline/run without token",
+   "expected": 401,
+   "observed": 401,
+   "passed": true,
+   "note": ""
+  },
+  {
+   "area": "Authorisation",
+   "case": "POST /api/explanations without token",
+   "expected": 401,
+   "observed": 401,
+   "passed": true,
+   "note": ""
+  },
+  {
+   "area": "Availability",
+   "case": "health is public",
+   "expected": 200,
+   "observed": 200,
+   "passed": true,
+   "note": ""
+  },
+  {
+   "area": "Edge case",
+   "case": "unknown GSTIN profile",
+   "expected": 404,
+   "observed": 404,
+   "passed": true,
+   "note": ""
+  },
+  {
+   "area": "Edge case",
+   "case": "explanation for unknown GSTIN",
+   "expected": 404,
+   "observed": 404,
+   "passed": true,
+   "note": ""
+  },
+  {
+   "area": "Edge case",
+   "case": "unknown chain id",
+   "expected": 404,
+   "observed": 404,
+   "passed": true,
+   "note": ""
+  },
+  {
+   "area": "Validation",
+   "case": "limit=0 rejected",
+   "expected": 422,
+   "observed": 422,
+   "passed": true,
+   "note": ""
+  },
+  {
+   "area": "Validation",
+   "case": "limit above 500 rejected",
+   "expected": 422,
+   "observed": 422,
+   "passed": true,
+   "note": ""
+  },
+  {
+   "area": "Validation",
+   "case": "negative offset rejected",
+   "expected": 422,
+   "observed": 422,
+   "passed": true,
+   "note": ""
+  },
+  {
+   "area": "Edge case",
+   "case": "search with no match returns an empty page",
+   "expected": 200,
+   "observed": 200,
+   "passed": true,
+   "note": "items=0"
+  },
+  {
+   "area": "Security",
+   "case": "SQL-injection-style search text is inert",
+   "expected": 200,
+   "observed": 200,
+   "passed": true,
+   "note": "items=0"
+  },
+  {
+   "area": "Security",
+   "case": "script tag in search text is inert",
+   "expected": 200,
+   "observed": 200,
+   "passed": true,
+   "note": "items=0"
+  },
+  {
+   "area": "Validation",
+   "case": "taxpayers below 150 rejected",
+   "expected": 422,
+   "observed": 422,
+   "passed": true,
+   "note": ""
+  },
+  {
+   "area": "Validation",
+   "case": "taxpayers above 1500 rejected",
+   "expected": 422,
+   "observed": 422,
+   "passed": true,
+   "note": ""
+  },
+  {
+   "area": "Validation",
+   "case": "negative seed rejected",
+   "expected": 422,
+   "observed": 422,
+   "passed": true,
+   "note": ""
+  },
+  {
+   "area": "Validation",
+   "case": "non-numeric seed rejected",
+   "expected": 422,
+   "observed": 422,
+   "passed": true,
+   "note": ""
+  },
+  {
+   "area": "Concurrency",
+   "case": "first run accepted",
+   "expected": 200,
+   "observed": 200,
+   "passed": true,
+   "note": ""
+  },
+  {
+   "area": "Concurrency",
+   "case": "second run while one is running",
+   "expected": 409,
+   "observed": 409,
+   "passed": true,
+   "note": "A generation is already running"
+  },
+  {
+   "area": "Concurrency",
+   "case": "small run (seed 5, 150 taxpayers) completes",
+   "expected": "done",
+   "observed": "done",
+   "passed": true,
+   "note": ""
+  },
+  {
+   "area": "Concurrency",
+   "case": "bundled ecosystem restored (seed 42, 600)",
+   "expected": "done",
+   "observed": "done",
+   "passed": true,
+   "note": ""
+  },
+  {
+   "area": "Consistency",
+   "case": "restored ecosystem flags 78 taxpayers",
+   "expected": 78,
+   "observed": 78,
+   "passed": true,
+   "note": ""
+  }
+ ]
+}

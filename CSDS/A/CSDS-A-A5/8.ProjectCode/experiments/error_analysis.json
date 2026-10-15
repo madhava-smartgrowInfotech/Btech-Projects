@@ -1,0 +1,253 @@
+{
+ "false_positives": [
+  {
+   "gstin": "07EMJPQ0772D1ZY",
+   "legal_name": "Apex Distributors",
+   "sector": "wholesaler",
+   "constitution": "Proprietorship",
+   "registration_date": "2024-04-16",
+   "risk": 0.5587,
+   "jepa": 0.6816,
+   "behaviour": 0.162,
+   "network": 0.0,
+   "invoice": 0.0,
+   "patterns": [
+    "behaviour_anomaly"
+   ],
+   "rank": 74,
+   "cluster": null,
+   "rings": [],
+   "roles": []
+  },
+  {
+   "gstin": "33SGLFS7843J1ZW",
+   "legal_name": "Vertex Enterprises LLP",
+   "sector": "wholesaler",
+   "constitution": "LLP",
+   "registration_date": "2020-11-05",
+   "risk": 0.6947,
+   "jepa": 0.7993,
+   "behaviour": 0.3962,
+   "network": 0.0,
+   "invoice": 0.0,
+   "patterns": [
+    "behaviour_anomaly"
+   ],
+   "rank": 59,
+   "cluster": null,
+   "rings": [],
+   "roles": []
+  },
+  {
+   "gstin": "33TGQCR8171O1ZO",
+   "legal_name": "Orbit Industries Pvt Ltd",
+   "sector": "manufacturer",
+   "constitution": "Private Limited",
+   "registration_date": "2020-03-09",
+   "risk": 0.5665,
+   "jepa": 0.3734,
+   "behaviour": 0.5097,
+   "network": 0.0,
+   "invoice": 0.221,
+   "patterns": [],
+   "rank": 73,
+   "cluster": null,
+   "rings": [],
+   "roles": []
+  }
+ ],
+ "false_negatives": [
+  {
+   "gstin": "36NWFCT7822O1Z4",
+   "legal_name": "Eastern Enterprises Pvt Ltd",
+   "sector": "wholesaler",
+   "constitution": "Private Limited",
+   "registration_date": "2020-02-27",
+   "risk": 0.4064,
+   "jepa": 0.3619,
+   "behaviour": 0.3088,
+   "network": 0.0,
+   "invoice": 0.0,
+   "patterns": [
+    "itc_spike"
+   ],
+   "rank": 84,
+   "cluster": null,
+   "rings": [],
+   "roles": [
+    "itc_spike"
+   ]
+  },
+  {
+   "gstin": "09LYAPU0444C1ZD",
+   "legal_name": "Metro Manufacturing",
+   "sector": "manufacturer",
+   "constitution": "Proprietorship",
+   "registration_date": "2019-06-02",
+   "risk": 0.289,
+   "jepa": 0.0242,
+   "behaviour": 0.0262,
+   "network": 0.3054,
+   "invoice": 0.107,
+   "patterns": [
+    "fake_invoices"
+   ],
+   "rank": 122,
+   "cluster": null,
+   "rings": [],
+   "roles": [
+    "fake_invoice_buyer"
+   ]
+  },
+  {
+   "gstin": "24FVKFV1539O1ZC",
+   "legal_name": "Global Logistics & Co",
+   "sector": "services",
+   "constitution": "Partnership",
+   "registration_date": "2017-09-09",
+   "risk": 0.4662,
+   "jepa": 0.4489,
+   "behaviour": 0.3254,
+   "network": 0.0,
+   "invoice": 0.0,
+   "patterns": [
+    "itc_spike"
+   ],
+   "rank": 80,
+   "cluster": null,
+   "rings": [],
+   "roles": [
+    "itc_spike"
+   ]
+  },
+  {
+   "gstin": "33WJLPF0379R1Z4",
+   "legal_name": "Zenith Enterprises",
+   "sector": "wholesaler",
+   "constitution": "Proprietorship",
+   "registration_date": "2017-09-01",
+   "risk": 0.3188,
+   "jepa": 0.0295,
+   "behaviour": 0.0605,
+   "network": 0.3139,
+   "invoice": 0.1227,
+   "patterns": [
+    "fake_invoices"
+   ],
+   "rank": 106,
+   "cluster": null,
+   "rings": [],
+   "roles": [
+    "fake_invoice_buyer"
+   ]
+  }
+ ],
+ "invoice_false_positive_flags": [
+  [
+   "no_eway,unreported",
+   22
+  ],
+  [
+   "ring_edge,value_spike",
+   18
+  ],
+  [
+   "ring_edge,unreported",
+   12
+  ],
+  [
+   "no_eway,ring_edge",
+   7
+  ],
+  [
+   "no_eway,ring_edge,value_spike",
+   2
+  ],
+  [
+   "no_eway,value_spike,young_supplier",
+   2
+  ],
+  [
+   "unreported,value_spike,young_supplier",
+   2
+  ],
+  [
+   "ring_edge,young_supplier",
+   1
+  ]
+ ],
+ "invoice_false_negative_flags": [
+  [
+   "shell_cluster,supplier_vanished",
+   8
+  ],
+  [
+   "shell_cluster,young_supplier",
+   3
+  ],
+  [
+   "ring_edge",
+   3
+  ],
+  [
+   "round_value,shell_cluster",
+   3
+  ]
+ ],
+ "rings": [
+  {
+   "id": "R01",
+   "score": 0.784,
+   "size": 5,
+   "with_fraud": true
+  },
+  {
+   "id": "R02",
+   "score": 0.774,
+   "size": 3,
+   "with_fraud": true
+  },
+  {
+   "id": "R03",
+   "score": 0.753,
+   "size": 4,
+   "with_fraud": true
+  },
+  {
+   "id": "R04",
+   "score": 0.668,
+   "size": 5,
+   "with_fraud": true
+  },
+  {
+   "id": "R05",
+   "score": 0.656,
+   "size": 2,
+   "with_fraud": true
+  },
+  {
+   "id": "R06",
+   "score": 0.605,
+   "size": 4,
+   "with_fraud": true
+  },
+  {
+   "id": "R07",
+   "score": 0.324,
+   "size": 11,
+   "with_fraud": true
+  },
+  {
+   "id": "R08",
+   "score": 0.298,
+   "size": 5,
+   "with_fraud": false
+  },
+  {
+   "id": "R09",
+   "score": 0.266,
+   "size": 2,
+   "with_fraud": false
+  }
+ ]
+}

@@ -1,0 +1,397 @@
+{
+ "taxpayer": {
+  "idx": 352,
+  "gstin": "36ROJCS8039W1ZU",
+  "legal_name": "Lotus Manufacturing Pvt Ltd",
+  "sector": "manufacturer",
+  "state": "Telangana",
+  "constitution": "Private Limited",
+  "registration_date": "2020-03-11",
+  "risk": 0.9651,
+  "jepa": 0.9283,
+  "behaviour": 0.6051,
+  "network": 0.784,
+  "invoice": 1.0,
+  "flagged": true,
+  "patterns": [
+   "circular_trading"
+  ],
+  "rules": [
+   "R4"
+  ],
+  "rings": [
+   "R01"
+  ],
+  "cluster": null,
+  "community": 15,
+  "itc_claimed": 16898217,
+  "itc_at_risk": 16083140,
+  "rank": 1,
+  "address": "15, Ring Road, Hyderabad",
+  "contact_id": "M-XXXXXX7369"
+ },
+ "evidence": [
+  {
+   "id": "E1",
+   "layer": "model",
+   "severity": "high",
+   "title": "Deviates from learned normal behaviour",
+   "detail": "The JEPA behaviour encoder's prediction error for Mar 2026 is 25.0x a typical taxpayer-month (deviation score 0.93). The behaviour layer is the least consistent with the rest (45.1x); history-only prediction error 28.0x. Largest shifts: ITC claimed ₹1.29 L (usually ₹18.08 L); outward turnover ₹23.32 L (usually ₹1.16 Cr); largest buyer's share of sales 42% (usually 90%)."
+  },
+  {
+   "id": "E2",
+   "layer": "invoice",
+   "severity": "high",
+   "title": "Suspicious purchase invoices",
+   "detail": "11 purchase invoices worth ₹8.94 Cr carry ITC of ₹1.61 Cr and score as anomalous. Most common signals: part of a detected circular-trading loop (11), far above the supplier's usual invoice value (11), round-figure value (1). From 1 supplier(s), chiefly Surya Enterprises."
+  },
+  {
+   "id": "E3",
+   "layer": "invoice",
+   "severity": "high",
+   "title": "Suspicious sales invoices issued",
+   "detail": "Issued 12 anomalous invoices worth ₹9.15 Cr, passing ₹1.65 Cr of ITC to 1 buyer(s)."
+  },
+  {
+   "id": "E4",
+   "layer": "network",
+   "severity": "high",
+   "title": "Member of circular-trading ring R01",
+   "detail": "Loop Maa Industries LLP -> Surya Enterprises -> Lotus Manufacturing Pvt Ltd -> Krishna Traders -> Royal Textiles Pvt Ltd -> Maa Industries LLP: ₹44.65 Cr moved around the ring, the whole loop traded in 9 common month(s) and edge values stay within 13% of each other (ring score 0.78)."
+  },
+  {
+   "id": "E5",
+   "layer": "behaviour",
+   "severity": "medium",
+   "title": "Almost no tax paid in cash",
+   "detail": "Paid 16.6% of its ₹2.03 Cr output tax in cash over the period; the manufacturer median is 57%. The rest was set off with ITC."
+  }
+ ],
+ "partners": [
+  {
+   "gstin": "19DGUPK5714A1Z8",
+   "legal_name": "Krishna Traders",
+   "risk": 0.8772,
+   "bought_from": 0,
+   "sold_to": 97782665
+  },
+  {
+   "gstin": "24NCCPR7193I1ZW",
+   "legal_name": "Surya Enterprises",
+   "risk": 0.8641,
+   "bought_from": 89350777,
+   "sold_to": 0
+  },
+  {
+   "gstin": "19HIRCZ8100P1ZP",
+   "legal_name": "Navkar Distributors Pvt Ltd",
+   "risk": 0.0092,
+   "bought_from": 0,
+   "sold_to": 11267340
+  },
+  {
+   "gstin": "19LSICD1672J1Z1",
+   "legal_name": "Harmony Cotton Pvt Ltd",
+   "risk": 0.0206,
+   "bought_from": 5407456,
+   "sold_to": 0
+  },
+  {
+   "gstin": "36EOMFG1137B1ZW",
+   "legal_name": "Jai Agro & Co",
+   "risk": 0.0092,
+   "bought_from": 4999742,
+   "sold_to": 0
+  }
+ ],
+ "rules": {
+  "R4": "ITC claimed jumps more than 3x month over month (above ₹1 lakh)"
+ },
+ "rings": [
+  {
+   "id": "R01",
+   "score": 0.784,
+   "balance": 0.87,
+   "value": 446503632.38,
+   "tax": 97803639.32,
+   "n_cycles": 1,
+   "members": [
+    {
+     "gstin": "33ZGUFG7747H1ZU",
+     "legal_name": "Maa Industries LLP"
+    },
+    {
+     "gstin": "24NCCPR7193I1ZW",
+     "legal_name": "Surya Enterprises"
+    },
+    {
+     "gstin": "36ROJCS8039W1ZU",
+     "legal_name": "Lotus Manufacturing Pvt Ltd"
+    },
+    {
+     "gstin": "19CXSCY8271Y1Z2",
+     "legal_name": "Royal Textiles Pvt Ltd"
+    },
+    {
+     "gstin": "19DGUPK5714A1Z8",
+     "legal_name": "Krishna Traders"
+    }
+   ],
+   "loop": [
+    {
+     "gstin": "33ZGUFG7747H1ZU",
+     "legal_name": "Maa Industries LLP"
+    },
+    {
+     "gstin": "24NCCPR7193I1ZW",
+     "legal_name": "Surya Enterprises"
+    },
+    {
+     "gstin": "36ROJCS8039W1ZU",
+     "legal_name": "Lotus Manufacturing Pvt Ltd"
+    },
+    {
+     "gstin": "19DGUPK5714A1Z8",
+     "legal_name": "Krishna Traders"
+    },
+    {
+     "gstin": "19CXSCY8271Y1Z2",
+     "legal_name": "Royal Textiles Pvt Ltd"
+    }
+   ]
+  }
+ ],
+ "note": {
+  "model": "gemini-3.5-flash-lite",
+  "quality": {
+   "citations": 14,
+   "invalid_citations": 0,
+   "evidence_coverage": 1.0,
+   "high_severity_coverage": 1.0,
+   "numbers": 26,
+   "numbers_grounded": 23,
+   "numeric_grounding": 0.885,
+   "has_sections": true,
+   "words": 290
+  },
+  "text": "## Summary\nLotus Manufacturing Pvt Ltd (GSTIN: 36ROJCS8039W1ZU) registered in Telangana as a private limited manufacturer, has been flagged with an overall risk score of 0.9651 [E1]. The taxpayer exhibits high-risk indicators pointing toward circular trading, involving massive anomalous invoice values and heavy reliance on ITC for tax liability offset [E2][E4][E5].\n\n## Why it was flagged\n- **Circular-Trading Ring Membership:** The entity is identified as part of circular-trading ring R01 (Maa Industries LLP to Surya Enterprises to Lotus Manufacturing Pvt Ltd to Krishna Traders to Royal Textiles Pvt Ltd and back), moving ₹44.65 Cr across 9 common months with edge values within 13% of each other [E4].\n- **Anomalous Purchase Invoices:** 11 purchase invoices worth ₹8.94 Cr carry ₹1.61 Cr of ITC, flagged for being part of the circular-trading loop, exceeding supplier norms, and originating chiefly from Surya Enterprises [E2].\n- **Anomalous Sales Invoices:** Issued 12 anomalous sales invoices worth ₹9.15 Cr, passing ₹1.65 Cr of ITC to a single buyer [E3].\n- **Behavioral Deviation:** The JEPA behavior encoder shows a Mar 2026 prediction error 25.0x a typical taxpayer-month, featuring sharp drops in ITC claimed (₹1.29 L vs. usual ₹18.08 L) and outward turnover (₹23.32 L vs. usual ₹1.16 Cr) [E1].\n- **Low Cash Tax Payment:** Paid only 16.6% of its ₹2.03 Cr output tax in cash, well below the manufacturer median of 57%, offsetting the remainder via ITC [E5].\n\n## Suggested next steps\n- Reconcile GSTR-2B with the 11 anomalous purchase invoices totaling ₹8.94 Cr from Surya Enterprises [E2].\n- Verify the physical existence and business operations of all entities in circular-trading ring R01, particularly Surya Enterprises [E2][E4].\n- Inspect e-way bills and underlying goods movement for the ₹44.65 Cr ring transactions and the 12 anomalous sales invoices [E3][E4]."
+ },
+ "stored_note_quality": [
+  {
+   "run_key": "base-seed42",
+   "gstin": "36ROJCS8039W1ZU",
+   "model": "gemini-3.5-flash-lite",
+   "quality": {
+    "citations": 14,
+    "invalid_citations": 0,
+    "evidence_coverage": 1.0,
+    "high_severity_coverage": 1.0,
+    "numbers": 27,
+    "numbers_grounded": 24,
+    "numeric_grounding": 0.889,
+    "has_sections": true,
+    "words": 271
+   }
+  },
+  {
+   "run_key": "base-seed42",
+   "gstin": "09GPRCQ3773T1Z1",
+   "model": "gemini-3.5-flash-lite",
+   "quality": {
+    "citations": 10,
+    "invalid_citations": 0,
+    "evidence_coverage": 1.0,
+    "high_severity_coverage": 1.0,
+    "numbers": 16,
+    "numbers_grounded": 12,
+    "numeric_grounding": 0.75,
+    "has_sections": true,
+    "words": 239
+   }
+  },
+  {
+   "run_key": "run-5",
+   "gstin": "09GPRCQ3773T1Z1",
+   "model": "gemini-3.5-flash-lite",
+   "quality": {
+    "citations": 10,
+    "invalid_citations": 0,
+    "evidence_coverage": 1.0,
+    "high_severity_coverage": 1.0,
+    "numbers": 16,
+    "numbers_grounded": 12,
+    "numeric_grounding": 0.75,
+    "has_sections": true,
+    "words": 243
+   }
+  },
+  {
+   "run_key": "run-8",
+   "gstin": "36ROJCS8039W1ZU",
+   "model": "gemini-3.5-flash-lite",
+   "quality": {
+    "citations": 13,
+    "invalid_citations": 0,
+    "evidence_coverage": 1.0,
+    "high_severity_coverage": 1.0,
+    "numbers": 30,
+    "numbers_grounded": 27,
+    "numeric_grounding": 0.9,
+    "has_sections": true,
+    "words": 290
+   }
+  },
+  {
+   "run_key": "run-10",
+   "gstin": "36ROJCS8039W1ZU",
+   "model": "gemini-3.5-flash-lite",
+   "quality": {
+    "citations": 14,
+    "invalid_citations": 0,
+    "evidence_coverage": 1.0,
+    "high_severity_coverage": 1.0,
+    "numbers": 23,
+    "numbers_grounded": 20,
+    "numeric_grounding": 0.87,
+    "has_sections": true,
+    "words": 251
+   }
+  },
+  {
+   "run_key": "run-14",
+   "gstin": "36ROJCS8039W1ZU",
+   "model": "gemini-3.5-flash-lite",
+   "quality": {
+    "citations": 14,
+    "invalid_citations": 0,
+    "evidence_coverage": 1.0,
+    "high_severity_coverage": 1.0,
+    "numbers": 26,
+    "numbers_grounded": 23,
+    "numeric_grounding": 0.885,
+    "has_sections": true,
+    "words": 290
+   }
+  }
+ ],
+ "eval_summary": {
+  "mean_citations": 10.833,
+  "invalid_citation_rate": 0.0,
+  "evidence_coverage": 1.0,
+  "high_severity_coverage": 1.0,
+  "numeric_grounding": 0.843,
+  "all_sections_present": 1.0,
+  "pattern_named": 1.0,
+  "mean_words": 311.333
+ },
+ "eval_cases": [
+  {
+   "gstin": "36ROJCS8039W1ZU",
+   "legal_name": "Lotus Manufacturing Pvt Ltd",
+   "model": "gemini-3.5-flash-lite",
+   "quality": {
+    "citations": 7,
+    "invalid_citations": 0,
+    "evidence_coverage": 1.0,
+    "high_severity_coverage": 1.0,
+    "numbers": 25,
+    "numbers_grounded": 22,
+    "numeric_grounding": 0.88,
+    "has_sections": true,
+    "words": 297,
+    "pattern_named": true
+   },
+   "text": "## Summary\nLotus Manufacturing Pvt Ltd (GSTIN: 36ROJCS8039W1ZU) is flagged as a high-risk entity (overall risk score 0.9651) with extreme invoice anomalies and severe behavioral deviations for March 2026. The taxpayer shows strong indications of involvement in circular trading to pass on questionable input tax credit without substantial cash tax payments.\n\n## Why it was flagged\n- **Circular-Trading Loop:** The entity is a member of circular-trading ring R01 involving Maa Industries LLP, Surya Enterprises, Krishna Traders, and Royal Textiles Pvt Ltd, where â‚¹44.65 Cr moved around the ring with edge values staying within 13% of each other [E4].\n- **Anomalous Purchase Invoices:** 11 purchase invoices worth â‚¹8.94 Cr (carrying â‚¹1.61 Cr ITC) from Surya Enterprises are flagged as anomalous, with all 11 identified as part of the circular-trading loop and far above the supplier's usual invoice value [E2].\n- **Anomalous Sales Invoices:** The taxpayer issued 12 anomalous sales invoices worth â‚¹9.15 Cr, passing â‚¹1.65 Cr of ITC to a single buyer [E3].\n- **Behavioral Deviation:** The JEPA behaviour encoder shows a prediction error for Mar 2026 that is 25.0x a typical taxpayer-month, with major drops in ITC claimed (â‚¹1.29 L vs. usual â‚¹18.08 L) and outward turnover (â‚¹23.32 L vs. usual â‚¹1.16 Cr) [E1].\n- **Low Cash Tax Payment:** The taxpayer paid only 16.6% of its â‚¹2.03 Cr output tax in cash, compared to the manufacturer median of 57%, offsetting the remainder with ITC [E5].\n\n## Suggested next steps\n- Reconcile GSTR-2B and GSTR-3B to verify the legitimacy of the â‚¹1.61 Cr ITC claimed from Surya Enterprises [E2].\n- Confirm the physical existence, business premises, and actual goods movement for Surya Enterprises and the primary sales buyer.\n- Verify e-way bills and transport documentation to check if the â‚¹44.65 Cr ring transactions reflect genuine commercial supplies [E4]."
+  },
+  {
+   "gstin": "09DTGCU8639R1Z0",
+   "legal_name": "Zenith Agencies Pvt Ltd",
+   "model": "gemini-3.5-flash-lite",
+   "quality": {
+    "citations": 13,
+    "invalid_citations": 0,
+    "evidence_coverage": 1.0,
+    "high_severity_coverage": 1.0,
+    "numbers": 21,
+    "numbers_grounded": 18,
+    "numeric_grounding": 0.857,
+    "has_sections": true,
+    "words": 304,
+    "pattern_named": true
+   },
+   "text": "## Summary\nZenith Agencies Pvt Ltd (GSTIN: 09DTGCU8639R1Z0) has an overall risk score of 0.9387, indicating high risk for circular trading. The taxpayer shows severe invoice anomalies and network clustering linked to suspicious input tax credit (ITC) flows [E1][E2][E4].\n\n## Why it was flagged\n- **Circular-trading ring membership:** The entity is part of ring R03 (Sahyadri Fabricators Pvt Ltd -> Vertex Trading Co Pvt Ltd -> Zenith Agencies Pvt Ltd -> Bright Engineering -> Sahyadri Fabricators Pvt Ltd), where â‚¹22.58 Cr moved within a loop with edge values staying within 4% of each other [E4].\n- **Anomalous purchase invoices:** 8 purchase invoices worth â‚¹5.66 Cr carry â‚¹67.86 L in ITC, all flagged as part of a detected circular-trading loop, far above the supplier's usual value, and sourced chiefly from Vertex Trading Co Pvt Ltd [E2].\n- **Anomalous sales invoices:** The entity issued 9 anomalous sales invoices worth â‚¹5.72 Cr, passing â‚¹1.03 Cr of ITC to 1 buyer [E3].\n- **Behavioral deviation:** The JEPA behavior encoder prediction error for Aug 2025 is 11.3x a typical taxpayer-month, driven by a sudden 20% share of new trading partners and shifts in purchase invoice count and outward turnover [E1].\n- **ITC mismatch:** ITC claimed in GSTR-3B exceeded GSTR-2B availability in Jan 2026 by â‚¹4.43 L (claimed â‚¹10.43 L vs â‚¹6.00 L available) [E5].\n\n## Suggested next steps\n- Reconcile GSTR-3B claims against GSTR-2B for Jan 2026 to investigate the â‚¹4.43 L ITC discrepancy [E5].\n- Verify the physical existence and business operations of suppliers and buyers, specifically Vertex Trading Co Pvt Ltd [E2].\n- Cross-check e-way bills and transport documentation for the â‚¹5.66 Cr in purchases and â‚¹5.72 Cr in sales to confirm genuine movement of goods [E2][E3].\n- Coordinate with field units investigating circular-trading ring R03 to trace the flow of funds across all member entities [E4]."
+  },
+  {
+   "gstin": "33LCUPZ4020Z1ZZ",
+   "legal_name": "Pioneer Services",
+   "model": "gemini-3.5-flash-lite",
+   "quality": {
+    "citations": 13,
+    "invalid_citations": 0,
+    "evidence_coverage": 1.0,
+    "high_severity_coverage": 1.0,
+    "numbers": 35,
+    "numbers_grounded": 30,
+    "numeric_grounding": 0.857,
+    "has_sections": true,
+    "words": 375,
+    "pattern_named": true
+   },
+   "text": "## Summary\nPioneer Services (GSTIN: 33LCUPZ4020Z1ZZ), a Tamil Nadu proprietorship in the services sector registered on 2025-05-15, presents a high overall risk score of 0.9293. The taxpayer displays strong indicators of a shell entity involved in pass-through ITC fraud, characterized by shared-address clustering, non-filing, and severe divergence from normal behavioral and transactional baselines.\n\n## Why it was flagged\n* **Network clustering and shared identity:** Shares its address and contact number with two other registrations (Eastern Trading Co, Maa Agencies) in cluster S37, where 100% of entities registered within the last year, 100% stopped filing, and 46% of sales are between cluster members [E2].\n* **Anomalous purchases from suspicious suppliers:** Procured 10 anomalous purchase invoices worth â‚¹21.56 L (carrying â‚¹1.58 L ITC) from two suppliersâ€”chiefly Maa Agencies and Eastern Trading Coâ€”where suppliers were registered less than 6 months before invoicing, belong to the shared cluster, and later stopped filing [E6].\n* **Issuance of suspicious sales invoices:** Issued 17 anomalous invoices worth â‚¹60.27 L, passing â‚¹10.85 L of ITC to four buyers [E1].\n* **ITC claims exceeding GSTR-2B:** Claimed ITC in GSTR-3B exceeding available credit in GSTR-2B across six months, totaling â‚¹9.37 L (e.g., Jul 2025: â‚¹2.41 L claimed vs â‚¹5,500 available; Aug 2025: â‚¹2.11 L claimed vs â‚¹0 available) [E4].\n* **Minimal cash tax payment:** Paid only 3.1% of its â‚¹10.85 L output tax in cash, utilizing ITC for the remainder, compared to the services sector median of 66% [E5].\n* **Behavioral shift and cessation of filing:** Stopped filing returns after October 2025 [E7], and its October 2025 prediction error was 8.7x a typical taxpayer-month, with major structural drops in e-way bill usage, round-value invoices, and reciprocal supplier transactions [E3].\n\n## Suggested next steps\n* Reconcile GSTR-3B ITC claims against GSTR-2B for all operating months to verify the excess â‚¹9.37 L claimed [E4].\n* Verify the physical existence and business operations of Pioneer Services and cluster S37 entities (Eastern Trading Co, Maa Agencies) at the shared address [E2].\n* Confirm the authenticity of the 10 suspicious purchase invoices (â‚¹21.56 L) and 17 sales invoices (â‚¹60.27 L) by inspecting e-way bills and transport documentation [E1][E3][E6].\n* Trace the four buyers of the â‚¹10.85 L ITC to check if the pass-through credit was utilized or further distributed [E1]."
+  },
+  {
+   "gstin": "24FTNPN2546V1ZL",
+   "legal_name": "Ganga Distributors",
+   "model": "gemini-3.5-flash-lite",
+   "quality": {
+    "citations": 11,
+    "invalid_citations": 0,
+    "evidence_coverage": 1.0,
+    "high_severity_coverage": 1.0,
+    "numbers": 31,
+    "numbers_grounded": 26,
+    "numeric_grounding": 0.839,
+    "has_sections": true,
+    "words": 308,
+    "pattern_named": true
+   },
+   "text": "## Summary\nGanga Distributors (GSTIN: 24FTNPN2546V1ZL), a proprietorship wholesaler in Gujarat registered on August 18, 2025, presents an overall risk score of 0.9171. The taxpayer is flagged for suspected circular trading and shell entity involvement, characterized by high-risk network links and anomalous invoice patterns.\n\n## Why it was flagged\n- Identified as a member of circular-trading ring R05, moving â‚¹47.30 L in a loop involving Sahyadri Infotech and Ganga Distributors within 3 common months [E3].\n- Network and invoice layers show maximum risk scores of 1.0, including shared addresses and contact numbers with 2 other registrations in cluster S35 (Sahyadri Infotech and Prime Agencies) [E4].\n- Received 12 suspicious purchase invoices worth â‚¹32.15 L (carrying â‚¹5.03 L ITC) primarily from Sahyadri Infotech and Prime Agencies, where suppliers belong to a shared-identity cluster and were registered less than 6 months before invoicing [E1].\n- Issued 16 anomalous sales invoices worth â‚¹66.83 L, passing â‚¹12.03 L of ITC to 5 buyers [E2].\n- Claimed ITC in GSTR-3B exceeding available GSTR-2B credit across 5 months, totaling an excess of â‚¹8.12 L (including â‚¹3.47 L in Jan 2026 and â‚¹1.48 L in Dec 2025 with â‚¹0 available) [E5].\n- Exhibited severe behavioral shifts in Feb 2026, notably issuing 100% of goods invoices without e-way bills [E6].\n\n## Suggested next steps\n- Reconcile GSTR-3B ITC claims against GSTR-2B for all 5 flagged months, specifically verifying the â‚¹3.47 L claimed in January 2026 and â‚¹1.48 L in December 2025 where zero credit was available [E5].\n- Verify the physical existence and business operations of suppliers Sahyadri Infotech and Prime Agencies within cluster S35 [E1][E4].\n- Inspect e-way bills for all goods invoices issued by Ganga Distributors, noting the 100% absence of e-way bills in Feb 2026 [E6].\n- Examine the fund flows and trade substance across the circular-trading ring R05 involving â‚¹47.30 L [E3]."
+  },
+  {
+   "gstin": "07OIICM5324A1Z0",
+   "legal_name": "Deccan Agencies Pvt Ltd",
+   "model": "gemini-3.5-flash-lite",
+   "quality": {
+    "citations": 10,
+    "invalid_citations": 0,
+    "evidence_coverage": 1.0,
+    "high_severity_coverage": 1.0,
+    "numbers": 19,
+    "numbers_grounded": 16,
+    "numeric_grounding": 0.842,
+    "has_sections": true,
+    "words": 276,
+    "pattern_named": true
+   },
+   "text": "## Summary\nDeccan Agencies Pvt Ltd (GSTIN: 07OIICM5324A1Z0) has been flagged with a high overall risk score of 0.9158 for suspected circular trading. The taxpayer shows extreme anomaly in its invoice and network layers, characterized by high-value transactions within a closed loop of entities.\n\n## Why it was flagged\n* **Circular-trading ring membership:** The entity is part of ring R06 (Royal Distributors Pvt Ltd -> Maa Enterprises -> Deccan Plastics LLP -> Deccan Agencies Pvt Ltd -> Royal Distributors Pvt Ltd) moving â‚¹22.68 Cr across 7 common months with edge values within 3% of each other [E4].\n* **Anomalous purchase invoices:** 10 purchase invoices worth â‚¹5.69 Cr carrying â‚¹68.34 L of ITC were flagged as anomalous, originating chiefly from Deccan Plastics LLP and matching circular-trading patterns [E2].\n* **Anomalous sales invoices:** The taxpayer issued 11 anomalous sales invoices worth â‚¹5.75 Cr, passing â‚¹1.04 Cr of ITC to a single buyer [E3].\n* **Behavioral deviation:** The JEPA behavior encoder prediction error for Jan 2026 is 13.0x a typical taxpayer-month, driven by sharp drops in outward turnover (â‚¹8.24 L vs usually â‚¹87.29 L) and ITC claimed (â‚¹1.08 L vs usually â‚¹10.15 L), alongside a sudden emergence of purchases from suppliers under 6 months old [E1].\n\n## Suggested next steps\n* Verify physical movement of goods and e-way bills for transactions involving Deccan Plastics LLP and the buyer in ring R06 [E2][E3][E4].\n* Reconcile GSTR-2B with the claimed ITC and examine the existence and business activity of Deccan Plastics LLP and other ring members [E2][E4].\n* Inspect the bank statements of Deccan Agencies Pvt Ltd to check for fund layering and matching fund flows within circular-trading loop R06 [E4]."
+  },
+  {
+   "gstin": "24HLHPP2662K1ZO",
+   "legal_name": "Nandi Agencies",
+   "model": "gemini-3.5-flash-lite",
+   "quality": {
+    "citations": 11,
+    "invalid_citations": 0,
+    "evidence_coverage": 1.0,
+    "high_severity_coverage": 1.0,
+    "numbers": 23,
+    "numbers_grounded": 18,
+    "numeric_grounding": 0.783,
+    "has_sections": true,
+    "words": 308,
+    "pattern_named": true
+   },
+   "text": "## Summary\nNandi Agencies (GSTIN: 24HLHPP2662K1ZO), a Gujarat proprietorship registered on 2025-03-04, shows high overall ITC fraud risk (0.91) with maximum network and invoice layer scores. The entity exhibits shell-like traits, operating within a cluster of non-filing entities sharing addresses, circular trading patterns, and suspicious supply chains.\n\n## Why it was flagged\n* **Shared Identity and Circular Trading Cluster:** The taxpayer shares an address and contact number with Unity Services and Western Agencies in Cluster S33; all registered within the last year, 100% stopped filing, and 49% of their sales are made to each other [E2].\n* **High-Risk Inbound ITC Sources:** Purchases worth â‚¹11.84 L carry â‚¹1.64 L of ITC from just two suppliers (chiefly Unity Services and Western Agencies), which are flagged for being part of the suspicious shared-identity cluster, having stopped filing returns, and being registered less than six months before the invoice [E3].\n* **Cessation of Compliance:** The taxpayer stopped filing returns after October 2025 [E4].\n* **Anomalous Outward Supplies:** Issued 16 anomalous sales invoices worth â‚¹35.16 L, passing â‚¹1.76 L of ITC to 5 buyers [E1].\n* **Behavioral Deviations:** June 2025 behavior showed a prediction error 7.6x typical taxpayer levels, notably featuring 100% purchases from suppliers under six months old and 41% of purchases unreported by suppliers [E5].\n\n## Suggested next steps\n* Reconcile GSTR-2B with purchase invoices to verify the â‚¹11.84 L in purchases and the â‚¹1.64 L ITC claimed from Unity Services and Western Agencies [E3].\n* Verify physical existence and business operations at the shared address for Nandi Agencies, Unity Services, and Western Agencies [E2].\n* Inspect e-way bills and transport records for the 16 anomalous sales invoices (â‚¹35.16 L) and 7 purchase invoices to confirm genuine movement of goods [E1][E3].\n* Check bank statements of Nandi Agencies to trace fund flows with cluster entities Unity Services and Western Agencies [E2][E3]."
+  }
+ ]
+}

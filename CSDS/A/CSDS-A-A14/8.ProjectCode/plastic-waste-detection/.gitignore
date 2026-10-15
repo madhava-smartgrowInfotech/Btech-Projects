@@ -1,0 +1,17 @@
+# local environment and secrets
+.env
+.venv/
+__pycache__/
+*.pyc
+
+# generated at runtime
+detection_history.db
+results/
+reports/
+runs/
+models/
+*.pt
+
+# frontend
+frontend/node_modules/
+frontend/dist/

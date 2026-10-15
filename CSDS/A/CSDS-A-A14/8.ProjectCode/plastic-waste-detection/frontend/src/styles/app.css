@@ -1,0 +1,77 @@
+/* PlastiScan - product-specific styles that sit on top of the kit stylesheet (styles/index.css). */
+
+/* confidence slider */
+.range { width: 100%; height: 44px; background: none; -webkit-appearance: none; appearance: none; cursor: pointer; }
+.range::-webkit-slider-runnable-track { height: 10px; border-radius: 999px; background: linear-gradient(90deg, var(--lavender) var(--fill, 50%), var(--surface-3) var(--fill, 50%)); }
+.range::-moz-range-track { height: 10px; border-radius: 999px; background: linear-gradient(90deg, var(--lavender) var(--fill, 50%), var(--surface-3) var(--fill, 50%)); }
+.range::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 26px; height: 26px; border-radius: 50%; background: #fff; border: 3px solid var(--lavender-ink); margin-top: -8px; box-shadow: var(--shadow); }
+.range::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: #fff; border: 3px solid var(--lavender-ink); box-shadow: var(--shadow); }
+.range-row { display: flex; justify-content: space-between; align-items: baseline; }
+.range-row output { font-family: var(--font-display); font-weight: 800; font-size: 20px; font-variant-numeric: tabular-nums; }
+.range-scale { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-3); margin-top: -4px; }
+
+/* detection layout */
+.detect-grid { display: grid; gap: 20px; grid-template-columns: minmax(0, 1fr); align-items: start; }
+@media (min-width: 1000px) { .detect-grid { grid-template-columns: minmax(300px, 380px) minmax(0, 1fr); } }
+.side-stack { display: flex; flex-direction: column; gap: 20px; }
+.compare { display: grid; gap: 18px; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 720px) { .compare { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+.shot { margin: 0; border-radius: 18px; overflow: hidden; background: var(--surface-3); border: 1px solid var(--border); }
+.shot img { display: block; width: 100%; height: auto; max-height: 520px; object-fit: contain; background: var(--surface-3); }
+.shot figcaption { padding: 10px 14px; font-size: 13px; color: var(--text-2); display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+.shot-title { font-family: var(--font-display); font-weight: 700; font-size: 16px; margin-bottom: 12px; }
+.score-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+.score-list li { display: grid; gap: 6px; }
+.score-top { display: flex; justify-content: space-between; gap: 10px; font-weight: 600; font-size: 14.5px; }
+.score-top .num { font-variant-numeric: tabular-nums; }
+.notice { display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border-radius: 18px; font-size: 14px; }
+.notice > svg { flex: none; margin-top: 2px; }
+.notice.warn { background: var(--peach-soft); color: var(--text); }
+.notice.warn > svg { color: var(--peach-ink); }
+.notice.ok { background: var(--mint-soft); }
+.notice.ok > svg { color: var(--mint-ink); }
+.notice.info { background: var(--sky-soft); }
+.notice.info > svg { color: var(--sky-ink); }
+.notice p { color: var(--text-2); overflow-wrap: anywhere; }
+.notice > div { min-width: 0; }
+.notice strong { display: block; }
+.list-plain { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; color: var(--text-2); }
+.pipeline { margin: 8px 0 0; padding-left: 20px; color: var(--text-2); font-size: 13.5px; display: flex; flex-direction: column; gap: 4px; }
+
+/* evaluation gallery */
+.plot-grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); }
+.plot-btn { display: block; width: 100%; padding: 0; border: 1px solid var(--border); background: var(--surface-2); border-radius: 18px; overflow: hidden; cursor: zoom-in; }
+.plot-btn img { display: block; width: 100%; height: auto; background: #fff; }
+.modal:has(.plot-zoom) { width: min(980px, 100%); }
+.plot-zoom { display: block; width: 100%; height: auto; border-radius: 14px; background: #fff; }
+code.cmd, .codeblock { font-family: ui-monospace, 'Cascadia Code', Consolas, monospace; font-size: 13px; background: var(--surface-3); border-radius: 10px; padding: 3px 9px; overflow-wrap: anywhere; }
+.codeblock { display: block; padding: 12px 14px; border-radius: 14px; white-space: pre-wrap; }
+
+/* About */
+.faq { display: flex; flex-direction: column; gap: 12px; }
+.faq details { border: 1px solid var(--border); border-radius: 18px; background: var(--surface); padding: 0 18px; }
+.faq summary { cursor: pointer; padding: 16px 0; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 12px; align-items: center; min-height: 44px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: '+'; font-size: 22px; line-height: 1; color: var(--lavender-ink); transition: rotate .2s ease; }
+.faq details[open] summary::after { rotate: 45deg; }
+.faq details p { padding-bottom: 18px; color: var(--text-2); }
+.chip-grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); }
+.chip-card { display: flex; gap: 12px; align-items: center; padding: 14px 16px; border-radius: 18px; background: var(--surface); border: 1px solid var(--border); }
+.chip-card .ico { width: 40px; height: 40px; flex: none; border-radius: 14px; display: grid; place-items: center; color: var(--on-pastel); }
+.tab-panel { margin-top: 20px; }
+
+/* landing extras */
+.l-nav .container { justify-content: space-between; }
+.l-nav-right { display: flex; align-items: center; gap: 10px; }
+.scene { width: 100%; height: auto; display: block; border-radius: 20px; }
+.scene .box { stroke-dasharray: 8 6; }
+.tech-groups { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); }
+.tech-groups h3 { font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--text-3); margin-bottom: 10px; }
+.tech-groups .row { --gap: 8px; }
+.model-chip { display: inline-flex; margin-top: 18px; }
+
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+.footer a { text-decoration: none; }
+.footer a:hover { text-decoration: underline; }
+
+.grid-2 > *, .side-stack > * { min-width: 0; }

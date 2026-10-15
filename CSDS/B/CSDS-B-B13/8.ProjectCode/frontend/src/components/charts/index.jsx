@@ -104,7 +104,7 @@ export function HBarChart({ data, labelKey, valueKey, valueFormat = (v) => v, co
           </linearGradient>
         </defs>
         <CartesianGrid horizontal={false} stroke={c.grid} />
-        <XAxis type="number" {...axis(c)} tickFormatter={valueFormat} />
+        <XAxis type="number" {...axis(c)} tickFormatter={valueFormat} allowDecimals={false} />
         <YAxis type="category" dataKey={labelKey} {...axis(c)} width={170} tick={{ fill: c.text2, fontSize: 11.5, fontFamily: 'JetBrains Mono, monospace' }} />
         <Tooltip cursor={{ fill: c.grid }} content={<ChartTooltip valueFormat={valueFormat} />} />
         <Bar dataKey={valueKey} name="Findings" fill={`url(#hb-${valueKey})`} stroke={fill} strokeWidth={1} radius={[0, 6, 6, 0]} />

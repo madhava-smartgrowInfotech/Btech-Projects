@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import api, { errorText } from '../api'
+import { logEvent } from '../lib/activity'
 
 const RATE = 16000
 const PARTIAL_EVERY_MS = 1200
@@ -40,7 +41,7 @@ export default function useSubtitles({ language = 'en', onFinal }) {
     const pcm = toInt16(chunks)
     const t = performance.now()
     const res = await api.post(`/speech/transcribe?language=${langRef.current}`, pcm.buffer, {
-      headers: { 'Content-Type': 'application/octet-stream' }, timeout: 60000,
+      headers: { 'Content-Type': 'application/octet-stream' }, timeout: 60000, silent: true,
     })
     setLastLatency(Math.round(performance.now() - t))
     return res.data
@@ -55,7 +56,7 @@ export default function useSubtitles({ language = 'en', onFinal }) {
       s.busy = true
       const data = await send(chunks, true)
       setPartial('')
-      if (data.text) onFinalRef.current?.(data.text, data)
+      if (data.text) { logEvent('speech', `heard “${data.text}” in ${Math.round(data.latency_ms)}ms`); onFinalRef.current?.(data.text, data) }
       setError('')
     } catch (e) {
       setError(errorText(e))

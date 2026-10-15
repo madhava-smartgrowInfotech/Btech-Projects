@@ -58,6 +58,15 @@ venv/bin/python -m uvicorn backend.app.main:app --host 127.0.0.1 --port 8205    
 cd frontend && npm run dev
 ```
 
+## Using the interface
+
+The UI is built on the V5 "Kinetic Mono" kit (copied into `frontend/src/`, no outside imports). Handy extras:
+
+- **Theme:** sun/moon button in the top bar (remembered; follows the OS until you choose). Reduced-motion is respected.
+- **Keyboard:** `/` jumps to a screen or a sign to practise, `g c` / `g p` / `g h` / `g m` go to Conversation / Practice / History / Performance, `g l` opens the activity log (live API calls, recognised signs, speech), `?` lists shortcuts, `Esc` closes any overlay.
+- **No WebGL?** The animated 3D grid falls back to a flat CSS grid; everything else works the same.
+- Camera and microphone need a secure origin: `http://localhost:5205` works, a LAN IP does not.
+
 ## Checks
 
 ```bash

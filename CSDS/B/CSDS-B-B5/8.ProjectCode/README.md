@@ -63,14 +63,14 @@ gap between the training landmarks and SignBridge's own extractor; those clips a
 
 ## Tech stack
 
-React + Vite + Tailwind (JavaScript) · FastAPI + SQLAlchemy + SQLite · PyJWT + bcrypt · MediaPipe Holistic / Hands ·
+React + Vite + Tailwind + three.js / framer-motion / GSAP (JavaScript, design kit V5 "Kinetic Mono") · FastAPI + SQLAlchemy + SQLite · PyJWT + bcrypt · MediaPipe Holistic / Hands ·
 PyTorch -> ONNX Runtime · faster-whisper · pyttsx3 · Gemini (optional).
 
 ## Project layout
 
 ```
 backend/app/     FastAPI app: routes/ (auth, recognize, speech, conversations, info), services/ (landmarks, recognizer, sentence, tts, stt)
-frontend/src/    pages/ (Landing, Login, Conversation, Practice, History, Performance), hooks/, components/
+frontend/src/    pages/ (Landing, Auth, Conversation, Practice, History, Performance), hooks/, lib/, components/ (ui, motion, reactbits)
 ml/              vocab, features, models, prepare_data, train, eval
 scripts/         download_data.py, smoke_test.py, make_kaggle_notebook.py
 notebooks/       Kaggle GPU training notebook (optional; CPU training takes ~4 minutes)

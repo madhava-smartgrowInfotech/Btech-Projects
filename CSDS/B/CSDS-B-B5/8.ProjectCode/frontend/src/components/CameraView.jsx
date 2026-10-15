@@ -1,58 +1,68 @@
-import { Camera, CameraOff, Loader2 } from 'lucide-react'
-import { ConfidenceBar, ErrorBox } from './ui.jsx'
+import { Camera, CameraOff } from 'lucide-react'
+import { label as pretty } from '../format'
+import { Badge, Card, ScoreBar } from './ui/display'
+import { Button } from './ui/controls'
+import { ErrorState } from './ui/feedback'
+import { Tabs, TabPanel } from './ui/nav'
 
-export default function CameraView({ rec, mode, setMode, showLive = true }) {
+export const MODES = [
+  { id: 'words', label: 'Words · 50 signs' },
+  { id: 'letters', label: 'Fingerspelling · A-Z 1-9' },
+]
+
+/** Webcam preview with the hand skeleton overlay, FPS / latency readouts and the live top-3 guess. */
+export default function CameraView({ rec, mode, setMode, tabsId = 'mode', showLive = true }) {
   const { videoRef, overlayRef, running, starting, error, frame, rtt, start, stop } = rec
+  const hint = mode === 'words' ? 'Raise your hands to sign; lower them briefly between signs.' : 'Hold a letter shape steady for about a second.'
   return (
-    <div className="space-y-3">
-      <div className="relative aspect-[4/3] bg-slate-900 rounded-2xl overflow-hidden">
-        <video ref={videoRef} muted playsInline className="absolute inset-0 w-full h-full object-cover -scale-x-100" />
-        <canvas ref={overlayRef} className="absolute inset-0 w-full h-full -scale-x-100 pointer-events-none" />
-        {!running && (
-          <div className="absolute inset-0 grid place-items-center text-center p-6">
-            <div>
-              <p className="text-slate-300 text-sm mb-3">Sit about an arm's length from the camera with your upper body in view.</p>
-              <button className="btn-primary" onClick={start} disabled={starting}>
-                {starting ? <Loader2 size={16} className="animate-spin" /> : <Camera size={16} />} Start camera
-              </button>
+    <div className="space-y-4">
+      <Card title="camera.feed" bodyClass="p-0"
+        action={running ? (
+          <Button size="sm" variant="secondary" icon={CameraOff} onClick={stop}>Stop</Button>
+        ) : null}>
+        <div className="relative aspect-[4/3] overflow-hidden bg-black">
+          <video ref={videoRef} muted playsInline aria-label="Your camera" className="absolute inset-0 h-full w-full -scale-x-100 object-cover" />
+          <canvas ref={overlayRef} aria-hidden="true" className="pointer-events-none absolute inset-0 h-full w-full -scale-x-100" />
+          {!running && (
+            <div className="absolute inset-0 grid place-items-center bg-panel/90 p-6 text-center">
+              <div className="max-w-xs">
+                <Camera size={26} className="mx-auto mb-3 text-ok" aria-hidden="true" />
+                <p className="mb-4 text-sm text-muted">Sit about an arm's length from the camera with your upper body in view. Frames are processed by the local server only.</p>
+                <Button icon={Camera} loading={starting} onClick={start}>Start camera</Button>
+              </div>
             </div>
-          </div>
-        )}
-        {running && (
-          <>
-            <div className="absolute top-2 left-2 flex gap-1.5">
-              <span className="chip bg-black/60 text-white">{frame?.fps ?? 0} FPS</span>
-              <span className="chip bg-black/60 text-white" title="Round trip / server processing">
-                {rtt ?? '-'} ms · server {frame?.latency_ms?.total ?? '-'} ms
-              </span>
-            </div>
-            <div className="absolute top-2 right-2">
-              <span className={`chip ${frame?.hands ? 'bg-emerald-500 text-white' : 'bg-black/60 text-slate-200'}`}>
-                {frame?.hands ? 'Hands detected' : 'No hands'}
-              </span>
-            </div>
-            {mode === 'letters' && frame?.spelling && (
-              <div className="absolute bottom-2 left-2 chip bg-indigo-600 text-white text-base !px-3 !py-1 tracking-widest">{frame.spelling}</div>
-            )}
-            <button className="absolute bottom-2 right-2 btn-secondary !py-1 !px-2 !text-xs" onClick={stop}><CameraOff size={14} /> Stop</button>
-          </>
-        )}
-      </div>
+          )}
+          {running && (
+            <>
+              <div className="absolute left-2 top-2 flex flex-wrap gap-1.5">
+                <Badge tone="neutral" className="bg-black/70"><span className="text-white">{frame?.fps ?? 0} FPS</span></Badge>
+                <Badge tone="neutral" className="bg-black/70">
+                  <span className="text-white" title="Round trip / server processing">{rtt ?? '-'} ms · srv {frame?.latency_ms?.total ?? '-'} ms</span>
+                </Badge>
+              </div>
+              <div className="absolute right-2 top-2">
+                <Badge tone={frame?.hands ? 'ok' : 'neutral'} dot className="bg-black/70"><span className={frame?.hands ? 'text-ok' : 'text-white'}>{frame?.hands ? 'Hands detected' : 'No hands'}</span></Badge>
+              </div>
+              {mode === 'letters' && frame?.spelling && (
+                <div className="absolute bottom-2 left-2 rounded-[4px] border border-ok/60 bg-black/75 px-3 py-1 font-mono text-lg tracking-[0.3em] text-ok" aria-live="polite">{frame.spelling}</div>
+              )}
+            </>
+          )}
+        </div>
+      </Card>
       {setMode && (
-        <div className="flex rounded-xl bg-slate-100 p-1 text-sm font-medium">
-          {[['words', 'Words (50 signs)'], ['letters', 'Fingerspelling A-Z, 1-9']].map(([m, label]) => (
-            <button key={m} onClick={() => setMode(m)}
-              className={`flex-1 rounded-lg py-1.5 ${mode === m ? 'bg-white shadow-sm text-indigo-700' : 'text-slate-600'}`}>{label}</button>
-          ))}
+        <div>
+          <Tabs id={tabsId} tabs={MODES} value={mode} onChange={setMode} label="Recognition mode" />
+          <TabPanel tabsId={tabsId} value={mode} className="pt-2"><p className="text-xs text-dim">{hint}</p></TabPanel>
         </div>
       )}
-      <ErrorBox error={error} />
+      {error && <ErrorState compact title="Camera" error={{ message: error, hint: running ? 'Recognition keeps retrying; stop and restart the camera if it persists.' : undefined }} />}
       {showLive && running && (
-        <div className="card p-3 space-y-2">
-          <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Live guess</div>
-          {frame?.live ? frame.live.map((t) => <ConfidenceBar key={t.label} label={t.label} value={t.confidence} />)
-            : <p className="text-xs text-slate-400">{mode === 'words' ? 'Raise your hands to sign; lower them briefly between signs.' : 'Hold a letter shape steady for a moment.'}</p>}
-        </div>
+        <Card title="live guess" eyebrow={mode === 'words' ? 'top 3 signs' : 'top 3 letters'} bodyClass="p-4 space-y-3">
+          {frame?.live
+            ? frame.live.map((t) => <ScoreBar key={t.label} label={pretty(t.label)} value={t.confidence} display={`${Math.round(t.confidence * 100)}%`} tone="cyan" />)
+            : <p className="font-mono text-xs text-dim">waiting for a hand…</p>}
+        </Card>
       )}
     </div>
   )

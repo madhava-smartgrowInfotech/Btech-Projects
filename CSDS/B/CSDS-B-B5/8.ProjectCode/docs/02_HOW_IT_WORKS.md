@@ -113,5 +113,5 @@ backend/app/routes/            auth, recognize, speech (sentence/tts/transcribe)
 backend/app/services/          landmarks (MediaPipe), recognizer (segmentation + ONNX), sentence, tts, stt
 ml/                            vocab, features, models, prepare_data, train, eval
 scripts/                       download_data.py, smoke_test.py, make_kaggle_notebook.py
-frontend/src/                  pages/ (Landing, Login, Conversation, Practice, History, Performance), hooks/, components/
+frontend/src/                  pages/ (Landing, Auth, Conversation, Practice, History, Performance), hooks/, lib/, components/ (ui, motion, reactbits)
 ```

@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import api, { errorText } from '../api'
+import { logEvent } from '../lib/activity'
 
 const HAND_EDGES = [
   [0, 1], [1, 2], [2, 3], [3, 4], [0, 5], [5, 6], [6, 7], [7, 8], [5, 9], [9, 10], [10, 11], [11, 12],
@@ -14,7 +15,7 @@ function drawHands(canvas, video, landmarks) {
   const ctx = canvas.getContext('2d')
   ctx.clearRect(0, 0, w, h)
   if (!landmarks) return
-  for (const [key, color] of [['left', '#22d3ee'], ['right', '#a78bfa']]) {
+  for (const [key, color] of [['left', '#67e8f9'], ['right', '#4ade80']]) {
     const pts = landmarks[key]
     if (!pts) continue
     ctx.strokeStyle = color
@@ -52,7 +53,7 @@ export default function useSignRecognizer({ mode = 'words', onEvent }) {
   useEffect(() => { onEventRef.current = onEvent }, [onEvent])
   useEffect(() => {
     modeRef.current = mode
-    api.post(`/recognize/reset?session=${sessionRef.current}`).catch(() => {})
+    api.post(`/recognize/reset?session=${sessionRef.current}`, null, { silent: true }).catch(() => {})
   }, [mode])
 
   const loop = useCallback(async () => {
@@ -69,14 +70,17 @@ export default function useSignRecognizer({ mode = 'words', onEvent }) {
       const blob = await new Promise((r) => grab.toBlob(r, 'image/jpeg', 0.75))
       try {
         const res = await api.post(`/recognize/frame?session=${sessionRef.current}&mode=${modeRef.current}`, blob, {
-          headers: { 'Content-Type': 'image/jpeg' }, timeout: 10000,
+          headers: { 'Content-Type': 'image/jpeg' }, timeout: 10000, silent: true,
         })
         failures = 0
         setError('')
         setRtt(Math.round(performance.now() - started))
         setFrame(res.data)
         drawHands(overlayRef.current, video, res.data.landmarks)
-        for (const ev of res.data.events) onEventRef.current?.(ev)
+        for (const ev of res.data.events) {
+          if (ev.type === 'sign') logEvent('sign', `${ev.gloss}${ev.fingerspelled ? ' (spelled)' : ''} ${Math.round(ev.confidence * 100)}%`)
+          onEventRef.current?.(ev)
+        }
       } catch (e) {
         failures += 1
         setError(errorText(e))
@@ -106,7 +110,7 @@ export default function useSignRecognizer({ mode = 'words', onEvent }) {
       streamRef.current = stream
       videoRef.current.srcObject = stream
       await videoRef.current.play()
-      await api.post(`/recognize/reset?session=${sessionRef.current}`)
+      await api.post(`/recognize/reset?session=${sessionRef.current}`, null, { silent: true })
       runningRef.current = true
       setRunning(true)
       loop()

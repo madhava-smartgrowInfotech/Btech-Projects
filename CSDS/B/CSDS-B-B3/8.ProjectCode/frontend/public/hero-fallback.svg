@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" fill="none">
+  <defs>
+    <radialGradient id="g" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#34d399" stop-opacity=".22"/><stop offset="1" stop-color="#34d399" stop-opacity="0"/></radialGradient>
+  </defs>
+  <circle cx="300" cy="300" r="280" fill="url(#g)"/>
+  <g stroke="#34d399" stroke-opacity=".75" stroke-width="1.4" stroke-linejoin="round">
+    <polygon points="300,120 440,210 440,390 300,480 160,390 160,210"/>
+    <polyline points="300,120 300,300 440,210"/><polyline points="300,300 160,210"/>
+    <polyline points="300,300 440,390"/><polyline points="300,300 160,390"/><line x1="300" y1="300" x2="300" y2="480"/>
+  </g>
+  <g stroke="#2dd4bf" stroke-opacity=".9" stroke-width="1.4"><polygon points="300,230 370,300 300,370 230,300"/></g>
+  <g fill="#2dd4bf" fill-opacity=".8">
+    <circle cx="300" cy="120" r="4"/><circle cx="440" cy="210" r="4"/><circle cx="440" cy="390" r="4"/>
+    <circle cx="300" cy="480" r="4"/><circle cx="160" cy="390" r="4"/><circle cx="160" cy="210" r="4"/><circle cx="300" cy="300" r="5"/>
+  </g>
+</svg>

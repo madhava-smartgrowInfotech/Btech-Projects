@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#07090C" />
+    <meta name="description" content="SkillVerse - an AI-driven learn-and-earn ecosystem for knowledge engineers." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>SkillVerse - Learn. Earn. Connect. Grow.</title>
+    <script>
+      // apply the saved theme before first paint to avoid a flash
+      try {
+        var t = localStorage.getItem('sv-theme')
+        if (t !== 'light' && t !== 'dark') t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
+        document.documentElement.setAttribute('data-theme', t)
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

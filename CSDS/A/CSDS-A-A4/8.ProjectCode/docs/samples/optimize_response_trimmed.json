@@ -1,0 +1,53 @@
+{
+  "period": "2025-12",
+  "realized": true,
+  "sol": {
+    "status": "Matheuristic",
+    "hubs": [
+      1,
+      2,
+      5,
+      39
+    ],
+    "objective": 54722309.15060887,
+    "seconds": 2.34,
+    "iterations": 1,
+    "subproblems_solved": 14,
+    "kernel_status": "Optimal"
+  },
+  "kpi": {
+    "n_hubs": 4,
+    "hub_cities": [
+      "Mumbai",
+      "Delhi",
+      "Kolkata",
+      "Bengaluru-N"
+    ],
+    "total_cost": 50039855.0,
+    "fixed_cost": 12000000.0,
+    "transport_cost": 14358230.0,
+    "time_cost": 23681626.0,
+    "cost_per_order": 31.406,
+    "avg_delivery_hours": 9.91,
+    "max_delivery_hours": 27.07,
+    "avg_distance_km": 225.3,
+    "fulfilment_rate": 1.0,
+    "reliability_sla": 1.0,
+    "overloaded_hubs": 0,
+    "utilisation": {
+      "1": 0.892,
+      "2": 0.751,
+      "5": 0.431,
+      "39": 0.828
+    }
+  },
+  "kpi.assignment[0]": {
+    "region": "Hyderabad",
+    "region_id": "R001",
+    "hub": "Bengaluru-N",
+    "demand": 90287,
+    "distance_km": 546.7,
+    "hours": 18.1
+  },
+  "demand_used": "[90 values]"
+}

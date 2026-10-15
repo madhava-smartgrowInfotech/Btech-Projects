@@ -1,0 +1,24 @@
+{
+  "period": "2026-01",
+  "total": 1788825,
+  "regions[0:2]": [
+    {
+      "region_id": "R001",
+      "period": "2026-01",
+      "forecast": 91030,
+      "city": "Hyderabad"
+    },
+    {
+      "region_id": "R002",
+      "period": "2026-01",
+      "forecast": 208611,
+      "city": "Mumbai"
+    }
+  ],
+  "metrics": {
+    "mae": 1984.0,
+    "rmse": 6618.9,
+    "mape": 7.67,
+    "r2": 0.9766
+  }
+}

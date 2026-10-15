@@ -1,0 +1,7 @@
+{
+  "status": "ok",
+  "version": "1.0.0",
+  "solver": "CBC via PuLP",
+  "has_pulp": true,
+  "forecaster_trained": true
+}

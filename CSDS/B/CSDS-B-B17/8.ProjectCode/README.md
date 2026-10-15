@@ -54,13 +54,13 @@ representative figure. The pretrained voice-emotion model transfers poorly to ac
 why the emotion timeline weights text sentiment 0.75 and voice 0.25.
 
 ## Tech stack
-React + Vite + Tailwind (JavaScript) - FastAPI, SQLAlchemy 2, SQLite, PyJWT + bcrypt - faster-whisper, PyTorch (CPU),
+React + Vite (JavaScript) with the Neo Brutal Grid component kit (framer-motion, GSAP, Lenis, Recharts) - FastAPI, SQLAlchemy 2, SQLite, PyJWT + bcrypt - faster-whisper, PyTorch (CPU),
 transformers (`superb/wav2vec2-base-superb-er`), scikit-learn, librosa - Gemini (`google-genai`) - pyttsx3.
 
 ## Project layout
 ```
 backend/app/        main.py, db.py, auth.py, config.py, routes/ (calls, studio, misc), services/ (pipeline, speech, nlp, analysis, summary, studio)
-frontend/src/       pages/ (Landing, Login, Calls, CallDetail, Studio, Analytics, Performance), components/, api.js
+frontend/src/       pages/ (Landing, Login, Calls, CallDetail, Studio, Analytics, Performance), components/ui (kit), components/motion, components/app, lib/, styles/, api.js
 ml/                 train.py, eval.py
 scripts/            smoke_test.py, download_data.py, generate_sample_calls.py, tts_worker.py
 data/               bitext/, call_center/, airline/, sample/ (scripts, calls, emotion clips)

@@ -1,17 +1,19 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
-import { ArrowLeft, CheckCircle2, Flag, Loader2, RefreshCw, Sparkles, Trash2 } from 'lucide-react'
-import api, { audioUrl, currentUser, errorText, fmtDate, fmtTime, label } from '../api.js'
-import { EmotionTimeline } from '../components/charts.jsx'
-import { EMOTION_COLOR, EmotionBadge, ErrorBox, SampleBadge, SentimentValue, Spinner, StatusBadge } from '../components/ui.jsx'
+import { useNavigate, useParams } from 'react-router-dom'
+import { CheckCircle2, Flag, FileText, Gauge, MessagesSquare, RefreshCw, Sparkles, Tags, Trash2 } from 'lucide-react'
+import api, { audioUrl, errorText } from '../api'
+import { useAuth } from '../lib/auth'
+import { cleanTitle, EMOTION_COLOR, fmtDate, fmtTime, label } from '../lib/format'
+import {
+  Alert, Badge, Breadcrumbs, Button, Card, Checkbox, EmptyState, ErrorState, KeyValueList, Modal, PageHeader, ProgressBar, SkeletonBlock, StatusBadge, Tabs, useToast,
+} from '../components/ui'
+import { EmotionBadge, SampleBadge, SentimentValue } from '../components/app/Bits'
+import EmotionTimeline from '../components/app/EmotionTimeline'
 
-const STATUS_STYLE = {
-  resolved: 'bg-green-100 text-green-800',
-  partially_resolved: 'bg-yellow-100 text-yellow-800',
-  unresolved: 'bg-red-100 text-red-800',
-}
+const RESOLUTION_TONE = { resolved: 'pass', partially_resolved: 'medium', unresolved: 'blocked' }
 
-function Summary({ call, onUpdate }) {
+function SummaryTab({ call, onUpdate }) {
+  const toast = useToast()
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState('')
   const s = call.summary
@@ -21,6 +23,7 @@ function Summary({ call, onUpdate }) {
     try {
       const { data } = await api.post(`/calls/${call.id}/summary`)
       onUpdate(data)
+      toast.success('Summary regenerated.')
     } catch (err) {
       setError(errorText(err))
     } finally {
@@ -28,111 +31,199 @@ function Summary({ call, onUpdate }) {
     }
   }
   return (
-    <div className="card space-y-3">
-      <div className="flex items-center justify-between">
-        <h2 className="h2 mb-0">Call summary</h2>
-        <button className="btn-secondary px-2 py-1 text-xs" onClick={regenerate} disabled={busy} title="Regenerate with Gemini">
-          {busy ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Sparkles className="h-3.5 w-3.5" />} {s ? 'Regenerate' : 'Generate'}
-        </button>
-      </div>
+    <Card
+      title="Call summary"
+      actions={
+        <Button size="sm" icon={Sparkles} onClick={regenerate} loading={busy}>
+          {s ? 'Regenerate' : 'Generate'}
+        </Button>
+      }
+    >
       {s ? (
-        <>
-          <p className="text-sm text-slate-700">{s.summary}</p>
-          <dl className="space-y-2 text-sm">
-            <div>
-              <dt className="text-xs font-medium text-slate-500">Reason for the call</dt>
-              <dd>{s.reason}</dd>
-            </div>
-            <div>
-              <dt className="flex items-center gap-2 text-xs font-medium text-slate-500">
-                Resolution
-                <span className={`rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase ${STATUS_STYLE[s.status]}`}>{label(s.status)}</span>
-              </dt>
-              <dd>{s.resolution}</dd>
-            </div>
-            {s.customer_mood && (
-              <div>
-                <dt className="text-xs font-medium text-slate-500">Customer mood</dt>
-                <dd>{s.customer_mood}</dd>
-              </div>
-            )}
-            <div>
-              <dt className="text-xs font-medium text-slate-500">Action items</dt>
-              <dd>
-                {s.action_items.length ? (
-                  <ul className="mt-1 space-y-1">
+        <div className="stack">
+          <p className="lead" style={{ maxWidth: '70ch' }}>
+            {s.summary}
+          </p>
+          <KeyValueList
+            items={[
+              { label: 'Reason', value: s.reason },
+              {
+                label: 'Resolution',
+                value: (
+                  <div className="stack" style={{ '--gap': '6px' }}>
+                    <div>
+                      <Badge tone={RESOLUTION_TONE[s.status]}>{label(s.status)}</Badge>
+                    </div>
+                    <span>{s.resolution}</span>
+                  </div>
+                ),
+              },
+              s.customer_mood ? { label: 'Customer mood', value: s.customer_mood } : undefined,
+              {
+                label: 'Action items',
+                value: s.action_items.length ? (
+                  <ul className="action-list">
                     {s.action_items.map((a, i) => (
-                      <li key={i} className="flex gap-2">
-                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-indigo-600" />
+                      <li key={i}>
+                        <CheckCircle2 size={18} aria-hidden="true" style={{ flex: 'none', marginTop: 2 }} />
                         <span>
-                          <span className="mr-1 rounded bg-slate-100 px-1.5 text-[10px] font-semibold uppercase text-slate-600">{a.owner}</span>
-                          {a.item}
+                          <Badge tone="info">{a.owner}</Badge> {a.item}
                         </span>
                       </li>
                     ))}
                   </ul>
                 ) : (
-                  <span className="text-slate-500">No follow-ups</span>
-                )}
-              </dd>
-            </div>
-          </dl>
-          <p className="text-[11px] text-slate-400">Written by {s.model}</p>
-        </>
+                  <span className="muted">No follow-ups</span>
+                ),
+              },
+            ].filter(Boolean)}
+          />
+          <p className="tiny mono muted">Written by {s.model}</p>
+        </div>
       ) : (
-        <ErrorBox error={call.summary_error || 'No summary yet'} />
+        <Alert tone="warning">{call.summary_error || 'No summary yet. Press Generate to write one with Gemini.'}</Alert>
       )}
-      <ErrorBox error={error} />
-    </div>
+      {error && (
+        <div style={{ marginTop: 12 }}>
+          <Alert tone="error">{error}</Alert>
+        </div>
+      )}
+    </Card>
   )
 }
 
-function Scorecard({ card }) {
-  if (!card) return null
-  const c = card.total >= 80 ? 'text-green-700' : card.total >= 60 ? 'text-yellow-700' : 'text-red-700'
+function IntentTab({ call }) {
+  const runners = (call.intent_top || []).slice(1)
   return (
-    <div className="card">
-      <div className="mb-3 flex items-end justify-between">
-        <h2 className="h2 mb-0">Agent scorecard</h2>
-        <div className={`text-3xl font-bold ${c}`}>
-          {card.total}
-          <span className="text-base font-medium text-slate-400">/100</span>
+    <Card title="Intent and topic">
+      <div className="stack">
+        <div className="row">
+          <Badge tone="live">{label(call.intent)}</Badge>
+          <Badge>topic: {label(call.topic)}</Badge>
+          <span className="small mono">{Math.round((call.intent_confidence || 0) * 100)}% confidence</span>
         </div>
+        {call.intent_evidence && <p className="small" style={{ fontStyle: 'italic' }}>“{call.intent_evidence}”</p>}
+        <KeyValueList
+          items={[
+            { label: 'Runners-up', value: runners.length ? runners.map((t) => `${label(t.intent)} (${Math.round(t.score * 100)}%)`).join(', ') : null },
+            call.reference?.intent
+              ? {
+                  label: 'Script intent',
+                  value: (
+                    <span>
+                      {label(call.reference.intent)} — sample ground truth{' '}
+                      <Badge tone={call.reference.intent === call.intent ? 'pass' : 'blocked'}>{call.reference.intent === call.intent ? 'match' : 'miss'}</Badge>
+                    </span>
+                  ),
+                }
+              : undefined,
+            {
+              label: 'Keywords',
+              value: call.keywords.length ? (
+                <div className="row" style={{ '--gap': '6px' }}>
+                  {call.keywords.map((k) => (
+                    <Badge key={k}>{k}</Badge>
+                  ))}
+                </div>
+              ) : null,
+            },
+            {
+              label: 'Customer sentiment',
+              value: (
+                <span>
+                  average <SentimentValue value={call.sentiment} />, change <SentimentValue value={call.sentiment_change} />
+                </span>
+              ),
+            },
+          ].filter(Boolean)}
+        />
       </div>
-      <div className="space-y-3">
+    </Card>
+  )
+}
+
+function ScoreTab({ card }) {
+  if (!card) return <EmptyState icon={Gauge} title="No scorecard">This call has no scorecard yet. Re-run the analysis.</EmptyState>
+  return (
+    <Card
+      title="Agent scorecard"
+      actions={
+        <div className="score-big" aria-label={`Total score ${card.total} out of 100`}>
+          {card.total}
+          <small>/100</small>
+        </div>
+      }
+    >
+      <div>
         {card.items.map((it) => (
-          <div key={it.key}>
-            <div className="flex justify-between text-sm">
-              <span className="font-medium">{it.label}</span>
-              <span className="text-slate-600">
+          <div key={it.key} className="criterion">
+            <div className="row-between">
+              <strong>{it.label}</strong>
+              <span className="mono small">
                 {it.points} / {it.weight}
               </span>
             </div>
-            <div className="my-1 h-1.5 rounded-full bg-slate-100">
-              <div
-                className={`h-1.5 rounded-full ${it.score >= 0.8 ? 'bg-green-500' : it.score >= 0.5 ? 'bg-yellow-500' : 'bg-red-500'}`}
-                style={{ width: `${it.score * 100}%` }}
-              />
+            <div style={{ margin: '8px 0' }}>
+              <ProgressBar value={it.score} max={1} label={it.label} tone={it.score >= 0.8 ? '' : it.score >= 0.5 ? 'amber' : 'coral'} />
             </div>
-            <div className="text-xs text-slate-500">{it.evidence}</div>
+            <p className="small muted">{it.evidence}</p>
           </div>
         ))}
       </div>
-      <p className="mt-3 text-[11px] text-slate-400">Speakers: {card.speaker_mode}</p>
-    </div>
+      <p className="tiny mono muted" style={{ marginTop: 12 }}>
+        Speakers: {card.speaker_mode}
+      </p>
+    </Card>
+  )
+}
+
+function TranscriptTab({ call, time, seek }) {
+  return (
+    <Card title="Transcript">
+      <div className="transcript">
+        {call.segments.map((s, i) => {
+          const active = time >= s.start && time <= s.end + 0.3
+          return (
+            <div key={i} className={`bubble-row ${s.speaker}`}>
+              <div className={`bubble ${active ? 'active' : ''}`} aria-current={active || undefined}>
+                <div className="bubble-meta">
+                  <button className="linkish" onClick={() => seek(s.start)} aria-label={`Play from ${fmtTime(s.start)}`}>
+                    {fmtTime(s.start)}
+                  </button>
+                  <strong>{s.speaker}</strong>
+                  <EmotionBadge emotion={s.emotion} />
+                  <span title="text sentiment score" className="muted">
+                    text <SentimentValue value={s.sentiment?.score} />
+                  </span>
+                  {s.voice && (
+                    <span title="voice emotion (wav2vec2)" className="muted">
+                      voice: {Object.entries(s.voice).sort((a, b) => b[1] - a[1])[0][0]}
+                    </span>
+                  )}
+                </div>
+                {s.text}
+              </div>
+            </div>
+          )
+        })}
+      </div>
+    </Card>
   )
 }
 
 export default function CallDetail() {
   const { id } = useParams()
   const nav = useNavigate()
-  const user = currentUser()
+  const toast = useToast()
+  const { user } = useAuth()
   const [call, setCall] = useState(null)
   const [error, setError] = useState('')
   const [actionError, setActionError] = useState('')
   const [busy, setBusy] = useState('')
   const [time, setTime] = useState(0)
   const [showAgent, setShowAgent] = useState(false)
+  const [tab, setTab] = useState('transcript')
+  const [confirmDelete, setConfirmDelete] = useState(false)
   const audio = useRef(null)
 
   const load = useCallback(async () => {
@@ -146,10 +237,11 @@ export default function CallDetail() {
   }, [id])
 
   useEffect(() => {
+    setCall(null)
     load()
   }, [load])
   useEffect(() => {
-    if (!call || !['queued', 'processing'].includes(call.status)) return
+    if (!call || !['queued', 'processing'].includes(call.status)) return undefined
     const t = setInterval(load, 3000)
     return () => clearInterval(t)
   }, [call, load])
@@ -160,188 +252,200 @@ export default function CallDetail() {
       audio.current.play().catch(() => {})
     }
   }
-  const act = async (kind) => {
-    setBusy(kind)
+
+  const reprocess = async () => {
+    setBusy('reprocess')
     setActionError('')
     try {
-      if (kind === 'reprocess') {
-        await api.post(`/calls/${id}/reprocess`)
-        load()
-      } else {
-        await api.delete(`/calls/${id}`)
-        nav('/calls')
-      }
+      await api.post(`/calls/${id}/reprocess`)
+      toast.success('Analysis restarted.')
+      load()
     } catch (err) {
       setActionError(errorText(err))
     } finally {
       setBusy('')
     }
   }
+  const remove = async () => {
+    setBusy('delete')
+    setActionError('')
+    try {
+      await api.delete(`/calls/${id}`)
+      toast.success('Call deleted.')
+      nav('/calls')
+    } catch (err) {
+      setConfirmDelete(false)
+      setActionError(errorText(err))
+    } finally {
+      setBusy('')
+    }
+  }
 
-  if (error) return <ErrorBox error={error} onRetry={load} />
-  if (!call) return <Spinner />
+  const crumbs = <Breadcrumbs items={[{ label: 'Calls', to: '/calls' }, { label: call ? cleanTitle(call.title) : `Call ${id}` }]} />
+
+  if (error && !call) {
+    return (
+      <>
+        {crumbs}
+        <ErrorState title="Could not load this call" error={error} hint="It may have been deleted, or it belongs to another agent. Go back to Calls and pick another." onRetry={load} />
+      </>
+    )
+  }
+  if (!call) {
+    return (
+      <>
+        {crumbs}
+        <SkeletonBlock rows={6} label="Loading call" />
+      </>
+    )
+  }
+
   const running = ['queued', 'processing'].includes(call.status)
   const cust = call.segments.filter((s) => s.speaker === 'customer')
+  const canDelete = user?.role === 'supervisor' || call.agent_id === user?.id
+  const tabs = [
+    { id: 'transcript', label: 'Transcript', icon: MessagesSquare, count: call.segments.length },
+    { id: 'summary', label: 'Summary', icon: FileText },
+    { id: 'intent', label: 'Intent', icon: Tags },
+    { id: 'score', label: 'Scorecard', icon: Gauge },
+  ]
 
   return (
-    <div className="space-y-5">
-      <div>
-        <Link to="/calls" className="inline-flex items-center gap-1 text-sm text-slate-500 hover:text-slate-800">
-          <ArrowLeft className="h-4 w-4" /> Calls
-        </Link>
-        <div className="mt-1 flex flex-wrap items-start justify-between gap-3">
-          <div>
-            <h1 className="flex flex-wrap items-center gap-2 text-2xl font-semibold">
-              {call.title.replace('[Sample] ', '')} {call.is_sample && <SampleBadge />}
-            </h1>
-            <div className="mt-1 flex flex-wrap items-center gap-3 text-sm text-slate-500">
-              <span>Agent: {call.agent || 'unassigned'}</span>
-              <span>{fmtDate(call.recorded_at)}</span>
-              <span>{fmtTime(call.duration)}</span>
-              <StatusBadge status={call.status} stage={call.stage} />
-            </div>
-          </div>
-          <div className="flex gap-2">
-            <button className="btn-secondary" onClick={() => act('reprocess')} disabled={running || !!busy}>
-              {busy === 'reprocess' ? <Loader2 className="h-4 w-4 animate-spin" /> : <RefreshCw className="h-4 w-4" />} Re-run analysis
-            </button>
-            {(user.role === 'supervisor' || call.agent_id === user.id) && (
-              <button className="btn-danger" onClick={() => act('delete')} disabled={running || !!busy}>
-                {busy === 'delete' ? <Loader2 className="h-4 w-4 animate-spin" /> : <Trash2 className="h-4 w-4" />} Delete
-              </button>
+    <>
+      <PageHeader
+        crumbs={crumbs}
+        title={
+          <>
+            {cleanTitle(call.title)} {call.is_sample && <SampleBadge />}
+          </>
+        }
+        description={
+          <span className="row" style={{ '--gap': '14px' }}>
+            <span>Agent: {call.agent || 'unassigned'}</span>
+            <span>{fmtDate(call.recorded_at)}</span>
+            <span>{fmtTime(call.duration)}</span>
+            <StatusBadge status={call.status} stage={call.stage} />
+          </span>
+        }
+        actions={
+          <>
+            <Button icon={RefreshCw} onClick={reprocess} disabled={running || !!busy} loading={busy === 'reprocess'}>
+              Re-run analysis
+            </Button>
+            {canDelete && (
+              <Button variant="danger" icon={Trash2} onClick={() => setConfirmDelete(true)} disabled={running || !!busy}>
+                Delete
+              </Button>
             )}
-          </div>
-        </div>
-      </div>
-      <ErrorBox error={actionError} />
+          </>
+        }
+      />
+      <div className="stack" style={{ '--gap': '20px' }}>
+        {actionError && <Alert tone="error">{actionError}</Alert>}
 
-      <div className="card p-3">
-        <audio ref={audio} controls preload="metadata" src={audioUrl(call.id)} className="w-full" onTimeUpdate={(e) => setTime(e.target.currentTime)} />
-      </div>
+        <Card className="audio-card" flat>
+          <audio
+            ref={audio}
+            controls
+            preload="metadata"
+            src={audioUrl(call.id)}
+            aria-label="Call recording"
+            onTimeUpdate={(e) => setTime(e.target.currentTime)}
+          />
+        </Card>
 
-      {running && (
-        <div className="card flex items-center gap-3 text-sm text-slate-600">
-          <Loader2 className="h-5 w-5 animate-spin text-indigo-600" />
-          <div>
-            <div className="font-medium text-slate-800">Analysing this call - {call.stage || 'waiting in the queue'}</div>
-            Transcription, emotion and scoring run on the CPU and usually take about as long as the call itself.
-          </div>
-        </div>
-      )}
-      {call.status === 'failed' && <ErrorBox error={`Analysis failed: ${call.error}`} />}
-
-      {call.status === 'done' && (
-        <div className="grid gap-5 lg:grid-cols-[1fr_380px]">
-          <div className="space-y-5">
-            <div className="card">
-              <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
-                <h2 className="h2 mb-0">Emotion timeline</h2>
-                <label className="flex items-center gap-1.5 text-xs text-slate-600">
-                  <input type="checkbox" checked={showAgent} onChange={(e) => setShowAgent(e.target.checked)} /> show agent
-                </label>
-              </div>
-              <EmotionTimeline segments={call.segments} flags={call.flags} duration={call.duration} showAgent={showAgent} onSeek={seek} current={time} />
-              <div className="mt-2 flex flex-wrap gap-3 text-xs text-slate-600">
-                {Object.entries(EMOTION_COLOR).map(([k, v]) => (
-                  <span key={k} className="flex items-center gap-1">
-                    <span className="inline-block h-2.5 w-2.5 rounded-full" style={{ background: v }} /> {k}
-                  </span>
-                ))}
-                <span className="text-slate-400">| line = customer valence (text sentiment + voice emotion); ⚑ = flag</span>
-              </div>
-              <div className="mt-3 flex flex-wrap items-center gap-1 text-xs">
-                <span className="mr-1 text-slate-500">Customer journey:</span>
-                {cust.map((s, i) => (
-                  <span key={i} className="flex items-center gap-1">
-                    {i > 0 && <span className="text-slate-300">→</span>}
-                    <EmotionBadge emotion={s.emotion} />
-                  </span>
-                ))}
-              </div>
+        {running && (
+          <Card tone="lime" aria-live="polite">
+            <div className="stack" style={{ '--gap': '10px' }}>
+              <strong>Analysing this call — {call.stage || 'waiting in the queue'}</strong>
+              <ProgressBar value={call.status === 'queued' ? 0.08 : 0.55} label="Analysis in progress" />
+              <p className="small">Transcription, emotion and scoring run on the CPU and usually take about as long as the call itself. This page updates by itself.</p>
             </div>
+          </Card>
+        )}
+        {call.status === 'failed' && (
+          <Alert tone="error" action={<Button size="sm" onClick={reprocess} loading={busy === 'reprocess'}>Try again</Button>}>
+            Analysis failed: {call.error || 'unknown error'}. Check the audio file and try again.
+          </Alert>
+        )}
+
+        {call.status === 'done' && (
+          <>
+            <Card
+              title="Emotion timeline"
+              actions={
+                <Checkbox label="Show agent" checked={showAgent} onChange={setShowAgent} />
+              }
+            >
+              <div className="stack">
+                <EmotionTimeline segments={call.segments} flags={call.flags} duration={call.duration} showAgent={showAgent} onSeek={seek} current={time} />
+                <div className="emo-key" aria-label="Emotion colours">
+                  {Object.entries(EMOTION_COLOR).map(([k, v]) => (
+                    <span key={k} className="row" style={{ '--gap': '6px' }}>
+                      <i style={{ width: 14, height: 14, background: v, border: '2px solid var(--line)', display: 'inline-block' }} /> {k}
+                    </span>
+                  ))}
+                </div>
+                <p className="tiny muted">Line = customer valence (text sentiment + voice emotion). ⚑ = escalation flag. Click a square to jump to that moment.</p>
+                <div className="journey">
+                  <span className="small muted">Customer journey:</span>
+                  {cust.map((s, i) => (
+                    <span key={i} className="row" style={{ '--gap': '6px' }}>
+                      {i > 0 && <span className="arrow" aria-hidden="true">→</span>}
+                      <EmotionBadge emotion={s.emotion} />
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </Card>
 
             {call.flags.length > 0 && (
-              <div className="card">
-                <h2 className="h2">Escalation flags</h2>
-                <ul className="space-y-1.5 text-sm">
+              <Card title="Escalation flags">
+                <ul className="flag-list">
                   {call.flags.map((f, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <Flag className={`mt-0.5 h-4 w-4 shrink-0 ${f.severity === 'high' ? 'text-red-600' : 'text-amber-500'}`} />
-                      <button className="font-mono text-xs text-indigo-700 hover:underline" onClick={() => seek(f.t)}>{fmtTime(f.t)}</button>
+                    <li key={i}>
+                      <Flag size={16} aria-hidden="true" style={{ color: f.severity === 'high' ? 'var(--coral)' : 'var(--fg)' }} />
+                      <Badge tone={f.severity === 'high' ? 'high' : 'medium'}>{f.severity}</Badge>
+                      <button className="linkish" onClick={() => seek(f.t)} aria-label={`Play from ${fmtTime(f.t)}`}>
+                        {fmtTime(f.t)}
+                      </button>
                       <span>{f.text}</span>
                     </li>
                   ))}
                 </ul>
-              </div>
+              </Card>
             )}
 
-            <div className="card">
-              <h2 className="h2">Transcript</h2>
-              <div className="space-y-2">
-                {call.segments.map((s, i) => {
-                  const active = time >= s.start && time <= s.end + 0.3
-                  const agent = s.speaker === 'agent'
-                  return (
-                    <div key={i} className={`flex ${agent ? '' : 'flex-row-reverse'}`}>
-                      <div
-                        className={`max-w-[85%] rounded-xl border px-3 py-2 text-sm ${agent ? 'border-indigo-100 bg-indigo-50' : 'border-orange-100 bg-orange-50'} ${active ? 'ring-2 ring-indigo-400' : ''}`}
-                      >
-                        <div className="mb-1 flex flex-wrap items-center gap-2 text-xs text-slate-500">
-                          <button className="font-mono text-indigo-700 hover:underline" onClick={() => seek(s.start)}>{fmtTime(s.start)}</button>
-                          <span className="font-semibold uppercase">{s.speaker}</span>
-                          <EmotionBadge emotion={s.emotion} />
-                          <span title="text sentiment score">text <SentimentValue value={s.sentiment.score} /></span>
-                          {s.voice && (
-                            <span title="voice emotion (wav2vec2)">
-                              voice: {Object.entries(s.voice).sort((a, b) => b[1] - a[1])[0][0]}
-                            </span>
-                          )}
-                        </div>
-                        {s.text}
-                      </div>
-                    </div>
-                  )
-                })}
-              </div>
+            <div>
+              <Tabs tabs={tabs} value={tab} onChange={setTab} label="Call analysis" />
+              {tab === 'transcript' && <TranscriptTab call={call} time={time} seek={seek} />}
+              {tab === 'summary' && <SummaryTab call={call} onUpdate={setCall} />}
+              {tab === 'intent' && <IntentTab call={call} />}
+              {tab === 'score' && <ScoreTab card={call.scorecard} />}
             </div>
-          </div>
+          </>
+        )}
+      </div>
 
-          <div className="space-y-5">
-            <Summary call={call} onUpdate={setCall} />
-            <div className="card space-y-3 text-sm">
-              <h2 className="h2 mb-0">Intent & topic</h2>
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="rounded-lg bg-indigo-700 px-2.5 py-1 font-semibold text-white">{call.intent}</span>
-                <span className="rounded-lg bg-slate-100 px-2.5 py-1 text-slate-700">topic: {call.topic}</span>
-                <span className="text-xs text-slate-500">{Math.round((call.intent_confidence || 0) * 100)}% confidence</span>
-              </div>
-              {call.intent_evidence && <p className="text-xs italic text-slate-600">“{call.intent_evidence}”</p>}
-              <div className="text-xs text-slate-500">
-                Runners-up: {call.intent_top.slice(1).map((t) => `${label(t.intent)} (${Math.round(t.score * 100)}%)`).join(', ')}
-              </div>
-              {call.reference?.intent && (
-                <div className="text-xs text-slate-500">
-                  Script intent (sample ground truth): <b>{call.reference.intent}</b>{' '}
-                  {call.reference.intent === call.intent ? '✓' : '✗'}
-                </div>
-              )}
-              <div>
-                <div className="mb-1 text-xs font-medium text-slate-500">Keywords</div>
-                <div className="flex flex-wrap gap-1.5">
-                  {call.keywords.map((k) => (
-                    <span key={k} className="rounded-full border border-slate-200 px-2 py-0.5 text-xs">{k}</span>
-                  ))}
-                </div>
-              </div>
-              <div className="text-xs text-slate-500">
-                Average customer sentiment <SentimentValue value={call.sentiment} />, change{' '}
-                <SentimentValue value={call.sentiment_change} />
-              </div>
-            </div>
-            <Scorecard card={call.scorecard} />
-          </div>
-        </div>
-      )}
-    </div>
+      <Modal
+        open={confirmDelete}
+        onClose={() => !busy && setConfirmDelete(false)}
+        title="Delete this call?"
+        footer={
+          <>
+            <Button onClick={() => setConfirmDelete(false)} disabled={busy === 'delete'}>
+              Keep it
+            </Button>
+            <Button variant="danger" icon={Trash2} onClick={remove} loading={busy === 'delete'}>
+              Delete call
+            </Button>
+          </>
+        }
+      >
+        <p>
+          “{cleanTitle(call.title)}” and its recording, transcript, summary and scorecard will be removed. This cannot be undone.
+        </p>
+      </Modal>
+    </>
   )
 }

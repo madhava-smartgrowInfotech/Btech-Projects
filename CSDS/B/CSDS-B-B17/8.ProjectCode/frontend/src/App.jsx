@@ -1,29 +1,55 @@
-import { Navigate, Route, Routes } from 'react-router-dom'
-import Layout from './components/Layout.jsx'
-import Landing from './pages/Landing.jsx'
-import Login from './pages/Login.jsx'
-import Calls from './pages/Calls.jsx'
-import CallDetail from './pages/CallDetail.jsx'
-import Studio from './pages/Studio.jsx'
-import Analytics from './pages/Analytics.jsx'
-import Performance from './pages/Performance.jsx'
+import { lazy, Suspense } from 'react'
+import { Navigate, Outlet, Route, Routes, useLocation } from 'react-router-dom'
+import { useAuth } from './lib/auth'
+import { AppShell, PublicShell, SkeletonBlock, Container } from './components/ui'
+import { PageTransition, SmoothScroll } from './components/motion'
 
-function RequireAuth({ children }) {
-  return localStorage.getItem('cs_token') ? children : <Navigate to="/login" replace />
+const Landing = lazy(() => import('./pages/Landing.jsx'))
+const Login = lazy(() => import('./pages/Login.jsx'))
+const Calls = lazy(() => import('./pages/Calls.jsx'))
+const CallDetail = lazy(() => import('./pages/CallDetail.jsx'))
+const Studio = lazy(() => import('./pages/Studio.jsx'))
+const Analytics = lazy(() => import('./pages/Analytics.jsx'))
+const Performance = lazy(() => import('./pages/Performance.jsx'))
+
+function Loading() {
+  return (
+    <Container style={{ padding: '48px 16px' }}>
+      <SkeletonBlock rows={5} label="Loading page" />
+    </Container>
+  )
+}
+
+function RequireAuth() {
+  const { user, signedOut } = useAuth()
+  const loc = useLocation()
+  if (!user) return <Navigate to={signedOut ? '/' : '/login'} replace />
+  return (
+    <AppShell>
+      <Suspense fallback={<Loading />}>
+        <PageTransition key={loc.pathname}>
+          <Outlet />
+        </PageTransition>
+      </Suspense>
+    </AppShell>
+  )
+}
+
+function Public({ children, smooth }) {
+  const body = (
+    <PublicShell>
+      <Suspense fallback={<Loading />}>{children}</Suspense>
+    </PublicShell>
+  )
+  return smooth ? <SmoothScroll>{body}</SmoothScroll> : body
 }
 
 export default function App() {
   return (
     <Routes>
-      <Route path="/" element={<Landing />} />
-      <Route path="/login" element={<Login />} />
-      <Route
-        element={
-          <RequireAuth>
-            <Layout />
-          </RequireAuth>
-        }
-      >
+      <Route path="/" element={<Public smooth><Landing /></Public>} />
+      <Route path="/login" element={<Public><Login /></Public>} />
+      <Route element={<RequireAuth />}>
         <Route path="/calls" element={<Calls />} />
         <Route path="/calls/:id" element={<CallDetail />} />
         <Route path="/studio" element={<Studio />} />

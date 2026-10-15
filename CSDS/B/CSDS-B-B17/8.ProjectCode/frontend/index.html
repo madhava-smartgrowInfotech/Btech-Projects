@@ -4,9 +4,18 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CallSense</title>
+    <meta name="description" content="CallSense analyses every customer call: transcripts, intent, emotion, summaries and agent scorecards." />
+    <title>CallSense - call intelligence</title>
+    <script>
+      // Apply the saved (or OS) theme before first paint to avoid a flash.
+      try {
+        var t = localStorage.getItem('cs.theme')
+        if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        document.documentElement.setAttribute('data-theme', t)
+      } catch (e) {}
+    </script>
   </head>
-  <body class="bg-slate-50 text-slate-800">
+  <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

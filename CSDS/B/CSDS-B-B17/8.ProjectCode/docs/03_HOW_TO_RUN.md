@@ -68,3 +68,9 @@ cd frontend && npm run build                         :: production build of the 
 - **First call is slow** - the speech models load when the API starts; later calls take roughly the call length.
 - **Studio: "No offline text-to-speech voices"** - install an English voice in Windows Settings > Time & language > Speech.
 - **Microphone blocked** - allow microphone access for localhost in the browser.
+
+## Front end notes
+- The UI is plain React + Vite (no Tailwind). Fonts (Archivo Black, IBM Plex) are installed from npm, so the app works offline.
+- Dark mode toggle is in the top bar and is remembered in the browser. Animation is reduced automatically when the OS asks for reduced motion.
+- `cd frontend && npm run build` produces a production build in `frontend/dist`.
+- The microphone recorder needs a browser that has microphone permission for `http://localhost:5217`; file upload works without it.

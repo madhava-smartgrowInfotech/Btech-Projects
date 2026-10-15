@@ -1,29 +1,35 @@
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { AudioLines, Loader2 } from 'lucide-react'
-import api, { errorText } from '../api.js'
-import { ErrorBox } from '../components/ui.jsx'
+import { Navigate, useLocation, useNavigate } from 'react-router-dom'
+import { LogIn } from 'lucide-react'
+import { errorText } from '../api'
+import { useAuth } from '../lib/auth'
+import { Alert, Button, Card, Container, Input, useToast } from '../components/ui'
+import { MaskHeadline } from '../components/motion'
 
 const DEMO = [
-  ['supervisor@callsense.local', 'Supervisor'],
-  ['agent@callsense.local', 'Agent (Alex)'],
+  { email: 'supervisor@callsense.local', name: 'Supervisor', note: 'sees every call and the whole team' },
+  { email: 'agent@callsense.local', name: 'Agent (Alex)', note: 'sees only their own calls' },
 ]
 
 export default function Login() {
   const nav = useNavigate()
+  const loc = useLocation()
+  const toast = useToast()
+  const { user, login } = useAuth()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+
+  if (user) return <Navigate to={loc.state?.from || '/calls'} replace />
 
   const submit = async (e) => {
     e.preventDefault()
     setLoading(true)
     setError('')
     try {
-      const { data } = await api.post('/auth/login', { email, password })
-      localStorage.setItem('cs_token', data.token)
-      localStorage.setItem('cs_user', JSON.stringify(data.user))
+      const u = await login(email.trim(), password)
+      toast.success(`Signed in as ${u.name}.`)
       nav('/calls')
     } catch (err) {
       setError(errorText(err))
@@ -33,37 +39,39 @@ export default function Login() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-b from-indigo-50 to-slate-50 px-4">
-      <div className="w-full max-w-sm">
-        <Link to="/" className="mb-6 flex items-center justify-center gap-2 text-xl font-bold text-indigo-800">
-          <AudioLines className="h-7 w-7" /> CallSense
-        </Link>
-        <form onSubmit={submit} className="card space-y-4">
-          <h1 className="text-lg font-semibold">Sign in</h1>
-          <div>
-            <label className="label" htmlFor="email">Email</label>
-            <input id="email" type="email" className="input" required value={email} onChange={(e) => setEmail(e.target.value)} />
-          </div>
-          <div>
-            <label className="label" htmlFor="password">Password</label>
-            <input id="password" type="password" className="input" required value={password} onChange={(e) => setPassword(e.target.value)} />
-          </div>
-          <ErrorBox error={error} />
-          <button className="btn-primary w-full" disabled={loading}>
-            {loading && <Loader2 className="h-4 w-4 animate-spin" />} Sign in
-          </button>
-          <div className="border-t border-slate-100 pt-3 text-xs text-slate-500">
-            Demo accounts (password in README):
-            <div className="mt-2 flex gap-2">
-              {DEMO.map(([e, r]) => (
-                <button type="button" key={e} className="btn-secondary flex-1 px-2 py-1 text-xs" onClick={() => setEmail(e)}>
-                  {r}
-                </button>
+    <Container>
+      <div className="auth-grid">
+        <div className="stack" style={{ '--gap': '20px' }}>
+          <span className="eyebrow">Sign in</span>
+          <MaskHeadline as="h1" className="display-lg" lines={['Back to', 'the calls.']} />
+          <p className="lead muted">Supervisors see the whole team. Agents see only the calls they handled.</p>
+          <Card title="Demo accounts" flat>
+            <p className="small muted" style={{ marginBottom: 12 }}>
+              Pick one to fill the email, then enter the demo password from the README.
+            </p>
+            <div className="stack" style={{ '--gap': '10px' }}>
+              {DEMO.map((d) => (
+                <Button key={d.email} onClick={() => setEmail(d.email)} block aria-label={`Use ${d.name} demo account`}>
+                  {d.name}
+                  <span className="tiny" style={{ opacity: 0.7, fontWeight: 500 }}>
+                    {d.note}
+                  </span>
+                </Button>
               ))}
             </div>
-          </div>
-        </form>
+          </Card>
+        </div>
+        <Card title="Sign in" className="login-card">
+          <form onSubmit={submit} className="stack" noValidate>
+            <Input label="Email" type="email" autoComplete="username" required value={email} onChange={(e) => setEmail(e.target.value)} />
+            <Input label="Password" type="password" autoComplete="current-password" required value={password} onChange={(e) => setPassword(e.target.value)} />
+            {error && <Alert tone="error">{error}</Alert>}
+            <Button type="submit" variant="primary" size="lg" icon={LogIn} loading={loading} disabled={!email || !password}>
+              Sign in
+            </Button>
+          </form>
+        </Card>
       </div>
-    </div>
+    </Container>
   )
 }

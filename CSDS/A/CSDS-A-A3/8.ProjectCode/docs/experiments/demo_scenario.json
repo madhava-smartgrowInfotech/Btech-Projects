@@ -1,0 +1,312 @@
+{
+  "base": "http://127.0.0.1:8103",
+  "before": [
+    {
+      "url": "https://docs-share.cloudhost-files.com/drive/view?id=44",
+      "verdict": "safe",
+      "probability": 0.0953,
+      "decided_by": "ml"
+    },
+    {
+      "url": "http://sbi-netbanking-kyc-update.top/login.php",
+      "verdict": "phishing",
+      "probability": 0.9946,
+      "decided_by": "ml"
+    },
+    {
+      "url": "http://amazon-gift-claim.winner-prize.xyz/claim",
+      "verdict": "phishing",
+      "probability": 0.9995,
+      "decided_by": "ml"
+    },
+    {
+      "url": "http://microsoft-office365.sharepoint-docs.work/invoice.html",
+      "verdict": "phishing",
+      "probability": 0.9989,
+      "decided_by": "ml"
+    },
+    {
+      "url": "http://hdfc-rewards-points-redeem.info/redeem?id=88213",
+      "verdict": "phishing",
+      "probability": 0.859,
+      "decided_by": "ml"
+    },
+    {
+      "url": "https://docs.python.org/3/library/urllib.html",
+      "verdict": "phishing",
+      "probability": 0.6009,
+      "decided_by": "ml"
+    },
+    {
+      "url": "https://www.amazon.in/gp/cart/view.html",
+      "verdict": "phishing",
+      "probability": 0.7869,
+      "decided_by": "ml"
+    },
+    {
+      "url": "http://track-parcel-update.web.app/",
+      "verdict": "phishing",
+      "probability": 0.9695,
+      "decided_by": "ml"
+    },
+    {
+      "url": "https://myaccount-recover.pages.dev/index.html",
+      "verdict": "phishing",
+      "probability": 0.9942,
+      "decided_by": "ml"
+    },
+    {
+      "url": "https://wetransfer.com/downloads/8a1b2c3d4e",
+      "verdict": "safe",
+      "probability": 0.1457,
+      "decided_by": "ml"
+    },
+    {
+      "url": "https://github.com/anthropics",
+      "verdict": "safe",
+      "probability": 0.0207,
+      "decided_by": "ml"
+    },
+    {
+      "url": "https://www.wikipedia.org/wiki/Phishing",
+      "verdict": "safe",
+      "probability": 0.0008,
+      "decided_by": "ml"
+    },
+    {
+      "url": "https://stackoverflow.com/questions/11227809",
+      "verdict": "safe",
+      "probability": 0.002,
+      "decided_by": "ml"
+    },
+    {
+      "url": "http://192.168.1.5/wp-admin/bank/update.php",
+      "verdict": "phishing",
+      "probability": 0.9999,
+      "decided_by": "ml"
+    },
+    {
+      "url": "http://paypal.com.verify-login.tk/signin?user=a&pwd=b",
+      "verdict": "phishing",
+      "probability": 0.9999,
+      "decided_by": "ml"
+    },
+    {
+      "url": "http://apple-id-locked.support-center.xyz/unlock/account.html",
+      "verdict": "phishing",
+      "probability": 0.9998,
+      "decided_by": "ml"
+    },
+    {
+      "url": "http://free-prize-winner-lucky.top/claim.exe",
+      "verdict": "phishing",
+      "probability": 0.9994,
+      "decided_by": "ml"
+    },
+    {
+      "url": "https://www.irctc.co.in/nget/train-search",
+      "verdict": "safe",
+      "probability": 0.0868,
+      "decided_by": "ml"
+    },
+    {
+      "url": "http://bit.ly/3xYz9Ab",
+      "verdict": "phishing",
+      "probability": 0.9999,
+      "decided_by": "ml"
+    },
+    {
+      "url": "http://netflix-billing-update.com/payment/verify",
+      "verdict": "phishing",
+      "probability": 0.9939,
+      "decided_by": "ml"
+    }
+  ],
+  "after": [
+    {
+      "url": "https://docs-share.cloudhost-files.com/drive/view?id=44",
+      "verdict": "phishing",
+      "probability": 0.97,
+      "decided_by": "community"
+    },
+    {
+      "url": "http://sbi-netbanking-kyc-update.top/login.php",
+      "verdict": "phishing",
+      "probability": 0.9945566654205322,
+      "decided_by": "community"
+    },
+    {
+      "url": "http://amazon-gift-claim.winner-prize.xyz/claim",
+      "verdict": "phishing",
+      "probability": 0.9994739890098572,
+      "decided_by": "community"
+    },
+    {
+      "url": "http://microsoft-office365.sharepoint-docs.work/invoice.html",
+      "verdict": "phishing",
+      "probability": 0.9988522529602051,
+      "decided_by": "community"
+    },
+    {
+      "url": "http://hdfc-rewards-points-redeem.info/redeem?id=88213",
+      "verdict": "phishing",
+      "probability": 0.97,
+      "decided_by": "community"
+    },
+    {
+      "url": "https://docs.python.org/3/library/urllib.html",
+      "verdict": "safe",
+      "probability": 0.03,
+      "decided_by": "community"
+    },
+    {
+      "url": "https://www.amazon.in/gp/cart/view.html",
+      "verdict": "safe",
+      "probability": 0.03,
+      "decided_by": "community"
+    },
+    {
+      "url": "http://track-parcel-update.web.app/",
+      "verdict": "phishing",
+      "probability": 1.0,
+      "decided_by": "ml"
+    },
+    {
+      "url": "https://myaccount-recover.pages.dev/index.html",
+      "verdict": "phishing",
+      "probability": 0.9942,
+      "decided_by": "ml"
+    },
+    {
+      "url": "https://wetransfer.com/downloads/8a1b2c3d4e",
+      "verdict": "safe",
+      "probability": 0.2957,
+      "decided_by": "ml"
+    }
+  ],
+  "reports": [
+    {
+      "url": "https://docs-share.cloudhost-files.com/drive/view?id=44",
+      "verdict": "phishing",
+      "reporter": "volunteer-12",
+      "status": "pending"
+    },
+    {
+      "url": "https://docs-share.cloudhost-files.com/drive/view?id=44",
+      "verdict": "phishing",
+      "reporter": "soc-analyst",
+      "status": "confirmed_phishing"
+    },
+    {
+      "url": "http://sbi-netbanking-kyc-update.top/login.php",
+      "verdict": "phishing",
+      "reporter": "helpdesk-01",
+      "status": "pending"
+    },
+    {
+      "url": "http://sbi-netbanking-kyc-update.top/login.php",
+      "verdict": "phishing",
+      "reporter": "mail-gateway",
+      "status": "confirmed_phishing"
+    },
+    {
+      "url": "http://amazon-gift-claim.winner-prize.xyz/claim",
+      "verdict": "phishing",
+      "reporter": "soc-analyst",
+      "status": "pending"
+    },
+    {
+      "url": "http://amazon-gift-claim.winner-prize.xyz/claim",
+      "verdict": "phishing",
+      "reporter": "volunteer-07",
+      "status": "confirmed_phishing"
+    },
+    {
+      "url": "http://microsoft-office365.sharepoint-docs.work/invoice.html",
+      "verdict": "phishing",
+      "reporter": "mail-gateway",
+      "status": "pending"
+    },
+    {
+      "url": "http://microsoft-office365.sharepoint-docs.work/invoice.html",
+      "verdict": "phishing",
+      "reporter": "volunteer-03",
+      "status": "confirmed_phishing"
+    },
+    {
+      "url": "http://hdfc-rewards-points-redeem.info/redeem?id=88213",
+      "verdict": "phishing",
+      "reporter": "helpdesk-01",
+      "status": "pending"
+    },
+    {
+      "url": "http://hdfc-rewards-points-redeem.info/redeem?id=88213",
+      "verdict": "phishing",
+      "reporter": "volunteer-07",
+      "status": "confirmed_phishing"
+    },
+    {
+      "url": "http://hdfc-rewards-points-redeem.info/redeem?id=88213",
+      "verdict": "phishing",
+      "reporter": "soc-analyst",
+      "status": "confirmed_phishing"
+    },
+    {
+      "url": "https://docs.python.org/3/library/urllib.html",
+      "verdict": "safe",
+      "reporter": "volunteer-03",
+      "status": "pending"
+    },
+    {
+      "url": "https://docs.python.org/3/library/urllib.html",
+      "verdict": "safe",
+      "reporter": "volunteer-12",
+      "status": "confirmed_safe"
+    },
+    {
+      "url": "https://www.amazon.in/gp/cart/view.html",
+      "verdict": "safe",
+      "reporter": "helpdesk-01",
+      "status": "pending"
+    },
+    {
+      "url": "https://www.amazon.in/gp/cart/view.html",
+      "verdict": "safe",
+      "reporter": "volunteer-07",
+      "status": "confirmed_safe"
+    },
+    {
+      "url": "http://track-parcel-update.web.app/",
+      "verdict": "phishing",
+      "reporter": "volunteer-03",
+      "status": "pending"
+    },
+    {
+      "url": "https://myaccount-recover.pages.dev/index.html",
+      "verdict": "phishing",
+      "reporter": "soc-analyst",
+      "status": "pending"
+    },
+    {
+      "url": "https://myaccount-recover.pages.dev/index.html",
+      "verdict": "safe",
+      "reporter": "volunteer-12",
+      "status": "pending"
+    },
+    {
+      "url": "https://wetransfer.com/downloads/8a1b2c3d4e",
+      "verdict": "phishing",
+      "reporter": "volunteer-07",
+      "status": "pending"
+    }
+  ],
+  "stats": {
+    "awaiting_training": 7,
+    "checks": 42,
+    "confirmed_phishing": 5,
+    "confirmed_safe": 2,
+    "pending": 3,
+    "reports": 19,
+    "urls_tracked": 10
+  }
+}

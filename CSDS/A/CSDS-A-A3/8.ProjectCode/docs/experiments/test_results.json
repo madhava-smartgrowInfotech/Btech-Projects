@@ -1,0 +1,466 @@
+{
+  "total": 72,
+  "passed": 72,
+  "failed": 0,
+  "by_category": {
+    "unit": {
+      "total": 23,
+      "passed": 23
+    },
+    "integration": {
+      "total": 8,
+      "passed": 8
+    },
+    "functional": {
+      "total": 14,
+      "passed": 14
+    },
+    "validation": {
+      "total": 17,
+      "passed": 17
+    },
+    "security": {
+      "total": 8,
+      "passed": 8
+    },
+    "performance": {
+      "total": 2,
+      "passed": 2
+    }
+  },
+  "failures": [],
+  "cases": [
+    {
+      "category": "unit",
+      "name": "47 features returned in a fixed order",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "unit",
+      "name": "suspicious TLD detected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "unit",
+      "name": "brand outside the registered domain detected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "unit",
+      "name": "query parameters counted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "unit",
+      "name": "IP host detected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "unit",
+      "name": "hex / decimal IP host detected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "unit",
+      "name": "'@' symbol detected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "unit",
+      "name": "URL shortener detected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "unit",
+      "name": "executable extension detected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "unit",
+      "name": "popular domain flagged",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "unit",
+      "name": "two-level suffix split (co.uk)",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "unit",
+      "name": "plain host split",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "unit",
+      "name": "entropy of a constant string is 0",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "unit",
+      "name": "entropy of 'ab' is 1 bit",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "unit",
+      "name": "normalise adds scheme and strips www",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "unit",
+      "name": "normalise keeps https",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "unit",
+      "name": "red flags listed for a bad URL",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "unit",
+      "name": "no red flags for a plain reputable URL",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "unit",
+      "name": "first report stays pending",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "unit",
+      "name": "second report confirms phishing",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "unit",
+      "name": "opposing vote drops back to pending",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "unit",
+      "name": "trusted feed confirms immediately",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "unit",
+      "name": "two safe votes confirm legitimate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "integration",
+      "name": "obvious phishing URL decided by the model",
+      "passed": true,
+      "detail": "p=0.9989"
+    },
+    {
+      "category": "integration",
+      "name": "reputable URL is safe",
+      "passed": true,
+      "detail": "p=0.0207"
+    },
+    {
+      "category": "integration",
+      "name": "confirmed community verdict overrides the model",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "integration",
+      "name": "confirmed-safe report corrects a model false alarm",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "integration",
+      "name": "confirmed host covers its other pages",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "integration",
+      "name": "one pending phishing report raises the score",
+      "passed": true,
+      "detail": "0.9188 -> 1.0"
+    },
+    {
+      "category": "integration",
+      "name": "training examples reflect confirmed URLs",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "integration",
+      "name": "mark_trained clears the awaiting-training count",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "functional",
+      "name": "GET /api/health reports a ready model",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "functional",
+      "name": "GET /api/check returns the documented fields",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "functional",
+      "name": "feature dictionary has 47 entries",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "functional",
+      "name": "POST /api/report returns the vote counts",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "functional",
+      "name": "GET /api/stats has threat-intel counters and metrics",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "functional",
+      "name": "GET /api/config exposes the thresholds",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "functional",
+      "name": "GET /api/checks lists the log",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "functional",
+      "name": "GET /api/intel filters by status",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "functional",
+      "name": "GET /api/intel/lookup returns the report history",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "functional",
+      "name": "original page / renders",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "functional",
+      "name": "original page /report renders",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "functional",
+      "name": "original page /community renders",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "functional",
+      "name": "original page /models renders",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "functional",
+      "name": "form POST on / shows a verdict",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "validation",
+      "name": "empty URL rejected with 400",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "validation",
+      "name": "missing url parameter rejected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "validation",
+      "name": "whitespace-only URL rejected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "validation",
+      "name": "report with unknown verdict rejected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "validation",
+      "name": "report with empty URL rejected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "validation",
+      "name": "unknown intel status rejected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "validation",
+      "name": "non-numeric limit falls back to the default",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "validation",
+      "name": "lookup without url rejected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "validation",
+      "name": "edge case handled: bare domain",
+      "passed": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "category": "validation",
+      "name": "edge case handled: no scheme with path",
+      "passed": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "category": "validation",
+      "name": "edge case handled: malformed port",
+      "passed": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "category": "validation",
+      "name": "edge case handled: unmatched bracket",
+      "passed": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "category": "validation",
+      "name": "edge case handled: very long URL",
+      "passed": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "category": "validation",
+      "name": "edge case handled: unicode host",
+      "passed": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "category": "validation",
+      "name": "edge case handled: percent-encoded path",
+      "passed": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "category": "validation",
+      "name": "edge case handled: javascript scheme",
+      "passed": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "category": "validation",
+      "name": "edge case handled: data scheme",
+      "passed": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "category": "security",
+      "name": "SQL-injection string is stored as data",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "security",
+      "name": "tables survive the injection attempt",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "security",
+      "name": "script tag in a reported URL is HTML-escaped on /community",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "security",
+      "name": "script tag in a checked URL is HTML-escaped on /",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "security",
+      "name": "reporter name with markup is escaped",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "security",
+      "name": "CORS header present on API responses",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "security",
+      "name": "API accepts no cookies / credentials (no session state)",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "security",
+      "name": "very large note does not crash the server",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "category": "performance",
+      "name": "mean /api/check latency under 50 ms",
+      "passed": true,
+      "detail": "14.8 ms"
+    },
+    {
+      "category": "performance",
+      "name": "feature extraction under 1 ms per URL",
+      "passed": true,
+      "detail": "0.090 ms"
+    }
+  ]
+}

@@ -24,8 +24,10 @@ Sign in with the demo account **demo@biosight.app / Demo@1234**, or register a n
 3. **DNA analysis:** click a sample sequence (for example *trinucleotide repeat*), then **Classify sequence**.
 4. **STR matching:** click **Sample query**, then **Search database**. You get ranked references with likelihood ratios and a report.
 5. **Model performance:** shows every evaluation number.
+6. **History:** every analysis you ran, with its stored report. Use the sun / moon button in the top bar to switch between dark and light mode (your choice is remembered).
 
 ## 4. Smoke test (with the app running)
+It needs the trained models in `models/` and the metrics in `experiments/`. Without them the MRI and DNA checks fail; the screens then show an "not trained yet" message instead of results.
 ```
 venv\Scripts\python scripts\smoke_test.py
 ```

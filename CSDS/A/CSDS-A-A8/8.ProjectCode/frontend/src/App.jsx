@@ -1,29 +1,67 @@
-import { Navigate, Route, Routes } from 'react-router-dom'
-import Layout from './components/Layout.jsx'
-import { getUser } from './api.js'
-import Landing from './pages/Landing.jsx'
-import Login from './pages/Login.jsx'
-import Mri from './pages/Mri.jsx'
-import LabelEfficiency from './pages/LabelEfficiency.jsx'
-import Dna from './pages/Dna.jsx'
-import StrMatch from './pages/StrMatch.jsx'
-import Performance from './pages/Performance.jsx'
+import { Suspense, lazy } from 'react'
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
+import { MotionConfig } from 'framer-motion'
+import { ThemeProvider } from './lib/theme'
+import { AuthProvider, useAuth } from './lib/auth'
+import { HealthProvider } from './lib/health'
+import { AppShell, ToastProvider } from './components/ui'
+import { PageSkeleton } from './components/bio'
 
-function Protected({ children }) {
-  return getUser() ? <Layout>{children}</Layout> : <Navigate to="/login" replace />
+// route-level code splitting
+const Landing = lazy(() => import('./pages/Landing'))
+const Login = lazy(() => import('./pages/Login'))
+const Mri = lazy(() => import('./pages/Mri'))
+const LabelEfficiency = lazy(() => import('./pages/LabelEfficiency'))
+const Dna = lazy(() => import('./pages/Dna'))
+const StrMatch = lazy(() => import('./pages/StrMatch'))
+const Performance = lazy(() => import('./pages/Performance'))
+const History = lazy(() => import('./pages/History'))
+const NotFound = lazy(() => import('./pages/NotFound'))
+
+function RequireAuth({ children }) {
+  const { user } = useAuth()
+  const loc = useLocation()
+  return user ? children : <Navigate to="/login" replace state={{ from: loc.pathname }} />
 }
+
+const page = (el) => <Suspense fallback={<PageSkeleton />}>{el}</Suspense>
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Landing />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/mri" element={<Protected><Mri /></Protected>} />
-      <Route path="/label-efficiency" element={<Protected><LabelEfficiency /></Protected>} />
-      <Route path="/dna" element={<Protected><Dna /></Protected>} />
-      <Route path="/str" element={<Protected><StrMatch /></Protected>} />
-      <Route path="/performance" element={<Protected><Performance /></Protected>} />
-      <Route path="*" element={<Navigate to="/" replace />} />
-    </Routes>
+    <ThemeProvider>
+      <MotionConfig reducedMotion="user">
+        <ToastProvider>
+          <AuthProvider>
+            <HealthProvider>
+              <div className="grain" aria-hidden="true" />
+              <Suspense fallback={<PageSkeleton />}>
+                <Routes>
+                  <Route path="/" element={<Landing />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route
+                    path="/app"
+                    element={
+                      <RequireAuth>
+                        <AppShell />
+                      </RequireAuth>
+                    }
+                  >
+                    <Route index element={<Navigate to="mri" replace />} />
+                    <Route path="mri" element={page(<Mri />)} />
+                    <Route path="label-efficiency" element={page(<LabelEfficiency />)} />
+                    <Route path="dna" element={page(<Dna />)} />
+                    <Route path="str" element={page(<StrMatch />)} />
+                    <Route path="performance" element={page(<Performance />)} />
+                    <Route path="history" element={page(<History />)} />
+                    <Route path="*" element={page(<NotFound />)} />
+                  </Route>
+                  <Route path="*" element={<NotFound standalone />} />
+                </Routes>
+              </Suspense>
+            </HealthProvider>
+          </AuthProvider>
+        </ToastProvider>
+      </MotionConfig>
+    </ThemeProvider>
   )
 }

@@ -31,10 +31,11 @@ BioSight does label-efficient medical-image segmentation and DNA profile analysi
 5. DNA analysis: repeat type, organism class, repeat scan and report
 6. STR matching: ranked candidates with LRs, per-locus comparison and report
 7. Model performance: every held-out metric, the STR evaluation and your recent analyses
+8. History: your last 50 analyses, each opening to its stored results and report
 
 ## Architecture
 ```
-React + Vite + Tailwind (5108) --/api proxy--> FastAPI (8108) --> SQLite (users, analyses)
+React + Vite, V3 "Depth Studio" kit (framer-motion, GSAP, three.js, Recharts) (5108) --/api proxy--> FastAPI (8108) --> SQLite (users, analyses)
                                                    |--> PyTorch models on CPU (models/*.pt)
                                                    |--> STR database + NIST allele frequencies (data/str)
                                                    '--> Gemini API (structured reports)

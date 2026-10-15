@@ -1,0 +1,415 @@
+/* BioSight additions on top of the V3 kit */
+
+/* ---- image figures */
+.figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.figure-frame {
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: #05070a;
+  border: 1px solid var(--border);
+}
+.figure-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.figure-frame > .skeleton {
+  display: block;
+}
+.figure-empty {
+  padding: 16px;
+  text-align: center;
+  font-size: 13.5px;
+  color: #8a95a3;
+}
+
+/* ---- sample thumbnails */
+.thumbs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+.thumb {
+  all: unset;
+  box-sizing: border-box;
+  position: relative;
+  aspect-ratio: 1;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background: #05070a;
+}
+.thumb:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.thumb[aria-pressed='true'] {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.thumb-dot {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--danger);
+  box-shadow: 0 0 0 2px #05070a;
+}
+.pager {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+/* ---- chips (sample sequences) */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chip {
+  all: unset;
+  box-sizing: border-box;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  background: var(--panel-2);
+  color: var(--text-2);
+  font-size: 12.5px;
+  font-weight: 500;
+  transition: border-color var(--dur), color var(--dur), background var(--dur);
+}
+.chip:hover {
+  border-color: var(--accent);
+  color: var(--text);
+}
+.chip:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.chip[aria-pressed='true'] {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+/* ---- probability bars */
+.probs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+.probs li {
+  display: grid;
+  grid-template-columns: minmax(84px, 128px) minmax(0, 1fr) 52px;
+  align-items: center;
+  gap: 10px;
+  font-size: 13.5px;
+  color: var(--text-2);
+}
+.probs li.best {
+  color: var(--text);
+  font-weight: 600;
+}
+.probs-track {
+  height: 9px;
+  border-radius: 999px;
+  background: var(--panel-3);
+  overflow: hidden;
+}
+.probs-track i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--text-3);
+  transition: width 700ms var(--ease-out);
+}
+.probs li.best .probs-track i {
+  background: linear-gradient(90deg, var(--accent-2), var(--accent));
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+.probs-val {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-size: 12.5px;
+}
+.big-label {
+  font: 700 26px/1.1 var(--font-display);
+  letter-spacing: -0.03em;
+  text-transform: capitalize;
+}
+
+/* ---- report */
+.report-title {
+  font-size: 18px;
+}
+.report-h {
+  font: 600 12px/1.2 var(--font-body);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 8px;
+}
+.report-list {
+  margin: 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 6px;
+  color: var(--text-2);
+}
+.report-reco {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  background: var(--accent-soft);
+  font-weight: 500;
+}
+.callout {
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 13px;
+  border: 1px solid color-mix(in srgb, var(--warn) 30%, transparent);
+  background: var(--warn-soft);
+  color: var(--text);
+}
+.callout.info {
+  border-color: color-mix(in srgb, var(--info) 30%, transparent);
+  background: var(--info-soft);
+}
+.callout.danger {
+  border-color: color-mix(in srgb, var(--danger) 30%, transparent);
+  background: var(--danger-soft);
+}
+
+/* ---- sequences, loci */
+.loci-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.locus-rows {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+.locus-row {
+  display: grid;
+  grid-template-columns: minmax(70px, auto) 1fr auto;
+  gap: 10px;
+  align-items: center;
+  padding: 7px 10px;
+  border-radius: 8px;
+  font-size: 12.5px;
+  border: 1px solid transparent;
+}
+.locus-row.full {
+  background: var(--safe-soft);
+  border-color: color-mix(in srgb, var(--safe) 20%, transparent);
+}
+.locus-row.part {
+  background: var(--warn-soft);
+  border-color: color-mix(in srgb, var(--warn) 20%, transparent);
+}
+.locus-row.none {
+  background: var(--danger-soft);
+  border-color: color-mix(in srgb, var(--danger) 20%, transparent);
+}
+.locus-row strong {
+  font-weight: 600;
+}
+
+/* ---- confusion matrix */
+.cm-wrap {
+  overflow-x: auto;
+}
+.cm {
+  border-collapse: separate;
+  border-spacing: 3px;
+  font-size: 12.5px;
+  font-variant-numeric: tabular-nums;
+}
+.cm th {
+  padding: 4px 8px;
+  font-weight: 600;
+  color: var(--text-3);
+  text-align: center;
+}
+.cm th.row-h {
+  text-align: right;
+}
+.cm td {
+  min-width: 52px;
+  padding: 8px;
+  text-align: center;
+  border-radius: 6px;
+  background: var(--panel-2);
+}
+.cm td.diag {
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* ---- sign-in */
+.auth-wrap {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 24px 16px;
+  position: relative;
+  overflow: hidden;
+}
+.auth-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(600px 400px at 50% 0%, var(--accent-soft), transparent 70%);
+  pointer-events: none;
+}
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  position: relative;
+}
+.plot-img {
+  width: 100%;
+  max-width: 640px;
+  border-radius: var(--radius-sm);
+  background: #fff;
+}
+
+@media (max-width: 640px) {
+  .locus-rows {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .probs li {
+    grid-template-columns: minmax(70px, 100px) minmax(0, 1fr) 46px;
+  }
+}
+
+.filedrop-thumb {
+  margin-top: 8px;
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.history-search {
+  width: min(100%, 280px);
+}
+
+/* ---- landing visuals */
+.patch-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 4px;
+}
+.patch-grid i {
+  aspect-ratio: 1;
+  border-radius: 4px;
+  background: var(--panel-3);
+  border: 1px solid var(--border);
+}
+.patch-grid i.masked {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+.patch-legend {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--text-2);
+}
+.patch-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.patch-legend i {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  background: var(--panel-3);
+  border: 1px solid var(--border-strong);
+}
+.patch-legend i.masked {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+.flow {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+.flow li {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  font-size: 14px;
+  color: var(--text-2);
+}
+.flow-tag {
+  flex-shrink: 0;
+  min-width: 96px;
+  text-align: center;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 11.5px;
+  font-weight: 600;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.table td.num {
+  white-space: nowrap;
+}
+
+/* two-column workspaces; they collapse to one column with the kit's .split rule at 1100px */
+.split-mri {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.55fr);
+}
+.split-dna {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+}
+.split-str {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+}
+@media (max-width: 1100px) {
+  .split-mri,
+  .split-dna,
+  .split-str {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.l-nav-inner {
+  flex-wrap: nowrap;
+}

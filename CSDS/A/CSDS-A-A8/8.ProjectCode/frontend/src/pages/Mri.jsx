@@ -1,132 +1,266 @@
-import { useEffect, useMemo, useState } from 'react'
-import { ImagePlus, Play } from 'lucide-react'
-import api, { errorText } from '../api.js'
-import { ErrorBox, PageTitle, ReportCard, Spinner, Stat } from '../components/Ui.jsx'
+import { useMemo, useState } from 'react'
+import { Activity, Brain, ChevronLeft, ChevronRight, Crosshair, Gauge, Layers, Maximize2, Percent, Play, Ruler, Sparkles } from 'lucide-react'
+import { api, sampleUrl } from '../lib/api'
+import { useAsync } from '../lib/useAsync'
+import { fixed, num } from '../lib/format'
+import { Badge, Button, Card, CardHeader, EmptyState, FileDrop, Input, PageHeader, Select, Skeleton, StatCard, Tabs, useToast } from '../components/ui'
+import { Figure, LoadError, ReportCard } from '../components/bio'
+import { FadeIn, Stagger } from '../components/motion'
+
+const PAGE = 12
+const MAX_UPLOAD = 10 * 1024 * 1024
 
 export default function Mri() {
-  const [models, setModels] = useState([])
-  const [samples, setSamples] = useState([])
-  const [model, setModel] = useState('jepa_10')
-  const [spacing, setSpacing] = useState(1.0)
-  const [file, setFile] = useState(null)
+  const toast = useToast()
+  const models = useAsync(() => api.get('/mri/models'), [])
+  const samples = useAsync(() => api.get('/mri/samples'), [])
+
+  const [model, setModel] = useState('')
+  const [spacing, setSpacing] = useState('1.0')
+  const [upload, setUpload] = useState(null)
   const [sample, setSample] = useState(null)
   const [page, setPage] = useState(0)
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
-  const [result, setResult] = useState(null)
+  const [view, setView] = useState('overlay')
+  const [phase, setPhase] = useState({ loading: false, error: null, result: null })
+  const [dropKey, setDropKey] = useState(0)
 
-  useEffect(() => {
-    Promise.all([api.get('/mri/models'), api.get('/mri/samples')])
-      .then(([m, s]) => { setModels(m.data); setSamples(s.data) })
-      .catch((e) => setError(errorText(e)))
-  }, [])
+  const modelList = models.data || []
+  const available = modelList.filter((m) => m.available)
+  const activeModel = model || available.find((m) => m.key === 'jepa_10')?.key || available[0]?.key || ''
+  const sampleList = samples.data || []
+  const pageItems = sampleList.slice(page * PAGE, page * PAGE + PAGE)
+  const pages = Math.max(1, Math.ceil(sampleList.length / PAGE))
 
-  const preview = useMemo(() => (file ? URL.createObjectURL(file) : sample ? `/api/mri/samples/${sample}` : null), [file, sample])
-  const pageItems = samples.slice(page * 12, page * 12 + 12)
+  const spacingNum = Number(spacing)
+  const spacingError = !(spacingNum >= 0.05 && spacingNum <= 5) ? 'Enter a value between 0.05 and 5 mm per pixel.' : ''
+  const preview = useMemo(() => (upload ? upload.url : sample ? sampleUrl(sample) : null), [upload, sample])
+  const hasInput = !!(upload || sample)
+  const modelsReady = models.data && available.length > 0
+
+  const pickSample = (name) => {
+    setSample(name)
+    setUpload(null)
+    setDropKey((k) => k + 1)
+    setPhase({ loading: false, error: null, result: null })
+  }
+  const pickUpload = (info) => {
+    setUpload(info)
+    if (info) setSample(null)
+    setPhase({ loading: false, error: null, result: null })
+  }
 
   const run = async () => {
-    setLoading(true)
-    setError('')
-    setResult(null)
+    setPhase({ loading: true, error: null, result: null })
+    setView('overlay')
     try {
-      let data
-      if (file) {
-        const fd = new FormData()
-        fd.append('file', file)
-        fd.append('model', model)
-        fd.append('pixel_spacing_mm', spacing)
-        data = (await api.post('/mri/segment', fd)).data
+      let result
+      if (upload) {
+        const form = new FormData()
+        form.append('file', upload.file)
+        form.append('model', activeModel)
+        form.append('pixel_spacing_mm', String(spacingNum))
+        result = await api.upload('/mri/segment', form)
       } else {
-        data = (await api.post('/mri/segment-sample', { name: sample, model, pixel_spacing_mm: Number(spacing) })).data
+        result = await api.post('/mri/segment-sample', { name: sample, model: activeModel, pixel_spacing_mm: spacingNum })
       }
-      setResult(data)
-    } catch (e) {
-      setError(errorText(e))
-    } finally {
-      setLoading(false)
+      setPhase({ loading: false, error: null, result })
+      toast({ title: result.tumour_detected ? 'Tumour region segmented' : 'No tumour region found', message: 'The analysis was saved to your history.' })
+    } catch (error) {
+      setPhase({ loading: false, error, result: null })
     }
   }
 
+  const { loading, error, result } = phase
+  const firstTumour = sampleList.find((s) => s.tumour_pixels > 0)
+
   return (
-    <div>
-      <PageTitle title="MRI analysis" subtitle="Upload a brain-MRI slice (FLAIR / 3-channel PNG, JPG or TIF) or pick a sample slice to get the tumour mask, its area and a structured report." />
-      <div className="grid gap-5 lg:grid-cols-3">
-        <div className="card space-y-4 lg:col-span-1">
+    <div className="container">
+      <PageHeader
+        title="MRI analysis"
+        description="Upload a brain-MRI slice or pick a held-out sample to get the tumour mask, its area and a structured report from the JEPA-pre-trained segmenter."
+      />
+      <div className="split split-mri">
+        <Card pad className="stack" style={{ gap: 18 }}>
+          {models.loading ? (
+            <Skeleton height={44} />
+          ) : models.error ? (
+            <LoadError title="Could not load the models" error={models.error} onRetry={models.reload} />
+          ) : (
+            <>
+              {!modelsReady && (
+                <p className="callout danger" role="alert">
+                  No trained segmentation model was found on the server, so slices cannot be analysed yet. Train the models with <code>ml/train_mri.py</code> and
+                  copy the <code>mri_seg_*.pt</code> files into <code>models/</code>.
+                </p>
+              )}
+              <Select
+                label="Segmentation model"
+                value={activeModel}
+                onChange={(e) => setModel(e.target.value)}
+                options={modelList.map((m) => ({ value: m.key, label: `${m.label}${m.available ? '' : ' (not trained)'}` }))}
+                hint={modelsReady ? `${available.length} of ${modelList.length} models available.` : undefined}
+              />
+            </>
+          )}
+          <Input
+            label="Pixel spacing (mm per pixel)"
+            type="number"
+            step="0.01"
+            min="0.05"
+            max="5"
+            inputMode="decimal"
+            value={spacing}
+            onChange={(e) => setSpacing(e.target.value)}
+            error={spacingError}
+            hint="Used to convert the tumour area from pixels to mm²."
+          />
           <div>
-            <label className="label">Segmentation model</label>
-            <select className="input" value={model} onChange={(e) => setModel(e.target.value)}>
-              {models.map((m) => <option key={m.key} value={m.key} disabled={!m.available}>{m.label}{m.available ? '' : ' (not trained)'}</option>)}
-            </select>
+            <span className="field-label" style={{ display: 'block', marginBottom: 7 }}>
+              Upload a slice
+            </span>
+            <FileDrop
+              binary
+              accept=".png,.jpg,.jpeg,.tif,.tiff"
+              label="Drop a slice here or click to browse"
+              hint="PNG, JPG or TIF, up to 10 MB"
+              maxBytes={MAX_UPLOAD}
+              resetKey={dropKey}
+              onFile={pickUpload}
+            />
           </div>
           <div>
-            <label className="label">Pixel spacing (mm per pixel)</label>
-            <input className="input" type="number" step="0.01" min="0.05" max="5" value={spacing} onChange={(e) => setSpacing(e.target.value)} />
-          </div>
-          <div>
-            <label className="label">Upload a slice</label>
-            <label className="flex cursor-pointer items-center justify-center gap-2 rounded-lg border-2 border-dashed border-slate-300 p-4 text-sm text-slate-500 hover:border-teal-400">
-              <ImagePlus size={18} /> {file ? file.name : 'Choose image'}
-              <input type="file" accept=".png,.jpg,.jpeg,.tif,.tiff" className="hidden"
-                onChange={(e) => { setFile(e.target.files[0] || null); setSample(null); setResult(null) }} />
-            </label>
-          </div>
-          <div>
-            <div className="mb-1 flex items-center justify-between">
-              <span className="label mb-0">Or pick a sample slice ({samples.length})</span>
-              <div className="flex gap-1 text-xs">
-                <button className="rounded px-2 py-0.5 hover:bg-slate-100 disabled:opacity-40" disabled={page === 0} onClick={() => setPage(page - 1)}>Prev</button>
-                <button className="rounded px-2 py-0.5 hover:bg-slate-100 disabled:opacity-40" disabled={(page + 1) * 12 >= samples.length} onClick={() => setPage(page + 1)}>Next</button>
+            <div className="pager">
+              <span className="field-label">Or pick a sample slice{sampleList.length ? ` (${sampleList.length})` : ''}</span>
+              <div className="row" style={{ gap: 4 }}>
+                <Button size="sm" variant="ghost" icon={ChevronLeft} aria-label="Previous samples" disabled={page === 0} onClick={() => setPage(page - 1)} />
+                <span className="faint" aria-live="polite">
+                  {page + 1}/{pages}
+                </span>
+                <Button size="sm" variant="ghost" icon={ChevronRight} aria-label="Next samples" disabled={page >= pages - 1} onClick={() => setPage(page + 1)} />
               </div>
             </div>
-            <div className="grid grid-cols-4 gap-1.5">
-              {pageItems.map((s) => (
-                <button key={s.file} onClick={() => { setSample(s.file); setFile(null); setResult(null) }}
-                  className={`relative overflow-hidden rounded border-2 ${sample === s.file ? 'border-teal-500' : 'border-transparent'}`}
-                  title={`${s.file} - ${s.tumour_pixels ? 'tumour in ground truth' : 'no tumour in ground truth'}`}>
-                  <img src={`/api/mri/samples/${s.file}`} alt={s.file} className="aspect-square w-full object-cover" loading="lazy" />
-                  {s.tumour_pixels > 0 && <span className="absolute right-0.5 top-0.5 h-2 w-2 rounded-full bg-red-500" />}
-                </button>
-              ))}
-            </div>
-            <p className="mt-1 text-xs text-slate-400">Sample data: held-out LGG slices; red dot = tumour in the expert mask.</p>
-          </div>
-          <button className="btn w-full" onClick={run} disabled={loading || (!file && !sample)}>
-            {loading ? <Spinner text="Segmenting and writing report..." /> : <><Play size={16} /> Analyse slice</>}
-          </button>
-          <ErrorBox error={error} />
-        </div>
-
-        <div className="space-y-5 lg:col-span-2">
-          <div className="card">
-            <div className="grid gap-4 sm:grid-cols-2">
-              <Figure title="Input slice" src={preview} />
-              <Figure title="Tumour mask overlay" src={result?.overlay_png} placeholder={loading ? 'Running model...' : 'Run the analysis to see the mask'} />
-            </div>
-            {result && (
-              <div className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-4">
-                <Stat label="Tumour detected" value={result.tumour_detected ? 'Yes' : 'No'} />
-                <Stat label="Area" value={`${result.area_mm2} mm²`} hint={`${result.area_pixels} px`} />
-                <Stat label="Share of brain" value={`${result.percent_of_brain}%`} />
-                <Stat label="Mean confidence" value={result.mean_confidence} hint={result.location} />
-                {result.max_extent_mm && <Stat label="Max extent" value={`${result.max_extent_mm} mm`} />}
-                {result.ground_truth && <Stat label="Dice vs expert mask" value={result.ground_truth.dice} hint={`IoU ${result.ground_truth.iou}`} />}
-                <Stat label="Model test Dice" value={result.model_test_dice} hint={result.model_label} />
+            {samples.loading ? (
+              <div className="thumbs" aria-busy="true">
+                {Array.from({ length: 8 }).map((_, i) => (
+                  <Skeleton key={i} height="auto" style={{ aspectRatio: '1' }} radius={8} />
+                ))}
+              </div>
+            ) : samples.error ? (
+              <LoadError title="Could not load sample slices" error={samples.error} onRetry={samples.reload} />
+            ) : sampleList.length === 0 ? (
+              <p className="faint">No sample slices are installed on the server.</p>
+            ) : (
+              <div className="thumbs">
+                {pageItems.map((s, i) => (
+                  <button
+                    key={s.file}
+                    type="button"
+                    className="thumb"
+                    aria-pressed={sample === s.file}
+                    aria-label={`Sample slice ${page * PAGE + i + 1}${s.tumour_pixels ? ', tumour in the expert mask' : ', no tumour in the expert mask'}`}
+                    title={s.tumour_pixels ? 'Tumour in the expert mask' : 'No tumour in the expert mask'}
+                    onClick={() => pickSample(s.file)}
+                  >
+                    <img src={sampleUrl(s.file)} alt="" loading="lazy" />
+                    {s.tumour_pixels > 0 && <span className="thumb-dot" />}
+                  </button>
+                ))}
               </div>
             )}
+            <p className="faint" style={{ marginTop: 8 }}>
+              Held-out LGG slices. A red dot means the expert mask contains a tumour.
+            </p>
           </div>
-          {result && <ReportCard report={result.report} />}
-        </div>
-      </div>
-    </div>
-  )
-}
+          <Button variant="primary" size="lg" icon={Play} loading={loading} disabled={!hasInput || !modelsReady || !!spacingError || !activeModel} onClick={run}>
+            {loading ? 'Segmenting and writing the report…' : 'Analyse slice'}
+          </Button>
+          {!hasInput && !loading && <p className="faint">Choose a slice to enable the analysis.</p>}
+        </Card>
 
-function Figure({ title, src, placeholder = 'No image selected' }) {
-  return (
-    <div>
-      <div className="label">{title}</div>
-      <div className="flex aspect-square items-center justify-center overflow-hidden rounded-lg bg-slate-900">
-        {src ? <img src={src} alt={title} className="h-full w-full object-contain" /> : <span className="px-4 text-center text-sm text-slate-400">{placeholder}</span>}
+        <div className="stack">
+          <Card pad>
+            <div className="row" style={{ justifyContent: 'space-between', marginBottom: 14 }}>
+              <h2 style={{ fontSize: 16 }}>Segmentation</h2>
+              {result && (
+                <Tabs
+                  label="Result view"
+                  value={view}
+                  onChange={setView}
+                  tabs={[
+                    { value: 'overlay', label: 'Overlay', icon: Layers },
+                    { value: 'mask', label: 'Mask', icon: Maximize2 },
+                  ]}
+                />
+              )}
+            </div>
+            <div className="grid grid-2">
+              <Figure title="Input slice" src={preview} placeholder="Pick or upload a slice to preview it here." />
+              <Figure
+                title={view === 'mask' ? 'Predicted mask' : 'Tumour overlay'}
+                src={view === 'mask' ? result?.mask_png : result?.overlay_png}
+                loading={loading}
+                placeholder={error ? 'The analysis failed - see the message below.' : 'Run the analysis to see the mask.'}
+              />
+            </div>
+            {result && (
+              <p className="faint" style={{ marginTop: 10 }}>
+                Yellow outline and red tint mark the predicted tumour region. Model: {result.model_label}.
+              </p>
+            )}
+          </Card>
+
+          {error && <LoadError title="The analysis failed" error={error} onRetry={hasInput ? run : undefined} hint={error.status === 400 ? 'Check the image and the model selection, then try again.' : undefined} />}
+
+          {loading && (
+            <div className="grid grid-4" aria-busy="true" aria-label="Running analysis">
+              {Array.from({ length: 4 }).map((_, i) => (
+                <Skeleton key={i} height={112} radius={12} />
+              ))}
+            </div>
+          )}
+
+          {!result && !loading && !error && (
+            <Card>
+              <EmptyState
+                icon={Brain}
+                title="No analysis yet"
+                actions={
+                  firstTumour && modelsReady ? (
+                    <Button icon={Sparkles} onClick={() => pickSample(firstTumour.file)}>
+                      Try a slice that contains a tumour
+                    </Button>
+                  ) : undefined
+                }
+              >
+                Pick a slice on the left and run the analysis. You get the tumour overlay, area in px and mm², the share of the brain it covers and a structured report.
+              </EmptyState>
+            </Card>
+          )}
+
+          {result && (
+            <FadeIn className="stack">
+              <Stagger className="grid grid-4">
+                <StatCard label="Tumour detected" value={result.tumour_detected ? 'Yes' : 'No'} icon={Activity} tone={result.tumour_detected ? 'danger' : undefined} delta={result.location} />
+                <StatCard label="Area" value={result.area_mm2} format={(v) => `${num(v, 1)} mm²`} icon={Ruler} delta={`${num(result.area_pixels)} px`} />
+                <StatCard label="Share of brain" value={result.percent_of_brain} format={(v) => `${num(v, 2)}%`} icon={Percent} />
+                <StatCard label="Mean confidence" value={fixed(result.mean_confidence, 3)} icon={Gauge} delta={`peak probability ${fixed(result.max_probability, 3)}`} />
+              </Stagger>
+              <div className="grid grid-3">
+                {result.max_extent_mm !== undefined && <StatCard label="Max extent" value={`${num(result.max_extent_mm, 1)} mm`} icon={Crosshair} tone="info" />}
+                {result.ground_truth && (
+                  <StatCard label="Dice vs expert mask" value={fixed(result.ground_truth.dice, 3)} icon={Layers} tone="info" delta={`IoU ${fixed(result.ground_truth.iou, 3)}`} />
+                )}
+                <StatCard label="Model test Dice" value={fixed(result.model_test_dice, 3)} icon={Gauge} tone="info" delta="held-out slices" />
+              </div>
+              <div className="row">
+                <Badge tone="info">Image {result.image_size?.join(' × ')} px</Badge>
+                <Badge>Spacing {result.pixel_spacing_mm} mm/px</Badge>
+                {result.analysis_id && <Badge tone="safe">Saved to history #{result.analysis_id}</Badge>}
+              </div>
+              <ReportCard report={result.report} />
+            </FadeIn>
+          )}
+        </div>
       </div>
     </div>
   )

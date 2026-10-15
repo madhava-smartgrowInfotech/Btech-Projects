@@ -1,106 +1,206 @@
-import { useEffect, useState } from 'react'
-import { Play } from 'lucide-react'
-import api, { errorText } from '../api.js'
-import { ErrorBox, PageTitle, ReportCard, Spinner, Stat } from '../components/Ui.jsx'
-
-function Probs({ probs, best }) {
-  return (
-    <div className="space-y-1.5">
-      {Object.entries(probs).map(([k, v]) => (
-        <div key={k} className="flex items-center gap-2 text-sm">
-          <span className={`w-36 shrink-0 ${k === best ? 'font-semibold text-slate-900' : 'text-slate-600'}`}>{k}</span>
-          <div className="h-2.5 flex-1 rounded bg-slate-100"><div className={`h-2.5 rounded ${k === best ? 'bg-teal-600' : 'bg-slate-300'}`} style={{ width: `${v * 100}%` }} /></div>
-          <span className="w-12 text-right text-xs text-slate-500">{(v * 100).toFixed(1)}%</span>
-        </div>
-      ))}
-    </div>
-  )
-}
+import { useState } from 'react'
+import { Dna as DnaIcon, FlaskConical, Layers, Percent, Play, Repeat, Ruler, X } from 'lucide-react'
+import { api } from '../lib/api'
+import { useAsync } from '../lib/useAsync'
+import { fixed, num } from '../lib/format'
+import { Badge, Button, Card, CardHeader, EmptyState, KeyValueList, PageHeader, Skeleton, StatCard, Table, Textarea, useToast } from '../components/ui'
+import { LoadError, ProbBars, ReportCard } from '../components/bio'
+import { FadeIn, Stagger } from '../components/motion'
 
 export default function Dna() {
-  const [samples, setSamples] = useState([])
+  const toast = useToast()
+  const samples = useAsync(() => api.get('/dna/samples'), [])
   const [seq, setSeq] = useState('')
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
-  const [res, setRes] = useState(null)
+  const [picked, setPicked] = useState(null)
+  const [phase, setPhase] = useState({ loading: false, error: null, res: null })
 
-  useEffect(() => {
-    api.get('/dna/samples').then((r) => setSamples(r.data)).catch((e) => setError(errorText(e)))
-  }, [])
+  const sampleList = samples.data || []
+  const clean = seq.trim()
 
   const run = async () => {
-    setLoading(true)
-    setError('')
-    setRes(null)
+    setPhase({ loading: true, error: null, res: null })
     try {
-      setRes((await api.post('/dna/classify', { sequence: seq })).data)
-    } catch (e) {
-      setError(errorText(e))
-    } finally {
-      setLoading(false)
+      const res = await api.post('/dna/classify', { sequence: clean })
+      setPhase({ loading: false, error: null, res })
+      toast({ title: 'Sequence classified', message: 'The analysis was saved to your history.' })
+    } catch (error) {
+      setPhase({ loading: false, error, res: null })
     }
   }
 
+  const choose = (s) => {
+    setSeq(s.sequence)
+    setPicked(s.name)
+    setPhase({ loading: false, error: null, res: null })
+  }
+
+  const { loading, error, res } = phase
+
   return (
-    <div>
-      <PageTitle title="DNA analysis" subtitle="Paste a DNA sequence (raw bases or FASTA). The k-mer JEPA encoder classifies its STR repeat type and organism class; an exact scan lists tandem repeats." />
-      <div className="grid gap-5 lg:grid-cols-3">
-        <div className="card space-y-4">
+    <div className="container">
+      <PageHeader
+        title="DNA analysis"
+        description="Paste a DNA sequence (raw bases or FASTA). The k-mer JEPA encoder classifies its STR repeat type and organism class, and an exact scan lists the tandem repeats."
+      />
+      <div className="split split-dna">
+        <Card pad className="stack" style={{ gap: 16 }}>
+          <Textarea
+            label="Sequence"
+            mono
+            rows={9}
+            value={seq}
+            onChange={(e) => {
+              setSeq(e.target.value)
+              setPicked(null)
+            }}
+            placeholder={'>read_1\nACGTTGCA…'}
+            spellCheck={false}
+            hint="A, C, G, T and N only. 20 to 20,000 bases; FASTA header optional."
+          />
           <div>
-            <label className="label">Sequence</label>
-            <textarea className="input h-48 font-mono text-xs" value={seq} onChange={(e) => setSeq(e.target.value)} placeholder=">read_1&#10;ACGTTGCA..." />
+            <span className="field-label" style={{ display: 'block', marginBottom: 8 }}>
+              Sample sequences
+            </span>
+            {samples.loading ? (
+              <div className="chips" aria-busy="true">
+                {[120, 150, 140, 130].map((w, i) => (
+                  <Skeleton key={i} width={w} height={30} radius={999} />
+                ))}
+              </div>
+            ) : samples.error ? (
+              <LoadError title="Could not load the samples" error={samples.error} onRetry={samples.reload} />
+            ) : (
+              <div className="chips">
+                {sampleList.map((s) => (
+                  <button key={s.name} type="button" className="chip" aria-pressed={picked === s.name} onClick={() => choose(s)}>
+                    {s.name}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
-          <div>
-            <label className="label">Sample sequences</label>
-            <div className="flex flex-wrap gap-1.5">
-              {samples.map((s) => (
-                <button key={s.name} className="rounded-full bg-slate-100 px-2.5 py-1 text-xs text-slate-700 hover:bg-teal-50" onClick={() => { setSeq(s.sequence); setRes(null) }}>{s.name}</button>
-              ))}
-            </div>
+          <div className="row">
+            <Button variant="primary" size="lg" icon={Play} loading={loading} disabled={!clean} onClick={run} style={{ flex: 1 }}>
+              {loading ? 'Classifying and writing the report…' : 'Classify sequence'}
+            </Button>
+            <Button
+              icon={X}
+              disabled={!seq || loading}
+              onClick={() => {
+                setSeq('')
+                setPicked(null)
+                setPhase({ loading: false, error: null, res: null })
+              }}
+            >
+              Clear
+            </Button>
           </div>
-          <button className="btn w-full" disabled={loading || !seq.trim()} onClick={run}>
-            {loading ? <Spinner text="Classifying and writing report..." /> : <><Play size={16} /> Classify sequence</>}
-          </button>
-          <ErrorBox error={error} />
-        </div>
-        <div className="space-y-5 lg:col-span-2">
-          {!res && !loading && <div className="card text-sm text-slate-500">Results appear here.</div>}
-          {res && (
+        </Card>
+
+        <div className="stack">
+          {!res && !loading && !error && (
+            <Card>
+              <EmptyState icon={DnaIcon} title="No sequence analysed yet">
+                Paste a sequence or click a sample, then classify it. You get the repeat type, the organism class, an exact tandem-repeat scan and a structured report.
+              </EmptyState>
+            </Card>
+          )}
+
+          {error && <LoadError title="The sequence could not be analysed" error={error} onRetry={clean ? run : undefined} hint={error.status === 400 ? 'Fix the sequence or check that the DNA models are installed on the server, then try again.' : undefined} />}
+
+          {loading && (
             <>
-              <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-                <Stat label="Length" value={`${res.sequence.length} bp`} hint={res.sequence.id} />
-                <Stat label="GC content" value={`${res.sequence.gc_percent}%`} />
-                <Stat label="Windows analysed" value={res.sequence.windows_analysed} hint="99 bp, 96 4-mer tokens each" />
-                <Stat label="Exact repeats found" value={res.repeat_scan.length} />
+              <div className="grid grid-4" aria-busy="true" aria-label="Running analysis">
+                {[0, 1, 2, 3].map((i) => (
+                  <Skeleton key={i} height={112} radius={12} />
+                ))}
               </div>
-              <div className="grid gap-5 md:grid-cols-2">
-                <div className="card">
-                  <h2 className="font-semibold text-slate-900">STR repeat type</h2>
-                  <p className="mb-3 text-xs text-slate-500">Strongest window #{res.repeat_type.strongest_window} · model held-out accuracy {res.repeat_type.model_test_accuracy}</p>
-                  <div className="mb-3 text-2xl font-semibold text-teal-700">{res.repeat_type.prediction}</div>
-                  <Probs probs={res.repeat_type.probabilities} best={res.repeat_type.prediction} />
-                </div>
-                <div className="card">
-                  <h2 className="font-semibold text-slate-900">Organism class</h2>
-                  <p className="mb-3 text-xs text-slate-500">Model held-out accuracy {res.organism_class.model_test_accuracy} (chance {res.organism_class.chance_accuracy})</p>
-                  <div className="mb-3 text-2xl font-semibold text-slate-700">{res.organism_class.prediction}</div>
-                  <Probs probs={res.organism_class.probabilities} best={res.organism_class.prediction} />
-                  <p className="mt-3 rounded bg-amber-50 p-2 text-xs text-amber-800">{res.organism_class.note}</p>
-                </div>
-              </div>
-              {res.repeat_scan.length > 0 && (
-                <div className="card overflow-x-auto">
-                  <h2 className="mb-2 font-semibold text-slate-900">Tandem repeats (exact scan)</h2>
-                  <table className="w-full text-left text-sm">
-                    <thead className="text-xs uppercase text-slate-500"><tr><th className="py-1">Motif</th><th>Period</th><th>Position</th><th>Copies</th></tr></thead>
-                    <tbody className="divide-y divide-slate-100">
-                      {res.repeat_scan.map((r, i) => <tr key={i}><td className="py-1 font-mono">{r.motif}</td><td>{r.period}</td><td>{r.start}-{r.end}</td><td>{r.copies}</td></tr>)}
-                    </tbody>
-                  </table>
-                </div>
-              )}
-              <ReportCard report={res.report} />
+              <Skeleton height={220} radius={12} />
             </>
+          )}
+
+          {res && (
+            <FadeIn className="stack">
+              <Stagger className="grid grid-4">
+                <StatCard label="Length" value={res.sequence.length} format={(v) => `${num(v)} bp`} icon={Ruler} delta={res.sequence.id} />
+                <StatCard label="GC content" value={res.sequence.gc_percent} format={(v) => `${num(v, 1)}%`} icon={Percent} />
+                <StatCard label="Windows analysed" value={res.sequence.windows_analysed} icon={Layers} delta="99 bp, 96 4-mer tokens each" />
+                <StatCard label="Exact repeats found" value={res.repeat_scan.length} icon={Repeat} tone="info" />
+              </Stagger>
+
+              <div className="grid grid-2">
+                <Card>
+                  <CardHeader
+                    title="STR repeat type"
+                    subtitle={`Strongest window #${res.repeat_type.strongest_window} · model held-out accuracy ${fixed(res.repeat_type.model_test_accuracy)}`}
+                  />
+                  <div className="card-body stack" style={{ gap: 14 }}>
+                    <div className="row" style={{ justifyContent: 'space-between' }}>
+                      <span className="big-label" style={{ color: 'var(--accent)' }}>
+                        {res.repeat_type.prediction}
+                      </span>
+                      <Badge tone="info">confidence {fixed(res.repeat_type.confidence, 2)}</Badge>
+                    </div>
+                    <ProbBars probs={res.repeat_type.probabilities} best={res.repeat_type.prediction} />
+                  </div>
+                </Card>
+                <Card>
+                  <CardHeader
+                    title="Organism class"
+                    subtitle={`Model held-out accuracy ${fixed(res.organism_class.model_test_accuracy)} (chance ${fixed(res.organism_class.chance_accuracy)})`}
+                  />
+                  <div className="card-body stack" style={{ gap: 14 }}>
+                    <div className="row" style={{ justifyContent: 'space-between' }}>
+                      <span className="big-label">{res.organism_class.prediction}</span>
+                      <Badge tone="warn">low reliability</Badge>
+                    </div>
+                    <ProbBars probs={res.organism_class.probabilities} best={res.organism_class.prediction} />
+                    <p className="callout">{res.organism_class.note}</p>
+                  </div>
+                </Card>
+              </div>
+
+              <Card>
+                <CardHeader title="Tandem repeats (exact scan)" subtitle="Motifs of 2-6 bases repeated at least 4 times in a row." />
+                <Table
+                  caption="Tandem repeats found by the exact scan"
+                  rows={res.repeat_scan}
+                  rowKey={(r) => `${r.start}-${r.motif}`}
+                  pageSize={8}
+                  empty={
+                    <EmptyState icon={FlaskConical} title="No exact tandem repeats">
+                      This sequence has no 2-6 base motif repeated four or more times in a row.
+                    </EmptyState>
+                  }
+                  columns={[
+                    { key: 'motif', label: 'Motif', render: (r) => <code>{r.motif}</code> },
+                    { key: 'period', label: 'Period', num: true },
+                    { key: 'start', label: 'Position', num: true, sortValue: (r) => r.start, render: (r) => `${r.start}-${r.end}` },
+                    { key: 'copies', label: 'Copies', num: true },
+                  ]}
+                />
+              </Card>
+
+              <Card>
+                <CardHeader title="Sequence details" />
+                <div className="card-body">
+                  <KeyValueList
+                    items={[
+                      ['Identifier', res.sequence.id],
+                      ['Base counts', Object.entries(res.sequence.counts).map(([b, n]) => `${b} ${num(n)}`).join(' · ')],
+                      ['Reverse complement (first 60)', <code key="rc" className="break">{res.sequence.reverse_complement_preview}</code>],
+                    ]}
+                  />
+                  {res.analysis_id && (
+                    <p className="faint" style={{ marginTop: 12 }}>
+                      Saved to history #{res.analysis_id}.
+                    </p>
+                  )}
+                </div>
+              </Card>
+
+              <ReportCard report={res.report} />
+            </FadeIn>
           )}
         </div>
       </div>

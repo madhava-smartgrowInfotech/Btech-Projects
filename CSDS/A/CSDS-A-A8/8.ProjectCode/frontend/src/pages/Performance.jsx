@@ -1,7 +1,13 @@
-import { useEffect, useState } from 'react'
-import api, { errorText } from '../api.js'
-import { BarChart, ErrorBox, PageTitle, Spinner, Stat } from '../components/Ui.jsx'
-import { METHODS } from './LabelEfficiency.jsx'
+import { Link } from 'react-router-dom'
+import { ArrowRight, Brain, Dna, Fingerprint, Gauge, History as HistoryIcon, Target } from 'lucide-react'
+import { api } from '../lib/api'
+import { useAsync } from '../lib/useAsync'
+import { KIND, fixed, num, pct, when } from '../lib/format'
+import { Badge, Button, Card, CardHeader, EmptyState, PageHeader, Skeleton, StatCard, Table } from '../components/ui'
+import { ChartCard, GroupedBarChart, Legend, useChartColors } from '../components/charts'
+import { LoadError } from '../components/bio'
+import { Stagger } from '../components/motion'
+import { MRI_METHODS, TrainHint } from './LabelEfficiency'
 
 const DNA_METHODS = [
   { key: 'jepa', label: 'k-mer JEPA pre-training (BioSight)' },
@@ -9,109 +15,222 @@ const DNA_METHODS = [
   { key: 'scratch', label: 'From scratch' },
 ]
 
-function Table({ head, rows }) {
+function Missing({ icon, title, command }) {
   return (
-    <div className="overflow-x-auto">
-      <table className="w-full text-left text-sm">
-        <thead className="text-xs uppercase text-slate-500"><tr>{head.map((h) => <th key={h} className="py-2 pr-3">{h}</th>)}</tr></thead>
-        <tbody className="divide-y divide-slate-100">{rows.map((r, i) => <tr key={i}>{r.map((c, j) => <td key={j} className="py-2 pr-3">{c ?? '-'}</td>)}</tr>)}</tbody>
-      </table>
-    </div>
+    <Card>
+      <CardHeader title={title} />
+      <EmptyState icon={icon} title="Not available yet">
+        This result file is not on the server. <TrainHint command={command} />
+      </EmptyState>
+    </Card>
+  )
+}
+
+function MriSection({ mri }) {
+  if (!mri) return <Missing icon={Brain} title="Brain-MRI segmentation" command="ml/train_mri.py --stage all" />
+  const ft = mri.finetune || {}
+  const rows = [10, 100].flatMap((p) => MRI_METHODS.filter((m) => ft[`${m.key}_${p}`]).map((m) => ({ ...ft[`${m.key}_${p}`], id: `${m.key}_${p}`, method: m, pct: p })))
+  return (
+    <Card>
+      <CardHeader title="Brain-MRI segmentation" subtitle="Test slices from unseen patients, against supervised and reconstruction baselines." actions={<Button as={Link} to="/app/label-efficiency" size="sm" variant="ghost" iconRight={ArrowRight}>Chart</Button>} />
+      <Table
+        caption="MRI segmentation runs"
+        rows={rows}
+        rowKey={(r) => r.id}
+        pageSize={8}
+        initialSort={{ key: 'dice', dir: 'desc' }}
+        rowClassName={(r) => (r.method.key === 'jepa' ? 'highlight' : '')}
+        columns={[
+          { key: 'method', label: 'Method', sortValue: (r) => r.method.label, render: (r) => r.method.label },
+          { key: 'pct', label: 'Masks', num: true, render: (r) => `${r.pct}%` },
+          { key: 'dice', label: 'Dice', num: true, render: (r) => fixed(r.dice) },
+          { key: 'iou', label: 'IoU', num: true, render: (r) => fixed(r.iou) },
+          { key: 'mean_dice_tumour_slices', label: 'Mean Dice (tumour slices)', num: true, hideSm: true, render: (r) => fixed(r.mean_dice_tumour_slices) },
+        ]}
+      />
+      {mri.pretrain && (
+        <div className="card-body grid grid-3" style={{ borderTop: '1px solid var(--border)' }}>
+          {Object.entries(mri.pretrain).map(([k, v]) => (
+            <div key={k}>
+              <div className="faint">{k.toUpperCase()} pre-training</div>
+              <strong>{v.epochs} epochs</strong>
+              <div className="faint">
+                final loss {fixed(v.history?.at(-1)?.loss, 4)} · {Math.round((v.seconds || 0) / 60)} min
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </Card>
+  )
+}
+
+function DnaSection({ dna }) {
+  const colors = useChartColors()
+  if (!dna) return <Missing icon={Dna} title="DNA encoder" command="ml/train_dna.py" />
+  const rep = dna.repeat || {}
+  const cm = rep.jepa_100?.confusion
+  const labels = rep.jepa_100?.labels || []
+  const palette = [colors.accent, colors.info, colors.violet]
+  const series = DNA_METHODS.map((m, i) => ({ key: m.key, label: m.label, color: palette[i] }))
+  const chartData = [10, 100].map((p) => ({ budget: `${p}% of labels`, ...Object.fromEntries(DNA_METHODS.map((m) => [m.key, rep[`${m.key}_${p}`]?.accuracy ?? null])) }))
+  const rows = [10, 100]
+    .flatMap((p) => DNA_METHODS.filter((m) => rep[`${m.key}_${p}`]).map((m) => ({ ...rep[`${m.key}_${p}`], id: `${m.key}_${p}`, name: m.label, budget: `${p}%` })))
+    .concat(rep.jepa_probe_100 ? [{ ...rep.jepa_probe_100, id: 'probe', name: 'JEPA encoder frozen (linear probe)', budget: '100%' }] : [])
+  const org = DNA_METHODS.filter((m) => dna.organism?.[`${m.key}_100`]).map((m) => ({ ...dna.organism[`${m.key}_100`], id: m.key, name: m.label }))
+  return (
+    <>
+      <ChartCard
+        title="DNA encoder - STR repeat-type accuracy"
+        subtitle={`5 classes (none, di-, tri-, tetra-, penta-nucleotide repeats); ${num(dna.pretrain_sequences)} unlabelled sequences for pre-training.`}
+        height={300}
+        legend={<Legend items={series.map((s) => ({ label: s.label, color: s.color }))} />}
+      >
+        <GroupedBarChart data={chartData} xKey="budget" series={series} valueFormat={(v) => (typeof v === 'number' ? v.toFixed(2) : v)} />
+      </ChartCard>
+      <Card>
+        <CardHeader title="Repeat-type runs" />
+        <Table
+          caption="DNA repeat-type classification runs"
+          rows={rows}
+          rowKey={(r) => r.id}
+          pageSize={8}
+          columns={[
+            { key: 'name', label: 'Method' },
+            { key: 'budget', label: 'Labels', num: true },
+            { key: 'accuracy', label: 'Accuracy', num: true, render: (r) => fixed(r.accuracy) },
+            { key: 'macro_f1', label: 'Macro F1', num: true, render: (r) => fixed(r.macro_f1) },
+            { key: 'labelled_sequences', label: 'Labelled sequences', num: true, hideSm: true, render: (r) => num(r.labelled_sequences) },
+          ]}
+        />
+        {cm && (
+          <div className="card-body cm-wrap" style={{ borderTop: '1px solid var(--border)' }}>
+            <div className="field-label" style={{ marginBottom: 8 }}>
+              Confusion matrix - JEPA, 100% labels (rows = true class)
+            </div>
+            <table className="cm">
+              <thead>
+                <tr>
+                  <th />
+                  {labels.map((l) => (
+                    <th key={l} scope="col">
+                      {l}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {cm.map((row, i) => (
+                  <tr key={labels[i] ?? i}>
+                    <th scope="row" className="row-h">
+                      {labels[i]}
+                    </th>
+                    {row.map((v, j) => (
+                      <td key={j} className={i === j ? 'diag' : undefined}>
+                        {v}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </Card>
+      {org.length > 0 && (
+        <Card>
+          <CardHeader title="DNA encoder - organism class" subtitle="Every method scores close to chance on held-out data: the class labels in this dataset are not predictable from the sequence." />
+          <Table
+            caption="Organism class runs"
+            rows={org}
+            rowKey={(r) => r.id}
+            columns={[
+              { key: 'name', label: 'Method' },
+              { key: 'accuracy', label: 'Accuracy', num: true, render: (r) => fixed(r.accuracy) },
+              { key: 'macro_f1', label: 'Macro F1', num: true, render: (r) => fixed(r.macro_f1) },
+              { key: 'chance_accuracy', label: 'Chance', num: true, render: (r) => fixed(r.chance_accuracy) },
+            ]}
+          />
+        </Card>
+      )}
+    </>
+  )
+}
+
+function StrSection({ ev }) {
+  const s = ev?.str
+  if (!s) return <Missing icon={Fingerprint} title="STR matching" command="ml/eval.py" />
+  return (
+    <Card>
+      <CardHeader title="STR matching - simulated casework queries" subtitle="Queries with drop-out and typing errors against the reference database." />
+      <div className="card-body">
+        <Stagger className="grid grid-4">
+          <StatCard label="Rank-1 identification" value={pct(s.rank1_accuracy)} icon={Target} delta={`${num(s.true_source_queries)} queries`} />
+          <StatCard label="Median log10 LR (true source)" value={fixed(s.median_log10_lr_true_source, 2)} icon={Gauge} tone="info" />
+          <StatCard label="Non-contributors with LR > 1" value={pct(s.non_contributor_lr_gt1_rate, 2)} icon={Fingerprint} tone="warn" delta={`${num(s.non_contributor_queries)} queries × database`} />
+          <StatCard label="Max log10 LR, non-contributor" value={fixed(s.max_log10_lr_non_contributor, 2)} icon={Gauge} tone="danger" />
+        </Stagger>
+      </div>
+    </Card>
   )
 }
 
 export default function Performance() {
-  const [m, setM] = useState(null)
-  const [hist, setHist] = useState([])
-  const [error, setError] = useState('')
-
-  useEffect(() => {
-    Promise.all([api.get('/metrics/all'), api.get('/history')])
-      .then(([a, h]) => { setM(a.data); setHist(h.data) })
-      .catch((e) => setError(errorText(e)))
-  }, [])
-
-  if (error) return <ErrorBox error={error} />
-  if (!m) return <Spinner text="Loading metrics..." />
-  const mri = m.mri || {}
-  const dna = m.dna || {}
-  const ev = m.eval || {}
-  const rep = dna.repeat || {}
-  const cm = rep.jepa_100?.confusion
+  const metrics = useAsync(() => api.get('/metrics/all'), [])
+  const hist = useAsync(() => api.get('/history'), [])
+  const m = metrics.data
 
   return (
-    <div className="space-y-5">
-      <PageTitle title="Model performance" subtitle="Held-out evaluation of every model in BioSight against supervised and reconstruction-based baselines." />
-
-      <div className="card">
-        <h2 className="mb-3 font-semibold text-slate-900">Brain-MRI segmentation (test slices from unseen patients)</h2>
-        <Table head={['Method', 'Masks', 'Dice', 'IoU', 'Mean Dice (tumour slices)']}
-          rows={[10, 100].flatMap((p) => METHODS.filter((x) => mri.finetune?.[`${x.key}_${p}`]).map((x) => {
-            const r = mri.finetune[`${x.key}_${p}`]
-            return [x.label, `${p}%`, r.dice, r.iou, r.mean_dice_tumour_slices]
-          }))} />
-        {mri.pretrain && (
-          <div className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-4">
-            {Object.entries(mri.pretrain).map(([k, v]) => (
-              <Stat key={k} label={`${k.toUpperCase()} pre-training`} value={`${v.epochs} epochs`} hint={`final loss ${v.history.at(-1).loss.toFixed(4)} · ${Math.round(v.seconds / 60)} min`} />
-            ))}
-          </div>
+    <div className="container">
+      <PageHeader title="Model performance" description="Held-out evaluation of every BioSight model against supervised and reconstruction-based baselines." />
+      <div className="stack">
+        {metrics.loading ? (
+          <>
+            <Skeleton height={300} radius={12} />
+            <Skeleton height={300} radius={12} />
+          </>
+        ) : metrics.error ? (
+          <LoadError title="Could not load the metrics" error={metrics.error} onRetry={metrics.reload} />
+        ) : (
+          <>
+            <MriSection mri={m.mri} />
+            <DnaSection dna={m.dna} />
+            <StrSection ev={m.eval} />
+          </>
         )}
-      </div>
 
-      <div className="card">
-        <h2 className="mb-1 font-semibold text-slate-900">DNA encoder - STR repeat-type classification</h2>
-        <p className="mb-3 text-xs text-slate-500">5 classes (none, di-, tri-, tetra-, penta-nucleotide repeats); {dna.pretrain_sequences} unlabelled sequences for pre-training.</p>
-        <BarChart format={(v) => v.toFixed(3)} legend={DNA_METHODS.map((x) => x.label)}
-          groups={[10, 100].map((p) => ({ label: `${p}% of labels`, bars: DNA_METHODS.map((x) => ({ name: x.label, value: rep[`${x.key}_${p}`]?.accuracy ?? null })) }))} />
-        <div className="mt-4">
-          <Table head={['Method', 'Labels', 'Accuracy', 'Macro F1', 'Labelled sequences']}
-            rows={[10, 100].flatMap((p) => DNA_METHODS.filter((x) => rep[`${x.key}_${p}`]).map((x) => {
-              const r = rep[`${x.key}_${p}`]
-              return [x.label, `${p}%`, r.accuracy, r.macro_f1, r.labelled_sequences]
-            })).concat(rep.jepa_probe_100 ? [['JEPA encoder frozen (linear probe)', '100%', rep.jepa_probe_100.accuracy, rep.jepa_probe_100.macro_f1, rep.jepa_probe_100.labelled_sequences]] : [])} />
-        </div>
-        {cm && (
-          <div className="mt-4 overflow-x-auto">
-            <div className="label">Confusion matrix - JEPA, 100% labels (rows = true)</div>
-            <table className="text-xs">
-              <thead><tr><th />{rep.jepa_100.labels.map((l) => <th key={l} className="px-2 py-1 font-medium text-slate-500">{l.slice(0, 5)}</th>)}</tr></thead>
-              <tbody>{cm.map((row, i) => (
-                <tr key={i}><td className="pr-2 font-medium text-slate-600">{rep.jepa_100.labels[i]}</td>
-                  {row.map((v, j) => <td key={j} className={`px-2 py-1 text-center ${i === j ? 'bg-teal-100 font-semibold' : ''}`}>{v}</td>)}</tr>
-              ))}</tbody>
-            </table>
-          </div>
-        )}
-      </div>
-
-      <div className="card">
-        <h2 className="mb-1 font-semibold text-slate-900">DNA encoder - organism class (Kaggle dataset)</h2>
-        <p className="mb-3 text-xs text-slate-500">All methods score close to chance on held-out data: the class labels in this dataset are not predictable from the sequence.</p>
-        <Table head={['Method', 'Accuracy', 'Macro F1', 'Chance']}
-          rows={DNA_METHODS.filter((x) => dna.organism?.[`${x.key}_100`]).map((x) => {
-            const r = dna.organism[`${x.key}_100`]
-            return [x.label, r.accuracy, r.macro_f1, r.chance_accuracy]
-          })} />
-      </div>
-
-      {ev.str && (
-        <div className="card">
-          <h2 className="mb-3 font-semibold text-slate-900">STR matching (simulated casework queries)</h2>
-          <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-            <Stat label="Rank-1 identification" value={`${(ev.str.rank1_accuracy * 100).toFixed(1)}%`} hint={`${ev.str.true_source_queries} queries with drop-out + errors`} />
-            <Stat label="Median log10 LR (true source)" value={ev.str.median_log10_lr_true_source} />
-            <Stat label="Non-contributors with LR > 1" value={`${(ev.str.non_contributor_lr_gt1_rate * 100).toFixed(2)}%`} hint={`${ev.str.non_contributor_queries} queries x database`} />
-            <Stat label="Max log10 LR non-contributor" value={ev.str.max_log10_lr_non_contributor} />
-          </div>
-        </div>
-      )}
-
-      <div className="card">
-        <h2 className="mb-3 font-semibold text-slate-900">Your recent analyses</h2>
-        {hist.length === 0 ? <p className="text-sm text-slate-500">No analyses yet.</p> : (
-          <Table head={['When', 'Type', 'Title']} rows={hist.slice(0, 15).map((h) => [new Date(h.created_at).toLocaleString(), h.kind.toUpperCase(), h.title])} />
-        )}
+        <Card>
+          <CardHeader
+            title="Your recent analyses"
+            actions={
+              <Button as={Link} to="/app/history" size="sm" variant="ghost" iconRight={ArrowRight}>
+                All history
+              </Button>
+            }
+          />
+          {hist.error ? (
+            <LoadError title="Could not load your history" error={hist.error} onRetry={hist.reload} />
+          ) : (
+            <Table
+              caption="Recent analyses"
+              rows={hist.data?.slice(0, 5)}
+              loading={hist.loading}
+              rowKey={(r) => r.id}
+              pageSize={5}
+              cards={false}
+              empty={
+                <EmptyState icon={HistoryIcon} title="No analyses yet" actions={<Button as={Link} to="/app/mri">Analyse an MRI slice</Button>}>
+                  Every MRI, DNA and STR analysis you run is saved here.
+                </EmptyState>
+              }
+              columns={[
+                { key: 'created_at', label: 'When', render: (r) => when(r.created_at) },
+                { key: 'kind', label: 'Type', render: (r) => <Badge tone={KIND[r.kind]?.tone}>{KIND[r.kind]?.label || r.kind}</Badge> },
+                { key: 'title', label: 'Title' },
+              ]}
+            />
+          )}
+        </Card>
       </div>
     </div>
   )

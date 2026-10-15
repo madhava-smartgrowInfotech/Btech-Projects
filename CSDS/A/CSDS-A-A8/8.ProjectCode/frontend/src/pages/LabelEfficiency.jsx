@@ -1,80 +1,189 @@
-import { useEffect, useState } from 'react'
-import api, { errorText } from '../api.js'
-import { BarChart, ErrorBox, PageTitle, Spinner, Stat } from '../components/Ui.jsx'
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { BarChart3, Percent, Scale, TrendingUp, Trophy } from 'lucide-react'
+import { api, plotUrl } from '../lib/api'
+import { useAsync } from '../lib/useAsync'
+import { fixed, num } from '../lib/format'
+import { Badge, Button, Card, CardHeader, EmptyState, PageHeader, Skeleton, StatCard, Table, Tabs } from '../components/ui'
+import { ChartCard, GroupedBarChart, Legend, useChartColors } from '../components/charts'
+import { LoadError } from '../components/bio'
+import { Stagger } from '../components/motion'
 
-export const METHODS = [
-  { key: 'jepa', label: 'ViT + JEPA pre-training (BioSight)' },
-  { key: 'unet', label: 'U-Net, supervised' },
-  { key: 'mae', label: 'ViT + MAE reconstruction pre-training' },
-  { key: 'scratch', label: 'ViT from scratch' },
+export const MRI_METHODS = [
+  { key: 'jepa', label: 'ViT + JEPA pre-training (BioSight)', short: 'JEPA' },
+  { key: 'unet', label: 'U-Net, supervised', short: 'U-Net' },
+  { key: 'mae', label: 'ViT + MAE reconstruction pre-training', short: 'MAE' },
+  { key: 'scratch', label: 'ViT from scratch', short: 'Scratch' },
 ]
 
+export function TrainHint({ command }) {
+  return (
+    <>
+      Run <code>{command}</code> to train the models and write the metrics file, then reload this page.
+    </>
+  )
+}
+
+function Plot({ name, alt }) {
+  const [state, setState] = useState('loading')
+  return (
+    <div>
+      {state === 'loading' && <Skeleton height={220} radius={8} />}
+      <img
+        src={plotUrl(name)}
+        alt={alt}
+        className="plot-img"
+        style={state === 'ok' ? undefined : { display: 'none' }}
+        onLoad={() => setState('ok')}
+        onError={() => setState('missing')}
+      />
+      {state === 'missing' && <p className="faint">The pre-training loss plot has not been generated yet.</p>}
+    </div>
+  )
+}
+
 export default function LabelEfficiency() {
-  const [data, setData] = useState(null)
+  const q = useAsync(() => api.get('/metrics/label-efficiency'), [])
   const [metric, setMetric] = useState('dice')
-  const [error, setError] = useState('')
+  const colors = useChartColors()
 
-  useEffect(() => {
-    api.get('/metrics/label-efficiency').then((r) => setData(r.data)).catch((e) => setError(errorText(e)))
-  }, [])
+  const notTrained = q.error?.status === 404
 
-  if (error) return <ErrorBox error={error} />
-  if (!data) return <Spinner text="Loading results..." />
-  const ft = data.finetune
-  const methods = METHODS.filter((m) => ft[`${m.key}_10`] || ft[`${m.key}_100`])
-  const groups = [10, 100].map((p) => ({
-    label: `${p}% of masks`,
-    bars: methods.map((m) => ({ name: m.label, value: ft[`${m.key}_${p}`]?.[metric] ?? null })),
-  }))
-  const j10 = ft.jepa_10?.dice
-  const u100 = ft.unet_100?.dice
-  const u10 = ft.unet_10?.dice
+  let body
+  if (q.loading) {
+    body = (
+      <>
+        <div className="grid grid-4">
+          {[0, 1, 2, 3].map((i) => (
+            <Skeleton key={i} height={128} radius={12} />
+          ))}
+        </div>
+        <Skeleton height={340} radius={12} style={{ marginTop: 18 }} />
+      </>
+    )
+  } else if (notTrained) {
+    body = (
+      <Card>
+        <EmptyState icon={BarChart3} title="No MRI results yet" actions={<Button as={Link} to="/app/performance">See what is available</Button>}>
+          The label-efficiency comparison is read from the MRI training results, which are not on this server yet. <TrainHint command="ml/train_mri.py --stage all" />
+        </EmptyState>
+      </Card>
+    )
+  } else if (q.error) {
+    body = <LoadError title="Could not load the results" error={q.error} onRetry={q.reload} />
+  } else {
+    const { data, finetune: ft = {}, pretrain = {} } = q.data
+    const methods = MRI_METHODS.filter((m) => ft[`${m.key}_10`] || ft[`${m.key}_100`])
+    const seriesColors = [colors.accent, colors.info, colors.violet, colors.warn]
+    const series = methods.map((m) => ({ key: m.key, label: m.label, color: seriesColors[MRI_METHODS.indexOf(m) % 4] }))
+    const chartData = [10, 100].map((p) => ({
+      budget: `${p}% of masks`,
+      ...Object.fromEntries(methods.map((m) => [m.key, ft[`${m.key}_${p}`]?.[metric] ?? null])),
+    }))
+    const j10 = ft.jepa_10?.dice
+    const u100 = ft.unet_100?.dice
+    const u10 = ft.unet_10?.dice
+    const rows = [10, 100].flatMap((p) => methods.filter((m) => ft[`${m.key}_${p}`]).map((m) => ({ ...ft[`${m.key}_${p}`], id: `${m.key}_${p}`, method: m, pct: p })))
+    const pretrainRows = Object.entries(pretrain)
+
+    body = (
+      <>
+        <Stagger className="grid grid-4">
+          <StatCard label="JEPA @ 10% masks" value={fixed(j10)} icon={Trophy} delta="test Dice" />
+          <StatCard label="U-Net @ 100% masks" value={fixed(u100)} icon={Scale} tone="info" delta="fully supervised" />
+          <StatCard label="JEPA 10% vs U-Net 100%" value={j10 && u100 ? `${Math.round((100 * j10) / u100)}%` : '-'} icon={Percent} delta="of the supervised Dice" />
+          <StatCard
+            label="Gain over U-Net @ 10%"
+            value={j10 !== undefined && u10 !== undefined ? `${j10 - u10 >= 0 ? '+' : ''}${(j10 - u10).toFixed(3)}` : '-'}
+            icon={TrendingUp}
+            delta="Dice points"
+            deltaTone={j10 - u10 >= 0 ? 'up' : 'down'}
+          />
+        </Stagger>
+
+        <ChartCard
+          title={`Test ${metric === 'dice' ? 'Dice' : 'IoU'} by label budget`}
+          subtitle="Higher is better. Each group trains on the share of masks shown; pre-training never saw a mask."
+          height={320}
+          actions={
+            <Tabs
+              label="Metric"
+              value={metric}
+              onChange={setMetric}
+              tabs={[
+                { value: 'dice', label: 'Dice' },
+                { value: 'iou', label: 'IoU' },
+              ]}
+            />
+          }
+          legend={<Legend items={series.map((s) => ({ label: s.label, color: s.color }))} />}
+        >
+          <GroupedBarChart data={chartData} xKey="budget" series={series} valueFormat={(v) => (typeof v === 'number' ? v.toFixed(2) : v)} />
+        </ChartCard>
+
+        <Card>
+          <CardHeader
+            title="All runs"
+            subtitle={`${num(data?.test_slices)} held-out test slices from unseen patients; ${num(data?.train_slices)} training slices. Dice / IoU pooled over all test pixels (threshold 0.5).`}
+          />
+          <Table
+            caption="All fine-tuning runs"
+            rows={rows}
+            rowKey={(r) => r.id}
+            pageSize={8}
+            initialSort={{ key: 'dice', dir: 'desc' }}
+            rowClassName={(r) => (r.method.key === 'jepa' ? 'highlight' : '')}
+            columns={[
+              { key: 'method', label: 'Method', sortValue: (r) => r.method.label, render: (r) => r.method.label },
+              { key: 'pct', label: 'Masks', num: true, render: (r) => `${r.pct}%` },
+              { key: 'labelled_slices', label: 'Labelled slices', num: true, hideSm: true, render: (r) => num(r.labelled_slices) },
+              { key: 'dice', label: 'Dice', num: true, render: (r) => fixed(r.dice) },
+              { key: 'iou', label: 'IoU', num: true, render: (r) => fixed(r.iou) },
+              { key: 'mean_dice_tumour_slices', label: 'Mean Dice (tumour slices)', num: true, hideSm: true, render: (r) => fixed(r.mean_dice_tumour_slices) },
+              { key: 'seconds', label: 'Train time', num: true, hideSm: true, render: (r) => (r.seconds ? `${Math.round(r.seconds / 60)} min` : '-') },
+            ]}
+          />
+        </Card>
+
+        <div className="grid grid-2">
+          <Card>
+            <CardHeader title="Self-supervised pre-training loss" subtitle="JEPA and MAE use the training slices only, without any masks." />
+            <div className="card-body">
+              <Plot name="mri_pretrain_loss.png" alt="Pre-training loss curves for JEPA and MAE" />
+            </div>
+          </Card>
+          <Card>
+            <CardHeader title="Pre-training runs" />
+            <div className="card-body">
+              {pretrainRows.length === 0 ? (
+                <p className="faint">No pre-training summary was recorded.</p>
+              ) : (
+                <div className="stack" style={{ gap: 12 }}>
+                  {pretrainRows.map(([k, v]) => (
+                    <div key={k} className="row" style={{ justifyContent: 'space-between' }}>
+                      <strong>{k.toUpperCase()}</strong>
+                      <span className="muted">
+                        {v.epochs} epochs · final loss {fixed(v.history?.at(-1)?.loss, 4)} · {Math.round((v.seconds || 0) / 60)} min
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </Card>
+        </div>
+      </>
+    )
+  }
 
   return (
-    <div className="space-y-5">
-      <PageTitle title="Label efficiency" subtitle={`Brain-MRI tumour segmentation on ${data.data?.test_slices} held-out slices from unseen patients. Models are trained with 10% or 100% of the ${data.data?.train_slices} training masks.`} />
-      <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-        <Stat label="JEPA @ 10% masks" value={j10} hint="test Dice" />
-        <Stat label="U-Net @ 100% masks" value={u100} hint="fully supervised" />
-        <Stat label="JEPA 10% vs U-Net 100%" value={j10 && u100 ? `${Math.round((100 * j10) / u100)}%` : '-'} hint="of the supervised Dice" />
-        <Stat label="Gain over U-Net @ 10%" value={j10 && u10 ? `${j10 - u10 >= 0 ? '+' : ''}${(j10 - u10).toFixed(3)}` : '-'} hint="Dice points" />
-      </div>
-      <div className="card">
-        <div className="mb-3 flex items-center justify-between">
-          <h2 className="font-semibold text-slate-900">Test {metric === 'dice' ? 'Dice' : 'IoU'} by label budget</h2>
-          <div className="flex rounded-lg border border-slate-200 p-0.5 text-sm">
-            {['dice', 'iou'].map((m) => (
-              <button key={m} onClick={() => setMetric(m)} className={`rounded-md px-3 py-1 ${metric === m ? 'bg-teal-600 text-white' : 'text-slate-600'}`}>{m === 'dice' ? 'Dice' : 'IoU'}</button>
-            ))}
-          </div>
-        </div>
-        <BarChart groups={groups} legend={methods.map((m) => m.label)} />
-      </div>
-      <div className="card overflow-x-auto">
-        <h2 className="mb-3 font-semibold text-slate-900">All runs</h2>
-        <table className="w-full text-left text-sm">
-          <thead className="text-xs uppercase text-slate-500">
-            <tr><th className="py-2">Method</th><th>Masks</th><th>Labelled slices</th><th>Dice</th><th>IoU</th><th>Mean Dice (tumour slices)</th><th>Train time</th></tr>
-          </thead>
-          <tbody className="divide-y divide-slate-100">
-            {[10, 100].flatMap((p) => methods.map((m) => {
-              const r = ft[`${m.key}_${p}`]
-              if (!r) return null
-              return (
-                <tr key={`${m.key}_${p}`} className={m.key === 'jepa' ? 'font-medium' : ''}>
-                  <td className="py-2">{m.label}</td><td>{p}%</td><td>{r.labelled_slices}</td><td>{r.dice}</td><td>{r.iou}</td>
-                  <td>{r.mean_dice_tumour_slices}</td><td>{Math.round(r.seconds / 60)} min</td>
-                </tr>
-              )
-            }))}
-          </tbody>
-        </table>
-        <p className="mt-3 text-xs text-slate-500">Dice / IoU are pooled over all test pixels (threshold 0.5). Pre-training (JEPA and MAE) used the training slices only, without any masks.</p>
-      </div>
-      <div className="card">
-        <h2 className="mb-3 font-semibold text-slate-900">Self-supervised pre-training loss</h2>
-        <img src="/api/metrics/plot/mri_pretrain_loss.png" alt="Pre-training loss" className="max-w-xl" onError={(e) => { e.currentTarget.style.display = 'none' }} />
-      </div>
+    <div className="container">
+      <PageHeader
+        title="Label efficiency"
+        description="Brain-MRI tumour segmentation: how well a JEPA-pre-trained ViT does with only 10% of the masks, against a supervised U-Net, an MAE-pre-trained ViT and a ViT trained from scratch."
+        actions={q.data ? <Badge tone="safe" dot>Live from experiments/</Badge> : undefined}
+      />
+      <div className="stack">{body}</div>
     </div>
   )
 }

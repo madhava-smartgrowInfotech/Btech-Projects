@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" fill="none">
+  <defs>
+    <radialGradient id="g" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#34d399" stop-opacity=".28"/><stop offset="1" stop-color="#34d399" stop-opacity="0"/></radialGradient>
+  </defs>
+  <circle cx="300" cy="300" r="280" fill="url(#g)"/>
+  <g stroke="#34d399" stroke-opacity=".75" stroke-width="1.5" stroke-linejoin="round">
+    <polygon points="300,90 440,170 440,330 300,420 160,330 160,170"/>
+    <polygon points="300,170 380,215 380,305 300,350 220,305 220,215" stroke="#2dd4bf"/>
+    <line x1="300" y1="90" x2="300" y2="170"/><line x1="440" y1="170" x2="380" y2="215"/><line x1="440" y1="330" x2="380" y2="305"/>
+    <line x1="300" y1="420" x2="300" y2="350"/><line x1="160" y1="330" x2="220" y2="305"/><line x1="160" y1="170" x2="220" y2="215"/>
+  </g>
+  <g stroke="#2dd4bf" stroke-width="3" stroke-linecap="round"><circle cx="300" cy="232" r="9" fill="#2dd4bf"/><path d="M300 248v38M282 262h36M300 286l-14 28M300 286l14 28"/></g>
+</svg>

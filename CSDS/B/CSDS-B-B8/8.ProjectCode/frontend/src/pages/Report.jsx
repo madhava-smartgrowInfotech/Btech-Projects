@@ -1,97 +1,151 @@
-import { useEffect, useState } from 'react'
-import { AlertTriangle, RefreshCw } from 'lucide-react'
-import api, { ACTIVITY_COLORS, errMsg, fmtDuration, label } from '../api.js'
-import Timeline from '../components/Timeline.jsx'
-import { ErrorBox, PageTitle, Spinner, Stat, StatusBadge } from '../components/ui.jsx'
-
-const today = () => new Date().toLocaleDateString('en-CA')
+import { useState } from 'react'
+import { AlertTriangle, CalendarX, Clock, Eye, Footprints, RefreshCw, ShieldAlert } from 'lucide-react'
+import { Badge, Button, Card, CardHeader, EmptyState, ErrorState, Input, PageHeader, Skeleton, StatCard, Table } from '../components/ui'
+import { ChartCard, DonutChart } from '../components/charts'
+import { Stagger } from '../components/motion'
+import ActivityTimeline from '../components/care/ActivityTimeline'
+import { api } from '../lib/api'
+import { useAsync } from '../lib/useAsync'
+import { activityColor, clock, duration, humanize, localDay, ALERT_STATUS } from '../lib/format'
 
 export default function Report() {
-  const [day, setDay] = useState(today())
-  const [data, setData] = useState(null)
-  const [days, setDays] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
-
-  const load = async () => {
-    setLoading(true); setError('')
-    try {
-      const [r, d] = await Promise.all([api.get('/reports/daily', { params: { day } }), api.get('/reports/days')])
-      setData(r.data); setDays(d.data)
-    } catch (e) { setError(errMsg(e)) } finally { setLoading(false) }
-  }
-  useEffect(() => { load() }, [day])
+  const [day, setDay] = useState(localDay())
+  const report = useAsync(() => api.get('/reports/daily', { params: { day } }), [day])
+  const days = useAsync(() => api.get('/reports/days'), [])
+  const d = report.data
 
   const from = new Date(`${day}T00:00:00`)
   const to = new Date(from.getTime() + 24 * 3600 * 1000)
-  const totals = data ? Object.entries(data.totals) : []
-  const max = Math.max(1, ...totals.map(([, v]) => v))
+  const totals = d ? Object.entries(d.totals) : []
+  const donut = totals.map(([k, v]) => ({ name: humanize(k), value: v, color: activityColor(k) }))
+
+  const columns = [
+    {
+      key: 'activity',
+      label: 'Activity',
+      sortValue: ([k]) => k,
+      render: ([k]) => (
+        <span className="cap">
+          <span className="legend"><i style={{ background: activityColor(k) }} /></span>
+          {humanize(k)}
+        </span>
+      ),
+    },
+    { key: 'time', label: 'Time', num: true, sortValue: ([, v]) => v, render: ([, v]) => duration(v) },
+    {
+      key: 'share',
+      label: 'Share of monitored time',
+      num: true,
+      sortValue: ([, v]) => v,
+      render: ([, v]) => `${d.monitored_seconds ? Math.round((v / d.monitored_seconds) * 100) : 0}%`,
+    },
+  ]
 
   return (
     <div>
-      <PageTitle title="Daily report" subtitle="Time spent per activity and long-inactivity warnings">
-        <input type="date" className="input w-44" value={day} max={today()} onChange={(e) => setDay(e.target.value)} />
-        <button className="btn btn-secondary" onClick={load} disabled={loading}><RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} /></button>
-      </PageTitle>
-      {days.length > 0 && (
-        <div className="flex flex-wrap gap-1.5 mb-4 text-xs">
-          <span className="text-slate-500 mr-1">Days with data:</span>
-          {days.slice(0, 10).map((d) => (
-            <button key={d} onClick={() => setDay(d)} className={`rounded-full px-2 py-0.5 border ${d === day ? 'bg-teal-600 text-white border-teal-600' : 'border-slate-300 text-slate-600'}`}>{d}</button>
+      <PageHeader
+        title="Daily report"
+        description="Time spent per activity, plus long-inactivity warnings and falls."
+        actions={
+          <>
+            <Input label="Day" labelHidden type="date" value={day} max={localDay()} onChange={(e) => e.target.value && setDay(e.target.value)} />
+            <Button icon={RefreshCw} onClick={() => { report.reload(); days.reload({ quiet: true }) }} loading={report.loading && !!d}>
+              Refresh
+            </Button>
+          </>
+        }
+      />
+
+      {days.data?.length > 0 && (
+        <div className="chip-row" style={{ marginBottom: 18 }}>
+          <span className="faint">Days with data:</span>
+          {days.data.slice(0, 10).map((x) => (
+            <button key={x} type="button" className="chip" aria-pressed={x === day} onClick={() => setDay(x)}>
+              {x}
+            </button>
           ))}
         </div>
       )}
-      <ErrorBox error={error} onRetry={load} />
-      {!data ? (loading ? <Spinner /> : null) : (
-        <div className="space-y-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            <Stat label="Monitored" value={fmtDuration(data.monitored_seconds)} />
-            <Stat label="Person in view" value={fmtDuration(data.present_seconds)} />
-            <Stat label="Active (walk, drink, pick up)" value={fmtDuration(data.active_seconds)} />
-            <Stat label="Inactivity warnings" value={data.warnings.length} hint={`over ${data.inactivity_threshold_minutes} min without moving`} />
-          </div>
-          {data.monitored_seconds === 0 ? (
-            <div className="card p-10 text-center text-slate-500">No monitoring data for this day.</div>
+
+      {report.error && !d ? (
+        <ErrorState title="Couldn't load the report" error={report.error} onRetry={report.reload} />
+      ) : (
+        <>
+          <Stagger className="grid grid-4" gap={0.06}>
+            <StatCard label="Monitored" icon={Clock} value={d ? duration(d.monitored_seconds) : undefined} loading={!d} />
+            <StatCard label="Person in view" icon={Eye} value={d ? duration(d.present_seconds) : undefined} loading={!d} />
+            <StatCard label="Active (walk, drink, pick up)" icon={Footprints} tone="info" value={d ? duration(d.active_seconds) : undefined} loading={!d} />
+            <StatCard
+              label="Inactivity warnings"
+              icon={AlertTriangle}
+              tone={d?.warnings.length ? 'warn' : undefined}
+              value={d ? d.warnings.length : undefined}
+              delta={d ? `over ${d.inactivity_threshold_minutes} min without moving` : undefined}
+              loading={!d}
+            />
+          </Stagger>
+
+          {!d ? (
+            <Skeleton height={260} style={{ marginTop: 18 }} />
+          ) : d.monitored_seconds === 0 ? (
+            <Card className="mt">
+              <EmptyState icon={CalendarX} title="No monitoring data for this day" actions={days.data?.length ? <Button onClick={() => setDay(days.data[0])}>Jump to {days.data[0]}</Button> : null}>
+                {days.data?.length
+                  ? 'Pick a day with data above, or start the live monitor to record today.'
+                  : 'Start the live monitor and activity will be recorded here.'}
+              </EmptyState>
+            </Card>
           ) : (
             <>
-              <div className="card p-5">
-                <h2 className="font-semibold text-slate-900 mb-3">Timeline</h2>
-                <Timeline segments={data.timeline} from={from} to={to} ticks={8} />
+              <Card className="mt">
+                <CardHeader title="Timeline" subtitle={day} />
+                <div className="card-body">
+                  <ActivityTimeline segments={d.timeline} from={from} to={to} ticks={8} />
+                </div>
+              </Card>
+
+              <div className="grid grid-2 mt">
+                <ChartCard title="Time per activity" subtitle="Share of monitored time" height={260}>
+                  <DonutChart data={donut} centerValue={duration(d.monitored_seconds)} centerLabel="monitored" />
+                </ChartCard>
+                <Card>
+                  <CardHeader title="Breakdown" />
+                  <Table columns={columns} rows={totals} rowKey={([k]) => k} pageSize={8} cards={false} caption="Time per activity" initialSort={{ key: 'time', dir: 'desc' }} />
+                </Card>
               </div>
-              <div className="grid lg:grid-cols-2 gap-4">
-                <div className="card p-5">
-                  <h2 className="font-semibold text-slate-900 mb-3">Time per activity</h2>
-                  <div className="space-y-2">
-                    {totals.map(([k, v]) => (
-                      <div key={k} className="flex items-center gap-3 text-sm">
-                        <span className="w-24 capitalize text-slate-600">{label(k)}</span>
-                        <div className="flex-1 h-4 rounded bg-slate-100"><div className="h-4 rounded" style={{ width: `${(v / max) * 100}%`, background: ACTIVITY_COLORS[k] || '#94a3b8' }} /></div>
-                        <span className="w-20 text-right tabular-nums">{fmtDuration(v)}</span>
+
+              <Card className="mt">
+                <CardHeader title="Warnings and falls" />
+                <div className="card-body stack" style={{ gap: 10 }}>
+                  {d.warnings.length === 0 && d.falls.length === 0 && (
+                    <div className="notice safe">No warnings - no long inactivity and no falls on this day.</div>
+                  )}
+                  {d.warnings.map((w) => (
+                    <div key={`w${w.id}`} className="notice warn">
+                      <AlertTriangle size={18} aria-hidden="true" />
+                      <div>
+                        Long inactivity: no movement for <strong>{w.minutes} min</strong>
+                        {w.activity && ` while ${humanize(w.activity)}`}, from {clock(w.started_at)}
+                        {!w.ended_at && ' (ongoing)'}
                       </div>
-                    ))}
-                  </div>
+                    </div>
+                  ))}
+                  {d.falls.map((f) => {
+                    const s = ALERT_STATUS[f.status] || { label: f.status, tone: 'neutral' }
+                    return (
+                      <div key={`f${f.id}`} className="notice danger">
+                        <ShieldAlert size={18} aria-hidden="true" />
+                        <div>
+                          Fall at {clock(f.detected_at)} <Badge tone={s.tone}>{s.label}</Badge>
+                        </div>
+                      </div>
+                    )
+                  })}
                 </div>
-                <div className="card p-5">
-                  <h2 className="font-semibold text-slate-900 mb-3">Warnings and falls</h2>
-                  {data.warnings.length === 0 && data.falls.length === 0 && <p className="text-sm text-slate-500">No warnings - no long inactivity and no falls.</p>}
-                  <ul className="space-y-2 text-sm">
-                    {data.warnings.map((w) => (
-                      <li key={w.id} className="flex items-start gap-2 rounded-lg bg-amber-50 border border-amber-200 px-3 py-2 text-amber-900">
-                        <AlertTriangle className="w-4 h-4 mt-0.5" />
-                        <span>Long inactivity: no movement for <b>{w.minutes} min</b>{w.activity && ` while ${label(w.activity)}`}, from {new Date(w.started_at).toLocaleTimeString()}{!w.ended_at && ' (ongoing)'}</span>
-                      </li>
-                    ))}
-                    {data.falls.map((f) => (
-                      <li key={f.id} className="flex items-center gap-2 rounded-lg bg-red-50 border border-red-200 px-3 py-2 text-red-900">
-                        <AlertTriangle className="w-4 h-4" /> Fall at {new Date(f.detected_at).toLocaleTimeString()} <StatusBadge status={f.status} />
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+              </Card>
             </>
           )}
-        </div>
+        </>
       )}
     </div>
   )

@@ -70,7 +70,7 @@ people it finds improves (85.4% -> 86.2%). Limitations are listed in
 
 ## Tech
 FastAPI, SQLAlchemy + SQLite, PyJWT + bcrypt, OpenCV, Ultralytics YOLO11n-pose, scikit-learn, React + Vite,
-Tailwind CSS, Telegram Bot API, Gmail SMTP.
+the "Depth Studio" UI kit (framer-motion, GSAP, Lenis, three.js, Recharts), Telegram Bot API, Gmail SMTP.
 
 ## Documentation
 | Document | Contents |
@@ -84,7 +84,7 @@ Tailwind CSS, Telegram Bot API, Gmail SMTP.
 ## Project layout
 ```
 backend/app/     FastAPI app - routes/, services/ (pose, features, activity, fall, monitor, alerts)
-frontend/src/    React screens (pages/), components/, api.js
+frontend/src/    React screens (pages/), kit components (components/ui, motion, charts, three), lib/, styles/
 ml/              extract_keypoints.py, sequences.py, train.py, eval.py
 scripts/         download_data.py, make_demo_video.py, smoke_test.py
 data/            datasets (CCTV, fall detection, HAR sample), keypoints, own clips, sample video

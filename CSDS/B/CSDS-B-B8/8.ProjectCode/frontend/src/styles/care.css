@@ -1,0 +1,408 @@
+/* CareWatch additions on top of kit V3 (Depth Studio) */
+
+/* ---------------------------------------------------------------- activity bits */
+.act-badge {
+  color: var(--c);
+  border-color: color-mix(in srgb, var(--c) 40%, transparent);
+  background: color-mix(in srgb, var(--c) 12%, transparent);
+  text-transform: capitalize;
+}
+.act-badge .dot {
+  box-shadow: none;
+}
+.cap {
+  text-transform: capitalize;
+}
+
+.skeleton-canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  background: #0a0d11;
+  border: 1px solid var(--border);
+}
+.live-frame {
+  width: 100%;
+  border-radius: var(--radius);
+  background: #0a0d11;
+  transition: opacity 120ms;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+}
+.view-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.view-bar .push {
+  margin-left: auto;
+}
+
+.act-now {
+  font: 700 clamp(28px, 4vw, 38px) / 1.1 var(--font-display);
+  letter-spacing: -0.03em;
+  text-transform: capitalize;
+  margin-top: 6px;
+}
+.prob-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+}
+.prob-row {
+  display: grid;
+  grid-template-columns: 82px minmax(0, 1fr) 40px;
+  align-items: center;
+  gap: 10px;
+  font-size: 12.5px;
+  color: var(--text-2);
+  text-transform: capitalize;
+}
+.prob-row .bar {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--panel-3);
+  overflow: hidden;
+}
+.prob-row .bar i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  transition: width 300ms var(--ease-out);
+}
+.prob-row .val {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-3);
+}
+
+.fall-card {
+  border-left: 3px solid var(--safe);
+}
+.fall-card.possible {
+  border-left-color: var(--warn);
+}
+.fall-card.confirmed {
+  border-left-color: var(--danger);
+  box-shadow: 0 0 0 1px var(--danger), 0 0 36px -10px var(--danger);
+}
+.fall-card.idle {
+  border-left-color: var(--border-strong);
+}
+.eyebrow-label {
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+.big-line {
+  font: 700 20px/1.25 var(--font-display);
+  margin-top: 6px;
+}
+
+/* ---------------------------------------------------------------- timeline bar */
+.atl-track {
+  position: relative;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background: var(--panel-3);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.atl-seg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+.atl-ticks {
+  display: flex;
+  justify-content: space-between;
+  gap: 4px;
+  margin-top: 6px;
+  font-size: 11px;
+  color: var(--text-3);
+  font-variant-numeric: tabular-nums;
+}
+@media (max-width: 640px) {
+  .atl-ticks span:nth-child(even) {
+    display: none;
+  }
+}
+
+/* ---------------------------------------------------------------- fall countdown */
+.fall-overlay {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  text-align: center;
+  padding: 6px 0 2px;
+}
+.fall-icon {
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--danger);
+  background: var(--danger-soft);
+  box-shadow: 0 0 0 0 var(--danger);
+  animation: fall-pulse 1.6s ease-out infinite;
+}
+@keyframes fall-pulse {
+  70% {
+    box-shadow: 0 0 0 18px transparent;
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+.fall-count {
+  font: 800 clamp(72px, 22vw, 112px) / 1 var(--font-display);
+  color: var(--danger);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.05em;
+}
+.fall-ok {
+  width: 100%;
+  font-size: 20px;
+  min-height: 56px;
+}
+
+/* ---------------------------------------------------------------- forms + lists */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+.form-grid .full {
+  grid-column: 1 / -1;
+}
+@media (max-width: 560px) {
+  .form-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+.form-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+@media (max-width: 560px) {
+  .form-grid-3 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+.avatar {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+}
+.notice {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-strong);
+  background: var(--panel-2);
+  font-size: 14px;
+}
+.notice.warn {
+  border-color: color-mix(in srgb, var(--warn) 45%, transparent);
+  background: var(--warn-soft);
+}
+.notice.safe {
+  border-color: color-mix(in srgb, var(--safe) 40%, transparent);
+  background: var(--safe-soft);
+}
+.notice.danger {
+  border-color: color-mix(in srgb, var(--danger) 45%, transparent);
+  background: var(--danger-soft);
+}
+.notice svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+.chip {
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  background: var(--panel);
+  font-size: 12.5px;
+  color: var(--text-2);
+  cursor: pointer;
+}
+.chip:hover {
+  border-color: var(--accent);
+}
+.chip[aria-pressed='true'] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 600;
+}
+.snap {
+  width: 100%;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: #0a0d11;
+}
+.ch-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+}
+.num-cell {
+  font-variant-numeric: tabular-nums;
+}
+code {
+  background: var(--panel-3);
+  padding: 1px 6px;
+  border-radius: 5px;
+}
+
+/* ---------------------------------------------------------------- confusion matrix */
+.cm-wrap {
+  overflow-x: auto;
+}
+.cm {
+  border-collapse: separate;
+  border-spacing: 3px;
+  font-size: 12.5px;
+}
+.cm th {
+  padding: 4px 8px;
+  font-weight: 600;
+  color: var(--text-2);
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+.cm td {
+  min-width: 56px;
+  padding: 9px 6px;
+  text-align: center;
+  border-radius: 6px;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+  background: color-mix(in srgb, var(--accent) calc(var(--v) * 100%), var(--panel-2));
+}
+.cm td.hot {
+  color: var(--accent-ink);
+  font-weight: 700;
+}
+
+/* ---------------------------------------------------------------- landing extras */
+.l-nav .row.nav-actions {
+  gap: 8px;
+  flex-wrap: nowrap;
+}
+.hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+.how-visual {
+  position: sticky;
+  top: 16vh;
+}
+@media (max-width: 900px) {
+  .how-visual {
+    position: static;
+  }
+}
+.step-pose {
+  display: grid;
+  place-items: center;
+  padding: 6px 0;
+}
+.step-pose svg {
+  width: min(280px, 100%);
+  height: auto;
+}
+.mini-fall {
+  display: grid;
+  gap: 12px;
+}
+.mini-count {
+  font: 800 64px/1 var(--font-display);
+  color: var(--danger);
+  font-variant-numeric: tabular-nums;
+}
+.auth-page {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 90px 16px 40px;
+  isolation: isolate;
+}
+.auth-card {
+  width: 100%;
+  max-width: 440px;
+  padding: 30px 28px 28px;
+  background: color-mix(in srgb, var(--panel) 88%, transparent);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--shadow-lg);
+}
+.auth-card h1 {
+  font-size: 26px;
+  margin: 18px 0 6px;
+}
+.auth-links {
+  position: fixed;
+  inset: 0 0 auto;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  z-index: 5;
+}
+@media (max-width: 640px) {
+  .auth-card {
+    padding: 24px 18px;
+  }
+  .auth-links {
+    padding: 0 12px;
+  }
+}
+
+.how-inline {
+  display: none;
+}
+@media (max-width: 900px) {
+  .how-inline {
+    display: block;
+  }
+  .how-visual-col {
+    display: none;
+  }
+}
+
+/* the kit's `.number span` caption rule must not hit the CountUp spans inside the figure */
+.number strong span {
+  display: inline;
+  margin: 0;
+  font-size: inherit;
+  color: inherit;
+}

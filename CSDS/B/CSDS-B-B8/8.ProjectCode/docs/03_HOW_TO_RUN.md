@@ -18,7 +18,7 @@ This creates `venv\`, installs the CPU build of PyTorch and the Python packages 
 ## 2. Start
 Double-click **`run.bat`**. It starts:
 - the backend: http://127.0.0.1:8208 (API docs at http://127.0.0.1:8208/docs)
-- the frontend: http://localhost:5208 (opens in your browser)
+- the frontend: http://localhost:5208 (opens in your browser; use `localhost`, not 127.0.0.1)
 
 **Demo login:** `demo@carewatch.app` / `CareWatch123` (or create your own account).
 
@@ -37,6 +37,16 @@ Double-click **`run.bat`**. It starts:
    to 0.5 min and sit still.
 
 Monitoring keeps running while the browser is closed. It also resumes after a restart if it was running.
+
+### Frontend notes
+The UI lives in `frontend/` (Vite + React, plain JavaScript) and is built on the V3 "Depth Studio" kit, copied
+into `frontend/src/`. Routes: `/` landing, `/login`, then `/app/monitor`, `/app/alerts`, `/app/contacts`,
+`/app/report`, `/app/performance`. Use the sun/moon button in the top bar for light or dark mode. The first
+**Start monitoring** press can take several seconds while the pose model loads. A production build:
+```bat
+cd frontend
+npm run build
+```
 
 ## 4. Re-train and evaluate (optional)
 ```bat

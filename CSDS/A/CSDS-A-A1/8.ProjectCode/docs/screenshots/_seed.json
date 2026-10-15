@@ -1,0 +1,13 @@
+{
+  "star": 4,
+  "hdfc": 2,
+  "niva": 3,
+  "care": 1,
+  "conversation": 1,
+  "conversation_copay": 2,
+  "conversation_fire": 3,
+  "conversation_hi": 4,
+  "claim": 1,
+  "claim_failing": 2,
+  "comparison": 1
+}

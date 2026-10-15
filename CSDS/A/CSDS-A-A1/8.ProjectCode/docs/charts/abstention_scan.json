@@ -1,0 +1,401 @@
+[
+ {
+  "id": "star-01",
+  "answerable": true,
+  "best_score": 0.9992,
+  "best_bm25": 31.0727,
+  "abstains": false
+ },
+ {
+  "id": "star-02",
+  "answerable": true,
+  "best_score": 0.3814,
+  "best_bm25": 17.7781,
+  "abstains": false
+ },
+ {
+  "id": "star-03",
+  "answerable": true,
+  "best_score": 0.9634,
+  "best_bm25": 14.0331,
+  "abstains": false
+ },
+ {
+  "id": "star-04",
+  "answerable": true,
+  "best_score": 0.7905,
+  "best_bm25": 11.8351,
+  "abstains": false
+ },
+ {
+  "id": "star-05",
+  "answerable": true,
+  "best_score": 1.0014,
+  "best_bm25": 9.9719,
+  "abstains": false
+ },
+ {
+  "id": "star-06",
+  "answerable": true,
+  "best_score": 1.0014,
+  "best_bm25": 12.5449,
+  "abstains": false
+ },
+ {
+  "id": "star-07",
+  "answerable": true,
+  "best_score": 1.0015,
+  "best_bm25": 24.9239,
+  "abstains": false
+ },
+ {
+  "id": "star-08",
+  "answerable": true,
+  "best_score": 1.0013,
+  "best_bm25": 23.3101,
+  "abstains": false
+ },
+ {
+  "id": "star-09",
+  "answerable": true,
+  "best_score": 0.8129,
+  "best_bm25": 12.7974,
+  "abstains": false
+ },
+ {
+  "id": "star-10",
+  "answerable": true,
+  "best_score": 0.994,
+  "best_bm25": 20.1853,
+  "abstains": false
+ },
+ {
+  "id": "star-11",
+  "answerable": true,
+  "best_score": 0.8704,
+  "best_bm25": 13.7982,
+  "abstains": false
+ },
+ {
+  "id": "star-12",
+  "answerable": true,
+  "best_score": 1.0012,
+  "best_bm25": 32.6887,
+  "abstains": false
+ },
+ {
+  "id": "star-13",
+  "answerable": true,
+  "best_score": 1.0004,
+  "best_bm25": 21.4131,
+  "abstains": false
+ },
+ {
+  "id": "star-14",
+  "answerable": true,
+  "best_score": 0.0021,
+  "best_bm25": 19.6443,
+  "abstains": false
+ },
+ {
+  "id": "hdfc-01",
+  "answerable": true,
+  "best_score": 1.0009,
+  "best_bm25": 33.9385,
+  "abstains": false
+ },
+ {
+  "id": "hdfc-02",
+  "answerable": true,
+  "best_score": 0.0081,
+  "best_bm25": 14.2949,
+  "abstains": false
+ },
+ {
+  "id": "hdfc-03",
+  "answerable": true,
+  "best_score": 0.002,
+  "best_bm25": 24.1303,
+  "abstains": false
+ },
+ {
+  "id": "hdfc-04",
+  "answerable": true,
+  "best_score": 0.9055,
+  "best_bm25": 21.6716,
+  "abstains": false
+ },
+ {
+  "id": "hdfc-05",
+  "answerable": true,
+  "best_score": 0.9871,
+  "best_bm25": 12.9096,
+  "abstains": false
+ },
+ {
+  "id": "hdfc-06",
+  "answerable": true,
+  "best_score": 0.9939,
+  "best_bm25": 16.849,
+  "abstains": false
+ },
+ {
+  "id": "hdfc-07",
+  "answerable": true,
+  "best_score": 1.0014,
+  "best_bm25": 30.8133,
+  "abstains": false
+ },
+ {
+  "id": "hdfc-08",
+  "answerable": true,
+  "best_score": 0.9598,
+  "best_bm25": 21.7257,
+  "abstains": false
+ },
+ {
+  "id": "hdfc-09",
+  "answerable": true,
+  "best_score": 0.9992,
+  "best_bm25": 20.434,
+  "abstains": false
+ },
+ {
+  "id": "hdfc-10",
+  "answerable": true,
+  "best_score": 1.001,
+  "best_bm25": 34.7457,
+  "abstains": false
+ },
+ {
+  "id": "hdfc-11",
+  "answerable": true,
+  "best_score": 0.9343,
+  "best_bm25": 22.9032,
+  "abstains": false
+ },
+ {
+  "id": "hdfc-12",
+  "answerable": true,
+  "best_score": 0.2487,
+  "best_bm25": 18.0539,
+  "abstains": false
+ },
+ {
+  "id": "hdfc-13",
+  "answerable": true,
+  "best_score": 0.9993,
+  "best_bm25": 7.0525,
+  "abstains": false
+ },
+ {
+  "id": "niva-01",
+  "answerable": true,
+  "best_score": 0.998,
+  "best_bm25": 33.147,
+  "abstains": false
+ },
+ {
+  "id": "niva-02",
+  "answerable": true,
+  "best_score": 0.5191,
+  "best_bm25": 18.085,
+  "abstains": false
+ },
+ {
+  "id": "niva-03",
+  "answerable": true,
+  "best_score": 0.0044,
+  "best_bm25": 10.2916,
+  "abstains": false
+ },
+ {
+  "id": "niva-04",
+  "answerable": true,
+  "best_score": 0.9797,
+  "best_bm25": 26.0744,
+  "abstains": false
+ },
+ {
+  "id": "niva-05",
+  "answerable": true,
+  "best_score": 1.0017,
+  "best_bm25": 16.7085,
+  "abstains": false
+ },
+ {
+  "id": "niva-06",
+  "answerable": true,
+  "best_score": 0.23,
+  "best_bm25": 19.4652,
+  "abstains": false
+ },
+ {
+  "id": "niva-07",
+  "answerable": true,
+  "best_score": 0.6127,
+  "best_bm25": 26.8325,
+  "abstains": false
+ },
+ {
+  "id": "niva-08",
+  "answerable": true,
+  "best_score": 0.9956,
+  "best_bm25": 12.1803,
+  "abstains": false
+ },
+ {
+  "id": "niva-09",
+  "answerable": true,
+  "best_score": 0.8555,
+  "best_bm25": 16.3127,
+  "abstains": false
+ },
+ {
+  "id": "niva-10",
+  "answerable": true,
+  "best_score": 0.9998,
+  "best_bm25": 31.1335,
+  "abstains": false
+ },
+ {
+  "id": "niva-11",
+  "answerable": true,
+  "best_score": 0.002,
+  "best_bm25": 15.4949,
+  "abstains": false
+ },
+ {
+  "id": "niva-12",
+  "answerable": true,
+  "best_score": 0.9984,
+  "best_bm25": 18.4171,
+  "abstains": false
+ },
+ {
+  "id": "care-01",
+  "answerable": true,
+  "best_score": 1.0007,
+  "best_bm25": 39.2533,
+  "abstains": false
+ },
+ {
+  "id": "care-02",
+  "answerable": true,
+  "best_score": 0.4591,
+  "best_bm25": 19.9583,
+  "abstains": false
+ },
+ {
+  "id": "care-03",
+  "answerable": true,
+  "best_score": 0.0123,
+  "best_bm25": 14.7646,
+  "abstains": false
+ },
+ {
+  "id": "care-04",
+  "answerable": true,
+  "best_score": 0.7834,
+  "best_bm25": 24.1918,
+  "abstains": false
+ },
+ {
+  "id": "care-05",
+  "answerable": true,
+  "best_score": 0.7872,
+  "best_bm25": 10.8378,
+  "abstains": false
+ },
+ {
+  "id": "care-06",
+  "answerable": true,
+  "best_score": 0.9971,
+  "best_bm25": 13.6961,
+  "abstains": false
+ },
+ {
+  "id": "care-07",
+  "answerable": true,
+  "best_score": 0.9811,
+  "best_bm25": 23.3036,
+  "abstains": false
+ },
+ {
+  "id": "care-08",
+  "answerable": true,
+  "best_score": 0.9967,
+  "best_bm25": 12.7198,
+  "abstains": false
+ },
+ {
+  "id": "care-09",
+  "answerable": true,
+  "best_score": 0.2306,
+  "best_bm25": 10.8985,
+  "abstains": false
+ },
+ {
+  "id": "care-10",
+  "answerable": true,
+  "best_score": 0.7953,
+  "best_bm25": 15.0763,
+  "abstains": false
+ },
+ {
+  "id": "care-11",
+  "answerable": true,
+  "best_score": 1.0013,
+  "best_bm25": 34.182,
+  "abstains": false
+ },
+ {
+  "id": "care-12",
+  "answerable": true,
+  "best_score": 0.825,
+  "best_bm25": 14.3324,
+  "abstains": false
+ },
+ {
+  "id": "none-01",
+  "answerable": false,
+  "best_score": 0.0026,
+  "best_bm25": 5.1097,
+  "abstains": true
+ },
+ {
+  "id": "none-02",
+  "answerable": false,
+  "best_score": 0.0029,
+  "best_bm25": 5.0861,
+  "abstains": true
+ },
+ {
+  "id": "none-03",
+  "answerable": false,
+  "best_score": 0.0027,
+  "best_bm25": 4.4235,
+  "abstains": true
+ },
+ {
+  "id": "none-04",
+  "answerable": false,
+  "best_score": 0.0019,
+  "best_bm25": 5.2637,
+  "abstains": true
+ },
+ {
+  "id": "none-05",
+  "answerable": false,
+  "best_score": 0.0019,
+  "best_bm25": 7.3446,
+  "abstains": true
+ },
+ {
+  "id": "none-06",
+  "answerable": false,
+  "best_score": 0.0019,
+  "best_bm25": 2.3596,
+  "abstains": true
+ }
+]

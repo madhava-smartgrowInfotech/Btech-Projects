@@ -21,7 +21,12 @@ Then open `.env` and set:
 
 ```
 GEMINI_API_KEY=your-key-here
+GEMINI_TEXT_MODEL=gemini-flash-latest
+GEMINI_EMBEDDING_MODEL=models/gemini-embedding-001
 ```
+
+The embedding model name must start with `models/` (the Google SDK rejects it otherwise). The
+backend reads exactly these variable names from `.env`; other names are ignored.
 
 ## Run
 
@@ -69,12 +74,20 @@ npm run build
 
 ## Ports
 
-Fixed per this project's conventions: backend **8106**, frontend **5106**. Configurable via
-`.env` (`BACKEND_PORT`, `FRONTEND_PORT`) if you need to change them.
+Fixed per this project's conventions: backend **8106**, frontend **5106**. Set in `.env`
+(`BACKEND_PORT`, `FRONTEND_PORT`); the frontend's Vite config reads them from the project-root `.env`.
+Vite listens on `localhost`, which on some Windows setups resolves to IPv6 (`[::1]`), so use
+`http://localhost:5106` rather than `127.0.0.1:5106`.
 
 ## Troubleshooting
 
 - **"GEMINI_API_KEY is not configured"** on upload: set the key in `.env` and restart `run.bat`.
+- **Upload fails with "The analysis failed on the server ... over its quota"**: the Gemini key has
+  hit its rate or usage limit (the backend log shows `429 RESOURCE_EXHAUSTED`). Wait for the quota to
+  reset, or use a key with more quota. Reports, clause pages and the graph still work for contracts
+  already analysed.
+- **Upload fails with "Invalid model name" or 404 on `models/text-embedding-004`**: `.env` is missing
+  `GEMINI_EMBEDDING_MODEL`, so the old default is used. Set it as shown in First-time setup.
 - **Port already in use**: another process is bound to 8106 or 5106; stop it or change the port in
   `.env` (and re-run `setup.bat` is not required, just restart `run.bat`).
 - **CUAD file missing**: run `venv\Scripts\python.exe scripts\download_data.py`.

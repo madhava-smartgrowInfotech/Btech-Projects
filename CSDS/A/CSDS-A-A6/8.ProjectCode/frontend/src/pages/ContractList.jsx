@@ -1,65 +1,102 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { FileText, Plus } from "lucide-react";
-import { contractsApi, getErrorMessage } from "../api.js";
-import { LoadingState, ErrorState } from "../components/StatusStates.jsx";
-import { GradeBadge } from "../components/Badges.jsx";
+import { useQuery } from "@tanstack/react-query";
+import { FileText, UploadCloud } from "lucide-react";
+import { Link, useNavigate } from "react-router";
+
+import { GradeBadge } from "@/components/app/RiskBadges.jsx";
+import { Button } from "@/components/ui/Button";
+import { Card } from "@/components/ui/Card";
+import { CardsSkeleton, EmptyState, ErrorState } from "@/components/ui/Feedback";
+import { PageHeader } from "@/components/ui/Layout";
+import { Table } from "@/components/ui/Table";
+import { contractsApi } from "@/lib/api.js";
+import { formatDate } from "@/lib/utils";
+import { keys } from "@/lib/queries.js";
 
 export default function ContractList() {
-  const [contracts, setContracts] = useState(null);
-  const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const query = useQuery({
+    queryKey: keys.contracts,
+    queryFn: async () => (await contractsApi.list()).data,
+  });
 
-  function load() {
-    setError("");
-    setContracts(null);
-    contractsApi
-      .list()
-      .then((res) => setContracts(res.data))
-      .catch((err) => setError(getErrorMessage(err)));
-  }
-
-  useEffect(load, []);
+  const contracts = query.data ?? [];
 
   return (
-    <div className="py-6">
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-semibold text-slate-900">My contracts</h1>
-        <Link
-          to="/upload"
-          className="flex items-center gap-1 rounded-md bg-brand-600 px-4 py-2 text-sm font-medium text-white hover:bg-brand-700"
-        >
-          <Plus className="h-4 w-4" /> Upload
-        </Link>
-      </div>
+    <div className="space-y-6">
+      <PageHeader
+        eyebrow="Your contracts"
+        title="My contracts"
+        description="Every contract you have analysed. Open one for its complexity grade and flagged clauses."
+        actions={
+          <Button asChild>
+            <Link to="/app/upload">
+              <UploadCloud /> Upload contract
+            </Link>
+          </Button>
+        }
+      />
 
-      {error && <div className="mt-6"><ErrorState message={error} onRetry={load} /></div>}
-      {!error && contracts === null && <LoadingState label="Loading contracts..." />}
+      {query.isPending && <CardsSkeleton count={3} />}
 
-      {contracts && contracts.length === 0 && (
-        <p className="mt-8 text-center text-slate-500">No contracts yet. Upload one to get started.</p>
+      {query.isError && (
+        <ErrorState
+          error={query.error}
+          title="Couldn't load your contracts"
+          hint="Check that the backend is running, then try again."
+          onRetry={() => query.refetch()}
+        />
       )}
 
-      {contracts && contracts.length > 0 && (
-        <div className="mt-6 divide-y divide-slate-200 rounded-lg border border-slate-200 bg-white">
-          {contracts.map((c) => (
-            <Link
-              key={c.id}
-              to={`/contracts/${c.id}`}
-              className="flex items-center justify-between px-4 py-4 hover:bg-slate-50"
-            >
-              <div className="flex items-center gap-3">
-                <FileText className="h-5 w-5 text-slate-400" />
-                <div>
-                  <p className="font-medium text-slate-900">{c.filename}</p>
-                  <p className="text-xs text-slate-500">
-                    {new Date(c.uploaded_at).toLocaleString()} - {c.flag_count} flag(s)
-                  </p>
-                </div>
-              </div>
-              <GradeBadge grade={c.complexity_grade} />
-            </Link>
-          ))}
-        </div>
+      {query.isSuccess && contracts.length === 0 && (
+        <EmptyState
+          icon={<FileText />}
+          title="No contracts yet"
+          description="Upload a PDF or DOCX to get its clause-by-clause risk report."
+          action={
+            <Button asChild>
+              <Link to="/app/upload">Upload a contract</Link>
+            </Button>
+          }
+        />
+      )}
+
+      {query.isSuccess && contracts.length > 0 && (
+        <Card className="p-2 sm:p-4">
+          <Table
+            caption="Your contracts"
+            rowKey={(c) => c.id}
+            rows={contracts}
+            initialSort={{ key: "uploaded", dir: "desc" }}
+            onRowClick={(c) => navigate(`/app/contracts/${c.id}`)}
+            columns={[
+              {
+                key: "filename",
+                header: "Contract",
+                cell: (c) => (
+                  <Link to={`/app/contracts/${c.id}`} className="font-medium text-foreground underline-offset-4 hover:underline">
+                    {c.filename}
+                  </Link>
+                ),
+                sortValue: (c) => c.filename.toLowerCase(),
+              },
+              { key: "grade", header: "Grade", cell: (c) => <GradeBadge grade={c.complexity_grade} />, sortValue: (c) => c.complexity_grade },
+              {
+                key: "flags",
+                header: "Flags",
+                cell: (c) => c.flag_count,
+                align: "right",
+                sortValue: (c) => c.flag_count,
+              },
+              {
+                key: "uploaded",
+                header: "Uploaded",
+                cell: (c) => formatDate(c.uploaded_at, true),
+                sortValue: (c) => c.uploaded_at,
+                hideOnCard: true,
+              },
+            ]}
+          />
+        </Card>
       )}
     </div>
   );

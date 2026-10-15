@@ -1,27 +1,33 @@
-import { Link } from "react-router-dom";
-import { FileWarning, GitGraph, Gauge, FileText } from "lucide-react";
-import { useAuth } from "../AuthContext.jsx";
+import { Link } from "react-router";
+import { FileText, FileWarning, Gauge, GitGraph } from "lucide-react";
+
+import { HowItWorks } from "@/components/landing/HowItWorks";
+import { StatsStrip } from "@/components/landing/StatsStrip";
+import { FadeIn, MagneticButton, SlideUp, Stagger, StaggerItem } from "@/components/motion";
+import { Button } from "@/components/ui/Button";
+import { Card } from "@/components/ui/Card";
+import { useAuth } from "@/lib/auth";
 
 const FEATURES = [
   {
     icon: FileText,
     title: "Upload & segment",
-    desc: "Upload a PDF or DOCX contract - ClauseGuard splits it into clauses with page numbers and classifies each one.",
+    desc: "Upload a PDF or DOCX contract. ClauseGuard splits it into clauses with page numbers and classifies each one.",
   },
   {
     icon: FileWarning,
     title: "Predatory clause detection",
-    desc: "Flags restraint of trade, penalty clauses, unilateral termination, unlimited liability, one-sided arbitration, auto-renewal and IP overreach against Indian contract law.",
+    desc: "Flags restraint of trade, penalty clauses, unilateral termination, unlimited liability, one-sided arbitration, auto-renewal and IP overreach under Indian contract law.",
   },
   {
     icon: GitGraph,
     title: "Risky combinations",
-    desc: "A clause graph surfaces combinations that are harmless alone but dangerous together, like unilateral termination plus no-refund plus penalty.",
+    desc: "A clause graph shows combinations that are harmless alone but dangerous together, such as unilateral termination plus no-refund plus penalty.",
   },
   {
     icon: Gauge,
     title: "Complexity grade",
-    desc: "Readability, legalese density, cross-references and length combine into a plain A-F grade with a summary and safer wording for every flag.",
+    desc: "Readability, legalese density, cross-references and sentence length combine into an A-F grade with a plain summary.",
   },
 ];
 
@@ -29,40 +35,49 @@ export default function Landing() {
   const { isAuthenticated } = useAuth();
 
   return (
-    <div>
-      <section className="py-14 text-center">
-        <h1 className="text-4xl font-bold tracking-tight text-slate-900">
-          Know what you're signing.
-        </h1>
-        <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600">
-          ClauseGuard scores contract complexity and flags predatory clauses in plain language,
-          built for Indian agreements - freelancers, small businesses and legal-ops teams.
-        </p>
-        <div className="mt-8 flex justify-center gap-3">
-          <Link
-            to={isAuthenticated ? "/upload" : "/register"}
-            className="rounded-md bg-brand-600 px-6 py-3 font-medium text-white hover:bg-brand-700"
-          >
-            {isAuthenticated ? "Upload a contract" : "Get started"}
-          </Link>
-          <Link
-            to="/evaluation"
-            className="rounded-md border border-slate-300 px-6 py-3 font-medium text-slate-700 hover:bg-slate-100"
-          >
-            See evaluation results
-          </Link>
+    <div className="space-y-24">
+      <section className="pt-8 text-center sm:pt-14">
+        <SlideUp>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-violet-ink">Contract risk, in plain language</p>
+        </SlideUp>
+        <FadeIn delay={0.1}>
+          <h1 className="mt-4 font-display text-4xl font-semibold tracking-tight text-balance sm:text-6xl">
+            Know what you&apos;re <span className="text-gradient">signing.</span>
+          </h1>
+        </FadeIn>
+        <SlideUp delay={0.2}>
+          <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground">
+            ClauseGuard scores contract complexity and flags predatory clauses in plain language, built for Indian agreements.
+          </p>
+        </SlideUp>
+        <div className="mt-9 flex flex-wrap justify-center gap-3">
+          <MagneticButton>
+            <Button asChild size="lg">
+              <Link to={isAuthenticated ? "/app/upload" : "/register"}>{isAuthenticated ? "Upload a contract" : "Get started"}</Link>
+            </Button>
+          </MagneticButton>
+          <Button asChild size="lg" variant="outline">
+            <Link to="/evaluation">See evaluation results</Link>
+          </Button>
         </div>
       </section>
 
-      <section className="grid grid-cols-1 gap-6 py-8 sm:grid-cols-2 lg:grid-cols-4">
+      <Stagger className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {FEATURES.map((f) => (
-          <div key={f.title} className="rounded-lg border border-slate-200 bg-white p-5">
-            <f.icon className="h-8 w-8 text-brand-600" />
-            <h3 className="mt-3 font-semibold text-slate-900">{f.title}</h3>
-            <p className="mt-1 text-sm text-slate-600">{f.desc}</p>
-          </div>
+          <StaggerItem key={f.title}>
+            <Card interactive className="h-full p-5">
+              <span className="grid size-11 place-items-center rounded-xl bg-grad-primary text-white shadow-[0_8px_24px_-8px_rgba(124,92,255,0.7)]">
+                <f.icon className="size-5" />
+              </span>
+              <h3 className="mt-4 font-display text-lg font-semibold">{f.title}</h3>
+              <p className="mt-1.5 text-sm text-muted-foreground">{f.desc}</p>
+            </Card>
+          </StaggerItem>
         ))}
-      </section>
+      </Stagger>
+
+      <StatsStrip />
+      <HowItWorks />
     </div>
   );
 }

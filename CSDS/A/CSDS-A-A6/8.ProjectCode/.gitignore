@@ -7,3 +7,6 @@ data/app.db
 data/raw/
 .pytest_cache/
 *.egg-info/
+
+# Local secrets - never commit
+.env

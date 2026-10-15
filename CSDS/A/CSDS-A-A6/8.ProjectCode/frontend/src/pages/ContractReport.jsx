@@ -1,123 +1,207 @@
-import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { GitGraph, ChevronRight } from "lucide-react";
-import { contractsApi, getErrorMessage } from "../api.js";
-import { LoadingState, ErrorState } from "../components/StatusStates.jsx";
-import { GradeBadge, SeverityBadge } from "../components/Badges.jsx";
+import { useQuery } from "@tanstack/react-query";
+import { useMemo } from "react";
+import { ArrowRight, GitGraph, Gauge } from "lucide-react";
+import { Bar, BarChart, Cell, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { Link, useNavigate, useParams } from "react-router";
+
+import { GradeBadge, SeverityBadge, humanize } from "@/components/app/RiskBadges.jsx";
+import { ChartCard, ChartTooltip, STATUS, axisProps, gridProps } from "@/components/charts/Chart";
+import { Button } from "@/components/ui/Button";
+import { Card, CardBody, CardHeader } from "@/components/ui/Card";
+import { StatCard } from "@/components/ui/Display";
+import { ErrorState, Skeleton } from "@/components/ui/Feedback";
+import { PageHeader } from "@/components/ui/Layout";
+import { Table } from "@/components/ui/Table";
+import { useBreadcrumb } from "@/components/ui/AppShell";
+import { contractsApi } from "@/lib/api.js";
+import { keys } from "@/lib/queries.js";
+import { formatDate } from "@/lib/utils";
+
+const SEVERITY_ORDER = [
+  { key: "high", label: "High", color: STATUS.critical },
+  { key: "medium", label: "Medium", color: STATUS.serious },
+  { key: "low", label: "Low", color: STATUS.warning },
+  { key: "none", label: "None", color: STATUS.neutral },
+];
 
 export default function ContractReport() {
   const { id } = useParams();
-  const [report, setReport] = useState(null);
-  const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const query = useQuery({
+    queryKey: keys.contract(id),
+    queryFn: async () => (await contractsApi.get(id)).data,
+  });
+  const report = query.data;
 
-  function load() {
-    setError("");
-    setReport(null);
-    contractsApi
-      .get(id)
-      .then((res) => setReport(res.data))
-      .catch((err) => setError(getErrorMessage(err)));
-  }
+  useBreadcrumb(report?.filename);
 
-  useEffect(load, [id]);
+  const severityCounts = useMemo(() => {
+    const counts = Object.fromEntries(SEVERITY_ORDER.map((s) => [s.key, 0]));
+    (report?.clauses ?? []).forEach((c) => {
+      counts[c.max_severity in counts ? c.max_severity : "none"] += 1;
+    });
+    return SEVERITY_ORDER.map((s) => ({ name: s.label, key: s.key, count: counts[s.key], color: s.color }));
+  }, [report]);
 
-  if (error) return <ErrorState message={error} onRetry={load} />;
-  if (!report) return <LoadingState label="Loading report..." />;
-
-  return (
-    <div className="py-6">
-      <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
-        <div>
-          <h1 className="text-2xl font-semibold text-slate-900">{report.filename}</h1>
-          <p className="mt-1 text-sm text-slate-500">
-            Uploaded {new Date(report.uploaded_at).toLocaleString()}
-          </p>
-        </div>
-        <div className="flex items-center gap-4 rounded-lg border border-slate-200 bg-white px-5 py-3">
-          <GradeBadge grade={report.complexity_grade} size="lg" />
-          <div>
-            <p className="text-xs uppercase tracking-wide text-slate-500">Complexity</p>
-            <p className="text-lg font-semibold text-slate-900">{report.complexity_score}/100</p>
-          </div>
-        </div>
-      </div>
-
-      <div className="mt-4">
-        <Link
-          to={`/contracts/${id}/graph`}
-          className="inline-flex items-center gap-1 rounded-md border border-slate-300 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-100"
-        >
-          <GitGraph className="h-4 w-4" /> View clause graph
-        </Link>
-      </div>
-
-      <section className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
-        <Metric label="Readability" value={report.readability_score} hint="Flesch reading ease (higher = easier)" />
-        <Metric label="Legalese density" value={`${report.legalese_density}%`} hint="Legal jargon per 100 words" />
-        <Metric label="Cross-references" value={report.cross_reference_count} hint="Section/clause references" />
-        <Metric label="Avg sentence length" value={report.avg_sentence_length} hint="Words per sentence" />
-      </section>
-
-      <section className="mt-8 rounded-lg border border-slate-200 bg-white p-5">
-        <h2 className="font-semibold text-slate-900">Plain-language summary</h2>
-        <p className="mt-2 text-sm leading-relaxed text-slate-700">{report.plain_summary}</p>
-        {report.key_obligations?.length > 0 && (
-          <>
-            <h3 className="mt-4 text-sm font-semibold text-slate-900">Key obligations</h3>
-            <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-slate-700">
-              {report.key_obligations.map((o, i) => (
-                <li key={i}>{o}</li>
-              ))}
-            </ul>
-          </>
-        )}
-      </section>
-
-      {report.combo_flags?.length > 0 && (
-        <section className="mt-8 rounded-lg border border-amber-300 bg-amber-50 p-5">
-          <h2 className="font-semibold text-amber-900">Risky clause combinations</h2>
-          <ul className="mt-2 space-y-2 text-sm text-amber-900">
-            {report.combo_flags.map((combo) => (
-              <li key={combo.combo_id}>{combo.reason}</li>
-            ))}
-          </ul>
-        </section>
-      )}
-
-      <section className="mt-8">
-        <h2 className="font-semibold text-slate-900">Clauses ({report.clauses.length})</h2>
-        <div className="mt-3 divide-y divide-slate-200 rounded-lg border border-slate-200 bg-white">
-          {report.clauses.map((c) => (
-            <Link
-              key={c.id}
-              to={`/contracts/${id}/clauses/${c.id}`}
-              className="flex items-center justify-between gap-4 px-4 py-3 hover:bg-slate-50"
-            >
-              <div className="min-w-0">
-                <p className="truncate text-sm font-medium text-slate-900">
-                  {c.index_in_doc + 1}. {c.clause_type}
-                  <span className="ml-2 text-xs font-normal text-slate-400">p.{c.page_number}</span>
-                </p>
-                <p className="truncate text-xs text-slate-500">{c.text_preview}</p>
-              </div>
-              <div className="flex shrink-0 items-center gap-2">
-                {c.flag_count > 0 && <SeverityBadge severity={c.max_severity} />}
-                <ChevronRight className="h-4 w-4 text-slate-400" />
-              </div>
-            </Link>
+  if (query.isPending) {
+    return (
+      <div className="space-y-6" role="status" aria-label="Loading report">
+        <Skeleton className="h-10 w-2/3" />
+        <Skeleton className="h-4 w-1/3" />
+        <div className="grid grid-cols-2 gap-4 lg:grid-cols-3">
+          {[0, 1, 2, 3, 4, 5].map((i) => (
+            <Skeleton key={i} className="h-28 rounded-2xl" />
           ))}
         </div>
-      </section>
-    </div>
-  );
-}
+        <Skeleton className="h-64 rounded-2xl" />
+      </div>
+    );
+  }
 
-function Metric({ label, value, hint }) {
+  if (query.isError) {
+    const notFound = query.error?.response?.status === 404;
+    return (
+      <ErrorState
+        error={query.error}
+        title={notFound ? "This contract isn't available" : "Couldn't load this report"}
+        hint={notFound ? "It may have been removed, or it belongs to a different account." : "Check that the backend is running, then try again."}
+        onRetry={notFound ? undefined : () => query.refetch()}
+      />
+    );
+  }
+
+  const clauses = report.clauses ?? [];
+  const combos = report.combo_flags ?? [];
+
   return (
-    <div className="rounded-lg border border-slate-200 bg-white p-3">
-      <p className="text-xs uppercase tracking-wide text-slate-500">{label}</p>
-      <p className="mt-1 text-lg font-semibold text-slate-900">{value}</p>
-      <p className="mt-0.5 text-xs text-slate-400">{hint}</p>
+    <div className="space-y-8">
+      <PageHeader
+        eyebrow="Contract report"
+        title={<span className="[overflow-wrap:anywhere]">{report.filename}</span>}
+        description={`Uploaded ${formatDate(report.uploaded_at, true)} · ${report.clauses.length} clauses`}
+        actions={
+          <>
+            <GradeBadge grade={report.complexity_grade} />
+            <Button asChild variant="outline">
+              <Link to={`/app/contracts/${id}/graph`}>
+                <GitGraph /> Clause graph
+              </Link>
+            </Button>
+          </>
+        }
+      />
+
+      <div className="grid grid-cols-2 gap-4 lg:grid-cols-3">
+        <StatCard label="Complexity grade" display={report.complexity_grade} hint={`Score ${report.complexity_score}`} icon={<Gauge />} />
+        <StatCard label="Readability" value={report.readability_score} format={(n) => n.toFixed(1)} hint="Flesch reading ease (higher = easier)" accent="cyan" />
+        <StatCard label="Legalese density" value={report.legalese_density} format={(n) => `${n.toFixed(1)}%`} hint="Legal jargon per 100 words" accent="magenta" />
+        <StatCard label="Cross-references" value={report.cross_reference_count} format={(n) => String(n)} hint="Section and clause references" />
+        <StatCard label="Avg sentence length" value={report.avg_sentence_length} format={(n) => `${n.toFixed(1)} words`} hint="Words per sentence" accent="cyan" />
+        <StatCard label="Flagged clauses" value={clauses.filter((c) => c.flag_count > 0).length} format={(n) => String(n)} hint={`${clauses.length} clauses in total`} accent="magenta" />
+      </div>
+
+      <div className="grid gap-6 lg:grid-cols-5">
+        <Card className="lg:col-span-3">
+          <CardHeader title="Plain-language summary" />
+          <CardBody className="space-y-5">
+            <p className="whitespace-pre-line leading-relaxed text-muted-foreground">{report.plain_summary || "No summary was generated for this contract."}</p>
+            <div>
+              <h3 className="text-sm font-semibold">Key obligations</h3>
+              {report.key_obligations.length ? (
+                <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm text-muted-foreground">
+                  {report.key_obligations.map((o, i) => (
+                    <li key={i}>{o}</li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="mt-2 text-sm text-muted-foreground">No key obligations were extracted.</p>
+              )}
+            </div>
+          </CardBody>
+        </Card>
+
+        <div className="space-y-6 lg:col-span-2">
+          <ChartCard
+            title="Clauses by highest severity"
+            description="Each clause counted once, at its worst flag."
+            empty={clauses.length === 0 ? "No clauses were extracted from this contract." : undefined}
+            table={{
+              columns: ["Severity", "Clauses"],
+              rows: severityCounts.map((s) => [s.name, s.count]),
+            }}
+          >
+            <ResponsiveContainer width="100%" height={210}>
+              <BarChart data={severityCounts} margin={{ top: 8, right: 8, left: -16, bottom: 0 }}>
+                <CartesianGrid {...gridProps} />
+                <XAxis dataKey="name" {...axisProps} />
+                <YAxis allowDecimals={false} {...axisProps} />
+                <Tooltip content={<ChartTooltip />} cursor={{ fill: "var(--chart-grid)" }} />
+                <Bar dataKey="count" name="Clauses" radius={[8, 8, 0, 0]}>
+                  {severityCounts.map((s) => (
+                    <Cell key={s.key} fill={s.color} />
+                  ))}
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          </ChartCard>
+
+          <Card className="border-warning/35">
+            <CardHeader title="Risky clause combinations" icon={<GitGraph />} />
+            <CardBody>
+              {combos.length === 0 ? (
+                <p className="text-sm text-muted-foreground">None detected. No set of clauses in this contract combines into a known risky pattern.</p>
+              ) : (
+                <ul className="space-y-3">
+                  {combos.map((combo, i) => (
+                    <li key={combo.combo_id ?? i} className="rounded-xl border border-warning/30 bg-warning/10 p-3 text-sm">
+                      {combo.reason || "Risky combination of clauses."}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </CardBody>
+          </Card>
+        </div>
+      </div>
+
+      <Card>
+        <CardHeader title={`Clauses (${clauses.length})`} description="Select a clause to see its flags and safer wording." />
+        <CardBody>
+          <Table
+            caption="Clauses in this contract"
+            rowKey={(c) => c.id}
+            rows={clauses}
+            pageSize={10}
+            initialSort={{ key: "order", dir: "asc" }}
+            onRowClick={(c) => navigate(`/app/contracts/${id}/clauses/${c.id}`)}
+            columns={[
+              {
+                key: "order",
+                header: "#",
+                cell: (c) => (
+                  <Link to={`/app/contracts/${id}/clauses/${c.id}`} className="font-medium text-foreground underline-offset-4 hover:underline">
+                    {c.index_in_doc + 1}
+                  </Link>
+                ),
+                sortValue: (c) => c.index_in_doc,
+              },
+              { key: "page", header: "Page", cell: (c) => c.page_number, sortValue: (c) => c.page_number, hideOnCard: true },
+              { key: "type", header: "Type", cell: (c) => humanize(c.clause_type), sortValue: (c) => c.clause_type },
+              {
+                key: "preview",
+                header: "Clause",
+                cell: (c) => <span className="line-clamp-2 text-muted-foreground">{c.text_preview}</span>,
+                hideOnCard: true,
+              },
+              { key: "flags", header: "Flags", cell: (c) => c.flag_count, align: "right", sortValue: (c) => c.flag_count },
+              { key: "risk", header: "Risk", cell: (c) => <SeverityBadge severity={c.max_severity} />, sortValue: (c) => c.max_severity },
+            ]}
+          />
+          <p className="mt-4 flex items-center gap-1.5 text-xs text-muted-foreground">
+            <ArrowRight className="size-3.5" /> Select a row, or a clause number, to open its flags.
+          </p>
+        </CardBody>
+      </Card>
     </div>
   );
 }

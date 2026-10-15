@@ -1,88 +1,141 @@
-import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { ArrowLeft, ScrollText, Scale, Sparkles } from "lucide-react";
-import { contractsApi, getErrorMessage } from "../api.js";
-import { LoadingState, ErrorState } from "../components/StatusStates.jsx";
-import { SeverityBadge } from "../components/Badges.jsx";
+import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { ArrowLeft, ShieldCheck } from "lucide-react";
+import { Link, useParams } from "react-router";
+
+import { SeverityBadge, humanize } from "@/components/app/RiskBadges.jsx";
+import { Button } from "@/components/ui/Button";
+import { Card, CardBody } from "@/components/ui/Card";
+import { EmptyState, ErrorState, Skeleton } from "@/components/ui/Feedback";
+import { PageHeader } from "@/components/ui/Layout";
+import { Tabs, TabPanel } from "@/components/ui/Navigation";
+import { useBreadcrumb } from "@/components/ui/AppShell";
+import { contractsApi } from "@/lib/api.js";
+import { keys } from "@/lib/queries.js";
 
 export default function ClauseDetail() {
   const { id, clauseId } = useParams();
-  const [clause, setClause] = useState(null);
-  const [error, setError] = useState("");
+  const [tab, setTab] = useState("flags");
 
-  function load() {
-    setError("");
-    setClause(null);
-    contractsApi
-      .getClause(id, clauseId)
-      .then((res) => setClause(res.data))
-      .catch((err) => setError(getErrorMessage(err)));
+  const query = useQuery({
+    queryKey: keys.clause(id, clauseId),
+    queryFn: async () => (await contractsApi.getClause(id, clauseId)).data,
+  });
+  const clause = query.data;
+
+  useBreadcrumb(clause ? `Clause ${clause.index_in_doc + 1}` : null);
+
+  const back = (
+    <Button asChild variant="ghost" size="sm" className="-ml-3">
+      <Link to={`/app/contracts/${id}`}>
+        <ArrowLeft /> Back to report
+      </Link>
+    </Button>
+  );
+
+  if (query.isPending) {
+    return (
+      <div className="space-y-6" role="status" aria-label="Loading clause">
+        {back}
+        <Skeleton className="h-10 w-1/2" />
+        <Skeleton className="h-4 w-1/3" />
+        <Skeleton className="h-48 rounded-2xl" />
+      </div>
+    );
   }
 
-  useEffect(load, [id, clauseId]);
+  if (query.isError) {
+    const notFound = query.error?.response?.status === 404;
+    return (
+      <div className="space-y-6">
+        {back}
+        <ErrorState
+          error={query.error}
+          title={notFound ? "This clause isn't in this contract" : "Couldn't load this clause"}
+          hint={notFound ? "Go back to the report and pick a clause from the list." : "Check that the backend is running, then try again."}
+          onRetry={notFound ? undefined : () => query.refetch()}
+        />
+      </div>
+    );
+  }
 
-  if (error) return <ErrorState message={error} onRetry={load} />;
-  if (!clause) return <LoadingState label="Loading clause..." />;
+  const flags = clause.flags ?? [];
+  const confidence = Math.round((clause.classification_confidence ?? 0) * 100);
 
   return (
-    <div className="py-6">
-      <Link to={`/contracts/${id}`} className="inline-flex items-center gap-1 text-sm text-slate-500 hover:text-brand-600">
-        <ArrowLeft className="h-4 w-4" /> Back to report
-      </Link>
+    <div className="space-y-8">
+      {back}
+      <PageHeader
+        eyebrow={`Clause ${clause.index_in_doc + 1} · page ${clause.page_number}`}
+        title={`${humanize(clause.clause_type)} clause`}
+        description={`Classified as ${humanize(clause.clause_type)} with ${confidence}% confidence (${clause.classification_method}).`}
+      />
 
-      <div className="mt-4 flex items-center justify-between">
-        <h1 className="text-xl font-semibold text-slate-900">
-          Clause {clause.index_in_doc + 1}: {clause.clause_type}
-        </h1>
-        <span className="text-xs text-slate-500">
-          page {clause.page_number} - classified via {clause.classification_method} ({Math.round(clause.classification_confidence * 100)}% confidence)
-        </span>
-      </div>
+      <Tabs
+        value={tab}
+        onValueChange={setTab}
+        tabs={[
+          { value: "flags", label: "Flags", count: flags.length },
+          { value: "text", label: "Clause text" },
+        ]}
+      >
+        <TabPanel value="flags" className="mt-6">
+          {flags.length === 0 ? (
+            <EmptyState
+              icon={<ShieldCheck />}
+              title="No predatory-clause flags"
+              description="None of ClauseGuard's predatory-clause rules matched this clause."
+              action={
+                <Button variant="outline" onClick={() => setTab("text")}>
+                  Read the clause text
+                </Button>
+              }
+            />
+          ) : (
+            <ul className="space-y-5">
+              {flags.map((flag) => (
+                <li key={flag.id}>
+                  <Card className="space-y-5 p-5 sm:p-6">
+                    <div className="flex flex-wrap items-center gap-3">
+                      <SeverityBadge severity={flag.severity} />
+                      <h2 className="font-display text-lg font-semibold">{flag.rule_label}</h2>
+                    </div>
 
-      <section className="mt-4 rounded-lg border border-slate-200 bg-white p-5">
-        <h2 className="flex items-center gap-2 text-sm font-semibold text-slate-900">
-          <ScrollText className="h-4 w-4" /> Clause text
-        </h2>
-        <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-slate-700">{clause.text}</p>
-      </section>
+                    <section aria-labelledby={`reason-${flag.id}`} className="space-y-1.5">
+                      <h3 id={`reason-${flag.id}`} className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                        Why it is flagged
+                      </h3>
+                      <p className="leading-relaxed">{flag.reason}</p>
+                    </section>
 
-      {clause.flags.length === 0 && (
-        <p className="mt-6 rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-800">
-          No predatory-clause rules were triggered for this clause.
-        </p>
-      )}
+                    <section aria-labelledby={`prov-${flag.id}`} className="space-y-1.5">
+                      <h3 id={`prov-${flag.id}`} className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                        Provision
+                      </h3>
+                      <blockquote className="border-l-2 border-violet/60 pl-4 text-sm italic text-muted-foreground">{flag.provision}</blockquote>
+                    </section>
 
-      {clause.flags.map((flag) => (
-        <section key={flag.id} className="mt-6 rounded-lg border border-slate-200 bg-white p-5">
-          <div className="flex items-center justify-between">
-            <h2 className="font-semibold text-slate-900">{flag.rule_label}</h2>
-            <SeverityBadge severity={flag.severity} />
-          </div>
-
-          <div className="mt-3">
-            <h3 className="flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-slate-500">
-              <Scale className="h-3.5 w-3.5" /> Why this is flagged
-            </h3>
-            <p className="mt-1 text-sm text-slate-700">{flag.reason}</p>
-          </div>
-
-          {flag.provision && (
-            <div className="mt-3">
-              <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-500">Provision</h3>
-              <p className="mt-1 rounded bg-slate-100 px-3 py-2 text-sm italic text-slate-700">"{flag.provision}"</p>
-            </div>
+                    <section aria-labelledby={`safer-${flag.id}`} className="rounded-xl border border-success/30 bg-success/10 p-4">
+                      <h3 id={`safer-${flag.id}`} className="text-xs font-semibold uppercase tracking-wide text-success">
+                        Safer wording
+                      </h3>
+                      <p className="mt-1.5 text-sm leading-relaxed">{flag.safer_wording}</p>
+                    </section>
+                  </Card>
+                </li>
+              ))}
+            </ul>
           )}
+        </TabPanel>
 
-          {flag.safer_wording && (
-            <div className="mt-3">
-              <h3 className="flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-slate-500">
-                <Sparkles className="h-3.5 w-3.5" /> Safer wording
-              </h3>
-              <p className="mt-1 rounded bg-brand-50 px-3 py-2 text-sm text-brand-900">{flag.safer_wording}</p>
-            </div>
-          )}
-        </section>
-      ))}
+        <TabPanel value="text" className="mt-6">
+          <Card>
+            <CardBody>
+              <p className="whitespace-pre-wrap leading-relaxed">{clause.text}</p>
+            </CardBody>
+          </Card>
+        </TabPanel>
+      </Tabs>
     </div>
   );
 }

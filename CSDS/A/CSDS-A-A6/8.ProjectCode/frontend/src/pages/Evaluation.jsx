@@ -1,102 +1,122 @@
-import { useEffect, useState } from "react";
-import { evalApi, getErrorMessage } from "../api.js";
-import { LoadingState, ErrorState } from "../components/StatusStates.jsx";
+import { useQuery } from "@tanstack/react-query";
+import { FlaskConical, ShieldCheck } from "lucide-react";
+
+import { Badge } from "@/components/ui/Badge";
+import { Card, CardBody, CardHeader } from "@/components/ui/Card";
+import { ErrorState, EmptyState, Skeleton } from "@/components/ui/Feedback";
+import { PageHeader } from "@/components/ui/Layout";
+import { StatCard } from "@/components/ui/Display";
+import { Table } from "@/components/ui/Table";
+import { evalApi } from "@/lib/api.js";
+import { humanize, pct } from "@/lib/format.js";
+import { keys } from "@/lib/queries.js";
 
 export default function Evaluation() {
-  const [metrics, setMetrics] = useState(null);
-  const [error, setError] = useState("");
+  const query = useQuery({
+    queryKey: keys.evaluation,
+    queryFn: async () => (await evalApi.getMetrics()).data,
+  });
 
-  function load() {
-    setError("");
-    setMetrics(null);
-    evalApi
-      .getMetrics()
-      .then((res) => setMetrics(res.data))
-      .catch((err) => setError(getErrorMessage(err)));
-  }
-
-  useEffect(load, []);
-
-  if (error) return <ErrorState message={error} onRetry={load} />;
-  if (!metrics) return <LoadingState label="Loading evaluation results..." />;
+  const data = query.data;
 
   return (
-    <div className="py-6">
-      <h1 className="text-2xl font-semibold text-slate-900">Evaluation</h1>
-      <p className="mt-1 text-sm text-slate-600">
-        Clause classification is scored on a held-out CUAD sample; predatory-clause detection is scored
-        separately on a curated Indian contract-law test set. Regenerate with{" "}
-        <code className="rounded bg-slate-100 px-1">python ml/eval.py</code>.
-      </p>
+    <div className="space-y-8">
+      <PageHeader
+        eyebrow="Evaluation"
+        title="How well ClauseGuard performs"
+        description="Scores are measured on a held-out set. Nothing here is hand-picked or estimated."
+        actions={data?.generated_at ? <Badge tone="neutral">Run {data.generated_at.slice(0, 10)}</Badge> : null}
+      />
 
-      {!metrics.available && (
-        <div className="mt-6 rounded-lg border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-800">
-          {metrics.message}
+      {query.isPending && (
+        <div className="grid gap-4 sm:grid-cols-3" role="status" aria-label="Loading evaluation results">
+          {[0, 1, 2].map((i) => (
+            <Skeleton key={i} className="h-32 rounded-2xl" />
+          ))}
         </div>
       )}
 
-      {metrics.available && (
-        <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2">
-          <section className="rounded-lg border border-slate-200 bg-white p-5">
-            <h2 className="font-semibold text-slate-900">Predatory-clause detection</h2>
-            <p className="mt-1 text-xs text-slate-500">
-              {metrics.predatory_detection.num_examples} curated labelled examples, rule-based detector.
-            </p>
-            <div className="mt-4 grid grid-cols-3 gap-3 text-center">
-              <Stat label="Precision" value={metrics.predatory_detection.precision} />
-              <Stat label="Recall" value={metrics.predatory_detection.recall} />
-              <Stat label="F1" value={metrics.predatory_detection.f1} />
-            </div>
-            <table className="mt-4 w-full text-xs">
-              <thead>
-                <tr className="text-left text-slate-500">
-                  <th className="py-1">Rule</th>
-                  <th className="py-1 text-right">Precision</th>
-                  <th className="py-1 text-right">Recall</th>
-                </tr>
-              </thead>
-              <tbody>
-                {Object.entries(metrics.predatory_detection.per_rule).map(([ruleId, v]) => (
-                  <tr key={ruleId} className="border-t border-slate-100">
-                    <td className="py-1 text-slate-700">{ruleId}</td>
-                    <td className="py-1 text-right">{v.precision}</td>
-                    <td className="py-1 text-right">{v.recall}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </section>
+      {query.isError && (
+        <ErrorState
+          error={query.error}
+          title="Couldn't load the evaluation results"
+          hint="Make sure the backend is running on port 8106, then try again."
+          onRetry={() => query.refetch()}
+        />
+      )}
 
-          <section className="rounded-lg border border-slate-200 bg-white p-5">
-            <h2 className="font-semibold text-slate-900">CUAD clause classification</h2>
-            {!metrics.cuad_classification ? (
-              <p className="mt-3 text-sm text-slate-500">
-                Not yet computed - add GEMINI_API_KEY to .env and re-run <code>python ml/eval.py</code>.
-              </p>
-            ) : (
-              <>
-                <p className="mt-1 text-xs text-slate-500">
-                  {metrics.cuad_classification.num_examples} held-out examples across{" "}
-                  {metrics.cuad_classification.num_categories} CUAD categories.
-                </p>
-                <div className="mt-4 grid grid-cols-2 gap-3 text-center">
-                  <Stat label="Top-1 accuracy" value={metrics.cuad_classification.top1_accuracy} />
-                  <Stat label="Top-3 accuracy" value={metrics.cuad_classification.top3_accuracy} />
+      {data && !data.available && (
+        <EmptyState
+          icon={<FlaskConical />}
+          title="No evaluation results yet"
+          description={data.message || "Run the evaluation script to generate results."}
+        />
+      )}
+
+      {data?.available && data.predatory_detection && (
+        <>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+            <StatCard
+              label="Precision"
+              value={data.predatory_detection.precision}
+              format={pct}
+              hint="Share of flagged clauses that were truly predatory"
+              icon={<ShieldCheck />}
+            />
+            <StatCard
+              label="Recall"
+              value={data.predatory_detection.recall}
+              format={pct}
+              hint="Share of predatory clauses that were flagged"
+              accent="cyan"
+            />
+            <StatCard
+              label="F1 score"
+              value={data.predatory_detection.f1}
+              format={pct}
+              hint={`Across ${data.predatory_detection.num_examples} curated examples`}
+              accent="magenta"
+            />
+          </div>
+
+          <Card>
+            <CardHeader title="Predatory-clause detection, per rule" description="Counts from the held-out set. TP = caught, FN = missed, FP = false alarm." />
+            <CardBody>
+              <Table
+                caption="Per-rule detection results"
+                rowKey={(r) => r.key}
+                rows={Object.entries(data.predatory_detection.per_rule ?? {}).map(([key, v]) => ({ key, ...v }))}
+                columns={[
+                  { key: "rule", header: "Rule", cell: (r) => humanize(r.key), sortValue: (r) => humanize(r.key) },
+                  { key: "tp", header: "TP", cell: (r) => r.tp, align: "right", sortValue: (r) => r.tp },
+                  { key: "fp", header: "FP", cell: (r) => r.fp, align: "right", sortValue: (r) => r.fp },
+                  { key: "fn", header: "FN", cell: (r) => r.fn, align: "right", sortValue: (r) => r.fn },
+                  { key: "precision", header: "Precision", cell: (r) => pct(r.precision), align: "right", sortValue: (r) => r.precision },
+                  { key: "recall", header: "Recall", cell: (r) => pct(r.recall), align: "right", sortValue: (r) => r.recall },
+                ]}
+              />
+            </CardBody>
+          </Card>
+
+          <Card>
+            <CardHeader title="CUAD clause classification" description="Which CUAD category each clause is assigned to." />
+            <CardBody>
+              {data.cuad_classification ? (
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <StatCard label="Top-1 accuracy" value={data.cuad_classification.top1_accuracy} format={pct} />
+                  <StatCard label="Top-3 accuracy" value={data.cuad_classification.top3_accuracy} format={pct} accent="cyan" />
                 </div>
-              </>
-            )}
-          </section>
-        </div>
+              ) : (
+                <EmptyState
+                  icon={<FlaskConical />}
+                  title="Not measured yet"
+                  description="This needs a live Gemini key. Add GEMINI_API_KEY to .env, then run python ml/eval.py from the backend venv."
+                />
+              )}
+            </CardBody>
+          </Card>
+        </>
       )}
-    </div>
-  );
-}
-
-function Stat({ label, value }) {
-  return (
-    <div className="rounded-md bg-slate-50 py-3">
-      <p className="text-lg font-semibold text-slate-900">{value}</p>
-      <p className="text-xs text-slate-500">{label}</p>
     </div>
   );
 }

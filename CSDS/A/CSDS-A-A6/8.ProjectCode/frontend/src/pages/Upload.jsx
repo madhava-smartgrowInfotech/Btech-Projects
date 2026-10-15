@@ -1,93 +1,105 @@
-import { useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { UploadCloud, FileText } from "lucide-react";
-import { contractsApi, getErrorMessage } from "../api.js";
-import { ErrorState } from "../components/StatusStates.jsx";
+import { useState } from "react";
+import { useNavigate } from "react-router";
+import { useQueryClient } from "@tanstack/react-query";
+import { FileText, ShieldAlert } from "lucide-react";
+import { toast } from "sonner";
+
+import { FormError } from "@/components/app/FormError.jsx";
+import { Button } from "@/components/ui/Button";
+import { Card, CardBody, CardHeader } from "@/components/ui/Card";
+import { FileDrop } from "@/components/ui/FileDrop";
+import { ProgressBar } from "@/components/ui/Feedback";
+import { PageHeader } from "@/components/ui/Layout";
+import { contractsApi } from "@/lib/api.js";
+import { uploadErrorMessage } from "@/lib/format.js";
+import { keys } from "@/lib/queries.js";
+
+const ACCEPT = ".pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+
+function validate(file) {
+  return /\.(pdf|docx)$/i.test(file.name) ? null : "Only PDF and DOCX files are supported. Convert the file and try again.";
+}
 
 export default function Upload() {
   const [file, setFile] = useState(null);
-  const [uploading, setUploading] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [uploading, setUploading] = useState(false);
   const [error, setError] = useState("");
-  const inputRef = useRef(null);
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
 
-  function handleFileChange(e) {
-    const f = e.target.files?.[0];
-    if (f) setFile(f);
-  }
-
-  function handleDrop(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    const f = e.dataTransfer.files?.[0];
-    if (f) setFile(f);
-  }
-
-  async function handleUpload() {
     if (!file) return;
     setError("");
-    setUploading(true);
     setProgress(0);
+    setUploading(true);
     try {
       const res = await contractsApi.upload(file, (evt) => {
         if (evt.total) setProgress(Math.round((evt.loaded / evt.total) * 100));
       });
-      navigate(`/contracts/${res.data.id}`);
+      queryClient.invalidateQueries({ queryKey: keys.contracts });
+      toast.success("Contract analysed");
+      navigate(`/app/contracts/${res.data.id}`);
     } catch (err) {
-      setError(getErrorMessage(err));
+      setError(uploadErrorMessage(err));
     } finally {
       setUploading(false);
     }
   }
 
+  // Once the bytes are sent the server still runs classification and explanations, so the bar switches to indeterminate.
+  const analysing = uploading && progress >= 100;
+
   return (
-    <div className="mx-auto max-w-xl py-8">
-      <h1 className="text-2xl font-semibold text-slate-900">Upload a contract</h1>
-      <p className="mt-1 text-sm text-slate-600">PDF or DOCX. ClauseGuard will split it into clauses, classify each one, flag predatory terms, and score its complexity.</p>
+    <div className="mx-auto max-w-2xl space-y-6">
+      <PageHeader
+        eyebrow="New analysis"
+        title="Upload a contract"
+        description="PDF or DOCX. ClauseGuard splits it into clauses, classifies each one, flags predatory terms and scores its complexity."
+      />
 
-      <div
-        onDragOver={(e) => e.preventDefault()}
-        onDrop={handleDrop}
-        onClick={() => inputRef.current?.click()}
-        className="mt-6 flex cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-slate-300 bg-white px-6 py-14 text-center hover:border-brand-400"
-      >
-        <UploadCloud className="h-10 w-10 text-slate-400" />
-        {file ? (
-          <div className="mt-3 flex items-center gap-2 text-slate-700">
-            <FileText className="h-4 w-4" /> {file.name}
-          </div>
-        ) : (
-          <p className="mt-3 text-sm text-slate-500">Drag and drop a file here, or click to browse.</p>
-        )}
-        <input
-          ref={inputRef}
-          type="file"
-          accept=".pdf,.docx"
-          onChange={handleFileChange}
-          className="hidden"
-        />
-      </div>
+      <Card>
+        <CardHeader title="Choose the contract" description="Scanned images without text cannot be read. Use the original PDF or DOCX." icon={<FileText />} />
+        <CardBody>
+          <form onSubmit={handleSubmit} className="space-y-5">
+            <FileDrop
+              file={file}
+              onFile={(f) => {
+                setFile(f);
+                setError("");
+              }}
+              accept={ACCEPT}
+              validate={validate}
+              onPick={() => setError("")}
+              title="Drop a contract here, or click to browse"
+              hint="PDF or DOCX"
+              disabled={uploading}
+            />
 
-      {error && <div className="mt-4"><ErrorState message={error} /></div>}
+            {uploading && (
+              <div className="space-y-2" aria-live="polite">
+                {analysing ? (
+                  <ProgressBar indeterminate label="Analysing clauses. This can take up to a minute." />
+                ) : (
+                  <ProgressBar value={progress} label={`Uploading… ${progress}%`} />
+                )}
+              </div>
+            )}
 
-      {uploading && (
-        <div className="mt-4">
-          <div className="h-2 w-full overflow-hidden rounded-full bg-slate-200">
-            <div className="h-full bg-brand-600 transition-all" style={{ width: `${progress}%` }} />
-          </div>
-          <p className="mt-2 text-center text-sm text-slate-500">
-            Uploading and analyzing - this calls the real Gemini pipeline and can take a minute for longer contracts.
-          </p>
-        </div>
-      )}
+            <FormError message={error} />
 
-      <button
-        onClick={handleUpload}
-        disabled={!file || uploading}
-        className="mt-6 w-full rounded-md bg-brand-600 py-2.5 font-medium text-white hover:bg-brand-700 disabled:opacity-50"
-      >
-        {uploading ? "Analyzing..." : "Analyze contract"}
-      </button>
+            <div className="flex flex-wrap items-center gap-3">
+              <Button type="submit" size="lg" disabled={!file || uploading} loading={uploading}>
+                {uploading ? "Analysing…" : error ? "Try again" : "Analyse contract"}
+              </Button>
+              <p className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                <ShieldAlert className="size-3.5" /> The file is read for analysis and removed from the server afterwards.
+              </p>
+            </div>
+          </form>
+        </CardBody>
+      </Card>
     </div>
   );
 }

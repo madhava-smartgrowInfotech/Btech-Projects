@@ -8,3 +8,6 @@ data/outputs/
 data/work/
 data/*.log
 data/*.err
+
+# secrets - keep local only (.env.example stays tracked)
+.env

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { logEvent } from './lib/activity'
 
 const api = axios.create({ baseURL: '/api' })
 
@@ -16,13 +17,25 @@ export function clearSession() {
 api.interceptors.request.use((cfg) => {
   const t = getToken()
   if (t) cfg.headers.Authorization = `Bearer ${t}`
+  cfg.metadata = { start: performance.now() }
   return cfg
 })
 
+// Every call shows up in the activity log, except polling marked `silent`. Only method, path and status are logged.
+const label = (cfg) => `${(cfg.method || 'get').toUpperCase()} ${cfg.url}`
+
 api.interceptors.response.use(
-  (r) => r,
+  (r) => {
+    if (!r.config.silent) {
+      const ms = Math.round(performance.now() - (r.config.metadata?.start ?? performance.now()))
+      logEvent('api', `${label(r.config)} · ${r.status} · ${ms} ms`)
+    }
+    return r
+  },
   (err) => {
-    if (err.response?.status === 401 && !err.config.url.startsWith('/auth/')) {
+    const cfg = err.config || {}
+    if (!cfg.silent) logEvent('error', `${label(cfg)} · ${err.response ? err.response.status : 'no response'}`)
+    if (err.response?.status === 401 && !cfg.url?.startsWith('/auth/')) {
       clearSession()
       window.location.assign('/login')
     }
@@ -30,13 +43,21 @@ api.interceptors.response.use(
   },
 )
 
-/** Human-readable message from any failed request (also decodes blob error bodies). */
-export function errText(err) {
-  const d = err?.response?.data
-  if (d?.detail) return typeof d.detail === 'string' ? d.detail : d.detail.map((x) => x.msg).join('; ')
-  if (err?.response) return `Request failed (${err.response.status})`
-  return 'Cannot reach the server. Is the backend running?'
+/** What failed and what to do next, for any failed request. */
+export function describeError(err) {
+  if (!err?.response) return { message: 'Cannot reach the server.', hint: 'Start the backend (run.bat) and try again.' }
+  const { status, data } = err.response
+  const d = data?.detail
+  const detail = typeof d === 'string' ? d : Array.isArray(d) ? d.map((x) => x.msg).join('; ') : null
+  const hint = status === 404 ? 'It may have been deleted. Refresh the list and pick another.'
+    : status === 413 ? 'Choose a file under 25 MB.'
+    : status === 400 ? 'Check the inputs above and try again.'
+    : status >= 500 ? 'The server hit an error. The backend window has the traceback.'
+    : null
+  return { message: detail || `Request failed (${status}).`, hint }
 }
+
+export const errText = (err) => describeError(err).message
 
 export async function blobUrl(path) {
   const r = await api.get(path, { responseType: 'blob' })

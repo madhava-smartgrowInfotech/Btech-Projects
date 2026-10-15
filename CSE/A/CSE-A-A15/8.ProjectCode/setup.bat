@@ -1,6 +1,10 @@
 @echo off
 setlocal
 cd /d "%~dp0"
+if not exist .env (
+  copy .env.example .env >nul
+  echo Created .env from .env.example. Set JWT_SECRET in it before the first run.
+)
 if not exist venv (
   python -m venv venv || goto :fail
 )

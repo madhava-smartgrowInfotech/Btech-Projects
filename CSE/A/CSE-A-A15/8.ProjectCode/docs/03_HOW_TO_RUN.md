@@ -8,6 +8,8 @@ Needs Windows with Python 3.11+, Node.js LTS and Git. No API keys, datasets or h
 setup.bat
 ```
 
+`setup.bat` creates `.env` from `.env.example` if it is missing. `.env` is git-ignored and stays on your machine: set a real `JWT_SECRET` (16+ characters) in it. Ports are `BACKEND_PORT=8315` and `FRONTEND_PORT=5315`.
+
 Creates `venv`, installs the Python packages, regenerates the sample covers if `data\covers` is missing, and runs `npm install` in `frontend`.
 
 ## Start

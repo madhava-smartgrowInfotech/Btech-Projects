@@ -50,6 +50,16 @@ def main():
             severe_result = res
             check("severe crash is detected", res["accident_detected"] is True and res["severity_label"] in ("Moderate", "Severe"))
 
+    # Each simulated scenario must be rated as its own severity (the simulator mirrors the training data).
+    labels = {"minor": "Minor", "moderate": "Moderate", "severe": "Severe"}
+    for scenario, label in labels.items():
+        hits = 0
+        for _ in range(40):
+            _, reading = call("GET", f"/api/simulate?scenario={scenario}")
+            _, res = call("POST", "/api/predict", reading)
+            hits += res["severity_label"] == label
+        check(f"{scenario} scenario is rated {label} (>=90% of 40)", hits >= 36, f"{hits}/40")
+
     # Manual-override payload exactly as the Manual screen builds it.
     manual = {"acc_x": 0, "acc_y": 0, "acc_z": 9.81, "gyro_x": 0, "gyro_y": 0, "gyro_z": 0.1,
               "gyro_magnitude": 0.1, "speed_before": 40, "speed_change": 0, "jerk": 0, "acc_magnitude": 9.81}

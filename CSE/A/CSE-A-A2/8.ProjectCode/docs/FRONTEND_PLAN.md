@@ -69,3 +69,10 @@ Screenshots are in `docs/screenshots/`.
 Decisions: no new backend endpoints. Moderate/Severe confirmation: Escape or "I'm fine" cancels, backdrop click does not;
 live monitoring pauses while a confirmation is open. The kit copy was adapted (its Layout depended on an auth module
 this product has no use for; added `lib/storage.js`, `lib/gsap.js`, `LineTrace` chart, Modal `dismissOnBackdrop`).
+
+### Follow-up: scenario severity mismatch
+The simulated "moderate" crash was rated Minor about 20% of the time (and "minor" rated Moderate about 30%). Cause: `/api/simulate`
+drew speed, spin and jerk from ranges that differ from `train_models.py`, so the severity model was misled by cues it never saw
+for that class. `app.py` `crash()` now uses the training ranges per severity; the models, `/api/predict` and every response
+shape are unchanged. Measured over 1000 samples each: minor 99.2% Minor, moderate 99.1% Moderate, severe 99.5% Severe.
+`scripts/smoke_test.py` now asserts this. The product has no login, so none was added.

@@ -193,25 +193,27 @@ def api_simulate():
             jerk=abs(random.gauss(6, 2)),
         )
 
-    def crash(mag_range, speed_change_range, jerk_mean):
+    def crash(mag_range, xy_noise, z_sd, gyro_sd, speed_range, speed_change_range, jerk_mean, jerk_sd):
+        # Parameters mirror train_models.py per severity, so a simulated "moderate" crash looks like
+        # the moderate crashes the severity model was trained on (same speed, spin and jerk ranges).
         mag = random.uniform(*mag_range)
         theta = random.uniform(0, 2 * math.pi)
         return dict(
-            acc_x=mag * math.cos(theta) + random.gauss(0, 1.5),
-            acc_y=mag * math.sin(theta) + random.gauss(0, 1.5),
-            acc_z=random.gauss(g, 2.0),
-            gyro_x=random.gauss(0, 1.5), gyro_y=random.gauss(0, 1.5), gyro_z=random.gauss(0, 1.5),
-            speed_before=random.uniform(10, 90),
+            acc_x=mag * math.cos(theta) + random.gauss(0, xy_noise),
+            acc_y=mag * math.sin(theta) + random.gauss(0, xy_noise),
+            acc_z=random.gauss(g, z_sd),
+            gyro_x=random.gauss(0, gyro_sd), gyro_y=random.gauss(0, gyro_sd), gyro_z=random.gauss(0, gyro_sd),
+            speed_before=random.uniform(*speed_range),
             speed_change=-random.uniform(*speed_change_range),
-            jerk=abs(random.gauss(jerk_mean, 6)),
+            jerk=abs(random.gauss(jerk_mean, jerk_sd)),
         )
 
     generators = {
         "normal": normal,
         "brake": brake,
-        "minor": lambda: crash((15, 28), (10, 40), 20),
-        "moderate": lambda: crash((28, 45), (25, 55), 35),
-        "severe": lambda: crash((45, 80), (45, 100), 60),
+        "minor": lambda: crash((15, 28), 1.5, 2.0, 1.5, (10, 60), (10, 40), 20, 5),
+        "moderate": lambda: crash((28, 45), 2.0, 3.0, 2.5, (30, 90), (25, 55), 35, 8),
+        "severe": lambda: crash((45, 80), 3.0, 5.0, 4.0, (40, 140), (45, 100), 60, 12),
     }
 
     if scenario not in generators:

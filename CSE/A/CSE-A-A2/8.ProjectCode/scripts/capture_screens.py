@@ -1,4 +1,4 @@
-"""Walk every ResQAI screen with real data and save 1440x900 PNGs to docs/screenshots/.
+"""Walk every ResQAI screen (the product has no login, so each route is opened directly) with real data and save 1440x900 PNGs to docs/screenshots/.
 
 Usage:  python scripts/capture_screens.py [base_url]     (app must be running: run.bat)
 Also fails (exit 1) if the browser console shows errors, failed requests or 404s on assets.

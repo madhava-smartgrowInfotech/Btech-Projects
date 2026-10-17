@@ -130,9 +130,8 @@ set HAVE_NODE=1
 node --version >nul 2>&1
 if errorlevel 1 set HAVE_NODE=0
 if "%HAVE_NODE%"=="1" (
-  echo [5/6] Preparing the React frontend in frontend\ ...
-  if not exist "frontend
-ode_modules" (
+  echo [5/6] Preparing the React frontend in the frontend folder ...
+  if not exist "frontend\node_modules" (
     echo   Installing frontend packages - first run only, needs internet...
     pushd frontend
     call npm install
@@ -149,7 +148,7 @@ echo.
 REM --- 8. Start backend (own window) bound to 127.0.0.1 ---
 echo [6/6] Starting CipherGuard Shield API on http://localhost:%BACKEND_PORT% ...
 echo   Binding to 127.0.0.1:%BACKEND_PORT% ^(avoids firewall prompts^).
-start "CipherGuard API :%BACKEND_PORT%" cmd /k "cd /d %~dp0 && call .venv\Scriptsctivate.bat && python -m uvicorn cipherguard.api.main:app --host 127.0.0.1 --port %BACKEND_PORT% --log-level info"
+start "CipherGuard API :%BACKEND_PORT%" cmd /k "cd /d %~dp0 && call .venv\Scripts\activate.bat && python -m uvicorn cipherguard.api.main:app --host 127.0.0.1 --port %BACKEND_PORT% --log-level info"
 
 if "%HAVE_NODE%"=="0" (
   echo   Open http://localhost:%BACKEND_PORT% for the built-in dashboard.

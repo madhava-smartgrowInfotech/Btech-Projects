@@ -72,3 +72,7 @@ machine learning (Logistic Regression, Decision Tree, Random Forest, SVM).
 - scikit-learn (Logistic Regression, Decision Tree, Random Forest, SVM)
 - pandas, numpy, joblib
 - HTML5 / CSS3
+
+## New React Frontend
+A React + FastAPI interface (landing page, overview, four prediction screens, model comparison, datasets)
+lives in `frontend/` and `backend/`. Run `run.bat` - see `docs/03_HOW_TO_RUN.md`. The Flask app above is unchanged.

@@ -1,5 +1,10 @@
 # CipherGuard Shield — How to Run (Complete Guide)
 
+> **New React console.** `run.bat` now starts the API on **http://localhost:8305** and the new React console on
+> **http://localhost:5305** (ports are set in `.env`). The browser opens on the console. The original dashboard is still served by
+> the API at http://localhost:8305. Node.js 18+ is needed for the console (https://nodejs.org); without it `run.bat` falls back to the original dashboard.
+> Wherever the guide below says port 8000, use **8305** for the API and **5305** for the console.
+
 ## 1. Prerequisites — What you need on your machine
 
 ### For Method A and C (native Python run)
@@ -7,7 +12,8 @@
 - **Python 3.10, 3.11, or 3.12** (64-bit). Check yours: open **Command Prompt** and type `python --version`. You need `Python 3.10.x` or newer.
   - Download: **https://www.python.org/downloads/** (click the yellow *Download Python* button). During setup, **check the box `Add Python to PATH`** at the bottom of the first installer screen.
   - Windows 10/11, 4 GB RAM free, ~1 GB disk for the virtual environment and models.
-- No other installs required. All Python packages are listed in `requirements.txt` and installed automatically.
+- **Node.js 18 or newer** for the React console (https://nodejs.org, choose LTS). Check with `node --version`. `run.bat` runs `npm install` in `frontend\` on the first start.
+- All Python packages are listed in `requirements.txt` and installed automatically.
 
 ### For Method B (Docker — recommended if Docker Desktop is installed)
 

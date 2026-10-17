@@ -20,6 +20,20 @@ A production-quality security platform that combines **authenticated encryption*
 
 No raw packet sniffing — traffic is labeled dataset flows (batch replay) or user-submitted records via the UI, which is sufficient to demonstrate a real IDS pipeline without special hardware.
 
+## React console (frontend/)
+
+A React 19 + Vite + Tailwind app built on the **V5 "Kinetic Mono"** kit (monospace UI, live counters, terminal log, three.js grid backdrop). It talks to the same FastAPI endpoints through a Vite proxy.
+
+| Route | Screen |
+|-------|--------|
+| `/` | Landing page with live numbers and a terminal that calls the real API |
+| `/app` | Live scoring: single record form, CSV batch, session log and charts |
+| `/app/secure` | Secure transfer: encrypt text/files, cloud decrypt, tamper test |
+| `/app/alerts` | Alerts with severity filter and clear-all |
+| `/app/performance` | Held-out metrics, confusion matrix, model comparison |
+
+Ports come from `.env`: API **8305**, console **5305**. Run `run.bat` (or `cd frontend && npm install && npm run dev` with the API running). `python scripts/smoke_test.py --frontend` checks the whole stack; `python scripts/capture_screens.py` regenerates `docs/screenshots/`. Plan and feature checklist: `docs/FRONTEND_PLAN.md`.
+
 ## Architecture
 
 ```
@@ -74,8 +88,8 @@ Manual:
 ```bash
 pip install -r requirements.txt
 python -m cipherguard.ids.train   # only if models/ missing; run.bat does this automatically
-python -m uvicorn cipherguard.api.main:app --host 127.0.0.1 --port 8000
-# then open http://localhost:8000
+python -m uvicorn cipherguard.api.main:app --host 127.0.0.1 --port 8305
+# built-in dashboard: http://localhost:8305   |   React console: cd frontend && npm install && npm run dev -> http://localhost:5305
 ```
 
 The native server is always bound to **127.0.0.1** (localhost) to avoid firewall prompts; inside Docker it is mapped via `0.0.0.0:8000` → `localhost:8000`. The dashboard is a clean white/light professional theme (Inter/system-ui, generous spacing, not a dark terminal).

@@ -33,9 +33,9 @@ python --version
 echo.
 
 REM --- 2. Create virtual environment only if it does not already exist ---
-echo [1/4] Checking Python virtual environment (.venv)...
+echo [1/4] Checking Python virtual environment ^(.venv^)...
 if not exist ".venv\Scripts\python.exe" (
-  echo   .venv not found - creating it now (this may take a moment)...
+  echo   .venv not found - creating it now ^(this may take a moment^)...
   python -m venv .venv
   if errorlevel 1 (
     echo.
@@ -58,7 +58,7 @@ echo [2/4] Activating virtual environment...
 call ".venv\Scripts\activate.bat"
 if errorlevel 1 (
   echo.
-  echo [ERROR] Failed to activate virtual environment (.venv\Scripts\activate.bat).
+  echo [ERROR] Failed to activate virtual environment ^(.venv\Scripts\activate.bat^).
   echo The venv may be corrupted - try deleting the .venv folder and running again.
   echo.
   pause
@@ -71,7 +71,7 @@ REM --- 4. Install / update dependencies ---
 echo [3/4] Installing dependencies from requirements.txt ...
 echo   This may take 1-2 minutes on the first run - please wait.
 echo.
-pip install --upgrade pip
+python -m pip install --upgrade pip
 if errorlevel 1 (
   echo [WARN] pip upgrade had a warning, continuing anyway...
 )
@@ -93,16 +93,16 @@ if errorlevel 1 pip install httpx
 echo.
 
 REM --- 5. Train models if missing ---
-echo [4/5] Checking ThreatSense model artifacts (models\ ...)...
+echo [4/6] Checking ThreatSense model artifacts ^(models\ ...^)...
 if not exist "models\preprocessor.joblib" (
-  echo   No trained models found - training ThreatSense Engine (30-60 seconds)...
+  echo   No trained models found - training ThreatSense Engine ^(30-60 seconds^)...
   echo   You will see lines like "Training XGBoost..." and "Torch CNN Epoch".
   echo.
   python -m cipherguard.ids.train
   if errorlevel 1 (
     echo.
     echo [ERROR] Model training failed. See the output above.
-    echo Common causes: missing dependencies (check pip step) or corrupted data/raw/ files.
+    echo Common causes: missing dependencies ^(check pip step^) or corrupted data/raw/ files.
     echo Try deleting models\ and reports\ and running again.
     echo.
     pause
@@ -115,31 +115,66 @@ if not exist "models\preprocessor.joblib" (
 )
 echo.
 
-REM --- 6. Start backend server bound to 127.0.0.1 ---
-echo [5/5] Starting CipherGuard Shield on http://localhost:8000 ...
-echo   Binding to 127.0.0.1:8000 (avoids firewall prompts).
-echo   The command window must stay open while the server is running - this is expected.
-echo   Press Ctrl+C or close this window to stop the server.
+REM --- 6. Read ports from .env (defaults 8305 / 5305) ---
+set BACKEND_PORT=8305
+set FRONTEND_PORT=5305
+if exist ".env" (
+  for /f "usebackq eol=# tokens=1,* delims==" %%A in (".env") do (
+    if /i "%%A"=="BACKEND_PORT" set BACKEND_PORT=%%B
+    if /i "%%A"=="FRONTEND_PORT" set FRONTEND_PORT=%%B
+  )
+)
+
+REM --- 7. React frontend (needs Node.js 18+); falls back to the built-in dashboard if Node is missing ---
+set HAVE_NODE=1
+node --version >nul 2>&1
+if errorlevel 1 set HAVE_NODE=0
+if "%HAVE_NODE%"=="1" (
+  echo [5/6] Preparing the React frontend in frontend\ ...
+  if not exist "frontend
+ode_modules" (
+    echo   Installing frontend packages - first run only, needs internet...
+    pushd frontend
+    call npm install
+    popd
+  ) else (
+    echo   Frontend packages present - skipping install.
+  )
+) else (
+  echo [5/6] Node.js not found - skipping the React frontend.
+  echo   Install Node.js 18+ from https://nodejs.org to get the new console. The built-in dashboard still works.
+)
 echo.
 
-REM Open browser shortly after server is up - poll in background so user does not have to type URL.
-REM We wait ~4 seconds then try to open; if port not yet ready, user can also click manually.
-start "" cmd /c "timeout /t 5 /nobreak >nul & start http://localhost:8000 & echo [run.bat] Browser opened at http://localhost:8000 (if it did not open, type http://localhost:8000 manually)"
+REM --- 8. Start backend (own window) bound to 127.0.0.1 ---
+echo [6/6] Starting CipherGuard Shield API on http://localhost:%BACKEND_PORT% ...
+echo   Binding to 127.0.0.1:%BACKEND_PORT% ^(avoids firewall prompts^).
+start "CipherGuard API :%BACKEND_PORT%" cmd /k "cd /d %~dp0 && call .venv\Scriptsctivate.bat && python -m uvicorn cipherguard.api.main:app --host 127.0.0.1 --port %BACKEND_PORT% --log-level info"
 
-REM Run server in FOREGROUND so logs are visible and window stays open.
-REM IMPORTANT: host is 127.0.0.1, never 0.0.0.0, to avoid firewall prompts and ensure localhost resolution.
-python -m uvicorn cipherguard.api.main:app --host 127.0.0.1 --port 8000 --log-level info
+if "%HAVE_NODE%"=="0" (
+  echo   Open http://localhost:%BACKEND_PORT% for the built-in dashboard.
+  start "" cmd /c "timeout /t 6 /nobreak >nul & start http://localhost:%BACKEND_PORT%"
+  echo.
+  pause
+  exit /b 0
+)
+
+echo   Starting the React console on http://localhost:%FRONTEND_PORT% - keep this window open. Ctrl+C stops it.
+echo   ^(Close the "CipherGuard API" window as well to stop the backend.^)
+echo.
+start "" cmd /c "timeout /t 8 /nobreak >nul & start http://localhost:%FRONTEND_PORT%"
+cd frontend
+call npm run dev
 set EXITCODE=%errorlevel%
+cd ..
 
 echo.
 if %EXITCODE% neq 0 (
-  echo [INFO] Server exited with code %EXITCODE%.
-  echo Common reason: "port already in use" - close any program using port 8000 or restart your PC, then try again.
-  echo To check:  netstat -ano ^| findstr :8000   then   taskkill /PID ^<pid^> /F
+  echo [INFO] Frontend exited with code %EXITCODE%.
+  echo Common reason: port %FRONTEND_PORT% or %BACKEND_PORT% already in use.
+  echo To check:  netstat -ano ^| findstr :%FRONTEND_PORT%   then   taskkill /PID ^<pid^> /F
 ) else (
-  echo [INFO] Server stopped.
+  echo [INFO] Frontend stopped.
 )
-echo If the browser did not open automatically, open it manually and go to:  http://localhost:8000
-echo.
 pause
 exit /b %EXITCODE%

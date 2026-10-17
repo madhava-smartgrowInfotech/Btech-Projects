@@ -6,3 +6,6 @@ __pycache__/
 node_modules/
 frontend/dist/
 logs/
+data/users.json
+data/.secret
+data/*.tmp

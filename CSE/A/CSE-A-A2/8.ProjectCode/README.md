@@ -111,4 +111,30 @@ ResQAI/
 ## New React frontend
 
 A Neo Brutal Grid web app lives in `frontend/` (React + Vite, port 5302) and talks to the same Flask API (port 8302).
-The original Flask page at `/` is unchanged. Start both with `run.bat`; see `docs/03_HOW_TO_RUN.md`.
+The original Flask page at `http://localhost:8302/` is unchanged. Start both with `run.bat` (run `setup.bat` once first);
+see `docs/03_HOW_TO_RUN.md`.
+
+### Login
+
+The React console is behind a login. Open http://localhost:5302, press **Sign in**, then **Create an account** the first
+time. The live monitor, manual override and emergency response screens are only reachable once you are signed in; a
+signed-out visit to any of them redirects to the login form and returns you to the page you asked for afterwards.
+
+- **Accounts** are stored in `data/users.json` (name, email, salted password hash only). The file and the token signing
+  key `data/.secret` are created on first use and are git-ignored. Passwords need at least 8 characters.
+- **Sessions** use a signed token that expires after 12 hours. Five wrong passwords for one email locks that email out for
+  5 minutes. Signing out clears the token.
+- **Auth endpoints** (added next to the existing API, nothing existing changed):
+
+| Method | Endpoint             | Purpose                                          |
+|--------|----------------------|--------------------------------------------------|
+| POST   | `/api/auth/register` | `{name, email, password}` -> `{token, user}`     |
+| POST   | `/api/auth/login`    | `{email, password}` -> `{token, user}`           |
+| GET    | `/api/auth/me`       | Current user for the `Authorization: Bearer` token |
+| GET    | `/api/auth/status`   | `{auth_required}`                                |
+
+- **Locking the API too:** by default only the React screens require a login, so the original Flask page keeps working.
+  Set `REQUIRE_AUTH=1` in `.env` and every `/api/*` route except `/api/health` and `/api/auth/*` returns 401 without a
+  valid token. The original Flask page cannot sign in, so it stops working in that mode.
+- **Demo data:** this is a prototype login (file-based accounts, no email verification or password reset). Use a real
+  identity provider before any production use.

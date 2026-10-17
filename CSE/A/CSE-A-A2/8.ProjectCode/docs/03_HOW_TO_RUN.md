@@ -28,11 +28,15 @@ Production build: `cd frontend && npm run build` (output in `frontend/dist`).
 
 ## Check it works
 ```
-python scripts/smoke_test.py            :: API + proxy flow, needs the app running
+python scripts/smoke_test.py            :: accounts, login, detection and dispatch flow, needs the app running
 python scripts/capture_screens.py       :: walks every screen, saves docs/screenshots/*.png, fails on console errors
 ```
 The screenshot script needs `pip install playwright` and `playwright install chromium` once.
 
+## Signing in
+Open http://localhost:5302, press **Sign in** and **Create an account** on first use (password 8+ characters).
+Accounts are saved in `data/users.json`. `REQUIRE_AUTH=1` in `.env` also makes the API reject calls without a login token.
+
 ## Screens
-`/` landing - `/monitor` live monitor - `/manual` manual override - `/response` emergency response map.
+`/` landing - `/login` and `/register` - then, signed in only: `/monitor` live monitor - `/manual` manual override - `/response` emergency response map.
 The 15 second confirmation and dispatched-alert dialogs appear on any app screen.

@@ -18,9 +18,12 @@ if not exist "frontend\node_modules" (
 rem Ports are fixed for ResQAI; overrides may be set in .env.
 set "BACKEND_PORT=8302"
 set "FRONTEND_PORT=5302"
+set "REQUIRE_AUTH=0"
 for /f "usebackq eol=# tokens=1,* delims==" %%a in (".env") do (
   if /i "%%a"=="BACKEND_PORT" set "BACKEND_PORT=%%b"
   if /i "%%a"=="FRONTEND_PORT" set "FRONTEND_PORT=%%b"
+  if /i "%%a"=="REQUIRE_AUTH" set "REQUIRE_AUTH=%%b"
+  if /i "%%a"=="SECRET_KEY" set "SECRET_KEY=%%b"
 )
 
 netstat -ano | findstr /r /c:":%BACKEND_PORT% .*LISTENING" >nul
@@ -37,7 +40,7 @@ if not errorlevel 1 (
 )
 
 echo Starting ResQAI API on port %BACKEND_PORT%...
-start "ResQAI API" cmd /k "set PORT=%BACKEND_PORT%&& venv\Scripts\python.exe app.py"
+start "ResQAI API" cmd /k "set PORT=%BACKEND_PORT%&& set REQUIRE_AUTH=%REQUIRE_AUTH%&& venv\Scripts\python.exe app.py"
 
 echo Starting ResQAI web app on port %FRONTEND_PORT%...
 start "ResQAI Web" cmd /k "cd /d frontend && npm run dev"

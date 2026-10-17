@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
-import { Link, NavLink, useLocation } from 'react-router-dom'
-import { Activity, BrainCircuit, Hospital, Home, Menu, Moon, SlidersHorizontal, Sun, Siren } from 'lucide-react'
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
+import { Activity, BrainCircuit, Hospital, Home, LogIn, LogOut, Menu, Moon, SlidersHorizontal, Sun, Siren } from 'lucide-react'
+import { useAuth } from '../../lib/auth'
 import { useTheme } from '../../lib/theme'
-import { IconButton } from './Button'
+import { Button, IconButton } from './Button'
 import { Drawer } from './Feedback'
 import { Badge } from './Display'
+import { useToast } from './Toast'
 
 export const APP_NAV = [
   { to: '/monitor', label: 'Live monitor', short: 'Monitor', icon: Activity },
@@ -50,6 +52,34 @@ export function ModelBadge({ health }) {
   )
 }
 
+function useSignOut() {
+  const { signOut } = useAuth()
+  const toast = useToast()
+  const nav = useNavigate()
+  return () => {
+    signOut(true)
+    toast.info('Signed out.')
+    nav('/')
+  }
+}
+
+function UserCard() {
+  const { user } = useAuth()
+  const signOut = useSignOut()
+  if (!user) return null
+  return (
+    <div className="stack" style={{ '--gap': '10px' }}>
+      <div className="card card-flat" style={{ padding: 12 }}>
+        <strong style={{ display: 'block', overflowWrap: 'anywhere' }}>{user.name}</strong>
+        <span className="tiny mono muted" style={{ overflowWrap: 'anywhere' }}>{user.email}</span>
+      </div>
+      <Button icon={LogOut} block onClick={signOut}>
+        Sign out
+      </Button>
+    </div>
+  )
+}
+
 function NavList({ items, onNavigate }) {
   return (
     <nav className="sidebar-nav" aria-label="Main">
@@ -71,12 +101,16 @@ export function Sidebar({ onNavigate, footer }) {
       <NavList items={APP_NAV} onNavigate={onNavigate} />
       <div className="divider-label">Site</div>
       <NavList items={PUBLIC_NAV} onNavigate={onNavigate} />
-      {footer && <div className="sidebar-foot">{footer}</div>}
+      <div className="sidebar-foot">
+        {footer}
+        <UserCard />
+      </div>
     </aside>
   )
 }
 
 export function Topbar({ title, onMenu, status }) {
+  const { user } = useAuth()
   return (
     <header className="topbar">
       {onMenu && <IconButton icon={Menu} label="Open navigation" className="only-mobile" onClick={onMenu} />}
@@ -85,6 +119,7 @@ export function Topbar({ title, onMenu, status }) {
       </span>
       {title && <span className="topbar-title only-desktop">{title}</span>}
       <span className="topbar-spacer" />
+      {user && <span className="badge only-desktop">{user.name}</span>}
       {status}
       <ThemeToggle />
     </header>
@@ -120,6 +155,7 @@ export function AppShell({ children, health, footer }) {
       <Drawer open={open} onClose={() => setOpen(false)} title="Menu" side="left">
         <div className="stack">
           <NavList items={[...APP_NAV, ...PUBLIC_NAV]} onNavigate={() => setOpen(false)} />
+          <UserCard />
         </div>
       </Drawer>
     </div>
@@ -128,6 +164,8 @@ export function AppShell({ children, health, footer }) {
 
 /** Public layout: topbar + content (landing page). */
 export function PublicShell({ children, health }) {
+  const { user } = useAuth()
+  const signOut = useSignOut()
   const [open, setOpen] = useState(false)
   const loc = useLocation()
   useEffect(() => setOpen(false), [loc.pathname])
@@ -149,6 +187,15 @@ export function PublicShell({ children, health }) {
         </nav>
         {health && <span className="only-desktop"><ModelBadge health={health} /></span>}
         <ThemeToggle />
+        {user ? (
+          <Button size="sm" icon={LogOut} onClick={signOut} className="only-desktop">
+            Sign out
+          </Button>
+        ) : (
+          <Button variant="primary" size="sm" to="/login" icon={LogIn} className="only-desktop">
+            Sign in
+          </Button>
+        )}
       </header>
       <main id="main" tabIndex={-1}>
         {children}
@@ -156,6 +203,18 @@ export function PublicShell({ children, health }) {
       <Drawer open={open} onClose={() => setOpen(false)} title="Menu" side="left">
         <div className="stack">
           <NavList items={[...PUBLIC_NAV, ...APP_NAV]} onNavigate={() => setOpen(false)} />
+          {user ? (
+            <UserCard />
+          ) : (
+            <>
+              <Button variant="primary" to="/login" icon={LogIn} block>
+                Sign in
+              </Button>
+              <Button to="/register" block>
+                Create account
+              </Button>
+            </>
+          )}
         </div>
       </Drawer>
     </>

@@ -8,6 +8,7 @@ Flask backend serving:
   - /api/hospitals    : nearest hospitals to a given lat/lon
   - /api/emergency    : simulate dispatching an emergency alert
   - /api/simulate     : generate one synthetic "live sensor" reading
+  - /api/auth/*       : register / login / me (see auth.py)
 """
 
 import json
@@ -21,11 +22,14 @@ import joblib
 import numpy as np
 from flask import Flask, jsonify, render_template, request
 
+import auth
+
 APP_DIR = os.path.dirname(os.path.abspath(__file__))
 MODELS_DIR = os.path.join(APP_DIR, "models")
 DATA_DIR = os.path.join(APP_DIR, "data")
 
 app = Flask(__name__)
+auth.init_app(app)  # /api/auth/* login endpoints; guards the API only when REQUIRE_AUTH=1
 
 # ---------------------------------------------------------------------------
 # Load trained models (run `python train_models.py` first if these are missing)

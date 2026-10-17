@@ -75,4 +75,11 @@ The simulated "moderate" crash was rated Minor about 20% of the time (and "minor
 drew speed, spin and jerk from ranges that differ from `train_models.py`, so the severity model was misled by cues it never saw
 for that class. `app.py` `crash()` now uses the training ranges per severity; the models, `/api/predict` and every response
 shape are unchanged. Measured over 1000 samples each: minor 99.2% Minor, moderate 99.1% Moderate, severe 99.5% Severe.
-`scripts/smoke_test.py` now asserts this. The product has no login, so none was added.
+`scripts/smoke_test.py` now asserts this. 
+
+### Follow-up: login
+Added `/login` and `/register` (screen map: 2 new public screens). Backend: new `auth.py` blueprint with `/api/auth/register|login|me|status`,
+accounts in `data/users.json`, signed 12 h tokens, 5-failure lockout, optional `REQUIRE_AUTH=1` API guard (off by default so the
+legacy Flask page and existing contracts keep working). Frontend: `lib/auth.jsx`, `pages/Auth.jsx`, route guard that returns the user
+to the page they asked for, sign-out in sidebar/drawer/topbar, monitor state reset on user change. `scripts/smoke_test.py` now covers
+accounts, and `scripts/capture_screens.py` signs in through the real form.

@@ -7,18 +7,29 @@ test the backend directly. Exit code 0 = all checks passed.
 """
 import json
 import sys
+import time
 import urllib.error
 import urllib.request
 
 BASE = (sys.argv[1] if len(sys.argv) > 1 else "http://localhost:5302").rstrip("/")
 failures = []
+TOKEN = None  # set after login; sent on every call so the test also passes with REQUIRE_AUTH=1
 
 
-def call(method, path, payload=None):
+def call(method, path, payload=None, token=..., expect_error=False):
     data = json.dumps(payload).encode() if payload is not None else None
-    req = urllib.request.Request(BASE + path, data=data, method=method, headers={"Content-Type": "application/json"})
-    with urllib.request.urlopen(req, timeout=15) as r:
-        return r.status, json.loads(r.read().decode())
+    headers = {"Content-Type": "application/json"}
+    tok = TOKEN if token is ... else token
+    if tok:
+        headers["Authorization"] = f"Bearer {tok}"
+    req = urllib.request.Request(BASE + path, data=data, method=method, headers=headers)
+    try:
+        with urllib.request.urlopen(req, timeout=15) as r:
+            return r.status, json.loads(r.read().decode())
+    except urllib.error.HTTPError as e:
+        if not expect_error:
+            raise
+        return e.code, json.loads(e.read().decode() or "{}")
 
 
 def check(name, ok, detail=""):
@@ -34,6 +45,32 @@ def main():
         print(f"[FAIL] cannot reach {BASE}: {e}\nStart the app with run.bat first.")
         return 1
     check("health ok", health.get("status") == "ok", f"models_loaded={health.get('models_loaded')}")
+
+    # --- accounts / login ---
+    global TOKEN
+    email = f"smoke-{int(time.time() * 1000)}@resqai.test"
+    pw = "Smoke-test-pass-1"
+    st, body = call("POST", "/api/auth/register", {"name": "Smoke Test", "email": email, "password": "short"}, expect_error=True)
+    check("register rejects a short password", st == 400 and body.get("field") == "password")
+    st, body = call("POST", "/api/auth/register", {"name": "Smoke Test", "email": "not-an-email", "password": pw}, expect_error=True)
+    check("register rejects a bad email", st == 400 and body.get("field") == "email")
+    st, body = call("POST", "/api/auth/register", {"name": "Smoke Test", "email": email, "password": pw})
+    check("register creates an account and returns a token", st == 201 and body.get("token") and body["user"]["email"] == email)
+    st, body = call("POST", "/api/auth/register", {"name": "Smoke Test", "email": email.upper(), "password": pw}, expect_error=True)
+    check("register rejects a duplicate email", st == 409)
+    st, body = call("POST", "/api/auth/login", {"email": email, "password": "wrong-password"}, expect_error=True)
+    check("login rejects a wrong password", st == 401)
+    st, body = call("POST", "/api/auth/login", {"email": email, "password": pw})
+    check("login returns a token", st == 200 and bool(body.get("token")))
+    TOKEN = body["token"]
+    st, me = call("GET", "/api/auth/me")
+    check("/me returns the signed-in user", st == 200 and me["user"]["email"] == email)
+    st, _ = call("GET", "/api/auth/me", token="garbage", expect_error=True)
+    check("/me rejects a bad token", st == 401)
+    _, status = call("GET", "/api/auth/status", token=None)
+    if status.get("auth_required"):
+        st, _ = call("GET", "/api/simulate?scenario=normal", token=None, expect_error=True)
+        check("REQUIRE_AUTH is on: API rejects a missing token", st == 401)
 
     expected = {"normal": 0, "brake": 0, "minor": 1, "moderate": 2, "severe": 3}
     severe_result = None

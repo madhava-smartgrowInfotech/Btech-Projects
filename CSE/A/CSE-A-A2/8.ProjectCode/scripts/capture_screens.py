@@ -1,7 +1,8 @@
-"""Walk every ResQAI screen (the product has no login, so each route is opened directly) with real data and save 1440x900 PNGs to docs/screenshots/.
+"""Walk every ResQAI screen with real data and save 1440x900 PNGs to docs/screenshots/.
 
 Usage:  python scripts/capture_screens.py [base_url]     (app must be running: run.bat)
-Also fails (exit 1) if the browser console shows errors, failed requests or 404s on assets.
+Signs in through the real login form (creating the demo account on first run), so every console screen is
+captured as a signed-in user. Also fails (exit 1) if the browser console shows errors, failed requests or 404s.
 """
 import sys
 from pathlib import Path
@@ -11,6 +12,7 @@ from playwright.sync_api import sync_playwright
 BASE = (sys.argv[1] if len(sys.argv) > 1 else "http://localhost:5302").rstrip("/")
 OUT = Path(__file__).resolve().parent.parent / "docs" / "screenshots"
 OUT.mkdir(parents=True, exist_ok=True)
+DEMO = {"name": "Demo Responder", "email": "demo@resqai.test", "password": "ResQAI-demo-2026"}
 problems = []
 
 
@@ -37,7 +39,18 @@ def scenario(page, label):
     page.wait_for_timeout(500)
 
 
+def fill_credentials(page, register):
+    if register:
+        page.get_by_label("Name").fill(DEMO["name"])
+    page.get_by_label("Email").fill(DEMO["email"])
+    page.get_by_label("Password", exact=True).fill(DEMO["password"])
+    if register:
+        page.get_by_label("Confirm password").fill(DEMO["password"])
+
+
 def main():
+    for old in OUT.glob("*.png"):
+        old.unlink()
     with sync_playwright() as p:
         try:
             browser = p.chromium.launch(channel="chrome")
@@ -49,11 +62,12 @@ def main():
             permissions=["geolocation", "clipboard-read", "clipboard-write"],
         )
         page = ctx.new_page()
-        page.on("console", lambda m: m.type == "error" and problems.append(f"console error: {m.text}"))
+        page.on("console", lambda m: m.type == "error" and m.text and "status of 401" not in m.text and "status of 409" not in m.text and problems.append(f"console error: {m.text}"))
         page.on("pageerror", lambda e: problems.append(f"page error: {e}"))
-        page.on("response", lambda r: r.status >= 400 and problems.append(f"HTTP {r.status}: {r.url}"))
+        # a 401/409 from the auth form is the expected, designed error path, not a defect
+        page.on("response", lambda r: r.status >= 400 and r.status not in (401, 409) and problems.append(f"HTTP {r.status}: {r.url}"))
 
-        # 01-02 landing, light and dark
+        # 01-03 landing (signed out), light and dark
         page.goto(BASE + "/")
         set_theme(page, "light")
         page.wait_for_selector("h1")
@@ -64,10 +78,38 @@ def main():
         shot(page, "03_landing_how_it_works")
         set_theme(page, "light")
 
-        # 04 live monitor with a populated chart, result and log
+        # 04-05 the console is protected: /monitor sends a signed-out visitor to the login form
         page.goto(BASE + "/monitor")
+        page.wait_for_url("**/login")
+        page.get_by_label("Email").wait_for()
+        shot(page, "04_login_light")
+        page.get_by_label("Email").fill(DEMO["email"])
+        page.get_by_label("Password", exact=True).fill("definitely-wrong")
+        page.get_by_role("button", name="Sign in", exact=True).click()
+        page.get_by_text("Incorrect email or password.").first.wait_for(timeout=5000)
+        set_theme(page, "dark")
+        shot(page, "05_login_error_dark")
+        set_theme(page, "light")
+
+        # 06 register (first run creates the demo account; later runs just sign in)
+        page.get_by_role("link", name="Create an account").click()
+        page.get_by_label("Name").wait_for()
+        set_theme(page, "dark")
+        shot(page, "06_register_dark")
+        set_theme(page, "light")
+        fill_credentials(page, register=True)
+        page.get_by_role("button", name="Create account", exact=True).click()
+        page.wait_for_timeout(1500)
+        if "/register" in page.url:  # account already exists from an earlier run
+            page.get_by_role("link", name="Sign in").last.click()
+            page.get_by_label("Email").wait_for()
+            fill_credentials(page, register=False)
+            page.get_by_role("button", name="Sign in", exact=True).click()
+        page.wait_for_url("**/monitor")
+
+        # 07 live monitor with a populated chart, result and log
         page.wait_for_selector("text=Sensor feed")
-        shot(page, "04_monitor_empty")
+        shot(page, "07_monitor_empty")
         for label in ("Normal driving", "Harsh brake", "Minor crash"):
             scenario(page, label)
             settle(page)
@@ -76,25 +118,25 @@ def main():
         settle(page)  # a live random reading may have started a countdown (which also pauses live mode)
         if page.get_by_role("button", name="Stop live monitoring").count():
             page.get_by_role("button", name="Stop live monitoring").click()
-        shot(page, "05_monitor_live")
+        shot(page, "08_monitor_live")
 
-        # 06-07 confirmation countdown, then dispatched alert
+        # 09-10 confirmation countdown, then dispatched alert
         scenario(page, "Severe crash")
         page.get_by_role("dialog", name="Possible accident detected").wait_for()
         page.wait_for_timeout(3000)
-        shot(page, "06_alert_countdown")
+        shot(page, "09_alert_countdown")
         page.get_by_role("button", name="Send alert now").click()
         page.get_by_role("dialog", name="Emergency alert dispatched").wait_for()
-        shot(page, "07_alert_dispatched")
+        shot(page, "10_alert_dispatched")
         page.get_by_role("button", name="View on map").click()
 
-        # 08 response map after dispatch
+        # 11 response map after dispatch
         page.wait_for_selector(".leaflet-marker-icon")
         page.wait_for_timeout(1500)
-        shot(page, "08_response_dispatched")
+        shot(page, "11_response_dispatched")
 
-        # 09 manual override with a result
-        page.goto(BASE + "/manual")
+        # 12 manual override with a result
+        page.get_by_role("link", name="Manual override").first.click()
         page.get_by_label("Acc X (m/s²)").fill("32")
         page.get_by_label("Acc Y (m/s²)").fill("18")
         page.get_by_label("Speed change (km/h)").fill("-45")
@@ -102,20 +144,27 @@ def main():
         page.get_by_role("button", name="Run detection").click()
         page.wait_for_selector("text=Accident probability")
         settle(page)
-        shot(page, "09_manual_result")
+        shot(page, "12_manual_result")
 
-        # 10 dark-mode monitor
-        page.goto(BASE + "/monitor")
+        # 13 dark-mode monitor
+        page.get_by_role("link", name="Live monitor").first.click()
         set_theme(page, "dark")
         scenario(page, "Normal driving")
         settle(page)
-        shot(page, "10_monitor_dark")
+        shot(page, "13_monitor_dark")
 
-        # 11 response map before any dispatch (fresh load)
+        # 14 response map before any dispatch (a full reload keeps the session but resets the in-memory alert)
         page.goto(BASE + "/response")
         page.wait_for_selector(".leaflet-marker-icon")
         page.wait_for_timeout(1500)
-        shot(page, "11_response_directory_dark")
+        shot(page, "14_response_directory_dark")
+
+        # signing out returns to the landing page and re-locks the console
+        page.get_by_role("button", name="Sign out").first.click()
+        page.wait_for_url(BASE + "/")
+        page.goto(BASE + "/response")
+        page.wait_for_url("**/login")
+        print("sign out re-locks the console")
         browser.close()
 
     ignore = ("tile.openstreetmap.org",)  # third-party map tiles may be blocked offline

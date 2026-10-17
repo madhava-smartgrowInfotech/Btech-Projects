@@ -1,8 +1,9 @@
 import { lazy, Suspense, useEffect } from 'react'
-import { Route, Routes, useLocation } from 'react-router-dom'
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import { Phone } from 'lucide-react'
 import { AppShell, PublicShell, SkeletonBlock, Container, Button } from './components/ui'
 import { AlertOverlays } from './features/AlertOverlays'
+import { useAuth } from './lib/auth'
 import { useMonitor } from './state/MonitorContext'
 
 const Landing = lazy(() => import('./pages/Landing'))
@@ -10,6 +11,7 @@ const Monitor = lazy(() => import('./pages/Monitor'))
 const Manual = lazy(() => import('./pages/Manual'))
 const Response = lazy(() => import('./pages/Response'))
 const NotFound = lazy(() => import('./pages/NotFound'))
+const Auth = lazy(() => import('./pages/Auth'))
 
 function Loading() {
   return (
@@ -17,6 +19,16 @@ function Loading() {
       <SkeletonBlock rows={4} label="Loading page" />
     </Container>
   )
+}
+
+/** Sends signed-out visitors to /login and brings them back to the page they asked for. */
+function RequireAuth({ children }) {
+  const { status, leftOnPurpose } = useAuth()
+  const loc = useLocation()
+  if (status === 'loading') return <Loading />
+  if (status === 'out' && leftOnPurpose) return <Navigate to="/" replace />
+  if (status === 'out') return <Navigate to="/login" replace state={{ from: loc.pathname }} />
+  return children
 }
 
 function ScrollTop() {
@@ -43,9 +55,16 @@ function SidebarFooter() {
 export default function App() {
   const { health } = useMonitor()
   const shell = (page) => (
-    <AppShell health={health} footer={<SidebarFooter />}>
-      <Suspense fallback={<SkeletonBlock rows={5} label="Loading page" />}>{page}</Suspense>
-    </AppShell>
+    <RequireAuth>
+      <AppShell health={health} footer={<SidebarFooter />}>
+        <Suspense fallback={<SkeletonBlock rows={5} label="Loading page" />}>{page}</Suspense>
+      </AppShell>
+    </RequireAuth>
+  )
+  const pub = (page) => (
+    <PublicShell health={health}>
+      <Suspense fallback={<Loading />}>{page}</Suspense>
+    </PublicShell>
   )
   return (
     <>
@@ -61,6 +80,8 @@ export default function App() {
             </PublicShell>
           }
         />
+        <Route path="/login" element={pub(<Auth key="login" mode="login" />)} />
+        <Route path="/register" element={pub(<Auth key="register" mode="register" />)} />
         <Route path="/monitor" element={shell(<Monitor />)} />
         <Route path="/manual" element={shell(<Manual />)} />
         <Route path="/response" element={shell(<Response />)} />

@@ -112,3 +112,7 @@ adaptive_learning_platform/
   SQLite) so the whole project can be demonstrated without any external
   services, while still supporting an optional real LLM (Anthropic Claude)
   plug-in for a stronger live demo if you have an API key.
+
+## React interface
+
+A React frontend (Aurora Glass design) now sits in `frontend/`, served by a thin FastAPI layer in `backend/`. See `docs/03_HOW_TO_RUN.md` (`run.bat` starts it on ports 8301 / 5301). The original Flask app still runs with `python app.py`.

@@ -7,6 +7,14 @@ import joblib
 import time
 from datetime import datetime
 
+# read BACKEND_PORT etc. from ../.env without extra dependencies
+_env = pathlib.Path(__file__).parent.parent / ".env"
+if _env.exists():
+    for _line in _env.read_text().splitlines():
+        if "=" in _line and not _line.lstrip().startswith("#"):
+            _k, _v = _line.split("=", 1)
+            os.environ.setdefault(_k.strip(), _v.strip())
+
 # add backend to path
 sys.path.append(str(pathlib.Path(__file__).parent))
 
@@ -452,6 +460,10 @@ def export_predictions():
         return send_from_directory(str(p.parent), p.name, as_attachment=True)
     return jsonify({"error":"No predictions yet"}), 404
 
+# Additive read-only endpoints used by the React frontend (see api_extra.py)
+from api_extra import create_blueprint
+app.register_blueprint(create_blueprint(store, ensure_data, ensure_pipeline, BASE, MODEL_DIR))
+
 # Train quick demo on startup if no models exist (small epochs for instant demo)
 def quick_seed():
     try:
@@ -485,5 +497,6 @@ if os.environ.get("SEED_MODELS","0")=="1":
         pass
 
 if __name__ == "__main__":
-    print("Starting QuantumFraudGuard backend on http://127.0.0.1:5000")
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    port = int(os.environ.get("BACKEND_PORT", "8304"))
+    print(f"Starting QuantumFraudGuard backend on http://127.0.0.1:{port}")
+    app.run(host="0.0.0.0", port=port, debug=True)

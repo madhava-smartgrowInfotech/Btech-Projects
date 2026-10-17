@@ -64,3 +64,33 @@ Open `http://127.0.0.1:5000` in Chrome.
 
 Done.
 
+
+
+## 5. React frontend (new UI)
+
+The original Flask page still works at `http://127.0.0.1:8304/`. The new React UI (Soft Pastel Calm design) lives in `frontend/` and needs Node.js 20+.
+
+```powershell
+cd D:\abstracts\Madhav\CSE\A\CSE-A-A4\8.ProjectCode
+run.bat          # installs deps, starts backend (8304) and frontend (5304), opens the browser
+```
+
+Manual start:
+
+```powershell
+$env:BACKEND_PORT = "8304"; python backend\app.py     # terminal 1
+cd frontend; npm install; npm run dev                   # terminal 2 -> http://127.0.0.1:5304
+```
+
+Ports are read from `.env` (`BACKEND_PORT=8304`, `FRONTEND_PORT=5304`; copy `.env.example`). Vite proxies `/api` to the backend, so no CORS setup is needed.
+
+Checks (backend + frontend running):
+
+```powershell
+python scripts\smoke_test.py            # API smoke test (read-only; add --full to retrain)
+python scripts\capture_screens.py       # walks every screen, saves docs\screenshots\*.png
+python scripts\responsive_check.py      # 360/768/1440 px, dark mode, keyboard, reduced motion
+cd frontend; npm run build               # production build into frontend\dist
+```
+
+Screenshots use Playwright: `pip install playwright` and either `playwright install chromium` or an installed Chrome.

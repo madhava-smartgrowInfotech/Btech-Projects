@@ -1,0 +1,63 @@
+/* SecurePay AI - screen-level styles layered on the kit tokens */
+:root {
+  --font-display: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', 'Inter Variable', system-ui, sans-serif;
+  --font-body: 'Inter Variable', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+/* risk meter */
+.meter { position: relative; height: 16px; border-radius: 999px; background: linear-gradient(90deg, var(--mint) 0 40%, var(--butter) 40% 70%, var(--rose) 70% 100%); }
+.meter-pin { position: absolute; top: 50%; width: 26px; height: 26px; margin: -13px 0 0 -13px; border-radius: 50%; background: var(--surface); border: 5px solid var(--text); box-shadow: var(--shadow); }
+.meter-scale { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-3); margin-top: 8px; }
+.verdict { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.verdict-ico { width: 60px; height: 60px; border-radius: 22px; display: grid; place-items: center; color: var(--on-pastel); flex: none; }
+.verdict h2 { font-size: clamp(22px, 3vw, 28px); font-weight: 800; }
+.big-num { font-family: var(--font-display); font-size: clamp(40px, 6vw, 56px); font-weight: 800; letter-spacing: -0.04em; line-height: 1; font-variant-numeric: tabular-nums; }
+.bands { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr)); }
+.band { border-radius: 18px; padding: 14px 16px; }
+.band b { display: block; font-family: var(--font-display); }
+.band span { font-size: 13px; color: var(--text-2); }
+.band.low { background: var(--mint-soft); }
+.band.mid { background: var(--peach-soft); }
+.band.high { background: var(--rose-soft); }
+
+/* model rows */
+.model-row { display: grid; grid-template-columns: 1fr auto; gap: 6px 12px; align-items: center; }
+.model-row .progress { grid-column: 1 / -1; }
+.chip-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip-btn { border: 1.5px solid var(--border-strong); background: var(--surface); border-radius: 999px; padding: 8px 14px; font-weight: 600; font-size: 13.5px; cursor: pointer; display: inline-flex; gap: 8px; align-items: center; transition: background-color .2s, border-color .2s; min-height: 40px; }
+.chip-btn:hover { background: var(--lavender-soft); border-color: var(--lavender); }
+
+/* confusion matrix */
+.confmat { display: grid; grid-template-columns: auto 1fr 1fr; gap: 8px; align-items: stretch; font-size: 13px; max-width: 440px; }
+.confmat .h { color: var(--text-3); font-weight: 600; text-align: center; align-self: center; padding: 2px 4px; }
+.confmat .cell { border-radius: 16px; padding: 16px 10px; text-align: center; }
+.confmat .cell b { display: block; font-family: var(--font-display); font-size: 26px; font-variant-numeric: tabular-nums; }
+.confmat .good { background: var(--mint-soft); }
+.confmat .bad { background: var(--rose-soft); }
+
+/* heatmap */
+.heat { display: block; width: 100%; max-width: 560px; height: auto; border-radius: 16px; background: var(--surface-2); }
+.heat rect:hover { stroke: var(--text); stroke-width: 0.6; }
+.heat-scale { height: 12px; border-radius: 999px; background: linear-gradient(90deg, var(--rose), var(--surface-3), var(--lavender)); max-width: 320px; }
+
+/* misc */
+.metric-tiles { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 120px), 1fr)); }
+.metric-tile { border-radius: 18px; padding: 14px 16px; background: var(--surface-2); }
+.metric-tile span { font-size: 12.5px; color: var(--text-3); display: block; }
+.metric-tile b { font-family: var(--font-display); font-size: 24px; font-variant-numeric: tabular-nums; }
+.notice { display: flex; gap: 12px; padding: 14px 16px; border-radius: 18px; align-items: flex-start; font-size: 14px; }
+.notice.warn { background: var(--peach-soft); }
+.notice.info { background: var(--sky-soft); }
+.notice.ok { background: var(--mint-soft); }
+.notice svg { flex: none; margin-top: 2px; }
+.prob-cell { display: flex; align-items: center; gap: 10px; min-width: 130px; }
+.prob-cell .progress { flex: 1; height: 8px; }
+.l-actions { display: flex; align-items: center; gap: 10px; margin-left: auto; }
+.cols-3 { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
+.sticky-side { align-self: start; }
+@media (min-width: 1000px) { .sticky-side { position: sticky; top: calc(var(--topbar-h) + 16px); } }
+.kbd { font-family: ui-monospace, Consolas, monospace; font-size: 12px; background: var(--surface-3); padding: 1px 7px; border-radius: 7px; }
+
+/* CountUp renders nested spans; keep them at the strip number size */
+.stats-strip .s b span { font-size: inherit; color: inherit; }
+.hero-float.a { bottom: -26px; }

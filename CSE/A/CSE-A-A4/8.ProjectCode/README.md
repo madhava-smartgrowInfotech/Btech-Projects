@@ -3,7 +3,7 @@
 > **Credit Card Fraud Detection using Quantum-Inspired AI**
 > A complete, end-to-end working prototype for real-time fraud detection in financial transactions. The system is presented as a production-grade fintech product (clean, non-academic UI) while internally using an advanced AI engine trained on millions of transactions.
 
-**Live Demo:** `http://127.0.0.1:5000` after running the backend.
+**Live Demo:** run `run.bat`, then open `http://127.0.0.1:5304` (React UI). The original Flask page is still served by the backend at `http://127.0.0.1:8304/`. See `docs/INSTALLATION_GUIDE.md` section 5 and `docs/FRONTEND_PLAN.md`.
 
 ---
 

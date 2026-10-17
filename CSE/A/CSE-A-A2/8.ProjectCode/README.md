@@ -107,3 +107,8 @@ ResQAI/
   acceleration/gyroscope spike, on top of normal driving and harsh-braking
   events) — swap in a labeled real-world dataset to move this from
   prototype to production grade.
+
+## New React frontend
+
+A Neo Brutal Grid web app lives in `frontend/` (React + Vite, port 5302) and talks to the same Flask API (port 8302).
+The original Flask page at `/` is unchanged. Start both with `run.bat`; see `docs/03_HOW_TO_RUN.md`.

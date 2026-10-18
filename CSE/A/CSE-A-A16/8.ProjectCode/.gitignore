@@ -1,0 +1,12 @@
+data/*/
+models/*.keras
+models/*.json
+models/*.txt
+__pycache__/
+*.pyc
+.venv/
+
+archive/
+scratch_logs/
+frontend/node_modules/
+frontend/dist/

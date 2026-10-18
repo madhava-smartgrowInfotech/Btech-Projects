@@ -1,0 +1,617 @@
+{
+  "generated_at": "2026-10-18T19:33:17",
+  "environment": {
+    "python": "3.11.9",
+    "sklearn": "1.9.1",
+    "pandas": "3.0.6",
+    "numpy": "2.4.6",
+    "os": "Windows-10-10.0.26200-SP0",
+    "cpu_count": 12
+  },
+  "dataset": {
+    "file": "data/customer_churn.csv",
+    "origin": "synthetic, produced by src/sample_data.py (seed 42)",
+    "rows": 1000,
+    "columns": 21,
+    "duplicates_removed": 0,
+    "missing_cells": 0,
+    "target": "Churn",
+    "id_col": "customerID",
+    "numeric_features": [
+      "SeniorCitizen",
+      "tenure",
+      "MonthlyCharges",
+      "TotalCharges"
+    ],
+    "categorical_features": [
+      "gender",
+      "Partner",
+      "Dependents",
+      "PhoneService",
+      "MultipleLines",
+      "InternetService",
+      "OnlineSecurity",
+      "OnlineBackup",
+      "DeviceProtection",
+      "TechSupport",
+      "StreamingTV",
+      "StreamingMovies",
+      "Contract",
+      "PaperlessBilling",
+      "PaymentMethod"
+    ],
+    "n_features_raw": 19,
+    "class_distribution": {
+      "counts": {
+        "0": 736,
+        "1": 264
+      },
+      "percentages": {
+        "0": 73.6,
+        "1": 26.4
+      },
+      "imbalance_ratio": 2.79
+    },
+    "churn_rate_pct": 26.4
+  },
+  "split": {
+    "test_size": 0.2,
+    "random_state": 42,
+    "stratified": true,
+    "train_rows": 800,
+    "test_rows": 200,
+    "test_churners": 53,
+    "encoded_feature_count": 45
+  },
+  "app_default_split": {
+    "class_weight": {
+      "models": {
+        "Logistic Regression": {
+          "accuracy": 0.63,
+          "precision": 0.3846,
+          "recall": 0.6604,
+          "f1_score": 0.4861,
+          "roc_auc": 0.7224,
+          "confusion_matrix": [
+            [
+              91,
+              56
+            ],
+            [
+              18,
+              35
+            ]
+          ],
+          "fit_and_eval_seconds": 0.057
+        },
+        "Decision Tree": {
+          "accuracy": 0.615,
+          "precision": 0.3378,
+          "recall": 0.4717,
+          "f1_score": 0.3937,
+          "roc_auc": 0.6081,
+          "confusion_matrix": [
+            [
+              98,
+              49
+            ],
+            [
+              28,
+              25
+            ]
+          ],
+          "fit_and_eval_seconds": 0.022
+        },
+        "Random Forest": {
+          "accuracy": 0.665,
+          "precision": 0.4054,
+          "recall": 0.566,
+          "f1_score": 0.4724,
+          "roc_auc": 0.7111,
+          "confusion_matrix": [
+            [
+              103,
+              44
+            ],
+            [
+              23,
+              30
+            ]
+          ],
+          "fit_and_eval_seconds": 1.117
+        },
+        "Gradient Boosting": {
+          "accuracy": 0.745,
+          "precision": 0.5357,
+          "recall": 0.283,
+          "f1_score": 0.3704,
+          "roc_auc": 0.697,
+          "confusion_matrix": [
+            [
+              134,
+              13
+            ],
+            [
+              38,
+              15
+            ]
+          ],
+          "fit_and_eval_seconds": 0.845
+        },
+        "Hist Gradient Boosting": {
+          "accuracy": 0.71,
+          "precision": 0.4,
+          "recall": 0.1887,
+          "f1_score": 0.2564,
+          "roc_auc": 0.6855,
+          "confusion_matrix": [
+            [
+              132,
+              15
+            ],
+            [
+              43,
+              10
+            ]
+          ],
+          "fit_and_eval_seconds": 0.92
+        }
+      },
+      "best_by_f1": "Logistic Regression",
+      "best_by_roc_auc": "Logistic Regression",
+      "best_by_recall": "Logistic Regression",
+      "wall_seconds": 2.96
+    },
+    "smote": {
+      "models": {
+        "Logistic Regression": {
+          "accuracy": 0.685,
+          "precision": 0.4375,
+          "recall": 0.6604,
+          "f1_score": 0.5263,
+          "roc_auc": 0.7283,
+          "confusion_matrix": [
+            [
+              102,
+              45
+            ],
+            [
+              18,
+              35
+            ]
+          ],
+          "fit_and_eval_seconds": 2.141
+        },
+        "Decision Tree": {
+          "accuracy": 0.635,
+          "precision": 0.3387,
+          "recall": 0.3962,
+          "f1_score": 0.3652,
+          "roc_auc": 0.643,
+          "confusion_matrix": [
+            [
+              106,
+              41
+            ],
+            [
+              32,
+              21
+            ]
+          ],
+          "fit_and_eval_seconds": 0.075
+        },
+        "Random Forest": {
+          "accuracy": 0.71,
+          "precision": 0.4359,
+          "recall": 0.3208,
+          "f1_score": 0.3696,
+          "roc_auc": 0.7032,
+          "confusion_matrix": [
+            [
+              125,
+              22
+            ],
+            [
+              36,
+              17
+            ]
+          ],
+          "fit_and_eval_seconds": 1.146
+        },
+        "Gradient Boosting": {
+          "accuracy": 0.745,
+          "precision": 0.5278,
+          "recall": 0.3585,
+          "f1_score": 0.427,
+          "roc_auc": 0.7288,
+          "confusion_matrix": [
+            [
+              130,
+              17
+            ],
+            [
+              34,
+              19
+            ]
+          ],
+          "fit_and_eval_seconds": 1.554
+        },
+        "Hist Gradient Boosting": {
+          "accuracy": 0.72,
+          "precision": 0.4545,
+          "recall": 0.283,
+          "f1_score": 0.3488,
+          "roc_auc": 0.6994,
+          "confusion_matrix": [
+            [
+              129,
+              18
+            ],
+            [
+              38,
+              15
+            ]
+          ],
+          "fit_and_eval_seconds": 1.543
+        }
+      },
+      "best_by_f1": "Logistic Regression",
+      "best_by_roc_auc": "Gradient Boosting",
+      "best_by_recall": "Logistic Regression",
+      "wall_seconds": 6.46
+    },
+    "none": {
+      "models": {
+        "Logistic Regression": {
+          "accuracy": 0.745,
+          "precision": 0.5556,
+          "recall": 0.1887,
+          "f1_score": 0.2817,
+          "roc_auc": 0.7202,
+          "confusion_matrix": [
+            [
+              139,
+              8
+            ],
+            [
+              43,
+              10
+            ]
+          ],
+          "fit_and_eval_seconds": 0.046
+        },
+        "Decision Tree": {
+          "accuracy": 0.705,
+          "precision": 0.4062,
+          "recall": 0.2453,
+          "f1_score": 0.3059,
+          "roc_auc": 0.5745,
+          "confusion_matrix": [
+            [
+              128,
+              19
+            ],
+            [
+              40,
+              13
+            ]
+          ],
+          "fit_and_eval_seconds": 0.02
+        },
+        "Random Forest": {
+          "accuracy": 0.755,
+          "precision": 0.8333,
+          "recall": 0.0943,
+          "f1_score": 0.1695,
+          "roc_auc": 0.7176,
+          "confusion_matrix": [
+            [
+              146,
+              1
+            ],
+            [
+              48,
+              5
+            ]
+          ],
+          "fit_and_eval_seconds": 1.163
+        },
+        "Gradient Boosting": {
+          "accuracy": 0.745,
+          "precision": 0.5357,
+          "recall": 0.283,
+          "f1_score": 0.3704,
+          "roc_auc": 0.697,
+          "confusion_matrix": [
+            [
+              134,
+              13
+            ],
+            [
+              38,
+              15
+            ]
+          ],
+          "fit_and_eval_seconds": 0.853
+        },
+        "Hist Gradient Boosting": {
+          "accuracy": 0.71,
+          "precision": 0.4,
+          "recall": 0.1887,
+          "f1_score": 0.2564,
+          "roc_auc": 0.6855,
+          "confusion_matrix": [
+            [
+              132,
+              15
+            ],
+            [
+              43,
+              10
+            ]
+          ],
+          "fit_and_eval_seconds": 1.138
+        }
+      },
+      "best_by_f1": "Gradient Boosting",
+      "best_by_roc_auc": "Logistic Regression",
+      "best_by_recall": "Gradient Boosting",
+      "wall_seconds": 3.22
+    }
+  },
+  "cross_validation_5fold_class_weight": {
+    "Logistic Regression": {
+      "accuracy": {
+        "mean": 0.648,
+        "std": 0.0396
+      },
+      "precision": {
+        "mean": 0.3953,
+        "std": 0.0455
+      },
+      "recall": {
+        "mean": 0.6246,
+        "std": 0.0844
+      },
+      "f1_score": {
+        "mean": 0.4833,
+        "std": 0.0547
+      },
+      "roc_auc": {
+        "mean": 0.6945,
+        "std": 0.0463
+      }
+    },
+    "Decision Tree": {
+      "accuracy": {
+        "mean": 0.607,
+        "std": 0.0236
+      },
+      "precision": {
+        "mean": 0.3494,
+        "std": 0.0254
+      },
+      "recall": {
+        "mean": 0.5643,
+        "std": 0.039
+      },
+      "f1_score": {
+        "mean": 0.4313,
+        "std": 0.0281
+      },
+      "roc_auc": {
+        "mean": 0.6226,
+        "std": 0.0201
+      }
+    },
+    "Random Forest": {
+      "accuracy": {
+        "mean": 0.67,
+        "std": 0.0252
+      },
+      "precision": {
+        "mean": 0.407,
+        "std": 0.0341
+      },
+      "recall": {
+        "mean": 0.5452,
+        "std": 0.0977
+      },
+      "f1_score": {
+        "mean": 0.4634,
+        "std": 0.0506
+      },
+      "roc_auc": {
+        "mean": 0.6974,
+        "std": 0.0417
+      }
+    }
+  },
+  "repeated_random_splits_5_seeds_class_weight": {
+    "Logistic Regression": {
+      "accuracy": {
+        "mean": 0.665,
+        "std": 0.02
+      },
+      "precision": {
+        "mean": 0.4155,
+        "std": 0.0248
+      },
+      "recall": {
+        "mean": 0.6566,
+        "std": 0.1011
+      },
+      "f1_score": {
+        "mean": 0.5075,
+        "std": 0.0443
+      },
+      "roc_auc": {
+        "mean": 0.7231,
+        "std": 0.0344
+      }
+    },
+    "Decision Tree": {
+      "accuracy": {
+        "mean": 0.604,
+        "std": 0.0258
+      },
+      "precision": {
+        "mean": 0.3593,
+        "std": 0.026
+      },
+      "recall": {
+        "mean": 0.6302,
+        "std": 0.056
+      },
+      "f1_score": {
+        "mean": 0.4573,
+        "std": 0.0332
+      },
+      "roc_auc": {
+        "mean": 0.6484,
+        "std": 0.0396
+      }
+    },
+    "Random Forest": {
+      "accuracy": {
+        "mean": 0.704,
+        "std": 0.0284
+      },
+      "precision": {
+        "mean": 0.4543,
+        "std": 0.0356
+      },
+      "recall": {
+        "mean": 0.5509,
+        "std": 0.0524
+      },
+      "f1_score": {
+        "mean": 0.4965,
+        "std": 0.0325
+      },
+      "roc_auc": {
+        "mean": 0.7102,
+        "std": 0.0171
+      }
+    }
+  },
+  "best_model": {
+    "name": "Logistic Regression",
+    "selection_metric": "f1_score",
+    "strategy": "class_weight"
+  },
+  "importance": {
+    "model_importance": [
+      {
+        "feature": "Contract: Month-to-month",
+        "importance": 0.82519
+      },
+      {
+        "feature": "Contract: Two year",
+        "importance": 0.79086
+      },
+      {
+        "feature": "MonthlyCharges",
+        "importance": 0.55814
+      },
+      {
+        "feature": "PaymentMethod: Bank transfer (automatic)",
+        "importance": 0.4085
+      },
+      {
+        "feature": "tenure",
+        "importance": 0.40032
+      },
+      {
+        "feature": "PaymentMethod: Electronic check",
+        "importance": 0.38817
+      },
+      {
+        "feature": "OnlineSecurity: Yes",
+        "importance": 0.32132
+      },
+      {
+        "feature": "OnlineSecurity: No",
+        "importance": 0.27235
+      },
+      {
+        "feature": "PaymentMethod: Mailed check",
+        "importance": 0.26058
+      },
+      {
+        "feature": "TechSupport: Yes",
+        "importance": 0.24916
+      }
+    ],
+    "permutation_importance": [
+      {
+        "feature": "MonthlyCharges",
+        "importance": 0.042
+      },
+      {
+        "feature": "Contract: Month-to-month",
+        "importance": 0.028
+      },
+      {
+        "feature": "DeviceProtection: Yes",
+        "importance": 0.008
+      },
+      {
+        "feature": "OnlineBackup: Yes",
+        "importance": 0.006
+      },
+      {
+        "feature": "OnlineSecurity: No internet service",
+        "importance": 0.005
+      },
+      {
+        "feature": "InternetService: No",
+        "importance": 0.005
+      },
+      {
+        "feature": "TechSupport: No internet service",
+        "importance": 0.005
+      },
+      {
+        "feature": "DeviceProtection: No internet service",
+        "importance": 0.005
+      },
+      {
+        "feature": "OnlineBackup: No internet service",
+        "importance": 0.005
+      },
+      {
+        "feature": "StreamingMovies: No internet service",
+        "importance": 0.005
+      }
+    ]
+  },
+  "risk_bands_default_thresholds": {
+    "thresholds": {
+      "low": 30,
+      "medium": 60,
+      "high": 80
+    },
+    "total": 1000,
+    "counts": {
+      "Low Risk": 253,
+      "Medium Risk": 481,
+      "High Risk": 213,
+      "Critical Risk": 53
+    },
+    "percentages": {
+      "Low Risk": 25.3,
+      "Medium Risk": 48.1,
+      "High Risk": 21.3,
+      "Critical Risk": 5.3
+    },
+    "avg_probability": 45.89
+  },
+  "inference_latency_ms": {
+    "single_customer_median": 19.07,
+    "single_customer_p95": 33.66,
+    "runs": 200,
+    "model": "Logistic Regression",
+    "full_dataset_1000_rows_ms": 35.4
+  }
+}

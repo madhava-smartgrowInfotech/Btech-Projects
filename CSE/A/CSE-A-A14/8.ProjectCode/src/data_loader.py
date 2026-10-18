@@ -39,6 +39,11 @@ class DatasetProfile:
     warnings: list = field(default_factory=list)
 
 
+def _is_text(s: pd.Series) -> bool:
+    """True for text columns under both pandas 2 (object) and pandas 3 (str) dtypes."""
+    return pd.api.types.is_object_dtype(s) or pd.api.types.is_string_dtype(s)
+
+
 def load_csv(file_obj) -> pd.DataFrame:
     """Read a CSV from a Streamlit UploadedFile or a file path/buffer."""
     if hasattr(file_obj, "read"):
@@ -67,7 +72,7 @@ def detect_id_column(df: pd.DataFrame) -> str | None:
             return lower_map[name]
     # fallback: a column that is entirely unique strings
     for c in df.columns:
-        if df[c].dtype == object and df[c].nunique() == len(df):
+        if _is_text(df[c]) and df[c].nunique() == len(df):
             return c
     return None
 
@@ -78,7 +83,7 @@ def coerce_numeric_looking_columns(df: pd.DataFrame) -> pd.DataFrame:
     coerce these so downstream preprocessing treats them as numeric."""
     df = df.copy()
     for c in df.columns:
-        if df[c].dtype == object:
+        if _is_text(df[c]):
             lc = c.lower()
             if any(h in lc for h in NUMERIC_LOOKING_OBJECT_HINTS):
                 coerced = safe_numeric(df[c])
@@ -141,7 +146,7 @@ def normalize_target(df: pd.DataFrame, target_col: str) -> pd.Series:
     s = df[target_col]
     positive_tokens = {"yes", "1", "true", "churned", "churn", "y"}
 
-    if s.dtype == object or s.dtype == bool:
+    if _is_text(s) or s.dtype == bool:
         s_str = s.astype(str).str.strip().str.lower()
         binary = s_str.isin(positive_tokens).astype(int)
         return binary

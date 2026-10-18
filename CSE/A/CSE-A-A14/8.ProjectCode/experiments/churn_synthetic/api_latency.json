@@ -1,0 +1,72 @@
+{
+  "base": "http://127.0.0.1:8314",
+  "measured_at": "2026-10-18T19:31:18",
+  "once_ms": {
+    "load_sample": 181.6,
+    "prepare": 38.0,
+    "train_3_models": 1515.3,
+    "save_model": 89.1
+  },
+  "repeated_ms": {
+    "health": {
+      "median": 37.8,
+      "max": 76.0,
+      "runs": 10
+    },
+    "state": {
+      "median": 10.2,
+      "max": 43.8,
+      "runs": 10
+    },
+    "dashboard": {
+      "median": 93.8,
+      "max": 125.7,
+      "runs": 10
+    },
+    "risk_table_all": {
+      "median": 94.1,
+      "max": 168.1,
+      "runs": 10
+    },
+    "customer_360": {
+      "median": 79.7,
+      "max": 138.6,
+      "runs": 10
+    },
+    "xai_global": {
+      "median": 11.6,
+      "max": 129.6,
+      "runs": 10
+    },
+    "xai_local": {
+      "median": 68.3,
+      "max": 120.2,
+      "runs": 10
+    },
+    "whatif": {
+      "median": 64.6,
+      "max": 108.4,
+      "runs": 10
+    },
+    "retention": {
+      "median": 77.2,
+      "max": 124.7,
+      "runs": 10
+    },
+    "eda": {
+      "median": 84.8,
+      "max": 125.7,
+      "runs": 10
+    },
+    "evaluation": {
+      "median": 53.5,
+      "max": 92.2,
+      "runs": 10
+    },
+    "batch_predict_25_rows_no_drivers": {
+      "median": 70.3,
+      "max": 124.6,
+      "runs": 5
+    }
+  }
+}

@@ -149,6 +149,7 @@ def main():
     check("non-csv rejected [422]", status == 422)
     step("re-sample", "POST", "/api/data/sample")
     step("re-prepare", "POST", "/api/data/prepare")
+    call("PUT", "/api/risk/thresholds", {"low": 30, "medium": 60, "high": 80})  # leave the shared service on the default bands (not a check)
 
     print()
     if FAILS:

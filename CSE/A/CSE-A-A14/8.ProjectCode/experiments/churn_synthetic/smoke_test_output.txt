@@ -1,0 +1,65 @@
+PASS  health [200]
+PASS  health ok
+PASS  protected route needs a token [401]
+PASS  bad password rejected [401]
+PASS  login [200]
+PASS  me [200]
+PASS  state [200]
+PASS  eda before data is gated [409]
+PASS  load sample [200]
+PASS  sample detected target+id
+PASS  preview [200]
+PASS  config [200]
+PASS  config has features
+PASS  quality [200]
+PASS  dataset is training-ready
+PASS  prepare [200]
+PASS  prepared rows
+PASS  eda [200]
+PASS  eda kpis + charts
+PASS  eda filtered [200]
+PASS  filter narrows rows
+PASS  dashboard (no model) [200]
+PASS  dashboard stage
+PASS  train with no models rejected [422]
+PASS  train [200]
+PASS  3 models compared
+PASS  results [200]
+PASS  evaluation [200]
+PASS  curves + confusion
+PASS  save model [200]
+PASS  model active
+PASS  dashboard [200]
+PASS  dashboard ready with risk + drivers
+PASS  risk [200]
+PASS  risk summary
+PASS  bad thresholds rejected [422]
+PASS  thresholds [200]
+PASS  customers [200]
+PASS  customer 360 [200]
+PASS  profile complete
+PASS  unknown customer [404]
+PASS  xai global [200]
+PASS  xai local [200]
+PASS  local explanation
+PASS  whatif schema [200]
+PASS  schema fields
+PASS  whatif [200]
+PASS  whatif returns delta
+PASS  retention [200]
+PASS  retention rows
+PASS  batch template csv
+PASS  batch predict [200]
+PASS  batch scored 25
+PASS  batch missing columns [422]
+PASS  monitoring [200]
+PASS  monitoring metadata
+PASS  drift [200]
+PASS  drift report
+PASS  upload csv [200]
+PASS  upload detected target
+PASS  non-csv rejected [422]
+PASS  re-sample [200]
+PASS  re-prepare [200]
+
+All smoke checks passed.

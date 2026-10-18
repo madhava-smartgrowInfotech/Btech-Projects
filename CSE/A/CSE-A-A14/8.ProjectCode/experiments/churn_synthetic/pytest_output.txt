@@ -1,0 +1,8 @@
+== .venv (pandas 3.0.6 / scikit-learn 1.9.1) ==
+............................................                             [100%]
+44 passed in 16.72s
+
+== system Python (pandas 2.2.1 / scikit-learn 1.5.0) ==
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+44 passed, 1 warning in 26.91s

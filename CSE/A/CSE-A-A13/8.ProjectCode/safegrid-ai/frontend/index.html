@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#07090C" />
+    <meta name="description" content="SafeGrid-AI: AI agents propose energy actions, a deterministic safety shield decides what reaches the grid." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>SafeGrid-AI</title>
+    <script>
+      // apply the saved theme before first paint to avoid a flash
+      try { var t = localStorage.getItem('sg-theme'); if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t); else if (window.matchMedia('(prefers-color-scheme: light)').matches) document.documentElement.setAttribute('data-theme', 'light'); } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

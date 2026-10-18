@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+*.db
+node_modules/
+frontend/dist/
+backend/results/*
+!backend/results/.gitkeep
+.pytest_cache/

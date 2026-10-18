@@ -1,0 +1,273 @@
+{
+  "generated": "2026-10-18 19:26:37",
+  "environment": {
+    "os": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.9",
+    "tensorflow": "2.15.0",
+    "opencv": "4.11.0",
+    "numpy": "1.26.4",
+    "cpu": "12th Gen Intel Core i5-12500 (6 cores / 12 threads)",
+    "ram_gb": 15.7,
+    "gpu_used": false
+  },
+  "model": {
+    "parameters": 2199453,
+    "file_size_mb": 26.48,
+    "input": [
+      64,
+      64,
+      1
+    ],
+    "classes": 29
+  },
+  "dataset": {
+    "images_in_data_folder": 7250,
+    "train": 5075,
+    "validation": 1087,
+    "test": 1088,
+    "per_class_in_data_folder": {
+      "A": 250,
+      "B": 250,
+      "C": 250,
+      "D": 250,
+      "E": 250,
+      "F": 250,
+      "G": 250,
+      "H": 250,
+      "I": 250,
+      "J": 250,
+      "K": 250,
+      "L": 250,
+      "M": 250,
+      "N": 250,
+      "O": 250,
+      "P": 250,
+      "Q": 250,
+      "R": 250,
+      "S": 250,
+      "T": 250,
+      "U": 250,
+      "V": 250,
+      "W": 250,
+      "X": 250,
+      "Y": 250,
+      "Z": 250,
+      "space": 250,
+      "del": 250,
+      "nothing": 250
+    },
+    "archive_images_per_class": 3000,
+    "archive_total_images": 87000,
+    "load_and_preprocess_seconds": 75.0
+  },
+  "test_split": {
+    "n": 1088,
+    "accuracy": 0.8281,
+    "macro_f1": 0.8302,
+    "weighted_f1": 0.8298,
+    "top3_accuracy": 0.9292,
+    "loss": 0.5569,
+    "per_class_f1": {
+      "A": 0.8,
+      "B": 0.8148,
+      "C": 0.96,
+      "D": 0.9157,
+      "E": 0.6984,
+      "F": 0.88,
+      "G": 0.9275,
+      "H": 0.9211,
+      "I": 0.8919,
+      "J": 0.8857,
+      "K": 0.9333,
+      "L": 0.8533,
+      "M": 0.8493,
+      "N": 0.806,
+      "O": 0.8286,
+      "P": 0.8462,
+      "Q": 0.9577,
+      "R": 0.7246,
+      "S": 0.7179,
+      "T": 0.7761,
+      "U": 0.6988,
+      "V": 0.6857,
+      "W": 0.6966,
+      "X": 0.6933,
+      "Y": 0.625,
+      "Z": 0.8889,
+      "space": 0.8919,
+      "del": 0.9211,
+      "nothing": 0.9863
+    }
+  },
+  "threshold_analysis": [
+    {
+      "threshold": 0.0,
+      "coverage": 1.0,
+      "accuracy_on_accepted": 0.8281
+    },
+    {
+      "threshold": 0.5,
+      "coverage": 0.8419,
+      "accuracy_on_accepted": 0.9236
+    },
+    {
+      "threshold": 0.6,
+      "coverage": 0.7923,
+      "accuracy_on_accepted": 0.949
+    },
+    {
+      "threshold": 0.7,
+      "coverage": 0.7353,
+      "accuracy_on_accepted": 0.9625
+    },
+    {
+      "threshold": 0.75,
+      "coverage": 0.7031,
+      "accuracy_on_accepted": 0.9712
+    },
+    {
+      "threshold": 0.8,
+      "coverage": 0.6756,
+      "accuracy_on_accepted": 0.9769
+    },
+    {
+      "threshold": 0.9,
+      "coverage": 0.591,
+      "accuracy_on_accepted": 0.9829
+    },
+    {
+      "threshold": 0.95,
+      "coverage": 0.489,
+      "accuracy_on_accepted": 0.9925
+    },
+    {
+      "threshold": 0.99,
+      "coverage": 0.3189,
+      "accuracy_on_accepted": 0.9971
+    }
+  ],
+  "unseen_archive": {
+    "n": 2900,
+    "accuracy": 0.8724,
+    "macro_f1": 0.8735,
+    "weighted_f1": 0.8735,
+    "top3_accuracy": 0.961,
+    "note": "100 random archive photos per class that were not copied into data/ (never trained on)",
+    "per_class_accuracy": {
+      "A": 0.83,
+      "B": 0.88,
+      "C": 0.96,
+      "D": 0.96,
+      "E": 0.64,
+      "F": 0.92,
+      "G": 0.87,
+      "H": 0.93,
+      "I": 0.86,
+      "J": 0.91,
+      "K": 0.82,
+      "L": 0.97,
+      "M": 0.9,
+      "N": 0.89,
+      "O": 0.86,
+      "P": 0.91,
+      "Q": 0.95,
+      "R": 0.83,
+      "S": 0.81,
+      "T": 0.85,
+      "U": 0.79,
+      "V": 0.81,
+      "W": 0.88,
+      "X": 0.68,
+      "Y": 0.91,
+      "Z": 0.93,
+      "space": 0.92,
+      "del": 0.89,
+      "nothing": 0.94
+    }
+  },
+  "robustness": {
+    "n": 580,
+    "accuracy": {
+      "clean": 0.85,
+      "brightness x0.5": 0.8534,
+      "brightness x1.5": 0.7328,
+      "gaussian noise s=10": 0.8534,
+      "gaussian noise s=25": 0.8328,
+      "blur 5x5": 0.85,
+      "rotate +10 deg": 0.6759,
+      "rotate -10 deg": 0.6862
+    }
+  },
+  "latency": {
+    "jpeg_decode_960x540": {
+      "median_ms": 1.665,
+      "mean_ms": 1.687,
+      "p95_ms": 2.011,
+      "n": 300
+    },
+    "roi_crop_and_segmentation_and_normalisation": {
+      "median_ms": 0.833,
+      "mean_ms": 0.875,
+      "p95_ms": 1.297,
+      "n": 300
+    },
+    "cnn_forward_batch1": {
+      "median_ms": 50.349,
+      "mean_ms": 50.512,
+      "p95_ms": 55.289,
+      "n": 300
+    },
+    "server_side_total_per_frame": {
+      "median_ms": 52.933,
+      "mean_ms": 53.074,
+      "p95_ms": 57.916,
+      "n": 300
+    },
+    "jpeg_payload_kb_mean": 27.0,
+    "max_fps_server_side": 18.9,
+    "http_recognize_frame_round_trip": {
+      "median_ms": 56.7,
+      "mean_ms": 57.919,
+      "p95_ms": 67.614,
+      "n": 300
+    },
+    "http_round_trip_fps_sequential": 17.6,
+    "http_health": {
+      "median_ms": 1.049,
+      "mean_ms": 1.073,
+      "p95_ms": 1.273,
+      "n": 50
+    }
+  },
+  "training_speed": {
+    "epochs_measured": 2,
+    "total_seconds_including_data_load": 52.7,
+    "seconds_per_epoch": 9.9,
+    "note": "measured on the CPU listed above; the saved 30-epoch run's wall-clock time was not recorded"
+  },
+  "saved_training_run": {
+    "epochs": 30,
+    "best_val_accuracy": 0.8473,
+    "best_epoch": 30,
+    "final_train_accuracy": 0.7291,
+    "final_val_accuracy": 0.8473,
+    "final_train_loss": 0.8551,
+    "final_val_loss": 0.4881
+  },
+  "official_test_28": {
+    "n": 28,
+    "correct": 26,
+    "wrong": [
+      {
+        "true": "A",
+        "predicted": "S",
+        "confidence": 0.675
+      },
+      {
+        "true": "I",
+        "predicted": "D",
+        "confidence": 0.734
+      }
+    ]
+  }
+}

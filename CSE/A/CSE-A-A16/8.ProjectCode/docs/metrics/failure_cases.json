@@ -1,0 +1,42 @@
+{
+ "sampled": 1160,
+ "wrong": 147,
+ "examples": [
+  {
+   "true": "B",
+   "predicted": "W",
+   "confidence": 0.975,
+   "file": "B2117.jpg"
+  },
+  {
+   "true": "W",
+   "predicted": "Z",
+   "confidence": 0.975,
+   "file": "W942.jpg"
+  },
+  {
+   "true": "V",
+   "predicted": "U",
+   "confidence": 0.934,
+   "file": "V1846.jpg"
+  },
+  {
+   "true": "Q",
+   "predicted": "P",
+   "confidence": 0.926,
+   "file": "Q2486.jpg"
+  },
+  {
+   "true": "N",
+   "predicted": "M",
+   "confidence": 0.905,
+   "file": "N2006.jpg"
+  },
+  {
+   "true": "A",
+   "predicted": "I",
+   "confidence": 0.904,
+   "file": "A1363.jpg"
+  }
+ ]
+}

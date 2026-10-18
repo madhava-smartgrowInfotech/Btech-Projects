@@ -1,0 +1,62 @@
+{
+ "GET /api/health": {
+  "n": 30,
+  "median_ms": 1.2,
+  "p95_ms": 2.5,
+  "max_ms": 3.2
+ },
+ "POST /api/auth/login (bcrypt)": {
+  "n": 15,
+  "median_ms": 60.1,
+  "p95_ms": 75.3,
+  "max_ms": 168.4
+ },
+ "GET /api/meta": {
+  "n": 30,
+  "median_ms": 2.7,
+  "p95_ms": 3.8,
+  "max_ms": 55.8
+ },
+ "GET /api/reviews": {
+  "n": 30,
+  "median_ms": 3.2,
+  "p95_ms": 4.2,
+  "max_ms": 13.4
+ },
+ "GET /api/public/stats": {
+  "n": 30,
+  "median_ms": 1.7,
+  "p95_ms": 2.4,
+  "max_ms": 5.6
+ },
+ "GET /api/lab/report": {
+  "n": 30,
+  "median_ms": 6.2,
+  "p95_ms": 7.3,
+  "max_ms": 13.0
+ },
+ "POST /api/lab/analyze": {
+  "n": 30,
+  "median_ms": 5.2,
+  "p95_ms": 6.4,
+  "max_ms": 137.4
+ },
+ "POST /api/reviews demo-diff -> done (polled 50 ms)": {
+  "n": 10,
+  "median_ms": 435.5,
+  "p95_ms": 901.0,
+  "max_ms": 901.0
+ },
+ "POST /api/codebase/index demo": {
+  "n": 1,
+  "ms": 38.8,
+  "files": 10,
+  "units": 24
+ },
+ "POST /api/codebase/{id}/ask": {
+  "n": 20,
+  "median_ms": 4.8,
+  "p95_ms": 5.6,
+  "max_ms": 8.7
+ }
+}

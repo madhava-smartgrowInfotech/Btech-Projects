@@ -163,6 +163,7 @@ def main():
         # ---- model lab
         page.goto(BASE + "/app/lab")
         page.get_by_text("The 14 metrics").wait_for(timeout=30000)
+        page.wait_for_timeout(3000)  # header counters count up
         shot(page, "lab_pipeline")
         for label, name in [("Feature selection", "lab_feature_selection"), ("Models", "lab_models"), ("ROC", "lab_roc_confusion"),
                             ("Vulnerability types", "lab_types"), ("Ablation", "lab_ablation")]:
@@ -190,6 +191,11 @@ def main():
         page.get_by_role("button", name="Switch to light mode").click()
         page.wait_for_timeout(500)
         shot(page, "review_light_mode")
+
+        # ---- top of a review (verdict banner, gauge, KPIs) in the default dark look
+        page.get_by_role("button", name="Switch to dark mode").click()
+        page.evaluate("window.scrollTo(0, 0)")
+        shot(page, "review_verdict")
 
         ctx.close()
         browser.close()

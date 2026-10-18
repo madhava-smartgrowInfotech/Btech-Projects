@@ -10,7 +10,7 @@ const PAPER_TO_PRODUCT = [
   ["14 metrics from a code property graph", "14 metric families computed from the Python AST/CFG (same numbering for the top metrics M1, M5, M6, M7, M9, M11)"],
   ["7 feature-selection methods + consensus", "Implemented (Pearson, SVM, Lasso, Chi², RFE-LR, RFE-RF, Variance); k validated on held-out data"],
   ["SmoteTomek + Min-Max", "Own SMOTE + Tomek-link implementation, no external imbalance library"],
-  ["9 models, Random Forest best", "RF, DT, LR, SVM, KNN, NB, GB, XGBoost, soft-voting ensemble"],
+  ["9 models compared, XGBoost best", "RF, DT, LR, SVM, KNN, NB, GB, XGBoost, soft-voting ensemble"],
   ["Vulnerability-type classification", "Random-forest type classifier over 8 types; static rules give exact CWE"],
   ["(extension) explain + fix", "Security Reasoner and Remediation agents explain flow/impact and generate re-scan-verified patches"],
   ["(extension) codebase intelligence", "Graph-based retrieval assistant with route, auth and UI discovery"],

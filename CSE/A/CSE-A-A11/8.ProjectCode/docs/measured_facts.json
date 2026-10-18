@@ -1,0 +1,372 @@
+{
+ "engine_vs_ml": {
+  "test_size": 1500,
+  "positives": 125,
+  "best_model": "XGBoost",
+  "rule_engine": {
+   "precision": 0.9263157894736842,
+   "recall": 0.704,
+   "f1": 0.8,
+   "tp": 88,
+   "fp": 7,
+   "fn": 37,
+   "tn": 1368
+  },
+  "ml_model": {
+   "precision": 0.941747572815534,
+   "recall": 0.776,
+   "f1": 0.8508771929824561,
+   "tp": 97,
+   "fp": 6,
+   "fn": 28,
+   "tn": 1369
+  },
+  "combined_or": {
+   "precision": 0.9016393442622951,
+   "recall": 0.88,
+   "f1": 0.8906882591093117,
+   "tp": 110,
+   "fp": 12,
+   "fn": 15,
+   "tn": 1363
+  },
+  "combined_and": {
+   "precision": 0.9868421052631579,
+   "recall": 0.6,
+   "f1": 0.746268656716418,
+   "tp": 75,
+   "fp": 1,
+   "fn": 50,
+   "tn": 1374
+  },
+  "rule_engine_seconds_per_function_ms": 1.23
+ },
+ "latency": {
+  "runs": 20,
+  "median_s": 0.375,
+  "mean_s": 0.391,
+  "min_s": 0.347,
+  "p95_s": 0.471,
+  "max_s": 0.517,
+  "per_agent_median_s": {
+   "Ingestion Agent": 0.0,
+   "Static Analysis Agent": 0.008,
+   "ML Risk Agent": 0.3015,
+   "Security Reasoner": 0.0,
+   "Remediation Agent": 0.0625,
+   "Quality Reviewer": 0.0,
+   "Judge Agent": 0.0
+  },
+  "demo": {
+   "score": 99,
+   "verdict": "BLOCK",
+   "findings": 17,
+   "stats": {
+    "by_severity": {
+     "critical": 1,
+     "high": 10,
+     "medium": 4,
+     "low": 0,
+     "info": 2
+    },
+    "by_category": {
+     "security": 15,
+     "quality": 2
+    },
+    "by_cwe": {
+     "CWE-798": 2,
+     "CWE-89": 2,
+     "CWE-327": 1,
+     "CWE-78": 1,
+     "CWE-79": 1,
+     "CWE-22": 1,
+     "CWE-502": 2,
+     "CWE-95": 1,
+     "CWE-338": 1,
+     "CWE-295": 1,
+     "CWE-918": 1,
+     "CWE-489": 1
+    },
+    "by_file": {
+     "app/users.py": 17
+    },
+    "preexisting": 0,
+    "files": 1,
+    "lines_added": 67,
+    "lines_removed": 1,
+    "functions_scored": 7,
+    "functions_flagged": 7,
+    "autofix": 7,
+    "autofix_verified": 7
+   }
+  }
+ },
+ "retrieval": {
+  "files": 10,
+  "questions": 12,
+  "top1": 8,
+  "top3": 11,
+  "index_build_ms": 14.1,
+  "ask_median_ms": 2.2,
+  "rows": [
+   {
+    "question": "Where is the authentication mechanism implemented?",
+    "expected": "app/auth.py",
+    "got": [
+     "app/auth.py",
+     "tests/test_auth.py"
+    ],
+    "rank": 1
+   },
+   {
+    "question": "Which function hashes the password?",
+    "expected": "app/auth.py",
+    "got": [
+     "app/auth.py",
+     "tests/test_auth.py",
+     "templates/login.html"
+    ],
+    "rank": 1
+   },
+   {
+    "question": "Where is the login route?",
+    "expected": "app/auth.py",
+    "got": [
+     "app/auth.py",
+     "app/routes.py",
+     "templates/login.html"
+    ],
+    "rank": 1
+   },
+   {
+    "question": "How does the app connect to the database?",
+    "expected": "app/db.py",
+    "got": [
+     "app/db.py",
+     "app/config.py"
+    ],
+    "rank": 1
+   },
+   {
+    "question": "Where are database queries for orders written?",
+    "expected": "app/db.py",
+    "got": [
+     "app/routes.py",
+     "app/db.py",
+     "static/app.js"
+    ],
+    "rank": 2
+   },
+   {
+    "question": "Which file defines the API routes for orders and the profile?",
+    "expected": "app/routes.py",
+    "got": [
+     "app/routes.py",
+     "app/auth.py",
+     "app/main.py"
+    ],
+    "rank": 1
+   },
+   {
+    "question": "What decorator protects routes from anonymous users?",
+    "expected": "app/auth.py",
+    "got": [
+     "app/routes.py",
+     "app/auth.py"
+    ],
+    "rank": 2
+   },
+   {
+    "question": "Where does the front end fetch the orders?",
+    "expected": "static/app.js",
+    "got": [
+     "app/routes.py",
+     "static/app.js",
+     "app/db.py"
+    ],
+    "rank": 2
+   },
+   {
+    "question": "Which template holds the sign in form?",
+    "expected": "templates/login.html",
+    "got": [
+     "templates/login.html",
+     "templates/index.html",
+     "app/auth.py"
+    ],
+    "rank": 1
+   },
+   {
+    "question": "Where are the unit tests?",
+    "expected": "tests/test_auth.py",
+    "got": [
+     "tests/test_auth.py",
+     "app/auth.py"
+    ],
+    "rank": 1
+   },
+   {
+    "question": "How is the user looked up by name?",
+    "expected": "app/db.py",
+    "got": [
+     "app/auth.py",
+     "tests/test_auth.py"
+    ],
+    "rank": null
+   },
+   {
+    "question": "What clears the session on logout?",
+    "expected": "app/auth.py",
+    "got": [
+     "app/auth.py"
+    ],
+    "rank": 1
+   }
+  ]
+ },
+ "size": {
+  "engine_py": 2881,
+  "backend_py": 502,
+  "streamlit_app_py": 613,
+  "tests_py": 133,
+  "frontend_ts": 6525,
+  "frontend_files": 69,
+  "rule_ids": 43,
+  "security_rules": 31
+ },
+ "seeds": {
+  "k": 13,
+  "runs": [
+   {
+    "seed": 7,
+    "positives": 501,
+    "Random Forest": {
+     "f1": 0.825531914893617,
+     "precision": 0.8818181818181818,
+     "recall": 0.776,
+     "auc": 0.9530414545454545
+    },
+    "XGBoost": {
+     "f1": 0.8508771929824561,
+     "precision": 0.941747572815534,
+     "recall": 0.776,
+     "auc": 0.9370996363636364
+    }
+   },
+   {
+    "seed": 11,
+    "positives": 493,
+    "Random Forest": {
+     "f1": 0.8,
+     "precision": 0.8598130841121495,
+     "recall": 0.7479674796747967,
+     "auc": 0.9256454764983381
+    },
+    "XGBoost": {
+     "f1": 0.8416289592760181,
+     "precision": 0.9489795918367347,
+     "recall": 0.7560975609756098,
+     "auc": 0.923850600161775
+    }
+   },
+   {
+    "seed": 23,
+    "positives": 545,
+    "Random Forest": {
+     "f1": 0.8178137651821862,
+     "precision": 0.9099099099099099,
+     "recall": 0.7426470588235294,
+     "auc": 0.9092553260307056
+    },
+    "XGBoost": {
+     "f1": 0.8395061728395061,
+     "precision": 0.9532710280373832,
+     "recall": 0.75,
+     "auc": 0.9081583146455063
+    }
+   },
+   {
+    "seed": 41,
+    "positives": 517,
+    "Random Forest": {
+     "f1": 0.8178137651821862,
+     "precision": 0.8559322033898306,
+     "recall": 0.7829457364341085,
+     "auc": 0.941312005608988
+    },
+    "XGBoost": {
+     "f1": 0.8395061728395061,
+     "precision": 0.8947368421052632,
+     "recall": 0.7906976744186046,
+     "auc": 0.932683663257171
+    }
+   },
+   {
+    "seed": 59,
+    "positives": 484,
+    "Random Forest": {
+     "f1": 0.8088888888888889,
+     "precision": 0.875,
+     "recall": 0.7520661157024794,
+     "auc": 0.9494513331615316
+    },
+    "XGBoost": {
+     "f1": 0.8363636363636363,
+     "precision": 0.9292929292929293,
+     "recall": 0.7603305785123967,
+     "auc": 0.9234503383095909
+    }
+   }
+  ],
+  "summary": {
+   "Random Forest|f1": {
+    "mean": 0.8140096668293757,
+    "sd": 0.00980048035041533,
+    "min": 0.8,
+    "max": 0.825531914893617
+   },
+   "Random Forest|precision": {
+    "mean": 0.8764946758460144,
+    "sd": 0.021495594987996695,
+    "min": 0.8559322033898306,
+    "max": 0.9099099099099099
+   },
+   "Random Forest|recall": {
+    "mean": 0.7603252781269828,
+    "sd": 0.01796406429584511,
+    "min": 0.7426470588235294,
+    "max": 0.7829457364341085
+   },
+   "Random Forest|auc": {
+    "mean": 0.9357411191690036,
+    "sd": 0.018177772049155733,
+    "min": 0.9092553260307056,
+    "max": 0.9530414545454545
+   },
+   "XGBoost|f1": {
+    "mean": 0.8415764268602246,
+    "sd": 0.005528383540807428,
+    "min": 0.8363636363636363,
+    "max": 0.8508771929824561
+   },
+   "XGBoost|precision": {
+    "mean": 0.9336055928175688,
+    "sd": 0.023551857013436397,
+    "min": 0.8947368421052632,
+    "max": 0.9532710280373832
+   },
+   "XGBoost|recall": {
+    "mean": 0.7666251627813222,
+    "sd": 0.016539510405446628,
+    "min": 0.75,
+    "max": 0.7906976744186046
+   },
+   "XGBoost|auc": {
+    "mean": 0.9250485105475359,
+    "sd": 0.011099471290767856,
+    "min": 0.9081583146455063,
+    "max": 0.9370996363636364
+   }
+  }
+ }
+}

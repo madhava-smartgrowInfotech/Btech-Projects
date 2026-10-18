@@ -21,7 +21,7 @@ import { cn, timeAgo } from "@/lib/utils";
 const CARDS = [
   { icon: GitPullRequest, title: "PR review", text: "Paste a diff, compare two versions, drop a GitHub PR link or upload a repo. Get a verdict, risk score, explanations and patches in seconds.", to: "/app/review", cta: "Review a pull request" },
   { icon: MessagesSquare, title: "Codebase assistant", text: "Ask “where is authentication handled?” or “which files define the routes?”. Graph-based retrieval answers with files, functions and call flow.", to: "/app/codebase", cta: "Ask your codebase" },
-  { icon: FlaskConical, title: "Model lab", text: "Reproduces the base paper: 14 metrics, 7 feature-selection methods, SmoteTomek, 9 models, Random Forest and vulnerability-type classification.", to: "/app/lab", cta: "Explore the model" },
+  { icon: FlaskConical, title: "Model lab", text: "Reproduces the base paper: 14 metrics, 7 feature-selection methods, SmoteTomek, 9 models and vulnerability-type classification.", to: "/app/lab", cta: "Explore the model" },
 ];
 
 const verdictTone = { BLOCK: "danger", REQUEST_CHANGES: "warning", APPROVE: "success" } as const;

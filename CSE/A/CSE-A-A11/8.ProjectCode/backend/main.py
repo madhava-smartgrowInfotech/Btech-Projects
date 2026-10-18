@@ -210,7 +210,7 @@ def me(user: dict = Depends(auth.current_user)):
 # ------------------------------------------------------------------ meta
 PIPELINE = [("Ingestion", "Parses the PR: files, hunks, changed lines"),
             ("Static Analysis", "AST + taint tracking for Python, regex rules for JS/PHP/Java"),
-            ("ML Risk", "14 source-code metrics -> Random Forest (base paper)"),
+            ("ML Risk", "14 source-code metrics -> trained classifier (base paper)"),
             ("Security Reasoner", "Source→sink flow, impact, CWE/OWASP, ML corroboration"),
             ("Remediation", "Safe patches, verified by re-scanning"),
             ("Quality Reviewer", "Complexity, nesting, size, error handling"),

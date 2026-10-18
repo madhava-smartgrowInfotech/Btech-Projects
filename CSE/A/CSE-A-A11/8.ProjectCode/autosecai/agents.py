@@ -154,7 +154,7 @@ def review_changes(changed: list[ChangedFile], title: str = "Pull request", sour
         flagged = sum(1 for r in ml_rows if r["probability"] >= 0.5)
         return f"{len(ml_rows)} changed function(s) scored; {flagged} predicted vulnerable", det
     tick("ML Risk Agent: source-code metric model")
-    trace.run("ML Risk Agent", "Base-paper technique: 14 source-code metrics -> Random Forest risk score", ml_agent)
+    trace.run("ML Risk Agent", "Base-paper technique: 14 source-code metrics -> trained classifier risk score", ml_agent)
 
     # ---- 4. reasoning
     def reason():

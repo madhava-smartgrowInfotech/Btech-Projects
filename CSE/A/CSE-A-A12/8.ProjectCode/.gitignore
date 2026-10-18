@@ -1,0 +1,13 @@
+# local config, runtime state and installs (reinstallable / machine-specific)
+.env
+venv/
+.venv/
+__pycache__/
+*.pyc
+node_modules/
+frontend/dist/
+pneumonia_app.db
+static/uploads/*
+static/heatmaps/*
+!static/uploads/.gitkeep
+!static/heatmaps/.gitkeep

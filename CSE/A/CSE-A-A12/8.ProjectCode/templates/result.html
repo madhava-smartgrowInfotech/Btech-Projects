@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}Detection Result{% endblock %}
+
+{% block content %}
+<h2 class="mb-4"><i class="fa-solid fa-file-medical"></i> Detection Result</h2>
+
+{% if demo_mode %}
+<div class="alert alert-info">
+    <i class="fa-solid fa-circle-info"></i> Demo Mode result &mdash; from an untrained network. Train the model for meaningful predictions.
+</div>
+{% endif %}
+
+<div class="row g-4">
+    <div class="col-md-6">
+        <div class="card h-100">
+            <div class="card-header">Original X-Ray</div>
+            <img src="{{ url_for('static', filename=record['original_path']) }}" class="card-img-bottom" alt="original x-ray">
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card h-100">
+            <div class="card-header">Grad-CAM Heatmap <span class="text-muted small">(affected regions)</span></div>
+            <img src="{{ url_for('static', filename=record['heatmap_path']) }}" class="card-img-bottom" alt="gradcam heatmap">
+        </div>
+    </div>
+</div>
+
+<div class="card mt-4">
+    <div class="card-body">
+        <h4>
+            Prediction:
+            <span class="badge
+                {% if record['prediction'] == 'Normal' %}bg-success
+                {% elif record['prediction'] == 'Bacterial Pneumonia' %}bg-danger
+                {% else %}bg-warning text-dark{% endif %}">
+                {{ record['prediction'] }}
+            </span>
+        </h4>
+        <p class="text-muted">Confidence: {{ "%.2f"|format(record['confidence'] * 100) }}%</p>
+
+        <div class="mb-2">
+            <div class="d-flex justify-content-between"><span>Normal</span><span>{{ "%.1f"|format(record['prob_normal'] * 100) }}%</span></div>
+            <div class="progress"><div class="progress-bar bg-success" style="width: {{ record['prob_normal'] * 100 }}%"></div></div>
+        </div>
+        <div class="mb-2">
+            <div class="d-flex justify-content-between"><span>Bacterial Pneumonia</span><span>{{ "%.1f"|format(record['prob_bacterial'] * 100) }}%</span></div>
+            <div class="progress"><div class="progress-bar bg-danger" style="width: {{ record['prob_bacterial'] * 100 }}%"></div></div>
+        </div>
+        <div class="mb-2">
+            <div class="d-flex justify-content-between"><span>Viral Pneumonia</span><span>{{ "%.1f"|format(record['prob_viral'] * 100) }}%</span></div>
+            <div class="progress"><div class="progress-bar bg-warning" style="width: {{ record['prob_viral'] * 100 }}%"></div></div>
+        </div>
+    </div>
+</div>
+
+<a href="{{ url_for('index') }}" class="btn btn-outline-primary mt-4"><i class="fa-solid fa-arrow-left"></i> Analyze another image</a>
+{% endblock %}

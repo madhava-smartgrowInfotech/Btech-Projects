@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Detect Pneumonia from Chest X-Ray{% endblock %}
+
+{% block content %}
+<div class="hero text-center mb-4">
+    <h1><i class="fa-solid fa-x-ray"></i> Pneumonia Detection Using Deep Learning</h1>
+    <p class="lead text-muted">Upload a chest X-ray image to screen for Normal, Bacterial Pneumonia, or Viral Pneumonia patterns.</p>
+</div>
+
+{% if demo_mode %}
+<div class="alert alert-info">
+    <i class="fa-solid fa-circle-info"></i>
+    <strong>Demo Mode:</strong> No trained model weights were found at <code>saved_models/pneumonia_model.h5</code>,
+    so predictions right now come from an <em>untrained</em> network (random weights) &mdash; the full pipeline
+    (preprocessing &rarr; CNN &rarr; Grad-CAM &rarr; history) runs end-to-end, but the diagnostic output is not
+    meaningful yet. Train on a labeled chest X-ray dataset with <code>python model/train.py --data_dir dataset</code>
+    to enable real predictions.
+</div>
+{% endif %}
+
+<div class="row">
+    <div class="col-lg-7">
+        <div class="card upload-card">
+            <div class="card-body">
+                <form action="{{ url_for('predict') }}" method="post" enctype="multipart/form-data" id="uploadForm">
+                    <div id="dropZone" class="drop-zone text-center">
+                        <i class="fa-solid fa-cloud-arrow-up fa-2x mb-2"></i>
+                        <p class="mb-1">Drag &amp; drop a chest X-ray image here</p>
+                        <p class="text-muted small mb-3">or</p>
+                        <input class="form-control" type="file" name="xray_image" id="xray_image" accept=".png,.jpg,.jpeg" required>
+                    </div>
+                    <img id="previewImg" class="img-fluid rounded mt-3 d-none" alt="preview">
+                    <button type="submit" class="btn btn-primary w-100 mt-3">
+                        <i class="fa-solid fa-magnifying-glass-chart"></i> Analyze X-Ray
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-5">
+        <div class="card info-card">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fa-solid fa-diagram-project"></i> How it works</h5>
+                <ol class="mb-0">
+                    <li>Image resizing &amp; CLAHE contrast enhancement</li>
+                    <li>Normalization for CNN input</li>
+                    <li>Deep learning classification (Normal / Bacterial / Viral)</li>
+                    <li>Grad-CAM heatmap of affected lung regions</li>
+                    <li>Result saved to history for review</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

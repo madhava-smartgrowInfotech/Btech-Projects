@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}About This Project{% endblock %}
+
+{% block content %}
+<h2 class="mb-3"><i class="fa-solid fa-circle-info"></i> About This Project</h2>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <h5>Project Title</h5>
+        <p>Pneumonia Detection Using Deep Learning</p>
+
+        <h5>Abstract</h5>
+        <p>
+            Pneumonia remains one of the leading causes of illness and death worldwide,
+            especially among children and elderly patients. Manual diagnosis from chest
+            X-ray images depends on radiologist availability and can be time-consuming.
+            This system applies image preprocessing, CNN-based deep learning, and
+            classification techniques to classify chest X-ray images into Normal,
+            Bacterial Pneumonia, or Viral Pneumonia categories, and generates heatmap-based
+            visual explanations to highlight affected lung regions for clinical decision support.
+        </p>
+
+        <h5>Proposed System Pipeline</h5>
+        <ol>
+            <li>Image upload via web interface</li>
+            <li>Preprocessing: resize (224&times;224), CLAHE contrast enhancement, normalization</li>
+            <li>Data augmentation during training (rotation, zoom, shift, flip)</li>
+            <li>CNN-based feature extraction and 3-class classification</li>
+            <li>Grad-CAM heatmap generation for explainability</li>
+            <li>Result storage and history tracking (SQLite)</li>
+        </ol>
+
+        <h5>Technology Stack</h5>
+        <div class="row">
+            <div class="col-md-6">
+                <strong>Front End</strong>
+                <ul><li>HTML / CSS / JavaScript</li><li>Bootstrap</li><li>Flask Templates (Jinja2)</li></ul>
+            </div>
+            <div class="col-md-6">
+                <strong>Back End</strong>
+                <ul><li>Python / Flask</li><li>OpenCV</li><li>TensorFlow / Keras</li><li>SQLite</li></ul>
+            </div>
+        </div>
+
+        <div class="alert alert-secondary mt-3 mb-0">
+            <strong>Disclaimer:</strong> This is an academic / research prototype for computer-aided
+            screening support. It is not a certified medical device and must not be used as the sole
+            basis for clinical diagnosis or treatment decisions.
+        </div>
+    </div>
+</div>
+{% endblock %}

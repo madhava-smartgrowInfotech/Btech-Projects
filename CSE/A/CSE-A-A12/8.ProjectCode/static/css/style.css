@@ -1,0 +1,97 @@
+:root {
+    --primary: #1364b5;
+    --primary-dark: #0c4b8a;
+    --accent: #14b8a6;
+    --bg: #f4f7fb;
+}
+
+body {
+    background: var(--bg);
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #1f2a37;
+}
+
+.navbar {
+    background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+}
+
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.hero h1 {
+    font-weight: 700;
+    color: var(--primary-dark);
+}
+
+.card {
+    border: none;
+    border-radius: 14px;
+    box-shadow: 0 4px 18px rgba(19, 100, 181, 0.08);
+}
+
+.card-header {
+    background: var(--primary);
+    color: #fff;
+    border-radius: 14px 14px 0 0 !important;
+    font-weight: 600;
+}
+
+.card-img-bottom {
+    width: 100%;
+    border-radius: 0 0 14px 14px;
+    object-fit: contain;
+    background: #000;
+    max-height: 340px;
+}
+
+.upload-card, .info-card {
+    padding: 0.5rem;
+}
+
+.drop-zone {
+    border: 2px dashed #9fb8d9;
+    border-radius: 12px;
+    padding: 2rem 1rem;
+    background: #f8fbff;
+    transition: 0.2s;
+}
+
+.drop-zone.dragover {
+    background: #e7f1ff;
+    border-color: var(--primary);
+}
+
+#previewImg {
+    max-height: 260px;
+    width: 100%;
+    object-fit: contain;
+    background: #000;
+}
+
+.btn-primary {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+.thumb {
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+footer {
+    color: #6b7785;
+}
+
+.progress {
+    height: 10px;
+    margin-bottom: 0.75rem;
+}

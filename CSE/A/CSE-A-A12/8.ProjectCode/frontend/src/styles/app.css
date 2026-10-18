@@ -1,0 +1,75 @@
+/* PneumoDetect additions on top of the kit styles (kit files stay untouched). */
+
+.progress-bar.amber { background: var(--amber); }
+.progress-bar.sky { background: var(--sky); }
+.progress-lg { height: 22px; }
+
+/* X-ray viewer: dark plate so grayscale films read well in both themes */
+.xray {
+  position: relative;
+  border: var(--bw) solid var(--line);
+  background: #0b0b0b;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.xray img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.xray-cap {
+  position: absolute; left: 0; top: 0; z-index: 2;
+  background: var(--lime); color: var(--ink);
+  border-right: var(--bw) solid var(--ink); border-bottom: var(--bw) solid var(--ink);
+  padding: 4px 10px; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+}
+.xray-skel { aspect-ratio: 1 / 1; }
+
+.range { width: 100%; accent-color: var(--coral); height: 28px; cursor: pointer; }
+
+.thumb { width: 52px; height: 52px; object-fit: cover; border: var(--bw) solid var(--line); background: #0b0b0b; }
+.thumb-lg { width: 64px; height: 64px; }
+
+.result-verdict { display: flex; flex-direction: column; gap: 6px; }
+.result-verdict .display-md { text-transform: uppercase; }
+.prob-row { display: grid; gap: 6px; }
+.prob-row .row-between { font-weight: 600; }
+
+.cred-box { border: var(--bw) dashed var(--line); padding: 12px 14px; background: var(--surface-2); display: grid; gap: 4px; }
+.cred-box code { overflow-wrap: anywhere; }
+
+.class-card { display: flex; flex-direction: column; gap: 12px; height: 100%; }
+.class-chip { width: 100%; height: 14px; border: var(--bw) solid var(--ink); }
+
+.pipe-line { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); counter-reset: pipe; }
+.pipe-line > div { border: var(--bw) solid var(--ink); background: var(--surface); color: var(--fg); padding: 12px; font-weight: 600; box-shadow: var(--shadow-xs); }
+.pipe-line > div::before { counter-increment: pipe; content: '0' counter(pipe); display: block; font-family: var(--font-display); font-size: 1.6rem; line-height: 1; margin-bottom: 6px; color: var(--coral); }
+
+.hero-plate { display: grid; gap: 14px; }
+.hero-plate .row { gap: 8px; }
+
+.scan-row { display: flex; align-items: center; gap: 14px; padding: 12px 0; border-top: 2px solid var(--line); text-decoration: none; }
+.scan-row:first-child { border-top: 0; padding-top: 0; }
+.scan-row:hover strong { text-decoration: underline; text-decoration-thickness: 3px; text-decoration-color: var(--coral); }
+.scan-row > div { min-width: 0; flex: 1; }
+.scan-row strong { display: block; overflow-wrap: anywhere; }
+
+.filter-bar { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; margin-bottom: 16px; }
+.filter-bar .field { min-width: 180px; }
+
+.err-list { margin: 6px 0 0; padding-left: 18px; }
+
+/* print: a clean one-page report of a result */
+@media print {
+  body::before, .sidebar, .topbar, .bottombar, .no-print, .toasts, .skip-link, .footer { display: none !important; }
+  .shell { display: block; }
+  .shell-content { padding: 0; }
+  * { box-shadow: none !important; }
+  .card, .xray { break-inside: avoid; }
+  body { background: #fff; color: #000; }
+}
+.app-disclaimer { margin-top: 48px; max-width: 70ch; }
+.display-lg.loose, .display-md.loose { line-height: 1.12; }
+.hero-headline { font-size: clamp(2.3rem, 7.6vw, 6.2rem); line-height: 0.95; margin: 18px 0 28px; }
+.hero-grid { align-items: start; }
+.alert p, .alert code, .state p { overflow-wrap: anywhere; min-width: 0; }
+/* the kit inverts footer and marquee to the paper colour in dark mode, where lime-on-paper is unreadable */
+:root[data-theme='dark'] .footer { background: var(--surface); color: var(--fg); }
+:root[data-theme='dark'] .marquee { background: var(--surface); color: var(--fg); }

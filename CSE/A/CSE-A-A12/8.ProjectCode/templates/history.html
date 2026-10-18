@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Prediction History{% endblock %}
+
+{% block content %}
+<h2 class="mb-4"><i class="fa-solid fa-clock-rotate-left"></i> Prediction History</h2>
+
+{% if records|length == 0 %}
+<p class="text-muted">No predictions yet. <a href="{{ url_for('index') }}">Analyze an X-ray</a> to get started.</p>
+{% else %}
+<div class="table-responsive">
+    <table class="table table-hover align-middle">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Thumbnail</th>
+                <th>Filename</th>
+                <th>Prediction</th>
+                <th>Confidence</th>
+                <th>Date</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in records %}
+            <tr>
+                <td>{{ r['id'] }}</td>
+                <td><img src="{{ url_for('static', filename=r['original_path']) }}" class="thumb" alt="thumb"></td>
+                <td>{{ r['filename'] }}</td>
+                <td>
+                    <span class="badge
+                        {% if r['prediction'] == 'Normal' %}bg-success
+                        {% elif r['prediction'] == 'Bacterial Pneumonia' %}bg-danger
+                        {% else %}bg-warning text-dark{% endif %}">
+                        {{ r['prediction'] }}
+                    </span>
+                </td>
+                <td>{{ "%.1f"|format(r['confidence'] * 100) }}%</td>
+                <td>{{ r['created_at'][:19].replace('T', ' ') }}</td>
+                <td><a href="{{ url_for('result', pred_id=r['id']) }}" class="btn btn-sm btn-outline-primary">View</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+{% endblock %}

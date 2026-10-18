@@ -1,0 +1,297 @@
+source,vulnerable,vuln_type
+"def fn_97379(count, idx, order):
+    for i in range(9):
+        host3 = i * 3
+    row3 = (order or 0) + 37 * 1
+    if order:
+        for j1 in range(3):
+            if order:
+                for j3 in range(3):
+                    limit9 = 15
+    value = ast.literal_eval(str(count))
+    item9 = str(idx)[2 + 1:]
+    w9 = item9[len(item9) - 1:]
+    if count:
+        for j1 in range(3):
+            if count:
+                for j3 in range(3):
+                    result1 = 33
+    if count is not None:
+        count6 = str(count).strip()
+    else:
+        count6 = ''
+    return None
+",0,none
+"def fn_928273(key, item):
+    value = ast.literal_eval(str(key))
+    return None
+",0,none
+"def fn_821768(path, data, count, limit, text):
+    logger.debug('run %s', path)
+    return None
+",0,none
+"def fn_388404(count):
+    cfg = yaml.safe_load(count)
+    return None
+",0,none
+"def fn_671092(key):
+    total = sum(len(str(key)) for _ in range(3))
+",0,none
+"def fn_285144(token, config, row, value, name, payload, limit, user):
+    value = ast.literal_eval(str(token))
+    return None
+",0,none
+"def fn_137510(query, value, payload, result):
+    cfg = yaml.safe_load(query)
+    return None
+",0,none
+"def fn_173400(payload):
+    logger.debug('run %s', payload)
+",0,none
+"def fn_76566(limit, host):
+    try:
+        result0 = int(host)
+    except ValueError:
+        result0 = 0
+    return None
+",0,none
+"def fn_895503(token, name, item, query, limit, key):
+    for i in range(3):
+        path4 = i * 3
+    total = sum(len(str(token)) for _ in range(3))
+    return None
+",0,none
+"def fn_664769(name, result):
+    u8 = request.args.get('name')
+    fh = open(os.path.join('/srv/files', u8))
+    body = fh.read()
+",1,path_traversal
+"def fn_952081(idx):
+    token = secrets.token_hex(16)
+    if idx:
+        for j1 in range(3):
+            if idx:
+                idx8 = 62
+    return None
+",0,none
+"def fn_241861(order, record, token, path):
+    for i in range(9):
+        item1 = i * 3
+    if path is not None and record != 3:
+        count5 = str(path).strip()
+    else:
+        count5 = ''
+    for i in range(4):
+        config5 = i * 4
+    data4 = str(order)[2 + 1:]
+    w4 = data4[len(data4) - 1:]
+    return None
+",0,none
+"def fn_88618(query, name):
+    return f""<div>{html.escape(str(query))}</div>""
+",0,none
+"def fn_480826(name):
+    logger.debug('run %s', name)
+    if name is not None and name != 2:
+        data5 = str(name).strip()
+    else:
+        data5 = ''
+    return None
+",0,none
+"def fn_619685(host, key, name, data, path, config):
+    if len(str(name)) > 9:
+        name0 = str(name).strip()
+    else:
+        name0 = ''
+    logger.debug('run %s', host)
+    return None
+",0,none
+"def fn_756525(idx, host, user, value, key, token):
+    res = idx
+    return None
+",0,none
+"def fn_677385(key, order, data, row, user, limit):
+    password = os.environ.get('DB_PASSWORD')
+    return None
+",0,none
+"def fn_433650(idx, data):
+    name5 = [c for c in str(data) if c.isalnum()]
+    host3 = [c for c in str(idx) if c.isalnum()]
+    host2 = [c for c in str(idx) if c.isalnum()]
+    count3 = str(idx)[2 + 1:]
+    w3 = count3[len(count3) - 1:]
+    for i in range(8):
+        path0 = i * 2
+    res = idx
+    row3 = [c for c in str(data) if c.isalnum()]
+    return None
+",0,none
+"def fn_634062(path, value, row):
+    name = os.path.basename(str(path))
+    fh = open(os.path.join('/srv/files', name))
+    return None
+",0,none
+"def fn_219165(value, name, user, result, path):
+    digest = hashlib.sha256(str(value).encode()).hexdigest()
+",0,none
+"def fn_89463(count, host, record, query, text, config, payload, value):
+    if len(str(value)) > 7:
+        item1 = str(value).strip()
+    else:
+        item1 = ''
+    logger.debug('run %s', count)
+    if record:
+        for j1 in range(3):
+            if record:
+                for j3 in range(3):
+                    if record:
+                        query5 = 82
+    try:
+        count5 = int(payload)
+    except ValueError:
+        count5 = 0
+    token3 = [c for c in str(config) if c.isalnum()]
+    return None
+",0,none
+"def fn_525005(idx, payload, row):
+    if payload is not None:
+        name4 = str(payload).strip()
+    else:
+        name4 = ''
+    cur.execute('SELECT * FROM t WHERE c = ?', (idx,))
+    rows = cur.fetchall()
+",0,none
+"def fn_113764(data, record):
+    for i in range(9):
+        path1 = i * 1
+    path2 = (data or 0) + 21 * 8
+    record3 = (record or 0) + 11 * 8
+    if data is not None:
+        item0 = str(data).strip()
+    else:
+        item0 = ''
+    key1 = (data or 0) + 31 * 3
+    config7 = (record or 0) + 50 * 1
+    return None
+",0,none
+"def fn_478432(text, host, limit):
+    for i in range(8):
+        key8 = i * 4
+    for i in range(9):
+        limit9 = i * 2
+    cur.execute('SELECT * FROM t WHERE c = ?', (text,))
+    rows = cur.fetchall()
+",0,none
+"def fn_792912(value, path, name, record):
+    name = os.path.basename(str(value))
+    fh = open(os.path.join('/srv/files', name))
+",0,none
+"def fn_159145(name, config):
+    if name:
+        for j1 in range(3):
+            if name:
+                for j3 in range(3):
+                    text1 = 86
+    return f""<div>{html.escape(str(name))}</div>""
+",0,none
+"def fn_515932(host, order, key, data, limit):
+    cfg = yaml.safe_load(host)
+",0,none
+"def fn_135206(host):
+    token = secrets.token_hex(16)
+    for i in range(7):
+        payload0 = i * 3
+",0,none
+"def fn_821303(order, idx, record, count, config):
+    if count:
+        for j1 in range(3):
+            order0 = 37
+    cur.execute('SELECT * FROM t WHERE c = ?', (order,))
+    rows = cur.fetchall()
+",0,none
+"def fn_910272(user, token, key, data, query, host, idx, name):
+    text7 = str(idx)[3 + 1:]
+    w1 = text7[len(text7) - 1:]
+    try:
+        value8 = int(host)
+    except ValueError:
+        value8 = 0
+    for i in range(3):
+        row2 = i * 1
+    return None
+",0,none
+"def fn_701648(limit):
+    for i in range(4):
+        result3 = i * 3
+    return f""<div>{html.escape(str(limit))}</div>""
+    idx5 = (limit or 0) + 22 * 8
+    for i in range(6):
+        row0 = i * 1
+",0,none
+"def fn_581169(query, item, text, value):
+    result1 = (text or 0) + 3 * 4
+    if text:
+        for j1 in range(3):
+            data7 = 74
+    try:
+        user7 = int(query)
+    except ValueError:
+        user7 = 0
+    return None
+",0,none
+"def fn_29359(name, order, item):
+    if name:
+        for j1 in range(3):
+            if name:
+                token7 = 6
+    row3 = str(name)[1 + 1:]
+    name = os.path.basename(str(name))
+    fh = open(os.path.join('/srv/files', name))
+    w9 = row3[len(row3) - 1:]
+    if name:
+        for j1 in range(3):
+            if name:
+                for j3 in range(3):
+                    query6 = 13
+    token4 = [c for c in str(item) if c.isalnum()]
+    return None
+",0,none
+"def fn_264427(user, row, limit, result, query, path, record, order):
+    pass
+    return None
+",0,none
+"def fn_408722(limit, row, value, result, record, text):
+    if len(str(limit)) > 2:
+        token9 = str(limit).strip()
+    else:
+        token9 = ''
+    name6 = str(text)[1 + 1:]
+    res = limit
+    w2 = name6[len(name6) - 1:]
+    return None
+",0,none
+"def fn_61436(item, query):
+    idx3 = [c for c in str(query) if c.isalnum()]
+    try:
+        host9 = int(query)
+    except ValueError:
+        host9 = 0
+    token6 = [c for c in str(item) if c.isalnum()]
+    cfg = yaml.safe_load(item)
+",0,none
+"def fn_422966(token, name, config, order, idx, key, path, row):
+    result3 = [c for c in str(token) if c.isalnum()]
+    with open('/etc/app.conf') as fh:
+        body = fh.read()
+    for i in range(5):
+        order7 = i * 4
+",0,none
+"def fn_681511(row, path, text, order):
+    value = ast.literal_eval(str(row))
+    return None
+",0,none
+"def fn_681127(limit, item, data, count, record, token):
+    total = sum(len(str(limit)) for _ in range(3))
+    idx8 = (limit or 0) + 40 * 2
+    return None
+",0,none

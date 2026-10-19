@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Cast Your Vote</h1>
+<p><strong>{{ election.title }}</strong> · Select one candidate — you will confirm before submission.</p>
+{% if error %}<div class="alert alert-error">{{ error }}</div>{% endif %}
+<div class="alert alert-success" style="font-size:13px">Identity verified. One-time authorization issued — valid for 10 minutes. <span class="demo-badge">Demo verification</span></div>
+
+<form method="post" action="/voter/cast/{{ election.id }}" id="voteForm">
+  <input type="hidden" name="auth_token" value="{{ auth_token }}">
+  <div class="grid grid-2">
+  {% for c in candidates %}
+    <label class="candidate-card" id="card-{{ c.id }}">
+      <div style="display:flex;justify-content:space-between"><strong>{{ c.name }}</strong><span class="badge">{{ c.party }}</span></div>
+      <div style="font-size:13px;color:var(--muted)">{{ c.description }}</div>
+      <div style="font-size:12px">{{ c.manifesto }}</div>
+      <div style="margin-top:8px"><input type="radio" name="candidate_id" value="{{ c.id }}" required onchange="document.querySelectorAll('.candidate-card').forEach(el=>el.classList.remove('selected'));document.getElementById('card-{{ c.id }}').classList.add('selected');document.getElementById('confirmBox').style.display='block';document.getElementById('confirmName').textContent='{{ c.name }}';"> Select</div>
+    </label>
+  {% endfor %}
+  </div>
+  <div id="confirmBox" style="display:none;margin-top:16px" class="card">
+    <h3 style="margin-top:0">Confirm Your Selection</h3>
+    <p>You have selected: <strong id="confirmName"></strong></p>
+    <p style="font-size:12px;color:var(--muted)">Your choice will be encrypted (AES-256-GCM) and recorded on the permissioned ledger. A non-revealing receipt will be issued. You cannot change your vote after submission.</p>
+    <button class="btn btn-primary" type="submit">Confirm and Submit Vote</button>
+  </div>
+</form>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="hero">
+  <h1>Secure, Verifiable, Private Voting</h1>
+  <p>AegisBallot is a polished local electronic voting platform demonstrating end-to-end encrypted ballots, blockchain-backed integrity, and independent auditability.</p>
+  {% if not current %}
+  <a href="/login" class="btn btn-primary" style="padding:12px 24px;font-size:16px">Enter AegisBallot</a>
+  {% else %}
+  <a href="/dashboard" class="btn btn-primary" style="padding:12px 24px;font-size:16px">Go to Dashboard</a>
+  {% endif %}
+  <div style="margin-top:12px"><span class="demo-badge">Demo verification environment — synthetic identities only</span></div>
+</div>
+
+<div class="grid grid-3">
+  <div class="card"><h3 style="margin:0">Encrypted Ballots</h3><p style="color:var(--muted);font-size:14px">AES-256-GCM encryption with election-specific keys. Identity is separated from ballot records.</p></div>
+  <div class="card"><h3 style="margin:0">Ledger Integrity</h3><p style="color:var(--muted);font-size:14px">SHA-256 chained blocks, quorum validation (2/3), and tamper detection from genesis to tip.</p></div>
+  <div class="card"><h3 style="margin:0">Auditable</h3><p style="color:var(--muted);font-size:14px">Auditors can verify chain integrity, inspect blocks, and export audit logs.</p></div>
+</div>
+
+<h2 style="margin-top:32px">Active Elections</h2>
+<div class="grid grid-2">
+{% for e in elections %}
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center"><strong>{{ e.title }}</strong>
+      {% if e.status=='OPEN' %}<span class="badge badge-success">Open</span>{% elif e.status=='CLOSED' %}<span class="badge badge-danger">Closed</span>{% else %}<span class="badge">{{ e.status }}</span>{% endif %}
+    </div>
+    <p style="color:var(--muted);font-size:14px">{{ e.description }}</p>
+    <div style="font-size:13px;color:var(--muted)">{{ e.start_time }} → {{ e.end_time }}</div>
+  </div>
+{% else %}
+  <div class="card">No elections yet. Admin can create one.</div>
+{% endfor %}
+</div>
+{% endblock %}

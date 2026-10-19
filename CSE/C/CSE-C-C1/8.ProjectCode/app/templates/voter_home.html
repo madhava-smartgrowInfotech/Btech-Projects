@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Welcome, {{ current.user.display_name }}</h1>
+<p style="color:var(--muted)">Select an election to verify and cast your vote. <span class="demo-badge">Demo verification environment</span></p>
+<div class="grid grid-2">
+{% for e in elections %}
+  <div class="card">
+    <div style="display:flex;justify-content:space-between"><strong>{{ e.title }}</strong><span class="badge {% if e.status=='OPEN' %}badge-success{% elif e.status=='CLOSED' %}badge-danger{% endif %}">{{ e.status }}</span></div>
+    <p style="font-size:14px;color:var(--muted)">{{ e.description }}</p>
+    {% if e.id in parts %}
+      <div class="alert alert-success" style="font-size:13px">Vote confirmed — Receipt: {{ parts[e.id].ballot_id[:12] }}…</div>
+      {% if e.status=='CLOSED' %}<a href="/voter/results/{{ e.id }}" class="btn btn-sm">View Results</a>{% endif %}
+    {% else %}
+      {% if e.status=='OPEN' %}<a href="/voter/verify/{{ e.id }}" class="btn btn-primary btn-sm">Verify & Vote</a>
+      {% elif e.status=='CLOSED' %}<a href="/voter/results/{{ e.id }}" class="btn btn-sm">View Results</a>
+      {% else %}<span class="badge">Not open</span>{% endif %}
+    {% endif %}
+  </div>
+{% else %}
+  <div class="card">No elections available.</div>
+{% endfor %}
+</div>
+{% endblock %}

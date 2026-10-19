@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Results — {{ election.title }}</h1>
+<p>Status: <span class="badge {% if election.status=='CLOSED' %}badge-danger{% endif %}">{{ election.status }}</span> · Total votes: {{ results.total_votes }}</p>
+<div class="card">
+<table class="table">
+<tr><th>Rank</th><th>Candidate</th><th>Party</th><th>Votes</th><th>Share</th></tr>
+{% for r in results.results %}
+<tr><td>{{ loop.index }}</td><td>{{ r.name }}</td><td>{{ r.party }}</td><td><strong>{{ r.votes }}</strong></td><td>{{ "%.1f"|format((r.votes/results.total_votes*100) if results.total_votes else 0) }}%</td></tr>
+{% endfor %}
+</table>
+</div>
+<div style="margin-top:12px">
+  {% if current.user.role=='ADMIN' %}<a href="/admin/elections/{{ election.id }}" class="btn">Back to Election</a>{% else %}<a href="/voter" class="btn">Back</a>{% endif %}
+</div>
+{% endblock %}

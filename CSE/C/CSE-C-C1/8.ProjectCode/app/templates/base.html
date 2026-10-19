@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{% block title %}AegisBallot – Secure Voting{% endblock %}</title>
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<nav class="nav">
+  <a href="/" class="brand"><span class="logo">Æ</span> AegisBallot</a>
+  <div class="nav-links">
+    {% if current %}
+      <span style="font-size:13px;color:var(--muted)"> {{ current.user.display_name }} <span class="badge badge-info">{{ current.user.role }}</span></span>
+      <a href="/dashboard" class="btn btn-sm">Dashboard</a>
+      <a href="/logout" class="btn btn-sm">Logout</a>
+    {% else %}
+      <a href="/login" class="btn btn-sm btn-primary">Login</a>
+    {% endif %}
+  </div>
+</nav>
+<main class="container">
+{% block content %}{% endblock %}
+</main>
+<footer class="footer">
+  AegisBallot — Local secure voting platform demonstration &middot; Demo verification environment · Local permissioned ledger (3 validators, quorum 2/3) · AES-256-GCM · SHA-256 · Ed25519<br>
+  This is a functional local demonstration, not a production national election system.
+</footer>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Block {{ block.block_index }}</h1>
+<div class="card">
+<table class="table">
+<tr><th>Index</th><td>{{ block.block_index }}</td></tr>
+<tr><th>Timestamp</th><td>{{ block.timestamp }}</td></tr>
+<tr><th>Previous Hash</th><td style="font-family:monospace;font-size:12px">{{ block.previous_hash }}</td></tr>
+<tr><th>Merkle Root</th><td style="font-family:monospace;font-size:12px">{{ block.merkle_root }}</td></tr>
+<tr><th>Block Hash</th><td style="font-family:monospace;font-size:12px">{{ block.block_hash }}</td></tr>
+<tr><th>Validator Signatures</th><td style="font-size:11px;word-break:break-all">{{ block.validator_signatures }}</td></tr>
+</table>
+</div>
+<h3>Transactions</h3>
+<table class="table"><tr><th>Tx Hash</th><th>Ballot ID</th><th>Encrypted Payload (truncated)</th><th>Nonce</th></tr>
+{% for t in txs %}<tr><td style="font-size:11px">{{ t.tx_hash[:16] }}…</td><td style="font-size:11px">{{ t.ballot_id[:12] }}…</td><td style="font-size:11px">{{ t.encrypted_payload[:24] }}…</td><td style="font-size:11px">{{ t.nonce[:12] }}…</td></tr>{% endfor %}
+</table>
+<a href="/auditor" class="btn" style="margin-top:12px">Back to Auditor</a>
+{% endblock %}

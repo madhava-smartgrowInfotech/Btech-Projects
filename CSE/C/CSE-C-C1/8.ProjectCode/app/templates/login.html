@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Login – AegisBallot{% endblock %}
+{% block content %}
+<div style="max-width:420px;margin:40px auto">
+  <div class="card">
+    <h2 style="margin-top:0">Sign in to AegisBallot</h2>
+    <p style="color:var(--muted);font-size:13px">Use the demo credentials from HOW_TO_RUN.md</p>
+    {% if error %}<div class="alert alert-error">{{ error }}</div>{% endif %}
+    <form method="post" action="/login">
+      <label class="label">Username</label>
+      <input class="input" name="username" required placeholder="admin / voter1 / auditor">
+      <label class="label" style="margin-top:12px">Password</label>
+      <input class="input" name="password" type="password" required placeholder="••••••••">
+      <button class="btn btn-primary" style="width:100%;margin-top:16px" type="submit">Sign in</button>
+    </form>
+    <div style="margin-top:16px;font-size:12px;color:var(--muted);line-height:1.5">
+      <strong>Demo accounts:</strong><br>
+      Admin: admin / Admin@123<br>
+      Auditor: auditor / Audit@123<br>
+      Voter: voter1 / Voter@01pass (up to voter20)
+    </div>
+  </div>
+</div>
+{% endblock %}

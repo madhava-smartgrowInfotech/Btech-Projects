@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Election Management</h1>
+<div class="card">
+  <h3 style="margin-top:0">Create Election</h3>
+  <form method="post" action="/admin/elections/create" class="grid grid-2">
+    <div><label class="label">Title</label><input class="input" name="title" required></div>
+    <div><label class="label">Description</label><input class="input" name="description"></div>
+    <div><label class="label">Start Time</label><input class="input" type="datetime-local" name="start_time" required></div>
+    <div><label class="label">End Time</label><input class="input" type="datetime-local" name="end_time" required></div>
+    <div><button class="btn btn-primary" type="submit">Create</button></div>
+  </form>
+</div>
+
+<div style="margin-top:16px" class="grid">
+{% for e in elections %}
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <strong>{{ e.title }}</strong>
+      <span class="badge {% if e.status=='OPEN' %}badge-success{% elif e.status=='CLOSED' %}badge-danger{% endif %}">{{ e.status }}</span>
+    </div>
+    <p style="color:var(--muted);font-size:14px">{{ e.description }}</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <a href="/admin/elections/{{ e.id }}" class="btn btn-sm">View</a>
+      {% if e.status!='OPEN' %}<form method="post" action="/admin/elections/{{ e.id }}/status"><input type="hidden" name="status" value="OPEN"><button class="btn btn-sm btn-primary">Open</button></form>{% endif %}
+      {% if e.status=='OPEN' %}<form method="post" action="/admin/elections/{{ e.id }}/status"><input type="hidden" name="status" value="PAUSED"><button class="btn btn-sm">Pause</button></form>{% endif %}
+      {% if e.status!='CLOSED' %}<form method="post" action="/admin/elections/{{ e.id }}/status"><input type="hidden" name="status" value="CLOSED"><button class="btn btn-sm">Close</button></form>{% endif %}
+      <a href="/admin/results/{{ e.id }}" class="btn btn-sm">Results</a>
+    </div>
+  </div>
+{% endfor %}
+</div>
+{% endblock %}

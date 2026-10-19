@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ election.title }}</h1>
+<div class="card">
+{% if already_voted %}
+  <div class="alert alert-success">You have already voted in this election. Duplicate voting is prevented.</div>
+  <p>Ballot ID: {{ part.ballot_id }}</p>
+  <a href="/voter" class="btn">Back</a>
+{% endif %}
+</div>
+{% endblock %}

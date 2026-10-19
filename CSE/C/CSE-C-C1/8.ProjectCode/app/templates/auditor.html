@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Auditor Dashboard</h1>
+<p style="color:var(--muted)">Verify ledger integrity, inspect blocks, and review audit logs. <span class="demo-badge">Tamper demo is safe — uses a cloned copy</span></p>
+
+<div class="grid grid-2">
+  <div class="card">
+    <strong>Chain Integrity</strong>
+    <div style="margin-top:8px">
+      {% if chain.valid %}<span class="badge badge-success">Valid — height {{ chain.height }}</span><div style="font-size:12px;margin-top:4px">Tip: {{ chain.last_hash[:24] }}…</div>
+      {% else %}<span class="badge badge-danger">Invalid — block {{ chain.first_invalid }}</span><div style="font-size:12px">Expected {{ chain.expected[:16] }}… got {{ chain.actual[:16] }}… ({{ chain.field }})</div>{% endif %}
+    </div>
+    <form method="post" action="/auditor/verify" style="margin-top:12px"><button class="btn btn-primary btn-sm">Verify Ledger Integrity</button></form>
+    <form method="post" action="/auditor/tamper-test" style="margin-top:8px"><button class="btn btn-sm">Run Tamper-Detection Demo</button></form>
+    {% if verify_result %}<div class="alert alert-success" style="margin-top:8px;font-size:12px">Verification recomputed SHA-256 hashes from genesis to tip. Result: {{ verify_result.valid }}</div>{% endif %}
+    {% if tamper_result %}<div class="alert {% if tamper_result.detected %}alert-success{% else %}alert-error{% endif %}" style="margin-top:8px;font-size:12px">Tamper demo: cloned ledger block {{ tamper_result.tampered_block }} altered ({{ tamper_result.expected[:12] }}… → {{ tamper_result.tampered[:12] }}…). Detection: {{ tamper_result.detected }}. Production ledger unchanged.</div>{% endif %}
+  </div>
+  <div class="card">
+    <strong>Validators</strong>
+    <table class="table"><tr><th>Node</th><th>Status</th></tr>{% for v in vnodes %}<tr><td>{{ v.node_id }}</td><td><span class="badge badge-success">Active</span></td></tr>{% endfor %}</table>
+    <div style="font-size:12px;color:var(--muted);margin-top:8px">Quorum: 2 of 3 must approve each block.</div>
+  </div>
+</div>
+
+<div class="grid grid-2" style="margin-top:16px">
+  <div class="card">
+    <strong>Blocks (recent)</strong>
+    <table class="table"><tr><th>#</th><th>Hash</th><th>Prev</th><th>Tx</th></tr>
+    {% for b in blocks %}<tr><td><a href="/auditor/block/{{ b.block_index }}">{{ b.block_index }}</a></td><td style="font-size:11px">{{ b.block_hash[:14] }}…</td><td style="font-size:11px">{{ b.previous_hash[:10] }}…</td><td>{{ b.transaction_count }}</td></tr>{% endfor %}</table>
+  </div>
+  <div class="card">
+    <strong>Transactions (recent — anonymous)</strong>
+    <p style="font-size:11px;color:var(--muted)">No voter identity is stored on-chain. Payload is encrypted.</p>
+    <table class="table"><tr><th>Tx Hash</th><th>Ballot</th><th>Block</th></tr>
+    {% for t in txs %}<tr><td style="font-size:11px">{{ t.tx_hash[:14] }}…</td><td style="font-size:11px">{{ t.ballot_id[:10] }}…</td><td>{{ t.block_index }}</td></tr>{% endfor %}</table>
+  </div>
+</div>
+
+<div class="card" style="margin-top:16px">
+  <strong>Audit Log</strong>
+  <table class="table"><tr><th>Time</th><th>Actor</th><th>Action</th><th>Details</th></tr>
+  {% for l in logs %}<tr><td style="font-size:12px">{{ l.timestamp }}</td><td>{{ l.actor_username or '—' }}</td><td>{{ l.action }}</td><td style="font-size:12px">{{ l.details or '' }}</td></tr>{% endfor %}</table>
+</div>
+{% endblock %}

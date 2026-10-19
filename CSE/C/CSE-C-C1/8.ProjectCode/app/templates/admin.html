@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}Admin – AegisBallot{% endblock %}
+{% block content %}
+<h1 style="margin:0">Admin Dashboard</h1>
+<p style="color:var(--muted)">Monitor elections, voters, ledger health, and performance.</p>
+
+<div class="grid grid-3" style="margin-top:16px">
+  <div class="card"><div class="kpi-label">Registered Voters</div><div class="kpi">{{ total_voters }}</div></div>
+  <div class="card"><div class="kpi-label">Votes Cast</div><div class="kpi">{{ total_votes }}</div><div style="font-size:12px;color:var(--muted)">{{ turnout }}% turnout</div></div>
+  <div class="card"><div class="kpi-label">Ledger Height</div><div class="kpi">{{ chain.height if chain.valid else '—' }}</div><div style="font-size:12px">{% if chain.valid %}<span class="badge badge-success">Ledger healthy</span>{% else %}<span class="badge badge-danger">Integrity warning</span>{% endif %}</div></div>
+</div>
+
+<div class="grid grid-2" style="margin-top:16px">
+  <div class="card">
+    <div style="display:flex;justify-content:space-between"><strong>Validators</strong><span class="badge badge-info">3 nodes · quorum 2/3</span></div>
+    <table class="table" style="margin-top:8px">
+      <tr><th>Node</th><th>Status</th><th>Key</th></tr>
+      {% for v in vnodes %}
+      <tr><td>{{ v.node_id }}</td><td><span class="badge badge-success">Active</span></td><td style="font-size:11px;max-width:120px;overflow:hidden;text-overflow:ellipsis">{{ v.public_key[:18] }}…</td></tr>
+      {% endfor %}
+    </table>
+    <div style="font-size:12px;color:var(--muted);margin-top:8px">Last block: {{ blocks[0].block_hash[:16] }}… if available</div>
+  </div>
+  <div class="card">
+    <strong>Performance</strong>
+    {% if bench %}
+      <div style="font-size:13px;margin-top:8px">Sync throughput: {{ "%.1f"|format(bench.throughput_sync or 0) }} ops/sec · Async (b20): {{ "%.1f"|format(bench.throughput_async or 0) }} ops/sec</div>
+      <div style="font-size:12px;color:var(--muted)">Mean latency: {{ "%.2f"|format(bench.mean_latency_ms or 0) }} ms · p95: {{ "%.2f"|format(bench.p95_latency_ms or 0) }} ms</div>
+    {% else %}
+      <div style="font-size:13px;color:var(--muted);margin-top:8px">No benchmark yet. Run <code>python -m app.benchmarks.run_benchmark</code></div>
+    {% endif %}
+    <a href="/admin/benchmark" class="btn btn-sm" style="margin-top:8px">View Benchmarks</a>
+  </div>
+</div>
+
+<div class="grid grid-2" style="margin-top:16px">
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center"><strong>Recent Elections</strong><a href="/admin/elections" class="btn btn-sm">Manage</a></div>
+    <table class="table" style="margin-top:8px">
+      <tr><th>Title</th><th>Status</th><th>Ends</th></tr>
+      {% for e in elections[:5] %}
+      <tr><td><a href="/admin/elections/{{ e.id }}">{{ e.title }}</a></td><td><span class="badge {% if e.status=='OPEN' %}badge-success{% elif e.status=='CLOSED' %}badge-danger{% endif %}">{{ e.status }}</span></td><td style="font-size:12px">{{ e.end_time }}</td></tr>
+      {% endfor %}
+    </table>
+  </div>
+  <div class="card">
+    <strong>Recent Blocks</strong>
+    <table class="table" style="margin-top:8px">
+      <tr><th>#</th><th>Hash</th><th>Tx</th></tr>
+      {% for b in blocks %}
+      <tr><td>{{ b.block_index }}</td><td style="font-size:11px">{{ b.block_hash[:16] }}…</td><td>{{ b.transaction_count }}</td></tr>
+      {% endfor %}
+    </table>
+    <div style="font-size:12px;color:var(--muted);margin-top:8px">Chain valid: {{ chain.valid }} {% if chain.last_hash %}· tip {{ chain.last_hash[:16] }}…{% endif %}</div>
+  </div>
+</div>
+
+<div class="card" style="margin-top:16px">
+  <strong>Recent Audit Events</strong>
+  <table class="table" style="margin-top:8px">
+    <tr><th>Time</th><th>Actor</th><th>Action</th><th>Details</th></tr>
+    {% for l in logs %}
+    <tr><td style="font-size:12px">{{ l.timestamp }}</td><td>{{ l.actor_username or '—' }}</td><td><span class="badge">{{ l.action }}</span></td><td style="font-size:12px">{{ l.details or '' }}</td></tr>
+    {% endfor %}
+  </table>
+</div>
+{% endblock %}

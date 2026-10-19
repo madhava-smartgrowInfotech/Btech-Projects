@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>StoryVox — Multilingual AI Storytelling</title>
+<link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <div class="logo">SV</div>
+    <div>
+      <div class="brand-name">StoryVox</div>
+      <div class="brand-tag">Stories in your language, voiced for you</div>
+    </div>
+  </div>
+  <nav class="tabs">
+    <button class="tab active" data-tab="creator">Create</button>
+    <button class="tab" data-tab="history">History</button>
+    <button class="tab" data-tab="evaluation">Evaluation</button>
+  </nav>
+</header>
+
+<main class="container">
+  <section id="tab-creator" class="panel">
+    <div class="hero card">
+      <h1>Tell a story idea. StoryVox writes and narrates it.</h1>
+      <p class="muted">Type any idea, pick a language and style, then generate a story with natural speech narration you can play or download.</p>
+    </div>
+    <div class="grid two">
+      <div class="card">
+        <h2>Create your story</h2>
+        <label for="prompt">Story idea</label>
+        <textarea id="prompt" rows="5" maxlength="2000" placeholder="Tell a story about a young inventor who discovers a hidden library."></textarea>
+        <div class="row">
+          <div class="field">
+            <label for="language">Language</label>
+            <select id="language"><option value="">Loading languages…</option></select>
+          </div>
+          <div class="field">
+            <label for="style">Style</label>
+            <select id="style"></select>
+          </div>
+          <div class="field">
+            <label for="length">Length</label>
+            <select id="length"></select>
+          </div>
+        </div>
+        <label class="check"><input type="checkbox" id="synthesize" checked /> Generate narration audio automatically</label>
+        <button id="generateBtn" class="primary">Generate Story</button>
+        <div id="createStatus" class="status" role="status"></div>
+        <div class="progress hidden" id="createProgress"><div class="bar"></div></div>
+        <p class="privacy">Privacy note: stories and narration are stored locally on this computer for history and playback.</p>
+      </div>
+      <div class="card" id="resultCard">
+        <h2>Your story</h2>
+        <div id="emptyResult" class="empty">
+          <div class="empty-icon">📖</div>
+          <p>No story yet. Share an idea on the left and press <strong>Generate Story</strong>.</p>
+        </div>
+        <div id="resultBody" class="hidden">
+          <h3 id="resTitle"></h3>
+          <div class="meta" id="resMeta"></div>
+          <p id="resText" class="story-text"></p>
+          <audio id="resAudio" controls class="hidden"></audio>
+          <div class="btnrow">
+            <button id="downloadBtn" class="secondary hidden">Download audio</button>
+            <button id="renarrateBtn" class="secondary hidden">Regenerate narration</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tab-history" class="panel hidden">
+    <div class="card">
+      <div class="card-head">
+        <h2>Story history</h2>
+        <button id="refreshHistory" class="secondary">Refresh</button>
+      </div>
+      <div id="historyList" class="history"></div>
+    </div>
+  </section>
+
+  <section id="tab-evaluation" class="panel hidden">
+    <div class="card">
+      <div class="card-head">
+        <h2>Pipeline evaluation</h2>
+        <div class="btnrow">
+          <label>Samples <input type="number" id="evalSamples" value="5" min="1" max="30" class="small-input" /></label>
+          <button id="runEval" class="primary">Run evaluation</button>
+        </div>
+      </div>
+      <p class="muted">Every number below is computed from real StoryVox outputs at evaluation time — intelligibility (WER/CER via transcription), topic similarity, latency and real-time factor. Nothing is pre-filled.</p>
+      <div id="evalStatus" class="status"></div>
+      <div class="progress hidden" id="evalProgress"><div class="bar"></div></div>
+      <div id="evalCards" class="cards"></div>
+      <div id="evalTableWrap"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">StoryVox · Local-first storytelling · Stories and audio stay on this device</footer>
+<div id="toast" class="toast hidden"></div>
+<script src="/static/app.js"></script>
+</body>
+</html>

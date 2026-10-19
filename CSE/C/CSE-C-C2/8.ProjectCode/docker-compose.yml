@@ -1,0 +1,10 @@
+services:
+  storyvox:
+    build: .
+    ports:
+      - "127.0.0.1:8402:8402"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - PORT=8402
+      - HOST=127.0.0.1

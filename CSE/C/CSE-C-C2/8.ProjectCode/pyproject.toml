@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "storyvox"
+version = "1.0.0"
+description = "StoryVox - Multilingual AI storytelling with natural speech narration"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+keywords = ["storytelling", "text-to-speech", "multilingual", "fastapi"]
+authors = [{ name = "StoryVox Team" }]
+dependencies = [
+  "fastapi>=0.110",
+  "uvicorn>=0.29",
+  "sqlalchemy>=2.0",
+  "pydantic>=2.5",
+  "pydantic-settings>=2.2",
+  "python-multipart>=0.0.9",
+  "numpy>=1.26",
+  "soundfile>=0.12",
+  "jiwer>=3.0",
+  "nltk>=3.8",
+  "rouge-score>=0.1.2",
+]
+
+[project.optional-dependencies]
+ml = [
+  "torch>=2.2",
+  "transformers>=4.40",
+  "accelerate>=0.29",
+  "sentencepiece>=0.2",
+  "tokenizers>=0.19",
+  "datasets>=2.18",
+  "librosa>=0.10",
+  "pyttsx3>=2.90",
+  "openai-whisper>=20240930",
+  "sentence-transformers>=2.6",
+]
+docs = ["reportlab>=4.0"]
+test = ["pytest>=8", "httpx>=0.27"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["app*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

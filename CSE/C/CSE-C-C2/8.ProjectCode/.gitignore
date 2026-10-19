@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+data/audio/*.wav
+data/audio/*.mp3
+!data/audio/.gitkeep
+data/storyvox.db
+data/evaluations/*.json
+!data/evaluations/.gitkeep
+data/datasets/*
+!data/datasets/.gitkeep
+*.log
+.DS_Store
+frontend/node_modules/
+frontend/dist/

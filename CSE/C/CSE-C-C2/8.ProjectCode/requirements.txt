@@ -1,0 +1,24 @@
+fastapi>=0.110
+uvicorn>=0.29
+sqlalchemy>=2.0
+pydantic>=2.5
+pydantic-settings>=2.2
+python-multipart>=0.0.9
+numpy>=1.26
+soundfile>=0.12
+jiwer>=3.0
+nltk>=3.8
+rouge-score>=0.1.2
+# ML / speech (installed for full speech quality; app runs in limited mode without them)
+torch>=2.2
+transformers>=4.40
+accelerate>=0.29
+sentencepiece>=0.2
+tokenizers>=0.19
+datasets>=2.18
+librosa>=0.10
+pyttsx3>=2.90
+sentence-transformers>=2.6
+reportlab>=4.0
+pytest>=8
+httpx>=0.27

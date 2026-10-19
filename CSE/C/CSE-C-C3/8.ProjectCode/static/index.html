@@ -1,0 +1,43 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ParkSure — Smart parking reservations</title><link rel="stylesheet" href="/assets/style.css"></head>
+<body><div class="nav"><div class="wrap"><div class="logo">Park<span>Sure</span></div><div class="links" id="navLinks"></div></div></div>
+<div class="wrap"><div class="hero">
+<div><h1>Parking, reserved before you arrive.</h1>
+<p class="muted">Search real availability, reserve a slot in advance, pay securely online, and check in from your phone. ParkSure's Smart Availability Engine holds back a small buffer at each location so overstays never strand you — and suggests the nearest alternate automatically on the rare occasion a site is full.</p>
+<p><a class="btn" href="/login">Reserve a spot</a> <a class="btn ghost" href="/dashboard">Manage bookings</a></p>
+<div class="card"><h3>How it works</h3><p class="muted">1. Search by time → 2. Reserve &amp; pay with Stripe → 3. Check in on arrival → 4. Check out on time to grow your Trust Score and lower future fees.</p></div></div>
+<div><div class="card"><h3>Find parking</h3>
+<label>Arrival</label><input type="datetime-local" id="s">
+<label>Departure</label><input type="datetime-local" id="e">
+<div id="msg"></div><p><button class="btn" id="go" style="width:100%">Search availability</button></p>
+<p class="muted" style="font-size:13px">Demo logins — admin: <b>admin@parksure.app / admin123</b><br>driver: <b>driver1@parksure.app / driver123</b></p></div></div>
+</div>
+<h2>Available locations</h2><div class="grid g3" id="locs"></div>
+<div class="footer">ParkSure © 2026 · Secure Stripe payments · Smart Availability Engine</div></div>
+<script src="/assets/app.js"></script>
+<script>
+const def = () => { const d = new Date(Date.now()+36e5); const p=(n)=>String(n).padStart(2,"0");
+ const f=(dt)=>`${dt.getFullYear()}-${p(dt.getMonth()+1)}-${p(dt.getDate())}T${p(dt.getHours())}:${p(dt.getMinutes())}`;
+ s.value=f(d); e.value=f(new Date(d.getTime()+2*36e5)); };
+const s=document.getElementById("s"),e=document.getElementById("e");def();
+async function load(){
+ try{ const l=await api("/api/locations");
+  document.getElementById("locs").innerHTML=l.map(x=>`<div class="loc"><b>${esc(x.name)}</b><div class="muted">${esc(x.address)} · ${x.capacity} slots · $${x.price_per_hour}/hr</div></div>`).join("");
+ }catch(_){}
+}
+document.getElementById("go").onclick=async()=>{
+ try{ const r=await api(`/api/search?start_time=${encodeURIComponent(new Date(s.value).toISOString())}&end_time=${encodeURIComponent(new Date(e.value).toISOString())}`);
+  document.getElementById("locs").innerHTML=r.map(x=>`<div class="loc"><div class="row"><b>${esc(x.name)}</b><span class="badge ${x.available?"b-active":"b-failed"}">${x.available?x.bookable+" free":"Full"}</span></div><div class="muted">${esc(x.address)} · ${x.capacity} slots · buffer ${x.buffer_size} · $${x.price_per_hour}/hr</div><p><button class="btn small" ${x.available?"":"disabled"} onclick="book(${x.id})">Reserve</button></p></div>`).join("");
+ }catch(err){ document.getElementById("msg").innerHTML=`<div class="alert a-err">${esc(err.message)}</div>`; }
+};
+async function book(id){
+ if(!localStorage.getItem("parksure_token")){ location.href="/login"; return; }
+ try{ const r=await api("/api/reservations",{method:"POST",body:JSON.stringify({location_id:id,start_time:new Date(s.value).toISOString(),end_time:new Date(e.value).toISOString()})});
+  let m=`Reserved at ${esc(r.location_name)} — $${r.fee} (x${r.fee_multiplier}). `;
+  if(r.amount_due>0&&r.checkout) m+=`<a href="${r.checkout.url}" target="_blank">Pay $${r.amount_due} now</a> · `;
+  m+=`<a href="/dashboard">View booking</a>`;
+  document.getElementById("msg").innerHTML=`<div class="alert a-ok">${m}</div>`;
+ }catch(err){ document.getElementById("msg").innerHTML=`<div class="alert a-err">${esc(err.message)}</div>`; }
+}
+load();
+</script></body></html>

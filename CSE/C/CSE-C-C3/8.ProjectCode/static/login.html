@@ -1,0 +1,22 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ParkSure — Log in</title><link rel="stylesheet" href="/assets/style.css"></head>
+<body><div class="nav"><div class="wrap"><div class="logo">Park<span>Sure</span></div><div class="links" id="navLinks"></div></div></div>
+<div class="wrap" style="max-width:560px;padding:40px 20px">
+<div class="card"><h2>Welcome to ParkSure</h2><p class="muted">Log in or create a driver account. The first account on a fresh install becomes the admin.</p>
+<div id="msg"></div>
+<div class="grid g2"><div><label>Name (register only)</label><input id="name" placeholder="Alex Driver"></div>
+<div><label>Email</label><input id="email" placeholder="you@example.com" value="driver1@parksure.app"></div></div>
+<label>Password</label><input id="pw" type="password" placeholder="••••••••" value="driver123">
+<p style="display:flex;gap:10px"><button class="btn" id="login">Log in</button><button class="btn ghost" id="reg">Create account</button></p>
+<p class="muted" style="font-size:13px">Admin demo: admin@parksure.app / admin123</p></div></div>
+<script src="/assets/app.js"></script>
+<script>
+const nameEl = document.getElementById("name");
+const emailEl = document.getElementById("email");
+const pwEl = document.getElementById("pw");
+const msg=(t,c)=>document.getElementById("msg").innerHTML=t?`<div class="alert ${c}">${t}</div>`:"";
+async function go(url,body){ const r=await api(url,{method:"POST",body:JSON.stringify(body)});
+ localStorage.setItem("parksure_token",r.token); location.href = r.user.role==="admin" ? "/admin" : "/dashboard"; }
+document.getElementById("login").onclick=async()=>{ try{ await go("/api/auth/login",{email:emailEl.value.trim(),password:pwEl.value}); }catch(e){ msg(esc(e.message),"a-err"); } };
+document.getElementById("reg").onclick=async()=>{ try{ if(!nameEl.value.trim()){msg("Please enter your name to register.","a-err");return;} await go("/api/auth/register",{name:nameEl.value.trim(),email:emailEl.value.trim(),password:pwEl.value}); }catch(e){ msg(esc(e.message),"a-err"); } };
+</script></body></html>

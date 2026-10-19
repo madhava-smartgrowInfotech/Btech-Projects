@@ -1,0 +1,47 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ParkSure — Admin</title><link rel="stylesheet" href="/assets/style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script></head>
+<body><div class="nav"><div class="wrap"><div class="logo">Park<span>Sure</span> <span class="muted" style="font-size:13px">Admin</span></div><div class="links" id="navLinks"></div></div></div>
+<div class="wrap" style="padding:30px 20px"><h2>Admin panel</h2><div id="msg"></div>
+<div class="grid g3" id="stats"></div>
+<div class="grid g2" style="margin-top:16px">
+<div class="card"><h3>Locations</h3><div id="locs"></div>
+<h3 style="margin-top:16px">Add / edit location</h3>
+<input id="lname" placeholder="Name"><input id="laddr" placeholder="Address" style="margin-top:6px">
+<div class="grid g2"><div><label>Lat</label><input id="llat" type="number" step="any" value="12.972"></div><div><label>Lon</label><input id="llon" type="number" step="any" value="77.595"></div></div>
+<div class="grid g2"><div><label>Capacity</label><input id="lcap" type="number" value="15"></div><div><label>$/hour</label><input id="lprice" type="number" step="any" value="3"></div></div>
+<p><button class="btn" id="add">Save location</button> <button class="btn ghost" id="reset">Reset all buffers</button></p></div>
+<div class="card"><h3>Strategy Insights</h3><p class="muted">Computed from real booking history. Compares Unable-to-Park and Declined counts under buffer 0 / 1 / 3 / dynamic policy via the deterministic simulation script.</p>
+<p><button class="btn" id="run">Recompute insights</button></p>
+<canvas id="chart" height="220"></canvas><div id="itable" style="margin-top:10px"></div></div></div>
+<div class="card" style="margin-top:16px"><h3>Recent bookings</h3><table><thead><tr><th>ID</th><th>Location</th><th>Window</th><th>Status</th><th>Fee</th></tr></thead><tbody id="rows"></tbody></table></div></div>
+<script src="/assets/app.js"></script>
+<script>
+if(!localStorage.getItem("parksure_token")) location.href="/login";
+let chart=null, editId=null;
+async function refresh(){
+ try{ const o=await api("/api/admin/overview");
+  stats.innerHTML=[["Users",o.users],["Locations",o.locations],["Reservations",o.reservations],["Revenue (paid)",`$${o.revenue}`],["Unable to park",o.unable_to_park],["Declined",o.declined]].map(x=>`<div class="card"><div class="muted">${x[0]}</div><h2>${x[1]}</h2></div>`).join("");
+  const l=await api("/api/locations");
+  locs.innerHTML=l.map(x=>`<div class="loc"><div class="row"><b>${esc(x.name)}</b><span class="muted">cap ${x.capacity} · buf ${x.buffer_size}</span></div><div class="muted">${esc(x.address)} · $${x.price_per_hour}/hr</div><p><button class="btn small ghost" onclick="edit(${x.id})">Edit</button> <button class="btn small danger" onclick="del(${x.id})">Delete</button></p></div>`).join("");
+  const b=await api("/api/admin/bookings");
+  rows.innerHTML=b.slice(0,60).map(r=>`<tr><td>#${r.id}</td><td>${esc(r.location_name)}</td><td>${new Date(r.start_time).toLocaleString()}</td><td><span class="badge b-${r.status}">${r.status}</span></td><td>$${r.fee}</td></tr>`).join("");
+ }catch(e){ msg.innerHTML=`<div class="alert a-err">${esc(e.message)}</div>`; }
+}
+window.edit=async(id)=>{ const l=(await api("/api/locations")).find(x=>x.id===id); editId=id;
+ lname.value=l.name;laddr.value=l.address;llat.value=l.latitude;llon.value=l.longitude;lcap.value=l.capacity;lprice.value=l.price_per_hour; window.scrollTo(0,300); };
+window.del=async(id)=>{ if(!confirm("Delete location?"))return; await api(`/api/locations/${id}`,{method:"DELETE"}); refresh(); };
+add.onclick=async()=>{ try{ const body={name:lname.value,address:laddr.value,latitude:+llat.value,longitude:+llon.value,capacity:+lcap.value,price_per_hour:+lprice.value,buffer_size:1};
+  if(editId) await api(`/api/locations/${editId}`,{method:"PUT",body:JSON.stringify(body)}); else await api("/api/locations",{method:"POST",body:JSON.stringify(body)});
+  editId=null;lname.value="";laddr.value="";refresh(); }catch(e){ msg.innerHTML=`<div class="alert a-err">${esc(e.message)}</div>`; } };
+reset.onclick=async()=>{ const r=await api("/api/admin/reset-buffers",{method:"POST"}); msg.innerHTML=`<div class="alert a-ok">Buffers reset to policy default.</div>`; refresh(); };
+run.onclick=async()=>{ const d=await api("/api/admin/insights?window_days=60");
+ const t=d.totals, labels=["No buffer (0)","Fixed buffer (1)","Fixed buffer (3)","Dynamic policy"];
+ const unable=[t.fixed_0.unable_to_park,t.fixed_1.unable_to_park,t.fixed_3.unable_to_park,t.dynamic.unable_to_park];
+ const decl=[t.fixed_0.declined,t.fixed_1.declined,t.fixed_3.declined,t.dynamic.declined];
+ if(chart) chart.destroy();
+ chart=new Chart(document.getElementById("chart"),{type:"bar",data:{labels,datasets:[{label:"Unable to park",data:unable},{label:"Declined",data:decl}]},options:{responsive:true,plugins:{legend:{position:"bottom"}}}});
+ itable.innerHTML=`<table><thead><tr><th>Location</th><th>Requests</th><th colspan="2">Actual (unable / declined)</th><th colspan="2">Dynamic sim</th></tr></thead><tbody>${d.per_location.map(p=>`<tr><td>${esc(p.location)}</td><td>${p.requests}</td><td>${p.actual.unable_to_park}</td><td>${p.actual.declined}</td><td>${p.simulated.dynamic.unable_to_park}</td><td>${p.simulated.dynamic.declined}</td></tr>`).join("")}</tbody></table><p class="muted">Policy: init ${d.policy.init}, max ${d.policy.max}, reset every ${d.policy.reset_hours}h. ${esc(d.note)}</p>`;
+};
+refresh(); run.onclick();
+</script></body></html>

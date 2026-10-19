@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+sqlalchemy
+pydantic[email]
+email-validator
+pydantic-settings
+python-jose[cryptography]
+passlib[bcrypt]
+bcrypt
+apscheduler
+stripe
+python-multipart
+reportlab
+playwright
+httpx2

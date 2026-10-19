@@ -1,0 +1,11 @@
+services:
+  parksure:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - PARKSURE_BASE_URL=http://localhost:8000
+    volumes:
+      - parksure-data:/app
+volumes:
+  parksure-data:

@@ -1,0 +1,175 @@
+/* ParkSure additions on top of the V3 kit styles (screens the kit does not ship). */
+
+/* ---------------------------------------------------------------- auth */
+.auth-page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  background: var(--bg);
+}
+.auth-side {
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(600px 400px at 30% 30%, var(--accent-soft), transparent 70%),
+    var(--bg-2);
+  border-right: 1px solid var(--border);
+}
+.auth-side img {
+  width: min(520px, 90%);
+  opacity: 0.9;
+}
+.auth-main {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 28px 40px;
+  min-width: 0;
+}
+.auth-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8vh;
+}
+.auth-top .brand {
+  padding: 0;
+}
+.auth-card {
+  width: 100%;
+  max-width: 460px;
+  margin: 0 auto;
+}
+.auth-card h1 {
+  font-size: 28px;
+}
+.demo-box {
+  margin-top: 22px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+/* ---------------------------------------------------------------- find parking */
+.search-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: end;
+}
+.search-form .btn {
+  height: 42px;
+}
+.loc-card h3 {
+  font-size: 18px;
+}
+.loc-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--text-2);
+  font-size: 14px;
+}
+.loc-meta strong {
+  color: var(--text);
+}
+
+/* ---------------------------------------------------------------- inline states */
+.state-inline {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  font-size: 14px;
+}
+.state-inline svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.state-inline.ok {
+  color: var(--safe);
+  background: var(--safe-soft);
+  border-color: color-mix(in srgb, var(--safe) 30%, transparent);
+}
+.state-inline.bad {
+  color: var(--text);
+  background: var(--danger-soft);
+  border-color: color-mix(in srgb, var(--danger) 35%, transparent);
+}
+.state-inline.bad svg {
+  color: var(--danger);
+}
+
+/* ---------------------------------------------------------------- tables and lists */
+.reason {
+  max-width: 34ch;
+  margin-top: 4px;
+}
+.filters {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.filters .search {
+  flex: 1 1 260px;
+}
+
+/* ---------------------------------------------------------------- trust */
+.stars {
+  display: flex;
+  gap: 6px;
+  color: var(--border-strong);
+}
+.stars svg.on {
+  color: var(--warn);
+  fill: var(--warn);
+}
+
+/* ---------------------------------------------------------------- landing tweaks */
+.numbers-grid.n4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.how-visual {
+  position: sticky;
+  top: 18vh;
+}
+.how-progress i {
+  transform-origin: top;
+}
+@media (max-width: 1000px) {
+  .numbers-grid.n4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 900px) {
+  .auth-page {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .auth-side {
+    display: none;
+  }
+}
+@media (max-width: 720px) {
+  .search-form {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .search-form .btn {
+    width: 100%;
+  }
+  .auth-main {
+    padding: 16px 16px 32px;
+  }
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.tabs {
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}

@@ -1,0 +1,36 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ParkSure — My bookings</title><link rel="stylesheet" href="/assets/style.css"></head>
+<body><div class="nav"><div class="wrap"><div class="logo">Park<span>Sure</span></div><div class="links" id="navLinks"></div></div></div>
+<div class="wrap" style="padding:30px 20px"><h2>My bookings &amp; Trust Score</h2><div id="msg"></div>
+<div class="grid g2"><div class="card"><h3>Trust Score</h3><div id="trust">Loading…</div></div>
+<div class="card"><h3>New reservation</h3><label>Location</label><select id="loc"></select>
+<label>Arrival</label><input type="datetime-local" id="s"><label>Departure</label><input type="datetime-local" id="e">
+<p><button class="btn" id="book">Reserve &amp; pay</button></p><div id="bmsg"></div></div></div>
+<h3>Bookings</h3><div class="card"><table><thead><tr><th>ID</th><th>Location</th><th>Window</th><th>Status</th><th>Fee</th><th>Actions</th></tr></thead><tbody id="rows"></tbody></table></div></div>
+<script src="/assets/app.js"></script>
+<script>
+if(!localStorage.getItem("parksure_token")) location.href="/login";
+const p=(n)=>String(n).padStart(2,"0"),f=(dt)=>`${dt.getFullYear()}-${p(dt.getMonth()+1)}-${p(dt.getDate())}T${p(dt.getHours())}:${p(dt.getMinutes())}`;
+const d=new Date(Date.now()+36e5); s.value=f(d); e.value=f(new Date(d.getTime()+2*36e5));
+async function refresh(){
+ try{ const t=await api("/api/trust");
+  document.getElementById("trust").innerHTML=`<div class="stars">${stars(t.trust_score)}</div><p><b>${t.trust_score} / 5</b> · fee multiplier <b>x${t.fee_multiplier}</b></p><p class="muted">${t.benefit_streak} on-time in a row (${t.next_reward_in} more for +1) · ${t.warning_count} recent warning(s)</p>${t.events.map(v=>`<div class="muted">• [${v.kind}] ${esc(v.detail)}</div>`).join("")}`;
+  const l=await api("/api/locations"); loc.innerHTML=l.map(x=>`<option value="${x.id}">${esc(x.name)} — $${x.price_per_hour}/hr</option>`).join("");
+  const b=await api("/api/reservations");
+  rows.innerHTML=b.map(r=>`<tr><td>#${r.id}</td><td>${esc(r.location_name)}${r.parent_id?" (alternate)":""}</td><td>${new Date(r.start_time).toLocaleString()} → ${new Date(r.end_time).toLocaleString()}</td><td><span class="badge b-${r.status}">${r.status}</span>${r.decline_reason?`<div class="muted">${esc(r.decline_reason)}</div>`:""}</td><td>$${r.fee} (x${r.fee_multiplier}) · ${r.payment_status||"—"}</td><td style="white-space:nowrap">${r.status==="reserved"?`<button class="btn small" onclick="act(${r.id},'checkin')">Check in</button> <button class="btn small ghost" onclick="act(${r.id},'cancel')">Cancel</button>`:""}${r.status==="active"?` <button class="btn small" onclick="act(${r.id},'checkout')">Check out</button>`:""}${r.payment_status==="pending"?` <button class="btn small ghost" onclick="pay(${r.id})">Pay</button>`:""}</td></tr>`).join("")||`<tr><td colspan="6" class="muted">No bookings yet.</td></tr>`;
+ }catch(err){ msg.innerHTML=`<div class="alert a-err">${esc(err.message)}</div>`; if(/Login|session/i.test(err.message)) location.href="/login"; }
+}
+async function act(id,op){ try{ const r=await api(`/api/reservations/${id}/${op}`,{method:"POST"});
+  msg.innerHTML=`<div class="alert a-ok">${esc(r.message||"Done")}</div>`; refresh(); }catch(e){ msg.innerHTML=`<div class="alert a-err">${esc(e.message)}</div>`; } }
+async function pay(id){ try{ const r=await api(`/api/payments/${id}/confirm`,{method:"POST"});
+  // demo checkout confirmation mirrors Stripe success
+  await api(`/api/payments/demo-confirm?reservation_id=${id}&session_id=manual`,{}).catch(()=>{});
+  msg.innerHTML=`<div class="alert a-ok">Payment confirmed.</div>`; refresh(); }catch(e){ msg.innerHTML=`<div class="alert a-err">${esc(e.message)}</div>`; } }
+book.onclick=async()=>{ try{ const r=await api("/api/reservations",{method:"POST",body:JSON.stringify({location_id:+loc.value,start_time:new Date(s.value).toISOString(),end_time:new Date(e.value).toISOString()})});
+  let m=`Booking #${r.id} at ${esc(r.location_name)} — $${r.fee}. `;
+  if(r.amount_due>0&&r.checkout&&r.checkout.provider==="stripe") m+=`<a href="${r.checkout.url}" target="_blank">Pay $${r.amount_due} with Stripe</a> `;
+  else if(r.amount_due>0) m+=`<button class="btn small" onclick="pay(${r.id})">Confirm demo payment $${r.amount_due}</button> `;
+  else m+=`Covered by credit.`;
+  bmsg.innerHTML=`<div class="alert a-ok">${m}</div>`; refresh(); }catch(e){ bmsg.innerHTML=`<div class="alert a-err">${esc(e.message)}</div>`; } };
+refresh();
+</script></body></html>

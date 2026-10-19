@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="QuantPulse - 5-day and 30-day stock trend forecasts with confidence bands, news sentiment and a transparent model comparison." />
+    <meta name="theme-color" content="#FDFCFA" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+    <title>QuantPulse - Stock Trend Forecasting</title>
+    <script>
+      // Apply the saved (or OS) theme before first paint to avoid a light flash.
+      try {
+        var t = localStorage.getItem('quantpulse-theme')
+        if (t !== 'light' && t !== 'dark') t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        document.documentElement.dataset.theme = t
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>QuantPulse needs JavaScript enabled.</noscript>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

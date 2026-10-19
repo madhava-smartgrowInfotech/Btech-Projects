@@ -1,0 +1,23 @@
+# QuantPulse backend dependencies (Python 3.11, CPU-only, laptop-friendly)
+# Install:  python -m pip install -r backend/requirements.txt
+# Note: install torch from the CPU index to avoid the ~2GB CUDA bundle:
+#   pip install --extra-index-url https://download.pytorch.org/whl/cpu -r backend/requirements.txt
+--extra-index-url https://download.pytorch.org/whl/cpu
+fastapi==0.141.1
+uvicorn==0.52.4
+numpy==1.26.4
+pandas==3.0.5
+scikit-learn==1.9.0
+statsmodels==0.15.0
+scipy==1.17.1
+yfinance==1.7.0
+tensorflow==2.16.2
+tf-keras==2.16.0
+transformers==4.47.1
+torch==2.5.1
+prophet==1.4.0
+requests==2.34.2
+python-dotenv==1.2.3
+matplotlib==3.11.1
+fpdf2==2.8.8
+pillow==12.3.0

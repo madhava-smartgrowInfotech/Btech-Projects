@@ -1,0 +1,2182 @@
+{
+  "TSLA": {
+    "short": [
+      {
+        "day": 1,
+        "predicted_close": 316.57,
+        "lower": 316.28,
+        "upper": 316.86
+      },
+      {
+        "day": 2,
+        "predicted_close": 314.58,
+        "lower": 314.17,
+        "upper": 314.99
+      },
+      {
+        "day": 3,
+        "predicted_close": 312.69,
+        "lower": 312.19,
+        "upper": 313.19
+      },
+      {
+        "day": 4,
+        "predicted_close": 311.76,
+        "lower": 311.19,
+        "upper": 312.34
+      },
+      {
+        "day": 5,
+        "predicted_close": 308.18,
+        "lower": 307.53,
+        "upper": 308.82
+      }
+    ],
+    "long": [
+      {
+        "day": 1,
+        "predicted_close": 397.21,
+        "lower": 396.92,
+        "upper": 397.5
+      },
+      {
+        "day": 2,
+        "predicted_close": 400.0,
+        "lower": 399.59,
+        "upper": 400.41
+      },
+      {
+        "day": 3,
+        "predicted_close": 402.06,
+        "lower": 401.56,
+        "upper": 402.57
+      },
+      {
+        "day": 4,
+        "predicted_close": 403.75,
+        "lower": 403.17,
+        "upper": 404.33
+      },
+      {
+        "day": 5,
+        "predicted_close": 407.61,
+        "lower": 406.96,
+        "upper": 408.26
+      },
+      {
+        "day": 6,
+        "predicted_close": 409.43,
+        "lower": 408.72,
+        "upper": 410.14
+      },
+      {
+        "day": 7,
+        "predicted_close": 412.8,
+        "lower": 412.03,
+        "upper": 413.56
+      },
+      {
+        "day": 8,
+        "predicted_close": 416.93,
+        "lower": 416.11,
+        "upper": 417.75
+      },
+      {
+        "day": 9,
+        "predicted_close": 420.44,
+        "lower": 419.57,
+        "upper": 421.31
+      },
+      {
+        "day": 10,
+        "predicted_close": 426.79,
+        "lower": 425.88,
+        "upper": 427.71
+      },
+      {
+        "day": 11,
+        "predicted_close": 430.74,
+        "lower": 429.78,
+        "upper": 431.7
+      },
+      {
+        "day": 12,
+        "predicted_close": 427.64,
+        "lower": 426.64,
+        "upper": 428.64
+      },
+      {
+        "day": 13,
+        "predicted_close": 424.35,
+        "lower": 423.3,
+        "upper": 425.39
+      },
+      {
+        "day": 14,
+        "predicted_close": 423.31,
+        "lower": 422.23,
+        "upper": 424.39
+      },
+      {
+        "day": 15,
+        "predicted_close": 421.48,
+        "lower": 420.36,
+        "upper": 422.61
+      },
+      {
+        "day": 16,
+        "predicted_close": 419.71,
+        "lower": 418.56,
+        "upper": 420.87
+      },
+      {
+        "day": 17,
+        "predicted_close": 415.38,
+        "lower": 414.18,
+        "upper": 416.57
+      },
+      {
+        "day": 18,
+        "predicted_close": 411.08,
+        "lower": 409.86,
+        "upper": 412.31
+      },
+      {
+        "day": 19,
+        "predicted_close": 413.36,
+        "lower": 412.1,
+        "upper": 414.63
+      },
+      {
+        "day": 20,
+        "predicted_close": 411.48,
+        "lower": 410.18,
+        "upper": 412.77
+      },
+      {
+        "day": 21,
+        "predicted_close": 413.66,
+        "lower": 412.33,
+        "upper": 414.98
+      },
+      {
+        "day": 22,
+        "predicted_close": 414.12,
+        "lower": 412.76,
+        "upper": 415.48
+      },
+      {
+        "day": 23,
+        "predicted_close": 414.5,
+        "lower": 413.11,
+        "upper": 415.89
+      },
+      {
+        "day": 24,
+        "predicted_close": 414.82,
+        "lower": 413.41,
+        "upper": 416.24
+      },
+      {
+        "day": 25,
+        "predicted_close": 415.11,
+        "lower": 413.67,
+        "upper": 416.56
+      },
+      {
+        "day": 26,
+        "predicted_close": 415.31,
+        "lower": 413.83,
+        "upper": 416.78
+      },
+      {
+        "day": 27,
+        "predicted_close": 415.47,
+        "lower": 413.96,
+        "upper": 416.97
+      },
+      {
+        "day": 28,
+        "predicted_close": 415.55,
+        "lower": 414.02,
+        "upper": 417.08
+      },
+      {
+        "day": 29,
+        "predicted_close": 415.54,
+        "lower": 413.98,
+        "upper": 417.09
+      },
+      {
+        "day": 30,
+        "predicted_close": 415.44,
+        "lower": 413.85,
+        "upper": 417.02
+      }
+    ],
+    "trend": "down",
+    "last_close": 368.16
+  },
+  "AAPL": {
+    "short": [
+      {
+        "day": 1,
+        "predicted_close": 244.4,
+        "lower": 244.27,
+        "upper": 244.54
+      },
+      {
+        "day": 2,
+        "predicted_close": 244.23,
+        "lower": 244.04,
+        "upper": 244.42
+      },
+      {
+        "day": 3,
+        "predicted_close": 243.92,
+        "lower": 243.68,
+        "upper": 244.16
+      },
+      {
+        "day": 4,
+        "predicted_close": 243.49,
+        "lower": 243.22,
+        "upper": 243.76
+      },
+      {
+        "day": 5,
+        "predicted_close": 241.97,
+        "lower": 241.66,
+        "upper": 242.27
+      }
+    ],
+    "long": [
+      {
+        "day": 1,
+        "predicted_close": 290.07,
+        "lower": 289.93,
+        "upper": 290.2
+      },
+      {
+        "day": 2,
+        "predicted_close": 291.08,
+        "lower": 290.88,
+        "upper": 291.27
+      },
+      {
+        "day": 3,
+        "predicted_close": 292.22,
+        "lower": 291.98,
+        "upper": 292.45
+      },
+      {
+        "day": 4,
+        "predicted_close": 293.48,
+        "lower": 293.21,
+        "upper": 293.76
+      },
+      {
+        "day": 5,
+        "predicted_close": 292.55,
+        "lower": 292.25,
+        "upper": 292.86
+      },
+      {
+        "day": 6,
+        "predicted_close": 291.58,
+        "lower": 291.25,
+        "upper": 291.92
+      },
+      {
+        "day": 7,
+        "predicted_close": 292.2,
+        "lower": 291.83,
+        "upper": 292.56
+      },
+      {
+        "day": 8,
+        "predicted_close": 293.67,
+        "lower": 293.28,
+        "upper": 294.06
+      },
+      {
+        "day": 9,
+        "predicted_close": 295.18,
+        "lower": 294.77,
+        "upper": 295.59
+      },
+      {
+        "day": 10,
+        "predicted_close": 296.7,
+        "lower": 296.27,
+        "upper": 297.13
+      },
+      {
+        "day": 11,
+        "predicted_close": 298.27,
+        "lower": 297.81,
+        "upper": 298.72
+      },
+      {
+        "day": 12,
+        "predicted_close": 299.89,
+        "lower": 299.42,
+        "upper": 300.37
+      },
+      {
+        "day": 13,
+        "predicted_close": 299.37,
+        "lower": 298.87,
+        "upper": 299.86
+      },
+      {
+        "day": 14,
+        "predicted_close": 298.79,
+        "lower": 298.28,
+        "upper": 299.3
+      },
+      {
+        "day": 15,
+        "predicted_close": 299.67,
+        "lower": 299.14,
+        "upper": 300.2
+      },
+      {
+        "day": 16,
+        "predicted_close": 301.3,
+        "lower": 300.76,
+        "upper": 301.85
+      },
+      {
+        "day": 17,
+        "predicted_close": 300.68,
+        "lower": 300.12,
+        "upper": 301.25
+      },
+      {
+        "day": 18,
+        "predicted_close": 302.29,
+        "lower": 301.71,
+        "upper": 302.87
+      },
+      {
+        "day": 19,
+        "predicted_close": 303.88,
+        "lower": 303.28,
+        "upper": 304.47
+      },
+      {
+        "day": 20,
+        "predicted_close": 305.44,
+        "lower": 304.83,
+        "upper": 306.06
+      },
+      {
+        "day": 21,
+        "predicted_close": 305.69,
+        "lower": 305.07,
+        "upper": 306.32
+      },
+      {
+        "day": 22,
+        "predicted_close": 305.9,
+        "lower": 305.26,
+        "upper": 306.55
+      },
+      {
+        "day": 23,
+        "predicted_close": 306.11,
+        "lower": 305.45,
+        "upper": 306.76
+      },
+      {
+        "day": 24,
+        "predicted_close": 306.3,
+        "lower": 305.63,
+        "upper": 306.97
+      },
+      {
+        "day": 25,
+        "predicted_close": 306.47,
+        "lower": 305.78,
+        "upper": 307.15
+      },
+      {
+        "day": 26,
+        "predicted_close": 306.65,
+        "lower": 305.95,
+        "upper": 307.35
+      },
+      {
+        "day": 27,
+        "predicted_close": 306.85,
+        "lower": 306.13,
+        "upper": 307.56
+      },
+      {
+        "day": 28,
+        "predicted_close": 307.04,
+        "lower": 306.31,
+        "upper": 307.76
+      },
+      {
+        "day": 29,
+        "predicted_close": 307.21,
+        "lower": 306.47,
+        "upper": 307.95
+      },
+      {
+        "day": 30,
+        "predicted_close": 307.37,
+        "lower": 306.62,
+        "upper": 308.12
+      }
+    ],
+    "trend": "down",
+    "last_close": 316.22
+  },
+  "AMZN": {
+    "short": [
+      {
+        "day": 1,
+        "predicted_close": 218.9,
+        "lower": 218.74,
+        "upper": 219.07
+      },
+      {
+        "day": 2,
+        "predicted_close": 218.29,
+        "lower": 218.05,
+        "upper": 218.53
+      },
+      {
+        "day": 3,
+        "predicted_close": 217.61,
+        "lower": 217.32,
+        "upper": 217.9
+      },
+      {
+        "day": 4,
+        "predicted_close": 217.01,
+        "lower": 216.67,
+        "upper": 217.34
+      },
+      {
+        "day": 5,
+        "predicted_close": 216.26,
+        "lower": 215.88,
+        "upper": 216.63
+      }
+    ],
+    "long": [
+      {
+        "day": 1,
+        "predicted_close": 231.11,
+        "lower": 230.94,
+        "upper": 231.27
+      },
+      {
+        "day": 2,
+        "predicted_close": 231.14,
+        "lower": 230.91,
+        "upper": 231.38
+      },
+      {
+        "day": 3,
+        "predicted_close": 231.14,
+        "lower": 230.85,
+        "upper": 231.43
+      },
+      {
+        "day": 4,
+        "predicted_close": 230.91,
+        "lower": 230.58,
+        "upper": 231.25
+      },
+      {
+        "day": 5,
+        "predicted_close": 230.62,
+        "lower": 230.24,
+        "upper": 230.99
+      },
+      {
+        "day": 6,
+        "predicted_close": 230.61,
+        "lower": 230.2,
+        "upper": 231.02
+      },
+      {
+        "day": 7,
+        "predicted_close": 230.45,
+        "lower": 230.0,
+        "upper": 230.89
+      },
+      {
+        "day": 8,
+        "predicted_close": 230.36,
+        "lower": 229.89,
+        "upper": 230.84
+      },
+      {
+        "day": 9,
+        "predicted_close": 230.95,
+        "lower": 230.44,
+        "upper": 231.45
+      },
+      {
+        "day": 10,
+        "predicted_close": 230.9,
+        "lower": 230.37,
+        "upper": 231.43
+      },
+      {
+        "day": 11,
+        "predicted_close": 231.01,
+        "lower": 230.46,
+        "upper": 231.57
+      },
+      {
+        "day": 12,
+        "predicted_close": 230.83,
+        "lower": 230.25,
+        "upper": 231.41
+      },
+      {
+        "day": 13,
+        "predicted_close": 230.59,
+        "lower": 229.98,
+        "upper": 231.2
+      },
+      {
+        "day": 14,
+        "predicted_close": 230.62,
+        "lower": 229.99,
+        "upper": 231.25
+      },
+      {
+        "day": 15,
+        "predicted_close": 230.91,
+        "lower": 230.26,
+        "upper": 231.56
+      },
+      {
+        "day": 16,
+        "predicted_close": 231.17,
+        "lower": 230.5,
+        "upper": 231.84
+      },
+      {
+        "day": 17,
+        "predicted_close": 231.12,
+        "lower": 230.43,
+        "upper": 231.82
+      },
+      {
+        "day": 18,
+        "predicted_close": 231.83,
+        "lower": 231.12,
+        "upper": 232.54
+      },
+      {
+        "day": 19,
+        "predicted_close": 231.69,
+        "lower": 230.96,
+        "upper": 232.42
+      },
+      {
+        "day": 20,
+        "predicted_close": 232.0,
+        "lower": 231.25,
+        "upper": 232.75
+      },
+      {
+        "day": 21,
+        "predicted_close": 231.63,
+        "lower": 230.87,
+        "upper": 232.4
+      },
+      {
+        "day": 22,
+        "predicted_close": 231.65,
+        "lower": 230.86,
+        "upper": 232.43
+      },
+      {
+        "day": 23,
+        "predicted_close": 231.65,
+        "lower": 230.85,
+        "upper": 232.46
+      },
+      {
+        "day": 24,
+        "predicted_close": 231.66,
+        "lower": 230.83,
+        "upper": 232.48
+      },
+      {
+        "day": 25,
+        "predicted_close": 231.66,
+        "lower": 230.82,
+        "upper": 232.49
+      },
+      {
+        "day": 26,
+        "predicted_close": 231.66,
+        "lower": 230.8,
+        "upper": 232.51
+      },
+      {
+        "day": 27,
+        "predicted_close": 231.66,
+        "lower": 230.79,
+        "upper": 232.53
+      },
+      {
+        "day": 28,
+        "predicted_close": 231.67,
+        "lower": 230.78,
+        "upper": 232.56
+      },
+      {
+        "day": 29,
+        "predicted_close": 231.68,
+        "lower": 230.78,
+        "upper": 232.59
+      },
+      {
+        "day": 30,
+        "predicted_close": 231.68,
+        "lower": 230.76,
+        "upper": 232.6
+      }
+    ],
+    "trend": "down",
+    "last_close": 256.97
+  },
+  "MSFT": {
+    "short": [
+      {
+        "day": 1,
+        "predicted_close": 447.36,
+        "lower": 446.95,
+        "upper": 447.77
+      },
+      {
+        "day": 2,
+        "predicted_close": 447.22,
+        "lower": 446.64,
+        "upper": 447.8
+      },
+      {
+        "day": 3,
+        "predicted_close": 447.21,
+        "lower": 446.5,
+        "upper": 447.92
+      },
+      {
+        "day": 4,
+        "predicted_close": 446.46,
+        "lower": 445.64,
+        "upper": 447.28
+      },
+      {
+        "day": 5,
+        "predicted_close": 445.12,
+        "lower": 444.2,
+        "upper": 446.03
+      }
+    ],
+    "long": [
+      {
+        "day": 1,
+        "predicted_close": 453.72,
+        "lower": 453.31,
+        "upper": 454.13
+      },
+      {
+        "day": 2,
+        "predicted_close": 452.38,
+        "lower": 451.8,
+        "upper": 452.96
+      },
+      {
+        "day": 3,
+        "predicted_close": 451.5,
+        "lower": 450.79,
+        "upper": 452.21
+      },
+      {
+        "day": 4,
+        "predicted_close": 449.58,
+        "lower": 448.76,
+        "upper": 450.4
+      },
+      {
+        "day": 5,
+        "predicted_close": 446.79,
+        "lower": 445.88,
+        "upper": 447.71
+      },
+      {
+        "day": 6,
+        "predicted_close": 448.64,
+        "lower": 447.64,
+        "upper": 449.65
+      },
+      {
+        "day": 7,
+        "predicted_close": 446.85,
+        "lower": 445.77,
+        "upper": 447.94
+      },
+      {
+        "day": 8,
+        "predicted_close": 447.45,
+        "lower": 446.29,
+        "upper": 448.61
+      },
+      {
+        "day": 9,
+        "predicted_close": 448.1,
+        "lower": 446.88,
+        "upper": 449.33
+      },
+      {
+        "day": 10,
+        "predicted_close": 445.85,
+        "lower": 444.56,
+        "upper": 447.14
+      },
+      {
+        "day": 11,
+        "predicted_close": 442.79,
+        "lower": 441.43,
+        "upper": 444.14
+      },
+      {
+        "day": 12,
+        "predicted_close": 440.57,
+        "lower": 439.15,
+        "upper": 441.99
+      },
+      {
+        "day": 13,
+        "predicted_close": 437.9,
+        "lower": 436.42,
+        "upper": 439.37
+      },
+      {
+        "day": 14,
+        "predicted_close": 436.1,
+        "lower": 434.57,
+        "upper": 437.64
+      },
+      {
+        "day": 15,
+        "predicted_close": 435.22,
+        "lower": 433.63,
+        "upper": 436.8
+      },
+      {
+        "day": 16,
+        "predicted_close": 433.6,
+        "lower": 431.97,
+        "upper": 435.24
+      },
+      {
+        "day": 17,
+        "predicted_close": 431.14,
+        "lower": 429.45,
+        "upper": 432.83
+      },
+      {
+        "day": 18,
+        "predicted_close": 429.86,
+        "lower": 428.12,
+        "upper": 431.6
+      },
+      {
+        "day": 19,
+        "predicted_close": 427.27,
+        "lower": 425.49,
+        "upper": 429.06
+      },
+      {
+        "day": 20,
+        "predicted_close": 424.13,
+        "lower": 422.3,
+        "upper": 425.96
+      },
+      {
+        "day": 21,
+        "predicted_close": 421.5,
+        "lower": 419.62,
+        "upper": 423.37
+      },
+      {
+        "day": 22,
+        "predicted_close": 420.28,
+        "lower": 418.36,
+        "upper": 422.2
+      },
+      {
+        "day": 23,
+        "predicted_close": 418.99,
+        "lower": 417.03,
+        "upper": 420.95
+      },
+      {
+        "day": 24,
+        "predicted_close": 417.62,
+        "lower": 415.62,
+        "upper": 419.63
+      },
+      {
+        "day": 25,
+        "predicted_close": 416.23,
+        "lower": 414.19,
+        "upper": 418.28
+      },
+      {
+        "day": 26,
+        "predicted_close": 415.03,
+        "lower": 412.94,
+        "upper": 417.12
+      },
+      {
+        "day": 27,
+        "predicted_close": 414.2,
+        "lower": 412.08,
+        "upper": 416.33
+      },
+      {
+        "day": 28,
+        "predicted_close": 413.37,
+        "lower": 411.2,
+        "upper": 415.54
+      },
+      {
+        "day": 29,
+        "predicted_close": 412.46,
+        "lower": 410.26,
+        "upper": 414.67
+      },
+      {
+        "day": 30,
+        "predicted_close": 411.47,
+        "lower": 409.23,
+        "upper": 413.71
+      }
+    ],
+    "trend": "down",
+    "last_close": 493.95
+  },
+  "GOOGL": {
+    "short": [
+      {
+        "day": 1,
+        "predicted_close": 270.8,
+        "lower": 270.74,
+        "upper": 270.86
+      },
+      {
+        "day": 2,
+        "predicted_close": 270.49,
+        "lower": 270.41,
+        "upper": 270.57
+      },
+      {
+        "day": 3,
+        "predicted_close": 268.21,
+        "lower": 268.11,
+        "upper": 268.31
+      },
+      {
+        "day": 4,
+        "predicted_close": 265.28,
+        "lower": 265.16,
+        "upper": 265.39
+      },
+      {
+        "day": 5,
+        "predicted_close": 262.0,
+        "lower": 261.88,
+        "upper": 262.13
+      }
+    ],
+    "long": [
+      {
+        "day": 1,
+        "predicted_close": 323.34,
+        "lower": 323.28,
+        "upper": 323.39
+      },
+      {
+        "day": 2,
+        "predicted_close": 323.42,
+        "lower": 323.34,
+        "upper": 323.5
+      },
+      {
+        "day": 3,
+        "predicted_close": 324.2,
+        "lower": 324.1,
+        "upper": 324.3
+      },
+      {
+        "day": 4,
+        "predicted_close": 324.36,
+        "lower": 324.24,
+        "upper": 324.47
+      },
+      {
+        "day": 5,
+        "predicted_close": 324.41,
+        "lower": 324.28,
+        "upper": 324.54
+      },
+      {
+        "day": 6,
+        "predicted_close": 324.39,
+        "lower": 324.25,
+        "upper": 324.53
+      },
+      {
+        "day": 7,
+        "predicted_close": 323.54,
+        "lower": 323.39,
+        "upper": 323.69
+      },
+      {
+        "day": 8,
+        "predicted_close": 323.42,
+        "lower": 323.26,
+        "upper": 323.58
+      },
+      {
+        "day": 9,
+        "predicted_close": 322.57,
+        "lower": 322.4,
+        "upper": 322.74
+      },
+      {
+        "day": 10,
+        "predicted_close": 322.0,
+        "lower": 321.82,
+        "upper": 322.18
+      },
+      {
+        "day": 11,
+        "predicted_close": 321.75,
+        "lower": 321.56,
+        "upper": 321.94
+      },
+      {
+        "day": 12,
+        "predicted_close": 321.05,
+        "lower": 320.85,
+        "upper": 321.25
+      },
+      {
+        "day": 13,
+        "predicted_close": 321.09,
+        "lower": 320.89,
+        "upper": 321.3
+      },
+      {
+        "day": 14,
+        "predicted_close": 320.46,
+        "lower": 320.25,
+        "upper": 320.68
+      },
+      {
+        "day": 15,
+        "predicted_close": 319.83,
+        "lower": 319.61,
+        "upper": 320.06
+      },
+      {
+        "day": 16,
+        "predicted_close": 320.22,
+        "lower": 319.99,
+        "upper": 320.45
+      },
+      {
+        "day": 17,
+        "predicted_close": 320.06,
+        "lower": 319.82,
+        "upper": 320.29
+      },
+      {
+        "day": 18,
+        "predicted_close": 319.37,
+        "lower": 319.12,
+        "upper": 319.61
+      },
+      {
+        "day": 19,
+        "predicted_close": 318.55,
+        "lower": 318.3,
+        "upper": 318.8
+      },
+      {
+        "day": 20,
+        "predicted_close": 318.0,
+        "lower": 317.74,
+        "upper": 318.25
+      },
+      {
+        "day": 21,
+        "predicted_close": 317.54,
+        "lower": 317.28,
+        "upper": 317.81
+      },
+      {
+        "day": 22,
+        "predicted_close": 317.44,
+        "lower": 317.17,
+        "upper": 317.71
+      },
+      {
+        "day": 23,
+        "predicted_close": 317.33,
+        "lower": 317.05,
+        "upper": 317.6
+      },
+      {
+        "day": 24,
+        "predicted_close": 317.21,
+        "lower": 316.92,
+        "upper": 317.49
+      },
+      {
+        "day": 25,
+        "predicted_close": 317.08,
+        "lower": 316.8,
+        "upper": 317.37
+      },
+      {
+        "day": 26,
+        "predicted_close": 316.96,
+        "lower": 316.67,
+        "upper": 317.25
+      },
+      {
+        "day": 27,
+        "predicted_close": 316.84,
+        "lower": 316.54,
+        "upper": 317.14
+      },
+      {
+        "day": 28,
+        "predicted_close": 316.73,
+        "lower": 316.43,
+        "upper": 317.04
+      },
+      {
+        "day": 29,
+        "predicted_close": 316.63,
+        "lower": 316.32,
+        "upper": 316.94
+      },
+      {
+        "day": 30,
+        "predicted_close": 316.53,
+        "lower": 316.22,
+        "upper": 316.85
+      }
+    ],
+    "trend": "down",
+    "last_close": 338.36
+  },
+  "NVDA": {
+    "short": [
+      {
+        "day": 1,
+        "predicted_close": 167.49,
+        "lower": 167.36,
+        "upper": 167.63
+      },
+      {
+        "day": 2,
+        "predicted_close": 166.84,
+        "lower": 166.65,
+        "upper": 167.02
+      },
+      {
+        "day": 3,
+        "predicted_close": 166.14,
+        "lower": 165.91,
+        "upper": 166.37
+      },
+      {
+        "day": 4,
+        "predicted_close": 164.7,
+        "lower": 164.43,
+        "upper": 164.96
+      },
+      {
+        "day": 5,
+        "predicted_close": 162.98,
+        "lower": 162.68,
+        "upper": 163.27
+      }
+    ],
+    "long": [
+      {
+        "day": 1,
+        "predicted_close": 176.9,
+        "lower": 176.76,
+        "upper": 177.03
+      },
+      {
+        "day": 2,
+        "predicted_close": 176.49,
+        "lower": 176.3,
+        "upper": 176.68
+      },
+      {
+        "day": 3,
+        "predicted_close": 175.33,
+        "lower": 175.1,
+        "upper": 175.56
+      },
+      {
+        "day": 4,
+        "predicted_close": 176.22,
+        "lower": 175.95,
+        "upper": 176.49
+      },
+      {
+        "day": 5,
+        "predicted_close": 176.9,
+        "lower": 176.6,
+        "upper": 177.2
+      },
+      {
+        "day": 6,
+        "predicted_close": 174.16,
+        "lower": 173.84,
+        "upper": 174.49
+      },
+      {
+        "day": 7,
+        "predicted_close": 172.43,
+        "lower": 172.07,
+        "upper": 172.78
+      },
+      {
+        "day": 8,
+        "predicted_close": 172.91,
+        "lower": 172.53,
+        "upper": 173.28
+      },
+      {
+        "day": 9,
+        "predicted_close": 173.34,
+        "lower": 172.94,
+        "upper": 173.74
+      },
+      {
+        "day": 10,
+        "predicted_close": 170.23,
+        "lower": 169.81,
+        "upper": 170.65
+      },
+      {
+        "day": 11,
+        "predicted_close": 167.14,
+        "lower": 166.7,
+        "upper": 167.58
+      },
+      {
+        "day": 12,
+        "predicted_close": 163.71,
+        "lower": 163.25,
+        "upper": 164.17
+      },
+      {
+        "day": 13,
+        "predicted_close": 160.36,
+        "lower": 159.89,
+        "upper": 160.84
+      },
+      {
+        "day": 14,
+        "predicted_close": 161.49,
+        "lower": 160.99,
+        "upper": 161.98
+      },
+      {
+        "day": 15,
+        "predicted_close": 157.91,
+        "lower": 157.4,
+        "upper": 158.43
+      },
+      {
+        "day": 16,
+        "predicted_close": 157.62,
+        "lower": 157.09,
+        "upper": 158.15
+      },
+      {
+        "day": 17,
+        "predicted_close": 157.19,
+        "lower": 156.64,
+        "upper": 157.73
+      },
+      {
+        "day": 18,
+        "predicted_close": 152.83,
+        "lower": 152.26,
+        "upper": 153.39
+      },
+      {
+        "day": 19,
+        "predicted_close": 147.87,
+        "lower": 147.29,
+        "upper": 148.45
+      },
+      {
+        "day": 20,
+        "predicted_close": 144.66,
+        "lower": 144.07,
+        "upper": 145.26
+      },
+      {
+        "day": 21,
+        "predicted_close": 140.96,
+        "lower": 140.35,
+        "upper": 141.57
+      },
+      {
+        "day": 22,
+        "predicted_close": 138.92,
+        "lower": 138.3,
+        "upper": 139.55
+      },
+      {
+        "day": 23,
+        "predicted_close": 137.15,
+        "lower": 136.51,
+        "upper": 137.78
+      },
+      {
+        "day": 24,
+        "predicted_close": 135.85,
+        "lower": 135.2,
+        "upper": 136.5
+      },
+      {
+        "day": 25,
+        "predicted_close": 135.38,
+        "lower": 134.72,
+        "upper": 136.05
+      },
+      {
+        "day": 26,
+        "predicted_close": 134.85,
+        "lower": 134.17,
+        "upper": 135.53
+      },
+      {
+        "day": 27,
+        "predicted_close": 134.3,
+        "lower": 133.61,
+        "upper": 134.99
+      },
+      {
+        "day": 28,
+        "predicted_close": 133.72,
+        "lower": 133.02,
+        "upper": 134.43
+      },
+      {
+        "day": 29,
+        "predicted_close": 133.08,
+        "lower": 132.37,
+        "upper": 133.8
+      },
+      {
+        "day": 30,
+        "predicted_close": 132.37,
+        "lower": 131.64,
+        "upper": 133.1
+      }
+    ],
+    "trend": "down",
+    "last_close": 225.73
+  },
+  "META": {
+    "short": [
+      {
+        "day": 1,
+        "predicted_close": 520.19,
+        "lower": 519.97,
+        "upper": 520.42
+      },
+      {
+        "day": 2,
+        "predicted_close": 518.44,
+        "lower": 518.12,
+        "upper": 518.76
+      },
+      {
+        "day": 3,
+        "predicted_close": 516.99,
+        "lower": 516.61,
+        "upper": 517.38
+      },
+      {
+        "day": 4,
+        "predicted_close": 511.71,
+        "lower": 511.27,
+        "upper": 512.16
+      },
+      {
+        "day": 5,
+        "predicted_close": 506.98,
+        "lower": 506.48,
+        "upper": 507.48
+      }
+    ],
+    "long": [
+      {
+        "day": 1,
+        "predicted_close": 627.39,
+        "lower": 627.17,
+        "upper": 627.62
+      },
+      {
+        "day": 2,
+        "predicted_close": 630.49,
+        "lower": 630.18,
+        "upper": 630.81
+      },
+      {
+        "day": 3,
+        "predicted_close": 634.33,
+        "lower": 633.95,
+        "upper": 634.72
+      },
+      {
+        "day": 4,
+        "predicted_close": 637.54,
+        "lower": 637.09,
+        "upper": 637.98
+      },
+      {
+        "day": 5,
+        "predicted_close": 640.5,
+        "lower": 640.0,
+        "upper": 641.0
+      },
+      {
+        "day": 6,
+        "predicted_close": 642.44,
+        "lower": 641.89,
+        "upper": 642.99
+      },
+      {
+        "day": 7,
+        "predicted_close": 641.73,
+        "lower": 641.13,
+        "upper": 642.32
+      },
+      {
+        "day": 8,
+        "predicted_close": 645.36,
+        "lower": 644.73,
+        "upper": 645.99
+      },
+      {
+        "day": 9,
+        "predicted_close": 647.25,
+        "lower": 646.58,
+        "upper": 647.92
+      },
+      {
+        "day": 10,
+        "predicted_close": 650.41,
+        "lower": 649.7,
+        "upper": 651.12
+      },
+      {
+        "day": 11,
+        "predicted_close": 652.01,
+        "lower": 651.27,
+        "upper": 652.76
+      },
+      {
+        "day": 12,
+        "predicted_close": 656.19,
+        "lower": 655.41,
+        "upper": 656.96
+      },
+      {
+        "day": 13,
+        "predicted_close": 655.3,
+        "lower": 654.49,
+        "upper": 656.1
+      },
+      {
+        "day": 14,
+        "predicted_close": 655.97,
+        "lower": 655.14,
+        "upper": 656.81
+      },
+      {
+        "day": 15,
+        "predicted_close": 657.03,
+        "lower": 656.17,
+        "upper": 657.9
+      },
+      {
+        "day": 16,
+        "predicted_close": 657.49,
+        "lower": 656.59,
+        "upper": 658.38
+      },
+      {
+        "day": 17,
+        "predicted_close": 657.56,
+        "lower": 656.64,
+        "upper": 658.48
+      },
+      {
+        "day": 18,
+        "predicted_close": 657.32,
+        "lower": 656.37,
+        "upper": 658.27
+      },
+      {
+        "day": 19,
+        "predicted_close": 657.27,
+        "lower": 656.3,
+        "upper": 658.25
+      },
+      {
+        "day": 20,
+        "predicted_close": 656.5,
+        "lower": 655.5,
+        "upper": 657.5
+      },
+      {
+        "day": 21,
+        "predicted_close": 656.03,
+        "lower": 655.01,
+        "upper": 657.06
+      },
+      {
+        "day": 22,
+        "predicted_close": 655.8,
+        "lower": 654.75,
+        "upper": 656.85
+      },
+      {
+        "day": 23,
+        "predicted_close": 655.56,
+        "lower": 654.48,
+        "upper": 656.63
+      },
+      {
+        "day": 24,
+        "predicted_close": 655.34,
+        "lower": 654.24,
+        "upper": 656.43
+      },
+      {
+        "day": 25,
+        "predicted_close": 655.13,
+        "lower": 654.01,
+        "upper": 656.25
+      },
+      {
+        "day": 26,
+        "predicted_close": 654.95,
+        "lower": 653.81,
+        "upper": 656.09
+      },
+      {
+        "day": 27,
+        "predicted_close": 654.76,
+        "lower": 653.6,
+        "upper": 655.92
+      },
+      {
+        "day": 28,
+        "predicted_close": 654.5,
+        "lower": 653.32,
+        "upper": 655.68
+      },
+      {
+        "day": 29,
+        "predicted_close": 654.29,
+        "lower": 653.09,
+        "upper": 655.49
+      },
+      {
+        "day": 30,
+        "predicted_close": 654.09,
+        "lower": 652.86,
+        "upper": 655.31
+      }
+    ],
+    "trend": "down",
+    "last_close": 613.48
+  },
+  "FDX": {
+    "short": [
+      {
+        "day": 1,
+        "predicted_close": 259.44,
+        "lower": 259.3,
+        "upper": 259.58
+      },
+      {
+        "day": 2,
+        "predicted_close": 259.21,
+        "lower": 259.02,
+        "upper": 259.41
+      },
+      {
+        "day": 3,
+        "predicted_close": 258.44,
+        "lower": 258.2,
+        "upper": 258.68
+      },
+      {
+        "day": 4,
+        "predicted_close": 257.54,
+        "lower": 257.27,
+        "upper": 257.81
+      },
+      {
+        "day": 5,
+        "predicted_close": 256.21,
+        "lower": 255.9,
+        "upper": 256.51
+      }
+    ],
+    "long": [
+      {
+        "day": 1,
+        "predicted_close": 261.85,
+        "lower": 261.72,
+        "upper": 261.99
+      },
+      {
+        "day": 2,
+        "predicted_close": 260.44,
+        "lower": 260.25,
+        "upper": 260.63
+      },
+      {
+        "day": 3,
+        "predicted_close": 258.81,
+        "lower": 258.58,
+        "upper": 259.05
+      },
+      {
+        "day": 4,
+        "predicted_close": 257.9,
+        "lower": 257.63,
+        "upper": 258.17
+      },
+      {
+        "day": 5,
+        "predicted_close": 257.02,
+        "lower": 256.72,
+        "upper": 257.33
+      },
+      {
+        "day": 6,
+        "predicted_close": 256.16,
+        "lower": 255.82,
+        "upper": 256.49
+      },
+      {
+        "day": 7,
+        "predicted_close": 256.7,
+        "lower": 256.34,
+        "upper": 257.06
+      },
+      {
+        "day": 8,
+        "predicted_close": 255.68,
+        "lower": 255.3,
+        "upper": 256.07
+      },
+      {
+        "day": 9,
+        "predicted_close": 255.27,
+        "lower": 254.87,
+        "upper": 255.68
+      },
+      {
+        "day": 10,
+        "predicted_close": 255.71,
+        "lower": 255.28,
+        "upper": 256.14
+      },
+      {
+        "day": 11,
+        "predicted_close": 254.51,
+        "lower": 254.05,
+        "upper": 254.96
+      },
+      {
+        "day": 12,
+        "predicted_close": 254.84,
+        "lower": 254.37,
+        "upper": 255.31
+      },
+      {
+        "day": 13,
+        "predicted_close": 255.16,
+        "lower": 254.66,
+        "upper": 255.65
+      },
+      {
+        "day": 14,
+        "predicted_close": 254.51,
+        "lower": 254.0,
+        "upper": 255.02
+      },
+      {
+        "day": 15,
+        "predicted_close": 253.04,
+        "lower": 252.51,
+        "upper": 253.57
+      },
+      {
+        "day": 16,
+        "predicted_close": 252.39,
+        "lower": 251.84,
+        "upper": 252.93
+      },
+      {
+        "day": 17,
+        "predicted_close": 251.76,
+        "lower": 251.19,
+        "upper": 252.32
+      },
+      {
+        "day": 18,
+        "predicted_close": 252.32,
+        "lower": 251.74,
+        "upper": 252.89
+      },
+      {
+        "day": 19,
+        "predicted_close": 252.2,
+        "lower": 251.61,
+        "upper": 252.8
+      },
+      {
+        "day": 20,
+        "predicted_close": 254.34,
+        "lower": 253.73,
+        "upper": 254.95
+      },
+      {
+        "day": 21,
+        "predicted_close": 252.26,
+        "lower": 251.64,
+        "upper": 252.89
+      },
+      {
+        "day": 22,
+        "predicted_close": 251.92,
+        "lower": 251.28,
+        "upper": 252.56
+      },
+      {
+        "day": 23,
+        "predicted_close": 251.62,
+        "lower": 250.97,
+        "upper": 252.28
+      },
+      {
+        "day": 24,
+        "predicted_close": 251.37,
+        "lower": 250.7,
+        "upper": 252.04
+      },
+      {
+        "day": 25,
+        "predicted_close": 251.13,
+        "lower": 250.45,
+        "upper": 251.81
+      },
+      {
+        "day": 26,
+        "predicted_close": 250.92,
+        "lower": 250.22,
+        "upper": 251.61
+      },
+      {
+        "day": 27,
+        "predicted_close": 250.72,
+        "lower": 250.01,
+        "upper": 251.43
+      },
+      {
+        "day": 28,
+        "predicted_close": 250.5,
+        "lower": 249.78,
+        "upper": 251.22
+      },
+      {
+        "day": 29,
+        "predicted_close": 250.31,
+        "lower": 249.57,
+        "upper": 251.04
+      },
+      {
+        "day": 30,
+        "predicted_close": 250.12,
+        "lower": 249.37,
+        "upper": 250.87
+      }
+    ],
+    "trend": "down",
+    "last_close": 314.13
+  },
+  "IBM": {
+    "short": [
+      {
+        "day": 1,
+        "predicted_close": 217.57,
+        "lower": 217.01,
+        "upper": 218.14
+      },
+      {
+        "day": 2,
+        "predicted_close": 219.92,
+        "lower": 219.13,
+        "upper": 220.72
+      },
+      {
+        "day": 3,
+        "predicted_close": 219.25,
+        "lower": 218.27,
+        "upper": 220.23
+      },
+      {
+        "day": 4,
+        "predicted_close": 218.31,
+        "lower": 217.18,
+        "upper": 219.44
+      },
+      {
+        "day": 5,
+        "predicted_close": 217.21,
+        "lower": 215.95,
+        "upper": 218.47
+      }
+    ],
+    "long": [
+      {
+        "day": 1,
+        "predicted_close": 239.41,
+        "lower": 238.85,
+        "upper": 239.98
+      },
+      {
+        "day": 2,
+        "predicted_close": 238.29,
+        "lower": 237.49,
+        "upper": 239.09
+      },
+      {
+        "day": 3,
+        "predicted_close": 238.28,
+        "lower": 237.3,
+        "upper": 239.25
+      },
+      {
+        "day": 4,
+        "predicted_close": 238.03,
+        "lower": 236.9,
+        "upper": 239.15
+      },
+      {
+        "day": 5,
+        "predicted_close": 237.53,
+        "lower": 236.27,
+        "upper": 238.8
+      },
+      {
+        "day": 6,
+        "predicted_close": 239.14,
+        "lower": 237.76,
+        "upper": 240.53
+      },
+      {
+        "day": 7,
+        "predicted_close": 239.15,
+        "lower": 237.65,
+        "upper": 240.64
+      },
+      {
+        "day": 8,
+        "predicted_close": 239.8,
+        "lower": 238.21,
+        "upper": 241.4
+      },
+      {
+        "day": 9,
+        "predicted_close": 239.94,
+        "lower": 238.25,
+        "upper": 241.64
+      },
+      {
+        "day": 10,
+        "predicted_close": 239.32,
+        "lower": 237.54,
+        "upper": 241.11
+      },
+      {
+        "day": 11,
+        "predicted_close": 239.43,
+        "lower": 237.56,
+        "upper": 241.3
+      },
+      {
+        "day": 12,
+        "predicted_close": 239.02,
+        "lower": 237.07,
+        "upper": 240.98
+      },
+      {
+        "day": 13,
+        "predicted_close": 238.94,
+        "lower": 236.91,
+        "upper": 240.98
+      },
+      {
+        "day": 14,
+        "predicted_close": 239.42,
+        "lower": 237.31,
+        "upper": 241.53
+      },
+      {
+        "day": 15,
+        "predicted_close": 239.18,
+        "lower": 236.99,
+        "upper": 241.36
+      },
+      {
+        "day": 16,
+        "predicted_close": 240.01,
+        "lower": 237.75,
+        "upper": 242.27
+      },
+      {
+        "day": 17,
+        "predicted_close": 238.42,
+        "lower": 236.09,
+        "upper": 240.75
+      },
+      {
+        "day": 18,
+        "predicted_close": 238.86,
+        "lower": 236.46,
+        "upper": 241.25
+      },
+      {
+        "day": 19,
+        "predicted_close": 238.39,
+        "lower": 235.93,
+        "upper": 240.86
+      },
+      {
+        "day": 20,
+        "predicted_close": 238.24,
+        "lower": 235.72,
+        "upper": 240.77
+      },
+      {
+        "day": 21,
+        "predicted_close": 238.57,
+        "lower": 235.99,
+        "upper": 241.16
+      },
+      {
+        "day": 22,
+        "predicted_close": 238.53,
+        "lower": 235.89,
+        "upper": 241.18
+      },
+      {
+        "day": 23,
+        "predicted_close": 238.56,
+        "lower": 235.85,
+        "upper": 241.27
+      },
+      {
+        "day": 24,
+        "predicted_close": 238.58,
+        "lower": 235.82,
+        "upper": 241.35
+      },
+      {
+        "day": 25,
+        "predicted_close": 238.61,
+        "lower": 235.79,
+        "upper": 241.44
+      },
+      {
+        "day": 26,
+        "predicted_close": 238.67,
+        "lower": 235.79,
+        "upper": 241.55
+      },
+      {
+        "day": 27,
+        "predicted_close": 238.62,
+        "lower": 235.69,
+        "upper": 241.56
+      },
+      {
+        "day": 28,
+        "predicted_close": 238.58,
+        "lower": 235.59,
+        "upper": 241.56
+      },
+      {
+        "day": 29,
+        "predicted_close": 238.49,
+        "lower": 235.45,
+        "upper": 241.53
+      },
+      {
+        "day": 30,
+        "predicted_close": 238.39,
+        "lower": 235.3,
+        "upper": 241.48
+      }
+    ],
+    "trend": "down",
+    "last_close": 232.09
+  },
+  "ORCL": {
+    "short": [
+      {
+        "day": 1,
+        "predicted_close": 177.76,
+        "lower": 177.48,
+        "upper": 178.04
+      },
+      {
+        "day": 2,
+        "predicted_close": 182.41,
+        "lower": 182.02,
+        "upper": 182.8
+      },
+      {
+        "day": 3,
+        "predicted_close": 180.4,
+        "lower": 179.92,
+        "upper": 180.88
+      },
+      {
+        "day": 4,
+        "predicted_close": 182.07,
+        "lower": 181.52,
+        "upper": 182.62
+      },
+      {
+        "day": 5,
+        "predicted_close": 178.76,
+        "lower": 178.14,
+        "upper": 179.37
+      }
+    ],
+    "long": [
+      {
+        "day": 1,
+        "predicted_close": 137.05,
+        "lower": 136.77,
+        "upper": 137.32
+      },
+      {
+        "day": 2,
+        "predicted_close": 134.8,
+        "lower": 134.42,
+        "upper": 135.19
+      },
+      {
+        "day": 3,
+        "predicted_close": 133.78,
+        "lower": 133.3,
+        "upper": 134.26
+      },
+      {
+        "day": 4,
+        "predicted_close": 130.95,
+        "lower": 130.39,
+        "upper": 131.5
+      },
+      {
+        "day": 5,
+        "predicted_close": 129.66,
+        "lower": 129.05,
+        "upper": 130.28
+      },
+      {
+        "day": 6,
+        "predicted_close": 129.08,
+        "lower": 128.41,
+        "upper": 129.76
+      },
+      {
+        "day": 7,
+        "predicted_close": 128.8,
+        "lower": 128.07,
+        "upper": 129.53
+      },
+      {
+        "day": 8,
+        "predicted_close": 127.93,
+        "lower": 127.15,
+        "upper": 128.71
+      },
+      {
+        "day": 9,
+        "predicted_close": 129.05,
+        "lower": 128.22,
+        "upper": 129.88
+      },
+      {
+        "day": 10,
+        "predicted_close": 131.08,
+        "lower": 130.21,
+        "upper": 131.96
+      },
+      {
+        "day": 11,
+        "predicted_close": 135.72,
+        "lower": 134.81,
+        "upper": 136.64
+      },
+      {
+        "day": 12,
+        "predicted_close": 139.57,
+        "lower": 138.61,
+        "upper": 140.52
+      },
+      {
+        "day": 13,
+        "predicted_close": 141.88,
+        "lower": 140.88,
+        "upper": 142.87
+      },
+      {
+        "day": 14,
+        "predicted_close": 142.55,
+        "lower": 141.52,
+        "upper": 143.58
+      },
+      {
+        "day": 15,
+        "predicted_close": 143.53,
+        "lower": 142.47,
+        "upper": 144.6
+      },
+      {
+        "day": 16,
+        "predicted_close": 144.61,
+        "lower": 143.5,
+        "upper": 145.71
+      },
+      {
+        "day": 17,
+        "predicted_close": 156.82,
+        "lower": 155.69,
+        "upper": 157.96
+      },
+      {
+        "day": 18,
+        "predicted_close": 156.41,
+        "lower": 155.24,
+        "upper": 157.58
+      },
+      {
+        "day": 19,
+        "predicted_close": 158.17,
+        "lower": 156.97,
+        "upper": 159.37
+      },
+      {
+        "day": 20,
+        "predicted_close": 161.68,
+        "lower": 160.45,
+        "upper": 162.91
+      },
+      {
+        "day": 21,
+        "predicted_close": 166.52,
+        "lower": 165.26,
+        "upper": 167.78
+      },
+      {
+        "day": 22,
+        "predicted_close": 163.72,
+        "lower": 162.43,
+        "upper": 165.01
+      },
+      {
+        "day": 23,
+        "predicted_close": 160.54,
+        "lower": 159.22,
+        "upper": 161.86
+      },
+      {
+        "day": 24,
+        "predicted_close": 158.41,
+        "lower": 157.06,
+        "upper": 159.76
+      },
+      {
+        "day": 25,
+        "predicted_close": 155.6,
+        "lower": 154.23,
+        "upper": 156.98
+      },
+      {
+        "day": 26,
+        "predicted_close": 154.98,
+        "lower": 153.58,
+        "upper": 156.39
+      },
+      {
+        "day": 27,
+        "predicted_close": 154.72,
+        "lower": 153.29,
+        "upper": 156.15
+      },
+      {
+        "day": 28,
+        "predicted_close": 154.33,
+        "lower": 152.87,
+        "upper": 155.79
+      },
+      {
+        "day": 29,
+        "predicted_close": 153.79,
+        "lower": 152.31,
+        "upper": 155.28
+      },
+      {
+        "day": 30,
+        "predicted_close": 153.19,
+        "lower": 151.68,
+        "upper": 154.7
+      }
+    ],
+    "trend": "up",
+    "last_close": 162.52
+  }
+}

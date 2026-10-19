@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+node_modules/
+train.log
+train.err.log
+data/news_cache/
+
+.env
+.venv311/
+frontend/node_modules/

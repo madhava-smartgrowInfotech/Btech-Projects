@@ -1,0 +1,625 @@
+file,true,pred,confidence,p_Normal,p_Bacterial Pneumonia,p_Viral Pneumonia
+test\NORMAL\IM-0001-0001.jpeg,Normal,Normal,0.8533,0.8533,0.0493,0.0974
+test\NORMAL\IM-0003-0001.jpeg,Normal,Normal,0.9977,0.9977,0.0003,0.0020
+test\NORMAL\IM-0005-0001.jpeg,Normal,Normal,0.8108,0.8108,0.0690,0.1202
+test\NORMAL\IM-0006-0001.jpeg,Normal,Normal,0.3983,0.3983,0.3506,0.2510
+test\NORMAL\IM-0007-0001.jpeg,Normal,Normal,0.9240,0.9240,0.0222,0.0538
+test\NORMAL\IM-0009-0001.jpeg,Normal,Normal,0.9840,0.9840,0.0048,0.0111
+test\NORMAL\IM-0010-0001.jpeg,Normal,Normal,0.8082,0.8082,0.0864,0.1054
+test\NORMAL\IM-0011-0001-0001.jpeg,Normal,Normal,0.6864,0.6864,0.1395,0.1741
+test\NORMAL\IM-0011-0001-0002.jpeg,Normal,Bacterial Pneumonia,0.4906,0.2272,0.4906,0.2821
+test\NORMAL\IM-0011-0001.jpeg,Normal,Normal,0.8995,0.8995,0.0419,0.0587
+test\NORMAL\IM-0013-0001.jpeg,Normal,Viral Pneumonia,0.5263,0.3981,0.0755,0.5263
+test\NORMAL\IM-0015-0001.jpeg,Normal,Viral Pneumonia,0.4902,0.0624,0.4473,0.4902
+test\NORMAL\IM-0016-0001.jpeg,Normal,Normal,0.7941,0.7941,0.0690,0.1368
+test\NORMAL\IM-0017-0001.jpeg,Normal,Normal,0.9426,0.9426,0.0188,0.0387
+test\NORMAL\IM-0019-0001.jpeg,Normal,Viral Pneumonia,0.4914,0.2303,0.2783,0.4914
+test\NORMAL\IM-0021-0001.jpeg,Normal,Normal,0.6356,0.6356,0.0680,0.2964
+test\NORMAL\IM-0022-0001.jpeg,Normal,Bacterial Pneumonia,0.5232,0.0001,0.5232,0.4767
+test\NORMAL\IM-0023-0001.jpeg,Normal,Normal,0.9552,0.9552,0.0132,0.0316
+test\NORMAL\IM-0025-0001.jpeg,Normal,Normal,0.9024,0.9024,0.0264,0.0712
+test\NORMAL\IM-0027-0001.jpeg,Normal,Normal,0.9928,0.9928,0.0013,0.0059
+test\NORMAL\IM-0028-0001.jpeg,Normal,Normal,0.8734,0.8734,0.0746,0.0520
+test\NORMAL\IM-0029-0001.jpeg,Normal,Viral Pneumonia,0.4289,0.1731,0.3980,0.4289
+test\NORMAL\IM-0030-0001.jpeg,Normal,Viral Pneumonia,0.4022,0.3377,0.2600,0.4022
+test\NORMAL\IM-0031-0001.jpeg,Normal,Normal,0.8423,0.8423,0.0696,0.0881
+test\NORMAL\IM-0033-0001-0001.jpeg,Normal,Viral Pneumonia,0.7744,0.1945,0.0310,0.7744
+test\NORMAL\IM-0033-0001-0002.jpeg,Normal,Normal,0.9389,0.9389,0.0116,0.0495
+test\NORMAL\IM-0033-0001.jpeg,Normal,Viral Pneumonia,0.5784,0.3516,0.0700,0.5784
+test\NORMAL\IM-0035-0001.jpeg,Normal,Normal,0.9885,0.9885,0.0047,0.0067
+test\NORMAL\IM-0036-0001.jpeg,Normal,Viral Pneumonia,0.8623,0.0757,0.0620,0.8623
+test\NORMAL\IM-0037-0001.jpeg,Normal,Normal,0.6458,0.6458,0.1597,0.1945
+test\NORMAL\IM-0039-0001.jpeg,Normal,Bacterial Pneumonia,0.4604,0.3534,0.4604,0.1863
+test\NORMAL\IM-0041-0001.jpeg,Normal,Normal,0.5613,0.5613,0.1106,0.3281
+test\NORMAL\IM-0043-0001.jpeg,Normal,Normal,0.7114,0.7114,0.0471,0.2416
+test\NORMAL\IM-0045-0001.jpeg,Normal,Normal,0.8001,0.8001,0.0281,0.1719
+test\NORMAL\IM-0046-0001.jpeg,Normal,Normal,0.4953,0.4953,0.0913,0.4135
+test\NORMAL\IM-0049-0001.jpeg,Normal,Normal,0.9990,0.9990,0.0003,0.0008
+test\NORMAL\IM-0050-0001.jpeg,Normal,Normal,0.9999,0.9999,0.0000,0.0001
+test\NORMAL\IM-0059-0001.jpeg,Normal,Normal,0.9909,0.9909,0.0033,0.0058
+test\NORMAL\IM-0061-0001.jpeg,Normal,Normal,0.9886,0.9886,0.0013,0.0101
+test\NORMAL\IM-0063-0001.jpeg,Normal,Normal,0.9957,0.9957,0.0005,0.0038
+test\NORMAL\IM-0065-0001.jpeg,Normal,Bacterial Pneumonia,0.3768,0.3602,0.3768,0.2630
+test\NORMAL\IM-0067-0001.jpeg,Normal,Normal,0.9902,0.9902,0.0050,0.0048
+test\NORMAL\IM-0069-0001.jpeg,Normal,Normal,0.9792,0.9792,0.0082,0.0126
+test\NORMAL\IM-0070-0001.jpeg,Normal,Normal,0.9790,0.9790,0.0027,0.0184
+test\NORMAL\IM-0071-0001.jpeg,Normal,Viral Pneumonia,0.7897,0.0138,0.1965,0.7897
+test\NORMAL\IM-0073-0001.jpeg,Normal,Viral Pneumonia,0.6275,0.0818,0.2907,0.6275
+test\NORMAL\IM-0075-0001.jpeg,Normal,Normal,0.6962,0.6962,0.1414,0.1624
+test\NORMAL\IM-0077-0001.jpeg,Normal,Viral Pneumonia,0.5288,0.2040,0.2672,0.5288
+test\NORMAL\IM-0079-0001.jpeg,Normal,Normal,0.6394,0.6394,0.0719,0.2887
+test\NORMAL\IM-0081-0001.jpeg,Normal,Bacterial Pneumonia,0.7092,0.1773,0.7092,0.1135
+test\NORMAL\IM-0083-0001.jpeg,Normal,Normal,0.8425,0.8425,0.0669,0.0905
+test\NORMAL\IM-0084-0001.jpeg,Normal,Normal,0.9458,0.9458,0.0197,0.0346
+test\NORMAL\IM-0085-0001.jpeg,Normal,Viral Pneumonia,0.7252,0.0339,0.2409,0.7252
+test\NORMAL\IM-0086-0001.jpeg,Normal,Normal,0.8687,0.8687,0.0189,0.1124
+test\NORMAL\IM-0087-0001.jpeg,Normal,Normal,0.5203,0.5203,0.0385,0.4412
+test\NORMAL\IM-0089-0001.jpeg,Normal,Normal,0.9991,0.9991,0.0003,0.0005
+test\NORMAL\IM-0091-0001.jpeg,Normal,Viral Pneumonia,0.8350,0.0487,0.1163,0.8350
+test\NORMAL\IM-0093-0001.jpeg,Normal,Normal,0.8354,0.8354,0.0192,0.1454
+test\NORMAL\IM-0095-0001.jpeg,Normal,Normal,0.9571,0.9571,0.0102,0.0327
+test\NORMAL\IM-0097-0001.jpeg,Normal,Normal,0.6178,0.6178,0.1652,0.2170
+test\NORMAL\IM-0099-0001.jpeg,Normal,Normal,0.9990,0.9990,0.0003,0.0007
+test\NORMAL\IM-0101-0001.jpeg,Normal,Bacterial Pneumonia,0.5484,0.1292,0.5484,0.3224
+test\NORMAL\IM-0102-0001.jpeg,Normal,Viral Pneumonia,0.7773,0.0380,0.1847,0.7773
+test\NORMAL\IM-0103-0001.jpeg,Normal,Normal,0.9993,0.9993,0.0002,0.0005
+test\NORMAL\IM-0105-0001.jpeg,Normal,Normal,0.9981,0.9981,0.0006,0.0014
+test\NORMAL\IM-0107-0001.jpeg,Normal,Normal,0.9981,0.9981,0.0007,0.0012
+test\NORMAL\IM-0109-0001.jpeg,Normal,Bacterial Pneumonia,0.5090,0.2973,0.5090,0.1937
+test\NORMAL\IM-0110-0001.jpeg,Normal,Normal,0.5305,0.5305,0.2144,0.2551
+test\NORMAL\IM-0111-0001.jpeg,Normal,Normal,0.7932,0.7932,0.0332,0.1736
+test\NORMAL\NORMAL2-IM-0007-0001.jpeg,Normal,Normal,0.9848,0.9848,0.0009,0.0142
+test\NORMAL\NORMAL2-IM-0012-0001.jpeg,Normal,Normal,0.6012,0.6012,0.2176,0.1813
+test\NORMAL\NORMAL2-IM-0013-0001.jpeg,Normal,Normal,0.9417,0.9417,0.0055,0.0528
+test\NORMAL\NORMAL2-IM-0019-0001.jpeg,Normal,Normal,0.9128,0.9128,0.0155,0.0717
+test\NORMAL\NORMAL2-IM-0023-0001.jpeg,Normal,Normal,0.8406,0.8406,0.0645,0.0948
+test\NORMAL\NORMAL2-IM-0027-0001.jpeg,Normal,Normal,0.9105,0.9105,0.0402,0.0493
+test\NORMAL\NORMAL2-IM-0028-0001.jpeg,Normal,Normal,0.6728,0.6728,0.0132,0.3140
+test\NORMAL\NORMAL2-IM-0029-0001.jpeg,Normal,Normal,0.9928,0.9928,0.0019,0.0054
+test\NORMAL\NORMAL2-IM-0030-0001.jpeg,Normal,Normal,0.9858,0.9858,0.0019,0.0123
+test\NORMAL\NORMAL2-IM-0033-0001.jpeg,Normal,Normal,0.9998,0.9998,0.0001,0.0002
+test\NORMAL\NORMAL2-IM-0035-0001.jpeg,Normal,Normal,0.9717,0.9717,0.0132,0.0151
+test\NORMAL\NORMAL2-IM-0041-0001.jpeg,Normal,Normal,0.9611,0.9611,0.0100,0.0289
+test\NORMAL\NORMAL2-IM-0045-0001.jpeg,Normal,Normal,0.9890,0.9890,0.0053,0.0057
+test\NORMAL\NORMAL2-IM-0051-0001.jpeg,Normal,Normal,0.9906,0.9906,0.0025,0.0068
+test\NORMAL\NORMAL2-IM-0052-0001.jpeg,Normal,Normal,0.8278,0.8278,0.0519,0.1203
+test\NORMAL\NORMAL2-IM-0058-0001.jpeg,Normal,Normal,0.9911,0.9911,0.0057,0.0032
+test\NORMAL\NORMAL2-IM-0059-0001.jpeg,Normal,Normal,0.9197,0.9197,0.0036,0.0767
+test\NORMAL\NORMAL2-IM-0060-0001.jpeg,Normal,Normal,0.9978,0.9978,0.0005,0.0017
+test\NORMAL\NORMAL2-IM-0066-0001.jpeg,Normal,Normal,0.8423,0.8423,0.0251,0.1326
+test\NORMAL\NORMAL2-IM-0072-0001.jpeg,Normal,Viral Pneumonia,0.4994,0.4684,0.0321,0.4994
+test\NORMAL\NORMAL2-IM-0073-0001.jpeg,Normal,Bacterial Pneumonia,0.4293,0.1517,0.4293,0.4190
+test\NORMAL\NORMAL2-IM-0079-0001.jpeg,Normal,Normal,0.9740,0.9740,0.0140,0.0120
+test\NORMAL\NORMAL2-IM-0081-0001.jpeg,Normal,Normal,0.9711,0.9711,0.0021,0.0268
+test\NORMAL\NORMAL2-IM-0086-0001.jpeg,Normal,Normal,0.5910,0.5910,0.0797,0.3293
+test\NORMAL\NORMAL2-IM-0092-0001.jpeg,Normal,Normal,0.8471,0.8471,0.0345,0.1184
+test\NORMAL\NORMAL2-IM-0095-0001.jpeg,Normal,Normal,0.9832,0.9832,0.0065,0.0103
+test\NORMAL\NORMAL2-IM-0096-0001.jpeg,Normal,Normal,0.9832,0.9832,0.0065,0.0103
+test\NORMAL\NORMAL2-IM-0098-0001.jpeg,Normal,Normal,0.7252,0.7252,0.2200,0.0548
+test\NORMAL\NORMAL2-IM-0102-0001.jpeg,Normal,Normal,0.9150,0.9150,0.0049,0.0801
+test\NORMAL\NORMAL2-IM-0105-0001.jpeg,Normal,Viral Pneumonia,0.9256,0.0523,0.0221,0.9256
+test\NORMAL\NORMAL2-IM-0107-0001.jpeg,Normal,Normal,0.7431,0.7431,0.0430,0.2138
+test\NORMAL\NORMAL2-IM-0110-0001.jpeg,Normal,Normal,0.9919,0.9919,0.0034,0.0047
+test\NORMAL\NORMAL2-IM-0111-0001.jpeg,Normal,Normal,0.9383,0.9383,0.0053,0.0564
+test\NORMAL\NORMAL2-IM-0112-0001.jpeg,Normal,Normal,0.9735,0.9735,0.0059,0.0206
+test\NORMAL\NORMAL2-IM-0117-0001.jpeg,Normal,Normal,0.6992,0.6992,0.0997,0.2011
+test\NORMAL\NORMAL2-IM-0120-0001.jpeg,Normal,Viral Pneumonia,0.5527,0.4337,0.0136,0.5527
+test\NORMAL\NORMAL2-IM-0123-0001.jpeg,Normal,Normal,0.4508,0.4508,0.1500,0.3992
+test\NORMAL\NORMAL2-IM-0129-0001.jpeg,Normal,Normal,0.9601,0.9601,0.0215,0.0184
+test\NORMAL\NORMAL2-IM-0130-0001.jpeg,Normal,Normal,0.9793,0.9793,0.0080,0.0127
+test\NORMAL\NORMAL2-IM-0131-0001.jpeg,Normal,Normal,0.5942,0.5942,0.1370,0.2688
+test\NORMAL\NORMAL2-IM-0132-0001.jpeg,Normal,Normal,0.7009,0.7009,0.0425,0.2567
+test\NORMAL\NORMAL2-IM-0135-0001.jpeg,Normal,Viral Pneumonia,0.4373,0.4281,0.1346,0.4373
+test\NORMAL\NORMAL2-IM-0139-0001.jpeg,Normal,Normal,0.9964,0.9964,0.0011,0.0024
+test\NORMAL\NORMAL2-IM-0141-0001.jpeg,Normal,Normal,0.9988,0.9988,0.0003,0.0009
+test\NORMAL\NORMAL2-IM-0145-0001.jpeg,Normal,Viral Pneumonia,0.6509,0.2433,0.1058,0.6509
+test\NORMAL\NORMAL2-IM-0146-0001.jpeg,Normal,Normal,0.8330,0.8330,0.0733,0.0936
+test\NORMAL\NORMAL2-IM-0150-0001.jpeg,Normal,Viral Pneumonia,0.6247,0.1584,0.2168,0.6247
+test\NORMAL\NORMAL2-IM-0171-0001.jpeg,Normal,Normal,0.6974,0.6974,0.0851,0.2175
+test\NORMAL\NORMAL2-IM-0173-0001-0001.jpeg,Normal,Normal,0.9181,0.9181,0.0227,0.0593
+test\NORMAL\NORMAL2-IM-0173-0001-0002.jpeg,Normal,Normal,0.9181,0.9181,0.0227,0.0593
+test\NORMAL\NORMAL2-IM-0195-0001.jpeg,Normal,Viral Pneumonia,0.9504,0.0066,0.0431,0.9504
+test\NORMAL\NORMAL2-IM-0196-0001.jpeg,Normal,Viral Pneumonia,0.8901,0.0010,0.1089,0.8901
+test\NORMAL\NORMAL2-IM-0198-0001.jpeg,Normal,Viral Pneumonia,0.6158,0.0006,0.3836,0.6158
+test\NORMAL\NORMAL2-IM-0199-0001.jpeg,Normal,Viral Pneumonia,0.6610,0.1828,0.1562,0.6610
+test\NORMAL\NORMAL2-IM-0201-0001.jpeg,Normal,Viral Pneumonia,0.8711,0.0059,0.1230,0.8711
+test\NORMAL\NORMAL2-IM-0206-0001.jpeg,Normal,Viral Pneumonia,0.9009,0.0067,0.0924,0.9009
+test\NORMAL\NORMAL2-IM-0207-0001.jpeg,Normal,Normal,0.9690,0.9690,0.0088,0.0222
+test\NORMAL\NORMAL2-IM-0210-0001.jpeg,Normal,Viral Pneumonia,0.9450,0.0004,0.0546,0.9450
+test\NORMAL\NORMAL2-IM-0213-0001.jpeg,Normal,Viral Pneumonia,0.5626,0.2790,0.1584,0.5626
+test\NORMAL\NORMAL2-IM-0217-0001.jpeg,Normal,Normal,0.5976,0.5976,0.0417,0.3607
+test\NORMAL\NORMAL2-IM-0219-0001.jpeg,Normal,Viral Pneumonia,0.6825,0.0041,0.3134,0.6825
+test\NORMAL\NORMAL2-IM-0221-0001.jpeg,Normal,Viral Pneumonia,0.7231,0.0532,0.2237,0.7231
+test\NORMAL\NORMAL2-IM-0222-0001.jpeg,Normal,Viral Pneumonia,0.8869,0.0095,0.1037,0.8869
+test\NORMAL\NORMAL2-IM-0229-0001.jpeg,Normal,Viral Pneumonia,0.7905,0.0480,0.1615,0.7905
+test\NORMAL\NORMAL2-IM-0232-0001.jpeg,Normal,Viral Pneumonia,0.8361,0.0354,0.1285,0.8361
+test\NORMAL\NORMAL2-IM-0233-0001.jpeg,Normal,Viral Pneumonia,0.9772,0.0008,0.0220,0.9772
+test\NORMAL\NORMAL2-IM-0237-0001.jpeg,Normal,Viral Pneumonia,0.9227,0.0122,0.0651,0.9227
+test\NORMAL\NORMAL2-IM-0238-0001.jpeg,Normal,Viral Pneumonia,0.7834,0.0126,0.2040,0.7834
+test\NORMAL\NORMAL2-IM-0241-0001.jpeg,Normal,Viral Pneumonia,0.4291,0.2800,0.2909,0.4291
+test\NORMAL\NORMAL2-IM-0246-0001-0001.jpeg,Normal,Normal,0.8262,0.8262,0.0276,0.1462
+test\NORMAL\NORMAL2-IM-0246-0001-0002.jpeg,Normal,Normal,0.8262,0.8262,0.0276,0.1462
+test\NORMAL\NORMAL2-IM-0246-0001.jpeg,Normal,Viral Pneumonia,0.8208,0.0041,0.1750,0.8208
+test\NORMAL\NORMAL2-IM-0249-0001.jpeg,Normal,Bacterial Pneumonia,0.4863,0.0942,0.4863,0.4195
+test\NORMAL\NORMAL2-IM-0251-0001.jpeg,Normal,Viral Pneumonia,0.5175,0.2554,0.2271,0.5175
+test\NORMAL\NORMAL2-IM-0252-0001.jpeg,Normal,Viral Pneumonia,0.9199,0.0004,0.0798,0.9199
+test\NORMAL\NORMAL2-IM-0256-0001.jpeg,Normal,Viral Pneumonia,0.8914,0.0001,0.1085,0.8914
+test\NORMAL\NORMAL2-IM-0259-0001.jpeg,Normal,Bacterial Pneumonia,0.5105,0.0150,0.5105,0.4745
+test\NORMAL\NORMAL2-IM-0267-0001.jpeg,Normal,Viral Pneumonia,0.8658,0.0192,0.1149,0.8658
+test\NORMAL\NORMAL2-IM-0271-0001.jpeg,Normal,Viral Pneumonia,0.4349,0.2170,0.3482,0.4349
+test\NORMAL\NORMAL2-IM-0272-0001.jpeg,Normal,Viral Pneumonia,0.3840,0.3678,0.2482,0.3840
+test\NORMAL\NORMAL2-IM-0273-0001.jpeg,Normal,Normal,0.8820,0.8820,0.0263,0.0917
+test\NORMAL\NORMAL2-IM-0274-0001.jpeg,Normal,Normal,0.9974,0.9974,0.0003,0.0023
+test\NORMAL\NORMAL2-IM-0275-0001.jpeg,Normal,Normal,0.6799,0.6799,0.0366,0.2836
+test\NORMAL\NORMAL2-IM-0276-0001.jpeg,Normal,Normal,0.4430,0.4430,0.1602,0.3969
+test\NORMAL\NORMAL2-IM-0277-0001.jpeg,Normal,Viral Pneumonia,0.7805,0.1848,0.0346,0.7805
+test\NORMAL\NORMAL2-IM-0278-0001.jpeg,Normal,Normal,0.6106,0.6106,0.1114,0.2779
+test\NORMAL\NORMAL2-IM-0279-0001.jpeg,Normal,Normal,0.9669,0.9669,0.0142,0.0189
+test\NORMAL\NORMAL2-IM-0280-0001.jpeg,Normal,Normal,0.7912,0.7912,0.0149,0.1939
+test\NORMAL\NORMAL2-IM-0281-0001.jpeg,Normal,Normal,0.9848,0.9848,0.0020,0.0131
+test\NORMAL\NORMAL2-IM-0282-0001.jpeg,Normal,Viral Pneumonia,0.6016,0.1972,0.2012,0.6016
+test\NORMAL\NORMAL2-IM-0283-0001.jpeg,Normal,Viral Pneumonia,0.5995,0.0407,0.3597,0.5995
+test\NORMAL\NORMAL2-IM-0285-0001.jpeg,Normal,Bacterial Pneumonia,0.7714,0.0284,0.7714,0.2001
+test\NORMAL\NORMAL2-IM-0286-0001.jpeg,Normal,Normal,0.9823,0.9823,0.0007,0.0170
+test\NORMAL\NORMAL2-IM-0287-0001.jpeg,Normal,Normal,0.9975,0.9975,0.0010,0.0015
+test\NORMAL\NORMAL2-IM-0288-0001.jpeg,Normal,Normal,0.5097,0.5097,0.2311,0.2592
+test\NORMAL\NORMAL2-IM-0289-0001.jpeg,Normal,Normal,0.9055,0.9055,0.0159,0.0786
+test\NORMAL\NORMAL2-IM-0290-0001.jpeg,Normal,Normal,0.8100,0.8100,0.0441,0.1459
+test\NORMAL\NORMAL2-IM-0292-0001.jpeg,Normal,Viral Pneumonia,0.4238,0.2603,0.3158,0.4238
+test\NORMAL\NORMAL2-IM-0294-0001.jpeg,Normal,Normal,0.8098,0.8098,0.0788,0.1114
+test\NORMAL\NORMAL2-IM-0297-0001.jpeg,Normal,Normal,0.5189,0.5189,0.1064,0.3746
+test\NORMAL\NORMAL2-IM-0300-0001.jpeg,Normal,Normal,0.9905,0.9905,0.0009,0.0087
+test\NORMAL\NORMAL2-IM-0301-0001.jpeg,Normal,Normal,0.8917,0.8917,0.0254,0.0829
+test\NORMAL\NORMAL2-IM-0302-0001.jpeg,Normal,Bacterial Pneumonia,0.4238,0.2771,0.4238,0.2991
+test\NORMAL\NORMAL2-IM-0303-0001.jpeg,Normal,Viral Pneumonia,0.5328,0.3612,0.1060,0.5328
+test\NORMAL\NORMAL2-IM-0304-0001.jpeg,Normal,Viral Pneumonia,0.8866,0.0355,0.0779,0.8866
+test\NORMAL\NORMAL2-IM-0305-0001.jpeg,Normal,Normal,0.5388,0.5388,0.1307,0.3305
+test\NORMAL\NORMAL2-IM-0307-0001.jpeg,Normal,Normal,0.9952,0.9952,0.0011,0.0036
+test\NORMAL\NORMAL2-IM-0309-0001.jpeg,Normal,Normal,0.9851,0.9851,0.0011,0.0139
+test\NORMAL\NORMAL2-IM-0310-0001.jpeg,Normal,Normal,0.9937,0.9937,0.0014,0.0050
+test\NORMAL\NORMAL2-IM-0311-0001.jpeg,Normal,Normal,0.9138,0.9138,0.0288,0.0574
+test\NORMAL\NORMAL2-IM-0312-0001.jpeg,Normal,Normal,0.9753,0.9753,0.0030,0.0216
+test\NORMAL\NORMAL2-IM-0313-0001.jpeg,Normal,Normal,0.8767,0.8767,0.0620,0.0613
+test\NORMAL\NORMAL2-IM-0315-0001.jpeg,Normal,Bacterial Pneumonia,0.5084,0.0283,0.5084,0.4633
+test\NORMAL\NORMAL2-IM-0316-0001.jpeg,Normal,Viral Pneumonia,0.4806,0.0432,0.4762,0.4806
+test\NORMAL\NORMAL2-IM-0317-0001.jpeg,Normal,Normal,0.8206,0.8206,0.0722,0.1072
+test\NORMAL\NORMAL2-IM-0319-0001.jpeg,Normal,Normal,0.7388,0.7388,0.0417,0.2195
+test\NORMAL\NORMAL2-IM-0321-0001.jpeg,Normal,Normal,0.9994,0.9994,0.0002,0.0004
+test\NORMAL\NORMAL2-IM-0322-0001.jpeg,Normal,Normal,0.5580,0.5580,0.1263,0.3157
+test\NORMAL\NORMAL2-IM-0323-0001.jpeg,Normal,Normal,0.9992,0.9992,0.0002,0.0006
+test\NORMAL\NORMAL2-IM-0325-0001.jpeg,Normal,Viral Pneumonia,0.6909,0.2407,0.0684,0.6909
+test\NORMAL\NORMAL2-IM-0326-0001.jpeg,Normal,Normal,0.9975,0.9975,0.0016,0.0009
+test\NORMAL\NORMAL2-IM-0327-0001.jpeg,Normal,Normal,0.7618,0.7618,0.0732,0.1650
+test\NORMAL\NORMAL2-IM-0328-0001.jpeg,Normal,Normal,0.9737,0.9737,0.0045,0.0218
+test\NORMAL\NORMAL2-IM-0329-0001.jpeg,Normal,Normal,0.9151,0.9151,0.0184,0.0665
+test\NORMAL\NORMAL2-IM-0330-0001.jpeg,Normal,Bacterial Pneumonia,0.3884,0.2621,0.3884,0.3494
+test\NORMAL\NORMAL2-IM-0331-0001.jpeg,Normal,Normal,0.6900,0.6900,0.0380,0.2720
+test\NORMAL\NORMAL2-IM-0332-0001.jpeg,Normal,Normal,0.9614,0.9614,0.0042,0.0344
+test\NORMAL\NORMAL2-IM-0333-0001.jpeg,Normal,Normal,0.7054,0.7054,0.0258,0.2688
+test\NORMAL\NORMAL2-IM-0335-0001.jpeg,Normal,Viral Pneumonia,0.5559,0.2380,0.2061,0.5559
+test\NORMAL\NORMAL2-IM-0336-0001.jpeg,Normal,Normal,0.3753,0.3753,0.3005,0.3242
+test\NORMAL\NORMAL2-IM-0337-0001.jpeg,Normal,Normal,0.9875,0.9875,0.0020,0.0105
+test\NORMAL\NORMAL2-IM-0338-0001.jpeg,Normal,Bacterial Pneumonia,0.9005,0.0209,0.9005,0.0786
+test\NORMAL\NORMAL2-IM-0339-0001.jpeg,Normal,Normal,0.9452,0.9452,0.0056,0.0492
+test\NORMAL\NORMAL2-IM-0340-0001.jpeg,Normal,Viral Pneumonia,0.6404,0.1991,0.1605,0.6404
+test\NORMAL\NORMAL2-IM-0341-0001.jpeg,Normal,Normal,0.9751,0.9751,0.0011,0.0238
+test\NORMAL\NORMAL2-IM-0343-0001.jpeg,Normal,Bacterial Pneumonia,0.3513,0.3265,0.3513,0.3222
+test\NORMAL\NORMAL2-IM-0345-0001.jpeg,Normal,Normal,0.8770,0.8770,0.0502,0.0728
+test\NORMAL\NORMAL2-IM-0346-0001.jpeg,Normal,Normal,0.9842,0.9842,0.0024,0.0134
+test\NORMAL\NORMAL2-IM-0347-0001.jpeg,Normal,Normal,0.8015,0.8015,0.0618,0.1367
+test\NORMAL\NORMAL2-IM-0348-0001.jpeg,Normal,Normal,0.8286,0.8286,0.1078,0.0636
+test\NORMAL\NORMAL2-IM-0349-0001.jpeg,Normal,Normal,0.6408,0.6408,0.1175,0.2418
+test\NORMAL\NORMAL2-IM-0350-0001.jpeg,Normal,Normal,0.4974,0.4974,0.2287,0.2739
+test\NORMAL\NORMAL2-IM-0351-0001.jpeg,Normal,Normal,0.9461,0.9461,0.0060,0.0479
+test\NORMAL\NORMAL2-IM-0352-0001.jpeg,Normal,Normal,0.9980,0.9980,0.0008,0.0013
+test\NORMAL\NORMAL2-IM-0353-0001.jpeg,Normal,Normal,0.7625,0.7625,0.1447,0.0928
+test\NORMAL\NORMAL2-IM-0354-0001.jpeg,Normal,Normal,0.6380,0.6380,0.0919,0.2701
+test\NORMAL\NORMAL2-IM-0357-0001.jpeg,Normal,Normal,0.8085,0.8085,0.0707,0.1207
+test\NORMAL\NORMAL2-IM-0359-0001.jpeg,Normal,Bacterial Pneumonia,0.5035,0.2265,0.5035,0.2701
+test\NORMAL\NORMAL2-IM-0360-0001.jpeg,Normal,Normal,0.4518,0.4518,0.2618,0.2864
+test\NORMAL\NORMAL2-IM-0361-0001.jpeg,Normal,Viral Pneumonia,0.7692,0.0616,0.1693,0.7692
+test\NORMAL\NORMAL2-IM-0362-0001.jpeg,Normal,Viral Pneumonia,0.4254,0.3656,0.2090,0.4254
+test\NORMAL\NORMAL2-IM-0364-0001.jpeg,Normal,Viral Pneumonia,0.7302,0.1138,0.1559,0.7302
+test\NORMAL\NORMAL2-IM-0366-0001.jpeg,Normal,Viral Pneumonia,0.6945,0.2496,0.0559,0.6945
+test\NORMAL\NORMAL2-IM-0368-0001.jpeg,Normal,Normal,0.6938,0.6938,0.1235,0.1827
+test\NORMAL\NORMAL2-IM-0369-0001.jpeg,Normal,Normal,0.8944,0.8944,0.0489,0.0567
+test\NORMAL\NORMAL2-IM-0370-0001.jpeg,Normal,Normal,0.9871,0.9871,0.0028,0.0101
+test\NORMAL\NORMAL2-IM-0372-0001.jpeg,Normal,Normal,0.9742,0.9742,0.0010,0.0248
+test\NORMAL\NORMAL2-IM-0373-0001.jpeg,Normal,Bacterial Pneumonia,0.7917,0.0089,0.7917,0.1994
+test\NORMAL\NORMAL2-IM-0374-0001-0001.jpeg,Normal,Normal,0.5778,0.5778,0.0185,0.4036
+test\NORMAL\NORMAL2-IM-0374-0001-0002.jpeg,Normal,Viral Pneumonia,0.7558,0.0561,0.1881,0.7558
+test\NORMAL\NORMAL2-IM-0374-0001.jpeg,Normal,Normal,0.8345,0.8345,0.0222,0.1433
+test\NORMAL\NORMAL2-IM-0376-0001.jpeg,Normal,Bacterial Pneumonia,0.4778,0.1258,0.4778,0.3963
+test\NORMAL\NORMAL2-IM-0378-0001.jpeg,Normal,Normal,0.9115,0.9115,0.0143,0.0742
+test\NORMAL\NORMAL2-IM-0380-0001.jpeg,Normal,Normal,0.9414,0.9414,0.0106,0.0480
+test\NORMAL\NORMAL2-IM-0381-0001.jpeg,Normal,Normal,0.4245,0.4245,0.1940,0.3814
+test\PNEUMONIA\person100_bacteria_475.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8431,0.0084,0.8431,0.1485
+test\PNEUMONIA\person100_bacteria_477.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8502,0.0009,0.8502,0.1489
+test\PNEUMONIA\person100_bacteria_478.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9559,0.0004,0.9559,0.0437
+test\PNEUMONIA\person100_bacteria_479.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7482,0.0002,0.7482,0.2516
+test\PNEUMONIA\person100_bacteria_480.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7715,0.0001,0.7715,0.2284
+test\PNEUMONIA\person100_bacteria_481.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8112,0.0001,0.8112,0.1887
+test\PNEUMONIA\person100_bacteria_482.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8325,0.0038,0.8325,0.1637
+test\PNEUMONIA\person101_bacteria_483.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7183,0.0005,0.7183,0.2812
+test\PNEUMONIA\person101_bacteria_484.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.6588,0.0135,0.6588,0.3278
+test\PNEUMONIA\person101_bacteria_485.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7145,0.0019,0.7145,0.2836
+test\PNEUMONIA\person101_bacteria_486.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8375,0.0003,0.8375,0.1622
+test\PNEUMONIA\person102_bacteria_487.jpeg,Bacterial Pneumonia,Viral Pneumonia,0.5040,0.0037,0.4923,0.5040
+test\PNEUMONIA\person103_bacteria_488.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9004,0.0002,0.9004,0.0994
+test\PNEUMONIA\person103_bacteria_489.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9302,0.0012,0.9302,0.0686
+test\PNEUMONIA\person103_bacteria_490.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8976,0.0075,0.8976,0.0949
+test\PNEUMONIA\person104_bacteria_491.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8540,0.0008,0.8540,0.1452
+test\PNEUMONIA\person104_bacteria_492.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7338,0.0002,0.7338,0.2660
+test\PNEUMONIA\person108_bacteria_504.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9269,0.0001,0.9269,0.0729
+test\PNEUMONIA\person108_bacteria_506.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9001,0.0004,0.9001,0.0995
+test\PNEUMONIA\person108_bacteria_507.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9419,0.0010,0.9419,0.0570
+test\PNEUMONIA\person108_bacteria_511.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9187,0.0246,0.9187,0.0567
+test\PNEUMONIA\person109_bacteria_512.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9490,0.0008,0.9490,0.0502
+test\PNEUMONIA\person109_bacteria_513.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8700,0.0001,0.8700,0.1298
+test\PNEUMONIA\person109_bacteria_517.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9179,0.0006,0.9179,0.0815
+test\PNEUMONIA\person109_bacteria_519.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9178,0.0004,0.9178,0.0819
+test\PNEUMONIA\person109_bacteria_522.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7484,0.0014,0.7484,0.2502
+test\PNEUMONIA\person109_bacteria_523.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8514,0.0000,0.8514,0.1485
+test\PNEUMONIA\person109_bacteria_526.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9651,0.0000,0.9651,0.0349
+test\PNEUMONIA\person109_bacteria_527.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9713,0.0000,0.9713,0.0286
+test\PNEUMONIA\person109_bacteria_528.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.6014,0.0010,0.6014,0.3977
+test\PNEUMONIA\person10_virus_35.jpeg,Viral Pneumonia,Bacterial Pneumonia,0.5253,0.0016,0.5253,0.4731
+test\PNEUMONIA\person110_bacteria_531.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8962,0.0006,0.8962,0.1032
+test\PNEUMONIA\person111_bacteria_533.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9076,0.0001,0.9076,0.0924
+test\PNEUMONIA\person111_bacteria_534.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9351,0.0026,0.9351,0.0623
+test\PNEUMONIA\person111_bacteria_535.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7033,0.0003,0.7033,0.2964
+test\PNEUMONIA\person111_bacteria_536.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9760,0.0004,0.9760,0.0235
+test\PNEUMONIA\person111_bacteria_537.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8777,0.0028,0.8777,0.1195
+test\PNEUMONIA\person112_bacteria_538.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9397,0.0001,0.9397,0.0602
+test\PNEUMONIA\person112_bacteria_539.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9214,0.0009,0.9214,0.0777
+test\PNEUMONIA\person113_bacteria_540.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8356,0.0004,0.8356,0.1640
+test\PNEUMONIA\person113_bacteria_541.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7007,0.0006,0.7007,0.2988
+test\PNEUMONIA\person113_bacteria_542.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7389,0.0008,0.7389,0.2603
+test\PNEUMONIA\person113_bacteria_543.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7064,0.0088,0.7064,0.2849
+test\PNEUMONIA\person114_bacteria_544.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7684,0.0013,0.7684,0.2302
+test\PNEUMONIA\person114_bacteria_545.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8730,0.0091,0.8730,0.1179
+test\PNEUMONIA\person114_bacteria_546.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7273,0.0016,0.7273,0.2712
+test\PNEUMONIA\person117_bacteria_553.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8849,0.0042,0.8849,0.1110
+test\PNEUMONIA\person117_bacteria_556.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9178,0.0020,0.9178,0.0802
+test\PNEUMONIA\person117_bacteria_557.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7606,0.0739,0.7606,0.1655
+test\PNEUMONIA\person118_bacteria_559.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7966,0.0081,0.7966,0.1952
+test\PNEUMONIA\person118_bacteria_560.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8780,0.0068,0.8780,0.1153
+test\PNEUMONIA\person119_bacteria_565.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8505,0.0000,0.8505,0.1495
+test\PNEUMONIA\person119_bacteria_566.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9372,0.0008,0.9372,0.0621
+test\PNEUMONIA\person119_bacteria_567.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7705,0.0080,0.7705,0.2216
+test\PNEUMONIA\person119_bacteria_568.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7432,0.0238,0.7432,0.2330
+test\PNEUMONIA\person11_virus_38.jpeg,Viral Pneumonia,Bacterial Pneumonia,0.7715,0.0008,0.7715,0.2277
+test\PNEUMONIA\person120_bacteria_570.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8276,0.0008,0.8276,0.1715
+test\PNEUMONIA\person120_bacteria_571.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8454,0.0002,0.8454,0.1544
+test\PNEUMONIA\person120_bacteria_572.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7573,0.0005,0.7573,0.2422
+test\PNEUMONIA\person120_bacteria_573.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9501,0.0011,0.9501,0.0489
+test\PNEUMONIA\person121_bacteria_575.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9092,0.0003,0.9092,0.0905
+test\PNEUMONIA\person121_bacteria_576.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7556,0.0001,0.7556,0.2443
+test\PNEUMONIA\person121_bacteria_578.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7256,0.0000,0.7256,0.2744
+test\PNEUMONIA\person121_bacteria_579.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8053,0.0003,0.8053,0.1944
+test\PNEUMONIA\person121_bacteria_580.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.6714,0.0039,0.6714,0.3247
+test\PNEUMONIA\person122_bacteria_581.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9130,0.0331,0.9130,0.0540
+test\PNEUMONIA\person122_bacteria_582.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8527,0.0001,0.8527,0.1472
+test\PNEUMONIA\person122_bacteria_583.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7848,0.0006,0.7848,0.2146
+test\PNEUMONIA\person122_bacteria_584.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.5980,0.0005,0.5980,0.4015
+test\PNEUMONIA\person122_bacteria_585.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8937,0.0001,0.8937,0.1062
+test\PNEUMONIA\person122_bacteria_586.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7371,0.0002,0.7371,0.2627
+test\PNEUMONIA\person123_bacteria_587.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7466,0.0008,0.7466,0.2527
+test\PNEUMONIA\person124_bacteria_589.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7126,0.0016,0.7126,0.2858
+test\PNEUMONIA\person124_bacteria_590.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7711,0.0012,0.7711,0.2278
+test\PNEUMONIA\person124_bacteria_591.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8412,0.0013,0.8412,0.1574
+test\PNEUMONIA\person124_bacteria_592.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7686,0.0092,0.7686,0.2222
+test\PNEUMONIA\person125_bacteria_594.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7528,0.0002,0.7528,0.2470
+test\PNEUMONIA\person125_bacteria_595.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.6941,0.0028,0.6941,0.3031
+test\PNEUMONIA\person126_bacteria_598.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7285,0.0002,0.7285,0.2713
+test\PNEUMONIA\person126_bacteria_599.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.6917,0.0003,0.6917,0.3080
+test\PNEUMONIA\person126_bacteria_600.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7933,0.0002,0.7933,0.2066
+test\PNEUMONIA\person127_bacteria_602.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7470,0.0002,0.7470,0.2528
+test\PNEUMONIA\person127_bacteria_603.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9026,0.0001,0.9026,0.0973
+test\PNEUMONIA\person127_bacteria_604.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.5625,0.2057,0.5625,0.2318
+test\PNEUMONIA\person128_bacteria_605.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8527,0.0000,0.8527,0.1473
+test\PNEUMONIA\person128_bacteria_606.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9471,0.0001,0.9471,0.0528
+test\PNEUMONIA\person128_bacteria_607.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9471,0.0001,0.9471,0.0528
+test\PNEUMONIA\person128_bacteria_608.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9283,0.0048,0.9283,0.0669
+test\PNEUMONIA\person130_bacteria_623.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9359,0.0099,0.9359,0.0541
+test\PNEUMONIA\person130_bacteria_625.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8420,0.0002,0.8420,0.1578
+test\PNEUMONIA\person130_bacteria_626.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9286,0.0002,0.9286,0.0712
+test\PNEUMONIA\person130_bacteria_627.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7618,0.0010,0.7618,0.2372
+test\PNEUMONIA\person130_bacteria_628.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7757,0.0028,0.7757,0.2216
+test\PNEUMONIA\person131_bacteria_629.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7765,0.0004,0.7765,0.2231
+test\PNEUMONIA\person132_bacteria_632.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8414,0.0050,0.8414,0.1536
+test\PNEUMONIA\person133_bacteria_633.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8858,0.0003,0.8858,0.1139
+test\PNEUMONIA\person133_bacteria_634.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8934,0.0017,0.8934,0.1048
+test\PNEUMONIA\person133_bacteria_635.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9493,0.0004,0.9493,0.0503
+test\PNEUMONIA\person133_bacteria_637.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9414,0.0026,0.9414,0.0559
+test\PNEUMONIA\person133_bacteria_638.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9247,0.0013,0.9247,0.0739
+test\PNEUMONIA\person134_bacteria_640.jpeg,Bacterial Pneumonia,Viral Pneumonia,0.5099,0.1226,0.3675,0.5099
+test\PNEUMONIA\person134_bacteria_641.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7532,0.0003,0.7532,0.2465
+test\PNEUMONIA\person134_bacteria_642.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7559,0.0037,0.7559,0.2405
+test\PNEUMONIA\person134_bacteria_643.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7171,0.0010,0.7171,0.2818
+test\PNEUMONIA\person134_bacteria_644.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7171,0.0010,0.7171,0.2818
+test\PNEUMONIA\person135_bacteria_646.jpeg,Bacterial Pneumonia,Viral Pneumonia,0.5041,0.0001,0.4957,0.5041
+test\PNEUMONIA\person135_bacteria_647.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7225,0.0002,0.7225,0.2772
+test\PNEUMONIA\person136_bacteria_648.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9835,0.0009,0.9835,0.0156
+test\PNEUMONIA\person136_bacteria_649.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7182,0.0020,0.7182,0.2799
+test\PNEUMONIA\person136_bacteria_650.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8919,0.0001,0.8919,0.1080
+test\PNEUMONIA\person136_bacteria_652.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9316,0.0004,0.9316,0.0679
+test\PNEUMONIA\person136_bacteria_654.jpeg,Bacterial Pneumonia,Viral Pneumonia,0.6191,0.0181,0.3628,0.6191
+test\PNEUMONIA\person137_bacteria_655.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8457,0.0004,0.8457,0.1539
+test\PNEUMONIA\person138_bacteria_657.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.4989,0.1487,0.4989,0.3524
+test\PNEUMONIA\person138_bacteria_658.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.4387,0.2707,0.4387,0.2906
+test\PNEUMONIA\person138_bacteria_659.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8177,0.0044,0.8177,0.1779
+test\PNEUMONIA\person139_bacteria_661.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8552,0.0019,0.8552,0.1429
+test\PNEUMONIA\person139_bacteria_662.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7505,0.0001,0.7505,0.2494
+test\PNEUMONIA\person139_bacteria_663.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9006,0.0002,0.9006,0.0993
+test\PNEUMONIA\person139_bacteria_664.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8479,0.0000,0.8479,0.1520
+test\PNEUMONIA\person139_bacteria_665.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9010,0.0000,0.9010,0.0989
+test\PNEUMONIA\person139_bacteria_666.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9255,0.0021,0.9255,0.0723
+test\PNEUMONIA\person140_bacteria_667.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7444,0.0409,0.7444,0.2147
+test\PNEUMONIA\person140_bacteria_668.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7080,0.0390,0.7080,0.2530
+test\PNEUMONIA\person141_bacteria_670.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7702,0.0061,0.7702,0.2237
+test\PNEUMONIA\person141_bacteria_676.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9280,0.0003,0.9280,0.0717
+test\PNEUMONIA\person141_bacteria_677.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8004,0.0024,0.8004,0.1972
+test\PNEUMONIA\person141_bacteria_678.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8215,0.0005,0.8215,0.1780
+test\PNEUMONIA\person141_bacteria_681.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8098,0.0016,0.8098,0.1886
+test\PNEUMONIA\person142_bacteria_682.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8340,0.0096,0.8340,0.1564
+test\PNEUMONIA\person142_bacteria_683.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8024,0.0001,0.8024,0.1975
+test\PNEUMONIA\person142_bacteria_684.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9296,0.0107,0.9296,0.0598
+test\PNEUMONIA\person143_bacteria_687.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9028,0.0005,0.9028,0.0967
+test\PNEUMONIA\person143_bacteria_688.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8755,0.0003,0.8755,0.1242
+test\PNEUMONIA\person143_bacteria_689.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8681,0.0020,0.8681,0.1299
+test\PNEUMONIA\person144_bacteria_690.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.6396,0.0003,0.6396,0.3601
+test\PNEUMONIA\person145_bacteria_696.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9291,0.0003,0.9291,0.0706
+test\PNEUMONIA\person146_bacteria_700.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9435,0.0159,0.9435,0.0406
+test\PNEUMONIA\person146_bacteria_703.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7690,0.0018,0.7690,0.2292
+test\PNEUMONIA\person146_bacteria_704.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8792,0.0008,0.8792,0.1200
+test\PNEUMONIA\person147_bacteria_705.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8519,0.0001,0.8519,0.1480
+test\PNEUMONIA\person147_bacteria_706.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9048,0.0006,0.9048,0.0946
+test\PNEUMONIA\person147_bacteria_707.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7950,0.0057,0.7950,0.1993
+test\PNEUMONIA\person147_bacteria_711.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9454,0.0005,0.9454,0.0541
+test\PNEUMONIA\person149_bacteria_713.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7239,0.0017,0.7239,0.2743
+test\PNEUMONIA\person14_virus_44.jpeg,Viral Pneumonia,Viral Pneumonia,0.7558,0.0006,0.2436,0.7558
+test\PNEUMONIA\person150_bacteria_715.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8539,0.0001,0.8539,0.1460
+test\PNEUMONIA\person150_bacteria_716.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9006,0.0001,0.9006,0.0992
+test\PNEUMONIA\person150_bacteria_717.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7751,0.0074,0.7751,0.2175
+test\PNEUMONIA\person151_bacteria_718.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7818,0.0002,0.7818,0.2179
+test\PNEUMONIA\person152_bacteria_720.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7885,0.0018,0.7885,0.2098
+test\PNEUMONIA\person152_bacteria_721.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.5969,0.0007,0.5969,0.4025
+test\PNEUMONIA\person152_bacteria_722.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.6663,0.0001,0.6663,0.3336
+test\PNEUMONIA\person152_bacteria_723.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.6427,0.0003,0.6427,0.3570
+test\PNEUMONIA\person152_bacteria_724.jpeg,Bacterial Pneumonia,Normal,0.4302,0.4302,0.2764,0.2934
+test\PNEUMONIA\person153_bacteria_725.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7138,0.0014,0.7138,0.2848
+test\PNEUMONIA\person153_bacteria_726.jpeg,Bacterial Pneumonia,Normal,0.9439,0.9439,0.0129,0.0433
+test\PNEUMONIA\person154_bacteria_728.jpeg,Bacterial Pneumonia,Normal,0.9732,0.9732,0.0111,0.0157
+test\PNEUMONIA\person155_bacteria_729.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.6706,0.0029,0.6706,0.3265
+test\PNEUMONIA\person155_bacteria_730.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7446,0.0010,0.7446,0.2543
+test\PNEUMONIA\person155_bacteria_731.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7671,0.0004,0.7671,0.2325
+test\PNEUMONIA\person157_bacteria_735.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9824,0.0003,0.9824,0.0173
+test\PNEUMONIA\person157_bacteria_739.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9652,0.0005,0.9652,0.0343
+test\PNEUMONIA\person157_bacteria_740.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9070,0.0019,0.9070,0.0912
+test\PNEUMONIA\person158_bacteria_742.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7692,0.0013,0.7692,0.2294
+test\PNEUMONIA\person158_bacteria_743.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9524,0.0001,0.9524,0.0475
+test\PNEUMONIA\person158_bacteria_744.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8594,0.0001,0.8594,0.1405
+test\PNEUMONIA\person158_bacteria_745.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7106,0.0327,0.7106,0.2567
+test\PNEUMONIA\person159_bacteria_746.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.6386,0.0002,0.6386,0.3612
+test\PNEUMONIA\person159_bacteria_747.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7994,0.0006,0.7994,0.2000
+test\PNEUMONIA\person15_virus_46.jpeg,Viral Pneumonia,Bacterial Pneumonia,0.8597,0.0386,0.8597,0.1017
+test\PNEUMONIA\person1608_virus_2786.jpeg,Viral Pneumonia,Viral Pneumonia,0.8767,0.0209,0.1024,0.8767
+test\PNEUMONIA\person1610_virus_2793.jpeg,Viral Pneumonia,Bacterial Pneumonia,0.8908,0.0743,0.8908,0.0349
+test\PNEUMONIA\person1612_virus_2797.jpeg,Viral Pneumonia,Viral Pneumonia,0.7039,0.0010,0.2951,0.7039
+test\PNEUMONIA\person1612_virus_2798.jpeg,Viral Pneumonia,Viral Pneumonia,0.8849,0.0020,0.1131,0.8849
+test\PNEUMONIA\person1613_virus_2799.jpeg,Viral Pneumonia,Viral Pneumonia,0.9688,0.0001,0.0312,0.9688
+test\PNEUMONIA\person1614_virus_2800.jpeg,Viral Pneumonia,Viral Pneumonia,0.7951,0.0022,0.2027,0.7951
+test\PNEUMONIA\person1615_virus_2801.jpeg,Viral Pneumonia,Viral Pneumonia,0.5526,0.0007,0.4466,0.5526
+test\PNEUMONIA\person1616_virus_2802.jpeg,Viral Pneumonia,Viral Pneumonia,0.7656,0.0005,0.2339,0.7656
+test\PNEUMONIA\person1618_virus_2805.jpeg,Viral Pneumonia,Viral Pneumonia,0.6499,0.0003,0.3498,0.6499
+test\PNEUMONIA\person1619_virus_2806.jpeg,Viral Pneumonia,Viral Pneumonia,0.9323,0.0006,0.0671,0.9323
+test\PNEUMONIA\person161_bacteria_757.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.6417,0.0002,0.6417,0.3581
+test\PNEUMONIA\person161_bacteria_759.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8114,0.0009,0.8114,0.1878
+test\PNEUMONIA\person161_bacteria_762.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.5467,0.3318,0.5467,0.1215
+test\PNEUMONIA\person1620_virus_2807.jpeg,Viral Pneumonia,Viral Pneumonia,0.7264,0.0039,0.2697,0.7264
+test\PNEUMONIA\person1622_virus_2810.jpeg,Viral Pneumonia,Viral Pneumonia,0.7532,0.0028,0.2440,0.7532
+test\PNEUMONIA\person1623_virus_2813.jpeg,Viral Pneumonia,Viral Pneumonia,0.8840,0.0099,0.1061,0.8840
+test\PNEUMONIA\person1625_virus_2817.jpeg,Viral Pneumonia,Viral Pneumonia,0.9141,0.0007,0.0852,0.9141
+test\PNEUMONIA\person1626_virus_2818.jpeg,Viral Pneumonia,Viral Pneumonia,0.9218,0.0003,0.0779,0.9218
+test\PNEUMONIA\person1627_virus_2819.jpeg,Viral Pneumonia,Viral Pneumonia,0.5594,0.0000,0.4406,0.5594
+test\PNEUMONIA\person1628_virus_2821.jpeg,Viral Pneumonia,Viral Pneumonia,0.8435,0.0011,0.1553,0.8435
+test\PNEUMONIA\person1628_virus_2822.jpeg,Viral Pneumonia,Viral Pneumonia,0.8783,0.0002,0.1215,0.8783
+test\PNEUMONIA\person1629_virus_2823.jpeg,Viral Pneumonia,Viral Pneumonia,0.6791,0.0001,0.3208,0.6791
+test\PNEUMONIA\person1631_virus_2826.jpeg,Viral Pneumonia,Viral Pneumonia,0.7665,0.0016,0.2319,0.7665
+test\PNEUMONIA\person1632_virus_2827.jpeg,Viral Pneumonia,Bacterial Pneumonia,0.6539,0.0007,0.6539,0.3455
+test\PNEUMONIA\person1633_virus_2829.jpeg,Viral Pneumonia,Viral Pneumonia,0.8110,0.0009,0.1880,0.8110
+test\PNEUMONIA\person1634_virus_2830.jpeg,Viral Pneumonia,Viral Pneumonia,0.7676,0.0283,0.2041,0.7676
+test\PNEUMONIA\person1635_virus_2831.jpeg,Viral Pneumonia,Bacterial Pneumonia,0.5486,0.0100,0.5486,0.4414
+test\PNEUMONIA\person1637_virus_2834.jpeg,Viral Pneumonia,Viral Pneumonia,0.7487,0.0006,0.2507,0.7487
+test\PNEUMONIA\person1640_virus_2839.jpeg,Viral Pneumonia,Viral Pneumonia,0.8957,0.0003,0.1040,0.8957
+test\PNEUMONIA\person1641_virus_2840.jpeg,Viral Pneumonia,Viral Pneumonia,0.8805,0.0018,0.1177,0.8805
+test\PNEUMONIA\person1642_virus_2842.jpeg,Viral Pneumonia,Viral Pneumonia,0.8260,0.0029,0.1710,0.8260
+test\PNEUMONIA\person1643_virus_2843.jpeg,Viral Pneumonia,Viral Pneumonia,0.8387,0.0068,0.1545,0.8387
+test\PNEUMONIA\person1644_virus_2844.jpeg,Viral Pneumonia,Viral Pneumonia,0.6998,0.1818,0.1184,0.6998
+test\PNEUMONIA\person1645_virus_2845.jpeg,Viral Pneumonia,Viral Pneumonia,0.5639,0.0048,0.4313,0.5639
+test\PNEUMONIA\person1647_virus_2848.jpeg,Viral Pneumonia,Viral Pneumonia,0.7897,0.0066,0.2037,0.7897
+test\PNEUMONIA\person1649_virus_2850.jpeg,Viral Pneumonia,Viral Pneumonia,0.8748,0.0039,0.1213,0.8748
+test\PNEUMONIA\person1650_virus_2852.jpeg,Viral Pneumonia,Viral Pneumonia,0.6809,0.0018,0.3172,0.6809
+test\PNEUMONIA\person1650_virus_2854.jpeg,Viral Pneumonia,Bacterial Pneumonia,0.5990,0.0016,0.5990,0.3993
+test\PNEUMONIA\person1651_virus_2855.jpeg,Viral Pneumonia,Viral Pneumonia,0.6466,0.0016,0.3518,0.6466
+test\PNEUMONIA\person1653_virus_2858.jpeg,Viral Pneumonia,Viral Pneumonia,0.7616,0.0002,0.2382,0.7616
+test\PNEUMONIA\person1653_virus_2859.jpeg,Viral Pneumonia,Viral Pneumonia,0.8900,0.0075,0.1026,0.8900
+test\PNEUMONIA\person1655_virus_2861.jpeg,Viral Pneumonia,Viral Pneumonia,0.9196,0.0010,0.0794,0.9196
+test\PNEUMONIA\person1656_virus_2862.jpeg,Viral Pneumonia,Viral Pneumonia,0.8806,0.0008,0.1186,0.8806
+test\PNEUMONIA\person1657_virus_2864.jpeg,Viral Pneumonia,Viral Pneumonia,0.6052,0.1905,0.2044,0.6052
+test\PNEUMONIA\person1659_virus_2867.jpeg,Viral Pneumonia,Viral Pneumonia,0.8165,0.0011,0.1823,0.8165
+test\PNEUMONIA\person1660_virus_2869.jpeg,Viral Pneumonia,Viral Pneumonia,0.7243,0.0003,0.2754,0.7243
+test\PNEUMONIA\person1661_virus_2872.jpeg,Viral Pneumonia,Viral Pneumonia,0.5796,0.0003,0.4202,0.5796
+test\PNEUMONIA\person1661_virus_2873.jpeg,Viral Pneumonia,Viral Pneumonia,0.5796,0.0003,0.4202,0.5796
+test\PNEUMONIA\person1662_virus_2875.jpeg,Viral Pneumonia,Viral Pneumonia,0.9178,0.0001,0.0821,0.9178
+test\PNEUMONIA\person1663_virus_2876.jpeg,Viral Pneumonia,Viral Pneumonia,0.7357,0.0023,0.2620,0.7357
+test\PNEUMONIA\person1664_virus_2877.jpeg,Viral Pneumonia,Viral Pneumonia,0.8284,0.0027,0.1690,0.8284
+test\PNEUMONIA\person1665_virus_2878.jpeg,Viral Pneumonia,Viral Pneumonia,0.9479,0.0004,0.0517,0.9479
+test\PNEUMONIA\person1667_virus_2881.jpeg,Viral Pneumonia,Viral Pneumonia,0.8030,0.0063,0.1907,0.8030
+test\PNEUMONIA\person1668_virus_2882.jpeg,Viral Pneumonia,Viral Pneumonia,0.9238,0.0019,0.0742,0.9238
+test\PNEUMONIA\person1669_virus_2884.jpeg,Viral Pneumonia,Viral Pneumonia,0.9694,0.0000,0.0306,0.9694
+test\PNEUMONIA\person1669_virus_2885.jpeg,Viral Pneumonia,Viral Pneumonia,0.9469,0.0000,0.0531,0.9469
+test\PNEUMONIA\person1670_virus_2886.jpeg,Viral Pneumonia,Viral Pneumonia,0.7475,0.0003,0.2522,0.7475
+test\PNEUMONIA\person1671_virus_2887.jpeg,Viral Pneumonia,Viral Pneumonia,0.8815,0.0026,0.1160,0.8815
+test\PNEUMONIA\person1672_virus_2888.jpeg,Viral Pneumonia,Viral Pneumonia,0.9146,0.0029,0.0825,0.9146
+test\PNEUMONIA\person1673_virus_2889.jpeg,Viral Pneumonia,Viral Pneumonia,0.8023,0.0007,0.1971,0.8023
+test\PNEUMONIA\person1674_virus_2890.jpeg,Viral Pneumonia,Bacterial Pneumonia,0.4403,0.1204,0.4403,0.4393
+test\PNEUMONIA\person1675_virus_2891.jpeg,Viral Pneumonia,Viral Pneumonia,0.5625,0.1007,0.3368,0.5625
+test\PNEUMONIA\person1676_virus_2892.jpeg,Viral Pneumonia,Viral Pneumonia,0.9059,0.0006,0.0934,0.9059
+test\PNEUMONIA\person1678_virus_2895.jpeg,Viral Pneumonia,Viral Pneumonia,0.9136,0.0011,0.0853,0.9136
+test\PNEUMONIA\person1679_virus_2896.jpeg,Viral Pneumonia,Viral Pneumonia,0.8012,0.0006,0.1981,0.8012
+test\PNEUMONIA\person1680_virus_2897.jpeg,Viral Pneumonia,Viral Pneumonia,0.8883,0.0042,0.1076,0.8883
+test\PNEUMONIA\person1682_virus_2899.jpeg,Viral Pneumonia,Bacterial Pneumonia,0.6521,0.0189,0.6521,0.3290
+test\PNEUMONIA\person1685_virus_2903.jpeg,Viral Pneumonia,Viral Pneumonia,0.4889,0.2130,0.2982,0.4889
+test\PNEUMONIA\person16_virus_47.jpeg,Viral Pneumonia,Viral Pneumonia,0.4756,0.0730,0.4514,0.4756
+test\PNEUMONIA\person171_bacteria_826.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.6612,0.0014,0.6612,0.3374
+test\PNEUMONIA\person172_bacteria_827.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.5091,0.0004,0.5091,0.4905
+test\PNEUMONIA\person172_bacteria_828.jpeg,Bacterial Pneumonia,Viral Pneumonia,0.5842,0.0335,0.3823,0.5842
+test\PNEUMONIA\person173_bacteria_829.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8678,0.0014,0.8678,0.1308
+test\PNEUMONIA\person173_bacteria_830.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8756,0.0002,0.8756,0.1243
+test\PNEUMONIA\person173_bacteria_831.jpeg,Bacterial Pneumonia,Viral Pneumonia,0.4248,0.2263,0.3489,0.4248
+test\PNEUMONIA\person174_bacteria_832.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8358,0.0015,0.8358,0.1627
+test\PNEUMONIA\person175_bacteria_833.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8017,0.0015,0.8017,0.1968
+test\PNEUMONIA\person175_bacteria_834.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8201,0.0019,0.8201,0.1780
+test\PNEUMONIA\person175_bacteria_835.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8399,0.0001,0.8399,0.1601
+test\PNEUMONIA\person17_virus_48.jpeg,Viral Pneumonia,Viral Pneumonia,0.7682,0.0044,0.2274,0.7682
+test\PNEUMONIA\person18_virus_49.jpeg,Viral Pneumonia,Bacterial Pneumonia,0.9680,0.0015,0.9680,0.0304
+test\PNEUMONIA\person19_virus_50.jpeg,Viral Pneumonia,Bacterial Pneumonia,0.6530,0.0047,0.6530,0.3423
+test\PNEUMONIA\person1_virus_11.jpeg,Viral Pneumonia,Bacterial Pneumonia,0.6979,0.0003,0.6979,0.3018
+test\PNEUMONIA\person1_virus_12.jpeg,Viral Pneumonia,Bacterial Pneumonia,0.8551,0.0008,0.8551,0.1442
+test\PNEUMONIA\person1_virus_13.jpeg,Viral Pneumonia,Bacterial Pneumonia,0.8957,0.0008,0.8957,0.1035
+test\PNEUMONIA\person1_virus_6.jpeg,Viral Pneumonia,Bacterial Pneumonia,0.7381,0.0020,0.7381,0.2599
+test\PNEUMONIA\person1_virus_7.jpeg,Viral Pneumonia,Bacterial Pneumonia,0.8104,0.0004,0.8104,0.1893
+test\PNEUMONIA\person1_virus_8.jpeg,Viral Pneumonia,Bacterial Pneumonia,0.9353,0.0000,0.9353,0.0647
+test\PNEUMONIA\person1_virus_9.jpeg,Viral Pneumonia,Bacterial Pneumonia,0.6183,0.0004,0.6183,0.3812
+test\PNEUMONIA\person20_virus_51.jpeg,Viral Pneumonia,Viral Pneumonia,0.7783,0.0262,0.1955,0.7783
+test\PNEUMONIA\person21_virus_52.jpeg,Viral Pneumonia,Viral Pneumonia,0.8802,0.0038,0.1160,0.8802
+test\PNEUMONIA\person21_virus_53.jpeg,Viral Pneumonia,Viral Pneumonia,0.7675,0.1655,0.0670,0.7675
+test\PNEUMONIA\person22_virus_54.jpeg,Viral Pneumonia,Viral Pneumonia,0.9350,0.0004,0.0646,0.9350
+test\PNEUMONIA\person22_virus_55.jpeg,Viral Pneumonia,Viral Pneumonia,0.9711,0.0009,0.0280,0.9711
+test\PNEUMONIA\person23_virus_56.jpeg,Viral Pneumonia,Viral Pneumonia,0.8934,0.0005,0.1061,0.8934
+test\PNEUMONIA\person24_virus_58.jpeg,Viral Pneumonia,Viral Pneumonia,0.7902,0.0009,0.2090,0.7902
+test\PNEUMONIA\person25_virus_59.jpeg,Viral Pneumonia,Viral Pneumonia,0.7848,0.0062,0.2091,0.7848
+test\PNEUMONIA\person26_virus_60.jpeg,Viral Pneumonia,Viral Pneumonia,0.7448,0.0001,0.2551,0.7448
+test\PNEUMONIA\person28_virus_62.jpeg,Viral Pneumonia,Viral Pneumonia,0.8982,0.0285,0.0734,0.8982
+test\PNEUMONIA\person28_virus_63.jpeg,Viral Pneumonia,Viral Pneumonia,0.9350,0.0043,0.0607,0.9350
+test\PNEUMONIA\person29_virus_64.jpeg,Viral Pneumonia,Viral Pneumonia,0.6380,0.0055,0.3565,0.6380
+test\PNEUMONIA\person30_virus_69.jpeg,Viral Pneumonia,Bacterial Pneumonia,0.6540,0.0032,0.6540,0.3428
+test\PNEUMONIA\person31_virus_70.jpeg,Viral Pneumonia,Viral Pneumonia,0.7737,0.0018,0.2245,0.7737
+test\PNEUMONIA\person32_virus_71.jpeg,Viral Pneumonia,Viral Pneumonia,0.8277,0.0236,0.1487,0.8277
+test\PNEUMONIA\person33_virus_72.jpeg,Viral Pneumonia,Viral Pneumonia,0.8235,0.0002,0.1763,0.8235
+test\PNEUMONIA\person34_virus_76.jpeg,Viral Pneumonia,Bacterial Pneumonia,0.7632,0.0175,0.7632,0.2193
+test\PNEUMONIA\person35_virus_80.jpeg,Viral Pneumonia,Viral Pneumonia,0.8958,0.0605,0.0437,0.8958
+test\PNEUMONIA\person36_virus_81.jpeg,Viral Pneumonia,Viral Pneumonia,0.7891,0.0051,0.2058,0.7891
+test\PNEUMONIA\person37_virus_82.jpeg,Viral Pneumonia,Viral Pneumonia,0.6751,0.0005,0.3243,0.6751
+test\PNEUMONIA\person38_virus_83.jpeg,Viral Pneumonia,Viral Pneumonia,0.7588,0.0057,0.2355,0.7588
+test\PNEUMONIA\person38_virus_84.jpeg,Viral Pneumonia,Viral Pneumonia,0.8473,0.0032,0.1495,0.8473
+test\PNEUMONIA\person39_virus_85.jpeg,Viral Pneumonia,Viral Pneumonia,0.9487,0.0001,0.0512,0.9487
+test\PNEUMONIA\person3_virus_15.jpeg,Viral Pneumonia,Bacterial Pneumonia,0.5414,0.0063,0.5414,0.4523
+test\PNEUMONIA\person3_virus_16.jpeg,Viral Pneumonia,Viral Pneumonia,0.5137,0.0006,0.4857,0.5137
+test\PNEUMONIA\person3_virus_17.jpeg,Viral Pneumonia,Bacterial Pneumonia,0.5242,0.0430,0.5242,0.4328
+test\PNEUMONIA\person40_virus_87.jpeg,Viral Pneumonia,Viral Pneumonia,0.6871,0.0058,0.3071,0.6871
+test\PNEUMONIA\person41_virus_88.jpeg,Viral Pneumonia,Viral Pneumonia,0.8268,0.0049,0.1683,0.8268
+test\PNEUMONIA\person42_virus_89.jpeg,Viral Pneumonia,Viral Pneumonia,0.7971,0.0024,0.2006,0.7971
+test\PNEUMONIA\person43_virus_92.jpeg,Viral Pneumonia,Viral Pneumonia,0.6524,0.0004,0.3472,0.6524
+test\PNEUMONIA\person44_virus_93.jpeg,Viral Pneumonia,Viral Pneumonia,0.9316,0.0080,0.0604,0.9316
+test\PNEUMONIA\person44_virus_94.jpeg,Viral Pneumonia,Viral Pneumonia,0.8780,0.0185,0.1035,0.8780
+test\PNEUMONIA\person45_virus_95.jpeg,Viral Pneumonia,Viral Pneumonia,0.9216,0.0027,0.0756,0.9216
+test\PNEUMONIA\person46_virus_96.jpeg,Viral Pneumonia,Viral Pneumonia,0.6222,0.0409,0.3369,0.6222
+test\PNEUMONIA\person47_virus_99.jpeg,Viral Pneumonia,Viral Pneumonia,0.6183,0.0069,0.3748,0.6183
+test\PNEUMONIA\person48_virus_100.jpeg,Viral Pneumonia,Viral Pneumonia,0.7989,0.0661,0.1350,0.7989
+test\PNEUMONIA\person49_virus_101.jpeg,Viral Pneumonia,Viral Pneumonia,0.6107,0.2677,0.1216,0.6107
+test\PNEUMONIA\person50_virus_102.jpeg,Viral Pneumonia,Viral Pneumonia,0.8269,0.0021,0.1711,0.8269
+test\PNEUMONIA\person51_virus_105.jpeg,Viral Pneumonia,Viral Pneumonia,0.6952,0.0003,0.3046,0.6952
+test\PNEUMONIA\person52_virus_106.jpeg,Viral Pneumonia,Viral Pneumonia,0.9098,0.0061,0.0841,0.9098
+test\PNEUMONIA\person53_virus_107.jpeg,Viral Pneumonia,Viral Pneumonia,0.7633,0.0003,0.2364,0.7633
+test\PNEUMONIA\person53_virus_108.jpeg,Viral Pneumonia,Viral Pneumonia,0.8853,0.0000,0.1147,0.8853
+test\PNEUMONIA\person54_virus_109.jpeg,Viral Pneumonia,Viral Pneumonia,0.7888,0.0083,0.2030,0.7888
+test\PNEUMONIA\person55_virus_110.jpeg,Viral Pneumonia,Viral Pneumonia,0.9071,0.0014,0.0915,0.9071
+test\PNEUMONIA\person56_virus_112.jpeg,Viral Pneumonia,Viral Pneumonia,0.7947,0.0003,0.2050,0.7947
+test\PNEUMONIA\person57_virus_113.jpeg,Viral Pneumonia,Viral Pneumonia,0.7704,0.0073,0.2223,0.7704
+test\PNEUMONIA\person59_virus_116.jpeg,Viral Pneumonia,Viral Pneumonia,0.8083,0.0056,0.1861,0.8083
+test\PNEUMONIA\person60_virus_117.jpeg,Viral Pneumonia,Viral Pneumonia,0.7675,0.0337,0.1988,0.7675
+test\PNEUMONIA\person61_virus_118.jpeg,Viral Pneumonia,Viral Pneumonia,0.5880,0.0002,0.4118,0.5880
+test\PNEUMONIA\person62_virus_119.jpeg,Viral Pneumonia,Viral Pneumonia,0.8904,0.0006,0.1091,0.8904
+test\PNEUMONIA\person63_virus_121.jpeg,Viral Pneumonia,Viral Pneumonia,0.9212,0.0097,0.0691,0.9212
+test\PNEUMONIA\person64_virus_122.jpeg,Viral Pneumonia,Viral Pneumonia,0.8839,0.0002,0.1159,0.8839
+test\PNEUMONIA\person65_virus_123.jpeg,Viral Pneumonia,Viral Pneumonia,0.9195,0.0020,0.0784,0.9195
+test\PNEUMONIA\person66_virus_125.jpeg,Viral Pneumonia,Viral Pneumonia,0.9788,0.0014,0.0197,0.9788
+test\PNEUMONIA\person67_virus_126.jpeg,Viral Pneumonia,Viral Pneumonia,0.8775,0.0013,0.1212,0.8775
+test\PNEUMONIA\person69_virus_129.jpeg,Viral Pneumonia,Viral Pneumonia,0.7608,0.0002,0.2391,0.7608
+test\PNEUMONIA\person70_virus_130.jpeg,Viral Pneumonia,Viral Pneumonia,0.9057,0.0003,0.0940,0.9057
+test\PNEUMONIA\person71_virus_131.jpeg,Viral Pneumonia,Viral Pneumonia,0.8604,0.0022,0.1374,0.8604
+test\PNEUMONIA\person71_virus_132.jpeg,Viral Pneumonia,Viral Pneumonia,0.9082,0.0007,0.0912,0.9082
+test\PNEUMONIA\person72_virus_133.jpeg,Viral Pneumonia,Viral Pneumonia,0.7374,0.0007,0.2619,0.7374
+test\PNEUMONIA\person74_virus_135.jpeg,Viral Pneumonia,Viral Pneumonia,0.7221,0.0009,0.2771,0.7221
+test\PNEUMONIA\person75_virus_136.jpeg,Viral Pneumonia,Viral Pneumonia,0.8011,0.0005,0.1984,0.8011
+test\PNEUMONIA\person76_virus_138.jpeg,Viral Pneumonia,Viral Pneumonia,0.7573,0.0071,0.2356,0.7573
+test\PNEUMONIA\person77_virus_139.jpeg,Viral Pneumonia,Viral Pneumonia,0.8314,0.0071,0.1615,0.8314
+test\PNEUMONIA\person78_bacteria_378.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.6058,0.0023,0.6058,0.3919
+test\PNEUMONIA\person78_bacteria_380.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8425,0.0002,0.8425,0.1573
+test\PNEUMONIA\person78_bacteria_381.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7222,0.0080,0.7222,0.2698
+test\PNEUMONIA\person78_bacteria_382.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9407,0.0032,0.9407,0.0561
+test\PNEUMONIA\person78_bacteria_384.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8503,0.0005,0.8503,0.1492
+test\PNEUMONIA\person78_bacteria_385.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9566,0.0181,0.9566,0.0253
+test\PNEUMONIA\person78_bacteria_386.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8000,0.0003,0.8000,0.1997
+test\PNEUMONIA\person78_bacteria_387.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9075,0.0275,0.9075,0.0650
+test\PNEUMONIA\person78_virus_140.jpeg,Viral Pneumonia,Viral Pneumonia,0.6527,0.1268,0.2205,0.6527
+test\PNEUMONIA\person79_virus_148.jpeg,Viral Pneumonia,Viral Pneumonia,0.9096,0.0726,0.0178,0.9096
+test\PNEUMONIA\person80_bacteria_389.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.6066,0.0007,0.6066,0.3927
+test\PNEUMONIA\person80_bacteria_390.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9401,0.0001,0.9401,0.0598
+test\PNEUMONIA\person80_bacteria_391.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8618,0.0005,0.8618,0.1377
+test\PNEUMONIA\person80_bacteria_392.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9804,0.0003,0.9804,0.0192
+test\PNEUMONIA\person80_bacteria_393.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9382,0.0099,0.9382,0.0519
+test\PNEUMONIA\person81_bacteria_395.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8742,0.0009,0.8742,0.1249
+test\PNEUMONIA\person81_bacteria_396.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9154,0.0007,0.9154,0.0839
+test\PNEUMONIA\person81_bacteria_397.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7189,0.0000,0.7189,0.2811
+test\PNEUMONIA\person81_bacteria_398.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8954,0.0014,0.8954,0.1032
+test\PNEUMONIA\person82_bacteria_402.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9213,0.0006,0.9213,0.0781
+test\PNEUMONIA\person82_bacteria_403.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.6790,0.0001,0.6790,0.3209
+test\PNEUMONIA\person82_bacteria_404.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8959,0.0001,0.8959,0.1040
+test\PNEUMONIA\person82_bacteria_405.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9630,0.0011,0.9630,0.0358
+test\PNEUMONIA\person83_bacteria_407.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9365,0.0243,0.9365,0.0392
+test\PNEUMONIA\person83_bacteria_409.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9586,0.0007,0.9586,0.0407
+test\PNEUMONIA\person83_bacteria_410.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8770,0.0004,0.8770,0.1226
+test\PNEUMONIA\person83_bacteria_411.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8434,0.0544,0.8434,0.1022
+test\PNEUMONIA\person83_bacteria_412.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8780,0.0001,0.8780,0.1219
+test\PNEUMONIA\person83_bacteria_414.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9846,0.0001,0.9846,0.0153
+test\PNEUMONIA\person85_bacteria_417.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9675,0.0015,0.9675,0.0310
+test\PNEUMONIA\person85_bacteria_419.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8492,0.0446,0.8492,0.1062
+test\PNEUMONIA\person85_bacteria_421.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8838,0.0019,0.8838,0.1143
+test\PNEUMONIA\person85_bacteria_422.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8512,0.0006,0.8512,0.1482
+test\PNEUMONIA\person85_bacteria_423.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7896,0.0006,0.7896,0.2098
+test\PNEUMONIA\person85_bacteria_424.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9026,0.0122,0.9026,0.0853
+test\PNEUMONIA\person86_bacteria_428.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7237,0.0223,0.7237,0.2539
+test\PNEUMONIA\person86_bacteria_429.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8333,0.0012,0.8333,0.1655
+test\PNEUMONIA\person87_bacteria_433.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8515,0.0011,0.8515,0.1474
+test\PNEUMONIA\person87_bacteria_434.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9085,0.0015,0.9085,0.0900
+test\PNEUMONIA\person88_bacteria_437.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7995,0.0055,0.7995,0.1950
+test\PNEUMONIA\person88_bacteria_438.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7817,0.0004,0.7817,0.2179
+test\PNEUMONIA\person88_bacteria_439.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.3561,0.3186,0.3561,0.3253
+test\PNEUMONIA\person89_bacteria_440.jpeg,Bacterial Pneumonia,Viral Pneumonia,0.6551,0.0054,0.3395,0.6551
+test\PNEUMONIA\person8_virus_27.jpeg,Viral Pneumonia,Viral Pneumonia,0.4870,0.0698,0.4432,0.4870
+test\PNEUMONIA\person8_virus_28.jpeg,Viral Pneumonia,Bacterial Pneumonia,0.7781,0.0019,0.7781,0.2200
+test\PNEUMONIA\person90_bacteria_442.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8539,0.0003,0.8539,0.1457
+test\PNEUMONIA\person90_bacteria_443.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7618,0.0003,0.7618,0.2379
+test\PNEUMONIA\person91_bacteria_445.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9899,0.0007,0.9899,0.0094
+test\PNEUMONIA\person91_bacteria_446.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9289,0.0004,0.9289,0.0707
+test\PNEUMONIA\person91_bacteria_447.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9811,0.0001,0.9811,0.0188
+test\PNEUMONIA\person91_bacteria_448.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9687,0.0005,0.9687,0.0308
+test\PNEUMONIA\person91_bacteria_449.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9677,0.0008,0.9677,0.0315
+test\PNEUMONIA\person92_bacteria_450.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9506,0.0007,0.9506,0.0487
+test\PNEUMONIA\person92_bacteria_451.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8990,0.0001,0.8990,0.1010
+test\PNEUMONIA\person93_bacteria_453.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.6802,0.0101,0.6802,0.3097
+test\PNEUMONIA\person93_bacteria_454.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7599,0.0031,0.7599,0.2371
+test\PNEUMONIA\person94_bacteria_456.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9230,0.0003,0.9230,0.0767
+test\PNEUMONIA\person94_bacteria_457.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9836,0.0001,0.9836,0.0164
+test\PNEUMONIA\person94_bacteria_458.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8054,0.0001,0.8054,0.1945
+test\PNEUMONIA\person95_bacteria_463.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9529,0.0006,0.9529,0.0465
+test\PNEUMONIA\person96_bacteria_464.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8743,0.0005,0.8743,0.1252
+test\PNEUMONIA\person96_bacteria_465.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.9343,0.0028,0.9343,0.0628
+test\PNEUMONIA\person96_bacteria_466.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8266,0.0014,0.8266,0.1721
+test\PNEUMONIA\person97_bacteria_468.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7946,0.0049,0.7946,0.2005
+test\PNEUMONIA\person99_bacteria_473.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.7251,0.0060,0.7251,0.2689
+test\PNEUMONIA\person99_bacteria_474.jpeg,Bacterial Pneumonia,Bacterial Pneumonia,0.8815,0.0259,0.8815,0.0926

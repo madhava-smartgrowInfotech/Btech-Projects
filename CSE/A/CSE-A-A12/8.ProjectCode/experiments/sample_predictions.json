@@ -1,0 +1,50 @@
+[
+  {
+    "file": "normal_pa.jpg",
+    "caption": "Normal PA chest radiograph",
+    "prediction": "Normal",
+    "confidence": 0.9635691046714783,
+    "probabilities": {
+      "Normal": 0.9635691046714783,
+      "Bacterial Pneumonia": 0.023911423981189728,
+      "Viral Pneumonia": 0.012519490905106068
+    },
+    "ms": 508.90730001265183
+  },
+  {
+    "file": "lobar_pneumonia.jpg",
+    "caption": "X-ray of lobar pneumonia",
+    "prediction": "Bacterial Pneumonia",
+    "confidence": 0.5308283567428589,
+    "probabilities": {
+      "Normal": 0.003665087977424264,
+      "Bacterial Pneumonia": 0.5308283567428589,
+      "Viral Pneumonia": 0.46550652384757996
+    },
+    "ms": 351.37839999515563
+  },
+  {
+    "file": "influenza_pa.jpg",
+    "caption": "Chest radiograph in influenza",
+    "prediction": "Bacterial Pneumonia",
+    "confidence": 0.6363559365272522,
+    "probabilities": {
+      "Normal": 0.0003461014712229371,
+      "Bacterial Pneumonia": 0.6363559365272522,
+      "Viral Pneumonia": 0.3632979989051819
+    },
+    "ms": 657.4695000308566
+  },
+  {
+    "file": "bocavirus_pneumonia.jpg",
+    "caption": "Human bocavirus 1 pneumonia",
+    "prediction": "Bacterial Pneumonia",
+    "confidence": 0.8674161434173584,
+    "probabilities": {
+      "Normal": 0.0216114092618227,
+      "Bacterial Pneumonia": 0.8674161434173584,
+      "Viral Pneumonia": 0.11097246408462524
+    },
+    "ms": 343.3079999522306
+  }
+]

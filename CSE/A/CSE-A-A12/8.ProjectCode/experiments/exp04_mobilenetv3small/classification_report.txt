@@ -1,0 +1,9 @@
+                     precision    recall  f1-score   support
+
+             Normal     1.0000    0.2521    0.4027       234
+Bacterial Pneumonia     0.8789    0.8099    0.8430       242
+    Viral Pneumonia     0.3830    0.8851    0.5347       148
+
+           accuracy                         0.6186       624
+          macro avg     0.7540    0.6491    0.5935       624
+       weighted avg     0.8067    0.6186    0.6048       624

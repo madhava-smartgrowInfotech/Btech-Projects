@@ -1,0 +1,228 @@
+{
+  "name": "exp02_custom_cnn_tuned",
+  "backbone": "custom",
+  "preprocessing": "resize 224 + CLAHE(clip 2.5, 8x8) + Gaussian 3x3 + /255",
+  "class_weights": {
+    "0": 1.2850877192982457,
+    "1": 0.6939017169923032,
+    "2": 1.2808743169398906
+  },
+  "hyperparameters": {
+    "epochs_max": 40,
+    "batch_size": 32,
+    "learning_rate": 0.0003,
+    "optimizer": "Adam",
+    "loss": "categorical_crossentropy",
+    "seed": 42,
+    "early_stopping_patience": 10,
+    "reduce_lr_patience": 3
+  },
+  "dataset": {
+    "source": "Kermany et al., Mendeley Data v3 (Chest X-Ray Images (Pneumonia)), CC BY 4.0",
+    "protocol": "official",
+    "train": 4688,
+    "validation": 544,
+    "test": 624,
+    "train_by_class": [
+      1216,
+      2252,
+      1220
+    ],
+    "validation_by_class": [
+      133,
+      286,
+      125
+    ],
+    "test_by_class": [
+      234,
+      242,
+      148
+    ],
+    "train_patients": 2635,
+    "validation_patients": 293,
+    "test_patients": 431,
+    "test_images_sharing_patient_id_with_training": 281
+  },
+  "training": {
+    "epochs_run": 21,
+    "stage1_frozen_head_epochs": 0,
+    "best_epoch": 11,
+    "seconds_total": 4486.6,
+    "seconds_per_epoch": 213.6,
+    "final_train_accuracy": 0.7719709873199463,
+    "best_val_accuracy_at_best_epoch": 0.8051470518112183,
+    "val_accuracy_restored_model": 0.8051470588235294,
+    "parameters": 590019
+  },
+  "test": {
+    "n": 624,
+    "accuracy": 0.7948717948717948,
+    "macro_precision": 0.8027806326367477,
+    "macro_recall": 0.7941299532208622,
+    "macro_f1": 0.7797921635857682,
+    "weighted_f1": 0.7933534621404982,
+    "per_class": {
+      "Normal": {
+        "precision": 0.9666666666666667,
+        "recall": 0.6196581196581197,
+        "f1": 0.7552083333333334,
+        "support": 234
+      },
+      "Bacterial Pneumonia": {
+        "precision": 0.8345323741007195,
+        "recall": 0.9586776859504132,
+        "f1": 0.8923076923076924,
+        "support": 242
+      },
+      "Viral Pneumonia": {
+        "precision": 0.6071428571428571,
+        "recall": 0.8040540540540541,
+        "f1": 0.6918604651162791,
+        "support": 148
+      }
+    },
+    "confusion_matrix": [
+      [
+        145,
+        17,
+        72
+      ],
+      [
+        5,
+        232,
+        5
+      ],
+      [
+        0,
+        29,
+        119
+      ]
+    ],
+    "class_order": [
+      "Normal",
+      "Bacterial Pneumonia",
+      "Viral Pneumonia"
+    ],
+    "auc_ovr_macro": 0.9334325412286743,
+    "binary_normal_vs_pneumonia": {
+      "tp": 385,
+      "tn": 145,
+      "fp": 89,
+      "fn": 5,
+      "accuracy": 0.8493589743589743,
+      "sensitivity": 0.9871794871794872,
+      "specificity": 0.6196581196581197,
+      "precision": 0.8122362869198312,
+      "f1": 0.8912037037037036,
+      "auc": 0.941770764847688
+    },
+    "expected_calibration_error": 0.032990710666546484,
+    "mean_confidence": 0.7773565649986267,
+    "confidence_threshold_analysis": [
+      {
+        "threshold": 0.0,
+        "coverage": 1.0,
+        "accuracy_on_kept": 0.7948717948717948,
+        "kept": 624
+      },
+      {
+        "threshold": 0.5,
+        "coverage": 0.9375,
+        "accuracy_on_kept": 0.8205128205128205,
+        "kept": 585
+      },
+      {
+        "threshold": 0.6,
+        "coverage": 0.8333333333333334,
+        "accuracy_on_kept": 0.8596153846153847,
+        "kept": 520
+      },
+      {
+        "threshold": 0.7,
+        "coverage": 0.7147435897435898,
+        "accuracy_on_kept": 0.8946188340807175,
+        "kept": 446
+      },
+      {
+        "threshold": 0.8,
+        "coverage": 0.532051282051282,
+        "accuracy_on_kept": 0.927710843373494,
+        "kept": 332
+      },
+      {
+        "threshold": 0.9,
+        "coverage": 0.23717948717948717,
+        "accuracy_on_kept": 0.9527027027027027,
+        "kept": 148
+      },
+      {
+        "threshold": 0.95,
+        "coverage": 0.10737179487179487,
+        "accuracy_on_kept": 0.9701492537313433,
+        "kept": 67
+      }
+    ],
+    "pneumonia_decision_threshold_sweep": [
+      {
+        "threshold": 0.2,
+        "sensitivity": 0.9974358974358974,
+        "specificity": 0.405982905982906,
+        "accuracy": 0.7756410256410257
+      },
+      {
+        "threshold": 0.3,
+        "sensitivity": 0.9974358974358974,
+        "specificity": 0.47863247863247865,
+        "accuracy": 0.8028846153846154
+      },
+      {
+        "threshold": 0.4,
+        "sensitivity": 0.9948717948717949,
+        "specificity": 0.5384615384615384,
+        "accuracy": 0.8237179487179487
+      },
+      {
+        "threshold": 0.5,
+        "sensitivity": 0.9923076923076923,
+        "specificity": 0.5811965811965812,
+        "accuracy": 0.8381410256410257
+      },
+      {
+        "threshold": 0.6,
+        "sensitivity": 0.9871794871794872,
+        "specificity": 0.6239316239316239,
+        "accuracy": 0.8509615384615384
+      },
+      {
+        "threshold": 0.7,
+        "sensitivity": 0.9743589743589743,
+        "specificity": 0.6709401709401709,
+        "accuracy": 0.8605769230769231
+      },
+      {
+        "threshold": 0.8,
+        "sensitivity": 0.9615384615384616,
+        "specificity": 0.7136752136752137,
+        "accuracy": 0.8685897435897436
+      }
+    ]
+  },
+  "latency_ms_mean_cpu": {
+    "preprocess": 26.793031667087536,
+    "predict": 63.22399833249316,
+    "gradcam_overlay": 109.79492333475112,
+    "gradcam_supported_by_shipped_gradcam_py": true,
+    "total_pipeline": 199.81195333433183,
+    "images_timed": 60,
+    "batch_predict_624_images_seconds": 4.46
+  },
+  "model_file_mb": 7.17,
+  "environment": {
+    "python": "3.11.9",
+    "tensorflow": "2.21.0",
+    "numpy": "1.26.4",
+    "cpu": "Intel64 Family 6 Model 151 Stepping 5, GenuineIntel",
+    "os": "Windows-10-10.0.26200-SP0",
+    "gpu": "none (CPU only)"
+  }
+}

@@ -97,7 +97,10 @@ python app.py
 
 Visit **http://localhost:5000**.
 
-- If no trained model is found yet, the app still runs end-to-end in
+- Trained weights from `scripts/train_experiment.py` (experiment `exp02_custom_cnn_tuned`,
+  79.5% three-class accuracy on the official 624-image test split, see `experiments/`)
+  ship in `saved_models/`.
+- If no trained model is found, the app still runs end-to-end in
   **Demo Mode** (clearly labeled in the UI) using an untrained network,
   so you can verify the full pipeline before training.
 - Once `saved_models/pneumonia_model.h5` exists, it's loaded automatically

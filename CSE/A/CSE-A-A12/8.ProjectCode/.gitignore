@@ -11,3 +11,6 @@ static/uploads/*
 static/heatmaps/*
 !static/uploads/.gitkeep
 !static/heatmaps/.gitkeep
+
+# trained-model checkpoints written by scripts/train_experiment.py (the exported model lives in saved_models/)
+experiments/*/best_model.h5

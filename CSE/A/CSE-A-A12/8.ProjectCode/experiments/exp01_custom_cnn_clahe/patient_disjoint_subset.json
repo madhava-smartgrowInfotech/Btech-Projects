@@ -1,0 +1,133 @@
+{
+  "experiment": "exp01_custom_cnn_clahe",
+  "test_images": 624,
+  "sharing_patient_id_with_training": 320,
+  "patient_disjoint_images": 304,
+  "by_class": {
+    "Normal": {
+      "test": 234,
+      "sharing_patient_id_with_training": 0
+    },
+    "Bacterial Pneumonia": {
+      "test": 242,
+      "sharing_patient_id_with_training": 194
+    },
+    "Viral Pneumonia": {
+      "test": 148,
+      "sharing_patient_id_with_training": 126
+    }
+  },
+  "full_test": {
+    "n": 624,
+    "accuracy": 0.6810897435897436,
+    "confusion_matrix": [
+      [
+        83,
+        56,
+        95
+      ],
+      [
+        3,
+        219,
+        20
+      ],
+      [
+        1,
+        24,
+        123
+      ]
+    ],
+    "support": [
+      234,
+      242,
+      148
+    ],
+    "per_class": {
+      "Normal": {
+        "precision": 0.9540229885057471,
+        "recall": 0.3547008547008547,
+        "f1": 0.5171339563862928,
+        "support": 234
+      },
+      "Bacterial Pneumonia": {
+        "precision": 0.7324414715719063,
+        "recall": 0.9049586776859504,
+        "f1": 0.8096118299445471,
+        "support": 242
+      },
+      "Viral Pneumonia": {
+        "precision": 0.5168067226890757,
+        "recall": 0.831081081081081,
+        "f1": 0.6373056994818653,
+        "support": 148
+      }
+    },
+    "macro_f1_present_classes": 0.654683828604235,
+    "binary_normal_vs_pneumonia": {
+      "tp": 386,
+      "tn": 83,
+      "fp": 151,
+      "fn": 4,
+      "accuracy": 0.7516025641025641,
+      "sensitivity": 0.9897435897435898,
+      "specificity": 0.3547008547008547
+    }
+  },
+  "patient_disjoint_subset": {
+    "n": 304,
+    "accuracy": 0.4901315789473684,
+    "confusion_matrix": [
+      [
+        83,
+        56,
+        95
+      ],
+      [
+        0,
+        46,
+        2
+      ],
+      [
+        0,
+        2,
+        20
+      ]
+    ],
+    "support": [
+      234,
+      48,
+      22
+    ],
+    "per_class": {
+      "Normal": {
+        "precision": 1.0,
+        "recall": 0.3547008547008547,
+        "f1": 0.5236593059936908,
+        "support": 234
+      },
+      "Bacterial Pneumonia": {
+        "precision": 0.4423076923076923,
+        "recall": 0.9583333333333334,
+        "f1": 0.6052631578947368,
+        "support": 48
+      },
+      "Viral Pneumonia": {
+        "precision": 0.17094017094017094,
+        "recall": 0.9090909090909091,
+        "f1": 0.28776978417266186,
+        "support": 22
+      }
+    },
+    "macro_f1_present_classes": 0.4722307493536965,
+    "binary_normal_vs_pneumonia": {
+      "tp": 70,
+      "tn": 83,
+      "fp": 151,
+      "fn": 0,
+      "accuracy": 0.5032894736842105,
+      "sensitivity": 1.0,
+      "specificity": 0.3547008547008547
+    }
+  },
+  "note": "pneumonia ids are patient ids (person123); normal ids are study ids (IM-0115). The normal test images share no id with training."
+}

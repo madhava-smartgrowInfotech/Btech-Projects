@@ -1,0 +1,15 @@
+{
+  "base": "http://127.0.0.1:8312",
+  "requests": 36,
+  "warmup_requests_excluded": 4,
+  "mean_ms": 521.1416749985397,
+  "median_ms": 465.99379999679513,
+  "p95_ms": 895.1346999965608,
+  "max_ms": 1020.4104000004008,
+  "min_ms": 264.578000002075,
+  "history_calls": 30,
+  "history_mean_ms": 8.48157333287721,
+  "record_calls": 30,
+  "record_mean_ms": 6.622746668290347,
+  "model_demo_mode": false
+}

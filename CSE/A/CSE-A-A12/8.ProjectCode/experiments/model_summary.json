@@ -1,0 +1,194 @@
+{
+  "layers": [
+    {
+      "name": "input_layer",
+      "type": "InputLayer",
+      "output_shape": [
+        224,
+        224,
+        3
+      ],
+      "params": 0
+    },
+    {
+      "name": "conv2d",
+      "type": "Conv2D",
+      "output_shape": [
+        224,
+        224,
+        32
+      ],
+      "params": 896
+    },
+    {
+      "name": "batch_normalization",
+      "type": "BatchNormalization",
+      "output_shape": [
+        224,
+        224,
+        32
+      ],
+      "params": 128
+    },
+    {
+      "name": "max_pooling2d",
+      "type": "MaxPooling2D",
+      "output_shape": [
+        112,
+        112,
+        32
+      ],
+      "params": 0
+    },
+    {
+      "name": "conv2d_1",
+      "type": "Conv2D",
+      "output_shape": [
+        112,
+        112,
+        64
+      ],
+      "params": 18496
+    },
+    {
+      "name": "batch_normalization_1",
+      "type": "BatchNormalization",
+      "output_shape": [
+        112,
+        112,
+        64
+      ],
+      "params": 256
+    },
+    {
+      "name": "max_pooling2d_1",
+      "type": "MaxPooling2D",
+      "output_shape": [
+        56,
+        56,
+        64
+      ],
+      "params": 0
+    },
+    {
+      "name": "conv2d_2",
+      "type": "Conv2D",
+      "output_shape": [
+        56,
+        56,
+        128
+      ],
+      "params": 73856
+    },
+    {
+      "name": "batch_normalization_2",
+      "type": "BatchNormalization",
+      "output_shape": [
+        56,
+        56,
+        128
+      ],
+      "params": 512
+    },
+    {
+      "name": "max_pooling2d_2",
+      "type": "MaxPooling2D",
+      "output_shape": [
+        28,
+        28,
+        128
+      ],
+      "params": 0
+    },
+    {
+      "name": "last_conv",
+      "type": "Conv2D",
+      "output_shape": [
+        28,
+        28,
+        256
+      ],
+      "params": 295168
+    },
+    {
+      "name": "batch_normalization_3",
+      "type": "BatchNormalization",
+      "output_shape": [
+        28,
+        28,
+        256
+      ],
+      "params": 1024
+    },
+    {
+      "name": "max_pooling2d_3",
+      "type": "MaxPooling2D",
+      "output_shape": [
+        14,
+        14,
+        256
+      ],
+      "params": 0
+    },
+    {
+      "name": "global_average_pooling2d",
+      "type": "GlobalAveragePooling2D",
+      "output_shape": [
+        256
+      ],
+      "params": 0
+    },
+    {
+      "name": "dense",
+      "type": "Dense",
+      "output_shape": [
+        512
+      ],
+      "params": 131584
+    },
+    {
+      "name": "batch_normalization_4",
+      "type": "BatchNormalization",
+      "output_shape": [
+        512
+      ],
+      "params": 2048
+    },
+    {
+      "name": "dropout",
+      "type": "Dropout",
+      "output_shape": [
+        512
+      ],
+      "params": 0
+    },
+    {
+      "name": "dense_1",
+      "type": "Dense",
+      "output_shape": [
+        128
+      ],
+      "params": 65664
+    },
+    {
+      "name": "dropout_1",
+      "type": "Dropout",
+      "output_shape": [
+        128
+      ],
+      "params": 0
+    },
+    {
+      "name": "dense_2",
+      "type": "Dense",
+      "output_shape": [
+        3
+      ],
+      "params": 387
+    }
+  ],
+  "total_params": 590019,
+  "trainable": 588035,
+  "non_trainable": 1984,
+  "float32_mb": 2.36
+}

@@ -57,7 +57,16 @@ API docs: http://localhost:8312/docs
 
 ## Demo mode and a trained model
 
-No trained weights ship with the repo. Until `saved_models/pneumonia_model.h5` (and `class_indices.json`) exist, the model is an untrained network and every screen shows a **Demo model** badge. Train as described in `README.md` (`python model/train.py --data_dir dataset`), restart the API, and the badge changes to **Trained model**.
+Trained weights ship in `saved_models/` (`pneumonia_model.h5` and `class_indices.json`, the custom CNN from experiment `exp02_custom_cnn_tuned`), so every screen shows the **Trained model** badge. Delete those two files and the app falls back to an untrained network and the **Demo model** badge.
+
+To reproduce the weights, download the Kermany chest X-ray set (CC BY 4.0) and run
+
+```
+python scripts\train_experiment.py --data_root <path to chest_xray> --name exp02_custom_cnn_tuned ^
+    --lr 3e-4 --epochs 40 --patience 10 --reduce_patience 3 --export_model saved_models
+```
+
+then restart the API. Results of every run are in `experiments\<name>\metrics.json`.
 
 ## Tests and tooling
 

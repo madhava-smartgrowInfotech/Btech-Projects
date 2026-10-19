@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-19 11:59",
+  "pytest": {
+    "collected": 73,
+    "passed": 73,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 22.2,
+    "per_file": {
+      "tests/test_api.py": 34,
+      "tests/test_auth_tokens.py": 5,
+      "tests/test_database.py": 7,
+      "tests/test_flask_app.py": 8,
+      "tests/test_model_gradcam.py": 9,
+      "tests/test_preprocess.py": 10
+    },
+    "exit_code": 0
+  },
+  "smoke": {
+    "checks": 25,
+    "passed": 25,
+    "failed": 0,
+    "exit_code": 0
+  },
+  "ui": {
+    "configurations": 6,
+    "passed": true,
+    "seconds": 139,
+    "exit_code": 0,
+    "tail": [
+      "checked 1440px dark",
+      "",
+      "All responsive, theme, keyboard and reduced-motion checks passed."
+    ]
+  }
+}

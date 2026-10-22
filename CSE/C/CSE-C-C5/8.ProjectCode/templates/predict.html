@@ -1,0 +1,26 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Eligibility — SCPS</title><link rel="stylesheet" href="/static/style.css"></head>
+<body><nav><b>🎓 SCPS</b><a href="/">Home</a><a href="/predict">Eligibility</a><a href="/recommend">Recommendations</a><a href="/dashboard">Dashboard</a><a href="/recruiter">Recruiter</a></nav>
+<div class="wrap"><h1>Placement Eligibility Prediction</h1>
+<form method="post" class="form">
+<label>CGPA<input name="cgpa" type="number" step="0.01" value="8.0" required></label>
+<label>10th %<input name="tenth" type="number" step="0.1" value="85"></label>
+<label>12th %<input name="twelfth" type="number" step="0.1" value="85"></label>
+<label>Aptitude (0-100)<input name="aptitude" type="number" value="70" required></label>
+<label>Technical (0-100)<input name="technical" type="number" value="70" required></label>
+<label>Communication<input name="communication" type="number" value="70"></label>
+<label>DSA<input name="dsa" type="number" value="70"></label>
+<label>Projects<input name="projects" type="number" value="1"></label>
+<label>Internships<input name="internships" type="number" value="0"></label>
+<label>Certifications<input name="certifications" type="number" value="1"></label>
+<label>Backlogs<input name="backlogs" type="number" value="0"></label>
+<label>Branch<select name="branch">{% for b in ["CSE","IT","ECE","EEE","MECH","CIVIL"] %}<option>{{b}}</option>{% endfor %}</select></label>
+<label>Degree<select name="degree"><option>BTech</option><option>MTech</option></select></label>
+<label>Company<select name="target_company">{% for c in companies %}<option>{{c.Company}}</option>{% endfor %}</select></label>
+<label>Role<select name="target_role">{% for r in roles %}<option>{{r}}</option>{% endfor %}</select></label>
+<button class="btn" type="submit">Predict</button></form>
+{% if result %}<div class="card"><h2>{{result.label}}</h2>
+<p>Probability of placement at <b>{{result.company}} ({{result.role}})</b>: <b>{{result.prob}}</b></p>
+<ul>{% for t in result.tips %}<li>{{t}}</li>{% endfor %}</ul>
+<p><a href="/recommend">Not confident? Get better Company–Role alternatives →</a></p></div>{% endif %}
+</div></body></html>

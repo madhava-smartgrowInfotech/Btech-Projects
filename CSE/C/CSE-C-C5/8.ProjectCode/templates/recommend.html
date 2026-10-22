@@ -1,0 +1,24 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Recommend — SCPS</title><link rel="stylesheet" href="/static/style.css"></head>
+<body><nav><b>🎓 SCPS</b><a href="/">Home</a><a href="/predict">Eligibility</a><a href="/recommend">Recommendations</a><a href="/dashboard">Dashboard</a><a href="/recruiter">Recruiter</a></nav>
+<div class="wrap"><h1>Hybrid Company–Role Recommendation</h1>
+<p class="muted">For rejected / low-probability students: ranks alternatives by predicted acceptance probability + CGPA proximity + location, like base-paper Sec 3.8–3.12.</p>
+<form method="post" class="form">
+<label>CGPA<input name="cgpa" type="number" step="0.01" value="7.2" required></label>
+<label>Aptitude<input name="aptitude" type="number" value="65" required></label>
+<label>Technical<input name="technical" type="number" value="65" required></label>
+<label>Communication<input name="communication" type="number" value="65"></label>
+<label>DSA<input name="dsa" type="number" value="65"></label>
+<label>Projects<input name="projects" type="number" value="1"></label>
+<label>Internships<input name="internships" type="number" value="0"></label>
+<label>Certifications<input name="certifications" type="number" value="1"></label>
+<label>Backlogs<input name="backlogs" type="number" value="0"></label>
+<label>Branch<select name="branch">{% for b in ["CSE","IT","ECE","EEE","MECH","CIVIL"] %}<option>{{b}}</option>{% endfor %}</select></label>
+<label>Dream company<select name="target_company">{% for c in companies %}<option>{{c.Company}}</option>{% endfor %}</select></label>
+<label>Dream role<select name="target_role"><option>SDE</option><option>Data Analyst</option><option>ML Engineer</option><option>QA Engineer</option></select></label>
+<label>Preferred location<select name="location"><option value="">No preference</option><option>Hyderabad</option><option>Bangalore</option><option>Chennai</option><option>Pune</option><option>Mumbai</option><option>Noida</option></select></label>
+<button class="btn" type="submit">Recommend</button></form>
+{% if out %}<h2>Base probability: {{out.base_prob}} → avg gain {{out.avg_gain}} (match {{out.match_rate}})</h2>
+<table><tr><th>#</th><th>Company</th><th>Role</th><th>Tier</th><th>Package</th><th>Location</th><th>Prob</th></tr>
+{% for c in out.hybrid %}<tr><td>{{loop.index}}</td><td>{{c.company}}</td><td>{{c.role}}</td><td>{{c.tier}}</td><td>{{c.package}}</td><td>{{c.location}}</td><td><b>{{c.prob}}</b></td></tr>{% endfor %}</table>{% endif %}
+</div></body></html>

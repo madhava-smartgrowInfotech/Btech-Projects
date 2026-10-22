@@ -1,0 +1,14 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dashboard — SCPS</title><link rel="stylesheet" href="/static/style.css"></head>
+<body><nav><b>🎓 SCPS</b><a href="/">Home</a><a href="/predict">Eligibility</a><a href="/recommend">Recommendations</a><a href="/dashboard">Dashboard</a><a href="/recruiter">Recruiter</a></nav>
+<div class="wrap"><h1>Placement Officer Dashboard</h1>
+{% if metrics.results %}<table><tr><th>Model</th><th>Acc</th><th>AUC</th><th>F1</th><th>Prec</th><th>Rec</th></tr>
+{% for k,v in metrics.results.items() %}<tr><td>{{k}}</td><td>{{v.accuracy}}</td><td>{{v.roc_auc}}</td><td>{{v.f1}}</td><td>{{v.precision}}</td><td>{{v.recall}}</td></tr>{% endfor %}</table>
+<p>9-fold CV (XGB): {{metrics.cv_xgb_9fold}} | Brier (Platt): {{metrics.brier_platt}} | Residual rate: {{metrics.residual_rate}}</p>{% endif %}
+{% if stats %}<p>Total students: <b>{{stats.total}}</b> | Placed rate: <b>{{stats.placed_rate}}</b> | Avg CGPA: {{stats.avg_cgpa}}</p>
+<p>Branch-wise placed rate: {{stats.by_branch}}</p>{% endif %}
+<div class="grid">
+<div class="card"><h3>Predicted probabilities</h3><img src="/static/prob_hist.png" style="width:100%"></div>
+<div class="card"><h3>PCA: errors = borderline cases</h3><img src="/static/pca.png" style="width:100%"></div>
+<div class="card"><h3>SHAP importance</h3><img src="/static/shap.png" style="width:100%"></div>
+</div></div></body></html>

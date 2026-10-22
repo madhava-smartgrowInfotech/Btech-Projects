@@ -1,0 +1,12 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Recruiter — SCPS</title><link rel="stylesheet" href="/static/style.css"></head>
+<body><nav><b>🎓 SCPS</b><a href="/">Home</a><a href="/predict">Eligibility</a><a href="/recommend">Recommendations</a><a href="/dashboard">Dashboard</a><a href="/recruiter">Recruiter</a></nav>
+<div class="wrap"><h1>Recruiter Shortlisting</h1>
+<form method="post" class="form">
+<label>Min CGPA<input name="min_cgpa" type="number" step="0.1" value="7.5"></label>
+<label>Min aptitude<input name="min_apt" type="number" value="65"></label>
+<label>Branch<select name="branch"><option>ALL</option><option>CSE</option><option>IT</option><option>ECE</option><option>EEE</option><option>MECH</option><option>CIVIL</option></select></label>
+<button class="btn" type="submit">Filter</button></form>
+{% if out %}<p>{{out|length}} candidates</p><table><tr><th>CGPA</th><th>Branch</th><th>Apt</th><th>Tech</th><th>Intern</th><th>Target</th><th>Placed(hist)</th></tr>
+{% for s in out[:50] %}<tr><td>{{s.CGPA}}</td><td>{{s.Branch}}</td><td>{{s.Aptitude_Score}}</td><td>{{s.Technical_Score}}</td><td>{{s.Internships}}</td><td>{{s.Target_Company}}</td><td>{{s.Placed}}</td></tr>{% endfor %}</table>{% endif %}
+</div></body></html>

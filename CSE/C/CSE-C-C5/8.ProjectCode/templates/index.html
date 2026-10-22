@@ -1,0 +1,23 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Smart Campus Placement System</title><link rel="stylesheet" href="/static/style.css"></head>
+<body><nav><b>🎓 Smart Campus Placement System</b>
+<a href="/">Home</a><a href="/predict">Eligibility</a><a href="/recommend">Recommendations</a><a href="/dashboard">Officer Dashboard</a><a href="/recruiter">Recruiter</a></nav>
+<div class="wrap">
+<h1>Hybrid ML for Placement Prediction + Company–Role Recommendation</h1>
+<p class="muted">Advanced version of <i>Smart Campus Placement System</i>, powered by the base-paper framework:
+<b>Hybrid XGBoost + kNN residual refinement</b> (borderline cases), Platt calibration, SHAP explainability, and
+<b>Hybrid Company–Role recommendation</b> (adapted from University–Program logic).</p>
+<div class="grid">
+<div class="card"><h3>🎯 Student</h3><p>Check placement probability for any company + role, get skill-gap tips.</p><a class="btn" href="/predict">Check eligibility</a></div>
+<div class="card"><h3>💡 Recommendations</h3><p>Rejected / low-probability? Get top-5 Company–Role pairs with max acceptance probability.</p><a class="btn" href="/recommend">Get recommendations</a></div>
+<div class="card"><h3>📊 Placement Officer</h3><p>Model metrics, PCA, SHAP, branch-wise placement rates.</p><a class="btn" href="/dashboard">Open dashboard</a></div>
+<div class="card"><h3>🏢 Recruiter</h3><p>Shortlist placement-ready students by CGPA / aptitude / branch.</p><a class="btn" href="/recruiter">Shortlist</a></div>
+</div>
+<h2>Model performance (test set)</h2>
+{% if metrics.results %}<table><tr><th>Model</th><th>Acc</th><th>AUC</th><th>F1</th><th>Prec</th><th>Rec</th></tr>
+{% for k,v in metrics.results.items() %}<tr><td>{{k}}</td><td>{{v.accuracy}}</td><td>{{v.roc_auc}}</td><td>{{v.f1}}</td><td>{{v.precision}}</td><td>{{v.recall}}</td></tr>{% endfor %}</table>
+{% else %}<p>Models not trained yet. Run:<code>python src/generate_dataset.py; python src/preprocess.py; python src/hybrid_model.py</code></p>{% endif %}
+<h2>Companies ({{companies|length}})</h2>
+<table><tr><th>Company</th><th>Tier</th><th>CGPA cut</th><th>Package</th><th>Location</th><th>Hiring rate</th></tr>
+{% for c in companies[:12] %}<tr><td>{{c.Company}}</td><td>{{c.Tier}}</td><td>{{c.CGPA_Cutoff}}</td><td>{{c.Package_LPA}} LPA</td><td>{{c.Location}}</td><td>{{c.Hiring_Rate}}</td></tr>{% endfor %}</table>
+</div></body></html>

@@ -1,0 +1,9 @@
+{
+  "smoke": 16,
+  "unit_lib": 34,
+  "unit_api": 33,
+  "build": "passes (tsc -b && vite build, 6.7 s)",
+  "known_issues": [
+    "load_csv: a label column containing only the words true/false is read by pandas as booleans and mapped true -> PARTIALLY TRUE, false -> REAL instead of REAL / FAKE"
+  ]
+}

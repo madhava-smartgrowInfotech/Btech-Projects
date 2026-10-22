@@ -1,0 +1,3 @@
+seed 42: test acc=0.4952 f1m=0.4177 pcaSVC f1m=0.4401 rand f1m=0.4437 train=444s
+seed 7: test acc=0.5022 f1m=0.4358 pcaSVC f1m=0.4308 rand f1m=0.4261 train=589s
+seed 2024: test acc=0.4861 f1m=0.4326 pcaSVC f1m=0.4509 rand f1m=0.4392 train=481s

@@ -1,0 +1,42 @@
+{
+  "real": {
+    "statement": "In 1935, more than 50% of the elderly population lived in poverty. Today that poverty rate stands officially at 9.4%.",
+    "true": "REAL",
+    "pred": "REAL",
+    "p_real": 0.5405,
+    "p_partial": 0.157,
+    "p_fake": 0.3025
+  },
+  "partial": {
+    "statement": "Says New Hampshire had the fourth-lowest unemployment rate in the country during Maggie Hassan's time in the state Senate.",
+    "true": "PARTIALLY TRUE",
+    "pred": "PARTIALLY TRUE",
+    "p_real": 0.2812,
+    "p_partial": 0.2472,
+    "p_fake": 0.4716
+  },
+  "fake": {
+    "statement": "Photo shows Ron DeSantis holding a shirt that says, \"Your mask is as useless as Joe Biden.",
+    "true": "FAKE",
+    "pred": "FAKE",
+    "p_real": 0.071,
+    "p_partial": 0.0907,
+    "p_fake": 0.8383
+  },
+  "miss_fake_as_real": {
+    "statement": "The signers of the Declaration of Independence were \"brave people, most of whom, by the way, were clergymen.",
+    "true": "FAKE",
+    "pred": "REAL",
+    "p_real": 0.5336,
+    "p_partial": 0.1813,
+    "p_fake": 0.2851
+  },
+  "miss_real_as_fake": {
+    "statement": "Says Melania Trump lied under oath in 2013 about graduating from college with a bachelor's degree in architecture.",
+    "true": "REAL",
+    "pred": "FAKE",
+    "p_real": 0.1272,
+    "p_partial": 0.1446,
+    "p_fake": 0.7282
+  }
+}

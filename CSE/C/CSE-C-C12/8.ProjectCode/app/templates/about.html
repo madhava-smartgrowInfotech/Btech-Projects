@@ -1,0 +1,8 @@
+{% extends "base.html" %}{% block title %}About — CareLens AI{% endblock %}
+{% block content %}<div class="card"><h2>About CareLens AI</h2>
+<p>CareLens AI is a local symptom-monitoring and preliminary health-guidance assistant. It retrieves relevant entries from a local medical knowledge base and presents them with clear safety notices.</p>
+<h3>What it does</h3><ul><li>Accepts symptom descriptions in everyday language</li><li>Finds the most relevant knowledge records using hybrid retrieval (FAISS + BM25) with neural reranking</li><li>Generates a grounded, cautious summary with evidence and match relevance</li><li>Keeps your consultation history private on this device</li></ul>
+<h3>What it is not</h3><p><b>CareLens AI is not a diagnostic device and does not replace a doctor.</b> It provides preliminary health information only. Consult a qualified healthcare professional for diagnosis and treatment. In an emergency, seek immediate professional medical care.</p>
+<h3>Privacy</h3><p>All accounts and consultations are stored locally in SQLite on this machine. No symptom data is sent to paid external APIs and there are no analytics trackers.</p>
+<h3>Technology</h3><p>FastAPI · SQLite · Sentence Transformers · FAISS · BM25 · Cross-Encoder reranking · local Flan-T5 generation with evidence-based fallback.</p>
+</div>{% endblock %}

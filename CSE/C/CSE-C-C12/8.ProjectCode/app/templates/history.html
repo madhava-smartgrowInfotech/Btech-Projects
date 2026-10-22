@@ -1,0 +1,17 @@
+{% extends "base.html" %}{% block title %}History — CareLens AI{% endblock %}
+{% block content %}<h2>Consultation history</h2>
+<div class="card"><input id="search" placeholder="Search consultations…" style="width:100%">
+<div id="list"></div></div>
+<div id="detail-modal" class="modal hidden"><div class="modal-card"><button id="close" class="btn small">Close</button><div id="detail"></div></div></div>
+<script>
+function esc(s){return (s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+async function load(q=''){const r=await fetch('/api/history'+(q?('?search='+encodeURIComponent(q)):''));if(r.status===401){location.href='/login';return;}const items=await r.json();
+document.getElementById('list').innerHTML=items.map(c=>`<div class="hist-row"><div><b>#${c.id} ${esc(c.top_condition||'')}</b><br><span class="small">${esc(c.symptom_query.slice(0,120))}</span><br><span class="muted small">${esc((c.created_at||'').slice(0,16).replace('T',' '))}</span></div><div class="row-btns"><button class="btn small" onclick="viewD(${c.id})">View</button><button class="btn small danger-btn" onclick="delC(${c.id})">Delete</button></div></div>`).join('')||'<p class="muted">No consultations found.</p>';}
+async function viewD(id){const r=await fetch('/api/history/'+id);const c=await r.json();
+document.getElementById('detail').innerHTML=`<h3>#${c.id} ${esc(c.top_condition)}</h3><p><b>Symptoms:</b> ${esc(c.symptom_query)}</p><p>${esc(c.generated_response)}</p>`+(c.retrieved_evidence||[]).map(e=>`<div class="ev-card"><b>${esc(e.disease)}</b> (${Math.round((e.relevance||0)*100)}% match)<br><span class="small">${esc(e.description)}</span><br><span class="small"><b>Guidance:</b> ${esc(e.guidance)}</span></div>`).join('');
+document.getElementById('detail-modal').classList.remove('hidden');}
+async function delC(id){if(!confirm('Delete consultation #'+id+'?'))return;await fetch('/api/history/'+id,{method:'DELETE'});load(document.getElementById('search').value);}
+document.getElementById('search').addEventListener('input',e=>load(e.target.value));
+document.getElementById('close').onclick=()=>document.getElementById('detail-modal').classList.add('hidden');
+load();</script>
+{% endblock %}

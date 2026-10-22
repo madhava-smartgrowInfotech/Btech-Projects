@@ -1,0 +1,16 @@
+{% extends "base.html" %}{% block title %}Create account — CareLens AI{% endblock %}
+{% block content %}<section class="auth-wrap"><div class="card auth-card">
+<h2>Create your account</h2><p class="muted">Your consultations stay on this device.</p>
+<div id="err" class="alert hidden"></div>
+<form id="reg-form"><label>Email<input type="email" name="email" required></label>
+<label>Password (min 6 characters)<input type="password" name="password" minlength="6" required></label>
+<button class="btn primary full" type="submit">Create account</button></form>
+<p class="muted center">Have an account? <a href="/login">Sign in</a></p></div></section>
+<script>
+document.getElementById('reg-form').addEventListener('submit', async (e)=>{
+e.preventDefault(); const f=e.target;
+const body={email:f.email.value,password:f.password.value};
+const r=await fetch('/api/auth/register',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+if(r.ok){location.href='/dashboard';}else{const j=await r.json();let msg=j.detail||'Registration failed';if(Array.isArray(msg)){msg=msg.map(d=>d.msg||JSON.stringify(d)).join('; ');}const el=document.getElementById('err');el.textContent=msg;el.classList.remove('hidden');}
+});</script>
+{% endblock %}

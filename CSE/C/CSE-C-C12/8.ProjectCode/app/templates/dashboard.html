@@ -1,0 +1,39 @@
+{% extends "base.html" %}{% block title %}Assistant — CareLens AI{% endblock %}
+{% block content %}
+<section class="dash-head"><div><h2 id="welcome">Symptom Assistant</h2>
+<p class="muted">Describe your symptoms naturally. CareLens AI shows preliminary guidance with supporting evidence.</p></div>
+<div><button class="btn small" id="logout-btn">Log out</button></div></section>
+<div class="alert info">CareLens AI provides preliminary health information and is not a medical diagnosis. If symptoms are severe or worsening, seek professional care immediately.</div>
+<section class="layout">
+<div class="card chat-card"><div id="chat" class="chat"></div>
+<div id="typing" class="typing hidden">CareLens AI is reviewing medical information…</div>
+<form id="chat-form" class="chat-form"><input id="q" placeholder="e.g. I have high fever, headache and body pain" maxlength="2000" autocomplete="off"><button class="btn primary" type="submit">Send</button></form>
+</div>
+<aside class="card side"><h3>Recent consultations</h3><div id="recent"></div><a class="btn small full" href="/history">View all history</a></aside>
+</section>
+<script>
+async function ensureAuth(){const r=await fetch('/api/auth/me');if(!r.ok){location.href='/login';return null;}return (await r.json());}
+function esc(s){return (s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+function addMsg(who,html){const d=document.createElement('div');d.className='msg '+who;d.innerHTML=html;document.getElementById('chat').appendChild(d);d.scrollIntoView({behavior:'smooth',block:'end'});}
+function relBadge(r){const v=Math.round((r||0)*100);return `<span class="badge">Match relevance ${v}%</span>`;}
+(async()=>{const me=await ensureAuth();if(!me)return;document.getElementById('welcome').textContent='Hello, '+me.email;
+addMsg('ai','<b>Hello! I\'m CareLens AI.</b><br>Tell me your symptoms and I\'ll share preliminary health information with supporting evidence.');
+loadRecent();})();
+async function loadRecent(){const r=await fetch('/api/history');if(!r.ok)return;const items=await r.json();
+document.getElementById('recent').innerHTML=items.slice(0,5).map(c=>`<div class="recent-item"><b>${esc(c.top_condition||'Consultation')}</b><span class="muted small">${esc(c.created_at.slice(0,16).replace('T',' '))}</span><p class="small">${esc(c.symptom_query.slice(0,90))}</p></div>`).join('')||'<p class="muted">No consultations yet.</p>';}
+document.getElementById('logout-btn').onclick=async()=>{await fetch('/api/auth/logout',{method:'POST'});location.href='/';};
+document.getElementById('chat-form').addEventListener('submit',async(e)=>{e.preventDefault();
+const inp=document.getElementById('q');const q=inp.value.trim();if(q.length<3){return;}inp.value='';
+addMsg('user',esc(q));document.getElementById('typing').classList.remove('hidden');
+try{const r=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({query:q})});
+const j=await r.json();document.getElementById('typing').classList.add('hidden');
+if(!r.ok){addMsg('ai','<b>Sorry:</b> '+esc(j.detail||'Something went wrong.'));return;}
+let html=`<div class="answer">${esc(j.answer)}</div>`;
+if(j.safety_flag==='emergency')html=`<div class="alert danger">${esc(j.safety_message)}</div>`+html;
+else if(j.safety_flag==='caution')html=`<div class="alert warn">${esc(j.safety_message)}</div>`+html;
+html+=`<p><b>Top match:</b> ${esc(j.top_condition)} ${relBadge(j.evidence[0]?j.evidence[0].relevance:0)} <span class="muted small">(${esc(j.relevance_label)})</span></p>`;
+html+=`<div class="ev"><b>Possible conditions suggested by matching medical information:</b>`+j.evidence.map(ev=>`<div class="ev-card"><b>${esc(ev.disease)}</b> ${relBadge(ev.relevance)}<br><span class="small">Symptoms: ${esc(ev.symptoms)}</span><br><span class="small">${esc(ev.description)}</span><br><span class="small"><b>Guidance:</b> ${esc(ev.guidance)}</span>${ev.red_flags?`<br><span class="small danger-text"><b>Seek urgent care if:</b> ${esc(ev.red_flags)}</span>`:''}</div>`).join('')+`</div><p class="muted small">This information is not a diagnosis. Consult a qualified healthcare professional.</p>`;
+addMsg('ai',html);loadRecent();}catch(err){document.getElementById('typing').classList.add('hidden');addMsg('ai','Network error. Please try again.');}
+});
+</script>
+{% endblock %}

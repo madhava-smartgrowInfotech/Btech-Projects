@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}CareLens AI{% endblock %}</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header class="nav"><div class="nav-inner">
+<a class="brand" href="/"><span class="logo">◉</span> CareLens AI</a>
+<nav><a href="/dashboard">Assistant</a><a href="/history">History</a><a href="/about">About</a><a href="/login" id="nav-login">Sign in</a></nav>
+</div></header>
+<main class="container">{% block content %}{% endblock %}</main>
+<footer class="footer">CareLens AI provides preliminary health information and is not a medical diagnosis. Consult a qualified healthcare professional.</footer>
+<script src="/static/app.js"></script>
+</body></html>

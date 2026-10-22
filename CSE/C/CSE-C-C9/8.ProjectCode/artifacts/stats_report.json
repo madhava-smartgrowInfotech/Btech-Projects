@@ -1,0 +1,23 @@
+{
+  "correlations_with_target": {
+    "age": 0.2293,
+    "education-num": 0.3354,
+    "hours-per-week": 0.2306,
+    "net-capital": 0.2124
+  },
+  "logit_coefficients": {
+    "const": -8.44507,
+    "age": 0.04443,
+    "education-num": 0.33742,
+    "hours-per-week": 0.04182,
+    "net-capital": 0.00024
+  },
+  "logit_pvalues": {
+    "const": 0.0,
+    "age": 0.0,
+    "education-num": 0.0,
+    "hours-per-week": 0.0,
+    "net-capital": 0.0
+  },
+  "note": "Complementary associational evidence only; not proof of causation."
+}

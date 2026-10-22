@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="FinSight AI - explainable financial profiling, risk assessment, forecasting and what-if scenarios." />
+    <meta name="theme-color" content="#C7B9FF" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>FinSight AI</title>
+    <script>
+      // apply the saved theme before first paint (no flash)
+      try {
+        var t = localStorage.getItem('finsight-theme')
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

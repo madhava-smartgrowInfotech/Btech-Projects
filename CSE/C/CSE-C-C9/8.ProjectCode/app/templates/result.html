@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}Your Result{% endblock %}
+{% block content %}
+<h1>Your financial profile</h1>
+<div class="grid2">
+  <div class="card highlight">
+    <p class="eyebrow">Predicted profile</p>
+    <h2 class="profile">{{ result.profile }}</h2>
+    <div class="risk risk-{{ result.risk|lower }}">Risk: {{ result.risk }}</div>
+    <div class="scorebar"><div class="scorefill" style="width: {{ result.strength_pct }}%"></div></div>
+    <p><strong>Financial-strength score: {{ result.strength_pct }}%</strong> (model confidence {{ result.proba }})</p>
+    <p class="muted">Model: {{ result.model }} · Risk band maps strength ≥60% → Low, 35–60% → Moderate, &lt;35% → High.</p>
+    <div class="cta-row">
+      <a class="btn primary" href="{{ url_for('main.whatif') }}">Try What-If Scenario</a>
+      <a class="btn" href="{{ url_for('main.explain') }}">Why this result?</a>
+    </div>
+  </div>
+  <div class="card">
+    <h3>What shaped your score</h3>
+    {% if result.shap.available %}
+      {% if result.shap.positives %}
+      <h4 class="pos">Strengthening factors</h4>
+      <ul>{% for f in result.shap.positives %}<li><strong>{{ f.label }}</strong> <span class="shap">({{ "%+.3f"|format(f.shap) }})</span><br><span class="muted">{{ f.sentence }}</span></li>{% endfor %}</ul>
+      {% endif %}
+      {% if result.shap.negatives %}
+      <h4 class="neg">Weakening factors</h4>
+      <ul>{% for f in result.shap.negatives %}<li><strong>{{ f.label }}</strong> <span class="shap">({{ "%+.3f"|format(f.shap) }})</span><br><span class="muted">{{ f.sentence }}</span></li>{% endfor %}</ul>
+      {% endif %}
+    {% else %}
+      <p class="muted">{{ result.shap.note or "Local explanation unavailable." }}</p>
+    {% endif %}
+    <p class="muted small">SHAP shows learned associations, not causation.</p>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Actionable insights (informational)</h3>
+  <ul>{% for tip in result.insights %}<li>{{ tip }}</li>{% endfor %}</ul>
+</div>
+
+<div class="card">
+  <h3>Your inputs</h3>
+  <dl class="kv">
+    {% for k, v in result.inputs.items() %}<div><dt>{{ k }}</dt><dd>{{ v }}</dd></div>{% endfor %}
+  </dl>
+</div>
+
+{% if forecast and forecast.available %}
+<div class="card">
+  <h3>Economic outlook (12-month index forecast)</h3>
+  <p>{{ forecast.interpretation }}</p>
+  <div id="miniForecast" style="height:320px"></div>
+  <a class="btn" href="{{ url_for('main.forecast') }}">Full forecast</a>
+</div>
+{% endif %}
+{% endblock %}
+{% block scripts %}
+{% if forecast and forecast.available %}
+<script>
+const hist = {{ forecast.history|tojson }};
+const fc = {{ forecast.forecast|tojson }};
+Plotly.newPlot("miniForecast", [
+  {x: hist.map(d=>d.date), y: hist.map(d=>d.value), name:"History", mode:"lines", line:{color:"#2563eb"}},
+  {x: fc.map(d=>d.date), y: fc.map(d=>d.value), name:"Forecast", mode:"lines+markers", line:{color:"#059669"}},
+  {x: fc.map(d=>d.date).concat(fc.map(d=>d.date).reverse()),
+   y: fc.map(d=>d.upper).concat(fc.map(d=>d.lower).reverse()),
+   fill:"toself", name:"95% interval", fillcolor:"rgba(5,150,105,.15)", line:{width:0}}
+], {margin:{t:20}, xaxis:{title:"Month"}, yaxis:{title:"Index"}});
+</script>
+{% endif %}
+{% endblock %}

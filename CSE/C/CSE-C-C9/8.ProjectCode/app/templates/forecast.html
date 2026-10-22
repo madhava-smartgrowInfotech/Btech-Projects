@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Forecast{% endblock %}
+{% block content %}
+<h1>Economic forecast</h1>
+{% if forecast.available %}
+<p class="lede">Method: {{ forecast.method }}. Horizon: {{ forecast.horizon_months }} months. Trend: <strong>{{ forecast.trend_direction }}</strong> ({{ forecast.forecast_pct_change }}%).</p>
+<div class="card"><div id="forecastChart" style="height:420px"></div></div>
+<div class="card"><h3>Interpretation</h3><p>{{ forecast.interpretation }}</p>
+<p class="muted">Shaded band: approximate 95% interval (±1.96 × residual std of {{ forecast.residual_std }}). Statistical extrapolation of past patterns — not a guarantee.</p></div>
+<div class="card"><h3>Forecast values</h3>
+<table class="tbl"><thead><tr><th>Month</th><th>Forecast</th><th>Lower</th><th>Upper</th></tr></thead><tbody>
+{% for f in forecast.forecast %}<tr><td>{{ f.date }}</td><td>{{ f.value }}</td><td>{{ f.lower }}</td><td>{{ f.upper }}</td></tr>{% endfor %}
+</tbody></table></div>
+{% else %}
+<div class="alert error">Forecast data is unavailable. {{ forecast.interpretation }}</div>
+{% endif %}
+{% endblock %}
+{% block scripts %}
+{% if forecast.available %}
+<script>
+const hist = {{ forecast.history|tojson }};
+const fc = {{ forecast.forecast|tojson }};
+Plotly.newPlot("forecastChart", [
+  {x: hist.map(d=>d.date), y: hist.map(d=>d.value), name:"History (2015–2025)", mode:"lines", line:{color:"#2563eb"}},
+  {x: fc.map(d=>d.date), y: fc.map(d=>d.value), name:"Forecast", mode:"lines+markers", line:{color:"#059669"}},
+  {x: fc.map(d=>d.date).concat(fc.map(d=>d.date).reverse()),
+   y: fc.map(d=>d.upper).concat(fc.map(d=>d.lower).reverse()),
+   fill:"toself", name:"95% interval", fillcolor:"rgba(5,150,105,.15)", line:{width:0}}
+], {margin:{t:20}, xaxis:{title:"Month", tickangle:-45}, yaxis:{title:"Household Financial Conditions Index"}});
+</script>
+{% endif %}
+{% endblock %}

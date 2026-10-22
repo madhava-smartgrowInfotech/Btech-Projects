@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<section class="hero">
+  <div>
+    <p class="eyebrow">AI-Based Financial Identification &amp; Forecasting</p>
+    <h1>Understand your financial profile.<br>Explore what shapes it.</h1>
+    <p class="lede">FinSight AI analyzes demographic and financial factors — age, occupation, education, income signals, and location — to identify your financial profile, assess risk, explain the drivers, and project economic trends.</p>
+    <div class="cta-row">
+      <a class="btn primary" href="{{ url_for('main.assess') }}">Start Financial Assessment</a>
+      <a class="btn" href="{{ url_for('main.forecast') }}">View Forecast</a>
+    </div>
+  </div>
+  <div class="card hero-card">
+    <h3>Latest model snapshot</h3>
+    {% if metrics %}
+    <div class="stat-grid">
+      <div class="stat"><span class="stat-label">Model</span><span class="stat-value">{{ model_name }}</span></div>
+      <div class="stat"><span class="stat-label">Accuracy</span><span class="stat-value">{{ metrics.accuracy }}</span></div>
+      <div class="stat"><span class="stat-label">ROC-AUC</span><span class="stat-value">{{ metrics.roc_auc }}</span></div>
+      <div class="stat"><span class="stat-label">F1</span><span class="stat-value">{{ metrics.f1 }}</span></div>
+    </div>
+    <p class="muted">Real results from the training pipeline on held-out data. <a href="{{ url_for('main.performance') }}">Full comparison →</a></p>
+    {% else %}
+    <p class="muted">Model artifacts are not available yet. Run the training pipeline to generate real metrics.</p>
+    {% endif %}
+  </div>
+</section>
+
+<section class="grid3">
+  <div class="card"><h3>Financial profiling</h3><p>Classifies your financial profile (Emerging / Developing / Established) with a confidence score and Low / Moderate / High risk band.</p></div>
+  <div class="card"><h3>Explainable AI</h3><p>SHAP-based global importance and per-person local explanations show which factors pushed your score up or down.</p></div>
+  <div class="card"><h3>Forecasting</h3><p>A Holt-Winters economic-indicator forecast with history, 12-month outlook, intervals, and trend interpretation.</p></div>
+  <div class="card"><h3>What-if scenarios</h3><p>Adjust gains, losses, hours, or education and re-run the model to compare baseline vs scenario side-by-side.</p></div>
+  <div class="card"><h3>Validated properly</h3><p>Stratified 5-fold cross-validation with leakage-safe pipelines. All metrics are generated from actual runs.</p></div>
+  <div class="card"><h3>Responsible by design</h3><p>Informational insights only — never loan approval, credit decisions, or guaranteed returns.</p></div>
+</section>
+
+{% if shap_top %}
+<section class="card">
+  <h2>Top drivers in the trained model</h2>
+  <p class="muted">Mean absolute SHAP values across a training sample (global explanation). <a href="{{ url_for('main.explain') }}">Open explainability →</a></p>
+  <ol class="toplist">
+    {% for f in shap_top %}<li><span>{{ f.label }}</span><strong>{{ f.mean_abs_shap }}</strong></li>{% endfor %}
+  </ol>
+</section>
+{% endif %}
+
+{% if forecast and forecast.interpretation %}
+<section class="card">
+  <h2>Economic outlook</h2>
+  <p>{{ forecast.interpretation }}</p>
+  <a class="btn" href="{{ url_for('main.forecast') }}">Explore the forecast</a>
+</section>
+{% endif %}
+{% endblock %}

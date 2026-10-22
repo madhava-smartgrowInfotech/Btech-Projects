@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Explainability{% endblock %}
+{% block content %}
+<h1>Explainability (SHAP)</h1>
+<p class="lede">Global importance is precomputed during training from real SHAP values on model <strong>{{ shap.model }}</strong>. Local explanations are computed live for each assessment. SHAP explains learned associations — never causation.</p>
+{% if shap.note %}<div class="alert">{{ shap.note }}</div>{% endif %}
+<div class="grid2">
+  <div class="card">
+    <h3>Global importance (mean |SHAP|)</h3>
+    <img src="{{ url_for('main.artifacts', name='shap_bar.png') }}" alt="SHAP bar chart" class="chart-img" onerror="this.outerHTML='<p class=muted>Chart unavailable.</p>'">
+  </div>
+  <div class="card">
+    <h3>SHAP summary (beeswarm)</h3>
+    <img src="{{ url_for('main.artifacts', name='shap_beeswarm.png') }}" alt="SHAP beeswarm" class="chart-img" onerror="this.outerHTML='<p class=muted>Chart unavailable.</p>'">
+  </div>
+</div>
+<div class="card">
+  <h3>Ranked features</h3>
+  <table class="tbl"><thead><tr><th>#</th><th>Feature</th><th>Mean |SHAP|</th><th>Reading</th></tr></thead><tbody>
+  {% for f in shap.features %}
+  <tr><td>{{ loop.index }}</td><td>{{ f.label }}</td><td>{{ f.mean_abs_shap }}</td>
+  <td class="muted">Higher value → larger average effect on the model's output magnitude.</td></tr>
+  {% endfor %}
+  </tbody></table>
+</div>
+<div class="card">
+  <h3>How to read this</h3>
+  <ul>
+    <li><strong>Global bar:</strong> average impact magnitude across sampled training rows.</li>
+    <li><strong>Beeswarm:</strong> distribution of per-row effects; color shows feature value.</li>
+    <li><strong>Local (on results):</strong> per-person positive vs negative contributors with live SHAP values.</li>
+    <li>These are predictive associations. Do not treat them as proof that changing a factor causes an outcome.</li>
+  </ul>
+  <a class="btn primary" href="{{ url_for('main.assess') }}">Get my local explanation</a>
+</div>
+{% endblock %}

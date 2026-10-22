@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}About{% endblock %}
+{% block content %}
+<h1>About FinSight AI</h1>
+<div class="card">
+<p>FinSight AI is an AI-based financial identification and forecasting application for individuals. It analyzes demographic and financial factors — age, occupation, education, income signals, location, and economic indicators — to discover patterns, identify a financial profile, assess risk, forecast trends, and explain its reasoning.</p>
+<h3>How it works</h3>
+<ol>
+<li><strong>Input &amp; validation</strong> — your entries are validated on the server.</li>
+<li><strong>Feature engineering</strong> — raw values become interpretable features (net investment position, age bands, education tiers, regional categories, employment stability).</li>
+<li><strong>Trained classifier</strong> — Logistic Regression, Random Forest, Gradient Boosting, and XGBoost are compared; the best by ROC-AUC serves predictions.</li>
+<li><strong>SHAP explanations</strong> — global importance plus live per-person contributors.</li>
+<li><strong>Forecasting</strong> — a Holt-Winters projection of the Household Financial Conditions Index with intervals.</li>
+<li><strong>What-if</strong> — adjust key variables and compare modelled outcomes side-by-side.</li>
+</ol>
+<h3>Technology</h3>
+<p>Python · pandas · NumPy · scikit-learn · XGBoost · SHAP · statsmodels · Flask · Jinja2 · Plotly.js · joblib. Runs locally on an ordinary laptop; no GPU required.</p>
+<h3>Responsible use</h3>
+<p>FinSight AI provides informational estimates based on historical patterns. It does not provide professional financial advice and does not guarantee income, returns, credit, or loan outcomes. SHAP values describe associations learned by the model, not causal effects.</p>
+</div>
+{% endblock %}

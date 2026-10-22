@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}What-If Analysis{% endblock %}
+{% block content %}
+<h1>What-If Financial Scenario</h1>
+<p class="lede">Enter a baseline, then change one or more scenario fields. The trained model re-runs on both and compares. This is a <strong>model what-if simulation</strong>, not a causal prediction.</p>
+{% if errors %}<div class="alert error"><ul>{% for e in errors %}<li>{{ e }}</li>{% endfor %}</ul></div>{% endif %}
+<form method="post" class="card form-card" novalidate>
+  <h3>Baseline information</h3>
+  <div class="form-grid">
+    <label>Age*<input name="age" type="number" min="16" max="100" required value="{{ form.get('age','35') }}"></label>
+    <label>Employment type*<select name="workclass" required>{% for o in workclasses %}<option value="{{ o }}" {% if form.get('workclass')==o %}selected{% endif %}>{{ o }}</option>{% endfor %}</select></label>
+    <label>Education*<select name="education" required>{% for o in educations %}<option value="{{ o }}" {% if form.get('education')==o %}selected{% endif %}>{{ o }}</option>{% endfor %}</select></label>
+    <label>Marital status*<select name="marital-status" required>{% for o in maritals %}<option value="{{ o }}" {% if form.get('marital-status')==o %}selected{% endif %}>{{ o }}</option>{% endfor %}</select></label>
+    <label>Occupation*<select name="occupation" required>{% for o in occupations %}<option value="{{ o }}" {% if form.get('occupation')==o %}selected{% endif %}>{{ o }}</option>{% endfor %}</select></label>
+    <label>Household relationship*<select name="relationship" required>{% for o in relationships %}<option value="{{ o }}" {% if form.get('relationship')==o %}selected{% endif %}>{{ o }}</option>{% endfor %}</select></label>
+    <label>Race*<select name="race" required>{% for o in races %}<option value="{{ o }}" {% if form.get('race')==o %}selected{% endif %}>{{ o }}</option>{% endfor %}</select></label>
+    <label>Sex*<select name="sex" required>{% for o in sexes %}<option value="{{ o }}" {% if form.get('sex')==o %}selected{% endif %}>{{ o }}</option>{% endfor %}</select></label>
+    <label>Country*<select name="native-country" required>{% for o in countries %}<option value="{{ o }}" {% if form.get('native-country')==o %}selected{% endif %}>{{ o }}</option>{% endfor %}</select></label>
+    <label>Investment gains ($)*<input name="capital-gain" type="number" min="0" max="1000000" value="{{ form.get('capital-gain','0') }}"></label>
+    <label>Investment losses ($)*<input name="capital-loss" type="number" min="0" max="1000000" value="{{ form.get('capital-loss','0') }}"></label>
+    <label>Hours/week*<input name="hours-per-week" type="number" min="1" max="99" value="{{ form.get('hours-per-week','40') }}"></label>
+  </div>
+  <h3>Scenario changes (leave blank to keep baseline)</h3>
+  <div class="form-grid">
+    <label>Scenario gains ($)<input name="scenario_capital_gain" type="number" min="0" max="1000000" step="1" value="{{ form.get('scenario_capital_gain','') }}"></label>
+    <label>Scenario losses ($)<input name="scenario_capital_loss" type="number" min="0" max="1000000" step="1" value="{{ form.get('scenario_capital_loss','') }}"></label>
+    <label>Scenario hours/week<input name="scenario_hours" type="number" min="1" max="99" value="{{ form.get('scenario_hours','') }}"></label>
+    <label>Scenario education<select name="scenario_education"><option value="">Keep baseline…</option>{% for o in educations %}<option value="{{ o }}" {% if form.get('scenario_education')==o %}selected{% endif %}>{{ o }}</option>{% endfor %}</select></label>
+  </div>
+  <button class="btn primary" type="submit">Compare scenarios</button>
+</form>
+
+{% if result %}
+<div class="grid2">
+  <div class="card"><h3>Baseline</h3><p class="profile">{{ result.baseline.profile }}</p><div class="risk risk-{{ result.baseline.risk|lower }}">Risk: {{ result.baseline.risk }}</div><p>Score: <strong>{{ result.baseline.strength_pct }}%</strong></p></div>
+  <div class="card"><h3>Scenario</h3><p class="profile">{{ result.scenario.profile }}</p><div class="risk risk-{{ result.scenario.risk|lower }}">Risk: {{ result.scenario.risk }}</div><p>Score: <strong>{{ result.scenario.strength_pct }}%</strong></p></div>
+</div>
+<div class="card highlight">
+  <h3>Comparison</h3>
+  <p>Change in score: <strong>{{ "%+.2f"|format(result.delta_pct) }} percentage points</strong></p>
+  <p>{{ result.verdict }}</p>
+  {% if result.changed %}<ul>{% for c in result.changed %}<li><code>{{ c.field }}</code>: {{ c.from }} → {{ c.to }}</li>{% endfor %}</ul>{% endif %}
+  {% if result.profile_changed %}<p><strong>Profile changed:</strong> {{ result.baseline.profile }} → {{ result.scenario.profile }}</p>{% endif %}
+  {% if result.risk_changed %}<p><strong>Risk band changed:</strong> {{ result.baseline.risk }} → {{ result.scenario.risk }}</p>{% endif %}
+</div>
+{% endif %}
+{% endblock %}

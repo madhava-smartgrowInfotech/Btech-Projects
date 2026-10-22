@@ -1,0 +1,84 @@
+{
+  "product": "FinSight AI",
+  "dataset": "UCI Adult / Census Income (public)",
+  "source_url": "https://archive.ics.uci.edu/dataset/20/census+income",
+  "rows": 48842,
+  "features_used": [
+    "age",
+    "age-band",
+    "capital-gain",
+    "capital-intensity",
+    "capital-loss",
+    "capital-position",
+    "education",
+    "education-num",
+    "education-tier",
+    "employment-stability",
+    "fnlwgt",
+    "has-capital-gain",
+    "has-capital-loss",
+    "hours-band",
+    "hours-per-week",
+    "log-capital-gain",
+    "log-capital-loss",
+    "marital-status",
+    "native-country",
+    "net-capital",
+    "occupation",
+    "race",
+    "region",
+    "relationship",
+    "sex",
+    "workclass"
+  ],
+  "target": "income (>50K vs <=50K) adapted as financial-profile signal",
+  "best_model": "xgboost",
+  "metrics": {
+    "accuracy": 0.8782,
+    "precision": 0.7917,
+    "recall": 0.6664,
+    "f1": 0.7236,
+    "roc_auc": 0.9319,
+    "cv_roc_auc_mean": 0.9293,
+    "cv_roc_auc_std": 0.0011
+  },
+  "all_metrics": {
+    "logistic_regression": {
+      "accuracy": 0.8599,
+      "precision": 0.7568,
+      "recall": 0.6108,
+      "f1": 0.676,
+      "roc_auc": 0.914,
+      "cv_roc_auc_mean": 0.9133,
+      "cv_roc_auc_std": 0.0013
+    },
+    "random_forest": {
+      "accuracy": 0.8597,
+      "precision": 0.7402,
+      "recall": 0.6373,
+      "f1": 0.6849,
+      "roc_auc": 0.91,
+      "cv_roc_auc_mean": 0.9079,
+      "cv_roc_auc_std": 0.0016
+    },
+    "gradient_boosting": {
+      "accuracy": 0.8697,
+      "precision": 0.7915,
+      "recall": 0.6185,
+      "f1": 0.6944,
+      "roc_auc": 0.9247,
+      "cv_roc_auc_mean": 0.9204,
+      "cv_roc_auc_std": 0.0022
+    },
+    "xgboost": {
+      "accuracy": 0.8782,
+      "precision": 0.7917,
+      "recall": 0.6664,
+      "f1": 0.7236,
+      "roc_auc": 0.9319,
+      "cv_roc_auc_mean": 0.9293,
+      "cv_roc_auc_std": 0.0011
+    }
+  },
+  "random_state": 42
+}

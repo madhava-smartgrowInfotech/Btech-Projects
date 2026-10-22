@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Financial Assessment{% endblock %}
+{% block content %}
+<h1>Financial Assessment</h1>
+<p class="lede">Enter your demographic and financial information. Every field is used by the trained model — validation runs on the server before analysis.</p>
+{% if errors %}
+<div class="alert error"><strong>Please fix the following:</strong><ul>{% for e in errors %}<li>{{ e }}</li>{% endfor %}</ul></div>
+{% endif %}
+<form method="post" action="{{ url_for('main.assess') }}" class="card form-card" novalidate>
+  <div class="form-grid">
+    <label>Age<span>*</span><input name="age" type="number" min="16" max="100" required value="{{ form.get('age','') }}"></label>
+    <label>Employment type<span>*</span><select name="workclass" required><option value="">Select…</option>{% for o in workclasses %}<option value="{{ o }}" {% if form.get('workclass')==o %}selected{% endif %}>{{ o }}</option>{% endfor %}</select></label>
+    <label>Education<span>*</span><select name="education" required><option value="">Select…</option>{% for o in educations %}<option value="{{ o }}" {% if form.get('education')==o %}selected{% endif %}>{{ o }}</option>{% endfor %}</select></label>
+    <label>Marital status<span>*</span><select name="marital-status" required><option value="">Select…</option>{% for o in maritals %}<option value="{{ o }}" {% if form.get('marital-status')==o %}selected{% endif %}>{{ o }}</option>{% endfor %}</select></label>
+    <label>Occupation<span>*</span><select name="occupation" required><option value="">Select…</option>{% for o in occupations %}<option value="{{ o }}" {% if form.get('occupation')==o %}selected{% endif %}>{{ o }}</option>{% endfor %}</select></label>
+    <label>Household relationship<span>*</span><select name="relationship" required><option value="">Select…</option>{% for o in relationships %}<option value="{{ o }}" {% if form.get('relationship')==o %}selected{% endif %}>{{ o }}</option>{% endfor %}</select></label>
+    <label>Race<span>*</span><select name="race" required><option value="">Select…</option>{% for o in races %}<option value="{{ o }}" {% if form.get('race')==o %}selected{% endif %}>{{ o }}</option>{% endfor %}</select></label>
+    <label>Sex<span>*</span><select name="sex" required><option value="">Select…</option>{% for o in sexes %}<option value="{{ o }}" {% if form.get('sex')==o %}selected{% endif %}>{{ o }}</option>{% endfor %}</select></label>
+    <label>Country<span>*</span><select name="native-country" required><option value="">Select…</option>{% for o in countries %}<option value="{{ o }}" {% if form.get('native-country')==o %}selected{% endif %}>{{ o }}</option>{% endfor %}</select></label>
+    <label>Investment gains (annual $)<span>*</span><input name="capital-gain" type="number" min="0" max="1000000" step="1" required value="{{ form.get('capital-gain','0') }}"></label>
+    <label>Investment losses (annual $)<span>*</span><input name="capital-loss" type="number" min="0" max="1000000" step="1" required value="{{ form.get('capital-loss','0') }}"></label>
+    <label>Hours worked per week<span>*</span><input name="hours-per-week" type="number" min="1" max="99" required value="{{ form.get('hours-per-week','40') }}"></label>
+  </div>
+  <button class="btn primary" type="submit">Analyze my profile</button>
+  <p class="muted">Informational estimates only — not financial advice or a credit decision.</p>
+</form>
+{% endblock %}

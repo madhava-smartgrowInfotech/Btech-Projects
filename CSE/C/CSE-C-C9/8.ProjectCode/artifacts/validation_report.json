@@ -1,0 +1,40 @@
+{
+  "protocol": "Stratified 80/20 train-test split + 5-fold stratified cross-validation (n_splits=5, random_state=42).",
+  "why": "The dataset is cross-sectional with one row per person; no repeated individuals exist, so entity-aware GroupKFold is unnecessary and stratified KFold preserves class ratios. Preprocessing is inside each pipeline to prevent leakage. Temporal validation is not applicable because the classification data has no genuine time dimension; forecasting is validated separately on its own time series.",
+  "cv_roc_auc": {
+    "logistic_regression": [
+      0.915,
+      0.9126,
+      0.9147,
+      0.9114,
+      0.913
+    ],
+    "random_forest": [
+      0.9089,
+      0.9068,
+      0.9105,
+      0.9075,
+      0.9059
+    ],
+    "gradient_boosting": [
+      0.9215,
+      0.9208,
+      0.9234,
+      0.9196,
+      0.9168
+    ],
+    "xgboost": [
+      0.9295,
+      0.9275,
+      0.931,
+      0.9295,
+      0.929
+    ]
+  },
+  "test_size": 9769,
+  "train_size": 39073,
+  "class_balance_test": {
+    "<=50K": 7431,
+    ">50K": 2338
+  }
+}

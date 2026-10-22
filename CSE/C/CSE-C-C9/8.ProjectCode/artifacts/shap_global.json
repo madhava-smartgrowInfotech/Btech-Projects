@@ -1,0 +1,81 @@
+{
+  "model": "xgboost",
+  "features": [
+    {
+      "feature": "marital-status_Married-civ-spouse",
+      "label": "marital status = Married-civ-spouse",
+      "mean_abs_shap": 1.0116
+    },
+    {
+      "feature": "age",
+      "label": "Age",
+      "mean_abs_shap": 0.66528
+    },
+    {
+      "feature": "education-num",
+      "label": "Years of education",
+      "mean_abs_shap": 0.44447
+    },
+    {
+      "feature": "capital-gain",
+      "label": "Investment gains",
+      "mean_abs_shap": 0.40074
+    },
+    {
+      "feature": "hours-per-week",
+      "label": "Hours worked per week",
+      "mean_abs_shap": 0.31528
+    },
+    {
+      "feature": "capital-loss",
+      "label": "Investment losses",
+      "mean_abs_shap": 0.13848
+    },
+    {
+      "feature": "sex_Female",
+      "label": "sex = Female",
+      "mean_abs_shap": 0.12635
+    },
+    {
+      "feature": "occupation_Exec-managerial",
+      "label": "occupation = Exec-managerial",
+      "mean_abs_shap": 0.12562
+    },
+    {
+      "feature": "occupation_Prof-specialty",
+      "label": "occupation = Prof-specialty",
+      "mean_abs_shap": 0.1204
+    },
+    {
+      "feature": "fnlwgt",
+      "label": "Census sampling weight",
+      "mean_abs_shap": 0.10067
+    },
+    {
+      "feature": "marital-status_Never-married",
+      "label": "marital status = Never-married",
+      "mean_abs_shap": 0.08936
+    },
+    {
+      "feature": "relationship_Own-child",
+      "label": "relationship = Own-child",
+      "mean_abs_shap": 0.08837
+    },
+    {
+      "feature": "occupation_Other-service",
+      "label": "occupation = Other-service",
+      "mean_abs_shap": 0.08768
+    },
+    {
+      "feature": "relationship_Wife",
+      "label": "relationship = Wife",
+      "mean_abs_shap": 0.0866
+    },
+    {
+      "feature": "capital-intensity",
+      "label": "Overall investment activity",
+      "mean_abs_shap": 0.08061
+    }
+  ],
+  "note": ""
+}

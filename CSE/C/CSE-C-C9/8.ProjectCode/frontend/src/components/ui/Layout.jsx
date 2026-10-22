@@ -10,6 +10,7 @@ import {
   Info,
   LayoutDashboard,
   LineChart,
+  LogOut,
   Menu,
   Moon,
   Sun,
@@ -18,6 +19,7 @@ import {
 import { api } from '../../lib/api'
 import { spring } from '../../lib/motion'
 import { useTheme } from '../../lib/theme'
+import { useAuth } from '../../lib/auth'
 import { PageTransition } from '../motion'
 import { Breadcrumbs } from './Nav'
 import { IconButton } from './Button'
@@ -124,6 +126,7 @@ export function ThemeToggle() {
 
 export function Topbar({ title, health, healthError, onMenu }) {
   const navigate = useNavigate()
+  const { user, logout } = useAuth()
   const state = healthError ? 'bad' : health ? '' : 'wait'
   return (
     <header className="topbar">
@@ -142,6 +145,21 @@ export function Topbar({ title, health, healthError, onMenu }) {
         </Tooltip>
       </span>
       <ThemeToggle />
+      {user && (
+        <>
+          <span className="user-chip" title={user.email}>{user.name}</span>
+          <Tooltip content="Sign out">
+            <IconButton
+              icon={LogOut}
+              label="Sign out"
+              onClick={() => {
+                logout()
+                navigate('/login', { replace: true })
+              }}
+            />
+          </Tooltip>
+        </>
+      )}
     </header>
   )
 }

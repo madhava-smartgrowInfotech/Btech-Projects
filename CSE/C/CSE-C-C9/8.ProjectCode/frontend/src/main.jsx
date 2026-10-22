@@ -6,6 +6,7 @@ import { createRoot } from 'react-dom/client'
 import { MotionConfig } from 'framer-motion'
 import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider } from './lib/theme'
+import { AuthProvider } from './lib/auth'
 import { ToastProvider } from './components/ui'
 import App from './App'
 
@@ -14,9 +15,11 @@ createRoot(document.getElementById('root')).render(
     <MotionConfig reducedMotion="user">
       <ThemeProvider>
         <ToastProvider>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
+          <AuthProvider>
+            <BrowserRouter>
+              <App />
+            </BrowserRouter>
+          </AuthProvider>
         </ToastProvider>
       </ThemeProvider>
     </MotionConfig>

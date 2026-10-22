@@ -1,8 +1,10 @@
 import { lazy, Suspense } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { AppShell, PageSkeleton } from './components/ui'
+import RequireAuth from './components/RequireAuth'
 
 const Landing = lazy(() => import('./pages/Landing'))
+const Login = lazy(() => import('./pages/Login'))
 const Dashboard = lazy(() => import('./pages/Dashboard'))
 const Assess = lazy(() => import('./pages/Assess'))
 const Result = lazy(() => import('./pages/Result'))
@@ -18,7 +20,8 @@ export default function App() {
     <Suspense fallback={<div className="container" style={{ paddingTop: 40 }}><PageSkeleton /></div>}>
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path="/app" element={<AppShell />}>
+        <Route path="/login" element={<Login />} />
+        <Route path="/app" element={<RequireAuth><AppShell /></RequireAuth>}>
           <Route index element={<Dashboard />} />
           <Route path="assess" element={<Assess />} />
           <Route path="result" element={<Result />} />

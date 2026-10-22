@@ -59,6 +59,7 @@ proxy (`/api`, `/artifacts`, `/health` -> 8409); the built SPA is also servable 
 | Route | Screen | Covers features | API |
 |---|---|---|---|
 | `/` | **Landing** (no shell) - hero, how-it-works, capability cards, live model stats, CTA | 1, 12 | `/api/dashboard` |
+| `/login` | **Sample login** (added on request; the product had no login) - demo account, validation, wrong-password error, show password | - | none (client-side demo gate) |
 | `/app` | Dashboard | 1 | `/api/dashboard` |
 | `/app/assess` | Assessment form | 2 | `/api/options`, `/api/predict` |
 | `/app/result` | Result (profile, risk, score, SHAP factors, insights, inputs, mini forecast) | 3, 4, 5, 6 | `/api/predict` (state kept in sessionStorage), `/api/forecast` |
@@ -98,3 +99,11 @@ under 900px, tables that scroll or collapse to cards at 360px, keyboard focus + 
   `prefers-reduced-motion` (content visible, marquee static).
 - Additive backend change only: `app/api.py` (5 thin read-only/wrapper routes) registered in `app/__init__.py`;
   `run.py` now also reads `.env` for the port.
+
+## 6. Sample login
+
+The product has no accounts, so a **sample login** was added at `/login` (frontend only, no backend change):
+`demo@finsight.ai` / `finsight123`. All `/app/*` routes are guarded and return the visitor to the page they asked
+for; the session persists across reloads (`localStorage`), and Sign out in the topbar clears it. It is a demo gate
+that runs in the browser and protects nothing. Verified: redirect when signed out, empty / invalid / wrong-password
+errors, show-password, return-to-page, reload persistence, sign out, 360px layout.

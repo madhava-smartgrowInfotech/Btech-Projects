@@ -75,29 +75,40 @@ def main():
         shot("02_landing-dark")
         page.get_by_role("button", name="Switch to light mode").click()
 
-        # 03 dashboard
-        page.goto(base + "/app")
-        shot("03_dashboard")
+        # 03 login (sample account), then sign in through the UI; a guarded URL must redirect here first
+        page.evaluate("localStorage.removeItem('finsight-auth')")
+        page.goto(base + "/app/forecast")
+        page.wait_for_url("**/login")
+        page.wait_for_selector("#login-email")
+        shot("03_login")
+        page.get_by_role("button", name="Use demo credentials").click()
+        page.get_by_role("button", name="Sign in").click()
+        page.wait_for_url("**/app/forecast")  # returned to the page that was asked for
+        page.wait_for_selector("text=Forecast values")
 
-        # 04 assessment form, filled with the sample profile; 05 result after a real analysis
+        # 04 dashboard
+        page.goto(base + "/app")
+        shot("04_dashboard")
+
+        # 05 assessment form, filled with the sample profile; 06 result after a real analysis
         page.goto(base + "/app/assess")
         page.wait_for_selector("#assess-age")
         fill_profile(page, "assess")
-        shot("04_assessment")
+        shot("05_assessment")
         page.get_by_role("button", name="Analyse my profile").click()
         page.wait_for_url("**/app/result")
         page.wait_for_selector("text=Strengthening factors")
-        shot("05_result")
+        shot("06_result")
 
-        # 06 explainability, 07 forecast
+        # 07 explainability, 08 forecast
         page.goto(base + "/app/explain")
         page.wait_for_selector("text=Ranked features")
-        shot("06_explainability")
+        shot("07_explainability")
         page.goto(base + "/app/forecast")
         page.wait_for_selector("text=Forecast values")
-        shot("07_forecast")
+        shot("08_forecast")
 
-        # 08 what-if: baseline is prefilled from the assessment; change two scenario fields
+        # 09 what-if: baseline is prefilled from the assessment; change two scenario fields
         page.goto(base + "/app/whatif")
         page.wait_for_selector("#wi-age")
         assert page.locator("#wi-age").input_value() == PROFILE["age"], "what-if baseline was not prefilled"
@@ -105,17 +116,17 @@ def main():
         page.locator("#wi-sh").fill("50")
         page.get_by_role("button", name="Compare scenarios").click()
         page.wait_for_selector("text=Change in score")
-        shot("08_whatif")
+        shot("09_whatif")
 
-        # 09 performance, 10 about, 11 not-found
+        # 10 performance, 11 about, 12 not-found
         page.goto(base + "/app/performance")
         page.wait_for_selector("text=Statistical analysis")
-        shot("09_performance")
+        shot("10_performance")
         page.goto(base + "/app/about")
-        shot("10_about")
+        shot("11_about")
         page.goto(base + "/app/does-not-exist")
         page.wait_for_selector("text=Page not found")
-        shot("11_not-found")
+        shot("12_not-found")
 
         browser.close()
 

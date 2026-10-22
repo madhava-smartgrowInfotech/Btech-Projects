@@ -8,6 +8,9 @@
 runs `npm install` and `npm run build` in `frontend/` (first run only), starts the API in a second window and
 serves the frontend, then opens http://localhost:5409. Needs Python 3.11+ and Node.js 18+.
 
+**Sample login:** the app opens at a sign-in screen for `/app`. Use `demo@finsight.ai` / `finsight123`
+(or press *Use demo credentials*). It is a browser-only demo gate, not real authentication.
+
 **Manual:**
 
 ```text

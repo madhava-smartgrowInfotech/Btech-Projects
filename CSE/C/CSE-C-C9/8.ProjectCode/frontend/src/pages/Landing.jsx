@@ -3,6 +3,7 @@ import { useReducedMotion } from 'framer-motion'
 import Lenis from 'lenis'
 import { ArrowRight, Brain, ClipboardList, FlaskConical, Gauge, LineChart, ShieldCheck, TrendingUp, Sparkles } from 'lucide-react'
 import { api } from '../lib/api'
+import { useAuth } from '../lib/auth'
 import { useAsync } from '../lib/useAsync'
 import { fmtSigned, modelLabel } from '../lib/format'
 import { Badge, Brand, Button, Container, ErrorState, Skeleton, ThemeToggle } from '../components/ui'
@@ -86,6 +87,7 @@ function HeroVisual({ forecast, dash }) {
 
 export default function Landing() {
   useSmoothScroll()
+  const { user } = useAuth()
   const dash = useAsync(api.dashboard)
   const forecast = useAsync(api.forecast)
   const m = dash.data?.metrics
@@ -108,6 +110,7 @@ export default function Landing() {
           </nav>
           <span style={{ flex: 1 }} />
           <ThemeToggle />
+          {!user && <Button to="/login" size="sm" variant="ghost">Sign in</Button>}
           <Button to="/app" size="sm" className="btn-open-app" iconRight={ArrowRight}><span>Open the app</span></Button>
         </Container>
       </header>

@@ -1,0 +1,35 @@
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ciphervault
+      POSTGRES_PASSWORD: ciphervault
+      POSTGRES_DB: ciphervault
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ciphervault"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  app:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      APP_PORT: "8413"
+      DATABASE_URL: postgresql+psycopg://ciphervault:ciphervault@db:5432/ciphervault
+      JWT_SECRET: ${JWT_SECRET:-change-me-to-a-long-random-secret}
+      STORAGE_DIR: /app/storage/encrypted
+      MAX_UPLOAD_MB: "25"
+    ports:
+      - "127.0.0.1:8413:8413"
+    volumes:
+      - ./storage/encrypted:/app/storage/encrypted
+
+volumes:
+  pgdata:

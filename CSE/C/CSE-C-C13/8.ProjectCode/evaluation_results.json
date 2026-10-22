@@ -1,0 +1,118 @@
+{
+  "checks": [
+    {
+      "name": "AES-256-GCM round-trip 1024B",
+      "passed": true,
+      "detail": "enc=0.01ms dec=0.00ms overhead=16B"
+    },
+    {
+      "name": "AES-256-GCM round-trip 65536B",
+      "passed": true,
+      "detail": "enc=0.02ms dec=0.02ms overhead=16B"
+    },
+    {
+      "name": "AES-256-GCM round-trip 1048576B",
+      "passed": true,
+      "detail": "enc=0.42ms dec=0.40ms overhead=16B"
+    },
+    {
+      "name": "SHA-256 integrity verify",
+      "passed": true,
+      "detail": "0.08ms"
+    },
+    {
+      "name": "RSA-2048-OAEP wrap/unwrap",
+      "passed": true,
+      "detail": "wrap=0.43ms wrapped=256B"
+    },
+    {
+      "name": "duplicate registration rejected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "invalid login rejected",
+      "passed": true,
+      "detail": "login=206.2ms"
+    },
+    {
+      "name": "protected route requires JWT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "forged JWT rejected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "encrypted upload accepted",
+      "passed": true,
+      "detail": "17.3ms"
+    },
+    {
+      "name": "stored object is ciphertext, not plaintext",
+      "passed": true,
+      "detail": "stored=200016B"
+    },
+    {
+      "name": "owner download allowed",
+      "passed": true,
+      "detail": "14.8ms"
+    },
+    {
+      "name": "non-shared download denied",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "decrypt + SHA-256 verify",
+      "passed": true,
+      "detail": "0.2ms"
+    },
+    {
+      "name": "tampered ciphertext rejected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "audit chain valid",
+      "passed": true,
+      "detail": "14 entries (db count 14)"
+    },
+    {
+      "name": "audit tamper detected",
+      "passed": true,
+      "detail": "failure at entry 1"
+    }
+  ],
+  "aes256gcm_encrypt_ms_1024B": 0.005,
+  "aes256gcm_decrypt_ms_1024B": 0.002,
+  "ciphertext_overhead_bytes_1024B": 16,
+  "aes256gcm_encrypt_ms_65536B": 0.02,
+  "aes256gcm_decrypt_ms_65536B": 0.019,
+  "ciphertext_overhead_bytes_65536B": 16,
+  "aes256gcm_encrypt_ms_1048576B": 0.417,
+  "aes256gcm_decrypt_ms_1048576B": 0.401,
+  "ciphertext_overhead_bytes_1048576B": 16,
+  "sha256_100KB_ms": 0.084,
+  "rsa2048_keygen_2keys_ms": 50.6,
+  "rsa_oaep_wrap_ms": 0.434,
+  "rsa_wrapped_bytes": 256,
+  "login_ms": 206.21,
+  "browser_encrypt_200KB_ms": 0.11,
+  "plaintext_bytes": 200000,
+  "ciphertext_bytes": 200016,
+  "api_upload_200KB_ms": 17.25,
+  "api_download_200KB_ms": 14.85,
+  "authz_allowed": 1,
+  "authz_denied": 1,
+  "browser_decrypt_verify_200KB_ms": 0.2,
+  "integrity_tamper_detected": true,
+  "audit_entries": 14,
+  "audit_tamper_detected": true,
+  "summary": {
+    "passed": 17,
+    "total": 17
+  }
+}

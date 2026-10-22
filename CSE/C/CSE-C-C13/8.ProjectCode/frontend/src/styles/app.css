@@ -1,0 +1,269 @@
+/* CipherVault-specific additions on top of the V3 kit (product screens only). */
+
+/* auth */
+.auth-page {
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+.auth-aside {
+  position: relative;
+  overflow: hidden;
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background:
+    radial-gradient(600px 400px at 20% 10%, var(--accent-soft), transparent 70%),
+    radial-gradient(500px 400px at 90% 90%, rgba(45, 212, 191, 0.12), transparent 70%),
+    var(--bg-2);
+  border-right: 1px solid var(--border);
+}
+.auth-aside h2 {
+  font-size: clamp(28px, 3.2vw, 42px);
+  letter-spacing: -0.035em;
+  margin: 28px 0 14px;
+}
+.auth-points {
+  list-style: none;
+  padding: 0;
+  margin: 28px 0 0;
+  display: grid;
+  gap: 14px;
+  color: var(--text-2);
+}
+.auth-points li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.auth-points svg {
+  color: var(--accent);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+.auth-main {
+  display: grid;
+  place-items: center;
+  padding: 40px 24px;
+}
+.auth-box {
+  width: min(440px, 100%);
+}
+.auth-box h1 {
+  font-size: 30px;
+  letter-spacing: -0.03em;
+  margin: 18px 0 6px;
+}
+.demo-box {
+  margin-top: 22px;
+  padding: 16px;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius);
+  background: var(--panel-2);
+}
+.demo-box h3 {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+.demo-progress {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--text-2);
+}
+
+/* shared bits */
+.hash {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  word-break: break-all;
+  color: var(--text-2);
+}
+.toolbar {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.toolbar .search {
+  flex: 1 1 240px;
+  max-width: 380px;
+}
+.file-name {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+.file-ico {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+.file-name strong {
+  display: block;
+  overflow-wrap: anywhere;
+}
+.row-actions {
+  display: flex;
+  gap: 4px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+.access-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.access-row:last-child {
+  border-bottom: 0;
+}
+.access-row .select-wrap {
+  min-width: 120px;
+}
+.detail-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+.pad {
+  padding: 20px 22px;
+}
+.chain-ok {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+.callout {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--panel-2);
+  color: var(--text-2);
+  font-size: 14px;
+}
+.callout svg {
+  flex-shrink: 0;
+  color: var(--accent);
+  margin-top: 2px;
+}
+.callout.warn svg {
+  color: var(--warn);
+}
+.callout.danger svg {
+  color: var(--danger);
+}
+.upload-status {
+  margin-top: 12px;
+}
+.landing-nav-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.hero-cta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+.crypto-flow {
+  display: grid;
+  gap: 12px;
+}
+.crypto-step {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  font-size: 14px;
+  color: var(--text-2);
+}
+.crypto-step.active {
+  border-color: var(--accent);
+  color: var(--text);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+.crypto-step b {
+  color: var(--text);
+}
+.crypto-step .mono {
+  color: var(--accent);
+  flex-shrink: 0;
+  width: 78px;
+  font-size: 11.5px;
+}
+.rbac-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.rbac-table th,
+.rbac-table td {
+  padding: 12px 14px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+.rbac-table th:first-child,
+.rbac-table td:first-child {
+  text-align: left;
+  color: var(--text-2);
+}
+.rbac-table .yes {
+  color: var(--accent);
+}
+.rbac-table .no {
+  color: var(--text-3);
+}
+
+@media (max-width: 900px) {
+  .auth-page {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .auth-aside {
+    display: none;
+  }
+  .detail-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* landing additions */
+@media (min-width: 901px) {
+  .how-visual {
+    position: sticky;
+    top: 18vh;
+  }
+}
+.hero-visual .hero-layer {
+  position: static;
+}
+/* CountUp renders nested spans; the kit's `.number span` caption style must not apply to them */
+.number strong span {
+  display: inline;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+}
+
+.rbac-table svg {
+  margin: 0 auto;
+}

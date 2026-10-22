@@ -1,0 +1,36 @@
+{% extends "base.html" %}{% block title %}Predict{% endblock %}{% block content %}
+<h2>Predict startup outcome</h2>
+<p class="muted">Enter what you know about the startup. All processing happens locally on this server.</p>
+{% if error %}<div class="alert">{{ error }}</div>{% endif %}
+<form method="post" action="/predict-form" class="form">
+<div class="grid2">
+<div class="card"><h3>Funding & traction</h3>
+<label>Total funding (USD)<input type="number" name="funding_total_usd" value="1000000" min="0" max="10000000000" step="1000" required></label>
+<label>Funding rounds<input type="number" name="funding_rounds" value="2" min="0" max="20" step="1" required></label>
+<label>Relationships<input type="number" name="relationships" value="4" min="0" max="200" step="1"></label>
+<label>Milestones<input type="number" name="milestones" value="2" min="0" max="50" step="1"></label>
+<label>Avg. participants<input type="number" name="avg_participants" value="3" min="0" max="50" step="0.5"></label>
+</div>
+<div class="card"><h3>Company profile</h3>
+<div class="row"><div><label>Age first funding (yrs)<input type="number" name="age_first_funding_year" value="1.5" min="0" max="30" step="0.1"></label></div>
+<div><label>Age last funding (yrs)<input type="number" name="age_last_funding_year" value="2.5" min="0" max="30" step="0.1"></label></div></div>
+<div class="row"><div><label>Age first milestone<input type="number" name="age_first_milestone_year" value="1.0" min="0" max="30" step="0.1"></label></div>
+<div><label>Age last milestone<input type="number" name="age_last_milestone_year" value="2.0" min="0" max="30" step="0.1"></label></div></div>
+<label>Industry<select name="industry_type">{% for i in industries %}<option>{{ i }}</option>{% endfor %}</select></label>
+<label>State<select name="state">{% for s in states %}<option>{{ s }}</option>{% endfor %}</select></label>
+<label>Comparable cases (k)<select name="k">{% for v in ks %}<option value="{{ v }}" {% if v==default_k %}selected{% endif %}>{{ v }}</option>{% endfor %}</select></label>
+</div></div>
+<div class="card"><h3>Investor signals</h3><div class="checks">
+<label><input type="checkbox" name="has_VC" value="true"> Has VC</label>
+<label><input type="checkbox" name="has_angel" value="true"> Has angel</label>
+<label><input type="checkbox" name="has_roundA" value="true"> Round A</label>
+<label><input type="checkbox" name="has_roundB" value="true"> Round B</label>
+<label><input type="checkbox" name="has_roundC" value="true"> Round C</label>
+<label><input type="checkbox" name="has_roundD" value="true"> Round D</label>
+<label><input type="checkbox" name="is_top500" value="true"> Top-500 ranked</label>
+</div></div>
+<div class="card"><h3>Startup description</h3>
+<p class="muted">Describe product, market, business model, technology, traction (max 2000 chars).</p>
+<textarea name="description" rows="6" maxlength="2000" placeholder="e.g. A subscription analytics platform for small retailers using demand forecasting, with 40 paying stores and growing monthly revenue..." required></textarea></div>
+<button class="btn primary big" type="submit">Predict Startup Success</button>
+</form>{% endblock %}

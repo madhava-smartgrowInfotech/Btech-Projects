@@ -1,0 +1,268 @@
+{
+  "models": {
+    "Logistic Regression": {
+      "accuracy": {
+        "mean": 0.7507142857142857,
+        "std": 0.026572964625340364
+      },
+      "balanced_accuracy": {
+        "mean": 0.749251004749726,
+        "std": 0.024530998702222504
+      },
+      "precision": {
+        "mean": 0.695569852529135,
+        "std": 0.03825240882825987
+      },
+      "recall": {
+        "mean": 0.7394957983193278,
+        "std": 0.015032389764704463
+      },
+      "f1": {
+        "mean": 0.7164995786381247,
+        "std": 0.025021161473178215
+      },
+      "confusion_matrix_mean": [
+        [
+          122.2,
+          38.8
+        ],
+        [
+          31.0,
+          88.0
+        ]
+      ],
+      "confusion_matrix_last": [
+        [
+          124,
+          37
+        ],
+        [
+          29,
+          90
+        ]
+      ]
+    },
+    "Decision Tree": {
+      "accuracy": {
+        "mean": 0.6207142857142858,
+        "std": 0.03679784820683215
+      },
+      "balanced_accuracy": {
+        "mean": 0.6138472780416514,
+        "std": 0.041338974977997114
+      },
+      "precision": {
+        "mean": 0.5505585233722479,
+        "std": 0.038474173677950314
+      },
+      "recall": {
+        "mean": 0.5680672268907563,
+        "std": 0.07875882026124358
+      },
+      "f1": {
+        "mean": 0.5580570669983519,
+        "std": 0.056148380653890995
+      },
+      "confusion_matrix_mean": [
+        [
+          106.2,
+          54.8
+        ],
+        [
+          51.4,
+          67.6
+        ]
+      ],
+      "confusion_matrix_last": [
+        [
+          113,
+          48
+        ],
+        [
+          61,
+          58
+        ]
+      ]
+    },
+    "Random Forest": {
+      "accuracy": {
+        "mean": 0.6607142857142857,
+        "std": 0.020203050891044204
+      },
+      "balanced_accuracy": {
+        "mean": 0.6413956887102666,
+        "std": 0.020539800883439138
+      },
+      "precision": {
+        "mean": 0.6227710374420901,
+        "std": 0.02974844728498297
+      },
+      "recall": {
+        "mean": 0.5126050420168068,
+        "std": 0.027100026044701023
+      },
+      "f1": {
+        "mean": 0.5621351917057178,
+        "std": 0.02610243097563182
+      },
+      "confusion_matrix_mean": [
+        [
+          124.0,
+          37.0
+        ],
+        [
+          58.0,
+          61.0
+        ]
+      ],
+      "confusion_matrix_last": [
+        [
+          118,
+          43
+        ],
+        [
+          63,
+          56
+        ]
+      ]
+    },
+    "XGBoost": {
+      "accuracy": {
+        "mean": 0.7121428571428572,
+        "std": 0.011203133672398658
+      },
+      "balanced_accuracy": {
+        "mean": 0.6972963098282791,
+        "std": 0.010027881339992144
+      },
+      "precision": {
+        "mean": 0.685271296799872,
+        "std": 0.020247983762551054
+      },
+      "recall": {
+        "mean": 0.5983193277310924,
+        "std": 0.01114831862304335
+      },
+      "f1": {
+        "mean": 0.6386324632857131,
+        "std": 0.010329318850959323
+      },
+      "confusion_matrix_mean": [
+        [
+          128.2,
+          32.8
+        ],
+        [
+          47.8,
+          71.2
+        ]
+      ],
+      "confusion_matrix_last": [
+        [
+          130,
+          31
+        ],
+        [
+          46,
+          73
+        ]
+      ]
+    }
+  },
+  "best_model": "Logistic Regression",
+  "representations": {
+    "structured_only": {
+      "mean": 0.7141030325173547,
+      "std": 0.024975744687629156
+    },
+    "text_only": {
+      "mean": 0.5992327365728899,
+      "std": 0.013119247664181781
+    },
+    "combined": {
+      "mean": 0.749251004749726,
+      "std": 0.024530998702222504
+    }
+  },
+  "retrieval_k": {
+    "k=10": {
+      "mean": 0.6538545853123858,
+      "std": 0.00882668700985008
+    },
+    "k=20": {
+      "mean": 0.6815126050420167,
+      "std": 0.01303462260875317
+    },
+    "k=30": {
+      "mean": 0.6909024479356961,
+      "std": 0.01625559818620728
+    },
+    "k=50": {
+      "mean": 0.6977712824260138,
+      "std": 0.011835523044339737
+    }
+  },
+  "metadata": {
+    "best_model": "Logistic Regression",
+    "model_names": [
+      "Logistic Regression",
+      "Decision Tree",
+      "Random Forest",
+      "XGBoost"
+    ],
+    "feature_names_structured": [
+      "age_first_funding_year",
+      "age_last_funding_year",
+      "age_first_milestone_year",
+      "age_last_milestone_year",
+      "relationships",
+      "funding_rounds",
+      "funding_total_usd",
+      "milestones",
+      "avg_participants",
+      "log_funding_total_usd",
+      "has_VC",
+      "has_angel",
+      "has_roundA",
+      "has_roundB",
+      "has_roundC",
+      "has_roundD",
+      "is_top500",
+      "state_CA",
+      "state_CO",
+      "state_FL",
+      "state_IL",
+      "state_MA",
+      "state_NY",
+      "state_OR",
+      "state_PA",
+      "state_TX",
+      "state_WA",
+      "industry_type_AI",
+      "industry_type_Biotech",
+      "industry_type_CleanTech",
+      "industry_type_E-Commerce",
+      "industry_type_EdTech",
+      "industry_type_FinTech",
+      "industry_type_HealthTech",
+      "industry_type_Media",
+      "industry_type_Mobile",
+      "industry_type_Software"
+    ],
+    "structured_dim": 37,
+    "embedding_dim": 384,
+    "embedding_backend": "sentence-transformers",
+    "alpha": 0.5,
+    "n_train": 1400,
+    "class_counts": {
+      "SUCCESS": 595,
+      "FAILURE": 805
+    },
+    "dataset_meta": {
+      "kaggle_source": "manishkc06/startup-success-prediction",
+      "synthetic_fallback": true,
+      "source": "synthetic_fallback",
+      "note": "Public dataset unavailable; generated realistic synthetic data with the same schema."
+    }
+  }
+}

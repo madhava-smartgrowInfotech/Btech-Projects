@@ -1,0 +1,19 @@
+{% extends "base.html" %}{% block title %}Insights{% endblock %}{% block content %}
+<h2>Startup insights</h2>
+<p class="muted">Computed live from {{ insights.total }} historical startups in this deployment.</p>
+<section class="grid4">
+<div class="card"><h4>Total</h4><p class="num">{{ insights.total }}</p></div>
+<div class="card ok"><h4>Success</h4><p class="num">{{ insights.success }}</p></div>
+<div class="card bad"><h4>Failure</h4><p class="num">{{ insights.failure }}</p></div>
+<div class="card"><h4>Median funding (S / F)</h4><p class="num small-num">${{ "%.0f"|format(insights.median_funding_success) }} / ${{ "%.0f"|format(insights.median_funding_failure) }}</p></div>
+</section>
+<div class="grid2">
+<div class="card"><h3>Success rate by industry</h3><img src="/static/img/industry_success.png" alt="industry">
+<table class="tbl small"><thead><tr><th>Industry</th><th>Rate</th><th>n</th></tr></thead><tbody>
+{% for r in insights.industries %}<tr><td>{{ r.industry }}</td><td>{{ "%.1f"|format(r.success_rate*100) }}%</td><td>{{ r.count }}</td></tr>{% endfor %}</tbody></table></div>
+<div class="card"><h3>Funding distribution by outcome</h3><img src="/static/img/funding_dist.png" alt="funding"></div>
+</div>
+<div class="card"><h3>Correlation with SUCCESS</h3>
+<table class="tbl small"><thead><tr><th>Signal</th><th>Correlation</th></tr></thead><tbody>
+{% for k, v in insights.correlations.items() %}<tr><td>{{ k }}</td><td>{{ "%.3f"|format(v) }}</td></tr>{% endfor %}</tbody></table></div>
+{% endblock %}

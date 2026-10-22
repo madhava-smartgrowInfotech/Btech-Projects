@@ -1,0 +1,9 @@
+services:
+  venturepulse:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./models:/app/models
+      - ./data:/app/data
+      - ./evaluation:/app/evaluation

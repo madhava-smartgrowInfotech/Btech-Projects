@@ -1,0 +1,63 @@
+{
+  "best_model": "Logistic Regression",
+  "model_names": [
+    "Logistic Regression",
+    "Decision Tree",
+    "Random Forest",
+    "XGBoost"
+  ],
+  "feature_names_structured": [
+    "age_first_funding_year",
+    "age_last_funding_year",
+    "age_first_milestone_year",
+    "age_last_milestone_year",
+    "relationships",
+    "funding_rounds",
+    "funding_total_usd",
+    "milestones",
+    "avg_participants",
+    "log_funding_total_usd",
+    "has_VC",
+    "has_angel",
+    "has_roundA",
+    "has_roundB",
+    "has_roundC",
+    "has_roundD",
+    "is_top500",
+    "state_CA",
+    "state_CO",
+    "state_FL",
+    "state_IL",
+    "state_MA",
+    "state_NY",
+    "state_OR",
+    "state_PA",
+    "state_TX",
+    "state_WA",
+    "industry_type_AI",
+    "industry_type_Biotech",
+    "industry_type_CleanTech",
+    "industry_type_E-Commerce",
+    "industry_type_EdTech",
+    "industry_type_FinTech",
+    "industry_type_HealthTech",
+    "industry_type_Media",
+    "industry_type_Mobile",
+    "industry_type_Software"
+  ],
+  "structured_dim": 37,
+  "embedding_dim": 384,
+  "embedding_backend": "sentence-transformers",
+  "alpha": 0.5,
+  "n_train": 1400,
+  "class_counts": {
+    "SUCCESS": 595,
+    "FAILURE": 805
+  },
+  "dataset_meta": {
+    "kaggle_source": "manishkc06/startup-success-prediction",
+    "synthetic_fallback": true,
+    "source": "synthetic_fallback",
+    "note": "Public dataset unavailable; generated realistic synthetic data with the same schema."
+  }
+}

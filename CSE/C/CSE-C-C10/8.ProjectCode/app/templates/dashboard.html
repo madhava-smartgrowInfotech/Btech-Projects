@@ -1,0 +1,24 @@
+{% extends "base.html" %}{% block title %}Dashboard{% endblock %}{% block content %}
+<section class="hero"><div><h1>VenturePulse</h1>
+<p class="sub">Estimate early-stage startup outcomes from historical patterns — structured company signals plus natural-language business descriptions, matched against comparable startups.</p>
+<a class="btn primary" href="/predict">Analyze a startup</a> <a class="btn" href="/performance">View model performance</a></div>
+<div class="hero-card"><h3>Best validated model</h3><p class="big">{{ best }}</p>
+<p>Balanced accuracy: <strong>{{ "%.3f"|format(best_metrics.balanced_accuracy.mean) }}</strong> ± {{ "%.3f"|format(best_metrics.balanced_accuracy.std) }}<br>F1-score: <strong>{{ "%.3f"|format(best_metrics.f1.mean) }}</strong></p>
+<p class="muted">5 repeated stratified 80/20 splits · {{ meta.n_train }} historical startups</p></div></section>
+<section class="grid4">
+<div class="card"><h4>Historical startups</h4><p class="num">{{ insights.total }}</p></div>
+<div class="card ok"><h4>Successful</h4><p class="num">{{ insights.success }}</p></div>
+<div class="card bad"><h4>Failed</h4><p class="num">{{ insights.failure }}</p></div>
+<div class="card"><h4>Success rate</h4><p class="num">{{ "%.1f"|format(insights.success_rate*100) }}%</p></div>
+</section>
+<section class="grid2">
+<div class="card"><h3>Class distribution</h3><img src="/static/img/class_distribution.png" alt="class distribution"></div>
+<div class="card"><h3>Model comparison — balanced accuracy</h3><img src="/static/img/model_balanced_accuracy.png" alt="model comparison"></div>
+</section>
+<section class="card"><h3>How VenturePulse works</h3>
+<ol class="steps"><li>Enter structured signals (funding, rounds, milestones, relationships, industry, investors) plus a business description.</li>
+<li>VenturePulse builds a fused representation: scaled structured features (weight 0.5) + transformer text embedding, compared with cosine similarity.</li>
+<li>It retrieves comparable historical startups and predicts with the best validated classifier.</li>
+<li>You see the estimated outcome, confidence, evidence cases, and key contributing features.</li></ol>
+{% if meta.dataset_meta.synthetic_fallback %}<p class="warn">Data note: public download unavailable — running on a realistic synthetic dataset with the same schema.</p>{% endif %}</section>
+{% endblock %}

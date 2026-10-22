@@ -1,0 +1,22 @@
+{% extends "base.html" %}{% block title %}Result{% endblock %}{% block content %}
+<h2>Estimated startup outcome</h2>
+<div class="verdict {{ 'ok' if result.outcome=='SUCCESS' else 'bad' }}">
+<span class="vlabel">{{ result.outcome }}</span>
+<span>Confidence {{ "%.1f"|format(result.confidence*100) }}% · Model: {{ result.model }} · {{ result.risk }}</span></div>
+<p>Success probability <strong>{{ "%.1f"|format(result.probability_success*100) }}%</strong> · Failure probability <strong>{{ "%.1f"|format(result.probability_failure*100) }}%</strong></p>
+<p class="muted">This prediction is an analytical estimate, not a guarantee of future performance.</p>
+<div class="grid2">
+<div class="card"><h3>Key contributing features</h3><ul>{% for b in result.explanation %}<li>{{ b }}</li>{% endfor %}</ul></div>
+<div class="card"><h3>Your inputs</h3><ul class="small">
+<li>Industry: {{ inputs.industry_type }} · State: {{ inputs.state }}</li>
+<li>Funding: ${{ inputs.funding_total_usd }} across {{ inputs.funding_rounds }} rounds</li>
+<li>Relationships {{ inputs.relationships }} · Milestones {{ inputs.milestones }}</li>
+<li class="wrap">{{ inputs.description }}</li></ul></div></div>
+<div class="card"><h3>Similar historical startups (k={{ result.k }} · {{ result.similar_counts.SUCCESS }} SUCCESS / {{ result.similar_counts.FAILURE }} FAILURE)</h3>
+<table class="tbl"><thead><tr><th>Similarity</th><th>Outcome</th><th>Industry</th><th>State</th><th>Funding</th><th>Rounds</th><th>Summary</th></tr></thead>
+<tbody>{% for s in result.similar %}<tr><td>{{ "%.3f"|format(s.similarity) }}</td>
+<td><span class="pill {{ 'ok' if s.outcome=='SUCCESS' else 'bad' }}">{{ s.outcome }}</span></td>
+<td>{{ s.industry }}</td><td>{{ s.state }}</td><td>${{ "%.0f"|format(s.funding_total_usd) }}</td><td>{{ s.funding_rounds }}</td>
+<td class="wrap">{{ s.description }}</td></tr>{% endfor %}</tbody></table></div>
+<a class="btn" href="/predict">Analyze another startup</a>
+{% endblock %}

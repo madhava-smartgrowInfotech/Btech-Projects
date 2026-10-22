@@ -1,0 +1,24 @@
+{% extends "base.html" %}{% block title %}Performance{% endblock %}{% block content %}
+<h2>Model performance</h2>
+<p class="muted">5 repeated stratified 80/20 splits · balanced accuracy is the primary metric · best model: <strong>{{ best }}</strong></p>
+<div class="card"><table class="tbl"><thead><tr><th>Model</th><th>Balanced acc.</th><th>Accuracy</th><th>Precision</th><th>Recall</th><th>F1</th></tr></thead><tbody>
+{% for m, v in results.models.items() %}<tr {% if m==best %}class="hl"{% endif %}><td><strong>{{ m }}</strong></td>
+<td>{{ "%.3f"|format(v.balanced_accuracy.mean) }} ± {{ "%.3f"|format(v.balanced_accuracy.std) }}</td>
+<td>{{ "%.3f"|format(v.accuracy.mean) }} ± {{ "%.3f"|format(v.accuracy.std) }}</td>
+<td>{{ "%.3f"|format(v.precision.mean) }} ± {{ "%.3f"|format(v.precision.std) }}</td>
+<td>{{ "%.3f"|format(v.recall.mean) }} ± {{ "%.3f"|format(v.recall.std) }}</td>
+<td>{{ "%.3f"|format(v.f1.mean) }} ± {{ "%.3f"|format(v.f1.std) }}</td></tr>{% endfor %}</tbody></table></div>
+<div class="grid2">
+<div class="card"><h3>Balanced accuracy</h3><img src="/static/img/model_balanced_accuracy.png" alt="balanced accuracy"></div>
+<div class="card"><h3>F1-score</h3><img src="/static/img/model_f1.png" alt="f1"></div>
+<div class="card"><h3>Precision vs recall</h3><img src="/static/img/precision_recall.png" alt="pr"></div>
+<div class="card"><h3>Confusion matrix — {{ best }}</h3><img src="/static/img/confusion_matrix.png" alt="cm"></div>
+<div class="card"><h3>Retrieval size comparison</h3><img src="/static/img/retrieval_k.png" alt="k">
+<table class="tbl small"><thead><tr><th>k</th><th>Balanced acc.</th></tr></thead><tbody>
+{% for k, v in results.retrieval_k.items() %}<tr><td>{{ k }}</td><td>{{ "%.3f"|format(v.mean) }} ± {{ "%.3f"|format(v.std) }}</td></tr>{% endfor %}</tbody></table></div>
+<div class="card"><h3>Structured vs text vs combined</h3><img src="/static/img/representation.png" alt="rep">
+<table class="tbl small"><thead><tr><th>Representation</th><th>Balanced acc.</th></tr></thead><tbody>
+{% for k, v in results.representations.items() %}<tr><td>{{ k }}</td><td>{{ "%.3f"|format(v.mean) }} ± {{ "%.3f"|format(v.std) }}</td></tr>{% endfor %}</tbody></table></div>
+</div>
+<div class="card"><h3>Feature importance</h3><img src="/static/img/feature_importance.png" alt="fi"></div>
+{% endblock %}

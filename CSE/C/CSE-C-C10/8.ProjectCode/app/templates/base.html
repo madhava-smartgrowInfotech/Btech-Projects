@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ app_name }} — {% block title %}Early-stage startup outcome analytics{% endblock %}</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header class="nav"><div class="nav-inner">
+<a class="brand" href="/"><span class="pulse">◉</span> VenturePulse</a>
+<nav><a href="/">Dashboard</a><a href="/predict">Predict Startup</a><a href="/performance">Model Performance</a><a href="/insights">Startup Insights</a></nav>
+</div></header>
+<main class="container">{% block content %}{% endblock %}</main>
+<footer class="footer"><div class="container">
+<p><strong>Estimated startup outcome.</strong> This prediction is an analytical estimate, not a guarantee of future performance.</p>
+<p>VenturePulse provides an analytical estimate based on historical startup patterns and should not be treated as a guarantee of future performance or investment advice.</p>
+</div></footer>
+</body></html>

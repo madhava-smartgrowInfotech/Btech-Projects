@@ -1,0 +1,7 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LearnPathIQ — Learning path</title><link rel="stylesheet" href="/static/style.css"></head><body>
+<div class="nav"><div class="wrap"><div class="logo"><a href="/" style="color:inherit">Learn<span>PathIQ</span></a></div><div class="links" id="navlinks"></div></div></div>
+<div class="wrap" style="padding:26px 20px"><h2>Your personalized learning path</h2><p class="mut" id="sub"></p><div id="steps" class="grid"></div></div>
+<div id="toast" class="toast"></div><script src="/static/app.js"></script><script>
+(async()=>{try{const p=await api('/api/learning-path');sub.textContent=`Status: ${p.engagement.label} · Next best action: ${p.next_action}`;
+steps.innerHTML=p.steps.map(s=>`<div class="card"><div class="pill">Step ${s.step} · ${s.action}</div><h3><a href="/course/${s.course.id}">${s.course.title}</a></h3><div class="meta"><span>${s.course.skill_level}</span><span>·</span><span>${s.course.duration_hours}h</span><span>·</span><span>${(s.score*100).toFixed(0)}% match</span></div><div class="mut">${s.why}</div><div><button class="btn sm" onclick="track('${s.course.id}','start');location.href='/course/${s.course.id}'">Start step ${s.step}</button></div></div>`).join('');}catch(e){location.href='/login';}})();
+</script></body></html>

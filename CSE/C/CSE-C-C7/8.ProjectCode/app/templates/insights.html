@@ -1,0 +1,15 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LearnPathIQ — Insights</title><link rel="stylesheet" href="/static/style.css"></head><body>
+<div class="nav"><div class="wrap"><div class="logo"><a href="/" style="color:inherit">Learn<span>PathIQ</span></a></div><div class="links" id="navlinks"></div></div></div>
+<div class="wrap" style="padding:26px 20px"><h2>Learning insights</h2><div class="grid g3" id="k"></div>
+<div class="grid g2" style="margin-top:14px"><div class="card"><h3>Strengths</h3><div id="s"></div><h3>Areas needing attention</h3><div id="a"></div></div>
+<div class="card"><h3>Personalized action scores</h3><p class="mut">Estimated benefit of each action, based on observed learning patterns (not proven causal effects).</p><div id="u"></div><h3>What shaped your success estimate</h3><div id="f"></div></div></div></div>
+<div id="toast" class="toast"></div><script src="/static/app.js"></script><script>
+(async()=>{try{const i=await api('/api/insights');
+k.innerHTML=`<div class="card"><div class="mut">Engagement</div><div class="kpi" style="font-size:22px">${i.engagement.label}</div><div class="bar"><i style="width:${i.engagement.score*100}%"></i></div></div>
+<div class="card"><div class="mut">Est. success</div><div class="kpi">${(i.success_probability*100).toFixed(0)}%</div></div>
+<div class="card"><div class="mut">Recommended action</div><div class="kpi" style="font-size:20px">${i.recommended_action}</div></div>`;
+s.innerHTML=i.strengths.map(x=>`<div>✓ ${x}</div>`).join('');a.innerHTML=i.attention.map(x=>`<div>→ ${x}</div>`).join('');
+u.innerHTML=Object.entries(i.uplift).map(([k2,v])=>`<div style="margin:8px 0"><b>${k2}</b><div class="bar"><i style="width:${Math.max(2,Math.min(100,(v+0.05)*800))}%"></i></div><span class="mut">${v}</span></div>`).join('');
+f.innerHTML=Object.entries(i.contributing_features||{}).map(([k2,v])=>`<div>${k2}: <b>${v}</b></div>`).join('')||'<span class="mut">—</span>';
+}catch(e){location.href='/login';}})();
+</script></body></html>

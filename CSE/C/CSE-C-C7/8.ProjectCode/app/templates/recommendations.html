@@ -1,0 +1,20 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LearnPathIQ — Recommendations</title><link rel="stylesheet" href="/static/style.css"></head><body>
+<div class="nav"><div class="wrap"><div class="logo"><a href="/" style="color:inherit">Learn<span>PathIQ</span></a></div><div class="links" id="navlinks"></div></div></div>
+<div class="wrap" style="padding:26px 20px">
+<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><h2 style="margin:0">Recommendations</h2><button class="btn sm ghost" id="refresh">↻ Refresh</button><input id="q" placeholder="Search courses…" style="max-width:280px;margin-left:auto"></div>
+<p class="mut">Ranked for your profile and behavior. Every card shows why it was suggested.</p>
+<div class="grid g2" id="recs"><div class="card"><span class="spinner"></span> Loading recommendations…</div></div></div>
+<div id="toast" class="toast"></div><script src="/static/app.js"></script><script>
+async function load(){const q=document.getElementById('q').value;
+try{const r=await api('/api/recommendations?top_n=12');let list=r.recommendations;
+if(q){const ql=q.toLowerCase();list=list.filter(x=>(x.course.title+x.course.description+x.course.tags).toLowerCase().includes(ql));}
+recs.innerHTML=list.map(x=>`<div class="card course-card"><div class="pill">${(x.score*100).toFixed(0)}% match · success ${(x.success_prob*100).toFixed(0)}%</div>
+<h3><a href="/course/${x.course.id}">${x.course.title}</a></h3><div class="meta"><span>${x.course.category}</span><span>·</span><span>${x.course.skill_level}</span><span>·</span><span>${x.course.difficulty}</span><span>·</span><span>${x.course.duration_hours}h</span><span>·</span><span>★ ${x.course.rating}</span></div>
+<div class="mut">${x.explanation}</div><div class="mut">Suggested action: <b>${x.suggested_action_label}</b> (est. benefit ${x.est_benefit})</div>
+<div><button class="btn sm" onclick="track('${x.course.id}','open');location.href='/course/${x.course.id}'">View</button>
+<button class="btn sm light" onclick="track('${x.course.id}','start');toast('Marked as started')">Start</button>
+<button class="btn sm light" onclick="track('${x.course.id}','dismiss');toast('Dismissed — future lists will adapt');load()">Dismiss</button></div></div>`).join('')||'<div class="card">No matches.</div>';
+}catch(e){location.href='/login';}}
+document.getElementById('refresh').onclick=async()=>{await api('/api/recommendations/refresh',{method:'POST'});toast('Recommendations refreshed');load();};
+document.getElementById('q').oninput=load;load();
+</script></body></html>

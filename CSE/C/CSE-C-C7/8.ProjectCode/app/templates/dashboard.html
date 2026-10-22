@@ -1,0 +1,28 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LearnPathIQ — Dashboard</title><link rel="stylesheet" href="/static/style.css"></head><body>
+<div class="nav"><div class="wrap"><div class="logo"><a href="/" style="color:inherit">Learn<span>PathIQ</span></a></div><div class="links" id="navlinks"></div></div></div>
+<div class="wrap" style="padding:26px 20px">
+<h2 id="hello">Your dashboard</h2>
+<div class="grid g4" id="kpis"></div>
+<div class="grid g2" style="margin-top:16px">
+<div class="card"><h3>Recommended next action</h3><div id="action"></div><div style="margin-top:10px"><a class="btn sm" href="/path">View learning path</a> <a class="btn sm ghost" href="/recommendations">All recommendations</a></div></div>
+<div class="card"><h3>Recent activity</h3><div id="recent" class="mut">Loading…</div></div>
+</div>
+<h3 style="margin-top:22px">Top recommendations for you</h3>
+<div class="grid g2" id="recs"></div>
+</div><div id="toast" class="toast"></div><script src="/static/app.js"></script><script>
+async function load(){try{
+const me=await api('/api/me');if(!me.user){location.href='/login';return;}
+hello.textContent=`Welcome back, ${me.user.name.split(' ')[0]} 👋`;
+const [r,a]=await Promise.all([api('/api/recommendations?top_n=4'),api('/api/activity?limit=6')]);
+kpis.innerHTML=`<div class="card"><div class="mut">Learning status</div><div class="kpi" style="font-size:20px">${r.engagement.label}</div><div class="bar"><i style="width:${r.engagement.score*100}%"></i></div></div>
+<div class="card"><div class="mut">Est. success probability</div><div class="kpi">${(r.success_probability*100).toFixed(0)}%</div></div>
+<div class="card"><div class="mut">Interactions recorded</div><div class="kpi">${r.engagement.total}</div></div>
+<div class="card"><div class="mut">Quizzes done</div><div class="kpi">${r.engagement.quizzes}</div></div>`;
+const best=Object.entries(r.uplift||{}).sort((x,y)=>y[1]-x[1])[0];
+const labels={quiz:'Complete a quiz',content:'Review learning content',forum:'Engage with discussion',homepage:'Visit course resources',continue_course:'Continue your learning path'};
+action.innerHTML=`<div class="pill">${labels[best?best[0]:'continue_course']||'Continue your learning path'}</div><p class="mut">Estimated benefit: <b>${best?best[1]:0}</b> · based on observed learning patterns.</p>`;
+recs.innerHTML=r.recommendations.map(x=>`<div class="card course-card"><div class="pill">${(x.score*100).toFixed(0)}% match</div><h3><a href="/course/${x.course.id}">${x.course.title}</a></h3><div class="meta"><span>${x.course.category}</span><span>·</span><span>${x.course.skill_level}</span><span>·</span><span>${x.course.duration_hours}h</span></div><div class="mut">${x.explanation}</div><div><button class="btn sm" onclick="track('${x.course.id}','open');location.href='/course/${x.course.id}'">Open</button> <button class="btn sm light" onclick="track('${x.course.id}','save');toast('Saved')">Save</button></div></div>`).join('');
+recent.innerHTML=a.events.length?a.events.map(e=>`<div>• ${e.event_type} — <b>${e.course_id||'—'}</b> <span class="mut">${e.at.slice(0,16).replace('T',' ')}</span></div>`).join(''):'No activity yet — open a recommendation to get started.';
+}catch(e){document.body.insertAdjacentHTML('beforeend','');}}
+load();
+</script></body></html>

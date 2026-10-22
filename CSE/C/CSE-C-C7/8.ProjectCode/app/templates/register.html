@@ -1,0 +1,8 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LearnPathIQ — Create account</title><link rel="stylesheet" href="/static/style.css"></head><body>
+<div class="nav"><div class="wrap"><div class="logo"><a href="/" style="color:inherit">Learn<span>PathIQ</span></a></div><div class="links" id="navlinks"></div></div></div>
+<div class="wrap" style="padding:30px 20px"><div class="card"><h2>Create your account</h2><div id="msg"></div>
+<form id="f"><label>Name</label><input id="name" required><label>Email</label><input id="email" type="email" required><label>Password (min 6 chars)</label><input id="pw" type="password" required><label>Confirm password</label><input id="pw2" type="password" required><div style="margin-top:14px"><button class="btn" type="submit">Create account</button> <a href="/login">Already have an account?</a></div></form></div></div>
+<div id="toast" class="toast"></div><script src="/static/app.js"></script><script>
+document.getElementById('f').onsubmit = async (e)=>{e.preventDefault();const m=document.getElementById('msg');m.innerHTML='';
+try{await api('/api/auth/register',{method:'POST',body:JSON.stringify({name:name.value,email:email.value,password:pw.value,confirm_password:pw2.value})});location.href='/onboarding';}catch(err){m.innerHTML=`<div class="alert err">${err.message}</div>`;}};
+</script></body></html>

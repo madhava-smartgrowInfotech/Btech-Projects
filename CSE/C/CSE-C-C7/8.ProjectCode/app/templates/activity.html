@@ -1,0 +1,9 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LearnPathIQ — Activity</title><link rel="stylesheet" href="/static/style.css"></head><body>
+<div class="nav"><div class="wrap"><div class="logo"><a href="/" style="color:inherit">Learn<span>PathIQ</span></a></div><div class="links" id="navlinks"></div></div></div>
+<div class="wrap" style="padding:26px 20px"><div class="grid g2"><div class="card"><h3>Your interactions</h3><div id="ev"></div></div><div class="card"><h3>Recommendation history</h3><div id="hi"></div></div></div></div>
+<div id="toast" class="toast"></div><script src="/static/app.js"></script><script>
+(async()=>{try{const a=await api('/api/activity?limit=40');const h=await api('/api/history');
+ev.innerHTML=a.events.length?a.events.map(e=>`<div>• <b>${e.event_type}</b> ${e.course_id} <span class="mut">${e.at.slice(0,16).replace('T',' ')}</span></div>`).join(''):'<span class="mut">No activity yet.</span>';
+hi.innerHTML=h.history.length?h.history.map(x=>`<div>• ${x.course_id} — ${(x.score*100).toFixed(0)}% <span class="mut">${x.at.slice(0,16).replace('T',' ')}</span></div>`).join(''):'<span class="mut">No history yet.</span>';
+}catch(e){location.href='/login';}})();
+</script></body></html>

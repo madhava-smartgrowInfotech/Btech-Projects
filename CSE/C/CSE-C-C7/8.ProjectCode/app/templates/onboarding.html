@@ -1,0 +1,20 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LearnPathIQ — Your profile</title><link rel="stylesheet" href="/static/style.css"></head><body>
+<div class="nav"><div class="wrap"><div class="logo"><a href="/" style="color:inherit">Learn<span>PathIQ</span></a></div><div class="links" id="navlinks"></div></div></div>
+<div class="wrap" style="padding:30px 20px"><div class="card"><h2>Your learner profile</h2><p class="mut">This drives your personalized recommendations. Be specific — comma-separated values work best.</p><div id="msg"></div>
+<form id="f">
+<label>Education / background</label><select id="education"><option>High School</option><option>Diploma</option><option>Bachelor's Degree</option><option>Master's Degree</option><option>Self-taught</option><option>Other</option></select>
+<label>Skill level</label><select id="skill"><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select>
+<label>Interests (comma separated)</label><input id="interests" placeholder="python, data science, design">
+<label>Preferred topics</label><input id="topics" placeholder="Machine Learning, Web Development">
+<label>Learning goals</label><input id="goals" placeholder="get a data job, build portfolio">
+<label>Course preferences</label><input id="prefs" placeholder="hands-on labs, short videos">
+<label>Preferred learning style</label><select id="style"><option>Self-paced</option><option>Structured schedule</option><option>Video-first</option><option>Reading-first</option><option>Project-based</option></select>
+<div class="grid g2"><div><label>Weekly study hours</label><input id="hours" type="number" min="1" max="40" step="0.5" value="5"></div><div><label>Age band</label><select id="age"><option>18-24</option><option selected>25-34</option><option>35-44</option><option>45+</option><option>Prefer not to say</option></select></div></div>
+<label>Gender (for fairness transparency, optional)</label><select id="gender"><option>Prefer not to say</option><option>F</option><option>M</option></select>
+<div style="margin-top:14px"><button class="btn" type="submit">Save & get recommendations</button></div></form></div></div>
+<div id="toast" class="toast"></div><script src="/static/app.js"></script><script>
+(async()=>{try{const p=await api('/api/profile');if(p.education)education.value=p.education;if(p.skill_level)skill.value=p.skill_level;interests.value=p.interests||'';topics.value=p.preferred_topics||'';goals.value=p.goals||'';prefs.value=p.course_preferences||'';if(p.learning_style)style.value=p.learning_style;hours.value=p.weekly_hours||5;}catch(e){location.href='/login';}})();
+document.getElementById('f').onsubmit=async(e)=>{e.preventDefault();
+const body={education:education.value,skill_level:skill.value,interests:interests.value,preferred_topics:topics.value,learning_style:style.value,goals:goals.value,course_preferences:prefs.value,weekly_hours:parseFloat(hours.value)||5,age_band:age.value,gender:gender.value};
+try{await api('/api/profile',{method:'PUT',body:JSON.stringify(body)});toast('Profile saved');setTimeout(()=>location.href='/dashboard',700);}catch(err){document.getElementById('msg').innerHTML=`<div class="alert err">${err.message}</div>`;}};
+</script></body></html>

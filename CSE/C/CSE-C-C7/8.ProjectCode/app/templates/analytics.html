@@ -1,0 +1,21 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LearnPathIQ — Analytics</title><link rel="stylesheet" href="/static/style.css"></head><body>
+<div class="nav"><div class="wrap"><div class="logo"><a href="/" style="color:inherit">Learn<span>PathIQ</span></a></div><div class="links" id="navlinks"></div></div></div>
+<div class="wrap" style="padding:26px 20px"><h2>Model transparency & analytics</h2><p class="mut">Real metrics from the local training run. Offline estimates only — no live A/B testing.</p>
+<div id="m"></div>
+<div class="grid g3" style="margin-top:14px">
+<div class="card"><h4>ROC curve</h4><img class="plot" src="/static/roc_curve.png" onerror="this.outerHTML='<span class=mut>Run training to generate plots.</span>'"></div>
+<div class="card"><h4>Confusion matrix</h4><img class="plot" src="/static/confusion_matrix.png" onerror="this.outerHTML='<span class=mut>Run training to generate plots.</span>'"></div>
+<div class="card"><h4>Feature importance</h4><img class="plot" src="/static/feature_importance.png" onerror="this.outerHTML='<span class=mut>Run training to generate plots.</span>'"></div>
+</div>
+<div class="card" style="margin-top:14px"><h3>Fairness audit (observational)</h3><div id="f" class="mut">Loading…</div></div>
+</div><div id="toast" class="toast"></div><script src="/static/app.js"></script><script>
+(async()=>{try{const m=await api('/api/metrics');
+let rows=Object.entries(m.models).map(([k,v])=>`<tr><td><b>${k}</b></td><td>${v.roc_auc}</td><td>${v.accuracy}</td><td>${v.precision}</td><td>${v.recall}</td><td>${v.f1}</td><td>${v.brier}</td></tr>`).join('');
+mEl.innerHTML=`<div class="card"><div>Dataset: <b>${m.dataset_source}</b> · test samples: <b>${m.test_samples}</b> · selected model: <b>${m.selected_model}</b></div>
+<table style="margin-top:10px"><tr><th>Model</th><th>AUC</th><th>Acc</th><th>Prec</th><th>Rec</th><th>F1</th><th>Brier</th></tr>${rows}</table>
+<h4>Offline policy evaluation</h4><div class="mut">IPS: ${m.policy_evaluation.ips} · SNIPS: ${m.policy_evaluation.snips} · DR: ${m.policy_evaluation.doubly_robust} · ${m.policy_evaluation.limitation||m.policy_evaluation.reason||''}</div>
+<p class="mut">${m.notes}</p></div>`;
+const f=await api('/api/fairness');document.getElementById('f').innerHTML='<pre style="white-space:pre-wrap">'+JSON.stringify(f.fairness,null,1)+'</pre><div>'+f.note+'</div>';
+}catch(e){mEl.innerHTML='<div class="alert err">Metrics unavailable. Run: python scripts/train_pipeline.py</div>';}})();
+const mEl=document.getElementById('m');
+</script></body></html>

@@ -1,0 +1,143 @@
+{
+  "dataset_source": "synthetic-oulad-like-fallback-v1",
+  "test_samples": 2640,
+  "train_samples": 21120,
+  "val_samples": 2640,
+  "features": [
+    "cum_clicks",
+    "recent_clicks",
+    "quiz_count",
+    "forum_count",
+    "completions",
+    "engagement",
+    "weekly_hours",
+    "skill_code"
+  ],
+  "actions": [
+    "quiz",
+    "content",
+    "forum",
+    "homepage",
+    "continue_course"
+  ],
+  "models": {
+    "logistic_regression": {
+      "val_auc": 0.6035,
+      "roc_auc": 0.6028,
+      "accuracy": 0.5936,
+      "precision": 0.5605,
+      "recall": 0.329,
+      "f1": 0.4146,
+      "brier": 0.2378,
+      "confusion_matrix": [
+        [
+          1187,
+          298
+        ],
+        [
+          775,
+          380
+        ]
+      ]
+    },
+    "random_forest": {
+      "val_auc": 0.555,
+      "roc_auc": 0.5439,
+      "accuracy": 0.5311,
+      "precision": 0.4616,
+      "recall": 0.432,
+      "f1": 0.4463,
+      "brier": 0.2837,
+      "confusion_matrix": [
+        [
+          903,
+          582
+        ],
+        [
+          656,
+          499
+        ]
+      ]
+    },
+    "xgboost": {
+      "val_auc": 0.6008,
+      "roc_auc": 0.5994,
+      "accuracy": 0.5955,
+      "precision": 0.5569,
+      "recall": 0.3688,
+      "f1": 0.4437,
+      "brier": 0.24,
+      "confusion_matrix": [
+        [
+          1146,
+          339
+        ],
+        [
+          729,
+          426
+        ]
+      ]
+    }
+  },
+  "selected_model": "logistic_regression",
+  "feature_importance": {
+    "cum_clicks": 0.1669,
+    "recent_clicks": 0.176,
+    "quiz_count": 0.0111,
+    "forum_count": 0.0308,
+    "completions": 0.0053,
+    "engagement": 0.1491,
+    "weekly_hours": 0.0178,
+    "skill_code": 0.1273
+  },
+  "policy_evaluation": {
+    "ips": 0.0088,
+    "snips": 0.6652,
+    "doubly_robust": 0.4355,
+    "clipping": [
+      0.02,
+      0.98
+    ],
+    "weight_cap": 10,
+    "effective_sample_size": 9.1,
+    "test_samples": 2640,
+    "limitation": "Observational offline estimate only; not a live experiment."
+  },
+  "fairness": {
+    "age_band": {
+      "0-35": {
+        "n": 1728,
+        "success_rate": 0.445,
+        "avg_predicted": 0.4364,
+        "f1": 0.415
+      },
+      "35-55": {
+        "n": 708,
+        "success_rate": 0.4449,
+        "avg_predicted": 0.4345,
+        "f1": 0.4369
+      },
+      "55<=": {
+        "n": 204,
+        "success_rate": 0.348,
+        "avg_predicted": 0.4153,
+        "f1": 0.3048
+      }
+    },
+    "gender": {
+      "F": {
+        "n": 1260,
+        "success_rate": 0.4286,
+        "avg_predicted": 0.4342,
+        "f1": 0.4
+      },
+      "M": {
+        "n": 1380,
+        "success_rate": 0.4457,
+        "avg_predicted": 0.4344,
+        "f1": 0.4278
+      }
+    }
+  },
+  "notes": "All metrics from this local training run. Offline estimates only; no live A/B testing."
+}

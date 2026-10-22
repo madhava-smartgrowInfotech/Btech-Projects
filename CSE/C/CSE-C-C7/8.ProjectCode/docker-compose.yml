@@ -1,0 +1,8 @@
+services:
+  learnpathiq:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./artifacts:/app/artifacts
+      - ./learnpathiq.db:/app/learnpathiq.db

@@ -1,0 +1,18 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LearnPathIQ — Course</title><link rel="stylesheet" href="/static/style.css"></head><body>
+<div class="nav"><div class="wrap"><div class="logo"><a href="/" style="color:inherit">Learn<span>PathIQ</span></a></div><div class="links" id="navlinks"></div></div></div>
+<div class="wrap" style="padding:26px 20px"><div class="card" id="c"><span class="spinner"></span> Loading…</div></div>
+<div id="toast" class="toast"></div><script src="/static/app.js"></script><script>
+const id=location.pathname.split('/').pop();
+async function load(){try{const c=await api('/api/courses/'+id);await track(id,'view');
+cEl.innerHTML=`<div class="pill">${c.category} · ${c.skill_level}</div><h2>${c.title}</h2><p class="mut">${c.description}</p>
+<div class="grid g4"><div><b>Duration</b><div>${c.duration_hours}h</div></div><div><b>Difficulty</b><div>${c.difficulty}</div></div><div><b>Format</b><div>${c.resource_type}</div></div><div><b>Rating</b><div>★ ${c.rating}</div></div></div>
+<p><b>Prerequisites:</b> ${c.prerequisites}</p><p><b>You will learn:</b> ${c.outcomes}</p><p><b>Tags:</b> ${c.tags}</p>
+${c.match_score?`<div class="alert ok"><b>Why recommended (${(c.match_score*100).toFixed(0)}% match):</b> ${c.explanation}. Est. success ${(c.success_prob*100).toFixed(0)}%.</div>`:''}
+<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn" onclick="track('${c.id}','start');toast('Course started — progress tracked')">Start Learning</button>
+<button class="btn ghost" onclick="track('${c.id}','save');toast('Saved to your list')">Save Course</button>
+<button class="btn light" onclick="track('${c.id}','content');toast('Content review logged')">Mark content reviewed</button>
+<button class="btn light" onclick="track('${c.id}','quiz');toast('Quiz activity logged')">Log quiz</button>
+<button class="btn light" onclick="track('${c.id}','forum');toast('Discussion logged')">Log discussion</button>
+<button class="btn light" onclick="track('${c.id}','complete');toast('Marked complete — recommendations will adapt')">Mark complete</button></div>`;}catch(e){cEl.innerHTML='<div class="alert err">Course not found.</div>';}}
+const cEl=document.getElementById('c');load();
+</script></body></html>

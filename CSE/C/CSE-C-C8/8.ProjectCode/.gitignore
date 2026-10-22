@@ -1,0 +1,10 @@
+# generated / local-only
+__pycache__/
+.pytest_cache/
+.venv/
+node_modules/
+frontend/dist/
+data/peerscope.db
+data/*.log
+data/tmp/
+models/hf_cache/

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PeerScope — AI-Assisted Paper Evaluation & Reviewer Matching</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="topbar">
+  <div class="logo">Peer<span>Scope</span></div>
+  <nav class="nav" id="nav">
+    <button data-view="dashboard" class="active">Dashboard</button>
+    <button data-view="analyze">Analyze Paper</button>
+    <button data-view="reviewers">Reviewers</button>
+    <button data-view="model">Model Performance</button>
+    <button data-view="history">Analysis History</button>
+    <button data-view="about">About PeerScope</button>
+  </nav>
+</div>
+<div class="wrap">
+
+  <section id="view-dashboard">
+    <div class="hero">
+      <div style="max-width:640px">
+        <h1>Evaluate papers. Match the right reviewers.</h1>
+        <p>PeerScope turns a PDF into a structured preliminary assessment plus transparent, auditable reviewer recommendations — running fully on your machine.</p>
+        <div class="row" style="margin-top:14px">
+          <button class="btn" onclick="go('analyze')">Upload a paper</button>
+          <button class="btn ghost" onclick="go('about')">How it works</button>
+        </div>
+      </div>
+      <div class="card" style="min-width:260px;color:#16283c">
+        <div class="muted">Reviewers in directory</div><div class="kpi" id="kpi-reviewers">–</div>
+        <div class="muted" style="margin-top:8px">Decision model</div><div id="kpi-model" class="badge">loading…</div>
+        <div class="muted" style="margin-top:8px">Recent analyses</div><div class="kpi" id="kpi-analyses">–</div>
+      </div>
+    </div>
+    <div class="grid g3" style="margin-top:16px">
+      <div class="card"><h3>1 · Upload</h3><p class="muted">Drop a research-paper PDF (up to 20 MB). Text, sections, and references are extracted locally.</p></div>
+      <div class="card"><h3>2 · Review</h3><p class="muted">A trained decision signal, structural checks, and a local AI review produce strengths, concerns, and next steps.</p></div>
+      <div class="card"><h3>3 · Match</h3><p class="muted">Expertise similarity + topic/method overlap + availability rank reviewers — with a full audit trail.</p></div>
+    </div>
+    <div class="card" style="margin-top:16px"><h3>Recent analyses</h3><div id="recent">Loading…</div></div>
+    <div class="note">PeerScope provides AI-assisted analysis and reviewer matching for decision support. Final editorial judgment remains with a qualified human.</div>
+  </section>
+
+  <section id="view-analyze" class="hidden">
+    <h2>Analyze Paper</h2>
+    <p class="muted">PDF → extraction → paper analysis → AI critique → literature context → reviewer matching → auditable recommendation.</p>
+    <div class="card">
+      <div class="drop" id="drop">Drag &amp; drop a PDF here, or click to choose a file<input type="file" id="file" accept=".pdf,application/pdf" class="hidden"></div>
+      <div class="row" style="margin-top:12px">
+        <span id="fname" class="muted">No file selected</span>
+        <label style="display:inline"><input type="checkbox" id="f-active" checked style="width:auto"> Active reviewers only</label>
+        <input id="f-min" type="number" value="0" min="0" max="100" style="max-width:110px" title="Minimum score">
+        <input id="f-topic" placeholder="filter topic" style="max-width:160px">
+        <input id="f-method" placeholder="filter method" style="max-width:160px">
+        <button class="btn" id="btn-analyze">Analyze</button>
+      </div>
+      <div class="progress"><i id="prog"></i></div>
+      <div id="amsg" style="margin-top:10px"></div>
+    </div>
+    <div id="result"></div>
+  </section>
+
+  <section id="view-reviewers" class="hidden">
+    <h2>Reviewer Directory</h2>
+    <div class="row">
+      <button class="btn small" id="btn-new">+ Add reviewer</button>
+      <button class="btn small ghost" id="btn-exp">Export CSV</button>
+      <button class="btn small ghost" id="btn-imp-btn">Import CSV</button>
+      <input type="file" id="btn-imp" accept=".csv" class="hidden">
+    </div>
+    <div class="card" style="margin-top:12px"><div id="rev-list">Loading…</div></div>
+    <div class="card hidden" id="rev-form-card"><h3 id="rev-form-title">Add reviewer</h3>
+      <input type="hidden" id="r-id">
+      <div class="grid g2">
+        <div><label>Display name</label><input id="r-name"></div>
+        <div><label>Affiliation</label><input id="r-aff"></div>
+      </div>
+      <label>Expertise description</label><textarea id="r-exp" rows="3"></textarea>
+      <div class="grid g2">
+        <div><label>Research topics (comma separated)</label><input id="r-topics"></div>
+        <div><label>Methods (comma separated)</label><input id="r-methods"></div>
+      </div>
+      <label>Keywords (comma separated)</label><input id="r-kw">
+      <label>Publication titles</label><input id="r-pubs">
+      <div class="grid g3">
+        <div><label>Current load</label><input id="r-load" type="number" value="0" min="0"></div>
+        <div><label>Maximum load</label><input id="r-max" type="number" value="5" min="1"></div>
+        <div><label>Active</label><select id="r-active"><option value="true">Active</option><option value="false">Inactive</option></select></div>
+      </div>
+      <label>Conflict terms (comma separated)</label><input id="r-conf">
+      <div class="row" style="margin-top:12px"><button class="btn" id="r-save">Save</button><button class="btn ghost" id="r-cancel">Cancel</button></div>
+    </div>
+  </section>
+
+  <section id="view-model" class="hidden">
+    <h2>Model Performance</h2>
+    <p class="muted">Actual measured metrics from the trained paper-decision model. The historical decision signal is one input among many — it does not judge scientific correctness.</p>
+    <div class="card"><div id="metrics">Loading…</div></div>
+  </section>
+
+  <section id="view-history" class="hidden">
+    <h2>Analysis History</h2>
+    <div class="card"><div id="hist">Loading…</div></div>
+  </section>
+
+  <section id="view-about" class="hidden">
+    <h2>About PeerScope</h2>
+    <div class="card">
+      <h3>What PeerScope does</h3>
+      <p>PeerScope is an AI-assisted research-paper evaluation and reviewer-recommendation tool. Upload a PDF and receive a preliminary assessment (historical decision signal, structural checks, local AI critique, related-literature context) plus ranked reviewer recommendations with a transparent audit trail.</p>
+      <h3>Pipeline</h3>
+      <p class="muted">PDF text extraction → normalization &amp; section detection → feature extraction → trained decision model + structural signals + local language-model review + literature grounding → review synthesis → expertise matching → auditable ranking → dashboard &amp; export.</p>
+      <h3>Reviewer matching (auditable)</h3>
+      <p class="muted">final = 0.55·expertise_similarity + 0.20·keyword_overlap + 0.15·method_overlap + 0.10·availability − conflict_penalty, normalized to 0–100. Weights are configurable in <code>app/config.py</code>.</p>
+      <h3>Responsible Use</h3>
+      <ul class="clean">
+        <li>AI output can contain errors; scientific validity requires human expertise.</li>
+        <li>Reviewer recommendations are decision-support suggestions, not assignments.</li>
+        <li>Retrieved literature is supporting context, not proof of novelty.</li>
+        <li>Verify important claims and conflicts of interest independently.</li>
+        <li>Do not use PeerScope as the sole basis for publication decisions.</li>
+      </ul>
+      <h3>Privacy</h3>
+      <p class="muted">PDFs are processed locally. Only title/topic keywords are sent to the public OpenAlex API for literature context (no document upload, no paid APIs, no credentials). Analyses store metadata, not private document copies.</p>
+    </div>
+  </section>
+
+  <div class="footer">PeerScope · AI-assisted analysis for decision support — final judgment remains with a qualified human.</div>
+</div>
+<script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+{
+  "status": "ok",
+  "model_type": "LogisticRegression(class_weight=balanced)",
+  "features": "TF-IDF word(1-2, 8k) + char_wb(3-5, 4k) over title+text",
+  "accuracy": 0.55,
+  "precision_macro": 0.5253,
+  "recall_macro": 0.6452,
+  "f1_macro": 0.5093,
+  "roc_auc": 0.7715,
+  "confusion_matrix": [
+    [
+      69,
+      3,
+      0
+    ],
+    [
+      45,
+      9,
+      70
+    ],
+    [
+      0,
+      8,
+      76
+    ]
+  ],
+  "labels": [
+    "accept",
+    "borderline",
+    "reject"
+  ],
+  "test_samples": 280,
+  "class_distribution": {
+    "reject": 419,
+    "borderline": 619,
+    "accept": 362
+  },
+  "dataset_source": "synthetic-fallback",
+  "synthetic_fallback": true,
+  "dataset_rows": 1400,
+  "random_seed": 42,
+  "trained_at": "2026-09-10T06:04:06.738637+00:00"
+}

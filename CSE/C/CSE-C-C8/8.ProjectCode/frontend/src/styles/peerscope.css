@@ -1,0 +1,361 @@
+/* PeerScope-specific additions on top of the V3 kit styles. Tokens only - no new colours. */
+
+.disclaimer-foot {
+  margin-top: 40px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  font-size: 12.5px;
+  color: var(--text-3);
+}
+
+/* notices */
+.note {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-strong);
+  background: var(--panel-2);
+  color: var(--text-2);
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+.note > svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--info);
+}
+.note.warn {
+  border-color: color-mix(in srgb, var(--warn) 45%, transparent);
+  background: var(--warn-soft);
+}
+.note.warn > svg {
+  color: var(--warn);
+}
+.note.danger {
+  border-color: color-mix(in srgb, var(--danger) 45%, transparent);
+  background: var(--danger-soft);
+}
+.note.danger > svg {
+  color: var(--danger);
+}
+.note.safe > svg {
+  color: var(--safe);
+}
+
+.bullets {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+.bullets li {
+  position: relative;
+  padding-left: 20px;
+  color: var(--text-2);
+  line-height: 1.6;
+}
+.bullets li::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 0.62em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.bullets.danger li::before {
+  background: var(--danger);
+}
+.bullets.warn li::before {
+  background: var(--warn);
+}
+.bullets.info li::before {
+  background: var(--info);
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.card-body.tight {
+  padding-top: 0;
+}
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+}
+.toolbar .search {
+  flex: 1 1 240px;
+  max-width: 380px;
+}
+.toolbar .row {
+  gap: 8px;
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 14px;
+  align-items: end;
+}
+.switch-field {
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+}
+
+.result-tabs {
+  margin: 24px 0 18px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+}
+.result-tabs .tabs {
+  min-width: max-content;
+}
+
+/* long model-written text */
+.md {
+  color: var(--text-2);
+  line-height: 1.7;
+  font-size: 14.5px;
+}
+.md h4 {
+  color: var(--text);
+  font-size: 15px;
+  margin: 16px 0 6px;
+}
+.md p {
+  margin: 0 0 10px;
+}
+.md ul {
+  margin: 0 0 10px;
+  padding-left: 20px;
+}
+.pre-wrap {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* reviewer recommendation card */
+.rev-card {
+  display: grid;
+  gap: 14px;
+  padding: 20px 22px;
+}
+.rev-head {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.rev-rank {
+  font: 700 12px/1 var(--font-mono);
+  color: var(--text-3);
+  letter-spacing: 0.08em;
+}
+.rev-name {
+  font: 700 18px/1.25 var(--font-display);
+  margin-top: 4px;
+}
+.rev-score {
+  text-align: right;
+  flex-shrink: 0;
+}
+.rev-score strong {
+  display: block;
+  font: 800 34px/1 var(--font-display);
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+}
+.rev-score span {
+  font-size: 12px;
+  color: var(--text-3);
+}
+.rev-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 14px;
+}
+.audit {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-2);
+}
+.audit summary {
+  cursor: pointer;
+  padding: 11px 14px;
+  font-weight: 600;
+  font-size: 13.5px;
+  border-radius: var(--radius);
+}
+.audit[open] summary {
+  border-bottom: 1px solid var(--border);
+}
+.audit-body {
+  padding: 14px;
+  display: grid;
+  gap: 12px;
+}
+.formula {
+  font: 500 13px/1.6 var(--font-mono);
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+/* coverage / metric bars */
+.bar-list {
+  display: grid;
+  gap: 14px;
+}
+
+/* confusion matrix */
+.cm-wrap {
+  overflow-x: auto;
+}
+.cm {
+  border-collapse: separate;
+  border-spacing: 4px;
+  width: 100%;
+  min-width: 340px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+.cm th {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-3);
+  padding: 6px 8px;
+  text-transform: capitalize;
+}
+.cm td {
+  border-radius: 8px;
+  padding: 16px 8px;
+  font: 700 18px/1 var(--font-display);
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--accent) calc(var(--heat, 0) * 70%), var(--panel-2));
+}
+.cm td.diag {
+  border-color: color-mix(in srgb, var(--accent) 50%, transparent);
+}
+.cm td small {
+  display: block;
+  margin-top: 6px;
+  font: 500 11px/1 var(--font-body);
+  color: var(--text-2);
+}
+.cm-axis {
+  font-size: 12px;
+  color: var(--text-3);
+  text-align: center;
+  margin-top: 6px;
+}
+
+/* dropzone state */
+.analyzing {
+  display: grid;
+  gap: 14px;
+  padding: 20px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-strong);
+  background: var(--panel-2);
+}
+
+/* about */
+.formula-weights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+}
+.weight {
+  padding: 14px;
+  border-radius: var(--radius);
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+}
+.weight strong {
+  display: block;
+  font: 800 26px/1 var(--font-display);
+  color: var(--accent);
+}
+.weight span {
+  font-size: 12.5px;
+  color: var(--text-2);
+}
+
+/* reviewer form modal on small screens */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+.form-grid .full {
+  grid-column: 1 / -1;
+}
+@media (max-width: 640px) {
+  .form-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .toolbar {
+    padding: 12px 16px;
+  }
+  .rev-head {
+    flex-direction: column;
+  }
+  .rev-score {
+    text-align: left;
+  }
+}
+
+/* landing additions */
+.l-nav .row {
+  flex-wrap: nowrap;
+}
+.how-visual {
+  position: sticky;
+  top: 16vh;
+}
+.how-step {
+  opacity: 0.45;
+  transition: opacity 400ms var(--ease-out);
+}
+.how-step.on {
+  opacity: 1;
+}
+@media (max-width: 900px) {
+  .how-visual {
+    position: static;
+  }
+  .how-step {
+    opacity: 1;
+  }
+}
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+.hero .hero-meta span:first-child {
+  color: var(--accent);
+}
+.landing-theme {
+  margin-left: 4px;
+}
+.number .skeleton {
+  display: inline-block;
+}

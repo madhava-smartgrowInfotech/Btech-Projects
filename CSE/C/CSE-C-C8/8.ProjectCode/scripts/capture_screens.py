@@ -8,6 +8,7 @@ Also reports console errors, page errors and failed requests seen during the wal
 """
 from __future__ import annotations
 
+import json
 import os
 import sys
 import time
@@ -15,8 +16,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "docs" / "screenshots"
-DEMO = ROOT / "data" / "demo" / "demo_paper.pdf"
+DEMO = Path(os.environ.get("PEERSCOPE_CAPTURE_PDF", str(ROOT / "data" / "demo" / "demo_paper.pdf")))
+ANALYSIS_TIMEOUT_MS = int(os.environ.get("PEERSCOPE_ANALYSIS_TIMEOUT_S", "180")) * 1000  # the local LLM review takes minutes on CPU
 WEB = os.environ.get("PEERSCOPE_WEB", "http://127.0.0.1:5408")
+API = os.environ.get("PEERSCOPE_API", "http://127.0.0.1:8408")
 VIEW = {"width": 1440, "height": 900}
 
 
@@ -60,10 +63,10 @@ def main() -> int:
                 h = page.evaluate("document.documentElement.scrollHeight")
                 page.set_viewport_size({"width": VIEW["width"], "height": min(max(h, VIEW["height"]), 4200)})
                 page.wait_for_timeout(500)
-                page.screenshot(path=str(path))
+                page.screenshot(path=str(path), timeout=180_000)
                 page.set_viewport_size(VIEW)
             else:
-                page.screenshot(path=str(path))
+                page.screenshot(path=str(path), timeout=180_000)
             print("saved", path.relative_to(ROOT))
 
         def theme(mode: str) -> None:
@@ -87,14 +90,22 @@ def main() -> int:
         go("/app")
         shot("dashboard")
 
-        # analyze: upload the demo paper and wait for a real result
+        # analyze: upload the paper and wait for a real result
         go("/app/analyze")
         shot("analyze_empty")
         page.set_input_files("input[type=file]", str(DEMO))
         page.wait_for_timeout(400)
+        replay = os.environ.get("PEERSCOPE_REPLAY_ANALYSIS_ID")
+        if replay:
+            # The slow local-LLM analysis was already run and stored; answer the upload request with that stored result
+            # so the screen shows exactly what the finished run produced (set when a first walk timed out while rendering).
+            import requests
+            body = requests.get(f"{API}/api/analyses/{replay}", timeout=30).json()
+            body["analysis_id"] = int(replay)
+            page.route("**/api/analyze", lambda route: route.fulfill(status=200, content_type="application/json", body=json.dumps(body)))
         page.get_by_role("button", name="Analyze paper").click()
         t0 = time.time()
-        page.get_by_role("tab", name="Overview", exact=True).wait_for(timeout=180_000)
+        page.get_by_role("tab", name="Overview", exact=True).wait_for(timeout=ANALYSIS_TIMEOUT_MS)
         print(f"analysis finished in {time.time() - t0:.0f}s")
         shot("analyze_result_overview", full=True)
         for tab, name in [("Review", "result_review"), ("Literature", "result_literature"), ("Reviewers", "result_reviewers"), ("Audit & export", "result_audit")]:

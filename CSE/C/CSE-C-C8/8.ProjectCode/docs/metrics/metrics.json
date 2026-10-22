@@ -1,0 +1,1086 @@
+{
+  "environment": {
+    "os": "Windows-10-10.0.26200-SP0",
+    "cpu": "12th Gen Intel(R) Core(TM) i5-12500",
+    "ram_gb": "15.7",
+    "gpu": "none used (CPU only)",
+    "python": "3.11.9",
+    "packages": {
+      "scikit-learn": "1.9.1",
+      "numpy": "2.4.6",
+      "pandas": "3.0.6",
+      "scipy": "1.17.1",
+      "PyMuPDF": "2.0",
+      "fastapi": "0.120.4",
+      "uvicorn": "0.35.0",
+      "SQLAlchemy": "2.1.6",
+      "pydantic": "2.14.1",
+      "torch": "2.14.1",
+      "transformers": "5.20.2",
+      "sentence-transformers": "6.2.0",
+      "reportlab": "5.0.1",
+      "requests": "2.34.2",
+      "joblib": "1.6.0"
+    }
+  },
+  "decision_model": {
+    "rows": 1400,
+    "labels": [
+      "accept",
+      "borderline",
+      "reject"
+    ],
+    "train": 1120,
+    "test": 280,
+    "class_counts": {
+      "reject": 419,
+      "borderline": 619,
+      "accept": 362
+    },
+    "shipped": {
+      "accuracy": 0.55,
+      "precision_macro": 0.5253,
+      "recall_macro": 0.6452,
+      "f1_macro": 0.5093,
+      "roc_auc": 0.7715,
+      "confusion_matrix": [
+        [
+          69,
+          3,
+          0
+        ],
+        [
+          45,
+          9,
+          70
+        ],
+        [
+          0,
+          8,
+          76
+        ]
+      ]
+    },
+    "per_class": {
+      "accept": {
+        "precision": 0.6053,
+        "recall": 0.9583,
+        "f1": 0.7419,
+        "support": 72
+      },
+      "borderline": {
+        "precision": 0.45,
+        "recall": 0.0726,
+        "f1": 0.125,
+        "support": 124
+      },
+      "reject": {
+        "precision": 0.5205,
+        "recall": 0.9048,
+        "f1": 0.6609,
+        "support": 84
+      }
+    },
+    "matches_saved_metrics_json": true,
+    "decisive_only": {
+      "note": "accept vs reject items only, borderline predictions counted as wrong",
+      "n": 156,
+      "correct": 145,
+      "accuracy": 0.9295
+    },
+    "borderline_row": {
+      "predicted_accept": 45,
+      "predicted_borderline": 9,
+      "predicted_reject": 70
+    },
+    "threshold_analysis": [
+      {
+        "threshold": 0.0,
+        "coverage": 1.0,
+        "n": 280,
+        "accuracy_on_kept": 0.55
+      },
+      {
+        "threshold": 0.4,
+        "coverage": 1.0,
+        "n": 280,
+        "accuracy_on_kept": 0.55
+      },
+      {
+        "threshold": 0.5,
+        "coverage": 0.975,
+        "n": 273,
+        "accuracy_on_kept": 0.5495
+      },
+      {
+        "threshold": 0.6,
+        "coverage": 0.6464,
+        "n": 181,
+        "accuracy_on_kept": 0.5801
+      },
+      {
+        "threshold": 0.7,
+        "coverage": 0.2929,
+        "n": 82,
+        "accuracy_on_kept": 0.6951
+      },
+      {
+        "threshold": 0.8,
+        "coverage": 0.0393,
+        "n": 11,
+        "accuracy_on_kept": 0.7273
+      },
+      {
+        "threshold": 0.9,
+        "coverage": 0.0,
+        "n": 0,
+        "accuracy_on_kept": null
+      }
+    ],
+    "baselines": {
+      "majority_class": {
+        "accuracy": 0.4429,
+        "precision_macro": 0.1476,
+        "recall_macro": 0.3333,
+        "f1_macro": 0.2046,
+        "predicts": "borderline"
+      },
+      "naive_bayes_word_tfidf": {
+        "accuracy": 0.4571,
+        "precision_macro": 0.5912,
+        "recall_macro": 0.3794,
+        "f1_macro": 0.3421,
+        "roc_auc": 0.7507
+      },
+      "logreg_unweighted_word_char": {
+        "accuracy": 0.5286,
+        "precision_macro": 0.5331,
+        "recall_macro": 0.5601,
+        "f1_macro": 0.542,
+        "roc_auc": 0.7695,
+        "confusion_matrix": [
+          [
+            46,
+            26,
+            0
+          ],
+          [
+            31,
+            45,
+            48
+          ],
+          [
+            0,
+            27,
+            57
+          ]
+        ]
+      },
+      "logreg_balanced_word_only": {
+        "accuracy": 0.5571,
+        "precision_macro": 0.5443,
+        "recall_macro": 0.6506,
+        "f1_macro": 0.5198,
+        "roc_auc": 0.7718
+      }
+    },
+    "generator_structure": {
+      "strong_phrase_papers": {
+        "n": 655,
+        "label_counts": {
+          "borderline": 293,
+          "accept": 362
+        }
+      },
+      "weak_phrase_papers": {
+        "n": 745,
+        "label_counts": {
+          "reject": 419,
+          "borderline": 326
+        }
+      },
+      "both_or_none": {
+        "n": 0,
+        "label_counts": {}
+      },
+      "best_possible_accuracy_from_phrases": 0.5579,
+      "borderline_share_of_dataset": 0.4421,
+      "phrase_rule_accuracy_all_rows": 0.5579
+    },
+    "seed_study": {
+      "runs": [
+        {
+          "seed": 0,
+          "accuracy": 0.55,
+          "precision_macro": 0.5328,
+          "recall_macro": 0.6297,
+          "f1_macro": 0.5299,
+          "roc_auc": 0.7564
+        },
+        {
+          "seed": 1,
+          "accuracy": 0.5321,
+          "precision_macro": 0.5021,
+          "recall_macro": 0.617,
+          "f1_macro": 0.5078,
+          "roc_auc": 0.727
+        },
+        {
+          "seed": 2,
+          "accuracy": 0.5857,
+          "precision_macro": 0.5983,
+          "recall_macro": 0.6714,
+          "f1_macro": 0.5591,
+          "roc_auc": 0.7411
+        },
+        {
+          "seed": 3,
+          "accuracy": 0.5107,
+          "precision_macro": 0.4589,
+          "recall_macro": 0.5924,
+          "f1_macro": 0.4806,
+          "roc_auc": 0.7211
+        },
+        {
+          "seed": 4,
+          "accuracy": 0.5464,
+          "precision_macro": 0.517,
+          "recall_macro": 0.6367,
+          "f1_macro": 0.5072,
+          "roc_auc": 0.7444
+        }
+      ],
+      "accuracy": {
+        "mean": 0.545,
+        "sd": 0.0275,
+        "min": 0.5107,
+        "max": 0.5857
+      },
+      "f1_macro": {
+        "mean": 0.5169,
+        "sd": 0.0293,
+        "min": 0.4806,
+        "max": 0.5591
+      },
+      "roc_auc": {
+        "mean": 0.738,
+        "sd": 0.0141,
+        "min": 0.7211,
+        "max": 0.7564
+      }
+    }
+  },
+  "real_pdfs": [
+    {
+      "file": "demo_paper.pdf (generated fixture)",
+      "size_kb": 5,
+      "pages": 3,
+      "words": 431,
+      "sections_detected": [
+        "conclusion",
+        "discussion",
+        "experiments",
+        "introduction",
+        "methodology",
+        "references",
+        "related_work",
+        "results",
+        "summary"
+      ],
+      "references_detected": 1,
+      "title_extracted": "Efficient Retrieval-Grounded Text Classification",
+      "structural_score": 68.1,
+      "structure_completeness": 100.0,
+      "evidence_coverage": 17.3,
+      "method_clarity": 70.0,
+      "presentation": 75.0,
+      "ml_label": "borderline",
+      "ml_confidence": 0.6604,
+      "ml_probabilities": {
+        "accept": 0.1139,
+        "borderline": 0.6604,
+        "reject": 0.2256
+      },
+      "major_concerns": 2,
+      "minor_concerns": 1,
+      "timings_ms": {
+        "extract_ms": 3853.2,
+        "features_ms": 0.8,
+        "ml_ms": 9.5,
+        "review_det_ms": 0.1
+      }
+    },
+    {
+      "file": "BASEPAPER_Can_AI_Be_a_Good_Peer_Reviewer_A_Survey_of_Peer_Review_Process_Evaluat_arXiv_2604.27924.pdf",
+      "size_kb": 2059,
+      "pages": 30,
+      "words": 19877,
+      "sections_detected": [
+        "conclusion",
+        "discussion",
+        "experiments",
+        "introduction",
+        "methodology",
+        "references",
+        "related_work",
+        "results"
+      ],
+      "references_detected": 13,
+      "title_extracted": "Can AI Be a Good Peer Reviewer? A Survey of Peer Review",
+      "structural_score": 68.5,
+      "structure_completeness": 88.9,
+      "evidence_coverage": 19.5,
+      "method_clarity": 70.0,
+      "presentation": 100.0,
+      "ml_label": "borderline",
+      "ml_confidence": 0.5533,
+      "ml_probabilities": {
+        "accept": 0.1649,
+        "borderline": 0.5533,
+        "reject": 0.2818
+      },
+      "major_concerns": 1,
+      "minor_concerns": 0,
+      "timings_ms": {
+        "extract_ms": 430.9,
+        "features_ms": 30.4,
+        "ml_ms": 17.5,
+        "review_det_ms": 6.0
+      }
+    },
+    {
+      "file": "REFERENCE_PAPER_Automatic_Paper_Reviewing_Heterogeneous_Graph_Reasoning_LLM_arXiv_2511.08317.pdf",
+      "size_kb": 728,
+      "pages": 17,
+      "words": 11562,
+      "sections_detected": [
+        "conclusion",
+        "experiments",
+        "introduction",
+        "methodology",
+        "references",
+        "related_work",
+        "results"
+      ],
+      "references_detected": 9,
+      "title_extracted": "Automatic Paper Reviewing with Heterogeneous Graph Reasoning over",
+      "structural_score": 65.2,
+      "structure_completeness": 77.8,
+      "evidence_coverage": 21.7,
+      "method_clarity": 70.0,
+      "presentation": 100.0,
+      "ml_label": "borderline",
+      "ml_confidence": 0.5829,
+      "ml_probabilities": {
+        "accept": 0.2163,
+        "borderline": 0.5829,
+        "reject": 0.2009
+      },
+      "major_concerns": 1,
+      "minor_concerns": 1,
+      "timings_ms": {
+        "extract_ms": 250.6,
+        "features_ms": 25.8,
+        "ml_ms": 19.5,
+        "review_det_ms": 5.0
+      }
+    },
+    {
+      "file": "BASEPAPER_LLM_Assisted_Reviewer_Assignment_via_Auditable_Expertise_Mat_IEEE_11658587.pdf",
+      "size_kb": 3500,
+      "pages": 30,
+      "words": 21708,
+      "sections_detected": [
+        "conclusion",
+        "experiments",
+        "methodology",
+        "references",
+        "related_work",
+        "results"
+      ],
+      "references_detected": 55,
+      "title_extracted": "Digital Object Identifier 10.1109/ACCESS.2026.3724622",
+      "structural_score": 75.9,
+      "structure_completeness": 66.7,
+      "evidence_coverage": 50.3,
+      "method_clarity": 100.0,
+      "presentation": 100.0,
+      "ml_label": "borderline",
+      "ml_confidence": 0.5526,
+      "ml_probabilities": {
+        "accept": 0.1919,
+        "borderline": 0.5526,
+        "reject": 0.2555
+      },
+      "major_concerns": 1,
+      "minor_concerns": 2,
+      "timings_ms": {
+        "extract_ms": 418.2,
+        "features_ms": 30.8,
+        "ml_ms": 11.7,
+        "review_det_ms": 4.2
+      }
+    }
+  ],
+  "matching": {
+    "minilm_status": {
+      "loaded": true,
+      "load_seconds": 16.8,
+      "error": null
+    },
+    "sentence_transformer_minilm": {
+      "full_hybrid_shipped_weights": {
+        "top1": 0.95,
+        "top3": 0.975,
+        "mrr": 0.9646,
+        "n": 40
+      },
+      "semantic_similarity_only": {
+        "top1": 0.975,
+        "top3": 1.0,
+        "mrr": 0.9833,
+        "n": 40
+      },
+      "lexical_only_keyword_and_method": {
+        "top1": 0.625,
+        "top3": 0.825,
+        "mrr": 0.7413,
+        "n": 40
+      },
+      "hybrid_without_availability": {
+        "top1": 0.95,
+        "top3": 1.0,
+        "mrr": 0.9708,
+        "n": 40
+      },
+      "random_expectation_top1": 0.1833,
+      "random_expectation_top3": 0.53,
+      "per_area_top1": {
+        "Reviewer Alpha": {
+          "correct": 6,
+          "n": 6
+        },
+        "Reviewer Beta": {
+          "correct": 6,
+          "n": 6
+        },
+        "Reviewer Gamma": {
+          "correct": 6,
+          "n": 6
+        },
+        "Reviewer Delta": {
+          "correct": 5,
+          "n": 6
+        },
+        "Reviewer Epsilon": {
+          "correct": 6,
+          "n": 6
+        },
+        "Reviewer Zeta": {
+          "correct": 6,
+          "n": 6
+        },
+        "cross-area": {
+          "correct": 3,
+          "n": 4
+        }
+      },
+      "top1_misses_shipped": [
+        {
+          "title": "Adversarial evasion of malware classifiers We craft binaries that evad",
+          "expected": [
+            "Reviewer Delta"
+          ],
+          "got": "Reviewer Gamma",
+          "top_score": 26.0,
+          "expected_score": 15.5
+        },
+        {
+          "title": "Learning-based intrusion detection from textual logs System log lines ",
+          "expected": [
+            "Reviewer Beta",
+            "Reviewer Delta"
+          ],
+          "got": "Reviewer Gamma",
+          "top_score": 35.5,
+          "expected_score": 26.5
+        }
+      ],
+      "mean_gap_rank1_rank2": 12.6425,
+      "conflict": {
+        "injected": [
+          {
+            "reviewer": "Reviewer Alpha",
+            "kind": "conflict term",
+            "detected": true,
+            "score_before": 34.3,
+            "score_after": 0.0,
+            "rank_before": 1,
+            "rank_after": 6,
+            "other_reviewers_flagged": 0
+          },
+          {
+            "reviewer": "Reviewer Beta",
+            "kind": "conflict term",
+            "detected": true,
+            "score_before": 8.7,
+            "score_after": 0.0,
+            "rank_before": 4,
+            "rank_after": 6,
+            "other_reviewers_flagged": 0
+          },
+          {
+            "reviewer": "Reviewer Gamma",
+            "kind": "conflict term",
+            "detected": true,
+            "score_before": 16.2,
+            "score_after": 0.0,
+            "rank_before": 3,
+            "rank_after": 6,
+            "other_reviewers_flagged": 0
+          },
+          {
+            "reviewer": "Reviewer Delta",
+            "kind": "conflict term",
+            "detected": true,
+            "score_before": 8.6,
+            "score_after": 0.0,
+            "rank_before": 5,
+            "rank_after": 6,
+            "other_reviewers_flagged": 0
+          },
+          {
+            "reviewer": "Reviewer Zeta",
+            "kind": "conflict term",
+            "detected": true,
+            "score_before": 17.9,
+            "score_after": 0.0,
+            "rank_before": 2,
+            "rank_after": 6,
+            "other_reviewers_flagged": 0
+          },
+          {
+            "reviewer": "Reviewer Epsilon",
+            "kind": "conflict term",
+            "detected": true,
+            "score_before": 6.7,
+            "score_after": 0.0,
+            "rank_before": 6,
+            "rank_after": 6,
+            "other_reviewers_flagged": 0
+          },
+          {
+            "reviewer": "Reviewer Alpha",
+            "kind": "affiliation",
+            "detected": true,
+            "score_before": 34.3,
+            "score_after": 0.0,
+            "rank_before": 1,
+            "rank_after": 6,
+            "other_reviewers_flagged": 0
+          },
+          {
+            "reviewer": "Reviewer Beta",
+            "kind": "affiliation",
+            "detected": true,
+            "score_before": 8.7,
+            "score_after": 0.0,
+            "rank_before": 4,
+            "rank_after": 6,
+            "other_reviewers_flagged": 0
+          },
+          {
+            "reviewer": "Reviewer Delta",
+            "kind": "affiliation",
+            "detected": true,
+            "score_before": 8.6,
+            "score_after": 0.0,
+            "rank_before": 5,
+            "rank_after": 6,
+            "other_reviewers_flagged": 0
+          },
+          {
+            "reviewer": "Reviewer Zeta",
+            "kind": "affiliation",
+            "detected": true,
+            "score_before": 17.9,
+            "score_after": 0.0,
+            "rank_before": 2,
+            "rank_after": 6,
+            "other_reviewers_flagged": 0
+          },
+          {
+            "reviewer": "Reviewer Beta",
+            "kind": "full name",
+            "detected": true,
+            "score_before": 8.7,
+            "score_after": 0.0,
+            "rank_before": 4,
+            "rank_after": 6,
+            "other_reviewers_flagged": 0
+          },
+          {
+            "reviewer": "Reviewer Gamma",
+            "kind": "full name",
+            "detected": true,
+            "score_before": 16.2,
+            "score_after": 0.0,
+            "rank_before": 3,
+            "rank_after": 6,
+            "other_reviewers_flagged": 0
+          },
+          {
+            "reviewer": "Reviewer Alpha",
+            "kind": "paraphrased affiliation",
+            "detected": false,
+            "score_before": 34.3,
+            "score_after": 34.3,
+            "rank_before": 1,
+            "rank_after": 1,
+            "other_reviewers_flagged": 0
+          },
+          {
+            "reviewer": "Reviewer Delta",
+            "kind": "paraphrased affiliation",
+            "detected": false,
+            "score_before": 8.6,
+            "score_after": 8.6,
+            "rank_before": 5,
+            "rank_after": 5,
+            "other_reviewers_flagged": 0
+          },
+          {
+            "reviewer": "Reviewer Beta",
+            "kind": "first name only",
+            "detected": false,
+            "score_before": 8.7,
+            "score_after": 8.7,
+            "rank_before": 4,
+            "rank_after": 4,
+            "other_reviewers_flagged": 0
+          }
+        ],
+        "detected_by_kind": {
+          "conflict term": {
+            "detected": 6,
+            "n": 6
+          },
+          "affiliation": {
+            "detected": 4,
+            "n": 4
+          },
+          "full name": {
+            "detected": 2,
+            "n": 2
+          },
+          "paraphrased affiliation": {
+            "detected": 0,
+            "n": 2
+          },
+          "first name only": {
+            "detected": 0,
+            "n": 1
+          }
+        },
+        "clean_pairs_checked": 240,
+        "false_flags_on_clean_papers": 0
+      },
+      "scaling_ms": [
+        {
+          "pool": 6,
+          "median_ms": 86.0
+        },
+        {
+          "pool": 50,
+          "median_ms": 578.0
+        },
+        {
+          "pool": 200,
+          "median_ms": 1664.1
+        },
+        {
+          "pool": 500,
+          "median_ms": 5180.5
+        }
+      ]
+    },
+    "tfidf_fallback": {
+      "full_hybrid_shipped_weights": {
+        "top1": 0.75,
+        "top3": 0.925,
+        "mrr": 0.8438,
+        "n": 40
+      },
+      "semantic_similarity_only": {
+        "top1": 0.725,
+        "top3": 0.925,
+        "mrr": 0.8383,
+        "n": 40
+      },
+      "lexical_only_keyword_and_method": {
+        "top1": 0.625,
+        "top3": 0.825,
+        "mrr": 0.7413,
+        "n": 40
+      },
+      "hybrid_without_availability": {
+        "top1": 0.775,
+        "top3": 0.975,
+        "mrr": 0.8717,
+        "n": 40
+      },
+      "random_expectation_top1": 0.1833,
+      "random_expectation_top3": 0.53,
+      "per_area_top1": {
+        "Reviewer Alpha": {
+          "correct": 3,
+          "n": 6
+        },
+        "Reviewer Beta": {
+          "correct": 5,
+          "n": 6
+        },
+        "Reviewer Gamma": {
+          "correct": 5,
+          "n": 6
+        },
+        "Reviewer Delta": {
+          "correct": 3,
+          "n": 6
+        },
+        "Reviewer Epsilon": {
+          "correct": 6,
+          "n": 6
+        },
+        "Reviewer Zeta": {
+          "correct": 5,
+          "n": 6
+        },
+        "cross-area": {
+          "correct": 3,
+          "n": 4
+        }
+      },
+      "top1_misses_shipped": [
+        {
+          "title": "Lightweight detector for small objects in aerial imagery We design a c",
+          "expected": [
+            "Reviewer Alpha"
+          ],
+          "got": "Reviewer Gamma",
+          "top_score": 13.3,
+          "expected_score": 9.5
+        },
+        {
+          "title": "Data augmentation policies for visual recognition We search over cropp",
+          "expected": [
+            "Reviewer Alpha"
+          ],
+          "got": "Reviewer Gamma",
+          "top_score": 24.5,
+          "expected_score": 24.3
+        },
+        {
+          "title": "Robustness of image recognisers to weather corruption Fog, rain and sn",
+          "expected": [
+            "Reviewer Alpha"
+          ],
+          "got": "Reviewer Gamma",
+          "top_score": 20.6,
+          "expected_score": 20.3
+        },
+        {
+          "title": "Cross-lingual sentiment transfer with multilingual encoders Reviews in",
+          "expected": [
+            "Reviewer Beta"
+          ],
+          "got": "Reviewer Gamma",
+          "top_score": 23.4,
+          "expected_score": 22.2
+        },
+        {
+          "title": "Feature engineering for customer churn prediction Aggregated usage fea",
+          "expected": [
+            "Reviewer Gamma"
+          ],
+          "got": "Reviewer Zeta",
+          "top_score": 12.5,
+          "expected_score": 10.9
+        },
+        {
+          "title": "Adversarial evasion of malware classifiers We craft binaries that evad",
+          "expected": [
+            "Reviewer Delta"
+          ],
+          "got": "Reviewer Zeta",
+          "top_score": 16.7,
+          "expected_score": 9.6
+        },
+        {
+          "title": "Latency and throughput of encrypted traffic inspection A distributed i",
+          "expected": [
+            "Reviewer Delta"
+          ],
+          "got": "Reviewer Zeta",
+          "top_score": 17.0,
+          "expected_score": 7.0
+        },
+        {
+          "title": "Audit logging for tamper-evident storage A hash-chained log protects r",
+          "expected": [
+            "Reviewer Delta"
+          ],
+          "got": "Reviewer Zeta",
+          "top_score": 15.9,
+          "expected_score": 6.5
+        },
+        {
+          "title": "Obstacle avoidance with depth sensing for autonomous vehicles Depth ma",
+          "expected": [
+            "Reviewer Zeta"
+          ],
+          "got": "Reviewer Gamma",
+          "top_score": 15.7,
+          "expected_score": 13.2
+        },
+        {
+          "title": "Learning-based intrusion detection from textual logs System log lines ",
+          "expected": [
+            "Reviewer Beta",
+            "Reviewer Delta"
+          ],
+          "got": "Reviewer Alpha",
+          "top_score": 28.9,
+          "expected_score": 24.4
+        }
+      ],
+      "mean_gap_rank1_rank2": 7.715,
+      "conflict": {
+        "injected": [
+          {
+            "reviewer": "Reviewer Alpha",
+            "kind": "conflict term",
+            "detected": true,
+            "score_before": 9.5,
+            "score_after": 0.0,
+            "rank_before": 3,
+            "rank_after": 6,
+            "other_reviewers_flagged": 0
+          },
+          {
+            "reviewer": "Reviewer Beta",
+            "kind": "conflict term",
+            "detected": true,
+            "score_before": 6.4,
+            "score_after": 0.0,
+            "rank_before": 5,
+            "rank_after": 6,
+            "other_reviewers_flagged": 0
+          },
+          {
+            "reviewer": "Reviewer Gamma",
+            "kind": "conflict term",
+            "detected": true,
+            "score_before": 13.3,
+            "score_after": 0.0,
+            "rank_before": 1,
+            "rank_after": 6,
+            "other_reviewers_flagged": 0
+          },
+          {
+            "reviewer": "Reviewer Delta",
+            "kind": "conflict term",
+            "detected": true,
+            "score_before": 5.3,
+            "score_after": 0.0,
+            "rank_before": 6,
+            "rank_after": 6,
+            "other_reviewers_flagged": 0
+          },
+          {
+            "reviewer": "Reviewer Zeta",
+            "kind": "conflict term",
+            "detected": true,
+            "score_before": 10.4,
+            "score_after": 0.0,
+            "rank_before": 2,
+            "rank_after": 6,
+            "other_reviewers_flagged": 0
+          },
+          {
+            "reviewer": "Reviewer Epsilon",
+            "kind": "conflict term",
+            "detected": true,
+            "score_before": 6.8,
+            "score_after": 0.0,
+            "rank_before": 4,
+            "rank_after": 6,
+            "other_reviewers_flagged": 0
+          },
+          {
+            "reviewer": "Reviewer Alpha",
+            "kind": "affiliation",
+            "detected": true,
+            "score_before": 9.5,
+            "score_after": 0.0,
+            "rank_before": 3,
+            "rank_after": 6,
+            "other_reviewers_flagged": 0
+          },
+          {
+            "reviewer": "Reviewer Beta",
+            "kind": "affiliation",
+            "detected": true,
+            "score_before": 6.4,
+            "score_after": 0.0,
+            "rank_before": 5,
+            "rank_after": 6,
+            "other_reviewers_flagged": 0
+          },
+          {
+            "reviewer": "Reviewer Delta",
+            "kind": "affiliation",
+            "detected": true,
+            "score_before": 5.3,
+            "score_after": 0.0,
+            "rank_before": 6,
+            "rank_after": 6,
+            "other_reviewers_flagged": 0
+          },
+          {
+            "reviewer": "Reviewer Zeta",
+            "kind": "affiliation",
+            "detected": true,
+            "score_before": 10.4,
+            "score_after": 0.0,
+            "rank_before": 2,
+            "rank_after": 6,
+            "other_reviewers_flagged": 0
+          },
+          {
+            "reviewer": "Reviewer Beta",
+            "kind": "full name",
+            "detected": true,
+            "score_before": 6.4,
+            "score_after": 0.0,
+            "rank_before": 5,
+            "rank_after": 6,
+            "other_reviewers_flagged": 0
+          },
+          {
+            "reviewer": "Reviewer Gamma",
+            "kind": "full name",
+            "detected": true,
+            "score_before": 13.3,
+            "score_after": 0.0,
+            "rank_before": 1,
+            "rank_after": 6,
+            "other_reviewers_flagged": 0
+          },
+          {
+            "reviewer": "Reviewer Alpha",
+            "kind": "paraphrased affiliation",
+            "detected": false,
+            "score_before": 9.5,
+            "score_after": 9.5,
+            "rank_before": 3,
+            "rank_after": 3,
+            "other_reviewers_flagged": 0
+          },
+          {
+            "reviewer": "Reviewer Delta",
+            "kind": "paraphrased affiliation",
+            "detected": false,
+            "score_before": 5.3,
+            "score_after": 5.3,
+            "rank_before": 6,
+            "rank_after": 6,
+            "other_reviewers_flagged": 0
+          },
+          {
+            "reviewer": "Reviewer Beta",
+            "kind": "first name only",
+            "detected": false,
+            "score_before": 6.4,
+            "score_after": 6.4,
+            "rank_before": 5,
+            "rank_after": 5,
+            "other_reviewers_flagged": 0
+          }
+        ],
+        "detected_by_kind": {
+          "conflict term": {
+            "detected": 6,
+            "n": 6
+          },
+          "affiliation": {
+            "detected": 4,
+            "n": 4
+          },
+          "full name": {
+            "detected": 2,
+            "n": 2
+          },
+          "paraphrased affiliation": {
+            "detected": 0,
+            "n": 2
+          },
+          "first name only": {
+            "detected": 0,
+            "n": 1
+          }
+        },
+        "clean_pairs_checked": 240,
+        "false_flags_on_clean_papers": 0
+      },
+      "scaling_ms": [
+        {
+          "pool": 6,
+          "median_ms": 1.4
+        },
+        {
+          "pool": 50,
+          "median_ms": 6.7
+        },
+        {
+          "pool": 200,
+          "median_ms": 24.8
+        },
+        {
+          "pool": 500,
+          "median_ms": 67.9
+        }
+      ]
+    }
+  },
+  "literature": [
+    {
+      "query": "Retrieval-grounded text classification transformer",
+      "status": "ok",
+      "works": 6,
+      "ms": 2062,
+      "error": ""
+    },
+    {
+      "query": "Reviewer assignment expertise matching language models",
+      "status": "ok",
+      "works": 6,
+      "ms": 1693,
+      "error": ""
+    },
+    {
+      "query": "Network anomaly detection graph",
+      "status": "ok",
+      "works": 6,
+      "ms": 1271,
+      "error": ""
+    }
+  ],
+  "loc": {
+    "backend_app": 1449,
+    "scripts_core": 542,
+    "tests": 114,
+    "frontend_src": 6926,
+    "static_fallback_ui": 298
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "embedding_model_load_s": 20.4,
+  "llm_load_s": 9.0,
+  "llm_status": {
+    "model_requested": "Qwen/Qwen2.5-1.5B-Instruct",
+    "fallback_model": "Qwen/Qwen2.5-0.5B-Instruct",
+    "loaded_model": "Qwen/Qwen2.5-1.5B-Instruct",
+    "available": true,
+    "error": null
+  },
+  "pipeline_stages": {
+    "demo": {
+      "PDF extraction": 2370.6,
+      "Feature extraction": 1.1,
+      "Decision signal": 30.8,
+      "Local AI review (3 steps)": 509417.8,
+      "Literature (OpenAlex)": 2328.5,
+      "Reviewer matching": 135.5,
+      "_total_ms": 514284.3,
+      "_llm_status": "ok",
+      "_ai_chars": 3970,
+      "_literature_status": "ok",
+      "_ai_tokens_synthesis": 700,
+      "_ai_tokens_all_steps": 1410,
+      "_llm_model": "Qwen/Qwen2.5-1.5B-Instruct"
+    },
+    "survey_30_pages": {
+      "PDF extraction": 383.4,
+      "Feature extraction": 68.3,
+      "Decision signal": 85.9,
+      "Local AI review (3 steps)": 521732.5,
+      "Literature (OpenAlex)": 1543.2,
+      "Reviewer matching": 664.5,
+      "_total_ms": 524477.8,
+      "_llm_status": "ok",
+      "_ai_chars": 4005,
+      "_literature_status": "unavailable",
+      "_ai_tokens_synthesis": 700,
+      "_ai_tokens_all_steps": 1417,
+      "_llm_model": "Qwen/Qwen2.5-1.5B-Instruct"
+    }
+  },
+  "pipeline_stage_ms_demo": {
+    "PDF extraction": 2370.6,
+    "Feature extraction": 1.1,
+    "Decision signal": 30.8,
+    "Local AI review (3 steps)": 509417.8,
+    "Literature (OpenAlex)": 2328.5,
+    "Reviewer matching": 135.5
+  },
+  "http_api": {
+    "health": {
+      "n": 40,
+      "median_ms": 2.4,
+      "p95_ms": 4.2,
+      "max_ms": 39.2
+    },
+    "reviewers_list": {
+      "n": 40,
+      "median_ms": 2.4,
+      "p95_ms": 3.0,
+      "max_ms": 3.3
+    },
+    "model_metrics": {
+      "n": 40,
+      "median_ms": 1.7,
+      "p95_ms": 2.3,
+      "max_ms": 2.4
+    },
+    "analyses_list": {
+      "n": 40,
+      "median_ms": 2.4,
+      "p95_ms": 3.4,
+      "max_ms": 3.5
+    },
+    "analyze_demo_3_pages": {
+      "n": 8,
+      "median_ms": 1294.4,
+      "min_ms": 1106.1,
+      "max_ms": 1600.7,
+      "llm_status": "unavailable",
+      "literature_status": "ok"
+    },
+    "analyze_survey_30_pages": {
+      "n": 4,
+      "median_ms": 1186.4,
+      "min_ms": 1177.2,
+      "max_ms": 1283.0,
+      "llm_status": "unavailable",
+      "literature_status": "unavailable"
+    },
+    "export_pdf": {
+      "median_ms": 12.2,
+      "bytes": 4506
+    },
+    "export_json": {
+      "median_ms": 3.4,
+      "bytes": 21123
+    }
+  },
+  "http_llm_on_s": {
+    "note": "POST /api/analyze with the local Qwen2.5-1.5B review enabled, first call in a fresh server process (model load included), machine otherwise idle except the measured job; the third was driven through the browser while Chrome rendered the UI",
+    "ieee_base_paper_30_pages": 534,
+    "arxiv_survey_30_pages": 621,
+    "reviewgraph_17_pages_via_browser": 946
+  }
+}

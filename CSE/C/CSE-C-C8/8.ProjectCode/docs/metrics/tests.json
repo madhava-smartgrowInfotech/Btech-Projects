@@ -1,0 +1,1 @@
+{"pytest_total": 7, "pytest_passed": 7, "pytest_seconds": 34.09, "smoke_total": 24, "smoke_passed": 24, "note": "pytest and smoke runs with the local LLM disabled (PEERSCOPE_LLM_MODEL=disabled) and a scratch SQLite file; one earlier pytest run with the LLM enabled was aborted after about 40 minutes of CPU contention"}

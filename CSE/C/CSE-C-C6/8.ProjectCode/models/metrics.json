@@ -1,0 +1,77 @@
+{
+  "n_docs": 750,
+  "n_tfidf": 571,
+  "n_total_features": 596,
+  "n_pca": 136,
+  "pca_variance": 0.9517252180737433,
+  "n_selected": 57,
+  "best_C": 0.18418991052529393,
+  "best_gamma": 0.002643506055480159,
+  "firefly_history": [
+    0.9901470588235294,
+    0.9905882352941177,
+    0.9908823529411764,
+    0.9910294117647059,
+    0.9914705882352941,
+    0.9916176470588235,
+    0.9916176470588235,
+    0.9916176470588235
+  ],
+  "accuracy": 1.0,
+  "f1_macro": 1.0,
+  "report": {
+    "REAL": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 50.0
+    },
+    "PARTIALLY TRUE": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 50.0
+    },
+    "FAKE": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 50.0
+    },
+    "accuracy": 1.0,
+    "macro avg": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 150.0
+    },
+    "weighted avg": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 150.0
+    }
+  },
+  "report_str": "                precision    recall  f1-score   support\n\n          REAL       1.00      1.00      1.00        50\nPARTIALLY TRUE       1.00      1.00      1.00        50\n          FAKE       1.00      1.00      1.00        50\n\n      accuracy                           1.00       150\n     macro avg       1.00      1.00      1.00       150\n  weighted avg       1.00      1.00      1.00       150\n",
+  "confusion_matrix": [
+    [
+      50,
+      0,
+      0
+    ],
+    [
+      0,
+      50,
+      0
+    ],
+    [
+      0,
+      0,
+      50
+    ]
+  ],
+  "baseline_accuracy": 1.0,
+  "baseline_f1": 1.0,
+  "train_time_s": 10.667897701263428,
+  "baseline_time_s": 0.008051395416259766
+}

@@ -1,0 +1,9 @@
+# API layer for the React frontend (the library in ../src needs only these)
+scikit-learn>=1.3
+pandas>=2.0
+numpy>=1.24
+scipy>=1.11
+joblib>=1.3
+fastapi>=0.110
+uvicorn>=0.29
+python-multipart>=0.0.9

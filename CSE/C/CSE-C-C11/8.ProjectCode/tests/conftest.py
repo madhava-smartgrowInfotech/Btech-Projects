@@ -28,4 +28,5 @@ def isolated_db(monkeypatch):
 
     yield
 
+    engine.dispose()  # Windows cannot delete a SQLite file that still has an open connection
     os.remove(path)

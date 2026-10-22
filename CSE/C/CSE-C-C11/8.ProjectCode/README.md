@@ -74,6 +74,12 @@ On first use: sign up for an account, then optionally click **Load Demo Data**
 on the Profile page to populate a few months of fictional sample transactions,
 budgets, goals, and investments.
 
+### New web app (React + FastAPI)
+
+A redesigned web front end lives in `frontend/`, served by the API in `backend/`. On Windows just run `run.bat`
+(opens http://localhost:5411; demo login `demo` / `Demo@1234`). Details are in `docs/03_HOW_TO_RUN.md`.
+The Streamlit app above still works and shares the same database.
+
 ## 7. Running Tests
 
 ```bash

@@ -1,0 +1,14 @@
+# secrets and local environments
+.env
+venv/
+.venv/
+__pycache__/
+*.pyc
+node_modules/
+
+# generated at run time
+ml/expense_model.pkl
+reports/*.pdf
+reports/*.xlsx
+reports/*.csv
+frontend/dist/

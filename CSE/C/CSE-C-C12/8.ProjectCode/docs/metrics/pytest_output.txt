@@ -1,0 +1,41 @@
+============================= test session starts =============================
+platform win32 -- Python 3.11.9, pytest-9.1.1, pluggy-1.7.0 -- D:\abstracts\Madhav\CSE\C\CSE-C-C12\8.ProjectCode\.venv\Scripts\python.exe
+rootdir: D:\abstracts\Madhav\CSE\C\CSE-C-C12\8.ProjectCode
+plugins: anyio-4.15.1
+collecting ... collected 9 items
+
+tests/test_carelens.py::test_normalize_and_expand PASSED                 [ 11%]
+tests/test_carelens.py::test_safety_emergency PASSED                     [ 22%]
+tests/test_carelens.py::test_safety_filter_removes_dosage PASSED         [ 33%]
+tests/test_carelens.py::test_password_hashing PASSED                     [ 44%]
+tests/test_carelens.py::test_hybrid_fuse PASSED                          [ 55%]
+tests/test_carelens.py::test_generator_fallback PASSED                   [ 66%]
+tests/test_carelens.py::test_auth_and_history_isolation PASSED           [ 77%]
+tests/test_carelens.py::test_api_validation PASSED                       [ 88%]
+tests/test_carelens.py::test_retrieval_roundtrip PASSED                  [100%]
+
+============================== warnings summary ===============================
+tests/test_carelens.py::test_auth_and_history_isolation
+  D:\abstracts\Madhav\CSE\C\CSE-C-C12\8.ProjectCode\app\main.py:18: DeprecationWarning: 
+          on_event is deprecated, use lifespan event handlers instead.
+  
+          Read more about it in the
+          [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+          
+    @app.on_event("startup")
+
+tests/test_carelens.py::test_auth_and_history_isolation
+  D:\abstracts\Madhav\CSE\C\CSE-C-C12\8.ProjectCode\.venv\Lib\site-packages\fastapi\applications.py:4723: DeprecationWarning: 
+          on_event is deprecated, use lifespan event handlers instead.
+  
+          Read more about it in the
+          [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+          
+    return self.router.on_event(event_type)  # ty: ignore[deprecated]
+
+tests/test_carelens.py::test_auth_and_history_isolation
+  D:\abstracts\Madhav\CSE\C\CSE-C-C12\8.ProjectCode\app\rag\embeddings.py:19: FutureWarning: The `get_sentence_embedding_dimension` method has been renamed to `get_embedding_dimension`.
+    self.dim = self.model.get_sentence_embedding_dimension()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================= 9 passed, 3 warnings in 33.91s ========================

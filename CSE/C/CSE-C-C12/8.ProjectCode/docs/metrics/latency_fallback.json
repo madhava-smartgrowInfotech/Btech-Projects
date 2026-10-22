@@ -1,0 +1,40 @@
+{
+ "label": "fallback",
+ "health_ms": {
+  "n": 20,
+  "mean": 8.4,
+  "median": 2.0,
+  "p95": 22.5,
+  "max": 27.1,
+  "min": 1.4
+ },
+ "login_ms": {
+  "n": 5,
+  "mean": 249.1,
+  "median": 244.6,
+  "p95": 253.7,
+  "max": 260.8,
+  "min": 241.9
+ },
+ "chat_first_request_ms": 339.6,
+ "chat_ms": {
+  "n": 30,
+  "mean": 403.1,
+  "median": 396.8,
+  "p95": 569.3,
+  "max": 605.9,
+  "min": 214.5
+ },
+ "generated_by_seen": [
+  "evidence-fallback"
+ ],
+ "history_list_ms": {
+  "n": 20,
+  "mean": 32.4,
+  "median": 24.3,
+  "p95": 56.3,
+  "max": 94.7,
+  "min": 11.1
+ },
+ "history_rows_at_end": 39
+}

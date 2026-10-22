@@ -1,0 +1,279 @@
+{
+ "n": 38,
+ "passed": 35,
+ "failed": [
+  "A5",
+  "A11",
+  "T6"
+ ],
+ "rows": [
+  {
+   "id": "A1",
+   "check": "History without a session",
+   "expected": "401",
+   "observed": 401,
+   "pass": true
+  },
+  {
+   "id": "A2",
+   "check": "Chat without a session",
+   "expected": "401",
+   "observed": 401,
+   "pass": true
+  },
+  {
+   "id": "A3",
+   "check": "Register sets an httponly cookie",
+   "expected": "200 and HttpOnly in Set-Cookie",
+   "observed": "200; HttpOnly=True",
+   "pass": true
+  },
+  {
+   "id": "A4",
+   "check": "Cookie carries SameSite=lax",
+   "expected": "samesite=lax",
+   "observed": true,
+   "pass": true
+  },
+  {
+   "id": "A5",
+   "check": "Cookie carries the Secure flag",
+   "expected": "Secure (needed on HTTPS deployments)",
+   "observed": false,
+   "pass": false
+  },
+  {
+   "id": "A6",
+   "check": "Duplicate e-mail",
+   "expected": "400",
+   "observed": 400,
+   "pass": true
+  },
+  {
+   "id": "A7",
+   "check": "Password of 5 characters",
+   "expected": "422 (minimum 6)",
+   "observed": 422,
+   "pass": true
+  },
+  {
+   "id": "A8",
+   "check": "Password of 6 characters (no complexity rule)",
+   "expected": "200 (accepted)",
+   "observed": 200,
+   "pass": true
+  },
+  {
+   "id": "A9",
+   "check": "Malformed e-mail",
+   "expected": "422",
+   "observed": 422,
+   "pass": true
+  },
+  {
+   "id": "A10",
+   "check": "Wrong password",
+   "expected": "401",
+   "observed": 401,
+   "pass": true
+  },
+  {
+   "id": "A11",
+   "check": "15 consecutive wrong passwords (rate limit / lock-out)",
+   "expected": "429 or 423 from some attempt",
+   "observed": [
+    401
+   ],
+   "pass": false
+  },
+  {
+   "id": "A12",
+   "check": "Login with the e-mail in upper case",
+   "expected": "200 (case-insensitive)",
+   "observed": 200,
+   "pass": true
+  },
+  {
+   "id": "T1",
+   "check": "Valid bearer token",
+   "expected": "200",
+   "observed": 200,
+   "pass": true
+  },
+  {
+   "id": "T2",
+   "check": "Token with altered signature",
+   "expected": "401",
+   "observed": 401,
+   "pass": true
+  },
+  {
+   "id": "T3",
+   "check": "Token signed with another secret",
+   "expected": "401",
+   "observed": 401,
+   "pass": true
+  },
+  {
+   "id": "T4",
+   "check": "Expired token",
+   "expected": "401",
+   "observed": 401,
+   "pass": true
+  },
+  {
+   "id": "T5",
+   "check": "Unsigned token (alg none)",
+   "expected": "401",
+   "observed": 401,
+   "pass": true
+  },
+  {
+   "id": "T6",
+   "check": "Signing key is the built-in default",
+   "expected": "secret differs from the shipped default",
+   "observed": true,
+   "pass": false
+  },
+  {
+   "id": "T7",
+   "check": "Valid signature, user id that does not exist",
+   "expected": "401",
+   "observed": 401,
+   "pass": true
+  },
+  {
+   "id": "V1",
+   "check": "Chat query of 2 characters (text)",
+   "expected": "422",
+   "observed": 422,
+   "pass": true
+  },
+  {
+   "id": "V2",
+   "check": "Chat query of 3 characters (blank)",
+   "expected": "422 or 400",
+   "observed": 400,
+   "pass": true
+  },
+  {
+   "id": "V3",
+   "check": "Chat query of 3 characters (text)",
+   "expected": "200",
+   "observed": 200,
+   "pass": true
+  },
+  {
+   "id": "V4",
+   "check": "Chat query of 2000 characters (text)",
+   "expected": "200",
+   "observed": 200,
+   "pass": true
+  },
+  {
+   "id": "V5",
+   "check": "Chat query of 2001 characters (text)",
+   "expected": "422",
+   "observed": 422,
+   "pass": true
+  },
+  {
+   "id": "V6",
+   "check": "Chat body without a query",
+   "expected": "422",
+   "observed": 422,
+   "pass": true
+  },
+  {
+   "id": "V7",
+   "check": "Chat body that is not JSON",
+   "expected": "422",
+   "observed": 422,
+   "pass": true
+  },
+  {
+   "id": "V8",
+   "check": "Markup in the query is stored as plain text",
+   "expected": "200 and returned verbatim as a JSON string",
+   "observed": "200; verbatim=True",
+   "pass": true
+  },
+  {
+   "id": "V9",
+   "check": "SQL meta-characters in the history search",
+   "expected": "200, empty result, table intact",
+   "observed": "200; rows=0; history still readable (3 rows)",
+   "pass": true
+  },
+  {
+   "id": "V10",
+   "check": "Request for a prescription in the query",
+   "expected": "answer contains no dosage instruction",
+   "observed": "200; 'mg twice daily' in answer = False",
+   "pass": true
+  },
+  {
+   "id": "I1",
+   "check": "Another user reads my consultation",
+   "expected": "404",
+   "observed": 404,
+   "pass": true
+  },
+  {
+   "id": "I2",
+   "check": "Another user deletes my consultation",
+   "expected": "404",
+   "observed": 404,
+   "pass": true
+  },
+  {
+   "id": "I3",
+   "check": "Another user's history list is empty",
+   "expected": "[]",
+   "observed": [],
+   "pass": true
+  },
+  {
+   "id": "I4",
+   "check": "Owner can still read it after the attempts",
+   "expected": "200",
+   "observed": 200,
+   "pass": true
+  },
+  {
+   "id": "I5",
+   "check": "Owner deletes it",
+   "expected": "200",
+   "observed": 200,
+   "pass": true
+  },
+  {
+   "id": "I6",
+   "check": "Deleted consultation",
+   "expected": "404",
+   "observed": 404,
+   "pass": true
+  },
+  {
+   "id": "I7",
+   "check": "After logout the history is closed",
+   "expected": "401",
+   "observed": 401,
+   "pass": true
+  },
+  {
+   "id": "I8",
+   "check": "About metrics are readable without sign-in (by design)",
+   "expected": "200",
+   "observed": 200,
+   "pass": true
+  },
+  {
+   "id": "I9",
+   "check": "Stored password is a bcrypt hash",
+   "expected": "starts with $2",
+   "observed": "$2b$",
+   "pass": true
+  }
+ ]
+}

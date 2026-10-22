@@ -1,0 +1,24 @@
+PASS backend health on 8412
+PASS frontend serves the app on 5412
+PASS frontend proxy reaches the API
+PASS history requires sign-in (401)
+PASS bad password rejected (401)
+PASS demo login works
+PASS session cookie -> /me
+PASS chat returns answer + evidence
+PASS evidence has card fields
+PASS emergency wording escalates
+PASS too-short query rejected (422)
+PASS history lists consultations
+PASS history search filters
+PASS history detail
+PASS delete consultation 9
+PASS delete consultation 10
+PASS deleted consultation is 404
+PASS about metrics endpoint
+PASS register new account
+PASS duplicate email rejected (400)
+PASS new account has empty, private history
+PASS logout clears the session
+
+22/22 checks passed

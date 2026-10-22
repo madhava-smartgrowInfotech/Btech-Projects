@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+data/
+models/*.pt
+models/*_history.json
+tests/_tmp_models/
+*.log
+.DS_Store
+.env
+frontend/node_modules/
+frontend/dist/

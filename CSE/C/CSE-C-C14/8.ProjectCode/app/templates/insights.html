@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}Model Insights — VeriVision AI{% endblock %}
+{% block content %}
+<h1>Model insights</h1>
+<p class="lede">Measured held-out test performance. All numbers are loaded from the actual evaluation artifacts — never hand-written.</p>
+{% if not available %}
+<section class="card narrow">
+  <h2>Model evaluation unavailable until training is completed</h2>
+  <p>Run the training workflow described in <code>HOW_TO_RUN.md</code> to generate evaluation artifacts, then refresh this page.</p>
+  <a class="btn btn-primary" href="/">Back to upload</a>
+</section>
+{% else %}
+<section class="grid2">
+  <div class="card">
+    <h2>Ensemble (held-out test)</h2>
+    <table class="votes">
+      <tbody>
+        <tr><td>Accuracy</td><td><strong>{{ (ensemble.accuracy*100)|round(2) }}%</strong></td></tr>
+        <tr><td>Precision</td><td>{{ (ensemble.precision*100)|round(2) }}%</td></tr>
+        <tr><td>Recall</td><td>{{ (ensemble.recall*100)|round(2) }}%</td></tr>
+        <tr><td>F1-score</td><td>{{ (ensemble.f1*100)|round(2) }}%</td></tr>
+        <tr><td>ROC-AUC</td><td>{{ (ensemble.roc_auc*100)|round(2) }}%</td></tr>
+        <tr><td>Balanced accuracy</td><td>{{ (ensemble.balanced_accuracy*100)|round(2) }}%</td></tr>
+        <tr><td>Test samples</td><td>{{ ensemble.n_samples }}</td></tr>
+      </tbody>
+    </table>
+    {% if confusion_exists %}
+    <img class="cm" src="/artifacts/confusion_matrix.png" alt="Confusion matrix">
+    {% endif %}
+  </div>
+  <div class="card">
+    <h2>Per-model comparison</h2>
+    <table class="votes">
+      <thead><tr><th>Model</th><th>Acc</th><th>F1</th><th>AUC</th></tr></thead>
+      <tbody>
+      {% for name, m in models.items() %}
+        <tr><td>{{ name }}</td><td>{{ (m.accuracy*100)|round(1) }}%</td><td>{{ (m.f1*100)|round(1) }}%</td><td>{{ (m.roc_auc*100)|round(1) }}%</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    <h2>Robustness (ensemble)</h2>
+    <table class="votes">
+      <thead><tr><th>Condition</th><th>Acc</th><th>F1</th></tr></thead>
+      <tbody>
+      {% for name, m in robustness.items() %}
+        <tr><td>{{ name }}</td><td>{{ (m.accuracy*100)|round(1) }}%</td><td>{{ (m.f1*100)|round(1) }}%</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    <p class="muted small">Dataset: {{ ensemble.dataset }} &middot; seed {{ ensemble.seed }}</p>
+  </div>
+</section>
+{% endif %}
+{% endblock %}

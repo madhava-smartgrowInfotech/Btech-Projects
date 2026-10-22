@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block title %}Result — VeriVision AI{% endblock %}
+{% block content %}
+<a class="back" href="/">&larr; Analyze another image</a>
+
+<section class="result-head card {{ 'is-real' if predicted_label == 'REAL' else 'is-fake' }}">
+  <div class="result-photo"><img src="{{ original_image }}" alt="Uploaded image"></div>
+  <div class="result-summary">
+    <span class="verdict {{ 'v-real' if predicted_label == 'REAL' else 'v-fake' }}">
+      {{ 'REAL' if predicted_label == 'REAL' else 'AI-GENERATED' }}
+    </span>
+    <div class="conf-line"><strong>{{ confidence_pct }}%</strong> &middot; {{ confidence_word }}</div>
+    <div class="probbar" role="img" aria-label="confidence {{ confidence_pct }} percent">
+      <div class="probbar-fill {{ 'fill-real' if predicted_label == 'REAL' else 'fill-fake' }}" style="width: {{ confidence_pct }}%"></div>
+    </div>
+    <div class="prob-split">
+      <span>REAL {{ (prob_real*100)|round(1) }}%</span>
+      <span>AI-GENERATED {{ (prob_fake*100)|round(1) }}%</span>
+    </div>
+    <p class="muted">Ensemble decision &middot; {{ agreement_count }}/4 branches agree &middot; analyzed on {{ device }}</p>
+    {% if excluded_branch %}
+    <p class="gate">Route adjustment: {{ gate1_reason }}</p>
+    {% endif %}
+    {% if gate2_applied %}
+    <p class="gate">Consensus adjustment: {{ gate2_reason }}</p>
+    {% endif %}
+  </div>
+</section>
+
+<section class="grid2">
+  <div class="card">
+    <h2>Branch votes</h2>
+    <table class="votes">
+      <thead><tr><th>Model</th><th>Prediction</th><th>Confidence</th></tr></thead>
+      <tbody>
+      {% for b in branches %}
+        <tr>
+          <td>{{ b.name }}</td>
+          <td><span class="pill {{ 'p-real' if b.label == 'REAL' else 'p-fake' }}">{{ 'REAL' if b.label == 'REAL' else 'AI-GENERATED' }}</span></td>
+          <td>{{ ((b.prob_real if b.label=='REAL' else b.prob_fake)*100)|round(1) }}%</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    <p class="muted small">Final weights:
+      {% for k, v in active_weights.items() %}{{ k }}={{ (v*100)|round(1) }}% {% endfor %}
+    </p>
+  </div>
+  <div class="card">
+    <h2>Robustness check</h2>
+    <table class="votes">
+      <tbody>
+      {% for name, label in robustness.outcomes.items() %}
+        <tr><td>{{ name|capitalize }} test</td>
+        <td><span class="pill {{ 'p-real' if label == 'REAL' else ('p-fake' if label == 'AI-GENERATED' else '') }}">{{ label }}</span></td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    <p><strong>Prediction consistency: {{ robustness.consistency }}</strong></p>
+    <p class="muted small">A consistency below 4/4 suggests the image is borderline or sensitive to compression — treat the result with extra caution.</p>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Visual explanation (Grad-CAM)</h2>
+  <div class="cam-tabs">
+    <button class="tab active" data-cam="a1">EfficientNet</button>
+    <button class="tab" data-cam="b">ResNet50</button>
+    <button class="tab" data-cam="c">MobileNetV3</button>
+  </div>
+  <div class="cam-wrap">
+    {% for key, url in cams.items() %}
+      <img class="cam-img {% if key == 'a1' %}show{% endif %}" id="cam-{{ key }}" src="{{ url if url else '' }}" alt="Grad-CAM {{ key }}" {% if not url %}hidden{% endif %}>
+    {% endfor %}
+  </div>
+  <p class="muted">{{ heatmap_note }}</p>
+  <a class="btn btn-secondary" href="/">Analyze another image</a>
+</section>
+{% endblock %}

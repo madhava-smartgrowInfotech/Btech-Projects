@@ -1,0 +1,27 @@
+{
+  "clean": {
+    "accuracy": 1.0,
+    "f1": 1.0,
+    "n_samples": 200
+  },
+  "jpeg": {
+    "accuracy": 0.865,
+    "f1": 0.8810572687224669,
+    "n_samples": 200
+  },
+  "resize": {
+    "accuracy": 0.495,
+    "f1": 0.4975124378109453,
+    "n_samples": 200
+  },
+  "blur": {
+    "accuracy": 0.62,
+    "f1": 0.6576576576576577,
+    "n_samples": 200
+  },
+  "noise": {
+    "accuracy": 1.0,
+    "f1": 1.0,
+    "n_samples": 200
+  }
+}

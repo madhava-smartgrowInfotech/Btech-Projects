@@ -1,0 +1,69 @@
+{
+  "created": "2026-09-12T10:35:47",
+  "models": [
+    {
+      "model_name": "efficientnet_a1",
+      "branch": "a1",
+      "training_dataset": "synthetic-demo-fallback",
+      "image_resolution": 224,
+      "class_mapping": {
+        "0": "REAL",
+        "1": "AI_GENERATED"
+      },
+      "checkpoint_path": "models\\efficientnet_a1.pt",
+      "validation": {
+        "accuracy": 1.0,
+        "f1": 1.0,
+        "roc_auc": 1.0
+      }
+    },
+    {
+      "model_name": "efficientnet_a2",
+      "branch": "a2",
+      "training_dataset": "synthetic-demo-fallback",
+      "image_resolution": 224,
+      "class_mapping": {
+        "0": "REAL",
+        "1": "AI_GENERATED"
+      },
+      "checkpoint_path": "models\\efficientnet_a2.pt",
+      "validation": {
+        "accuracy": 1.0,
+        "f1": 1.0,
+        "roc_auc": 1.0
+      }
+    },
+    {
+      "model_name": "resnet50_b",
+      "branch": "b",
+      "training_dataset": "synthetic-demo-fallback",
+      "image_resolution": 320,
+      "class_mapping": {
+        "0": "REAL",
+        "1": "AI_GENERATED"
+      },
+      "checkpoint_path": "models\\resnet50_b.pt",
+      "validation": {
+        "accuracy": 1.0,
+        "f1": 1.0,
+        "roc_auc": 1.0
+      }
+    },
+    {
+      "model_name": "mobilenetv3_c",
+      "branch": "c",
+      "training_dataset": "synthetic-demo-fallback",
+      "image_resolution": 224,
+      "class_mapping": {
+        "0": "REAL",
+        "1": "AI_GENERATED"
+      },
+      "checkpoint_path": "models\\mobilenetv3_c.pt",
+      "validation": {
+        "accuracy": 1.0,
+        "f1": 1.0,
+        "roc_auc": 1.0
+      }
+    }
+  ]
+}

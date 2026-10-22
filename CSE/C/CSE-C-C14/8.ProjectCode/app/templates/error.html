@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Something went wrong — VeriVision AI{% endblock %}
+{% block content %}
+<section class="card narrow">
+  <h1>We couldn't complete that request</h1>
+  <p>{{ message }}</p>
+  <a class="btn btn-primary" href="/">Back to upload</a>
+</section>
+{% endblock %}

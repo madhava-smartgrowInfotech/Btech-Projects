@@ -1,0 +1,12 @@
+services:
+  verivision-ai:
+    build: .
+    container_name: verivision-ai
+    ports:
+      - "127.0.0.1:5000:5000"
+    environment:
+      - VERIVISION_PORT=5000
+    volumes:
+      - ./models:/app/models
+      - ./artifacts:/app/artifacts
+    restart: unless-stopped

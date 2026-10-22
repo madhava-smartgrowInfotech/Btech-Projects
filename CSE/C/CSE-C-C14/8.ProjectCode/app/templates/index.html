@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}VeriVision AI — Detect AI-Generated Images{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-text">
+    <h1>Is this image real or AI-generated?</h1>
+    <p class="lede">VeriVision AI analyzes your photo with an ensemble of deep-learning detectors and shows you <strong>why</strong> it decided — with visual explanations, per-model votes and a robustness check.</p>
+    <ul class="ticks">
+      <li>4-model heterogeneous ensemble</li>
+      <li>Grad-CAM visual explanations</li>
+      <li>Runs locally — no cloud upload</li>
+    </ul>
+  </div>
+  <div class="hero-card card">
+    <h2>Analyze an image</h2>
+    <form id="upload-form" action="/predict" method="post" enctype="multipart/form-data">
+      <div id="dropzone" class="dropzone" tabindex="0" role="button" aria-label="Drop image here or browse">
+        <div class="dz-icon">&#8681;</div>
+        <p><strong>Drag &amp; drop</strong> your image here, or</p>
+        <label class="btn btn-secondary" for="file-input">Browse files</label>
+        <input id="file-input" type="file" name="image" accept=".png,.jpg,.jpeg,.webp" hidden>
+        <p id="file-name" class="file-name">No file selected</p>
+        <img id="preview" class="preview" alt="" hidden>
+      </div>
+      <p class="hint">Supported: PNG, JPG/JPEG, WEBP &middot; Max {{ max_mb }} MB &middot; Processed locally on this machine.</p>
+      <button id="analyze-btn" class="btn btn-primary btn-block" type="submit">Analyze Image</button>
+      <div id="loading" class="loading" hidden>
+        <div class="spinner"></div>
+        <p>Analyzing with 4 models + Grad-CAM&hellip; this can take up to a minute on CPU.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section class="grid3">
+  <div class="card"><h3>Ensemble detection</h3><p>EfficientNet, ResNet and MobileNet routes vote in logit space with disagreement gating.</p></div>
+  <div class="card"><h3>Explainable</h3><p>Grad-CAM heatmaps highlight the regions that drove the prediction.</p></div>
+  <div class="card"><h3>Robustness check</h3><p>Every upload is re-tested under JPEG, resize and blur variants for consistency.</p></div>
+</section>
+{% endblock %}

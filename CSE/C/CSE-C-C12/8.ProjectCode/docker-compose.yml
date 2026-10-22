@@ -1,7 +1,17 @@
 services:
-  carelens:
-    build: .
+  api:
+    build:
+      context: .
+      target: api
     ports:
-      - "127.0.0.1:8000:8000"
+      - "127.0.0.1:8412:8412"
     volumes:
       - ./data:/app/data
+  web:
+    build:
+      context: .
+      target: web
+    ports:
+      - "127.0.0.1:5412:5412"
+    depends_on:
+      - api

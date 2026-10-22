@@ -98,4 +98,4 @@ Everything above is built. Additions beyond the original inventory, chosen as de
 | 360 / 768 / 1440 px, light + dark, reduced motion | no horizontal overflow on any route, no console errors |
 | Keyboard | Escape closes the delete dialog (asserted in the capture script), focus trap and focus rings from the kit, all inputs labelled |
 
-Known limitations: the evaluation metrics are measured on held-out records from a *synthetic* knowledge base (flagged on the About page), so they are not clinical accuracy. Docker still serves only the legacy Jinja pages on port 8000.
+Known limitations: the evaluation metrics are measured on held-out records from a *synthetic* knowledge base (flagged on the About page), so they are not clinical accuracy. Docker (`docker compose up --build`) now builds the React app and serves it through nginx on 5412 with the API on 8412; the compose file is validated but the image build was not run here because the Docker daemon was not running.

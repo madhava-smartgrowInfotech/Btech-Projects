@@ -1,0 +1,7 @@
+.venv
+frontend/node_modules
+frontend/dist
+data/carelens.db
+docs/screenshots
+screenshots
+.git

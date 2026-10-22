@@ -25,16 +25,15 @@ For zero-coding users:
 
 First startup takes longer (model downloads). Later startups are fast.
 
-## 3. Method B — Docker (legacy single-server UI)
+## 3. Method B — Docker (full app)
 
-Docker serves only the original server-rendered pages from the backend on port 8000; it does not build the React frontend.
+Docker builds the React frontend and runs two containers: the API (FastAPI) and a small web server (nginx) that serves the app and forwards `/api` to the API. The first build downloads models and takes a while.
 
 ```bat
-docker build -t carelens-ai .
-docker run -p 127.0.0.1:8000:8000 carelens-ai
+docker compose up --build
 ```
 
-Open **http://localhost:8000**. Use Method A or C for the full React app.
+Open **http://localhost:5412** and use the demo login. The API is also reachable directly at http://localhost:8412/api/health. Stop with Ctrl+C. Your data is kept in the `data` folder.
 
 ## 4. Method C — Manual
 
@@ -42,17 +41,17 @@ Windows (Command Prompt), two terminals:
 
 ```bat
 :: terminal 1 - backend
-cd /d D:\path	o\project
+cd /d D:\path\to\project
 python -m venv .venv
-.venv\Scriptsctivate.bat
+.venv\Scripts\activate.bat
 pip install -r requirements.txt
 python scripts\prepare_data.py
-python scriptsuild_index.py
+python scripts\build_index.py
 python scripts\seed_demo.py
 python -m uvicorn app.main:app --host 127.0.0.1 --port 8412
 
 :: terminal 2 - frontend
-cd /d D:\path	o\projectrontend
+cd /d D:\path\to\project\frontend
 npm install
 npm run dev
 ```

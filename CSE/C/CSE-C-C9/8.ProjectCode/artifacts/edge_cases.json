@@ -1,0 +1,376 @@
+{
+  "api": "http://127.0.0.1:8409",
+  "date": "2026-10-22",
+  "cases": [
+    {
+      "id": "E01",
+      "group": "Required fields",
+      "endpoint": "/api/predict",
+      "case": "Missing field (workclass omitted)",
+      "status": 400,
+      "message": "Employment type is required.",
+      "outcome": "",
+      "ms": 433.1
+    },
+    {
+      "id": "E02",
+      "group": "Required fields",
+      "endpoint": "/api/predict",
+      "case": "Empty JSON object {}",
+      "status": 400,
+      "message": "Age is required.; Employment type is required.; Education is required.; Marital status is required.; Occupation is required.; Household relationship is required",
+      "outcome": "",
+      "ms": 62.8
+    },
+    {
+      "id": "E03",
+      "group": "Required fields",
+      "endpoint": "/api/predict",
+      "case": "Empty request body (no content)",
+      "status": 400,
+      "message": "Age is required.; Employment type is required.; Education is required.; Marital status is required.; Occupation is required.; Household relationship is required",
+      "outcome": "",
+      "ms": 51.1
+    },
+    {
+      "id": "E04",
+      "group": "Required fields",
+      "endpoint": "/api/predict",
+      "case": "Body is not JSON (plain text)",
+      "status": 400,
+      "message": "Age is required.; Employment type is required.; Education is required.; Marital status is required.; Occupation is required.; Household relationship is required",
+      "outcome": "",
+      "ms": 301.7
+    },
+    {
+      "id": "E05",
+      "group": "Required fields",
+      "endpoint": "/api/predict",
+      "case": "Malformed JSON (truncated)",
+      "status": 400,
+      "message": "Age is required.; Employment type is required.; Education is required.; Marital status is required.; Occupation is required.; Household relationship is required",
+      "outcome": "",
+      "ms": 117.9
+    },
+    {
+      "id": "E06",
+      "group": "Numeric range",
+      "endpoint": "/api/predict",
+      "case": "Age 15 (below minimum 16)",
+      "status": 400,
+      "message": "Age must be between 16 and 100.",
+      "outcome": "",
+      "ms": 6.8
+    },
+    {
+      "id": "E07",
+      "group": "Numeric range",
+      "endpoint": "/api/predict",
+      "case": "Age 101 (above maximum 100)",
+      "status": 400,
+      "message": "Age must be between 16 and 100.",
+      "outcome": "",
+      "ms": 22.6
+    },
+    {
+      "id": "E08",
+      "group": "Numeric range",
+      "endpoint": "/api/predict",
+      "case": "Age 16 (lower boundary)",
+      "status": 200,
+      "message": "",
+      "outcome": "p 0.0004, Emerging / High",
+      "ms": 586.5
+    },
+    {
+      "id": "E09",
+      "group": "Numeric range",
+      "endpoint": "/api/predict",
+      "case": "Age 100 (upper boundary)",
+      "status": 200,
+      "message": "",
+      "outcome": "p 0.0088, Emerging / High",
+      "ms": 719.6
+    },
+    {
+      "id": "E10",
+      "group": "Numeric range",
+      "endpoint": "/api/predict",
+      "case": "Hours 0 (below minimum 1)",
+      "status": 400,
+      "message": "Hours worked per week must be between 1 and 99.",
+      "outcome": "",
+      "ms": 5.1
+    },
+    {
+      "id": "E11",
+      "group": "Numeric range",
+      "endpoint": "/api/predict",
+      "case": "Hours 100 (above maximum 99)",
+      "status": 400,
+      "message": "Hours worked per week must be between 1 and 99.",
+      "outcome": "",
+      "ms": 23.3
+    },
+    {
+      "id": "E12",
+      "group": "Numeric range",
+      "endpoint": "/api/predict",
+      "case": "Negative investment gains (-5)",
+      "status": 400,
+      "message": "Investment gains must be between 0 and 1000000.",
+      "outcome": "",
+      "ms": 5.2
+    },
+    {
+      "id": "E13",
+      "group": "Numeric range",
+      "endpoint": "/api/predict",
+      "case": "Negative investment losses (-1)",
+      "status": 400,
+      "message": "Investment losses must be between 0 and 1000000.",
+      "outcome": "",
+      "ms": 23.3
+    },
+    {
+      "id": "E14",
+      "group": "Numeric range",
+      "endpoint": "/api/predict",
+      "case": "Investment gains 1,000,000 (upper boundary)",
+      "status": 200,
+      "message": "",
+      "outcome": "p 0.9935, Established / Low",
+      "ms": 145.1
+    },
+    {
+      "id": "E15",
+      "group": "Numeric range",
+      "endpoint": "/api/predict",
+      "case": "Investment gains 1,000,001 (above maximum)",
+      "status": 400,
+      "message": "Investment gains must be between 0 and 1000000.",
+      "outcome": "",
+      "ms": 3.9
+    },
+    {
+      "id": "E16",
+      "group": "Numeric range",
+      "endpoint": "/api/predict",
+      "case": "Age given as text ('abc')",
+      "status": 400,
+      "message": "Age must be a number.",
+      "outcome": "",
+      "ms": 5.0
+    },
+    {
+      "id": "E17",
+      "group": "Allowed values",
+      "endpoint": "/api/predict",
+      "case": "Unknown workclass ('Hacker')",
+      "status": 400,
+      "message": "Employment type has an invalid value.",
+      "outcome": "",
+      "ms": 16.6
+    },
+    {
+      "id": "E18",
+      "group": "Allowed values",
+      "endpoint": "/api/predict",
+      "case": "Unknown country ('Atlantis')",
+      "status": 400,
+      "message": "Country has an invalid value.",
+      "outcome": "",
+      "ms": 4.2
+    },
+    {
+      "id": "E19",
+      "group": "Hostile input",
+      "endpoint": "/api/predict",
+      "case": "Script text in a field (occupation)",
+      "status": 400,
+      "message": "Occupation has an invalid value.",
+      "outcome": "",
+      "ms": 4.1
+    },
+    {
+      "id": "E20",
+      "group": "Hostile input",
+      "endpoint": "/api/predict",
+      "case": "SQL-style text in a field (sex)",
+      "status": 400,
+      "message": "Sex has an invalid value.",
+      "outcome": "",
+      "ms": 3.6
+    },
+    {
+      "id": "E21",
+      "group": "Hostile input",
+      "endpoint": "/api/predict",
+      "case": "Extra unknown field added (is_admin)",
+      "status": 200,
+      "message": "",
+      "outcome": "p 0.0109, Emerging / High",
+      "ms": 256.0
+    },
+    {
+      "id": "E22",
+      "group": "Hostile input",
+      "endpoint": "/api/predict",
+      "case": "Very long string (10,000 characters) in race",
+      "status": 400,
+      "message": "Race has an invalid value.",
+      "outcome": "",
+      "ms": 99.8
+    },
+    {
+      "id": "E23",
+      "group": "Scenario",
+      "endpoint": "/api/whatif",
+      "case": "What-if with no scenario field changed",
+      "status": 400,
+      "message": "Change at least one scenario field to compare.",
+      "outcome": "",
+      "ms": 50.4
+    },
+    {
+      "id": "E24",
+      "group": "Scenario",
+      "endpoint": "/api/whatif",
+      "case": "What-if with gains 1,000,001 (above maximum)",
+      "status": 400,
+      "message": "Scenario investment gains out of range.",
+      "outcome": "",
+      "ms": 32.9
+    },
+    {
+      "id": "E25",
+      "group": "Scenario",
+      "endpoint": "/api/whatif",
+      "case": "What-if with hours 500",
+      "status": 400,
+      "message": "Scenario hours out of range.",
+      "outcome": "",
+      "ms": 4.1
+    },
+    {
+      "id": "E26",
+      "group": "Scenario",
+      "endpoint": "/api/whatif",
+      "case": "What-if with unknown education",
+      "status": 400,
+      "message": "Scenario education is invalid.",
+      "outcome": "",
+      "ms": 28.3
+    },
+    {
+      "id": "E27",
+      "group": "Scenario",
+      "endpoint": "/api/whatif",
+      "case": "What-if with valid change (hours 40 to 50)",
+      "status": 200,
+      "message": "",
+      "outcome": "delta +1.68 pp, Emerging -> Emerging",
+      "ms": 494.6
+    },
+    {
+      "id": "E28",
+      "group": "Scenario",
+      "endpoint": "/api/whatif",
+      "case": "What-if with same value as baseline (hours 40)",
+      "status": 200,
+      "message": "",
+      "outcome": "delta +0.00 pp, Emerging -> Emerging",
+      "ms": 295.0
+    },
+    {
+      "id": "E29",
+      "group": "Scenario",
+      "endpoint": "/api/whatif",
+      "case": "What-if with extreme gains 1,000,000",
+      "status": 200,
+      "message": "",
+      "outcome": "delta +98.26 pp, Emerging -> Established",
+      "ms": 527.9
+    },
+    {
+      "id": "G01",
+      "group": "Path probes",
+      "endpoint": "GET /artifacts/confusion_matrix.png",
+      "case": "Allowed artifact image",
+      "status": 200,
+      "message": "image/png",
+      "outcome": "",
+      "ms": 653.7
+    },
+    {
+      "id": "G02",
+      "group": "Path probes",
+      "endpoint": "GET /artifacts/metrics.json",
+      "case": "Artifact not on the allow-list (metrics.json)",
+      "status": 404,
+      "message": "text/html",
+      "outcome": "",
+      "ms": 114.2
+    },
+    {
+      "id": "G03",
+      "group": "Path probes",
+      "endpoint": "GET /artifacts/best_model.pkl",
+      "case": "Model file requested through the artifact route",
+      "status": 404,
+      "message": "text/html",
+      "outcome": "",
+      "ms": 6.8
+    },
+    {
+      "id": "G04",
+      "group": "Path probes",
+      "endpoint": "GET /artifacts/..%2fmodels%2fbest_model.pkl",
+      "case": "Encoded path traversal to models/best_model.pkl",
+      "status": 404,
+      "message": "text/html",
+      "outcome": "",
+      "ms": 199.3
+    },
+    {
+      "id": "G05",
+      "group": "Path probes",
+      "endpoint": "GET /models/best_model.pkl",
+      "case": "Direct path to the model file",
+      "status": 404,
+      "message": "text/html",
+      "outcome": "",
+      "ms": 16237.9
+    },
+    {
+      "id": "G06",
+      "group": "Path probes",
+      "endpoint": "GET /.env",
+      "case": "Environment file",
+      "status": 404,
+      "message": "text/html",
+      "outcome": "",
+      "ms": 123.8
+    },
+    {
+      "id": "G07",
+      "group": "Path probes",
+      "endpoint": "GET /no-such-page",
+      "case": "Unknown page",
+      "status": 404,
+      "message": "text/html",
+      "outcome": "",
+      "ms": 20.4
+    }
+  ],
+  "health_after": {
+    "status": 200,
+    "body": {
+      "forecast_available": true,
+      "model": "xgboost",
+      "model_loaded": true,
+      "product": "FinSight AI",
+      "status": "ok"
+    }
+  }
+}

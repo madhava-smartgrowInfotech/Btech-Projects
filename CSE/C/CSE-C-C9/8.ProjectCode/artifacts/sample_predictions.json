@@ -1,0 +1,182 @@
+[
+  {
+    "id": "A",
+    "name": "Adult row 1 (Census sample record)",
+    "inputs": {
+      "age": 39,
+      "workclass": "State-gov",
+      "education": "Bachelors",
+      "marital-status": "Never-married",
+      "occupation": "Adm-clerical",
+      "relationship": "Not-in-family",
+      "race": "White",
+      "sex": "Male",
+      "native-country": "United-States",
+      "capital-gain": 2174,
+      "capital-loss": 0,
+      "hours-per-week": 40
+    },
+    "proba": 0.0109,
+    "strength_pct": 1.1,
+    "profile": "Emerging",
+    "risk": "High",
+    "top_drivers": [
+      {
+        "label": "Years of education",
+        "shap": 0.5449
+      },
+      {
+        "label": "Age",
+        "shap": 0.1843
+      },
+      {
+        "label": "Investment gains",
+        "shap": -1.6264
+      }
+    ]
+  },
+  {
+    "id": "B",
+    "name": "Mid-career manager",
+    "inputs": {
+      "age": 52,
+      "workclass": "Private",
+      "education": "Masters",
+      "marital-status": "Married-civ-spouse",
+      "occupation": "Exec-managerial",
+      "relationship": "Husband",
+      "race": "White",
+      "sex": "Male",
+      "native-country": "United-States",
+      "capital-gain": 7688,
+      "capital-loss": 0,
+      "hours-per-week": 50
+    },
+    "proba": 0.9991,
+    "strength_pct": 99.9,
+    "profile": "Established",
+    "risk": "Low",
+    "top_drivers": [
+      {
+        "label": "Investment gains",
+        "shap": 4.6782
+      },
+      {
+        "label": "marital status = Married-civ-spouse",
+        "shap": 1.004
+      },
+      {
+        "label": "Overall investment activity",
+        "shap": -0.2429
+      }
+    ]
+  },
+  {
+    "id": "C",
+    "name": "Dual-income household, sales",
+    "inputs": {
+      "age": 34,
+      "workclass": "Local-gov",
+      "education": "Some-college",
+      "marital-status": "Married-civ-spouse",
+      "occupation": "Sales",
+      "relationship": "Wife",
+      "race": "White",
+      "sex": "Female",
+      "native-country": "United-States",
+      "capital-gain": 0,
+      "capital-loss": 0,
+      "hours-per-week": 42
+    },
+    "proba": 0.4683,
+    "strength_pct": 46.8,
+    "profile": "Developing",
+    "risk": "Moderate",
+    "top_drivers": [
+      {
+        "label": "marital status = Married-civ-spouse",
+        "shap": 0.8355
+      },
+      {
+        "label": "relationship = Wife",
+        "shap": 0.5533
+      },
+      {
+        "label": "Investment gains",
+        "shap": -0.1559
+      }
+    ]
+  },
+  {
+    "id": "D",
+    "name": "Young part-time worker",
+    "inputs": {
+      "age": 22,
+      "workclass": "Private",
+      "education": "HS-grad",
+      "marital-status": "Never-married",
+      "occupation": "Other-service",
+      "relationship": "Own-child",
+      "race": "Black",
+      "sex": "Female",
+      "native-country": "United-States",
+      "capital-gain": 0,
+      "capital-loss": 0,
+      "hours-per-week": 20
+    },
+    "proba": 0.0004,
+    "strength_pct": 0.0,
+    "profile": "Emerging",
+    "risk": "High",
+    "top_drivers": [
+      {
+        "label": "occupation = Machine-op-inspct",
+        "shap": 0.0197
+      },
+      {
+        "label": "occupation = Farming-fishing",
+        "shap": 0.0119
+      },
+      {
+        "label": "Age",
+        "shap": -1.5577
+      }
+    ]
+  },
+  {
+    "id": "E",
+    "name": "Professional with investment losses",
+    "inputs": {
+      "age": 45,
+      "workclass": "Self-emp-inc",
+      "education": "Doctorate",
+      "marital-status": "Divorced",
+      "occupation": "Prof-specialty",
+      "relationship": "Not-in-family",
+      "race": "Asian-Pac-Islander",
+      "sex": "Male",
+      "native-country": "India",
+      "capital-gain": 0,
+      "capital-loss": 1902,
+      "hours-per-week": 55
+    },
+    "proba": 0.8101,
+    "strength_pct": 81.0,
+    "profile": "Established",
+    "risk": "Low",
+    "top_drivers": [
+      {
+        "label": "Years of education",
+        "shap": 1.8125
+      },
+      {
+        "label": "Investment losses",
+        "shap": 1.1247
+      },
+      {
+        "label": "marital status = Married-civ-spouse",
+        "shap": -1.4663
+      }
+    ]
+  }
+]

@@ -1,0 +1,417 @@
+{
+  "test_rows": 9769,
+  "groups": {
+    "Sex": {
+      "Female": {
+        "n": 3289,
+        "actual_pos_rate": 0.1116,
+        "pred_pos_rate": 0.083,
+        "recall": 0.5913,
+        "precision": 0.7949,
+        "fpr": 0.0192,
+        "accuracy": 0.9374
+      },
+      "Male": {
+        "n": 6480,
+        "actual_pos_rate": 0.3042,
+        "pred_pos_rate": 0.2616,
+        "recall": 0.6804,
+        "precision": 0.7912,
+        "fpr": 0.0785,
+        "accuracy": 0.8481
+      }
+    },
+    "Race": {
+      "Amer-Indian-Eskimo": {
+        "n": 104,
+        "actual_pos_rate": 0.0865,
+        "pred_pos_rate": 0.0769,
+        "recall": 0.5556,
+        "precision": 0.625,
+        "fpr": 0.0316,
+        "accuracy": 0.9327
+      },
+      "Asian-Pac-Islander": {
+        "n": 304,
+        "actual_pos_rate": 0.2566,
+        "pred_pos_rate": 0.2434,
+        "recall": 0.6795,
+        "precision": 0.7162,
+        "fpr": 0.0929,
+        "accuracy": 0.8487
+      },
+      "Black": {
+        "n": 944,
+        "actual_pos_rate": 0.1282,
+        "pred_pos_rate": 0.0847,
+        "recall": 0.5537,
+        "precision": 0.8375,
+        "fpr": 0.0158,
+        "accuracy": 0.929
+      },
+      "Other": {
+        "n": 69,
+        "actual_pos_rate": 0.1594,
+        "pred_pos_rate": 0.1014,
+        "recall": 0.4545,
+        "precision": 0.7143,
+        "fpr": 0.0345,
+        "accuracy": 0.8841
+      },
+      "White": {
+        "n": 8348,
+        "actual_pos_rate": 0.2538,
+        "pred_pos_rate": 0.2155,
+        "recall": 0.6739,
+        "precision": 0.7938,
+        "fpr": 0.0596,
+        "accuracy": 0.8728
+      }
+    },
+    "Education tier": {
+      "Higher-secondary": {
+        "n": 2841,
+        "actual_pos_rate": 0.2017,
+        "pred_pos_rate": 0.1679,
+        "recall": 0.6161,
+        "precision": 0.74,
+        "fpr": 0.0547,
+        "accuracy": 0.8789
+      },
+      "Secondary-or-below": {
+        "n": 4450,
+        "actual_pos_rate": 0.1337,
+        "pred_pos_rate": 0.0587,
+        "recall": 0.358,
+        "precision": 0.8161,
+        "fpr": 0.0125,
+        "accuracy": 0.9034
+      },
+      "Tertiary": {
+        "n": 2478,
+        "actual_pos_rate": 0.4722,
+        "pred_pos_rate": 0.4964,
+        "recall": 0.8479,
+        "precision": 0.8065,
+        "fpr": 0.182,
+        "accuracy": 0.8321
+      }
+    },
+    "Age band": {
+      "18-25": {
+        "n": 1969,
+        "actual_pos_rate": 0.0178,
+        "pred_pos_rate": 0.0066,
+        "recall": 0.3429,
+        "precision": 0.9231,
+        "fpr": 0.0005,
+        "accuracy": 0.9878
+      },
+      "26-35": {
+        "n": 2501,
+        "actual_pos_rate": 0.1879,
+        "pred_pos_rate": 0.1379,
+        "recall": 0.5723,
+        "precision": 0.7797,
+        "fpr": 0.0374,
+        "accuracy": 0.8892
+      },
+      "36-50": {
+        "n": 3296,
+        "actual_pos_rate": 0.3607,
+        "pred_pos_rate": 0.3222,
+        "recall": 0.7107,
+        "precision": 0.7957,
+        "fpr": 0.103,
+        "accuracy": 0.8298
+      },
+      "51-65": {
+        "n": 1642,
+        "actual_pos_rate": 0.3423,
+        "pred_pos_rate": 0.2984,
+        "recall": 0.6851,
+        "precision": 0.7857,
+        "fpr": 0.0972,
+        "accuracy": 0.8283
+      },
+      "65+": {
+        "n": 361,
+        "actual_pos_rate": 0.2271,
+        "pred_pos_rate": 0.1607,
+        "recall": 0.5732,
+        "precision": 0.8103,
+        "fpr": 0.0394,
+        "accuracy": 0.8726
+      }
+    },
+    "Region of origin": {
+      "Asia": {
+        "n": 188,
+        "actual_pos_rate": 0.2819,
+        "pred_pos_rate": 0.266,
+        "recall": 0.6792,
+        "precision": 0.72,
+        "fpr": 0.1037,
+        "accuracy": 0.8351
+      },
+      "Europe": {
+        "n": 163,
+        "actual_pos_rate": 0.3436,
+        "pred_pos_rate": 0.2638,
+        "recall": 0.5893,
+        "precision": 0.7674,
+        "fpr": 0.0935,
+        "accuracy": 0.7975
+      },
+      "Latin America": {
+        "n": 374,
+        "actual_pos_rate": 0.0856,
+        "pred_pos_rate": 0.0455,
+        "recall": 0.4062,
+        "precision": 0.7647,
+        "fpr": 0.0117,
+        "accuracy": 0.9385
+      },
+      "North America": {
+        "n": 8822,
+        "actual_pos_rate": 0.243,
+        "pred_pos_rate": 0.2052,
+        "recall": 0.6698,
+        "precision": 0.7934,
+        "fpr": 0.056,
+        "accuracy": 0.8774
+      },
+      "Other": {
+        "n": 210,
+        "actual_pos_rate": 0.2381,
+        "pred_pos_rate": 0.2095,
+        "recall": 0.76,
+        "precision": 0.8636,
+        "fpr": 0.0375,
+        "accuracy": 0.9143
+      }
+    },
+    "Employment type": {
+      "Business-owner": {
+        "n": 332,
+        "actual_pos_rate": 0.5753,
+        "pred_pos_rate": 0.6054,
+        "recall": 0.8639,
+        "precision": 0.8209,
+        "fpr": 0.2553,
+        "accuracy": 0.8133
+      },
+      "Other": {
+        "n": 566,
+        "actual_pos_rate": 0.0954,
+        "pred_pos_rate": 0.0565,
+        "recall": 0.4259,
+        "precision": 0.7188,
+        "fpr": 0.0176,
+        "accuracy": 0.9293
+      },
+      "Self-employed": {
+        "n": 794,
+        "actual_pos_rate": 0.2796,
+        "pred_pos_rate": 0.1914,
+        "recall": 0.5495,
+        "precision": 0.8026,
+        "fpr": 0.0524,
+        "accuracy": 0.8363
+      },
+      "Stable-private": {
+        "n": 5631,
+        "actual_pos_rate": 0.2527,
+        "pred_pos_rate": 0.2058,
+        "recall": 0.6486,
+        "precision": 0.7964,
+        "fpr": 0.0561,
+        "accuracy": 0.8693
+      },
+      "Stable-public": {
+        "n": 1308,
+        "actual_pos_rate": 0.289,
+        "pred_pos_rate": 0.2859,
+        "recall": 0.7487,
+        "precision": 0.7567,
+        "fpr": 0.0978,
+        "accuracy": 0.8578
+      },
+      "Variable-private": {
+        "n": 1134,
+        "actual_pos_rate": 0.0617,
+        "pred_pos_rate": 0.0441,
+        "recall": 0.6,
+        "precision": 0.84,
+        "fpr": 0.0075,
+        "accuracy": 0.9683
+      }
+    },
+    "Marital status": {
+      "All other statuses": {
+        "n": 5341,
+        "actual_pos_rate": 0.0627,
+        "pred_pos_rate": 0.0309,
+        "recall": 0.4358,
+        "precision": 0.8848,
+        "fpr": 0.0038,
+        "accuracy": 0.9611
+      },
+      "Married-civ-spouse": {
+        "n": 4428,
+        "actual_pos_rate": 0.4523,
+        "pred_pos_rate": 0.4072,
+        "recall": 0.7049,
+        "precision": 0.7831,
+        "fpr": 0.1612,
+        "accuracy": 0.7782
+      }
+    }
+  },
+  "confident_false_positives": [
+    {
+      "age": 55,
+      "workclass": "Self-emp-not-inc",
+      "education": "HS-grad",
+      "marital-status": "Divorced",
+      "occupation": "Exec-managerial",
+      "relationship": "Not-in-family",
+      "sex": "Male",
+      "capital-gain": 34095,
+      "capital-loss": 0,
+      "hours-per-week": 60,
+      "p": 0.9944
+    },
+    {
+      "age": 63,
+      "workclass": "Self-emp-not-inc",
+      "education": "Masters",
+      "marital-status": "Married-civ-spouse",
+      "occupation": "Farming-fishing",
+      "relationship": "Husband",
+      "sex": "Male",
+      "capital-gain": 41310,
+      "capital-loss": 0,
+      "hours-per-week": 50,
+      "p": 0.9786
+    },
+    {
+      "age": 57,
+      "workclass": "Private",
+      "education": "Assoc-voc",
+      "marital-status": "Married-civ-spouse",
+      "occupation": "Prof-specialty",
+      "relationship": "Husband",
+      "sex": "Male",
+      "capital-gain": 0,
+      "capital-loss": 1902,
+      "hours-per-week": 45,
+      "p": 0.9726
+    },
+    {
+      "age": 50,
+      "workclass": "Private",
+      "education": "Some-college",
+      "marital-status": "Married-civ-spouse",
+      "occupation": "Machine-op-inspct",
+      "relationship": "Husband",
+      "sex": "Male",
+      "capital-gain": 4386,
+      "capital-loss": 0,
+      "hours-per-week": 40,
+      "p": 0.9542
+    },
+    {
+      "age": 45,
+      "workclass": "Private",
+      "education": "Masters",
+      "marital-status": "Married-civ-spouse",
+      "occupation": "Exec-managerial",
+      "relationship": "Husband",
+      "sex": "Male",
+      "capital-gain": 4386,
+      "capital-loss": 0,
+      "hours-per-week": 40,
+      "p": 0.9503
+    }
+  ],
+  "confident_false_negatives": [
+    {
+      "age": 26,
+      "workclass": "Private",
+      "education": "Bachelors",
+      "marital-status": "Never-married",
+      "occupation": "Adm-clerical",
+      "relationship": "Own-child",
+      "sex": "Female",
+      "capital-gain": 0,
+      "capital-loss": 0,
+      "hours-per-week": 40,
+      "p": 0.0064
+    },
+    {
+      "age": 23,
+      "workclass": "Local-gov",
+      "education": "Some-college",
+      "marital-status": "Never-married",
+      "occupation": "Protective-serv",
+      "relationship": "Own-child",
+      "sex": "Male",
+      "capital-gain": 0,
+      "capital-loss": 0,
+      "hours-per-week": 40,
+      "p": 0.0082
+    },
+    {
+      "age": 67,
+      "workclass": "Private",
+      "education": "11th",
+      "marital-status": "Married-civ-spouse",
+      "occupation": "Other-service",
+      "relationship": "Husband",
+      "sex": "Male",
+      "capital-gain": 0,
+      "capital-loss": 0,
+      "hours-per-week": 9,
+      "p": 0.0123
+    },
+    {
+      "age": 33,
+      "workclass": "Private",
+      "education": "11th",
+      "marital-status": "Divorced",
+      "occupation": "Exec-managerial",
+      "relationship": "Unmarried",
+      "sex": "Female",
+      "capital-gain": 0,
+      "capital-loss": 0,
+      "hours-per-week": 40,
+      "p": 0.0131
+    },
+    {
+      "age": 42,
+      "workclass": "Private",
+      "education": "10th",
+      "marital-status": "Never-married",
+      "occupation": "Transport-moving",
+      "relationship": "Unmarried",
+      "sex": "Male",
+      "capital-gain": 0,
+      "capital-loss": 0,
+      "hours-per-week": 40,
+      "p": 0.0133
+    }
+  ],
+  "summary": {
+    "n_wrong": 1190,
+    "n_right": 8579,
+    "mean_confidence_right": 0.9028,
+    "mean_confidence_wrong": 0.7005,
+    "wrong_with_conf_ge_0.9": 127,
+    "right_with_conf_ge_0.9": 5907,
+    "wrong_with_conf_lt_0.6": 349,
+    "borderline_0.35_0.65": 1232,
+    "rows_gain_99999_in_test": 63,
+    "gain_99999_positive_rate": 1.0
+  }
+}

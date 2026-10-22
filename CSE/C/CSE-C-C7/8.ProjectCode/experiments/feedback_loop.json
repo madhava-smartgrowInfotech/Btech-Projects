@@ -1,0 +1,92 @@
+{
+  "events": [
+    [
+      "ML101",
+      "start"
+    ],
+    [
+      "ML101",
+      "quiz"
+    ],
+    [
+      "ML101",
+      "quiz"
+    ],
+    [
+      "ML101",
+      "complete"
+    ],
+    [
+      "DS101",
+      "view"
+    ],
+    [
+      "DA101",
+      "dismiss"
+    ]
+  ],
+  "top3_before": [
+    "ML101",
+    "DS101",
+    "DA101"
+  ],
+  "top3_after": [
+    "ML101",
+    "DS101",
+    "PY101"
+  ],
+  "tracked": {
+    "ML101": {
+      "rank_before": 1,
+      "rank_after": 1,
+      "score_before": 0.4867,
+      "score_after": 0.5514
+    },
+    "DS101": {
+      "rank_before": 2,
+      "rank_after": 2,
+      "score_before": 0.4505,
+      "score_after": 0.4852
+    },
+    "DA101": {
+      "rank_before": 3,
+      "rank_after": 4,
+      "score_before": 0.4169,
+      "score_after": 0.4215
+    }
+  },
+  "p_success_before": 0.2019,
+  "p_success_after": 0.3239,
+  "engagement_before": {
+    "label": "Getting started",
+    "score": 0.25,
+    "total": 0,
+    "quizzes": 0,
+    "forums": 0,
+    "completes": 0
+  },
+  "engagement_after": {
+    "label": "Steady learner",
+    "score": 0.55,
+    "total": 6,
+    "quizzes": 2,
+    "forums": 0,
+    "completes": 1
+  },
+  "best_action_before": "quiz",
+  "best_action_after": "homepage",
+  "uplift_before": {
+    "quiz": 0.0912,
+    "content": 0.011,
+    "forum": 0.0084,
+    "homepage": -0.041,
+    "continue_course": -0.0046
+  },
+  "uplift_after": {
+    "quiz": -0.1798,
+    "content": 0.1088,
+    "forum": 0.122,
+    "homepage": 0.1629,
+    "continue_course": 0.1314
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-22 12:23",
+  "pytest": {
+    "collected": 5,
+    "passed": 5,
+    "failed": 0,
+    "seconds": 10.3,
+    "tests": [
+      "test_health",
+      "test_homepage",
+      "test_auth_profile_recs_interactions",
+      "test_invalid_inputs",
+      "test_artifacts_load"
+    ],
+    "exit_code": 0
+  },
+  "smoke": {
+    "checks": 33,
+    "passed": 33,
+    "failed": 0,
+    "exit_code": 0
+  },
+  "responsive": {
+    "screens_private": 6,
+    "screens_public": 5,
+    "widths_px": [
+      360,
+      768,
+      1440
+    ],
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "passed": true,
+    "seconds": 142,
+    "tail": [
+      "360 / 768 / 1440 px, light + dark: no overflow, console clean, drawer + keyboard OK."
+    ]
+  }
+}

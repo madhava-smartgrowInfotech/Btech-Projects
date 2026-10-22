@@ -1,0 +1,408 @@
+{
+  "personas": 10,
+  "catalog_size": 24,
+  "per_persona": [
+    {
+      "persona": "Python beginner",
+      "skill": "Beginner",
+      "relevant_categories": [
+        "Programming"
+      ],
+      "relevant_courses": 2,
+      "top3_hybrid": [
+        "PY101",
+        "PY201",
+        "STAT101"
+      ],
+      "popularity (rating only)": {
+        "p@1": 0.0,
+        "p@3": 0.3333333333333333,
+        "p@5": 0.2,
+        "mrr": 0.3333333333333333
+      },
+      "content-only (TF-IDF)": {
+        "p@1": 1.0,
+        "p@3": 0.6666666666666666,
+        "p@5": 0.4,
+        "mrr": 1.0
+      },
+      "hybrid (shipped)": {
+        "p@1": 1.0,
+        "p@3": 0.6666666666666666,
+        "p@5": 0.4,
+        "mrr": 1.0
+      }
+    },
+    {
+      "persona": "Aspiring data scientist",
+      "skill": "Beginner",
+      "relevant_categories": [
+        "Data Science",
+        "Maths"
+      ],
+      "relevant_courses": 8,
+      "top3_hybrid": [
+        "DS101",
+        "ML101",
+        "DA101"
+      ],
+      "popularity (rating only)": {
+        "p@1": 1.0,
+        "p@3": 0.6666666666666666,
+        "p@5": 0.8,
+        "mrr": 1.0
+      },
+      "content-only (TF-IDF)": {
+        "p@1": 1.0,
+        "p@3": 1.0,
+        "p@5": 1.0,
+        "mrr": 1.0
+      },
+      "hybrid (shipped)": {
+        "p@1": 1.0,
+        "p@3": 1.0,
+        "p@5": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "persona": "Frontend web developer",
+      "skill": "Beginner",
+      "relevant_categories": [
+        "Design",
+        "Web Development"
+      ],
+      "relevant_courses": 3,
+      "top3_hybrid": [
+        "WEB101",
+        "WEB201",
+        "PY101"
+      ],
+      "popularity (rating only)": {
+        "p@1": 0.0,
+        "p@3": 0.0,
+        "p@5": 0.0,
+        "mrr": 0.1
+      },
+      "content-only (TF-IDF)": {
+        "p@1": 1.0,
+        "p@3": 0.6666666666666666,
+        "p@5": 0.4,
+        "mrr": 1.0
+      },
+      "hybrid (shipped)": {
+        "p@1": 1.0,
+        "p@3": 0.6666666666666666,
+        "p@5": 0.4,
+        "mrr": 1.0
+      }
+    },
+    {
+      "persona": "Backend / API developer",
+      "skill": "Intermediate",
+      "relevant_categories": [
+        "Data Science",
+        "Programming",
+        "Web Development"
+      ],
+      "relevant_courses": 10,
+      "top3_hybrid": [
+        "WEB201",
+        "PY201",
+        "WEB101"
+      ],
+      "popularity (rating only)": {
+        "p@1": 1.0,
+        "p@3": 1.0,
+        "p@5": 1.0,
+        "mrr": 1.0
+      },
+      "content-only (TF-IDF)": {
+        "p@1": 1.0,
+        "p@3": 1.0,
+        "p@5": 1.0,
+        "mrr": 1.0
+      },
+      "hybrid (shipped)": {
+        "p@1": 1.0,
+        "p@3": 1.0,
+        "p@5": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "persona": "Cloud and DevOps learner",
+      "skill": "Intermediate",
+      "relevant_categories": [
+        "Engineering"
+      ],
+      "relevant_courses": 3,
+      "top3_hybrid": [
+        "CLOUD101",
+        "GIT101",
+        "PY201"
+      ],
+      "popularity (rating only)": {
+        "p@1": 0.0,
+        "p@3": 0.0,
+        "p@5": 0.0,
+        "mrr": 0.14285714285714285
+      },
+      "content-only (TF-IDF)": {
+        "p@1": 1.0,
+        "p@3": 0.6666666666666666,
+        "p@5": 0.4,
+        "mrr": 1.0
+      },
+      "hybrid (shipped)": {
+        "p@1": 1.0,
+        "p@3": 0.6666666666666666,
+        "p@5": 0.4,
+        "mrr": 1.0
+      }
+    },
+    {
+      "persona": "Security awareness",
+      "skill": "Beginner",
+      "relevant_categories": [
+        "Engineering"
+      ],
+      "relevant_courses": 3,
+      "top3_hybrid": [
+        "SEC101",
+        "SQL101",
+        "AI101"
+      ],
+      "popularity (rating only)": {
+        "p@1": 0.0,
+        "p@3": 0.0,
+        "p@5": 0.0,
+        "mrr": 0.14285714285714285
+      },
+      "content-only (TF-IDF)": {
+        "p@1": 1.0,
+        "p@3": 0.6666666666666666,
+        "p@5": 0.4,
+        "mrr": 1.0
+      },
+      "hybrid (shipped)": {
+        "p@1": 1.0,
+        "p@3": 0.3333333333333333,
+        "p@5": 0.4,
+        "mrr": 1.0
+      }
+    },
+    {
+      "persona": "Business analyst",
+      "skill": "Beginner",
+      "relevant_categories": [
+        "Business",
+        "Maths"
+      ],
+      "relevant_courses": 5,
+      "top3_hybrid": [
+        "EXCEL101",
+        "BUS101",
+        "PROJ101"
+      ],
+      "popularity (rating only)": {
+        "p@1": 0.0,
+        "p@3": 0.0,
+        "p@5": 0.0,
+        "mrr": 0.06666666666666667
+      },
+      "content-only (TF-IDF)": {
+        "p@1": 1.0,
+        "p@3": 1.0,
+        "p@5": 0.6,
+        "mrr": 1.0
+      },
+      "hybrid (shipped)": {
+        "p@1": 1.0,
+        "p@3": 1.0,
+        "p@5": 0.6,
+        "mrr": 1.0
+      }
+    },
+    {
+      "persona": "Designer",
+      "skill": "Beginner",
+      "relevant_categories": [
+        "Design",
+        "Web Development"
+      ],
+      "relevant_courses": 3,
+      "top3_hybrid": [
+        "DES101",
+        "SQL101",
+        "AI101"
+      ],
+      "popularity (rating only)": {
+        "p@1": 0.0,
+        "p@3": 0.0,
+        "p@5": 0.0,
+        "mrr": 0.1
+      },
+      "content-only (TF-IDF)": {
+        "p@1": 1.0,
+        "p@3": 0.6666666666666666,
+        "p@5": 0.4,
+        "mrr": 1.0
+      },
+      "hybrid (shipped)": {
+        "p@1": 1.0,
+        "p@3": 0.3333333333333333,
+        "p@5": 0.2,
+        "mrr": 1.0
+      }
+    },
+    {
+      "persona": "Exam preparation",
+      "skill": "Beginner",
+      "relevant_categories": [
+        "Study Skills"
+      ],
+      "relevant_courses": 3,
+      "top3_hybrid": [
+        "ENG101",
+        "QUIZSKILL",
+        "FORUMSKILL"
+      ],
+      "popularity (rating only)": {
+        "p@1": 0.0,
+        "p@3": 0.0,
+        "p@5": 0.0,
+        "mrr": 0.16666666666666666
+      },
+      "content-only (TF-IDF)": {
+        "p@1": 1.0,
+        "p@3": 1.0,
+        "p@5": 0.6,
+        "mrr": 1.0
+      },
+      "hybrid (shipped)": {
+        "p@1": 1.0,
+        "p@3": 1.0,
+        "p@5": 0.6,
+        "mrr": 1.0
+      }
+    },
+    {
+      "persona": "Communication skills",
+      "skill": "Beginner",
+      "relevant_categories": [
+        "Communication"
+      ],
+      "relevant_courses": 2,
+      "top3_hybrid": [
+        "COM101",
+        "ENG201",
+        "AI101"
+      ],
+      "popularity (rating only)": {
+        "p@1": 0.0,
+        "p@3": 0.0,
+        "p@5": 0.0,
+        "mrr": 0.08333333333333333
+      },
+      "content-only (TF-IDF)": {
+        "p@1": 1.0,
+        "p@3": 0.6666666666666666,
+        "p@5": 0.4,
+        "mrr": 1.0
+      },
+      "hybrid (shipped)": {
+        "p@1": 1.0,
+        "p@3": 0.6666666666666666,
+        "p@5": 0.4,
+        "mrr": 1.0
+      }
+    }
+  ],
+  "summary": {
+    "popularity (rating only)": {
+      "p@1": 0.2,
+      "p@3": 0.2,
+      "p@5": 0.2,
+      "mrr": 0.3135714285714286
+    },
+    "content-only (TF-IDF)": {
+      "p@1": 1.0,
+      "p@3": 0.8,
+      "p@5": 0.5599999999999999,
+      "mrr": 1.0
+    },
+    "hybrid (shipped)": {
+      "p@1": 1.0,
+      "p@3": 0.7333333333333333,
+      "p@5": 0.54,
+      "mrr": 1.0
+    }
+  },
+  "ablation_drop_one_term": {
+    "full": {
+      "p@3": 0.7333333333333333,
+      "p@5": 0.54,
+      "mrr": 1.0
+    },
+    "content": {
+      "p@3": 0.6666666666666667,
+      "p@5": 0.4600000000000001,
+      "mrr": 1.0,
+      "top3_overlap_with_full": 0.8
+    },
+    "skill": {
+      "p@3": 0.7666666666666667,
+      "p@5": 0.54,
+      "mrr": 1.0,
+      "top3_overlap_with_full": 0.8333333333333333
+    },
+    "topic": {
+      "p@3": 0.6,
+      "p@5": 0.44000000000000006,
+      "mrr": 1.0,
+      "top3_overlap_with_full": 0.8
+    },
+    "success": {
+      "p@3": 0.7333333333333333,
+      "p@5": 0.54,
+      "mrr": 1.0,
+      "top3_overlap_with_full": 1.0
+    },
+    "behaviour": {
+      "p@3": 0.7333333333333333,
+      "p@5": 0.54,
+      "mrr": 1.0,
+      "top3_overlap_with_full": 1.0
+    },
+    "goal": {
+      "p@3": 0.7333333333333333,
+      "p@5": 0.54,
+      "mrr": 1.0,
+      "top3_overlap_with_full": 1.0
+    },
+    "rating": {
+      "p@3": 0.7666666666666667,
+      "p@5": 0.54,
+      "mrr": 1.0,
+      "top3_overlap_with_full": 0.8666666666666666
+    },
+    "engagement": {
+      "p@3": 0.7333333333333333,
+      "p@5": 0.54,
+      "mrr": 1.0,
+      "top3_overlap_with_full": 1.0
+    }
+  },
+  "weights": {
+    "content": 0.3,
+    "skill": 0.15,
+    "topic": 0.15,
+    "success": 0.12,
+    "behaviour": 0.1,
+    "goal": 0.08,
+    "rating": 0.05,
+    "engagement": 0.05
+  },
+  "note": "10 author-written personas; relevance = the course category is in the persona's expected set (fixed before ranking). A sanity check, not a user study."
+}

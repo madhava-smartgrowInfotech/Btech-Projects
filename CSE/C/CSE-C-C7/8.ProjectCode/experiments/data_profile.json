@@ -1,0 +1,23 @@
+{
+  "rows": 26400,
+  "learners": 2200,
+  "weeks": 12,
+  "success_rate": 0.4396590909090909,
+  "action_counts": {
+    "quiz": 8424,
+    "content": 5292,
+    "continue_course": 5185,
+    "homepage": 5172,
+    "forum": 2327
+  },
+  "corr_with_success": {
+    "cum_clicks": 0.13784965275504638,
+    "recent_clicks": 0.18266228820092179,
+    "quiz_count": 0.05391596888017186,
+    "forum_count": 0.0019095164760839895,
+    "completions": 0.057754135560006074,
+    "engagement": 0.18197958757689403,
+    "weekly_hours": 0.044352820560496664,
+    "skill_code": 0.09888410990474598
+  }
+}

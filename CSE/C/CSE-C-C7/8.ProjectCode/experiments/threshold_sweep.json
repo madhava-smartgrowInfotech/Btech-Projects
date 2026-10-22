@@ -1,0 +1,120 @@
+{
+  "dataset_source": "synthetic-oulad-like-fallback-v1",
+  "test_rows": 2640,
+  "positive_rate": 0.4375,
+  "model": "logistic_regression",
+  "matches_shipped_confusion_at_0.5": true,
+  "sweep": [
+    {
+      "threshold": 0.3,
+      "predicted_positive": 2439,
+      "accuracy": 0.475,
+      "precision": 0.4526,
+      "recall": 0.9558,
+      "f1": 0.6144,
+      "tn": 150,
+      "fp": 1335,
+      "fn": 51,
+      "tp": 1104
+    },
+    {
+      "threshold": 0.35,
+      "predicted_positive": 2080,
+      "accuracy": 0.5064,
+      "precision": 0.4644,
+      "recall": 0.8364,
+      "f1": 0.5972,
+      "tn": 371,
+      "fp": 1114,
+      "fn": 189,
+      "tp": 966
+    },
+    {
+      "threshold": 0.4,
+      "predicted_positive": 1578,
+      "accuracy": 0.5527,
+      "precision": 0.4918,
+      "recall": 0.6719,
+      "f1": 0.5679,
+      "tn": 683,
+      "fp": 802,
+      "fn": 379,
+      "tp": 776
+    },
+    {
+      "threshold": 0.45,
+      "predicted_positive": 1100,
+      "accuracy": 0.5837,
+      "precision": 0.5255,
+      "recall": 0.5004,
+      "f1": 0.5126,
+      "tn": 963,
+      "fp": 522,
+      "fn": 577,
+      "tp": 578
+    },
+    {
+      "threshold": 0.5,
+      "predicted_positive": 678,
+      "accuracy": 0.5936,
+      "precision": 0.5605,
+      "recall": 0.329,
+      "f1": 0.4146,
+      "tn": 1187,
+      "fp": 298,
+      "fn": 775,
+      "tp": 380
+    },
+    {
+      "threshold": 0.55,
+      "predicted_positive": 339,
+      "accuracy": 0.5864,
+      "precision": 0.5929,
+      "recall": 0.174,
+      "f1": 0.2691,
+      "tn": 1347,
+      "fp": 138,
+      "fn": 954,
+      "tp": 201
+    },
+    {
+      "threshold": 0.6,
+      "predicted_positive": 160,
+      "accuracy": 0.5814,
+      "precision": 0.6562,
+      "recall": 0.0909,
+      "f1": 0.1597,
+      "tn": 1430,
+      "fp": 55,
+      "fn": 1050,
+      "tp": 105
+    },
+    {
+      "threshold": 0.65,
+      "predicted_positive": 56,
+      "accuracy": 0.5716,
+      "precision": 0.7143,
+      "recall": 0.0346,
+      "f1": 0.0661,
+      "tn": 1469,
+      "fp": 16,
+      "fn": 1115,
+      "tp": 40
+    },
+    {
+      "threshold": 0.7,
+      "predicted_positive": 17,
+      "accuracy": 0.5682,
+      "precision": 0.9412,
+      "recall": 0.0139,
+      "f1": 0.0273,
+      "tn": 1484,
+      "fp": 1,
+      "fn": 1139,
+      "tp": 16
+    }
+  ],
+  "mean_predicted_probability": 0.4343,
+  "min_probability": 0.2163,
+  "max_probability": 0.7578
+}

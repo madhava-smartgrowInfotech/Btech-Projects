@@ -1,0 +1,49 @@
+{
+  "with_assess_score": {
+    "logistic_regression": {
+      "val_auc": 0.7752207563733874,
+      "test_auc": 0.7999918375675952,
+      "accuracy": 0.6867424242424243,
+      "f1": 0.6211635364177737,
+      "brier": 0.1859544149027508
+    },
+    "random_forest": {
+      "val_auc": 0.7521303227807205,
+      "test_auc": 0.7857725888028918,
+      "accuracy": 0.7143939393939394,
+      "f1": 0.7128712871287128,
+      "brier": 0.1695200946969697
+    },
+    "xgboost": {
+      "val_auc": 0.7607778509837557,
+      "test_auc": 0.7867966825542583,
+      "accuracy": 0.7337121212121213,
+      "f1": 0.7568315461777931,
+      "brier": 0.16399924243063393
+    }
+  },
+  "shipped_features": {
+    "logistic_regression": {
+      "val_auc": 0.603528816351564,
+      "test_auc": 0.6028134155406882,
+      "accuracy": 0.593560606060606,
+      "f1": 0.414620840152755,
+      "brier": 0.23779502031606073
+    },
+    "random_forest": {
+      "val_auc": 0.5550350437593057,
+      "test_auc": 0.5438582068885099,
+      "accuracy": 0.531060606060606,
+      "f1": 0.44633273703041143,
+      "brier": 0.2837341443190526
+    },
+    "xgboost": {
+      "val_auc": 0.6008461342920434,
+      "test_auc": 0.599362455726092,
+      "accuracy": 0.5954545454545455,
+      "f1": 0.44375,
+      "brier": 0.23995586082964185
+    }
+  },
+  "note": "assess_score drives the synthetic label but is not an observable feature in the app; this is an upper bound on the label noise"
+}

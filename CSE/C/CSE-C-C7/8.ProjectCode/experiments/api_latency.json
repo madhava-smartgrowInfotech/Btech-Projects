@@ -1,0 +1,91 @@
+{
+  "base": "http://127.0.0.1:8407",
+  "rounds": 30,
+  "endpoints": {
+    "POST /api/auth/register": {
+      "n": 1,
+      "mean_ms": 427.1,
+      "median_ms": 427.1,
+      "p95_ms": 427.1,
+      "max_ms": 427.1
+    },
+    "PUT /api/profile": {
+      "n": 5,
+      "mean_ms": 20.2,
+      "median_ms": 20.1,
+      "p95_ms": 29.4,
+      "max_ms": 29.4
+    },
+    "POST /api/auth/login": {
+      "n": 10,
+      "mean_ms": 31.1,
+      "median_ms": 30.7,
+      "p95_ms": 38.0,
+      "max_ms": 38.0
+    },
+    "GET /api/health": {
+      "n": 30,
+      "mean_ms": 2.7,
+      "median_ms": 2.6,
+      "p95_ms": 4.0,
+      "max_ms": 4.2
+    },
+    "GET /api/courses": {
+      "n": 30,
+      "mean_ms": 6.0,
+      "median_ms": 6.0,
+      "p95_ms": 7.6,
+      "max_ms": 10.3
+    },
+    "GET /api/courses/{id}": {
+      "n": 30,
+      "mean_ms": 24.6,
+      "median_ms": 23.5,
+      "p95_ms": 32.3,
+      "max_ms": 37.2
+    },
+    "GET /api/recommendations?top_n=8": {
+      "n": 30,
+      "mean_ms": 32.8,
+      "median_ms": 32.0,
+      "p95_ms": 42.4,
+      "max_ms": 43.7
+    },
+    "GET /api/recommendations?top_n=24": {
+      "n": 30,
+      "mean_ms": 38.3,
+      "median_ms": 34.3,
+      "p95_ms": 65.7,
+      "max_ms": 75.6
+    },
+    "GET /api/learning-path": {
+      "n": 30,
+      "mean_ms": 22.2,
+      "median_ms": 22.1,
+      "p95_ms": 24.9,
+      "max_ms": 25.6
+    },
+    "GET /api/insights": {
+      "n": 30,
+      "mean_ms": 8.8,
+      "median_ms": 8.7,
+      "p95_ms": 10.3,
+      "max_ms": 10.4
+    },
+    "GET /api/activity": {
+      "n": 30,
+      "mean_ms": 5.8,
+      "median_ms": 5.6,
+      "p95_ms": 7.9,
+      "max_ms": 8.5
+    },
+    "GET /api/metrics": {
+      "n": 30,
+      "mean_ms": 3.5,
+      "median_ms": 3.6,
+      "p95_ms": 4.8,
+      "max_ms": 5.0
+    }
+  },
+  "interactions_logged_by_probe": 5
+}

@@ -1,0 +1,375 @@
+{
+  "grid_states": 45,
+  "best_action_counts": {
+    "quiz": 9,
+    "content": 3,
+    "homepage": 7,
+    "continue_course": 23,
+    "forum": 3
+  },
+  "p_success_min": 0.19153518029994515,
+  "p_success_max": 0.6450126833630969,
+  "p_success_mean": 0.4538878161116215,
+  "rows": [
+    {
+      "skill": "Beginner",
+      "hours": 2,
+      "interactions": 0,
+      "p_success": 0.209,
+      "best_action": "quiz",
+      "benefit": 0.0966
+    },
+    {
+      "skill": "Beginner",
+      "hours": 2,
+      "interactions": 5,
+      "p_success": 0.3029,
+      "best_action": "content",
+      "benefit": 0.0758
+    },
+    {
+      "skill": "Beginner",
+      "hours": 2,
+      "interactions": 15,
+      "p_success": 0.5454,
+      "best_action": "homepage",
+      "benefit": 0.2771
+    },
+    {
+      "skill": "Beginner",
+      "hours": 2,
+      "interactions": 40,
+      "p_success": 0.567,
+      "best_action": "continue_course",
+      "benefit": 0.4371
+    },
+    {
+      "skill": "Beginner",
+      "hours": 2,
+      "interactions": 80,
+      "p_success": 0.5175,
+      "best_action": "continue_course",
+      "benefit": 0.5546
+    },
+    {
+      "skill": "Beginner",
+      "hours": 6,
+      "interactions": 0,
+      "p_success": 0.2019,
+      "best_action": "quiz",
+      "benefit": 0.0912
+    },
+    {
+      "skill": "Beginner",
+      "hours": 6,
+      "interactions": 5,
+      "p_success": 0.2938,
+      "best_action": "content",
+      "benefit": 0.0671
+    },
+    {
+      "skill": "Beginner",
+      "hours": 6,
+      "interactions": 15,
+      "p_success": 0.5346,
+      "best_action": "homepage",
+      "benefit": 0.2722
+    },
+    {
+      "skill": "Beginner",
+      "hours": 6,
+      "interactions": 40,
+      "p_success": 0.5563,
+      "best_action": "continue_course",
+      "benefit": 0.4536
+    },
+    {
+      "skill": "Beginner",
+      "hours": 6,
+      "interactions": 80,
+      "p_success": 0.5066,
+      "best_action": "continue_course",
+      "benefit": 0.57
+    },
+    {
+      "skill": "Beginner",
+      "hours": 12,
+      "interactions": 0,
+      "p_success": 0.1915,
+      "best_action": "quiz",
+      "benefit": 0.0835
+    },
+    {
+      "skill": "Beginner",
+      "hours": 12,
+      "interactions": 5,
+      "p_success": 0.2804,
+      "best_action": "continue_course",
+      "benefit": 0.0815
+    },
+    {
+      "skill": "Beginner",
+      "hours": 12,
+      "interactions": 15,
+      "p_success": 0.5182,
+      "best_action": "continue_course",
+      "benefit": 0.2783
+    },
+    {
+      "skill": "Beginner",
+      "hours": 12,
+      "interactions": 40,
+      "p_success": 0.54,
+      "best_action": "continue_course",
+      "benefit": 0.4784
+    },
+    {
+      "skill": "Beginner",
+      "hours": 12,
+      "interactions": 80,
+      "p_success": 0.4902,
+      "best_action": "continue_course",
+      "benefit": 0.5928
+    },
+    {
+      "skill": "Intermediate",
+      "hours": 2,
+      "interactions": 0,
+      "p_success": 0.2374,
+      "best_action": "quiz",
+      "benefit": 0.1004
+    },
+    {
+      "skill": "Intermediate",
+      "hours": 2,
+      "interactions": 5,
+      "p_success": 0.3386,
+      "best_action": "content",
+      "benefit": 0.0687
+    },
+    {
+      "skill": "Intermediate",
+      "hours": 2,
+      "interactions": 15,
+      "p_success": 0.5856,
+      "best_action": "homepage",
+      "benefit": 0.27
+    },
+    {
+      "skill": "Intermediate",
+      "hours": 2,
+      "interactions": 40,
+      "p_success": 0.6067,
+      "best_action": "continue_course",
+      "benefit": 0.4011
+    },
+    {
+      "skill": "Intermediate",
+      "hours": 2,
+      "interactions": 80,
+      "p_success": 0.5582,
+      "best_action": "continue_course",
+      "benefit": 0.5141
+    },
+    {
+      "skill": "Intermediate",
+      "hours": 6,
+      "interactions": 0,
+      "p_success": 0.2296,
+      "best_action": "quiz",
+      "benefit": 0.0949
+    },
+    {
+      "skill": "Intermediate",
+      "hours": 6,
+      "interactions": 5,
+      "p_success": 0.3289,
+      "best_action": "forum",
+      "benefit": 0.061
+    },
+    {
+      "skill": "Intermediate",
+      "hours": 6,
+      "interactions": 15,
+      "p_success": 0.575,
+      "best_action": "homepage",
+      "benefit": 0.2668
+    },
+    {
+      "skill": "Intermediate",
+      "hours": 6,
+      "interactions": 40,
+      "p_success": 0.5962,
+      "best_action": "continue_course",
+      "benefit": 0.4172
+    },
+    {
+      "skill": "Intermediate",
+      "hours": 6,
+      "interactions": 80,
+      "p_success": 0.5474,
+      "best_action": "continue_course",
+      "benefit": 0.5297
+    },
+    {
+      "skill": "Intermediate",
+      "hours": 12,
+      "interactions": 0,
+      "p_success": 0.2182,
+      "best_action": "quiz",
+      "benefit": 0.087
+    },
+    {
+      "skill": "Intermediate",
+      "hours": 12,
+      "interactions": 5,
+      "p_success": 0.3146,
+      "best_action": "continue_course",
+      "benefit": 0.0862
+    },
+    {
+      "skill": "Intermediate",
+      "hours": 12,
+      "interactions": 15,
+      "p_success": 0.5589,
+      "best_action": "continue_course",
+      "benefit": 0.2645
+    },
+    {
+      "skill": "Intermediate",
+      "hours": 12,
+      "interactions": 40,
+      "p_success": 0.5804,
+      "best_action": "continue_course",
+      "benefit": 0.4416
+    },
+    {
+      "skill": "Intermediate",
+      "hours": 12,
+      "interactions": 80,
+      "p_success": 0.5311,
+      "best_action": "continue_course",
+      "benefit": 0.5529
+    },
+    {
+      "skill": "Advanced",
+      "hours": 2,
+      "interactions": 0,
+      "p_success": 0.2683,
+      "best_action": "quiz",
+      "benefit": 0.1031
+    },
+    {
+      "skill": "Advanced",
+      "hours": 2,
+      "interactions": 5,
+      "p_success": 0.3761,
+      "best_action": "forum",
+      "benefit": 0.061
+    },
+    {
+      "skill": "Advanced",
+      "hours": 2,
+      "interactions": 15,
+      "p_success": 0.6247,
+      "best_action": "homepage",
+      "benefit": 0.2595
+    },
+    {
+      "skill": "Advanced",
+      "hours": 2,
+      "interactions": 40,
+      "p_success": 0.645,
+      "best_action": "continue_course",
+      "benefit": 0.3654
+    },
+    {
+      "skill": "Advanced",
+      "hours": 2,
+      "interactions": 80,
+      "p_success": 0.5981,
+      "best_action": "continue_course",
+      "benefit": 0.4733
+    },
+    {
+      "skill": "Advanced",
+      "hours": 6,
+      "interactions": 0,
+      "p_success": 0.2598,
+      "best_action": "quiz",
+      "benefit": 0.0977
+    },
+    {
+      "skill": "Advanced",
+      "hours": 6,
+      "interactions": 5,
+      "p_success": 0.366,
+      "best_action": "forum",
+      "benefit": 0.0698
+    },
+    {
+      "skill": "Advanced",
+      "hours": 6,
+      "interactions": 15,
+      "p_success": 0.6144,
+      "best_action": "homepage",
+      "benefit": 0.2577
+    },
+    {
+      "skill": "Advanced",
+      "hours": 6,
+      "interactions": 40,
+      "p_success": 0.635,
+      "best_action": "continue_course",
+      "benefit": 0.3809
+    },
+    {
+      "skill": "Advanced",
+      "hours": 6,
+      "interactions": 80,
+      "p_success": 0.5875,
+      "best_action": "continue_course",
+      "benefit": 0.4889
+    },
+    {
+      "skill": "Advanced",
+      "hours": 12,
+      "interactions": 0,
+      "p_success": 0.2474,
+      "best_action": "quiz",
+      "benefit": 0.0897
+    },
+    {
+      "skill": "Advanced",
+      "hours": 12,
+      "interactions": 5,
+      "p_success": 0.3509,
+      "best_action": "continue_course",
+      "benefit": 0.0901
+    },
+    {
+      "skill": "Advanced",
+      "hours": 12,
+      "interactions": 15,
+      "p_success": 0.5988,
+      "best_action": "homepage",
+      "benefit": 0.2539
+    },
+    {
+      "skill": "Advanced",
+      "hours": 12,
+      "interactions": 40,
+      "p_success": 0.6196,
+      "best_action": "continue_course",
+      "benefit": 0.4046
+    },
+    {
+      "skill": "Advanced",
+      "hours": 12,
+      "interactions": 80,
+      "p_success": 0.5716,
+      "best_action": "continue_course",
+      "benefit": 0.5123
+    }
+  ]
+}

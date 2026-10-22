@@ -1,12 +1,22 @@
+# VeriVision AI: API (Flask, port 8414) + web app (React/Vite, port 5414).
+# Both ports are published on 127.0.0.1 only. Start with:  docker compose up --build
 services:
-  verivision-ai:
+  api:
     build: .
-    container_name: verivision-ai
+    container_name: verivision-api
     ports:
-      - "127.0.0.1:5000:5000"
-    environment:
-      - VERIVISION_PORT=5000
+      - "127.0.0.1:8414:8414"
     volumes:
       - ./models:/app/models
       - ./artifacts:/app/artifacts
+    restart: unless-stopped
+  web:
+    build: ./frontend
+    container_name: verivision-web
+    environment:
+      - VERIVISION_API_URL=http://api:8414
+    ports:
+      - "127.0.0.1:5414:5414"
+    depends_on:
+      - api
     restart: unless-stopped

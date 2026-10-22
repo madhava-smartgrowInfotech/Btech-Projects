@@ -38,19 +38,20 @@ The original server-rendered pages are still available on the API port:
 
 ## 3. Method B — Docker
 
-Recommended if Docker Desktop is already installed.
+Recommended if Docker Desktop is already installed. The trained files in `models/` and `artifacts/`
+must already exist (run Method A or C once, or copy them in); they are mounted into the container.
 
-**Option 1 — helper script:** double-click **`run-docker.bat`**, then open
-**http://localhost:5000** in your browser.
+**Option 1 — helper script:** double-click **`run-docker.bat`**. It starts the API and the web app,
+then opens **http://localhost:5414**.
 
-**Option 2 — copy-paste commands** (in Command Prompt from the project folder):
+**Option 2 — command:** in Command Prompt from the project folder:
 
 ```text
-docker build -t verivision-ai .
-docker run --rm -p 127.0.0.1:5000:5000 --name verivision-ai verivision-ai
+docker compose up --build
 ```
 
-Then open **http://localhost:5000**. (Docker serves the classic pages only; use Method A or C for the React web app.) Stop with **Ctrl+C**.
+Open **http://localhost:5414** (web app, demo login on the sign-in page) or **http://localhost:8414**
+(classic pages). Both ports are published on `127.0.0.1` only. Stop with **Ctrl+C**.
 
 ## 4. Method C — Manual
 

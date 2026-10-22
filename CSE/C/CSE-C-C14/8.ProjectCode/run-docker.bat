@@ -1,6 +1,6 @@
 @echo off
 setlocal EnableExtensions
-REM VeriVision AI - Docker launcher
+REM VeriVision AI - Docker launcher (API on 8414, web app on 5414, both on localhost only)
 cd /d "%~dp0"
 
 where docker >nul 2>nul
@@ -12,18 +12,12 @@ if errorlevel 1 (
   exit /b 1
 )
 
-echo Building VeriVision AI image ...
-docker build -t verivision-ai .
+echo Building and starting VeriVision AI ...
+start "" "http://localhost:5414"
+docker compose up --build
 if errorlevel 1 (
-  echo [ERROR] Docker build failed. See the error above.
-  pause
-  exit /b 1
-)
-
-echo Starting VeriVision AI on http://localhost:5000 ...
-docker run --rm -p 127.0.0.1:5000:5000 --name verivision-ai verivision-ai
-if errorlevel 1 (
-  echo [ERROR] Docker run failed. See the error above.
+  echo [ERROR] Docker Compose failed. See the error above.
+  echo Make sure Docker Desktop is running.
   pause
   exit /b 1
 )

@@ -13,12 +13,10 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 
 COPY . .
 
-ENV VERIVISION_PORT=5000
-EXPOSE 5000
+ENV VERIVISION_HOST=0.0.0.0
+ENV VERIVISION_PORT=8414
+EXPOSE 8414
 
-# NOTE: the Flask process binds to 127.0.0.1 per the product's local-only
-# configuration. When running inside Docker, localhost means the container's
-# own loopback interface; the port is published to the host's localhost via
-# `-p 127.0.0.1:5000:5000`, so the app remains accessible only from the host
-# machine and is not exposed on the wider network.
+# The process binds 0.0.0.0 inside the container so the published port works; docker-compose
+# and run-docker.bat publish it as 127.0.0.1:8414 only, so it is still reachable only from this PC.
 CMD ["python", "run.py"]

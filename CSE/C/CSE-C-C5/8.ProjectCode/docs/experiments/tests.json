@@ -1,0 +1,351 @@
+{
+  "summary": {
+    "total": 46,
+    "passed": 46,
+    "failed": 0,
+    "by_group": {
+      "unit": [
+        10,
+        10
+      ],
+      "integration": [
+        8,
+        8
+      ],
+      "functional": [
+        6,
+        6
+      ],
+      "validation": [
+        13,
+        13
+      ],
+      "security": [
+        9,
+        9
+      ]
+    }
+  },
+  "checks": [
+    {
+      "group": "unit",
+      "name": "delta_max_cgpa tiers 0.6 / 1.0 / 1.5",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "unit",
+      "name": "feature matrix is n x 24 with no NaN",
+      "passed": true,
+      "detail": "(25, 24)"
+    },
+    {
+      "group": "unit",
+      "name": "company table has 30 rows, tiers in {1,2,3}",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "unit",
+      "name": "predict_for is deterministic and in [0,1]",
+      "passed": true,
+      "detail": "0.9047"
+    },
+    {
+      "group": "unit",
+      "name": "probability rises with CGPA (6.0 -> 9.0)",
+      "passed": true,
+      "detail": "0.883 -> 0.905"
+    },
+    {
+      "group": "unit",
+      "name": "probability falls with backlogs (0 -> 4)",
+      "passed": true,
+      "detail": "0.905 -> 0.892"
+    },
+    {
+      "group": "unit",
+      "name": "weak profile for Google scores below 0.5",
+      "passed": true,
+      "detail": "0.126"
+    },
+    {
+      "group": "unit",
+      "name": "recommend: <=5 results sorted by score",
+      "passed": true,
+      "detail": "5"
+    },
+    {
+      "group": "unit",
+      "name": "recommend: no Tier-1 company when backlogs > 2",
+      "passed": true,
+      "detail": "['Infosys', 'ValueLabs', 'Infosys', 'ValueLabs', 'Infosys']"
+    },
+    {
+      "group": "unit",
+      "name": "recommend: CGPA feasibility filter respected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "integration",
+      "name": "GET /api/health",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "integration",
+      "name": "GET /api/meta lists 30 companies, 6 branches",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "integration",
+      "name": "GET /api/companies returns 30 rows",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "integration",
+      "name": "GET /api/metrics has 9 models + cv + brier",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "integration",
+      "name": "GET /api/stats counts 3000 students",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "integration",
+      "name": "GET /api/plots/prob_hist returns PNG",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "integration",
+      "name": "GET /api/plots/pca returns PNG",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "integration",
+      "name": "GET /api/plots/shap returns PNG",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "functional",
+      "name": "predict: strong profile at Infosys is PLACEMENT READY",
+      "passed": true,
+      "detail": "0.9032"
+    },
+    {
+      "group": "functional",
+      "name": "predict: weak profile at Google is NEEDS IMPROVEMENT with tips",
+      "passed": true,
+      "detail": "0.1212"
+    },
+    {
+      "group": "functional",
+      "name": "recommend: returns 5 hybrid options and a company-only list",
+      "passed": true,
+      "detail": "base=0.1085 gain=0.7833"
+    },
+    {
+      "group": "functional",
+      "name": "observed: role-only list is empty when the target company fails the CGPA feasibility filter (Google, CGPA 7.2)",
+      "passed": true,
+      "detail": "role_only=0 items"
+    },
+    {
+      "group": "functional",
+      "name": "recommend: location preference raises a Hyderabad option's score",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "functional",
+      "name": "shortlist: CSE >= 8.5 CGPA, sorted descending, <= 50 rows",
+      "passed": true,
+      "detail": "138"
+    },
+    {
+      "group": "validation",
+      "name": "CGPA 14 rejected (422)",
+      "passed": true,
+      "detail": "HTTP 422"
+    },
+    {
+      "group": "validation",
+      "name": "negative aptitude rejected (422)",
+      "passed": true,
+      "detail": "HTTP 422"
+    },
+    {
+      "group": "validation",
+      "name": "string CGPA rejected (422)",
+      "passed": true,
+      "detail": "HTTP 422"
+    },
+    {
+      "group": "validation",
+      "name": "missing target_company rejected (422)",
+      "passed": true,
+      "detail": "HTTP 422"
+    },
+    {
+      "group": "validation",
+      "name": "unknown company rejected (404)",
+      "passed": true,
+      "detail": "HTTP 404"
+    },
+    {
+      "group": "validation",
+      "name": "backlogs 99 rejected (422)",
+      "passed": true,
+      "detail": "HTTP 422"
+    },
+    {
+      "group": "validation",
+      "name": "boundary: all-zero profile is accepted and scores < 0.5",
+      "passed": true,
+      "detail": "0.1394"
+    },
+    {
+      "group": "validation",
+      "name": "boundary: all-maximum profile is accepted and scores > 0.5",
+      "passed": true,
+      "detail": "0.7993"
+    },
+    {
+      "group": "validation",
+      "name": "observed: unknown branch value",
+      "passed": true,
+      "detail": "HTTP 200 (accepted; unseen category maps to frequency 0)"
+    },
+    {
+      "group": "validation",
+      "name": "observed: unknown role value",
+      "passed": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "group": "validation",
+      "name": "shortlist with impossible filter returns empty list (200)",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "validation",
+      "name": "shortlist with unknown branch returns 0 matches",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "validation",
+      "name": "shortlist min_cgpa 11 rejected (422)",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "security",
+      "name": "SQL-injection-style company name -> 404 (no database, no execution)",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "security",
+      "name": "script tag in company name -> 404, not echoed as HTML",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "security",
+      "name": "path traversal in plot name -> 404",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "security",
+      "name": "dotted path traversal -> 404",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "security",
+      "name": "CORS allows the frontend origin",
+      "passed": true,
+      "detail": "http://localhost:5405"
+    },
+    {
+      "group": "security",
+      "name": "CORS does not allow a foreign origin",
+      "passed": true,
+      "detail": "None"
+    },
+    {
+      "group": "security",
+      "name": "100 kB company name handled safely (404)",
+      "passed": true,
+      "detail": "HTTP 404"
+    },
+    {
+      "group": "security",
+      "name": "undefined route -> 404",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "security",
+      "name": "observed: no authentication or rate limiting (documented limitation)",
+      "passed": true,
+      "detail": "all endpoints are public"
+    }
+  ],
+  "performance_127_0_0_1": {
+    "GET /api/health": {
+      "n": 50,
+      "mean_ms": 5.4,
+      "p50_ms": 3.0,
+      "p95_ms": 4.7,
+      "max_ms": 104.6
+    },
+    "GET /api/metrics": {
+      "n": 50,
+      "mean_ms": 6.1,
+      "p50_ms": 3.5,
+      "p95_ms": 21.3,
+      "max_ms": 27.2
+    },
+    "GET /api/stats": {
+      "n": 30,
+      "mean_ms": 21.2,
+      "p50_ms": 19.0,
+      "p95_ms": 31.6,
+      "max_ms": 38.7
+    },
+    "POST /api/predict": {
+      "n": 50,
+      "mean_ms": 65.7,
+      "p50_ms": 55.7,
+      "p95_ms": 109.5,
+      "max_ms": 147.4
+    },
+    "POST /api/recruiter/shortlist": {
+      "n": 30,
+      "mean_ms": 28.1,
+      "p50_ms": 25.8,
+      "p95_ms": 38.7,
+      "max_ms": 46.8
+    },
+    "POST /api/recommend": {
+      "n": 8,
+      "mean_ms": 5381.6,
+      "p50_ms": 5062.0,
+      "p95_ms": 5708.2,
+      "max_ms": 8073.9
+    }
+  }
+}

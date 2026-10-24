@@ -1,0 +1,14 @@
+# Runtime for the FastAPI layer + the existing pipeline modules.
+# (streamlit / plotly / pandas / spacy are only needed for the legacy Streamlit app: pip install -r ../requirements.txt)
+fastapi>=0.110
+uvicorn>=0.29
+python-multipart>=0.0.9
+sqlalchemy>=2.0.0
+numpy>=1.26.0
+opencv-python-headless>=4.9.0
+pymupdf>=1.24.0
+pytesseract>=0.3.10
+pillow>=10.3.0
+scikit-learn>=1.4.0
+python-dotenv>=1.0.1
+anthropic>=0.34.0

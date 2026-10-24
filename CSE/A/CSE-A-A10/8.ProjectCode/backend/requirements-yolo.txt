@@ -1,0 +1,2 @@
+# YOLOv8 vehicle detection (pulls in PyTorch, a large download). The app still runs without it; only the YOLOv8 modes on the Vision page need it.
+ultralytics

@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+data/
+models/*.task
+research_results/
+*.download
+
+# web interface
+frontend/dist/
+*.tsbuildinfo
+.env

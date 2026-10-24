@@ -1,0 +1,28 @@
+{
+  "accuracy": 0.9970833333333333,
+  "precision": 0.9995812395309883,
+  "recall": 0.9945833333333334,
+  "f1": 0.9970760233918129,
+  "roc_auc": 0.9999434895833333,
+  "test_samples": 4800,
+  "train_samples": 19200,
+  "benign_total": 12000,
+  "attack_total": 12000,
+  "dataset_provenance": "synthetic-fallback (CICIDS2017 unreachable; schema-compatible synthetic flows) + window-scale augmentation (6000 aggregated windows via monitoring pipeline)",
+  "is_synthetic": true,
+  "feature_columns": [
+    "received_packets",
+    "received_bytes",
+    "received_packets_per_second",
+    "received_bytes_per_second",
+    "average_received_packet_size",
+    "sent_packets",
+    "sent_bytes",
+    "sent_packets_per_second",
+    "sent_bytes_per_second",
+    "average_sent_packet_size"
+  ],
+  "random_seed": 42,
+  "model": "RandomForestClassifier(n_estimators=200, class_weight=balanced)",
+  "training_seconds": 22.2
+}

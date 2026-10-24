@@ -1,0 +1,12 @@
+[
+  "received_packets",
+  "received_bytes",
+  "received_packets_per_second",
+  "received_bytes_per_second",
+  "average_received_packet_size",
+  "sent_packets",
+  "sent_bytes",
+  "sent_packets_per_second",
+  "sent_bytes_per_second",
+  "average_sent_packet_size"
+]

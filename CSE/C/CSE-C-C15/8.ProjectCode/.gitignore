@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.venv/
+data/sentinelflow.db
+*.log
+node_modules/
+frontend/dist/
+.env

@@ -1,0 +1,19 @@
+{
+  "trained_at": "2026-09-12 11:29:15",
+  "dataset_provenance": "synthetic-fallback (CICIDS2017 unreachable; schema-compatible synthetic flows) + window-scale augmentation (6000 aggregated windows via monitoring pipeline)",
+  "is_synthetic": true,
+  "feature_columns": [
+    "received_packets",
+    "received_bytes",
+    "received_packets_per_second",
+    "received_bytes_per_second",
+    "average_received_packet_size",
+    "sent_packets",
+    "sent_bytes",
+    "sent_packets_per_second",
+    "sent_bytes_per_second",
+    "average_sent_packet_size"
+  ],
+  "random_seed": 42,
+  "feature_mapping": "forward->sent, backward->received; rates=counts/duration; averages=bytes/packets"
+}

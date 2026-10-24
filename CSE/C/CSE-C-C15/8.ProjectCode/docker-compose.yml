@@ -1,0 +1,10 @@
+services:
+  sentinelflow:
+    build: .
+    container_name: sentinelflow
+    ports:
+      - "127.0.0.1:5000:5000"
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./results:/app/results

@@ -1,0 +1,12 @@
+{
+  "received_packets": 0.1764982104602881,
+  "received_bytes": 0.09702525103891725,
+  "received_packets_per_second": 0.016049150376171023,
+  "received_bytes_per_second": 0.009551590453088267,
+  "average_received_packet_size": 0.05401602036796665,
+  "sent_packets": 0.20901976395074343,
+  "sent_bytes": 0.10999175333346334,
+  "sent_packets_per_second": 0.14245922503670747,
+  "sent_bytes_per_second": 0.07828327206458852,
+  "average_sent_packet_size": 0.10710576291806599
+}

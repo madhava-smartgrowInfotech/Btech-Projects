@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SentinelFlow — Real-Time DDoS Detection &amp; Adaptive Mitigation</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <div class="logo">SF</div>
+    <div>
+      <div class="wordmark">SentinelFlow</div>
+      <div class="tagline">Real-Time DDoS Detection &amp; Adaptive Mitigation</div>
+    </div>
+  </div>
+  <div class="controls">
+    <span id="statusPill" class="pill stopped">Stopped</span>
+    <select id="ifaceSelect" title="Capture interface"></select>
+    <button id="btnLive" class="btn primary">Start Live</button>
+    <button id="btnDemo" class="btn accent">Start Simulation</button>
+    <button id="btnStop" class="btn ghost">Stop</button>
+  </div>
+</header>
+
+<main class="layout">
+  <section class="cards">
+    <div class="card"><div class="label">Current Threat Status</div><div id="cStatus" class="big">—</div><div id="cSource" class="sub">No data yet</div></div>
+    <div class="card"><div class="label">Threat Severity</div><div id="cSeverity" class="big">—</div><div id="cRisk" class="sub">Distributed risk: —</div></div>
+    <div class="card"><div class="label">ML Confidence</div><div id="cConf" class="big">—</div><div id="cModel" class="sub">Random Forest</div></div>
+    <div class="card"><div class="label">Packets / sec</div><div id="cPps" class="big">—</div><div id="cBps" class="sub">— bytes/sec</div></div>
+    <div class="card"><div class="label">Sources / Destinations</div><div id="cSrc" class="big">—</div><div id="cDst" class="sub">—</div></div>
+    <div class="card"><div class="label">Active Mitigations</div><div id="cMit" class="big">0</div><div id="cMode" class="sub">Mode: stopped</div></div>
+  </section>
+
+  <section class="grid2">
+    <div class="panel">
+      <h2>Network Health</h2>
+      <div class="healthNums"><span>CPU <b id="hCpu">—</b></span><span>Memory <b id="hMem">—</b></span><span>In <b id="hIn">—</b></span><span>Out <b id="hOut">—</b></span></div>
+      <canvas id="chHealth" height="140"></canvas>
+      <canvas id="chTraffic" height="140"></canvas>
+    </div>
+    <div class="panel">
+      <h2>Detection Analytics</h2>
+      <div class="canvasRow"><canvas id="chPred" height="170"></canvas></div>
+      <div class="canvasRow"><canvas id="chSev" height="170"></canvas></div>
+      <p class="hint" id="cdnHint" hidden>Charts unavailable offline — numeric summaries shown instead. <span id="numSummary"></span></p>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Live Detection Table <span class="sim-note" id="modeNote">Monitoring stopped</span></h2>
+    <table id="detTable">
+      <thead><tr><th>Time</th><th>Interface</th><th>Source</th><th>Prediction</th><th>Conf.</th><th>Severity</th><th>Srcs</th><th>Dsts</th><th>Pkt/s</th><th>Mitigation</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <section class="grid2">
+    <div class="panel">
+      <h2>Threat Detail</h2>
+      <div id="threatDetail" class="detail">Select a detection row to inspect model prediction, traffic features, distributed-risk explanation, severity factors and mitigation status.</div>
+    </div>
+    <div class="panel">
+      <h2>Mitigation Center</h2>
+      <h3>Active quarantines (auto-recover)</h3>
+      <div id="activeMit">None</div>
+      <h3>History</h3>
+      <div id="histMit" class="scroll">None</div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Model Performance — Random Forest</h2>
+    <div id="modelPerf">Loading…</div>
+    <div class="imgRow">
+      <figure><figcaption>Confusion matrix</figcaption><img id="imgCm" alt="Confusion matrix"></figure>
+      <figure><figcaption>ROC curve</figcaption><img id="imgRoc" alt="ROC curve"></figure>
+      <figure><figcaption>Feature importance</figcaption><img id="imgFi" alt="Feature importance"></figure>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Settings</h2>
+    <label>Monitoring window (s, 2–120): <input id="setWindow" type="number" min="2" max="120" value="10"></label>
+    <label>Quarantine duration (s, 5–3600): <input id="setQuar" type="number" min="5" max="3600" value="40"></label>
+    <button id="btnSettings" class="btn primary">Save</button>
+    <span id="setMsg"></span>
+  </section>
+</main>
+
+<footer>SentinelFlow · defensive network monitoring · localhost only</footer>
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>

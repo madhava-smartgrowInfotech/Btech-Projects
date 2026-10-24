@@ -1,0 +1,63 @@
+{
+  "data": "synthetic (data/sample/triage_synthetic.csv, seeded by ml/make_data.py)",
+  "n_train": 3840,
+  "n_calibration": 960,
+  "n_test": 1200,
+  "accuracy": 0.6942,
+  "within_one_priority": 0.9967,
+  "macro_f1": 0.6696,
+  "per_class_recall": {
+    "1": 0.4394,
+    "2": 0.5397,
+    "3": 0.7284,
+    "4": 0.7188,
+    "5": 0.8282
+  },
+  "support": {
+    "1": 66,
+    "2": 239,
+    "3": 313,
+    "4": 320,
+    "5": 262
+  },
+  "confusion_matrix": [
+    [
+      29,
+      35,
+      2,
+      0,
+      0
+    ],
+    [
+      9,
+      129,
+      101,
+      0,
+      0
+    ],
+    [
+      0,
+      21,
+      228,
+      62,
+      2
+    ],
+    [
+      0,
+      0,
+      36,
+      230,
+      54
+    ],
+    [
+      0,
+      0,
+      0,
+      45,
+      217
+    ]
+  ],
+  "mean_confidence": 0.7321,
+  "model_seconds_per_patient": 1.2e-05,
+  "train_seconds": 0.44
+}

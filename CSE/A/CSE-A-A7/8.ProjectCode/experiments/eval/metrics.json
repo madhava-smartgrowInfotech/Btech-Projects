@@ -1,0 +1,29 @@
+{
+  "triage_model": {
+    "data": "synthetic (data/sample/triage_synthetic.csv, seeded by ml/make_data.py)",
+    "n_test": 1200,
+    "accuracy": 0.6942,
+    "within_one_priority": 0.9967,
+    "macro_f1": 0.6696,
+    "per_class_recall": {
+      "1": 0.4394,
+      "2": 0.5397,
+      "3": 0.7284,
+      "4": 0.7188,
+      "5": 0.8282
+    },
+    "model_seconds_per_patient": 1.2e-05
+  },
+  "report_reading": {
+    "reports": 12,
+    "precision": 1.0,
+    "recall": 1.0,
+    "reports_read_exactly": 12,
+    "note": "sample reports are generated; they test the pipeline, not real-world scan variety"
+  },
+  "end_to_end_seconds_per_patient": {
+    "mean": 1.261,
+    "median": 0.017,
+    "max": 4.323
+  }
+}

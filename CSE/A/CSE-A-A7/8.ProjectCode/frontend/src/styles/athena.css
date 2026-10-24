@@ -1,0 +1,67 @@
+/* ATHENA additions on top of the kit: priority blocks, SHAP bars, fused record, confusion matrix. */
+.prio {
+  --p: var(--paper);
+  display: inline-grid; place-items: center; flex: none;
+  width: 44px; height: 44px; background: var(--p); color: var(--ink);
+  border: var(--bw) solid var(--ink); box-shadow: var(--shadow-xs);
+  font-family: var(--font-display); font-size: 1.4rem; line-height: 1;
+}
+.prio.lg { width: clamp(88px, 22vw, 132px); height: clamp(88px, 22vw, 132px); font-size: clamp(3rem, 10vw, 5rem); box-shadow: var(--shadow); }
+.prio[data-p='1'] { --p: var(--coral); }
+.prio[data-p='2'] { --p: var(--amber); }
+.prio[data-p='3'] { --p: var(--sky); }
+.prio[data-p='4'] { --p: var(--lime); }
+.prio[data-p='5'] { --p: var(--paper); }
+
+.result-hero { display: grid; gap: 24px; grid-template-columns: auto minmax(0, 1fr); align-items: center; }
+@media (max-width: 520px) { .result-hero { grid-template-columns: minmax(0, 1fr); } }
+.conf-bar { height: 14px; border: var(--bw) solid var(--line); background: var(--surface); }
+.conf-bar > i { display: block; height: 100%; background: var(--fg); }
+
+.shap-list { display: flex; flex-direction: column; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.shap-row { display: grid; grid-template-columns: minmax(110px, 190px) minmax(0, 1fr) 64px; gap: 12px; align-items: center; }
+@media (max-width: 520px) { .shap-row { grid-template-columns: minmax(0, 1fr) 56px; } .shap-row .shap-label { grid-column: 1 / -1; } }
+.shap-label { min-width: 0; }
+.shap-label strong { display: block; overflow-wrap: anywhere; line-height: 1.2; }
+.shap-label span { font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); text-transform: uppercase; }
+.shap-track { position: relative; height: 24px; border: 2px solid var(--line); background: var(--surface); }
+.shap-track::after { content: ''; position: absolute; left: 50%; top: -4px; bottom: -4px; width: 3px; background: var(--line); }
+.shap-bar { position: absolute; top: 0; bottom: 0; border: 2px solid var(--ink); }
+.shap-bar.up { left: 50%; background: var(--coral); }
+.shap-bar.down { right: 50%; background: var(--sky); }
+.shap-val { font-family: var(--font-mono); font-weight: 600; font-size: 0.85rem; text-align: right; }
+.shap-axis { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; color: var(--muted); }
+
+.fused-grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
+.chip-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { display: inline-flex; align-items: center; gap: 6px; border: 2px solid var(--line); background: var(--surface); padding: 4px 8px; font-size: 0.85rem; font-weight: 600; }
+.chip small { font-family: var(--font-mono); font-size: 0.68rem; background: var(--fg); color: var(--bg); padding: 1px 5px; }
+.chip.abn { background: var(--coral); color: var(--ink); border-color: var(--ink); }
+
+.vitals-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); }
+.new-grid { display: grid; gap: 24px; grid-template-columns: minmax(0, 1fr); align-items: start; }
+@media (min-width: 1100px) { .new-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+
+.confusion { border-collapse: collapse; width: 100%; font-family: var(--font-mono); font-size: 0.85rem; }
+.confusion th, .confusion td { border: 2px solid var(--line); padding: 8px; text-align: center; }
+.confusion td.hit { font-weight: 700; }
+.confusion-wrap { overflow-x: auto; }
+
+.queue-stats { display: grid; gap: 12px; grid-template-columns: repeat(5, minmax(0, 1fr)); }
+@media (max-width: 760px) { .queue-stats { grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); } }
+.queue-tile { border: var(--bw) solid var(--line); background: var(--surface); padding: 12px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.queue-tile .n { font-family: var(--font-display); font-size: 2.2rem; line-height: 1; }
+.queue-tile .l { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; color: var(--muted); }
+
+.hero-clip { overflow-x: clip; }
+.scale-list { display: flex; flex-direction: column; }
+.scale-row { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 14px; align-items: center; padding: 10px 14px; border-bottom: 2px solid var(--line); }
+.scale-row:last-child { border-bottom: 0; }
+.scale-row strong { display: block; }
+.scale-row span { font-size: 0.85rem; color: var(--muted); }
+.demo-box { border: var(--bw) dashed var(--line); padding: 14px; background: var(--surface-2); }
+.dot-row { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; }
+.dot-row i { width: 10px; height: 10px; background: var(--ok); display: inline-block; border: 2px solid var(--ink); }
+
+/* kit marquee puts lime values on the foreground colour; in dark mode that is paper, so use ink */
+:root[data-theme='dark'] .marquee:not(.lime) .marquee-item strong { color: var(--ink); }

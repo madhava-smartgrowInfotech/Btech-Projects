@@ -1,0 +1,17 @@
+fastapi
+uvicorn
+sqlalchemy>=2
+pyjwt
+bcrypt==4.0.1
+python-dotenv
+python-multipart
+numpy
+pandas
+scikit-learn
+xgboost
+shap
+reportlab
+pypdf
+pillow
+rapidocr-onnxruntime
+requests

@@ -1,0 +1,32 @@
+{% extends "base.html" %}{% block title %}Detect — AgriVision{% endblock %}{% block content %}
+<div class="max-w-3xl mx-auto">
+<h1 class="text-2xl font-extrabold">🔍 Detect plant disease</h1>
+<p class="text-sm text-slate-500">Upload a clear photo of a single leaf in daylight. AI responds in ~2 seconds.</p>
+<form method="POST" enctype="multipart/form-data" id="detectForm" class="card p-6 mt-4 space-y-4">
+<div class="grid sm:grid-cols-2 gap-3">
+<label class="lbl">Crop type<select name="crop_type" class="inp" id="cropSel">
+{% for c in ["tomato","potato","corn","maize","grape","apple","pepper","orange","peach","strawberry","squash","cherry","blueberry","soybean","raspberry","rice","wheat","general"] %}
+<option value="{{ c }}" {{ "selected" if crop==c else "" }}>{{ c|capitalize }}</option>{% endfor %}</select></label>
+<label class="lbl">Camera (mobile)<input type="file" name="image" accept="image/*" capture="environment" class="inp" onchange="previewFile(this)"></label></div>
+<div id="drop" class="border-2 border-dashed border-leaf-500/50 rounded-2xl p-8 text-center cursor-pointer bg-leaf-50/50 dark:bg-slate-900">
+<div class="text-4xl">📁</div><p class="font-bold mt-2">Drag & drop leaf image here, or click to browse</p>
+<p class="text-xs text-slate-500">JPG / PNG / JPEG / WEBP • max 10 MB</p>
+<input type="file" name="image" id="fileInp" accept="image/*" class="hidden" onchange="previewFile(this)"></div>
+<div class="flex items-center gap-4"><img id="prev" class="hidden w-28 h-28 rounded-xl object-cover border" alt="preview">
+<div class="text-sm text-slate-500" id="fileMeta">No file chosen yet.</div></div>
+<div id="prog" class="hidden"><div class="h-2.5 rounded-full bg-slate-200"><div id="bar" class="h-2.5 rounded-full bg-leaf-500 transition-all" style="width:5%"></div></div>
+<p class="text-xs mt-1 text-leaf-700 font-semibold" id="progTxt">🤖 PD36-C analysing leaf…</p></div>
+<button class="btn-leaf w-full text-lg" onclick="startProg()">🌿 Diagnose Now</button></form>
+<div class="grid sm:grid-cols-3 gap-3 mt-4 text-sm">
+<div class="card p-4">💡 <b>Tip:</b> Fill the frame with one leaf, plain background.</div>
+<div class="card p-4">☀️ <b>Light:</b> Natural daylight, no flash glare.</div>
+<div class="card p-4">🔎 <b>Focus:</b> Sharp spots/mould visible, not blurry.</div></div></div>
+{% endblock %}{% block scripts %}<script>
+const drop=document.getElementById('drop'),fi=document.getElementById('fileInp');
+drop.onclick=()=>fi.click();
+['dragover','dragenter'].forEach(e=>drop.addEventListener(e,ev=>{ev.preventDefault();drop.classList.add('ring-2','ring-leaf-500')}));
+drop.addEventListener('drop',ev=>{ev.preventDefault();fi.files=ev.dataTransfer.files;previewFile(fi)});
+function startProg(){if(!fi.files.length&&!document.querySelector('input[name=image]').files.length)return;
+document.getElementById('prog').classList.remove('hidden');let w=5;
+const t=setInterval(()=>{w=Math.min(w+Math.random()*22,95);document.getElementById('bar').style.width=w+'%';if(w>=95)clearInterval(t)},250);}
+</script>{% endblock %}

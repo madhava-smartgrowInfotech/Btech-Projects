@@ -1,0 +1,29 @@
+# secrets and local config (ports only, but keep .env out of the shared repo anyway)
+.env
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+frontend/dist/
+*.tsbuildinfo
+
+# runtime data
+*.db
+agrivision/static/uploads/*
+!agrivision/static/uploads/.gitkeep
+logs/
+scripts/_*.ps1
+
+# trained model weights and the 1.4 GB training data (download with agrivision/train.py instructions)
+datasets/
+agrivision/models/*.h5
+agrivision/models/*.keras
+agrivision/models/*.onnx
+agrivision/models/*.pt
+
+# build and test scratch
+frontend/.vite/

@@ -1,0 +1,14 @@
+{% extends "base.html" %}{% block title %}Register — AgriVision{% endblock %}{% block content %}
+<div class="max-w-lg mx-auto card p-8 mt-6">
+<h1 class="text-2xl font-extrabold">Join AgriVision 🌾</h1><p class="text-sm text-slate-500">Free for farmers. 30-second setup.</p>
+<form method="POST" class="mt-5 grid sm:grid-cols-2 gap-3">
+<label class="lbl sm:col-span-2">Full name<input name="full_name" class="inp" placeholder="Ramesh Kumar"></label>
+<label class="lbl">Email<input name="email" type="email" required class="inp" placeholder="you@example.com"></label>
+<label class="lbl">Phone<input name="phone" class="inp" placeholder="+919876543210"></label>
+<label class="lbl">Password<input name="password" type="password" required minlength="6" class="inp"></label>
+<label class="lbl">Role<select name="role" class="inp"><option value="farmer">Farmer</option><option value="officer">Extension Officer</option><option value="dealer">Agro Dealer</option><option value="researcher">Researcher</option></select></label>
+<label class="lbl">Region<input name="region" class="inp" placeholder="Maharashtra"></label>
+<label class="lbl">Main crop<select name="crop" class="inp">{% for c in ["tomato","potato","corn","grape","apple","pepper","rice","wheat"] %}<option>{{ c }}</option>{% endfor %}</select></label>
+<button class="btn-leaf sm:col-span-2">Create account →</button></form>
+<p class="text-sm mt-4 text-center">Have an account? <a href="/login" class="text-leaf-600 font-bold">Login</a></p></div>
+{% endblock %}

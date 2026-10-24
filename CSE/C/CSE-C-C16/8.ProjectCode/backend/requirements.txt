@@ -1,0 +1,8 @@
+fastapi>=0.110
+uvicorn>=0.29
+python-multipart>=0.0.9
+Flask>=3.0
+Pillow>=10.0
+numpy>=1.24
+reportlab>=4.0
+# Optional: pip install tensorflow  (only needed if you drop a trained model into agrivision/models/)

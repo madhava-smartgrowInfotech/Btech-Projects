@@ -1,0 +1,12 @@
+{% extends "base.html" %}{% block title %}Analytics — AgriVision{% endblock %}{% block content %}
+<h1 class="text-2xl font-extrabold">📊 Farm analytics</h1><p class="text-sm text-slate-500">{{ total }} total scans • data-driven crop decisions</p>
+<div class="mt-4 grid md:grid-cols-2 gap-4">
+<div class="card p-6"><h2 class="font-extrabold">Disease distribution</h2><canvas id="cDist" height="220"></canvas></div>
+<div class="card p-6"><h2 class="font-extrabold">Severity breakdown</h2><canvas id="cSev" height="220"></canvas></div></div>
+<div class="card p-6 mt-4"><h2 class="font-extrabold">Detection timeline</h2><canvas id="cTime" height="100"></canvas></div>
+{% endblock %}{% block scripts %}<script>
+const dist={{ dist|tojson }},sev={{ sev|tojson }},tl={{ timeline|tojson }};
+new Chart(cDist,{type:'bar',data:{labels:Object.keys(dist),datasets:[{data:Object.values(dist),backgroundColor:'#16a34a'}]},options:{plugins:{legend:{display:false}},scales:{x:{ticks:{font:{size:9}}}}}});
+new Chart(cSev,{type:'doughnut',data:{labels:Object.keys(sev),datasets:[{data:Object.values(sev),backgroundColor:['#ef4444','#f59e0b','#3b82f6','#22c55e']}]}});
+new Chart(cTime,{type:'line',data:{labels:Object.keys(tl),datasets:[{label:'Scans',data:Object.values(tl),borderColor:'#16a34a',fill:true,backgroundColor:'rgba(22,163,74,.15)'}]},options:{plugins:{legend:{display:false}}}});
+</script>{% endblock %}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}AgriVision — AI Plant Disease Detection{% endblock %}</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={darkMode:'class',theme:{extend:{colors:{leaf:{50:'#f2f9f0',500:'#22a06b',600:'#15803d',700:'#166534',900:'#052e16'}},fontFamily:{display:['Plus Jakarta Sans','Inter','system-ui','sans-serif']}}}}</script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+</head>
+<body class="font-display bg-leaf-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Top nav -->
+<header class="sticky top-0 z-40 backdrop-blur bg-white/85 dark:bg-slate-900/85 border-b border-slate-200 dark:border-slate-800">
+<nav class="max-w-7xl mx-auto px-4 py-3 flex items-center gap-3">
+<a href="{{ '/' if not user else '/dashboard' }}" class="flex items-center gap-2 font-extrabold text-xl text-leaf-700 dark:text-leaf-500">
+<span class="w-9 h-9 rounded-xl bg-gradient-to-br from-leaf-500 to-emerald-700 grid place-items-center text-white text-xl">🌿</span>AgriVision</a>
+<div class="hidden md:flex items-center gap-5 ml-6 text-sm font-medium">
+<a href="/" class="hover:text-leaf-600">Home</a>
+<a href="/encyclopedia" class="hover:text-leaf-600">Disease Guide</a>
+{% if user %}<a href="/dashboard" class="hover:text-leaf-600">Dashboard</a>
+<a href="/detect" class="hover:text-leaf-600">Detect</a>
+<a href="/history" class="hover:text-leaf-600">History</a>
+<a href="/analytics" class="hover:text-leaf-600">Analytics</a>{% endif %}
+</div>
+<div class="ml-auto flex items-center gap-2">
+<select id="langSel" class="text-sm border rounded-lg px-2 py-1.5 bg-white dark:bg-slate-800" onchange="setLang(this.value)">
+<option value="en">English</option><option value="hi">हिन्दी</option><option value="mr">मराठी</option></select>
+<button onclick="toggleTheme()" class="w-9 h-9 rounded-lg border grid place-items-center" title="Theme">🌓</button>
+{% if user %}
+<a href="/profile" class="hidden sm:inline text-sm font-semibold px-3 py-1.5 rounded-lg bg-leaf-600 text-white">{{ user.full_name or user.email }}</a>
+<a href="/logout" class="text-sm px-3 py-1.5 rounded-lg border">Logout</a>
+{% else %}
+<a href="/login" class="text-sm font-semibold px-4 py-2 rounded-lg border">Login</a>
+<a href="/register" class="text-sm font-semibold px-4 py-2 rounded-lg bg-leaf-600 text-white">Get Started</a>
+{% endif %}
+</div></nav>
+{% with msgs=get_flashed_messages(with_categories=true) %}{% if msgs %}
+<div class="max-w-7xl mx-auto px-4 pt-3 space-y-2">{% for c,m in msgs %}
+<div class="px-4 py-2.5 rounded-xl text-sm font-medium {{ 'bg-red-50 text-red-700 border border-red-200' if c=='error' else 'bg-green-50 text-green-800 border border-green-200' }}">{{ m }}</div>
+{% endfor %}</div>{% endif %}{% endwith %}
+</header>
+<main class="flex-1 w-full max-w-7xl mx-auto px-4 py-6">{% block content %}{% endblock %}</main>
+<footer class="border-t border-slate-200 dark:border-slate-800 mt-8">
+<div class="max-w-7xl mx-auto px-4 py-6 text-sm flex flex-col md:flex-row gap-2 items-center justify-between text-slate-500">
+<span>🌱 AgriVision v1.0 • PD36-C (38 classes) • Built with Flask + Tailwind</span>
+<span>Demo login: <b>demo@agrivision.ai / demo1234</b> • <a class="underline" href="/api/v1/diseases">API</a> • <a class="underline" href="/health">Health</a></span>
+</div></footer>
+<script src="{{ url_for('static', filename='js/i18n.js') }}"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% block scripts %}{% endblock %}
+</body></html>

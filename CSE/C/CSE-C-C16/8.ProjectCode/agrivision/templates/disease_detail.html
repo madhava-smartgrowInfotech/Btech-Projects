@@ -1,0 +1,14 @@
+{% extends "base.html" %}{% block title %}{{ d.name }} — AgriVision{% endblock %}{% block content %}
+<a href="/encyclopedia" class="text-sm text-leaf-600 font-bold">← Disease guide</a>
+<div class="card p-6 md:p-8 mt-2">
+<span class="text-xs font-extrabold px-3 py-1 rounded-full {{ 'bg-green-100 text-green-700' if d.healthy else 'bg-red-100 text-red-700' }}">{{ d.severity|upper }}</span>
+<h1 class="text-3xl font-extrabold mt-2">{{ d.name }}</h1>
+<p class="mt-2">{{ d.description }}</p>
+<div class="grid md:grid-cols-2 gap-5 mt-5">
+<div><h2 class="font-extrabold">🩺 Symptoms</h2><p class="text-sm mt-1">{{ d.symptoms }}</p>
+<h2 class="font-extrabold mt-4">🧬 Lifecycle</h2><p class="text-sm mt-1">{{ d.lifecycle }}</p>
+<h2 class="font-extrabold mt-4">🛡️ Prevention</h2><p class="text-sm mt-1">{{ d.prevention }}</p></div>
+<div><h2 class="font-extrabold">💊 Treatments</h2>{% for t in d.treatments %}
+<div class="mt-2 border rounded-xl p-4"><b class="text-sm">[{{ t.type|upper }}] {{ t.name }}</b><p class="text-sm mt-1">{{ t.detail }}</p><div class="text-xs text-slate-500">💰 {{ t.cost }}</div></div>{% endfor %}</div></div>
+<a href="/detect" class="btn-leaf mt-6 inline-block">📸 Scan for this disease</a></div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}{% block title %}Dashboard — AgriVision{% endblock %}{% block content %}
+<div class="flex flex-wrap items-center gap-3">
+<div><h1 class="text-2xl font-extrabold">Namaste, {{ user.full_name or user.email }} 🙏</h1>
+<p class="text-sm text-slate-500">{{ user.region or "Your farm" }} • {{ user.role|capitalize }} • Ready to scout?</p></div>
+<div class="ml-auto flex gap-2"><a href="/detect" class="btn-leaf">📸 New Detection</a><a href="/history" class="btn-ghost">📜 History</a></div></div>
+<div class="mt-5 grid grid-cols-2 md:grid-cols-4 gap-3">
+<div class="card p-5"><div class="text-xs font-bold text-slate-500">TOTAL SCANS</div><div class="text-3xl font-extrabold">{{ total }}</div></div>
+<div class="card p-5"><div class="text-xs font-bold text-slate-500">HEALTHY</div><div class="text-3xl font-extrabold text-leaf-600">{{ healthy }}</div></div>
+<div class="card p-5"><div class="text-xs font-bold text-slate-500">HIGH SEVERITY</div><div class="text-3xl font-extrabold text-red-500">{{ urgent }}</div></div>
+<div class="card p-5"><div class="text-xs font-bold text-slate-500">DISEASE RATE</div><div class="text-3xl font-extrabold text-amber-500">{{ ((total-healthy)/total*100)|round(1) if total else 0 }}%</div></div></div>
+<div class="mt-6 grid md:grid-cols-3 gap-4">
+<div class="card p-6 md:col-span-2"><h2 class="font-extrabold">⚡ Quick actions</h2>
+<div class="mt-3 grid sm:grid-cols-2 gap-3">
+<a href="/detect?crop=tomato" class="p-4 rounded-xl border hover:border-leaf-500 font-bold">🍅 Scan Tomato</a>
+<a href="/detect?crop=potato" class="p-4 rounded-xl border hover:border-leaf-500 font-bold">🥔 Scan Potato</a>
+<a href="/detect?crop=corn" class="p-4 rounded-xl border hover:border-leaf-500 font-bold">🌽 Scan Maize</a>
+<a href="/encyclopedia" class="p-4 rounded-xl border hover:border-leaf-500 font-bold">📖 Disease Guide</a></div>
+<div class="mt-4 text-sm bg-amber-50 dark:bg-amber-950/40 border border-amber-200 rounded-xl p-3">⚠️ <b>Season alert:</b> Late blight pressure is high in humid weather. Scout lower leaves every 3 days.</div></div>
+<div class="card p-6"><h2 class="font-extrabold">🌦️ Field tips</h2><ul class="mt-2 text-sm space-y-2 text-slate-600 dark:text-slate-300">
+<li>• Water in the morning, never on foliage</li><li>• Mulch + stake tomatoes to stop soil splash</li><li>• Spray early morning / late evening</li><li>• Remove & burn severely infected leaves</li></ul>
+<a href="/analytics" class="btn-ghost w-full text-center mt-4">📊 View analytics</a></div></div>
+<h2 class="mt-6 font-extrabold text-lg">Recent detections</h2>
+{% if recent %}<div class="mt-3 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+{% for r in recent %}<a href="/result/{{ r.id }}" class="card overflow-hidden hover:shadow-lg transition">
+<img src="/{{ r.image_path }}" class="h-36 w-full object-cover" alt="leaf">
+<div class="p-4"><div class="font-bold text-sm">{{ r.info.name }}</div>
+<div class="mt-1 flex items-center gap-2 text-xs"><span class="px-2 py-0.5 rounded-full font-bold {{ 'bg-green-100 text-green-700' if r.info.healthy else 'bg-red-100 text-red-700' }}">{{ r.info.severity|upper }}</span><span>{{ (r.confidence*100)|round(2) }}%</span><span class="ml-auto text-slate-400">{{ r.created_at[:10] }}</span></div></div></a>{% endfor %}</div>
+{% else %}<div class="card p-8 text-center text-slate-500 mt-3">No scans yet — <a href="/detect" class="text-leaf-600 font-bold">upload your first leaf →</a></div>{% endif %}
+{% endblock %}

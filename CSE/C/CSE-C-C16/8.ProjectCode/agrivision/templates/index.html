@@ -1,0 +1,48 @@
+{% extends "base.html" %}{% block title %}AgriVision — AI Plant Disease Detection{% endblock %}{% block content %}
+<!-- HERO -->
+<section class="grid md:grid-cols-2 gap-8 items-center py-8">
+<div>
+<div class="inline-flex items-center gap-2 text-xs font-bold px-3 py-1.5 rounded-full bg-leaf-600/10 text-leaf-700 border border-leaf-600/20">● PD36-C MODEL • 38 DISEASES • &lt;2s INFERENCE</div>
+<h1 class="mt-4 text-4xl md:text-5xl font-extrabold leading-tight">Detect crop disease in <span class="text-leaf-600">seconds</span>, not days.</h1>
+<p class="mt-4 text-slate-600 dark:text-slate-300 text-lg">Snap a leaf photo. AgriVision identifies 38 diseases across 14 crops, scores confidence, and prescribes organic + chemical treatment — built for farmers, officers & agri-dealers.</p>
+<div class="mt-6 flex flex-wrap gap-3">
+<a href="/register" class="px-6 py-3 rounded-xl bg-leaf-600 text-white font-bold shadow-lg shadow-leaf-600/30">🌾 Start Detecting — Free</a>
+<a href="/encyclopedia" class="px-6 py-3 rounded-xl border font-bold">📖 Disease Guide</a></div>
+<div class="mt-6 grid grid-cols-3 gap-3 text-center">
+<div class="card p-4"><div class="text-2xl font-extrabold text-leaf-600">99%+</div><div class="text-xs">Top-3 accuracy target</div></div>
+<div class="card p-4"><div class="text-2xl font-extrabold text-leaf-600">38</div><div class="text-xs">Disease classes</div></div>
+<div class="card p-4"><div class="text-2xl font-extrabold text-leaf-600">&lt;2s</div><div class="text-xs">Per prediction</div></div></div>
+</div>
+<div class="card overflow-hidden">
+<div class="bg-gradient-to-br from-leaf-600 to-emerald-800 p-6 text-white">
+<div class="text-sm opacity-80 font-semibold">LIVE DEMO RESULT</div>
+<div class="mt-2 text-2xl font-extrabold">🍅 Tomato — Late Blight</div>
+<div class="mt-2 flex items-center gap-2"><div class="flex-1 h-2.5 rounded-full bg-white/25"><div class="h-2.5 rounded-full bg-amber-300" style="width:97%"></div></div><b>97.2%</b></div>
+<div class="mt-2 inline-block text-xs font-bold px-2 py-1 rounded bg-red-500">HIGH SEVERITY • ACT NOW</div></div>
+<div class="p-6 space-y-3 text-sm">
+<div class="flex gap-2">🧪 <span><b>Treatment:</b> Metalaxyl + Mancozeb @ 2.5 g/L, repeat in 7 days</span></div>
+<div class="flex gap-2">🌿 <span><b>Organic:</b> Neem oil 5 ml/L + Trichoderma soil application</span></div>
+<div class="flex gap-2">🛡️ <span><b>Prevention:</b> Resistant variety, drip irrigation, field sanitation</span></div>
+<a href="/detect" class="btn-leaf w-full text-center">Try it on your leaf →</a></div></div>
+</section>
+<!-- HOW -->
+<section class="py-6"><h2 class="text-2xl font-extrabold text-center">How it works</h2>
+<div class="mt-5 grid md:grid-cols-3 gap-4">
+<div class="card p-6"><div class="text-3xl">📸</div><h3 class="font-bold mt-2">1. Upload leaf photo</h3><p class="text-sm text-slate-500 mt-1">Drag & drop or capture with camera. JPG/PNG up to 10 MB. Works on any smartphone.</p></div>
+<div class="card p-6"><div class="text-3xl">🤖</div><h3 class="font-bold mt-2">2. AI diagnosis</h3><p class="text-sm text-slate-500 mt-1">PD36-C CNN analyses the leaf and returns top-3 predictions with confidence scores.</p></div>
+<div class="card p-6"><div class="text-3xl">💊</div><h3 class="font-bold mt-2">3. Treat & track</h3><p class="text-sm text-slate-500 mt-1">Get treatment, prevention & severity. Save to history, export PDF/CSV, monitor trends.</p></div></div></section>
+<!-- CROPS -->
+<section class="py-6"><h2 class="text-2xl font-extrabold text-center">14 crops covered</h2>
+<div class="mt-4 flex flex-wrap justify-center gap-2">
+{% for c in ["Apple","Blueberry","Cherry","Corn (Maize)","Grape","Orange","Peach","Pepper","Potato","Raspberry","Soybean","Squash","Strawberry","Tomato"] %}
+<span class="px-4 py-2 rounded-full border bg-white dark:bg-slate-900 text-sm font-semibold">🌿 {{ c }}</span>{% endfor %}</div></section>
+<!-- PERSONAS -->
+<section class="py-6 grid md:grid-cols-3 gap-4">
+<div class="card p-6"><b>👨‍🌾 Farmers</b><p class="text-sm text-slate-500 mt-1">Early detection, exact spray dose, less pesticide cost, higher yield.</p></div>
+<div class="card p-6"><b>👩‍🔬 Extension officers</b><p class="text-sm text-slate-500 mt-1">Advise 100+ villages remotely with analytics & hotspot trends.</p></div>
+<div class="card p-6"><b>🏪 Agri dealers</b><p class="text-sm text-slate-500 mt-1">Recommend the right product with an AI report farmers trust.</p></div></section>
+<section class="card mt-4 p-8 text-center bg-gradient-to-r from-leaf-600 to-emerald-700 text-white border-0">
+<h2 class="text-2xl font-extrabold">Ready to protect your crop?</h2>
+<p class="opacity-90 mt-1">Free for smallholder farmers. No credit card. Takes 30 seconds.</p>
+<a href="/register" class="inline-block mt-4 px-8 py-3 rounded-xl bg-white text-leaf-700 font-extrabold">Create free account</a></section>
+{% endblock %}

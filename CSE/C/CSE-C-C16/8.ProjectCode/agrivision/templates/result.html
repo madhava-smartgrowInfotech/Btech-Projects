@@ -1,0 +1,32 @@
+{% extends "base.html" %}{% block title %}{{ r.info.name }} — Result{% endblock %}{% block content %}
+<a href="/history" class="text-sm text-leaf-600 font-bold">← Back to history</a>
+<div class="mt-2 grid lg:grid-cols-2 gap-5">
+<div class="card overflow-hidden"><img src="/{{ r.image_path }}" class="w-full max-h-96 object-cover" alt="leaf">
+<div class="p-4 text-xs text-slate-500 flex gap-3"><span>📅 {{ r.created_at }}</span><span>🌾 {{ r.crop_hint|capitalize }}</span><span>⚡ {{ r.latency_ms }} ms</span></div></div>
+<div class="card p-6">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="text-xs font-extrabold px-3 py-1 rounded-full {{ 'bg-green-100 text-green-700' if r.info.healthy else 'bg-red-100 text-red-700' }}">{{ '✅ HEALTHY' if r.info.healthy else ('🔴 '+r.info.severity|upper+' SEVERITY') }}</span>
+{% if r.info.urgent %}<span class="text-xs font-bold px-3 py-1 rounded-full bg-amber-100 text-amber-800">⚡ URGENT ACTION</span>{% endif %}</div>
+<h1 class="mt-2 text-3xl font-extrabold">{{ r.info.name }}</h1>
+<p class="text-sm text-slate-500 mt-1">{{ r.info.description }}</p>
+<div class="mt-3"><div class="flex justify-between text-sm font-bold"><span>AI Confidence</span><span>{{ (r.confidence*100)|round(2) }}%</span></div>
+<div class="h-3 rounded-full bg-slate-200 dark:bg-slate-800 mt-1"><div class="h-3 rounded-full bg-gradient-to-r from-leaf-500 to-emerald-600" style="width:{{ (r.confidence*100)|round(1) }}%"></div></div></div>
+<div class="mt-4"><div class="text-xs font-extrabold text-slate-500">TOP-3 PREDICTIONS</div>
+{% for c,p,d in [(r.predicted, r.confidence, r.info)] + r.peers %}
+<div class="mt-1.5 flex items-center gap-2 text-sm"><span class="font-semibold flex-1">{{ d.name }}</span>
+<div class="w-32 h-2 rounded-full bg-slate-200"><div class="h-2 rounded-full bg-leaf-500" style="width:{{ (p*100)|round }}%"></div></div><b>{{ (p*100)|round(2) }}%</b></div>{% endfor %}</div>
+<div class="mt-4 flex flex-wrap gap-2">
+<a href="/history/{{ r.id }}/export?format=csv" class="btn-ghost text-sm">⬇ CSV</a>
+<a href="/history/{{ r.id }}/export?format=pdf" class="btn-ghost text-sm">🖨 PDF</a>
+<button onclick="window.print()" class="btn-ghost text-sm">🖨 Print</button>
+<button onclick="navigator.clipboard.writeText(location.href);toast('Link copied!')" class="btn-ghost text-sm">🔗 Share</button></div></div></div>
+<div class="mt-5 grid md:grid-cols-2 gap-5">
+<div class="card p-6"><h2 class="font-extrabold">🩺 Symptoms</h2><p class="text-sm mt-2">{{ r.info.symptoms }}</p>
+<h2 class="font-extrabold mt-4">🧬 Lifecycle</h2><p class="text-sm mt-1 text-slate-600 dark:text-slate-300">{{ r.info.lifecycle }}</p>
+<h2 class="font-extrabold mt-4">🛡️ Prevention</h2><p class="text-sm mt-1">{{ r.info.prevention }}</p></div>
+<div class="card p-6"><h2 class="font-extrabold">💊 Recommended treatments</h2>
+{% for t in r.info.treatments %}
+<div class="mt-3 border rounded-xl p-4"><div class="flex items-center gap-2"><span class="text-xs font-extrabold px-2 py-0.5 rounded {{ 'bg-red-100 text-red-700' if t.type=='chemical' else 'bg-green-100 text-green-700' if t.type=='organic' else 'bg-blue-100 text-blue-700' }}">{{ t.type|upper }}</span><b class="text-sm">{{ t.name }}</b></div>
+<p class="text-sm mt-1">{{ t.detail }}</p><div class="text-xs text-slate-500 mt-1">💰 {{ t.cost }}</div></div>{% endfor %}
+<div class="mt-3 text-xs bg-amber-50 border border-amber-200 rounded-xl p-3 text-amber-800">⚠️ Always do a patch test, wear PPE, follow label dose & waiting period. Consult your local agri officer for confirmation.</div></div></div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}{% block title %}History — AgriVision{% endblock %}{% block content %}
+<div class="flex flex-wrap items-center gap-2">
+<h1 class="text-2xl font-extrabold">📜 Detection history</h1>
+<a href="/history/export" class="ml-auto btn-ghost text-sm">⬇ Export CSV</a>
+<a href="/detect" class="btn-leaf text-sm">+ New scan</a></div>
+<form class="card p-4 mt-4 grid sm:grid-cols-4 gap-2" method="GET">
+<input name="q" value="{{ q }}" placeholder="🔎 Search disease…" class="inp">
+<select name="crop" class="inp"><option value="">All crops</option>{% for c in crops %}<option {{ "selected" if crop==c else "" }}>{{ c }}</option>{% endfor %}</select>
+<select name="disease" class="inp"><option value="">Healthy + Diseased</option><option value="diseased" {{ "selected" if disease=='diseased' else "" }}>Diseased only</option><option value="healthy" {{ "selected" if disease=='healthy' else "" }}>Healthy only</option></select>
+<button class="btn-leaf">Filter</button></form>
+{% if items %}<div class="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+{% for r in items %}<div class="card overflow-hidden">
+<a href="/result/{{ r.id }}"><img src="/{{ r.image_path }}" class="h-36 w-full object-cover" loading="lazy"></a>
+<div class="p-4"><a href="/result/{{ r.id }}" class="font-bold text-sm hover:text-leaf-600">{{ r.info.name }}</a>
+<div class="mt-1 flex items-center gap-2 text-xs text-slate-500"><span class="px-2 py-0.5 rounded-full font-bold {{ 'bg-green-100 text-green-700' if r.info.healthy else 'bg-red-100 text-red-700' }}">{{ r.info.severity|upper }}</span><span>{{ (r.confidence*100)|round(1) }}%</span><span class="ml-auto">{{ r.created_at[:16].replace('T',' ') }}</span></div>
+<div class="mt-2 flex gap-2"><a href="/result/{{ r.id }}" class="btn-ghost text-xs flex-1 text-center">View</a>
+<a href="/history/{{ r.id }}/export?format=pdf" class="btn-ghost text-xs">PDF</a>
+<form method="POST" action="/history/{{ r.id }}/delete" onsubmit="return confirm('Delete this record?')"><button class="btn-ghost text-xs text-red-600">🗑</button></form></div></div></div>{% endfor %}</div>
+{% else %}<div class="card p-10 text-center text-slate-500 mt-4">No records match. <a href="/detect" class="text-leaf-600 font-bold">Scan a leaf →</a></div>{% endif %}
+{% endblock %}

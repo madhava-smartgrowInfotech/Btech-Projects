@@ -1,0 +1,3 @@
+// Minimal EN/HI/MR dictionary for key UI strings (PRD FR9 MVP slice)
+const I18N={en:{},hi:{'Start Detecting — Free':'मुफ्त में जांच शुरू करें','Disease Guide':'रोग गाइड','Detect plant disease':'पौधे के रोग की पहचान','Diagnose Now':'निदान करें'},mr:{'Start Detecting — Free':'मोफत तपासणी सुरू करा','Disease Guide':'रोग मार्गदर्शक','Detect plant disease':'वनस्पती रोग ओळखा','Diagnose Now':'निदान करा'}};
+function applyLang(lang){const d=I18N[lang]||{};document.querySelectorAll('h1,h2,a,button,p').forEach(el=>{const t=el.childNodes[0];if(t&&t.nodeType===3){const k=t.textContent.trim();if(d[k])t.textContent=' '+d[k];}});}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}{% block title %}Profile — AgriVision{% endblock %}{% block content %}
+<div class="max-w-xl mx-auto card p-8">
+<h1 class="text-2xl font-extrabold">👤 {{ u.full_name or "My profile" }}</h1>
+<p class="text-sm text-slate-500">{{ u.email }} • {{ u.role|capitalize }} • since {{ u.created_at[:10] }}</p>
+<form method="POST" class="mt-5 space-y-3">
+<label class="lbl">Full name<input name="full_name" value="{{ u.full_name }}" class="inp"></label>
+<label class="lbl">Region<input name="region" value="{{ u.region }}" class="inp"></label>
+<label class="lbl">Language<select name="language" class="inp"><option value="en" {{ "selected" if u.language=='en' else "" }}>English</option><option value="hi" {{ "selected" if u.language=='hi' else "" }}>हिन्दी</option><option value="mr" {{ "selected" if u.language=='mr' else "" }}>मराठी</option></select></label>
+<label class="lbl">Crops monitored (ctrl-click)<select name="crops" multiple class="inp h-28">{% for c in ["tomato","potato","corn","grape","apple","pepper","rice","wheat","orange","strawberry"] %}<option {{ "selected" if c in crops else "" }}>{{ c }}</option>{% endfor %}</select></label>
+<button class="btn-leaf w-full">Save profile</button></form>
+<div class="mt-4 grid grid-cols-2 gap-2 text-sm"><a href="/history/export" class="btn-ghost text-center">⬇ My data (CSV)</a><a href="/logout" class="btn-ghost text-center text-red-600">Logout</a></div></div>
+{% endblock %}

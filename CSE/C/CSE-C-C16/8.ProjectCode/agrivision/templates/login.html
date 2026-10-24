@@ -1,0 +1,10 @@
+{% extends "base.html" %}{% block title %}Login — AgriVision{% endblock %}{% block content %}
+<div class="max-w-md mx-auto card p-8 mt-6">
+<h1 class="text-2xl font-extrabold">Welcome back 🌱</h1><p class="text-sm text-slate-500">Login to detect, track & export reports.</p>
+<form method="POST" class="mt-5 space-y-3">
+<label class="lbl">Email<input name="email" type="email" required class="inp" placeholder="farmer@example.com"></label>
+<label class="lbl">Password<input name="password" type="password" required class="inp" placeholder="••••••••"></label>
+<button class="btn-leaf w-full">Login →</button></form>
+<div class="mt-3 text-xs bg-leaf-50 dark:bg-slate-800 border rounded-xl p-3">Demo account: <b>demo@agrivision.ai</b> / <b>demo1234</b></div>
+<p class="text-sm mt-4 text-center">New here? <a href="/register" class="text-leaf-600 font-bold">Create account</a></p></div>
+{% endblock %}

@@ -1,0 +1,16 @@
+# secrets - run.bat creates .env from .env.example
+.env
+
+# environments and build output
+.venv/
+venv/
+node_modules/
+dist/
+__pycache__/
+*.pyc
+
+# runtime state
+data/app.db
+data/app.db-*
+data/*.log
+data/test_tmp.db*

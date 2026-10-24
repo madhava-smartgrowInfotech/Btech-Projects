@@ -1,0 +1,14 @@
+# BotGraph backend + ML pipeline (Python 3.11)
+fastapi>=0.110
+uvicorn>=0.29
+SQLAlchemy>=2.0,<2.1
+PyJWT>=2.8
+bcrypt>=4.0
+python-dotenv>=1.0
+
+# graph models (written directly in PyTorch - no torch-geometric) and clustering
+torch>=2.2,<2.6
+numpy>=1.26,<2
+pandas>=2.1,<3
+scikit-learn>=1.4,<1.7
+networkx>=3.2

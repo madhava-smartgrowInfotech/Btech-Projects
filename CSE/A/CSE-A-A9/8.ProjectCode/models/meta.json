@@ -1,0 +1,25 @@
+{
+  "trained_at": "2026-10-24T13:16:24+00:00",
+  "kind": "full",
+  "best": "sage",
+  "threshold": 0.5,
+  "splits": {
+    "train": 2719,
+    "val": 906,
+    "test": 908
+  },
+  "feedback_labels_used": 0,
+  "config": {
+    "hidden": 64,
+    "epochs": 160,
+    "patience": 40,
+    "lr": 0.01,
+    "dropout": 0.3,
+    "weight_decay": 0.0005,
+    "seeds": [
+      0,
+      1,
+      2
+    ]
+  }
+}

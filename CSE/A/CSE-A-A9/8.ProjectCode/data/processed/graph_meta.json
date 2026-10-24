@@ -1,0 +1,20 @@
+{
+  "seed": 7,
+  "n_real_nodes": 3963,
+  "n_injected_nodes": 570,
+  "n_real_edges": 88156,
+  "n_injected_edges": 6300,
+  "botnet_sizes": [
+    62,
+    50,
+    52,
+    60,
+    48,
+    56,
+    58,
+    34
+  ],
+  "n_lone_bots": 150,
+  "camouflaged_bots": 198,
+  "suspicious_genuine": 231
+}

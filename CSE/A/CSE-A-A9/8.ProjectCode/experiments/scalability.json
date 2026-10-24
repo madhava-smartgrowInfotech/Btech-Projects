@@ -1,0 +1,102 @@
+{
+  "epochs_timed": 10,
+  "method": "disjoint copies of the account graph",
+  "rows": [
+    {
+      "scale": 1,
+      "nodes": 4533,
+      "edges": 94456,
+      "graph_build_seconds": 0.046412599999712256,
+      "models": {
+        "baseline": {
+          "train_seconds_per_epoch": 0.07290392999998403,
+          "inference_seconds": 0.011054500000227563
+        },
+        "gcn": {
+          "train_seconds_per_epoch": 0.14203815000000758,
+          "inference_seconds": 0.03595720000021174
+        },
+        "gat": {
+          "train_seconds_per_epoch": 0.25545729000000394,
+          "inference_seconds": 0.05123170000024402
+        },
+        "sage": {
+          "train_seconds_per_epoch": 0.06033939000003556,
+          "inference_seconds": 0.02693490000001475
+        }
+      }
+    },
+    {
+      "scale": 2,
+      "nodes": 9066,
+      "edges": 188912,
+      "graph_build_seconds": 0.10555330000033791,
+      "models": {
+        "baseline": {
+          "train_seconds_per_epoch": 0.022243069999967703,
+          "inference_seconds": 0.0019105999999737833
+        },
+        "gcn": {
+          "train_seconds_per_epoch": 0.15173749999999017,
+          "inference_seconds": 0.06469139999990148
+        },
+        "gat": {
+          "train_seconds_per_epoch": 0.5968353300000218,
+          "inference_seconds": 0.12914679999994405
+        },
+        "sage": {
+          "train_seconds_per_epoch": 0.11541059000001042,
+          "inference_seconds": 0.05415020000009463
+        }
+      }
+    },
+    {
+      "scale": 4,
+      "nodes": 18132,
+      "edges": 377824,
+      "graph_build_seconds": 0.2655954999995629,
+      "models": {
+        "baseline": {
+          "train_seconds_per_epoch": 0.041132199999992736,
+          "inference_seconds": 0.003486900000098103
+        },
+        "gcn": {
+          "train_seconds_per_epoch": 0.3073928600000272,
+          "inference_seconds": 0.1428265999998075
+        },
+        "gat": {
+          "train_seconds_per_epoch": 1.1030759600000237,
+          "inference_seconds": 0.2594381000003523
+        },
+        "sage": {
+          "train_seconds_per_epoch": 0.20284022999999252,
+          "inference_seconds": 0.09901870000021518
+        }
+      }
+    },
+    {
+      "scale": 8,
+      "nodes": 36264,
+      "edges": 755648,
+      "graph_build_seconds": 0.513169100000141,
+      "models": {
+        "baseline": {
+          "train_seconds_per_epoch": 0.08536604999999327,
+          "inference_seconds": 0.007610900000145193
+        },
+        "gcn": {
+          "train_seconds_per_epoch": 0.5772637199999735,
+          "inference_seconds": 0.23506730000008247
+        },
+        "gat": {
+          "train_seconds_per_epoch": 2.021914160000006,
+          "inference_seconds": 0.5837848000001031
+        },
+        "sage": {
+          "train_seconds_per_epoch": 0.3918338500000118,
+          "inference_seconds": 0.18589739999970334
+        }
+      }
+    }
+  ]
+}

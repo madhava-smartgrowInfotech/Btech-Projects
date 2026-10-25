@@ -1,0 +1,86 @@
+[
+ {
+  "name": "high-risk example (1200, Online, card not present, country mismatch)",
+  "input": {
+   "Amount": 1200,
+   "Merchant_Category": "Online",
+   "Transaction_Type": "Online",
+   "Card_Present": 0,
+   "Country_Match": 0,
+   "Time": 54000,
+   "V3": 1.8,
+   "V14": -1.1,
+   "V17": 1.4
+  },
+  "served": {
+   "ensemble": 0.6836846808696473,
+   "label": "FRAUD",
+   "risk": "MEDIUM",
+   "classical": 0.5087490300496396,
+   "qa": 0.5951302491045652,
+   "sa": 0.9471747634547372
+  },
+  "scaled_offline": {
+   "classical": 0.5087490300496396,
+   "sa": 0.9471747634547372,
+   "qa": 0.5951302491045652,
+   "ensemble": 0.6836846808696473
+  }
+ },
+ {
+  "name": "low-risk example (80, Grocery, chip, card present, country match)",
+  "input": {
+   "Amount": 80,
+   "Merchant_Category": "Grocery",
+   "Transaction_Type": "Chip",
+   "Card_Present": 1,
+   "Country_Match": 1,
+   "Time": 54000,
+   "V3": 0,
+   "V14": 0,
+   "V17": 0
+  },
+  "served": {
+   "ensemble": 0.3954398686945438,
+   "label": "LEGITIMATE",
+   "risk": "LOW",
+   "classical": 0.5011381856586706,
+   "qa": 0.47157420990377574,
+   "sa": 0.2136072105211851
+  },
+  "scaled_offline": {
+   "classical": 0.5011381856586706,
+   "sa": 0.2136072105211851,
+   "qa": 0.47157420990377574,
+   "ensemble": 0.3954398686945438
+  }
+ },
+ {
+  "name": "middle example (350, Electronics, contactless, card present)",
+  "input": {
+   "Amount": 350,
+   "Merchant_Category": "Electronics",
+   "Transaction_Type": "Contactless",
+   "Card_Present": 1,
+   "Country_Match": 1,
+   "Time": 54000,
+   "V3": 0.8,
+   "V14": -0.4,
+   "V17": 0.6
+  },
+  "served": {
+   "ensemble": 0.5262225265389192,
+   "label": "FRAUD",
+   "risk": "MEDIUM",
+   "classical": 0.5033408388596472,
+   "qa": 0.5099375375760232,
+   "sa": 0.5653892031810873
+  },
+  "scaled_offline": {
+   "classical": 0.5033408388596472,
+   "sa": 0.5653892031810873,
+   "qa": 0.5099375375760232,
+   "ensemble": 0.5262225265389192
+  }
+ }
+]

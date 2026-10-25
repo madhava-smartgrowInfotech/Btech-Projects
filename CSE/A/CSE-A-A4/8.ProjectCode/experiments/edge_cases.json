@@ -1,0 +1,116 @@
+[
+ {
+  "probe": "POST /api/predict_single, no body (Content-Type json)",
+  "expected": "400 or error JSON",
+  "status": 500,
+  "response": "error: 400 Bad Request: The browser (or proxy) sent a request that this server could not understand."
+ },
+ {
+  "probe": "POST /api/predict_single, empty JSON {}",
+  "expected": "defaults filled from dataset mean/mode",
+  "status": 200,
+  "response": "fraud_probability 0.5110, label FRAUD, risk MEDIUM"
+ },
+ {
+  "probe": "predict_single, mode=nope",
+  "expected": "404 with error",
+  "status": 404,
+  "response": "error: Model nope not trained"
+ },
+ {
+  "probe": "predict_single, Amount=1,000,000",
+  "expected": "200, probability in [0,1]",
+  "status": 200,
+  "response": "fraud_probability nan, label LEGITIMATE, risk LOW"
+ },
+ {
+  "probe": "predict_single, Amount=-50",
+  "expected": "200 or validation error",
+  "status": 200,
+  "response": "fraud_probability 0.3785, label LEGITIMATE, risk LOW"
+ },
+ {
+  "probe": "predict_single, Amount='abc'",
+  "expected": "error",
+  "status": 500,
+  "response": "error: could not convert string to float: 'abc'"
+ },
+ {
+  "probe": "predict_single, unknown merchant 'Casino'",
+  "expected": "200 (unknown category ignored)",
+  "status": 200,
+  "response": "fraud_probability 0.3994, label LEGITIMATE, risk LOW"
+ },
+ {
+  "probe": "predict_single, only Amount=1200 sent",
+  "expected": "200, other fields default",
+  "status": 200,
+  "response": "fraud_probability 0.6628, label FRAUD, risk MEDIUM"
+ },
+ {
+  "probe": "predict_single, mode=classical",
+  "expected": "200",
+  "status": 200,
+  "response": "fraud_probability 0.5011, label FRAUD, risk None"
+ },
+ {
+  "probe": "POST /api/predict_batch, no file",
+  "expected": "400",
+  "status": 400,
+  "response": "error: No file uploaded"
+ },
+ {
+  "probe": "predict_batch, empty CSV file",
+  "expected": "error",
+  "status": 500,
+  "response": "error: No columns to parse from file"
+ },
+ {
+  "probe": "predict_batch, malformed CSV (binary junk)",
+  "expected": "error",
+  "status": 500,
+  "response": "error: 'utf-8' codec can't decode byte 0x80 in position 128: invalid start byte"
+ },
+ {
+  "probe": "predict_batch, header only (0 rows)",
+  "expected": "error or rows 0",
+  "status": 200,
+  "response": "rows 0, fraud_detected 0, metrics none"
+ },
+ {
+  "probe": "predict_batch, CSV with only Amount and Time",
+  "expected": "error or defaults",
+  "status": 200,
+  "response": "rows 2, fraud_detected 2, metrics none"
+ },
+ {
+  "probe": "predict_batch, valid sample_batch.csv",
+  "expected": "200 metrics present",
+  "status": 200,
+  "response": "rows 20, fraud_detected 20, metrics present"
+ },
+ {
+  "probe": "GET /api/qubo?mode=nope",
+  "expected": "404",
+  "status": 404,
+  "response": "error: Model not trained yet. Please train first."
+ },
+ {
+  "probe": "GET /api/nonexistent",
+  "expected": "404",
+  "status": 404,
+  "response": "<!doctype html> <html lang=en> <title>404 Not Found</title> <h1>Not Found</h1> <p>The requested URL was not found on the server. If you entered the URL manually"
+ },
+ {
+  "probe": "GET /api/export_predictions",
+  "expected": "200 csv",
+  "status": 200,
+  "response": "Amount,Time,Merchant_Category,Transaction_Type,Card_Present,Country_Match,V1,V2,V3,V4,V5,V6,V7,V8,V9,V10,V11,V12,V13,V14,V15,V16,V17,V18,V19,V20,V21,V22,Class,P"
+ },
+ {
+  "probe": "GET /api/health with Origin: http://evil.example",
+  "expected": "CORS policy",
+  "status": 200,
+  "response": "Access-Control-Allow-Origin: http://evil.example"
+ }
+]

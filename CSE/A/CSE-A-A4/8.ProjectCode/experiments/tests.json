@@ -1,0 +1,1 @@
+{"smoke_total": 20, "smoke_passed": 20, "smoke_note": "scripts/smoke_test.py run read-only against http://127.0.0.1:8304 on 2026-10-25", "pytest": "no pytest suite exists in the project"}

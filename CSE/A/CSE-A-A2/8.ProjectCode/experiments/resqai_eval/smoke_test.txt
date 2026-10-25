@@ -1,0 +1,34 @@
+[PASS] health ok - models_loaded=True
+[PASS] register rejects a short password
+[PASS] register rejects a bad email
+[PASS] register creates an account and returns a token
+[PASS] register rejects a duplicate email
+[PASS] login rejects a wrong password
+[PASS] login returns a token
+[PASS] /me returns the signed-in user
+[PASS] /me rejects a bad token
+[PASS] simulate normal returns a reading
+[PASS] predict normal has response shape - None @ 0.0
+[PASS] normal driving is not an accident
+[PASS] simulate brake returns a reading
+[PASS] predict brake has response shape - None @ 0.0
+[PASS] simulate minor returns a reading
+[PASS] predict minor has response shape - Minor @ 1.0
+[PASS] simulate moderate returns a reading
+[PASS] predict moderate has response shape - Moderate @ 0.995
+[PASS] simulate severe returns a reading
+[PASS] predict severe has response shape - Severe @ 1.0
+[PASS] severe crash is detected
+[PASS] minor scenario is rated Minor (>=90% of 40) - 40/40
+[PASS] moderate scenario is rated Moderate (>=90% of 40) - 39/40
+[PASS] severe scenario is rated Severe (>=90% of 40) - 40/40
+[PASS] manual calm reading predicts no accident
+[PASS] hospitals returns 5 sorted by distance
+[PASS] emergency dispatches - RQ-1792892835
+[PASS] emergency lists 3 nearest hospitals
+[PASS] emergency message names the severity
+[PASS] emergency numbers present
+[PASS] emergency without GPS falls back to a server location
+[PASS] frontend serves the app shell
+
+ALL CHECKS PASSED

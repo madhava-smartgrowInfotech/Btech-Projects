@@ -1,0 +1,57 @@
+{
+  "host": "127.0.0.1:8302",
+  "server": "Flask 3 / Werkzeug development server, debug=True, one process",
+  "endpoints": {
+    "GET /api/simulate": {
+      "n": 300,
+      "mean": 12.7,
+      "p50": 15.09,
+      "p95": 24.82,
+      "p99": 25.38,
+      "max": 25.65
+    },
+    "POST /api/predict": {
+      "n": 300,
+      "mean": 26.17,
+      "p50": 26.21,
+      "p95": 37.84,
+      "p99": 44.84,
+      "max": 124.7
+    },
+    "GET /api/hospitals?k=3": {
+      "n": 300,
+      "mean": 13.48,
+      "p50": 15.31,
+      "p95": 24.75,
+      "p99": 26.72,
+      "max": 79.44
+    },
+    "POST /api/emergency": {
+      "n": 300,
+      "mean": 13.8,
+      "p50": 15.69,
+      "p95": 24.65,
+      "p99": 26.75,
+      "max": 97.59
+    }
+  },
+  "alert_path_ms": {
+    "n": 150,
+    "mean": 56.43,
+    "p50": 56.54,
+    "p95": 82.72,
+    "p99": 100.49,
+    "max": 132.29,
+    "note": "simulate + predict + emergency, three sequential HTTP calls on loopback; excludes the 15 s confirmation countdown and any real SMS / network delivery"
+  },
+  "design_confirmation_window_s": 15,
+  "predict_new_connection_ms": {
+    "n": 100,
+    "mean": 28.02,
+    "p50": 27.3,
+    "p95": 38.2,
+    "p99": 50.82,
+    "max": 134.43
+  },
+  "predict_throughput_req_per_s_single_client": 34.1
+}

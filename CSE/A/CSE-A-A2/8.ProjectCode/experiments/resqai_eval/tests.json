@@ -1,0 +1,351 @@
+{
+  "total": 55,
+  "passed": 47,
+  "failed": 8,
+  "by_group": {
+    "unit": {
+      "passed": 17,
+      "total": 17
+    },
+    "edge": {
+      "passed": 12,
+      "total": 20
+    },
+    "security": {
+      "passed": 18,
+      "total": 18
+    }
+  },
+  "results": [
+    {
+      "group": "unit",
+      "name": "haversine of identical points is 0",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "unit",
+      "name": "haversine is symmetric",
+      "passed": true,
+      "detail": "6.227 km"
+    },
+    {
+      "group": "unit",
+      "name": "haversine London-Paris is about 343 km",
+      "passed": true,
+      "detail": "343.6 km"
+    },
+    {
+      "group": "unit",
+      "name": "nearest_hospitals top-3 distances match brute force on 500 random points",
+      "passed": true,
+      "detail": "0 mismatches"
+    },
+    {
+      "group": "unit",
+      "name": "nearest_hospitals returns distances in ascending order",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "unit",
+      "name": "build_feature_vector derives acc_magnitude = 5 from (3, 4, 0)",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "unit",
+      "name": "build_feature_vector stores jerk as absolute value",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "unit",
+      "name": "empty payload defaults to a 1 g, stationary reading",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "unit",
+      "name": "feature vector follows the trained feature order",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "unit",
+      "name": "rule-based fallback bands 10/20/30/60 m/s2 -> None/Minor/Moderate/Severe",
+      "passed": true,
+      "detail": "[0, 1, 2, 3]"
+    },
+    {
+      "group": "unit",
+      "name": "trained models are loaded",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "unit",
+      "name": "/api/health reports models_loaded",
+      "passed": true,
+      "detail": "{'models_loaded': True, 'status': 'ok'}"
+    },
+    {
+      "group": "unit",
+      "name": "60 simulated 'normal' readings are all rated None",
+      "passed": true,
+      "detail": "60/60"
+    },
+    {
+      "group": "unit",
+      "name": "60 simulated 'brake' readings are all rated None",
+      "passed": true,
+      "detail": "60/60"
+    },
+    {
+      "group": "unit",
+      "name": "60 simulated 'minor' readings are all rated Minor",
+      "passed": true,
+      "detail": "59/60"
+    },
+    {
+      "group": "unit",
+      "name": "60 simulated 'moderate' readings are all rated Moderate",
+      "passed": true,
+      "detail": "60/60"
+    },
+    {
+      "group": "unit",
+      "name": "60 simulated 'severe' readings are all rated Severe",
+      "passed": true,
+      "detail": "60/60"
+    },
+    {
+      "group": "edge",
+      "name": "predict accepts an empty object and returns no accident",
+      "passed": true,
+      "detail": "200"
+    },
+    {
+      "group": "edge",
+      "name": "predict with malformed JSON gives a client error (4xx)",
+      "passed": true,
+      "detail": "HTTP 400"
+    },
+    {
+      "group": "edge",
+      "name": "predict with a non-numeric field gives a client error (4xx), not a crash",
+      "passed": false,
+      "detail": "HTTP 500"
+    },
+    {
+      "group": "edge",
+      "name": "predict with a JSON array body gives a client error (4xx)",
+      "passed": false,
+      "detail": "HTTP 500"
+    },
+    {
+      "group": "edge",
+      "name": "predict with NaN is rejected or answered safely",
+      "passed": true,
+      "detail": "HTTP 200 {'accident_detected': False, 'confidence': 0.0, 'features_used': {'acc_magnitude"
+    },
+    {
+      "group": "edge",
+      "name": "predict with absurdly large values still answers",
+      "passed": true,
+      "detail": "HTTP 200; Minor"
+    },
+    {
+      "group": "edge",
+      "name": "predict with negative speed answers",
+      "passed": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "group": "edge",
+      "name": "GET on a POST-only route gives 405",
+      "passed": true,
+      "detail": "405"
+    },
+    {
+      "group": "edge",
+      "name": "simulate with an unknown scenario falls back to a random one",
+      "passed": true,
+      "detail": "200"
+    },
+    {
+      "group": "edge",
+      "name": "hospitals with a non-numeric lat gives a client error (4xx)",
+      "passed": false,
+      "detail": "HTTP 500"
+    },
+    {
+      "group": "edge",
+      "name": "hospitals with k=0 returns an empty list",
+      "passed": true,
+      "detail": "HTTP 200, 0 rows"
+    },
+    {
+      "group": "edge",
+      "name": "hospitals with k=-1 is rejected or empty (a Python slice would return 9 of 10)",
+      "passed": false,
+      "detail": "HTTP 200, 9 rows"
+    },
+    {
+      "group": "edge",
+      "name": "hospitals with k=1000 is capped at the 10-entry directory",
+      "passed": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "group": "edge",
+      "name": "hospitals with out-of-range coordinates is rejected (4xx)",
+      "passed": false,
+      "detail": "HTTP 200"
+    },
+    {
+      "group": "edge",
+      "name": "emergency with no body falls back to the default area and dispatches",
+      "passed": true,
+      "detail": "200"
+    },
+    {
+      "group": "edge",
+      "name": "emergency with a non-numeric confidence gives a client error (4xx)",
+      "passed": false,
+      "detail": "HTTP 500"
+    },
+    {
+      "group": "edge",
+      "name": "emergency severity_label is validated against the four labels",
+      "passed": false,
+      "detail": "HTTP 200"
+    },
+    {
+      "group": "edge",
+      "name": "emergency message carries a map link and the nearest hospital first",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "edge",
+      "name": "alert ids differ between alerts raised one second apart",
+      "passed": true,
+      "detail": "['RQ-1792892817', 'RQ-1792892818', 'RQ-1792892819']"
+    },
+    {
+      "group": "edge",
+      "name": "alert ids are unique for two alerts in the same second (id is a 1-second timestamp)",
+      "passed": false,
+      "detail": "RQ-1792892820 vs RQ-1792892820"
+    },
+    {
+      "group": "security",
+      "name": "REQUIRE_AUTH=1: /api/predict without a token is refused (401)",
+      "passed": true,
+      "detail": "HTTP 401"
+    },
+    {
+      "group": "security",
+      "name": "REQUIRE_AUTH=1: /api/simulate without a token is refused (401)",
+      "passed": true,
+      "detail": "HTTP 401"
+    },
+    {
+      "group": "security",
+      "name": "REQUIRE_AUTH=1: /api/hospitals without a token is refused (401)",
+      "passed": true,
+      "detail": "HTTP 401"
+    },
+    {
+      "group": "security",
+      "name": "REQUIRE_AUTH=1: /api/emergency without a token is refused (401)",
+      "passed": true,
+      "detail": "HTTP 401"
+    },
+    {
+      "group": "security",
+      "name": "REQUIRE_AUTH=1: /api/health stays public",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "security",
+      "name": "register returns 201 and a token, never the password or its hash",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "security",
+      "name": "a valid token opens the protected API",
+      "passed": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "group": "security",
+      "name": "a token with an altered signature is refused",
+      "passed": true,
+      "detail": "HTTP 401"
+    },
+    {
+      "group": "security",
+      "name": "a non-Bearer Authorization header is refused",
+      "passed": true,
+      "detail": "HTTP 401"
+    },
+    {
+      "group": "security",
+      "name": "/me never exposes password_hash",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "security",
+      "name": "register rejects a 1-character name",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "security",
+      "name": "register rejects a 200-character password",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "security",
+      "name": "register treats e-mail case-insensitively (duplicate -> 409)",
+      "passed": true,
+      "detail": "HTTP 409"
+    },
+    {
+      "group": "security",
+      "name": "login with a malformed body is a client error, not a 500",
+      "passed": true,
+      "detail": "HTTP 401"
+    },
+    {
+      "group": "security",
+      "name": "five wrong passwords lock the account: the correct password is then refused with 429",
+      "passed": true,
+      "detail": "[401, 401, 401, 401, 401] then 429"
+    },
+    {
+      "group": "security",
+      "name": "stored passwords are salted hashes (scrypt/pbkdf2), never plain text",
+      "passed": true,
+      "detail": "scrypt:32768:8:1"
+    },
+    {
+      "group": "security",
+      "name": ".env and data/users.json are git-ignored",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "group": "security",
+      "name": "an OPTIONS pre-flight is not blocked by the auth guard",
+      "passed": true,
+      "detail": "HTTP 200"
+    }
+  ]
+}

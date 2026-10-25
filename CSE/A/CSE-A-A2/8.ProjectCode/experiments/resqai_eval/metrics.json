@@ -1,0 +1,944 @@
+{
+  "environment": {
+    "python": "3.11.9",
+    "sklearn": "1.5.0",
+    "numpy": "1.26.4",
+    "pandas": "2.2.1"
+  },
+  "dataset": {
+    "generator_reproduces_train_models": true,
+    "n_total": 12000,
+    "n_train": 9600,
+    "n_test": 2400,
+    "features": [
+      "acc_x",
+      "acc_y",
+      "acc_z",
+      "acc_magnitude",
+      "gyro_x",
+      "gyro_y",
+      "gyro_z",
+      "gyro_magnitude",
+      "speed_before",
+      "speed_change",
+      "jerk"
+    ],
+    "kind_counts_total": {
+      "normal": 7289,
+      "harsh_brake": 2324,
+      "minor_crash": 1215,
+      "moderate_crash": 725,
+      "severe_crash": 447
+    },
+    "severity_counts_total": {
+      "None": 9613,
+      "Minor": 1215,
+      "Moderate": 725,
+      "Severe": 447
+    },
+    "accident_rate_total": 0.1989,
+    "kind_counts_test": {
+      "normal": 1463,
+      "harsh_brake": 460,
+      "minor_crash": 233,
+      "moderate_crash": 156,
+      "severe_crash": 88
+    },
+    "severity_counts_test": {
+      "None": 1923,
+      "Minor": 233,
+      "Moderate": 156,
+      "Severe": 88
+    },
+    "class_overlap": {
+      "acc_magnitude": {
+        "normal": [
+          8.7,
+          10.9
+        ],
+        "harsh_brake": [
+          8.83,
+          13.18
+        ],
+        "minor_crash": [
+          15.3,
+          32.8
+        ],
+        "moderate_crash": [
+          24.92,
+          53.64
+        ],
+        "severe_crash": [
+          42.41,
+          87.87
+        ]
+      },
+      "jerk": {
+        "normal": [
+          0.0,
+          1.89
+        ],
+        "harsh_brake": [
+          0.03,
+          12.43
+        ],
+        "minor_crash": [
+          3.33,
+          35.97
+        ],
+        "moderate_crash": [
+          4.94,
+          60.51
+        ],
+        "severe_crash": [
+          29.53,
+          94.36
+        ]
+      },
+      "speed_change": {
+        "normal": [
+          -7.4,
+          6.94
+        ],
+        "harsh_brake": [
+          -34.98,
+          -10.02
+        ],
+        "minor_crash": [
+          -39.97,
+          -10.01
+        ],
+        "moderate_crash": [
+          -54.9,
+          -25.05
+        ],
+        "severe_crash": [
+          -99.94,
+          -45.05
+        ]
+      }
+    }
+  },
+  "shipped_model": {
+    "feature_names_match": true,
+    "pickle_version_warnings": [
+      "Trying to unpickle estimator DecisionTreeClassifier from version 1.9.0 when using version 1.5.0. This might lead to brea",
+      "Trying to unpickle estimator RandomForestClassifier from version 1.9.0 when using version 1.5.0. This might lead to brea",
+      "Trying to unpickle estimator StandardScaler from version 1.9.0 when using version 1.5.0. This might lead to breaking cod"
+    ],
+    "detector": {
+      "n_estimators": 200,
+      "max_depth": 10
+    },
+    "severity": {
+      "n_estimators": 250,
+      "max_depth": 12
+    },
+    "detector_test": {
+      "n": 2400,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "false_alarm_rate": 0.0,
+      "miss_rate": 0.0,
+      "confusion": [
+        [
+          1923,
+          0
+        ],
+        [
+          0,
+          477
+        ]
+      ],
+      "roc_auc": 1.0
+    },
+    "severity_test_after_gating": {
+      "n": 2400,
+      "accuracy": 0.99958,
+      "macro_f1": 0.99866,
+      "weighted_f1": 0.99958,
+      "per_class": {
+        "None": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1923
+        },
+        "Minor": {
+          "precision": 1.0,
+          "recall": 0.9957,
+          "f1": 0.9978,
+          "support": 233
+        },
+        "Moderate": {
+          "precision": 0.9936,
+          "recall": 1.0,
+          "f1": 0.9968,
+          "support": 156
+        },
+        "Severe": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 88
+        }
+      },
+      "confusion": [
+        [
+          1923,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          232,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          156,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          88
+        ]
+      ],
+      "errors": 1,
+      "adjacent_class_errors": 1,
+      "adjacent_share_of_errors": 1.0
+    },
+    "alert_trigger_test": {
+      "n": 2400,
+      "accuracy": 0.99958,
+      "precision": 0.99592,
+      "recall": 1.0,
+      "f1": 0.99796,
+      "false_alarm_rate": 0.00046,
+      "miss_rate": 0.0,
+      "confusion": [
+        [
+          2155,
+          1
+        ],
+        [
+          0,
+          244
+        ]
+      ]
+    },
+    "severity_test_raw": {
+      "n": 2400,
+      "accuracy": 0.99958,
+      "macro_f1": 0.99866,
+      "weighted_f1": 0.99958,
+      "per_class": {
+        "None": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1923
+        },
+        "Minor": {
+          "precision": 1.0,
+          "recall": 0.9957,
+          "f1": 0.9978,
+          "support": 233
+        },
+        "Moderate": {
+          "precision": 0.9936,
+          "recall": 1.0,
+          "f1": 0.9968,
+          "support": 156
+        },
+        "Severe": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 88
+        }
+      },
+      "confusion": [
+        [
+          1923,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          232,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          156,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          88
+        ]
+      ],
+      "errors": 1,
+      "adjacent_class_errors": 1,
+      "adjacent_share_of_errors": 1.0
+    },
+    "detector_train_accuracy": 1.0,
+    "severity_train_accuracy": 1.0,
+    "per_event_kind": {
+      "normal": {
+        "n": 1463,
+        "predicted_accident_rate": 0.0,
+        "alert_trigger_rate": 0.0,
+        "predicted_severity_counts": {
+          "None": 1463,
+          "Minor": 0,
+          "Moderate": 0,
+          "Severe": 0
+        },
+        "mean_accident_probability": 0.0
+      },
+      "harsh_brake": {
+        "n": 460,
+        "predicted_accident_rate": 0.0,
+        "alert_trigger_rate": 0.0,
+        "predicted_severity_counts": {
+          "None": 460,
+          "Minor": 0,
+          "Moderate": 0,
+          "Severe": 0
+        },
+        "mean_accident_probability": 0.0024
+      },
+      "minor_crash": {
+        "n": 233,
+        "predicted_accident_rate": 1.0,
+        "alert_trigger_rate": 0.0043,
+        "predicted_severity_counts": {
+          "None": 0,
+          "Minor": 232,
+          "Moderate": 1,
+          "Severe": 0
+        },
+        "mean_accident_probability": 0.9984
+      },
+      "moderate_crash": {
+        "n": 156,
+        "predicted_accident_rate": 1.0,
+        "alert_trigger_rate": 1.0,
+        "predicted_severity_counts": {
+          "None": 0,
+          "Minor": 0,
+          "Moderate": 156,
+          "Severe": 0
+        },
+        "mean_accident_probability": 0.9998
+      },
+      "severe_crash": {
+        "n": 88,
+        "predicted_accident_rate": 1.0,
+        "alert_trigger_rate": 1.0,
+        "predicted_severity_counts": {
+          "None": 0,
+          "Minor": 0,
+          "Moderate": 0,
+          "Severe": 88
+        },
+        "mean_accident_probability": 1.0
+      }
+    },
+    "misclassified_examples": [
+      {
+        "kind": "minor_crash",
+        "true_severity": "Minor",
+        "pred_severity": "Moderate",
+        "accident_probability": 1.0,
+        "acc_magnitude": 31.93,
+        "gyro_magnitude": 2.79,
+        "speed_before": 51.73,
+        "speed_change": -24.33,
+        "jerk": 27.04
+      }
+    ]
+  },
+  "retrained_same_seed": {
+    "detector_test": {
+      "n": 2400,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "false_alarm_rate": 0.0,
+      "miss_rate": 0.0,
+      "confusion": [
+        [
+          1923,
+          0
+        ],
+        [
+          0,
+          477
+        ]
+      ],
+      "roc_auc": 1.0
+    },
+    "severity_test": {
+      "n": 2400,
+      "accuracy": 0.99958,
+      "macro_f1": 0.99866,
+      "weighted_f1": 0.99958,
+      "per_class": {
+        "None": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1923
+        },
+        "Minor": {
+          "precision": 1.0,
+          "recall": 0.9957,
+          "f1": 0.9978,
+          "support": 233
+        },
+        "Moderate": {
+          "precision": 0.9936,
+          "recall": 1.0,
+          "f1": 0.9968,
+          "support": 156
+        },
+        "Severe": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 88
+        }
+      },
+      "confusion": [
+        [
+          1923,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          232,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          156,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          88
+        ]
+      ],
+      "errors": 1,
+      "adjacent_class_errors": 1,
+      "adjacent_share_of_errors": 1.0
+    },
+    "alert_trigger_test": {
+      "n": 2400,
+      "accuracy": 0.99958,
+      "precision": 0.99592,
+      "recall": 1.0,
+      "f1": 0.99796,
+      "false_alarm_rate": 0.00046,
+      "miss_rate": 0.0,
+      "confusion": [
+        [
+          2155,
+          1
+        ],
+        [
+          0,
+          244
+        ]
+      ]
+    },
+    "agreement_with_shipped_detector": 1.0,
+    "agreement_with_shipped_severity": 1.0
+  },
+  "five_seed": {
+    "seeds": [
+      11,
+      22,
+      33,
+      44,
+      55
+    ],
+    "rows": [
+      {
+        "seed": 11,
+        "det_accuracy": 1.0,
+        "det_f1": 1.0,
+        "det_recall": 1.0,
+        "det_false_alarm": 0.0,
+        "sev_accuracy": 0.99917,
+        "sev_macro_f1": 0.99727,
+        "alert_precision": 0.99576,
+        "alert_recall": 0.99576,
+        "alert_false_alarm": 0.00046
+      },
+      {
+        "seed": 22,
+        "det_accuracy": 1.0,
+        "det_f1": 1.0,
+        "det_recall": 1.0,
+        "det_false_alarm": 0.0,
+        "sev_accuracy": 0.99875,
+        "sev_macro_f1": 0.99503,
+        "alert_precision": 1.0,
+        "alert_recall": 0.9917,
+        "alert_false_alarm": 0.0
+      },
+      {
+        "seed": 33,
+        "det_accuracy": 1.0,
+        "det_f1": 1.0,
+        "det_recall": 1.0,
+        "det_false_alarm": 0.0,
+        "sev_accuracy": 0.99958,
+        "sev_macro_f1": 0.99847,
+        "alert_precision": 1.0,
+        "alert_recall": 0.99556,
+        "alert_false_alarm": 0.0
+      },
+      {
+        "seed": 44,
+        "det_accuracy": 1.0,
+        "det_f1": 1.0,
+        "det_recall": 1.0,
+        "det_false_alarm": 0.0,
+        "sev_accuracy": 0.99833,
+        "sev_macro_f1": 0.99269,
+        "alert_precision": 1.0,
+        "alert_recall": 0.99142,
+        "alert_false_alarm": 0.0
+      },
+      {
+        "seed": 55,
+        "det_accuracy": 1.0,
+        "det_f1": 1.0,
+        "det_recall": 1.0,
+        "det_false_alarm": 0.0,
+        "sev_accuracy": 0.99792,
+        "sev_macro_f1": 0.99158,
+        "alert_precision": 0.9959,
+        "alert_recall": 0.99184,
+        "alert_false_alarm": 0.00046
+      }
+    ],
+    "mean": {
+      "det_accuracy": 1.0,
+      "det_f1": 1.0,
+      "det_recall": 1.0,
+      "det_false_alarm": 0.0,
+      "sev_accuracy": 0.99875,
+      "sev_macro_f1": 0.99501,
+      "alert_precision": 0.99833,
+      "alert_recall": 0.99326,
+      "alert_false_alarm": 0.00018
+    },
+    "std": {
+      "det_accuracy": 0.0,
+      "det_f1": 0.0,
+      "det_recall": 0.0,
+      "det_false_alarm": 0.0,
+      "sev_accuracy": 0.00066,
+      "sev_macro_f1": 0.00293,
+      "alert_precision": 0.00228,
+      "alert_recall": 0.0022,
+      "alert_false_alarm": 0.00025
+    },
+    "min": {
+      "det_accuracy": 1.0,
+      "det_f1": 1.0,
+      "det_recall": 1.0,
+      "det_false_alarm": 0.0,
+      "sev_accuracy": 0.99792,
+      "sev_macro_f1": 0.99158,
+      "alert_precision": 0.99576,
+      "alert_recall": 0.99142,
+      "alert_false_alarm": 0.0
+    }
+  },
+  "baselines": {
+    "rule_based_fallback (acc_magnitude < 15 / 28 / 45)": {
+      "det_accuracy": 1.0,
+      "det_f1": 1.0,
+      "det_false_alarm": 0.0,
+      "sev_accuracy": 0.975,
+      "sev_macro_f1": 0.9122
+    },
+    "logistic_regression": {
+      "det_accuracy": 1.0,
+      "det_f1": 1.0,
+      "det_false_alarm": 0.0,
+      "sev_accuracy": 0.9983,
+      "sev_macro_f1": 0.9946
+    },
+    "decision_tree (depth 10)": {
+      "det_accuracy": 1.0,
+      "det_f1": 1.0,
+      "det_false_alarm": 0.0,
+      "sev_accuracy": 0.9988,
+      "sev_macro_f1": 0.996
+    },
+    "hist_gradient_boosting": {
+      "det_accuracy": 1.0,
+      "det_f1": 1.0,
+      "det_false_alarm": 0.0,
+      "sev_accuracy": 0.9996,
+      "sev_macro_f1": 0.9987
+    },
+    "random_forest (ResQAI, retrained)": {
+      "det_accuracy": 1.0,
+      "det_f1": 1.0,
+      "det_false_alarm": 0.0,
+      "sev_accuracy": 0.99958,
+      "sev_macro_f1": 0.99866
+    }
+  },
+  "importance": {
+    "detector_gini": {
+      "acc_x": 0.0178,
+      "acc_y": 0.0371,
+      "acc_z": 0.0018,
+      "acc_magnitude": 0.3235,
+      "gyro_x": 0.0139,
+      "gyro_y": 0.0125,
+      "gyro_z": 0.0003,
+      "gyro_magnitude": 0.2064,
+      "speed_before": 0.0006,
+      "speed_change": 0.0752,
+      "jerk": 0.3109
+    },
+    "severity_gini": {
+      "acc_x": 0.0149,
+      "acc_y": 0.0284,
+      "acc_z": 0.0038,
+      "acc_magnitude": 0.386,
+      "gyro_x": 0.0043,
+      "gyro_y": 0.0038,
+      "gyro_z": 0.0022,
+      "gyro_magnitude": 0.0962,
+      "speed_before": 0.0681,
+      "speed_change": 0.1519,
+      "jerk": 0.2404
+    },
+    "detector_permutation_f1_drop": {
+      "acc_x": 0.0,
+      "acc_y": 0.0,
+      "acc_z": 0.0,
+      "acc_magnitude": 0.7983,
+      "gyro_x": 0.0,
+      "gyro_y": 0.0,
+      "gyro_z": 0.0,
+      "gyro_magnitude": 0.0,
+      "speed_before": 0.0,
+      "speed_change": 0.0,
+      "jerk": 0.0
+    },
+    "severity_permutation_macro_f1_drop": {
+      "acc_x": 0.0003,
+      "acc_y": 0.0003,
+      "acc_z": 0.0,
+      "acc_magnitude": 0.4594,
+      "gyro_x": 0.0,
+      "gyro_y": 0.0,
+      "gyro_z": 0.0,
+      "gyro_magnitude": 0.0005,
+      "speed_before": 0.1297,
+      "speed_change": 0.1887,
+      "jerk": 0.0514
+    }
+  },
+  "ablation": {
+    "all 11 features": {
+      "n_features": 11,
+      "det_accuracy": 1.0,
+      "det_f1": 1.0,
+      "det_false_alarm": 0.0,
+      "sev_accuracy": 0.9996,
+      "sev_macro_f1": 0.9987
+    },
+    "accelerometer only (x, y, z, magnitude)": {
+      "n_features": 4,
+      "det_accuracy": 1.0,
+      "det_f1": 1.0,
+      "det_false_alarm": 0.0,
+      "sev_accuracy": 0.9904,
+      "sev_macro_f1": 0.9622
+    },
+    "acc_magnitude only": {
+      "n_features": 1,
+      "det_accuracy": 1.0,
+      "det_f1": 1.0,
+      "det_false_alarm": 0.0,
+      "sev_accuracy": 0.9858,
+      "sev_macro_f1": 0.9459
+    },
+    "without gyroscope": {
+      "n_features": 7,
+      "det_accuracy": 1.0,
+      "det_f1": 1.0,
+      "det_false_alarm": 0.0,
+      "sev_accuracy": 0.9996,
+      "sev_macro_f1": 0.9987
+    },
+    "without speed (speed_before, speed_change)": {
+      "n_features": 9,
+      "det_accuracy": 1.0,
+      "det_f1": 1.0,
+      "det_false_alarm": 0.0,
+      "sev_accuracy": 0.9983,
+      "sev_macro_f1": 0.9929
+    },
+    "without jerk": {
+      "n_features": 10,
+      "det_accuracy": 1.0,
+      "det_f1": 1.0,
+      "det_false_alarm": 0.0,
+      "sev_accuracy": 0.9983,
+      "sev_macro_f1": 0.9938
+    },
+    "without acc_magnitude and jerk": {
+      "n_features": 9,
+      "det_accuracy": 0.9996,
+      "det_f1": 0.999,
+      "det_false_alarm": 0.00052,
+      "sev_accuracy": 0.9917,
+      "sev_macro_f1": 0.9677
+    }
+  },
+  "noise_robustness": [
+    {
+      "noise_sd_fraction_of_feature_sd": 0.0,
+      "det_accuracy": 1.0,
+      "det_f1": 1.0,
+      "det_false_alarm": 0.0,
+      "det_recall": 1.0,
+      "sev_accuracy": 0.99958,
+      "sev_macro_f1": 0.99866
+    },
+    {
+      "noise_sd_fraction_of_feature_sd": 0.05,
+      "det_accuracy": 1.0,
+      "det_f1": 1.0,
+      "det_false_alarm": 0.0,
+      "det_recall": 1.0,
+      "sev_accuracy": 0.99958,
+      "sev_macro_f1": 0.99866
+    },
+    {
+      "noise_sd_fraction_of_feature_sd": 0.1,
+      "det_accuracy": 1.0,
+      "det_f1": 1.0,
+      "det_false_alarm": 0.0,
+      "det_recall": 1.0,
+      "sev_accuracy": 0.99708,
+      "sev_macro_f1": 0.98976
+    },
+    {
+      "noise_sd_fraction_of_feature_sd": 0.25,
+      "det_accuracy": 0.99042,
+      "det_f1": 0.97646,
+      "det_false_alarm": 0.01196,
+      "det_recall": 1.0,
+      "sev_accuracy": 0.98042,
+      "sev_macro_f1": 0.94271
+    },
+    {
+      "noise_sd_fraction_of_feature_sd": 0.5,
+      "det_accuracy": 0.80583,
+      "det_f1": 0.67183,
+      "det_false_alarm": 0.24233,
+      "det_recall": 1.0,
+      "sev_accuracy": 0.80292,
+      "sev_macro_f1": 0.75686
+    },
+    {
+      "noise_sd_fraction_of_feature_sd": 1.0,
+      "det_accuracy": 0.41667,
+      "det_f1": 0.39759,
+      "det_false_alarm": 0.72023,
+      "det_recall": 0.96855,
+      "sev_accuracy": 0.37208,
+      "sev_macro_f1": 0.42735
+    }
+  ],
+  "ood_probes": {
+    "pothole": {
+      "n": 1000,
+      "predicted_accident_rate": 0.489,
+      "alert_trigger_rate": 0.0,
+      "mean_accident_probability": 0.4902,
+      "predicted_severity_counts": {
+        "None": 511,
+        "Minor": 489,
+        "Moderate": 0,
+        "Severe": 0
+      },
+      "acc_magnitude_range": [
+        0.2,
+        27.8
+      ]
+    },
+    "speed_breaker": {
+      "n": 1000,
+      "predicted_accident_rate": 0.505,
+      "alert_trigger_rate": 0.0,
+      "mean_accident_probability": 0.4503,
+      "predicted_severity_counts": {
+        "None": 495,
+        "Minor": 505,
+        "Moderate": 0,
+        "Severe": 0
+      },
+      "acc_magnitude_range": [
+        12.8,
+        18.9
+      ]
+    }
+  },
+  "threshold_sweep": [
+    {
+      "threshold": 0.05,
+      "precision": 0.98963,
+      "recall": 1.0,
+      "f1": 0.99479,
+      "false_alarm_rate": 0.0026,
+      "false_positives": 5,
+      "false_negatives": 0
+    },
+    {
+      "threshold": 0.1,
+      "precision": 0.99582,
+      "recall": 1.0,
+      "f1": 0.99791,
+      "false_alarm_rate": 0.00104,
+      "false_positives": 2,
+      "false_negatives": 0
+    },
+    {
+      "threshold": 0.2,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "false_alarm_rate": 0.0,
+      "false_positives": 0,
+      "false_negatives": 0
+    },
+    {
+      "threshold": 0.3,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "false_alarm_rate": 0.0,
+      "false_positives": 0,
+      "false_negatives": 0
+    },
+    {
+      "threshold": 0.4,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "false_alarm_rate": 0.0,
+      "false_positives": 0,
+      "false_negatives": 0
+    },
+    {
+      "threshold": 0.5,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "false_alarm_rate": 0.0,
+      "false_positives": 0,
+      "false_negatives": 0
+    },
+    {
+      "threshold": 0.6,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "false_alarm_rate": 0.0,
+      "false_positives": 0,
+      "false_negatives": 0
+    },
+    {
+      "threshold": 0.7,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "false_alarm_rate": 0.0,
+      "false_positives": 0,
+      "false_negatives": 0
+    },
+    {
+      "threshold": 0.8,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "false_alarm_rate": 0.0,
+      "false_positives": 0,
+      "false_negatives": 0
+    },
+    {
+      "threshold": 0.9,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "false_alarm_rate": 0.0,
+      "false_positives": 0,
+      "false_negatives": 0
+    },
+    {
+      "threshold": 0.95,
+      "precision": 1.0,
+      "recall": 0.99581,
+      "f1": 0.9979,
+      "false_alarm_rate": 0.0,
+      "false_positives": 0,
+      "false_negatives": 2
+    }
+  ],
+  "probability_separation": {
+    "min_proba_true_accident": 0.9,
+    "max_proba_true_non_accident": 0.17
+  },
+  "inference_latency_ms": {
+    "n": 1000,
+    "mean": 14.01,
+    "p50": 13.95,
+    "p95": 19.67,
+    "p99": 27.37,
+    "max": 69.95,
+    "note": "scaler + both forests, one reading, single process, no HTTP"
+  },
+  "model_size_kb": {
+    "accident_detector.pkl": 385.5,
+    "severity_predictor.pkl": 2608.2,
+    "feature_scaler.pkl": 0.8,
+    "feature_names.pkl": 0.1
+  },
+  "elapsed_s": 78.2
+}

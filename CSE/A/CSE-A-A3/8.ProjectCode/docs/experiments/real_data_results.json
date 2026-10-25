@@ -1,0 +1,206 @@
+{
+ "diabetes": {
+  "source": "Pima Indians Diabetes (NIDDK), 768 rows",
+  "rows": 768,
+  "positive": 268,
+  "negative": 500,
+  "missing_cells": 652,
+  "majority_rate": 0.6510416666666667,
+  "real_cv": {
+   "Logistic Regression": {
+    "accuracy_mean": 0.7651925416631299,
+    "accuracy_std": 0.03084725917885139,
+    "f1_mean": 0.6208730050438223,
+    "f1_std": 0.05442809626442477,
+    "auc_mean": 0.8362802236198462,
+    "auc_std": 0.03104458277246171
+   },
+   "Decision Tree": {
+    "accuracy_mean": 0.7335030982089807,
+    "accuracy_std": 0.04002761296226161,
+    "f1_mean": 0.608913861737522,
+    "f1_std": 0.06660819582737725,
+    "auc_mean": 0.7621413929652924,
+    "auc_std": 0.03986942569091409
+   },
+   "Random Forest": {
+    "accuracy_mean": 0.7586565939507116,
+    "accuracy_std": 0.030774006054591827,
+    "f1_mean": 0.628158083169684,
+    "f1_std": 0.05479312597113553,
+    "auc_mean": 0.8342792918704869,
+    "auc_std": 0.0308344819782833
+   },
+   "SVM": {
+    "accuracy_mean": 0.7578134284016637,
+    "accuracy_std": 0.024229467490099944,
+    "f1_mean": 0.6119022921634102,
+    "f1_std": 0.0403969003715674,
+    "auc_mean": 0.8271113440484508,
+    "auc_std": 0.027231657553103195
+   }
+  },
+  "shipped_on_real": {
+   "accuracy": 0.75,
+   "precision": 0.6397058823529411,
+   "recall": 0.6492537313432836,
+   "f1": 0.6444444444444445,
+   "roc_auc": 0.7957686567164179,
+   "predicted_positive_rate": 0.3541666666666667,
+   "model": "SVC"
+  }
+ },
+ "heart": {
+  "source": "UCI Heart Disease, Cleveland, 303 rows",
+  "rows": 303,
+  "positive": 139,
+  "negative": 164,
+  "missing_cells": 6,
+  "majority_rate": 0.5412541254125413,
+  "real_cv": {
+   "Logistic Regression": {
+    "accuracy_mean": 0.8425865209471767,
+    "accuracy_std": 0.04196159962963312,
+    "f1_mean": 0.8220732063185155,
+    "f1_std": 0.04949151064036311,
+    "auc_mean": 0.9087777577360912,
+    "auc_std": 0.03910163471570499
+   },
+   "Decision Tree": {
+    "accuracy_mean": 0.7612750455373407,
+    "accuracy_std": 0.04974883582293834,
+    "f1_mean": 0.730936744531102,
+    "f1_std": 0.06341701794468073,
+    "auc_mean": 0.7627519824568437,
+    "auc_std": 0.05747526924629843
+   },
+   "Random Forest": {
+    "accuracy_mean": 0.8358834244080146,
+    "accuracy_std": 0.052202208641256354,
+    "f1_mean": 0.8136490946764001,
+    "f1_std": 0.06434577423148602,
+    "auc_mean": 0.9108279387793276,
+    "auc_std": 0.04024090848151441
+   },
+   "SVM": {
+    "accuracy_mean": 0.8392896174863388,
+    "accuracy_std": 0.032579062049476026,
+    "f1_mean": 0.8175966485935674,
+    "f1_std": 0.036678854959740895,
+    "auc_mean": 0.9001026301373525,
+    "auc_std": 0.03711357300542199
+   }
+  },
+  "shipped_on_real": {
+   "accuracy": 0.6963696369636964,
+   "precision": 0.6073059360730594,
+   "recall": 0.9568345323741008,
+   "f1": 0.7430167597765364,
+   "roc_auc": 0.8843218108440077,
+   "predicted_positive_rate": 0.7227722772277227,
+   "model": "LogisticRegression"
+  }
+ },
+ "liver": {
+  "source": "UCI ILPD (Indian Liver Patient), 583 rows",
+  "rows": 583,
+  "positive": 416,
+  "negative": 167,
+  "missing_cells": 4,
+  "majority_rate": 0.7135506003430532,
+  "real_cv": {
+   "Logistic Regression": {
+    "accuracy_mean": 0.7181009922389233,
+    "accuracy_std": 0.02692671659460044,
+    "f1_mean": 0.8217686197269565,
+    "f1_std": 0.020602626894532208,
+    "auc_mean": 0.7511853883576067,
+    "auc_std": 0.04142462501428349
+   },
+   "Decision Tree": {
+    "accuracy_mean": 0.6712692798899695,
+    "accuracy_std": 0.03290616071979048,
+    "f1_mean": 0.7771090363307471,
+    "f1_std": 0.03677355975511102,
+    "auc_mean": 0.6807074064869953,
+    "auc_std": 0.03754736060163702
+   },
+   "Random Forest": {
+    "accuracy_mean": 0.7061695647902545,
+    "accuracy_std": 0.03635993465409482,
+    "f1_mean": 0.8099495842067163,
+    "f1_std": 0.026373082418920512,
+    "auc_mean": 0.7531436330160638,
+    "auc_std": 0.03426547866519296
+   },
+   "SVM": {
+    "accuracy_mean": 0.7118430101188721,
+    "accuracy_std": 0.005607506157107676,
+    "f1_mean": 0.8314314823856993,
+    "f1_std": 0.00373325580130325,
+    "auc_mean": 0.6570355950582739,
+    "auc_std": 0.04121759357870978
+   }
+  },
+  "shipped_on_real": {
+   "accuracy": 0.5403087478559176,
+   "precision": 0.9404761904761905,
+   "recall": 0.3798076923076923,
+   "f1": 0.541095890410959,
+   "roc_auc": 0.7452498848456933,
+   "predicted_positive_rate": 0.2881646655231561,
+   "model": "LogisticRegression"
+  }
+ },
+ "kidney": {
+  "source": "UCI Chronic Kidney Disease, 400 rows (12 of 24 attributes)",
+  "rows": 400,
+  "positive": 250,
+  "negative": 150,
+  "missing_cells": 541,
+  "majority_rate": 0.625,
+  "real_cv": {
+   "Logistic Regression": {
+    "accuracy_mean": 0.9758333333333334,
+    "accuracy_std": 0.014766704288891135,
+    "f1_mean": 0.9805438766751412,
+    "f1_std": 0.012006351291907842,
+    "auc_mean": 0.9987555555555555,
+    "auc_std": 0.0010850271658429866
+   },
+   "Decision Tree": {
+    "accuracy_mean": 0.9741666666666668,
+    "accuracy_std": 0.014043582955293956,
+    "f1_mean": 0.979292161909268,
+    "f1_std": 0.011343221337254298,
+    "auc_mean": 0.9722222222222224,
+    "auc_std": 0.01453815754115212
+   },
+   "Random Forest": {
+    "accuracy_mean": 0.9883333333333334,
+    "accuracy_std": 0.010671873729054756,
+    "f1_mean": 0.9906776004531224,
+    "f1_std": 0.008541793336006364,
+    "auc_mean": 0.9995111111111111,
+    "auc_std": 0.000748991090949012
+   },
+   "SVM": {
+    "accuracy_mean": 0.9816666666666668,
+    "accuracy_std": 0.012801909579781032,
+    "f1_mean": 0.9851416398695267,
+    "f1_std": 0.010464565955559016,
+    "auc_mean": 0.9987999999999998,
+    "auc_std": 0.00112084624114829
+   }
+  },
+  "shipped_on_real": {
+   "accuracy": 0.8225,
+   "precision": 1.0,
+   "recall": 0.716,
+   "f1": 0.8344988344988346,
+   "roc_auc": 0.9916,
+   "predicted_positive_rate": 0.4475,
+   "model": "LogisticRegression"
+  }
+ }
+}

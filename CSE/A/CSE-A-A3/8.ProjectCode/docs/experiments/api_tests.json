@@ -1,0 +1,309 @@
+{
+ "passed": 41,
+ "total": 41,
+ "checks": [
+  {
+   "group": "functional",
+   "name": "health",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "group": "functional",
+   "name": "four diseases listed",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "group": "functional",
+   "name": "report: 4 algorithms x 4 diseases",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "group": "functional",
+   "name": "datasets: rows = positive + negative",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "group": "functional",
+   "name": "diabetes: form metadata matches feature count",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "group": "functional",
+   "name": "diabetes: sample outcome=0 has that label",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "group": "functional",
+   "name": "diabetes: predict from sample 0",
+   "passed": true,
+   "detail": "Negative (Low Risk) 99.22%"
+  },
+  {
+   "group": "functional",
+   "name": "diabetes: sample outcome=1 has that label",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "group": "functional",
+   "name": "diabetes: predict from sample 1",
+   "passed": true,
+   "detail": "Positive (High Risk) 94.95%"
+  },
+  {
+   "group": "functional",
+   "name": "heart: form metadata matches feature count",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "group": "functional",
+   "name": "heart: sample outcome=0 has that label",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "group": "functional",
+   "name": "heart: predict from sample 0",
+   "passed": true,
+   "detail": "Negative (Low Risk) 94.45%"
+  },
+  {
+   "group": "functional",
+   "name": "heart: sample outcome=1 has that label",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "group": "functional",
+   "name": "heart: predict from sample 1",
+   "passed": true,
+   "detail": "Positive (High Risk) 99.17%"
+  },
+  {
+   "group": "functional",
+   "name": "liver: form metadata matches feature count",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "group": "functional",
+   "name": "liver: sample outcome=0 has that label",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "group": "functional",
+   "name": "liver: predict from sample 0",
+   "passed": true,
+   "detail": "Negative (Low Risk) 89.18%"
+  },
+  {
+   "group": "functional",
+   "name": "liver: sample outcome=1 has that label",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "group": "functional",
+   "name": "liver: predict from sample 1",
+   "passed": true,
+   "detail": "Negative (Low Risk) 51.58%"
+  },
+  {
+   "group": "functional",
+   "name": "kidney: form metadata matches feature count",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "group": "functional",
+   "name": "kidney: sample outcome=0 has that label",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "group": "functional",
+   "name": "kidney: predict from sample 0",
+   "passed": true,
+   "detail": "Negative (Low Risk) 63.77%"
+  },
+  {
+   "group": "functional",
+   "name": "kidney: sample outcome=1 has that label",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "group": "functional",
+   "name": "kidney: predict from sample 1",
+   "passed": true,
+   "detail": "Positive (High Risk) 99.69%"
+  },
+  {
+   "group": "consistency",
+   "name": "API prediction equals direct model.predict on 40 sampled rows",
+   "passed": true,
+   "detail": "40/40"
+  },
+  {
+   "group": "consistency",
+   "name": "same input twice gives identical output",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "group": "validation",
+   "name": "missing field -> 422 naming the field",
+   "passed": true,
+   "detail": "Please enter a valid number for: Glucose Level (mg/dL)."
+  },
+  {
+   "group": "validation",
+   "name": "empty values -> 422",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "group": "validation",
+   "name": "Glucose = non-numeric text -> 422",
+   "passed": true,
+   "detail": "Please enter a valid number for: Glucose Level (mg/dL)."
+  },
+  {
+   "group": "validation",
+   "name": "Glucose = NaN -> 422",
+   "passed": true,
+   "detail": "Please enter a valid number for: Glucose Level (mg/dL)."
+  },
+  {
+   "group": "validation",
+   "name": "Glucose = Infinity -> 422",
+   "passed": true,
+   "detail": "Please enter a valid number for: Glucose Level (mg/dL)."
+  },
+  {
+   "group": "validation",
+   "name": "Glucose = null -> 422",
+   "passed": true,
+   "detail": "Please enter a valid number for: Glucose Level (mg/dL)."
+  },
+  {
+   "group": "validation",
+   "name": "Glucose = empty string -> 422",
+   "passed": true,
+   "detail": "Please enter a valid number for: Glucose Level (mg/dL)."
+  },
+  {
+   "group": "validation",
+   "name": "numeric string '120' accepted",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "group": "validation",
+   "name": "unknown extra field ignored",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "group": "validation",
+   "name": "unknown disease -> 404",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "group": "validation",
+   "name": "unknown disease detail -> 404",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "group": "validation",
+   "name": "malformed JSON -> 422",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "group": "validation",
+   "name": "GET on predict -> 405",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "group": "validation",
+   "name": "unknown route -> 404",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "group": "observation",
+   "name": "Glucose = 100000 mg/dL is accepted (no range check)",
+   "passed": true,
+   "detail": "HTTP 200, Positive (High Risk) 60.94%"
+  },
+  {
+   "group": "observation",
+   "name": "Age = -5 is accepted (no range check)",
+   "passed": true,
+   "detail": "HTTP 200, Positive (High Risk) 74.61%"
+  },
+  {
+   "group": "sanity",
+   "name": "clinically extreme low-risk vs high-risk diabetes input",
+   "passed": true,
+   "detail": "low=Negative (Low Risk) high=Positive (High Risk)"
+  }
+ ],
+ "latency": {
+  "GET /api/health": {
+   "n": 200,
+   "p50_ms": 12.89935000386322,
+   "p95_ms": 24.98370000103023,
+   "max_ms": 26.981599999999162,
+   "mean_ms": 10.75703100017563
+  },
+  "GET /api/diseases": {
+   "n": 200,
+   "p50_ms": 14.56645000143908,
+   "p95_ms": 25.059400002646726,
+   "max_ms": 62.996900000143796,
+   "mean_ms": 12.249555499984126
+  },
+  "GET /api/diseases/diabetes": {
+   "n": 200,
+   "p50_ms": 16.408850002335384,
+   "p95_ms": 26.90390000498155,
+   "max_ms": 29.768599997623824,
+   "mean_ms": 14.879183000375633
+  },
+  "POST /api/predict/diabetes": {
+   "n": 200,
+   "p50_ms": 13.512350000382867,
+   "p95_ms": 24.88440000161063,
+   "max_ms": 27.433600000222214,
+   "mean_ms": 11.369931499939412
+  },
+  "POST /api/predict/heart": {
+   "n": 200,
+   "p50_ms": 14.370699998835335,
+   "p95_ms": 24.975799999083392,
+   "max_ms": 26.191299999482,
+   "mean_ms": 11.869503999841982
+  },
+  "POST /api/predict/diabetes (4 concurrent clients)": {
+   "n": 200,
+   "p50_ms": 5.110050002258504,
+   "p95_ms": 25.107800000114366,
+   "max_ms": 29.48409999953583,
+   "mean_ms": 9.548373500001617,
+   "throughput_rps": 415.5517758802945
+  }
+ }
+}

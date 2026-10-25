@@ -3,3 +3,10 @@ node_modules/
 frontend/dist/
 __pycache__/
 *.pyc
+# evaluation corpus is rebuilt by scripts/fetch_corpus.py (pinned Wikipedia revisions); heavy intermediates stay local
+experiments/corpus/
+experiments/chunks.json
+experiments/dense_sims.npy
+experiments/run*.log
+experiments/pytest_out.txt
+.pytest_cache/

@@ -1,0 +1,1783 @@
+{
+ "corpus": {
+  "documents": [
+   {
+    "file": "01_Data_Structures.txt",
+    "subject": "Data Structures",
+    "words": 15072,
+    "chunks": 101
+   },
+   {
+    "file": "02_Operating_Systems.txt",
+    "subject": "Operating Systems",
+    "words": 16797,
+    "chunks": 112
+   },
+   {
+    "file": "03_Database_Systems.txt",
+    "subject": "Database Systems",
+    "words": 15504,
+    "chunks": 104
+   },
+   {
+    "file": "04_Computer_Networks.txt",
+    "subject": "Computer Networks",
+    "words": 17618,
+    "chunks": 118
+   },
+   {
+    "file": "05_Machine_Learning.txt",
+    "subject": "Machine Learning",
+    "words": 18346,
+    "chunks": 123
+   },
+   {
+    "file": "06_Algorithms.txt",
+    "subject": "Algorithms",
+    "words": 17107,
+    "chunks": 114
+   }
+  ],
+  "chunks": 672,
+  "words": 100444,
+  "questions": 72,
+  "off_topic_questions": 12,
+  "evidence_intact_in_a_chunk": 72,
+  "mean_chunk_words": 179.2
+ },
+ "retrieval": {
+  "tfidf_shipped (1-2gram)": {
+   "hit": {
+    "1": 0.4028,
+    "2": 0.6389,
+    "3": 0.7361,
+    "4": 0.7917,
+    "5": 0.8056,
+    "6": 0.8472,
+    "7": 0.8889,
+    "8": 0.9167,
+    "9": 0.9306,
+    "10": 0.9306
+   },
+   "mrr10": 0.5878,
+   "by_type": {
+    "fact": {
+     "n": 24,
+     "hit1": 0.5417,
+     "hit3": 0.8333,
+     "hit4": 0.8333,
+     "mrr10": 0.7063
+    },
+    "definition": {
+     "n": 24,
+     "hit1": 0.2917,
+     "hit3": 0.75,
+     "hit4": 0.8333,
+     "mrr10": 0.526
+    },
+    "reasoning": {
+     "n": 24,
+     "hit1": 0.375,
+     "hit3": 0.625,
+     "hit4": 0.7083,
+     "mrr10": 0.5311
+    }
+   },
+   "first_rank": [
+    1,
+    1,
+    7,
+    1,
+    2,
+    1,
+    2,
+    2,
+    8,
+    null,
+    1,
+    1,
+    2,
+    2,
+    6,
+    3,
+    6,
+    2,
+    3,
+    1,
+    null,
+    1,
+    5,
+    4,
+    1,
+    1,
+    2,
+    1,
+    1,
+    1,
+    4,
+    3,
+    4,
+    1,
+    1,
+    2,
+    1,
+    1,
+    6,
+    1,
+    2,
+    null,
+    null,
+    1,
+    9,
+    3,
+    1,
+    2,
+    1,
+    1,
+    1,
+    2,
+    3,
+    8,
+    4,
+    2,
+    1,
+    null,
+    1,
+    2,
+    1,
+    2,
+    2,
+    7,
+    1,
+    3,
+    2,
+    1,
+    3,
+    2,
+    1,
+    7
+   ]
+  },
+  "tfidf_unigram": {
+   "hit": {
+    "1": 0.3889,
+    "2": 0.6389,
+    "3": 0.6944,
+    "4": 0.7778,
+    "5": 0.7778,
+    "6": 0.8611,
+    "7": 0.8889,
+    "8": 0.8889,
+    "9": 0.9306,
+    "10": 0.9444
+   },
+   "mrr10": 0.5771,
+   "by_type": {
+    "fact": {
+     "n": 24,
+     "hit1": 0.5,
+     "hit3": 0.75,
+     "hit4": 0.8333,
+     "mrr10": 0.6726
+    },
+    "definition": {
+     "n": 24,
+     "hit1": 0.25,
+     "hit3": 0.7083,
+     "hit4": 0.8333,
+     "mrr10": 0.4955
+    },
+    "reasoning": {
+     "n": 24,
+     "hit1": 0.4167,
+     "hit3": 0.625,
+     "hit4": 0.6667,
+     "mrr10": 0.5632
+    }
+   },
+   "first_rank": [
+    1,
+    1,
+    6,
+    1,
+    2,
+    1,
+    2,
+    1,
+    9,
+    null,
+    1,
+    1,
+    2,
+    2,
+    6,
+    4,
+    6,
+    2,
+    3,
+    1,
+    10,
+    1,
+    9,
+    2,
+    1,
+    1,
+    2,
+    1,
+    1,
+    4,
+    4,
+    3,
+    2,
+    1,
+    2,
+    1,
+    1,
+    2,
+    6,
+    1,
+    2,
+    null,
+    null,
+    2,
+    9,
+    6,
+    1,
+    2,
+    1,
+    1,
+    1,
+    4,
+    3,
+    7,
+    1,
+    4,
+    1,
+    null,
+    1,
+    2,
+    1,
+    2,
+    2,
+    7,
+    2,
+    3,
+    2,
+    1,
+    4,
+    1,
+    1,
+    6
+   ]
+  },
+  "bm25": {
+   "hit": {
+    "1": 0.5,
+    "2": 0.7083,
+    "3": 0.7917,
+    "4": 0.8333,
+    "5": 0.8611,
+    "6": 0.8889,
+    "7": 0.8889,
+    "8": 0.9028,
+    "9": 0.9306,
+    "10": 0.9444
+   },
+   "mrr10": 0.6588,
+   "by_type": {
+    "fact": {
+     "n": 24,
+     "hit1": 0.6667,
+     "hit3": 0.875,
+     "hit4": 0.9583,
+     "mrr10": 0.7963
+    },
+    "definition": {
+     "n": 24,
+     "hit1": 0.2917,
+     "hit3": 0.7083,
+     "hit4": 0.75,
+     "mrr10": 0.5109
+    },
+    "reasoning": {
+     "n": 24,
+     "hit1": 0.5417,
+     "hit3": 0.7917,
+     "hit4": 0.7917,
+     "mrr10": 0.6691
+    }
+   },
+   "first_rank": [
+    1,
+    1,
+    4,
+    1,
+    2,
+    1,
+    2,
+    1,
+    6,
+    8,
+    1,
+    1,
+    1,
+    2,
+    1,
+    1,
+    6,
+    3,
+    3,
+    1,
+    10,
+    1,
+    2,
+    1,
+    2,
+    1,
+    2,
+    1,
+    1,
+    2,
+    5,
+    5,
+    1,
+    1,
+    3,
+    2,
+    1,
+    1,
+    2,
+    1,
+    2,
+    null,
+    null,
+    2,
+    null,
+    2,
+    1,
+    1,
+    1,
+    1,
+    1,
+    2,
+    3,
+    9,
+    1,
+    4,
+    1,
+    null,
+    1,
+    1,
+    1,
+    1,
+    4,
+    9,
+    1,
+    2,
+    3,
+    1,
+    3,
+    1,
+    1,
+    2
+   ]
+  },
+  "tfidf_lsa200": {
+   "hit": {
+    "1": 0.4306,
+    "2": 0.5417,
+    "3": 0.6806,
+    "4": 0.7639,
+    "5": 0.8333,
+    "6": 0.9028,
+    "7": 0.9028,
+    "8": 0.9306,
+    "9": 0.9583,
+    "10": 0.9583
+   },
+   "mrr10": 0.5853,
+   "by_type": {
+    "fact": {
+     "n": 24,
+     "hit1": 0.5417,
+     "hit3": 0.7083,
+     "hit4": 0.8333,
+     "mrr10": 0.6789
+    },
+    "definition": {
+     "n": 24,
+     "hit1": 0.3333,
+     "hit3": 0.5833,
+     "hit4": 0.6667,
+     "mrr10": 0.4904
+    },
+    "reasoning": {
+     "n": 24,
+     "hit1": 0.4167,
+     "hit3": 0.75,
+     "hit4": 0.7917,
+     "mrr10": 0.5865
+    }
+   },
+   "first_rank": [
+    1,
+    2,
+    9,
+    1,
+    4,
+    1,
+    5,
+    3,
+    1,
+    8,
+    1,
+    1,
+    1,
+    1,
+    5,
+    4,
+    6,
+    3,
+    1,
+    1,
+    6,
+    1,
+    3,
+    3,
+    2,
+    1,
+    4,
+    1,
+    2,
+    2,
+    6,
+    3,
+    1,
+    1,
+    3,
+    2,
+    1,
+    5,
+    1,
+    1,
+    1,
+    null,
+    null,
+    1,
+    6,
+    3,
+    2,
+    2,
+    1,
+    1,
+    1,
+    2,
+    1,
+    9,
+    4,
+    8,
+    1,
+    null,
+    1,
+    3,
+    1,
+    4,
+    5,
+    3,
+    1,
+    3,
+    6,
+    1,
+    4,
+    1,
+    1,
+    5
+   ]
+  },
+  "hybrid_bm25_lsa": {
+   "hit": {
+    "1": 0.5,
+    "2": 0.6806,
+    "3": 0.8194,
+    "4": 0.8333,
+    "5": 0.8611,
+    "6": 0.8889,
+    "7": 0.9167,
+    "8": 0.9444,
+    "9": 0.9444,
+    "10": 0.9444
+   },
+   "mrr10": 0.6577,
+   "by_type": {
+    "fact": {
+     "n": 24,
+     "hit1": 0.5417,
+     "hit3": 0.9167,
+     "hit4": 0.9583,
+     "mrr10": 0.7326
+    },
+    "definition": {
+     "n": 24,
+     "hit1": 0.4583,
+     "hit3": 0.7083,
+     "hit4": 0.7083,
+     "mrr10": 0.5903
+    },
+    "reasoning": {
+     "n": 24,
+     "hit1": 0.5,
+     "hit3": 0.8333,
+     "hit4": 0.8333,
+     "mrr10": 0.65
+    }
+   },
+   "first_rank": [
+    1,
+    1,
+    6,
+    1,
+    2,
+    1,
+    3,
+    1,
+    2,
+    8,
+    1,
+    1,
+    1,
+    2,
+    3,
+    2,
+    7,
+    2,
+    3,
+    1,
+    7,
+    1,
+    3,
+    1,
+    2,
+    1,
+    2,
+    1,
+    1,
+    1,
+    5,
+    3,
+    1,
+    1,
+    3,
+    2,
+    1,
+    2,
+    2,
+    1,
+    1,
+    null,
+    null,
+    1,
+    null,
+    2,
+    2,
+    1,
+    1,
+    1,
+    1,
+    2,
+    1,
+    8,
+    1,
+    6,
+    1,
+    null,
+    1,
+    1,
+    1,
+    1,
+    4,
+    3,
+    1,
+    3,
+    5,
+    1,
+    3,
+    1,
+    1,
+    3
+   ]
+  },
+  "dense_bge_small": {
+   "hit": {
+    "1": 0.4306,
+    "2": 0.5694,
+    "3": 0.75,
+    "4": 0.7778,
+    "5": 0.7917,
+    "6": 0.8472,
+    "7": 0.8889,
+    "8": 0.9028,
+    "9": 0.9167,
+    "10": 0.9167
+   },
+   "mrr10": 0.5884,
+   "by_type": {
+    "fact": {
+     "n": 24,
+     "hit1": 0.4583,
+     "hit3": 0.8333,
+     "hit4": 0.8333,
+     "mrr10": 0.6398
+    },
+    "definition": {
+     "n": 24,
+     "hit1": 0.5,
+     "hit3": 0.75,
+     "hit4": 0.7917,
+     "mrr10": 0.6358
+    },
+    "reasoning": {
+     "n": 24,
+     "hit1": 0.3333,
+     "hit3": 0.6667,
+     "hit4": 0.7083,
+     "mrr10": 0.4896
+    }
+   },
+   "first_rank": [
+    8,
+    1,
+    1,
+    1,
+    3,
+    1,
+    1,
+    1,
+    1,
+    null,
+    1,
+    1,
+    2,
+    3,
+    1,
+    1,
+    1,
+    1,
+    1,
+    4,
+    null,
+    4,
+    6,
+    2,
+    2,
+    1,
+    3,
+    2,
+    1,
+    1,
+    3,
+    6,
+    3,
+    1,
+    null,
+    3,
+    1,
+    7,
+    2,
+    1,
+    1,
+    7,
+    6,
+    2,
+    1,
+    3,
+    2,
+    1,
+    1,
+    1,
+    3,
+    2,
+    1,
+    5,
+    3,
+    3,
+    1,
+    null,
+    2,
+    3,
+    1,
+    3,
+    9,
+    7,
+    1,
+    2,
+    null,
+    1,
+    6,
+    3,
+    1,
+    null
+   ]
+  },
+  "hybrid_bm25_dense": {
+   "hit": {
+    "1": 0.5556,
+    "2": 0.7778,
+    "3": 0.8333,
+    "4": 0.8889,
+    "5": 0.8889,
+    "6": 0.9167,
+    "7": 0.9306,
+    "8": 0.9444,
+    "9": 0.9583,
+    "10": 0.9583
+   },
+   "mrr10": 0.709,
+   "by_type": {
+    "fact": {
+     "n": 24,
+     "hit1": 0.625,
+     "hit3": 0.9167,
+     "hit4": 0.9583,
+     "mrr10": 0.7872
+    },
+    "definition": {
+     "n": 24,
+     "hit1": 0.5417,
+     "hit3": 0.75,
+     "hit4": 0.875,
+     "mrr10": 0.6817
+    },
+    "reasoning": {
+     "n": 24,
+     "hit1": 0.5,
+     "hit3": 0.8333,
+     "hit4": 0.8333,
+     "mrr10": 0.658
+    }
+   },
+   "first_rank": [
+    1,
+    1,
+    2,
+    1,
+    3,
+    1,
+    2,
+    1,
+    2,
+    null,
+    1,
+    1,
+    1,
+    2,
+    1,
+    1,
+    1,
+    2,
+    1,
+    1,
+    8,
+    1,
+    2,
+    1,
+    2,
+    1,
+    2,
+    1,
+    1,
+    1,
+    1,
+    4,
+    1,
+    1,
+    3,
+    2,
+    1,
+    2,
+    2,
+    1,
+    1,
+    null,
+    9,
+    2,
+    6,
+    2,
+    1,
+    1,
+    1,
+    1,
+    1,
+    2,
+    1,
+    6,
+    1,
+    2,
+    1,
+    null,
+    1,
+    1,
+    1,
+    1,
+    4,
+    7,
+    1,
+    4,
+    4,
+    1,
+    3,
+    2,
+    1,
+    3
+   ]
+  }
+ },
+ "retrieval_ci_shipped": {
+  "hit1": [
+   0.2917,
+   0.5139
+  ],
+  "hit4": [
+   0.6944,
+   0.875
+  ],
+  "mrr10": [
+   0.5047,
+   0.6728
+  ]
+ },
+ "chunk_sizes": {
+  "60/15": {
+   "chunks": 2233,
+   "evidence_intact": 70,
+   "hit1": 0.3056,
+   "hit3": 0.5833,
+   "hit4": 0.6111,
+   "hit10": 0.6944,
+   "mrr10": 0.4461,
+   "mean_words": 59.9
+  },
+  "100/20": {
+   "chunks": 1257,
+   "evidence_intact": 72,
+   "hit1": 0.4167,
+   "hit3": 0.6667,
+   "hit4": 0.7083,
+   "hit10": 0.9028,
+   "mrr10": 0.5675,
+   "mean_words": 99.8
+  },
+  "180/30": {
+   "chunks": 672,
+   "evidence_intact": 72,
+   "hit1": 0.4028,
+   "hit3": 0.7361,
+   "hit4": 0.7917,
+   "hit10": 0.9306,
+   "mrr10": 0.5878,
+   "mean_words": 179.2
+  },
+  "300/50": {
+   "chunks": 404,
+   "evidence_intact": 72,
+   "hit1": 0.5556,
+   "hit3": 0.75,
+   "hit4": 0.8472,
+   "hit10": 0.9861,
+   "mrr10": 0.6881,
+   "mean_words": 297.9
+  },
+  "450/75": {
+   "chunks": 269,
+   "evidence_intact": 72,
+   "hit1": 0.4861,
+   "hit3": 0.8333,
+   "hit4": 0.9444,
+   "hit10": 1.0,
+   "mrr10": 0.6765,
+   "mean_words": 446.7
+  }
+ },
+ "compression": {
+  "1": {
+   "mean_ctx_words": 180.0,
+   "mean_ans_words": 88.0,
+   "token_reduction_pct": 51.1,
+   "evidence_in_ctx": 0.4028,
+   "evidence_in_ans": 0.3611,
+   "key_in_ctx": 0.625,
+   "key_in_ans": 0.5139,
+   "answer_words_in_context": 1.0,
+   "answers_fully_grounded": 1.0
+  },
+  "2": {
+   "mean_ctx_words": 360.0,
+   "mean_ans_words": 94.4,
+   "token_reduction_pct": 73.8,
+   "evidence_in_ctx": 0.6389,
+   "evidence_in_ans": 0.5833,
+   "key_in_ctx": 0.75,
+   "key_in_ans": 0.6528,
+   "answer_words_in_context": 1.0,
+   "answers_fully_grounded": 1.0
+  },
+  "4": {
+   "mean_ctx_words": 720.0,
+   "mean_ans_words": 89.8,
+   "token_reduction_pct": 87.5,
+   "evidence_in_ctx": 0.7917,
+   "evidence_in_ans": 0.5694,
+   "key_in_ctx": 0.8611,
+   "key_in_ans": 0.6667,
+   "answer_words_in_context": 1.0,
+   "answers_fully_grounded": 1.0
+  },
+  "by_type_k4": {
+   "fact": {
+    "key_in_ctx": 0.9167,
+    "key_in_ans": 0.7917,
+    "evidence_in_ans": 0.7083,
+    "ans_words": 86.7
+   },
+   "definition": {
+    "key_in_ctx": 0.9167,
+    "key_in_ans": 0.5,
+    "evidence_in_ans": 0.4583,
+    "ans_words": 91.0
+   },
+   "reasoning": {
+    "key_in_ctx": 0.75,
+    "key_in_ans": 0.7083,
+    "evidence_in_ans": 0.5417,
+    "ans_words": 91.8
+   }
+  },
+  "k4_given_retrieval_hit": {
+   "n": 57,
+   "key_in_ans": 0.8246,
+   "evidence_in_ans": 0.7193
+  },
+  "6": {
+   "mean_ctx_words": 1080.0,
+   "mean_ans_words": 87.3,
+   "token_reduction_pct": 91.9,
+   "evidence_in_ctx": 0.8472,
+   "evidence_in_ans": 0.6389,
+   "key_in_ctx": 0.9444,
+   "key_in_ans": 0.7639,
+   "answer_words_in_context": 1.0,
+   "answers_fully_grounded": 1.0
+  },
+  "8": {
+   "mean_ctx_words": 1437.5,
+   "mean_ans_words": 84.2,
+   "token_reduction_pct": 94.1,
+   "evidence_in_ctx": 0.9167,
+   "evidence_in_ans": 0.6806,
+   "key_in_ctx": 0.9722,
+   "key_in_ans": 0.7917,
+   "answer_words_in_context": 1.0,
+   "answers_fully_grounded": 1.0
+  }
+ },
+ "abstention": {
+  "n_off_topic": 12,
+  "off_topic_answered_by_shipped": 9,
+  "off_topic_refused_by_shipped": 3,
+  "top1_score_in_scope": {
+   "mean": 0.3197,
+   "min": 0.1019,
+   "p10": 0.2122,
+   "median": 0.3171
+  },
+  "top1_score_off_topic": {
+   "mean": 0.1073,
+   "max": 0.3567,
+   "median": 0.0922
+  },
+  "sweep": [
+   {
+    "tau": 0.0,
+    "in_scope_answered": 1.0,
+    "off_topic_refused": 0.25
+   },
+   {
+    "tau": 0.02,
+    "in_scope_answered": 1.0,
+    "off_topic_refused": 0.25
+   },
+   {
+    "tau": 0.05,
+    "in_scope_answered": 1.0,
+    "off_topic_refused": 0.3333
+   },
+   {
+    "tau": 0.08,
+    "in_scope_answered": 1.0,
+    "off_topic_refused": 0.4167
+   },
+   {
+    "tau": 0.1,
+    "in_scope_answered": 1.0,
+    "off_topic_refused": 0.5833
+   },
+   {
+    "tau": 0.12,
+    "in_scope_answered": 0.9861,
+    "off_topic_refused": 0.75
+   },
+   {
+    "tau": 0.15,
+    "in_scope_answered": 0.9583,
+    "off_topic_refused": 0.8333
+   },
+   {
+    "tau": 0.2,
+    "in_scope_answered": 0.9028,
+    "off_topic_refused": 0.8333
+   },
+   {
+    "tau": 0.25,
+    "in_scope_answered": 0.6806,
+    "off_topic_refused": 0.8333
+   },
+   {
+    "tau": 0.3,
+    "in_scope_answered": 0.5139,
+    "off_topic_refused": 0.9167
+   }
+  ],
+  "in_scope_scores": [
+   0.3311,
+   0.2341,
+   0.3227,
+   0.4238,
+   0.5047,
+   0.4844,
+   0.5405,
+   0.28,
+   0.3288,
+   0.4157,
+   0.2917,
+   0.2926,
+   0.2369,
+   0.5066,
+   0.3358,
+   0.3463,
+   0.4811,
+   0.4265,
+   0.2439,
+   0.2137,
+   0.3396,
+   0.2912,
+   0.2363,
+   0.3501,
+   0.2855,
+   0.3167,
+   0.4022,
+   0.2444,
+   0.3292,
+   0.2985,
+   0.4393,
+   0.1019,
+   0.223,
+   0.3175,
+   0.1321,
+   0.2244,
+   0.3211,
+   0.2411,
+   0.2758,
+   0.212,
+   0.3714,
+   0.4885,
+   0.2714,
+   0.3931,
+   0.1416,
+   0.1525,
+   0.2421,
+   0.2314,
+   0.2313,
+   0.2276,
+   0.2752,
+   0.1979,
+   0.1654,
+   0.591,
+   0.3654,
+   0.4046,
+   0.2816,
+   0.4625,
+   0.3632,
+   0.2303,
+   0.5038,
+   0.1911,
+   0.2706,
+   0.2874,
+   0.2471,
+   0.3867,
+   0.4378,
+   0.3263,
+   0.3671,
+   0.3373,
+   0.3201,
+   0.4299
+  ],
+  "off_topic_scores": [
+   0.0432,
+   0.3567,
+   0.0,
+   0.0,
+   0.1399,
+   0.0849,
+   0.1154,
+   0.1188,
+   0.273,
+   0.0568,
+   0.0,
+   0.0995
+  ]
+ },
+ "document_analysis": {
+  "per_file": [
+   {
+    "file": "01_Data_Structures.txt",
+    "units_in_file": 6,
+    "units_detected": 6,
+    "hints": [
+     "Data Structures",
+     "Stack (abstract data type)",
+     "Queue (abstract data type)",
+     "Linked list",
+     "Binary search tree",
+     "Hash table",
+     "Heap (data structure)"
+    ],
+    "topics": [
+     "Data Structures",
+     "Stack (abstract data type)",
+     "Queue (abstract data type)",
+     "Linked list",
+     "Binary search tree",
+     "Hash table",
+     "Heap (data structure)",
+     "stack",
+     "list",
+     "node",
+     "data",
+     "heap"
+    ]
+   },
+   {
+    "file": "02_Operating_Systems.txt",
+    "units_in_file": 6,
+    "units_detected": 6,
+    "hints": [
+     "Operating Systems",
+     "Deadlock (computer science)",
+     "Scheduling (computing)",
+     "Memory paging",
+     "Semaphore (programming)",
+     "Virtual memory",
+     "Thread (computing)"
+    ],
+    "topics": [
+     "Operating Systems",
+     "Deadlock (computer science)",
+     "Scheduling (computing)",
+     "Memory paging",
+     "Semaphore (programming)",
+     "Virtual memory",
+     "Thread (computing)",
+     "process",
+     "memory",
+     "page",
+     "threads",
+     "processes"
+    ]
+   },
+   {
+    "file": "03_Database_Systems.txt",
+    "units_in_file": 6,
+    "units_detected": 6,
+    "hints": [
+     "Database Systems",
+     "Database normalization",
+     "ACID",
+     "B-tree",
+     "Relational model",
+     "Database index",
+     "Concurrency control"
+    ],
+    "topics": [
+     "Database Systems",
+     "Database normalization",
+     "ACID",
+     "B-tree",
+     "Relational model",
+     "Database index",
+     "Concurrency control",
+     "database",
+     "index",
+     "data",
+     "transaction",
+     "table"
+    ]
+   },
+   {
+    "file": "04_Computer_Networks.txt",
+    "units_in_file": 6,
+    "units_detected": 6,
+    "hints": [
+     "Computer Networks",
+     "Transmission Control Protocol",
+     "Domain Name System",
+     "OSI model",
+     "Routing",
+     "Network congestion",
+     "Dynamic Host Configuration Protocol"
+    ],
+    "topics": [
+     "Computer Networks",
+     "Transmission Control Protocol",
+     "Domain Name System",
+     "OSI model",
+     "Routing",
+     "Network congestion",
+     "Dynamic Host Configuration Protocol",
+     "network",
+     "dhcp",
+     "server",
+     "client",
+     "layer"
+    ]
+   },
+   {
+    "file": "05_Machine_Learning.txt",
+    "units_in_file": 6,
+    "units_detected": 6,
+    "hints": [
+     "Machine Learning",
+     "Overfitting",
+     "Gradient descent",
+     "Decision tree learning",
+     "Naive Bayes classifier",
+     "K-means clustering",
+     "Support vector machine"
+    ],
+    "topics": [
+     "Machine Learning",
+     "Overfitting",
+     "Gradient descent",
+     "Decision tree learning",
+     "Naive Bayes classifier",
+     "K-means clustering",
+     "Support vector machine",
+     "data",
+     "model",
+     "function",
+     "algorithm",
+     "used"
+    ]
+   },
+   {
+    "file": "06_Algorithms.txt",
+    "units_in_file": 6,
+    "units_detected": 6,
+    "hints": [
+     "Algorithms",
+     "Dijkstra's algorithm",
+     "Merge sort",
+     "Quicksort",
+     "Binary search",
+     "Dynamic programming",
+     "Breadth-first search"
+    ],
+    "topics": [
+     "Algorithms",
+     "Dijkstra's algorithm",
+     "Merge sort",
+     "Quicksort",
+     "Binary search",
+     "Dynamic programming",
+     "Breadth-first search",
+     "algorithm",
+     "search",
+     "merge",
+     "sort",
+     "element"
+    ]
+   }
+  ],
+  "unit_recall": 1.0,
+  "subject_line_detected": 6,
+  "heading_formats": {
+   "Unit 1: Title": {
+    "units_found": 5,
+    "of": 5
+   },
+   "Unit 1 - Title": {
+    "units_found": 5,
+    "of": 5
+   },
+   "UNIT-I Title": {
+    "units_found": 0,
+    "of": 5
+   },
+   "Unit I: Title": {
+    "units_found": 0,
+    "of": 5
+   },
+   "Module 1: Title": {
+    "units_found": 0,
+    "of": 5
+   },
+   "Chapter 1: Title": {
+    "units_found": 5,
+    "of": 5
+   },
+   "1. Title": {
+    "units_found": 0,
+    "of": 5
+   }
+  }
+ },
+ "quiz": {
+  "per_doc": {
+   "01_Data_Structures.txt": {
+    "requested": 150,
+    "generated": 150,
+    "structurally_valid": 150,
+    "ambiguous_option_in_stem": 17,
+    "answer_repeated_in_stem": 41
+   },
+   "02_Operating_Systems.txt": {
+    "requested": 150,
+    "generated": 150,
+    "structurally_valid": 150,
+    "ambiguous_option_in_stem": 18,
+    "answer_repeated_in_stem": 22
+   },
+   "03_Database_Systems.txt": {
+    "requested": 150,
+    "generated": 150,
+    "structurally_valid": 150,
+    "ambiguous_option_in_stem": 13,
+    "answer_repeated_in_stem": 35
+   },
+   "04_Computer_Networks.txt": {
+    "requested": 150,
+    "generated": 150,
+    "structurally_valid": 150,
+    "ambiguous_option_in_stem": 14,
+    "answer_repeated_in_stem": 18
+   },
+   "05_Machine_Learning.txt": {
+    "requested": 150,
+    "generated": 150,
+    "structurally_valid": 150,
+    "ambiguous_option_in_stem": 10,
+    "answer_repeated_in_stem": 23
+   },
+   "06_Algorithms.txt": {
+    "requested": 150,
+    "generated": 150,
+    "structurally_valid": 150,
+    "ambiguous_option_in_stem": 13,
+    "answer_repeated_in_stem": 25
+   }
+  },
+  "requested": 900,
+  "generated": 900,
+  "yield": 1.0,
+  "structurally_valid": 1.0,
+  "ambiguous_rate": 0.0944,
+  "answer_repeated_in_stem_rate": 0.1822,
+  "gen_ms_median": 14.17,
+  "gen_ms_p95": 18.29,
+  "audit_sample": [
+   {
+    "file": "01_Data_Structures.txt",
+    "question": "Fill in the blank: Chapel Hill, North Carolina) used singly _____ lists as file structures.",
+    "options": [
+     "implementation",
+     "hashing",
+     "linked",
+     "function"
+    ],
+    "answer": "linked"
+   },
+   {
+    "file": "01_Data_Structures.txt",
+    "question": "Fill in the blank: The conventional implementations of _____ functions are based on the integer universe assumption that all elements of the table stem from the universe U = { 0 , .",
+    "options": [
+     "function",
+     "array",
+     "list",
+     "hash"
+    ],
+    "answer": "hash"
+   },
+   {
+    "file": "01_Data_Structures.txt",
+    "question": "Fill in the blank: A perfect hash _____ can be created if all the keys are known ahead of time.",
+    "options": [
+     "function",
+     "case",
+     "order",
+     "called"
+    ],
+    "answer": "function"
+   },
+   {
+    "file": "01_Data_Structures.txt",
+    "question": "Fill in the blank: If the _____ is nil, the key being searched for does not exist in the tree.",
+    "options": [
+     "linked",
+     "hashing",
+     "tree",
+     "data"
+    ],
+    "answer": "tree"
+   },
+   {
+    "file": "01_Data_Structures.txt",
+    "question": "Fill in the blank: Since the _____ in a BST are laid out so that each comparison skips about half of the remaining tree, the lookup performance is proportional to",
+    "options": [
+     "linked",
+     "called",
+     "table",
+     "nodes"
+    ],
+    "answer": "nodes"
+   },
+   {
+    "file": "02_Operating_Systems.txt",
+    "question": "Fill in the blank: Approaches that avoid circular waits include disabling interrupts during critical sections and using a hierarchy to determine a partial ordering of _____.",
+    "options": [
+     "page",
+     "unit",
+     "resources",
+     "process"
+    ],
+    "answer": "resources"
+   },
+   {
+    "file": "02_Operating_Systems.txt",
+    "question": "Fill in the blank: In this scheme, the _____ system retrieves data from secondary storage in blocks of the same size (pages).",
+    "options": [
+     "semaphore",
+     "data",
+     "operating",
+     "priority"
+    ],
+    "answer": "operating"
+   },
+   {
+    "file": "02_Operating_Systems.txt",
+    "question": "Fill in the blank: M:1 (user-level threading) An M:1 model implies that all application-level _____ map to one kernel-level scheduled entity; the kernel has no knowledge of the application threads.",
+    "options": [
+     "threads",
+     "pages",
+     "data",
+     "deadlock"
+    ],
+    "answer": "threads"
+   },
+   {
+    "file": "02_Operating_Systems.txt",
+    "question": "Fill in the blank: _____ pools A popular programming pattern involving threads is that of thread pools where a set number of threads are created at startup that then wait for a task to be assigned.",
+    "options": [
+     "pages",
+     "priority",
+     "multiple",
+     "thread"
+    ],
+    "answer": "thread"
+   },
+   {
+    "file": "02_Operating_Systems.txt",
+    "question": "Fill in the blank: The required disk space may be easily allocated on _____ with more recent specifications (i.e.",
+    "options": [
+     "processes",
+     "unit",
+     "time",
+     "systems"
+    ],
+    "answer": "systems"
+   },
+   {
+    "file": "03_Database_Systems.txt",
+    "question": "Fill in the blank: The _____ in the following example was intentionally designed to contradict most of the normal forms.",
+    "options": [
+     "constraints",
+     "relation",
+     "data",
+     "records"
+    ],
+    "answer": "data"
+   },
+   {
+    "file": "03_Database_Systems.txt",
+    "question": "Fill in the blank: Almost all implemented _____ control mechanisms achieve serializability by providing Conflict serializability, a broad special case of serializability (i.e., it covers, enables most serializable schedules,",
+    "options": [
+     "database",
+     "concurrency",
+     "value",
+     "internal"
+    ],
+    "answer": "concurrency"
+   },
+   {
+    "file": "03_Database_Systems.txt",
+    "question": "Fill in the blank: (atomic), and an aborted transaction does not affect the _____ at all.",
+    "options": [
+     "relation",
+     "transactions",
+     "database",
+     "nodes"
+    ],
+    "answer": "database"
+   },
+   {
+    "file": "03_Database_Systems.txt",
+    "question": "Fill in the blank: The _____ could be searched in about eight disk reads, and the desired record could be accessed in 9 disk reads.",
+    "options": [
+     "index",
+     "internal",
+     "form",
+     "tree"
+    ],
+    "answer": "index"
+   },
+   {
+    "file": "03_Database_Systems.txt",
+    "question": "Fill in the blank: SQL uses a Null value to indicate missing data, which has no analog in the _____ model.",
+    "options": [
+     "number",
+     "relational",
+     "control",
+     "internal"
+    ],
+    "answer": "relational"
+   },
+   {
+    "file": "04_Computer_Networks.txt",
+    "question": "Fill in the blank: A DHCP server can manage IP settings for devices on its local _____, e.g., by assigning IP addresses to those devices automatically and dynamically.",
+    "options": [
+     "model",
+     "number",
+     "network",
+     "server"
+    ],
+    "answer": "network"
+   },
+   {
+    "file": "04_Computer_Networks.txt",
+    "question": "Fill in the blank: The sequence _____ is set to the received acknowledgment value, i.e., x + 1, and the acknowledgment number is set to one more than the received sequence number, i.e., y + 1.",
+    "options": [
+     "path",
+     "internet",
+     "number",
+     "destination"
+    ],
+    "answer": "number"
+   },
+   {
+    "file": "04_Computer_Networks.txt",
+    "question": "Fill in the blank: History Using a simpler, more memorable name in place of a host's numerical _____ dates back to the ARPANET era.",
+    "options": [
+     "connection",
+     "protocols",
+     "address",
+     "example"
+    ],
+    "answer": "address"
+   },
+   {
+    "file": "04_Computer_Networks.txt",
+    "question": "Fill in the blank: The PDU is passed to layer N−1, where it is known as the service _____ unit (SDU).",
+    "options": [
+     "data",
+     "example",
+     "connection",
+     "packet"
+    ],
+    "answer": "data"
+   },
+   {
+    "file": "04_Computer_Networks.txt",
+    "question": "Fill in the blank: If the new connection risks creating _____, permission can be denied.",
+    "options": [
+     "congestion",
+     "packets",
+     "node",
+     "example"
+    ],
+    "answer": "congestion"
+   },
+   {
+    "file": "05_Machine_Learning.txt",
+    "question": "Fill in the blank: In this analogy, the people represent the _____, and the path taken down the mountain represents the sequence of parameter settings that the algorithm will explore.",
+    "options": [
+     "linear",
+     "classifier",
+     "algorithm",
+     "models"
+    ],
+    "answer": "algorithm"
+   },
+   {
+    "file": "05_Machine_Learning.txt",
+    "question": "Fill in the blank: Both methods can benefit from preconditioning, where _____ descent may require less assumptions on the preconditioner.",
+    "options": [
+     "models",
+     "decision",
+     "model",
+     "gradient"
+    ],
+    "answer": "gradient"
+   },
+   {
+    "file": "05_Machine_Learning.txt",
+    "question": "Fill in the blank: This event _____ is especially popular for classifying short texts.",
+    "options": [
+     "model",
+     "step",
+     "probability",
+     "space"
+    ],
+    "answer": "model"
+   },
+   {
+    "file": "05_Machine_Learning.txt",
+    "question": "Fill in the blank: As shown in Figure 5, the linear line could not represent all the given _____ points due to the line not resembling the curvature of the points.",
+    "options": [
+     "algorithm",
+     "classifier",
+     "data",
+     "used"
+    ],
+    "answer": "data"
+   },
+   {
+    "file": "05_Machine_Learning.txt",
+    "question": "Fill in the blank: partitioning of the data _____ into Voronoi cells.",
+    "options": [
+     "function",
+     "regression",
+     "problem",
+     "space"
+    ],
+    "answer": "space"
+   },
+   {
+    "file": "06_Algorithms.txt",
+    "question": "Fill in the blank: For large n and a randomly ordered input list, _____ sort's expected (average) number of comparisons approaches α·n fewer than the worst case, where α = − 1 + ∑ k = 0 ∞ 1 2 k + 1 ≈ 0.2645.",
+    "options": [
+     "merge",
+     "queue",
+     "graph",
+     "elements"
+    ],
+    "answer": "merge"
+   },
+   {
+    "file": "06_Algorithms.txt",
+    "question": "Fill in the blank: On average, assuming that each element is equally likely to be _____ed, binary search makes ⌊ log 2 ⁡ ( n ) ⌋ + 1 − ( 2 ⌊ log 2 ⁡ ( n ) ⌋ + 1 − ⌊ log 2 ⁡ ( n ) ⌋ − 2 ) / n iterations when the target element",
+    "options": [
+     "dist",
+     "queue",
+     "left",
+     "search"
+    ],
+    "answer": "search"
+   },
+   {
+    "file": "06_Algorithms.txt",
+    "question": "Fill in the blank: That means dist[w] + _____.Edges[w,u] < dist[u].",
+    "options": [
+     "problem",
+     "array",
+     "nodes",
+     "graph"
+    ],
+    "answer": "graph"
+   },
+   {
+    "file": "06_Algorithms.txt",
+    "question": "Fill in the blank: This _____ has demonstrated better performance on machines that benefit from cache optimization.",
+    "options": [
+     "algorithm",
+     "example",
+     "equal",
+     "vertex"
+    ],
+    "answer": "algorithm"
+   },
+   {
+    "file": "06_Algorithms.txt",
+    "question": "Fill in the blank: BFS has been run, and the predecessors _____ have been set.",
+    "options": [
+     "search",
+     "time",
+     "nodes",
+     "element"
+    ],
+    "answer": "nodes"
+   }
+  ],
+  "sample_notes_yield": {
+   "chunks": 4,
+   "mean_questions": 5.0,
+   "min": 5
+  }
+ },
+ "scaling": [
+  {
+   "chunks": 672,
+   "words": 120424,
+   "index_build_ms": 197.1,
+   "retrieve_ms_median": 1.98,
+   "retrieve_ms_p95": 3.26,
+   "answer_ms_median": 4.79,
+   "answer_ms_p95": 6.33
+  },
+  {
+   "chunks": 1344,
+   "words": 240848,
+   "index_build_ms": 315.7,
+   "retrieve_ms_median": 4.57,
+   "retrieve_ms_p95": 6.02,
+   "answer_ms_median": 7.89,
+   "answer_ms_p95": 9.63
+  },
+  {
+   "chunks": 2688,
+   "words": 481696,
+   "index_build_ms": 539.8,
+   "retrieve_ms_median": 9.65,
+   "retrieve_ms_p95": 12.93,
+   "answer_ms_median": 13.03,
+   "answer_ms_p95": 16.97
+  },
+  {
+   "chunks": 5376,
+   "words": 963392,
+   "index_build_ms": 963.5,
+   "retrieve_ms_median": 17.65,
+   "retrieve_ms_p95": 20.88,
+   "answer_ms_median": 20.74,
+   "answer_ms_p95": 25.71
+  }
+ ],
+ "dense_meta": {
+  "model": "BAAI/bge-small-en-v1.5",
+  "dim": 384,
+  "chunks": 672,
+  "embed_chunks_s": 52.3,
+  "embed_query_ms_each": 4.4
+ },
+ "meta": {
+  "python": "3.11.9",
+  "numpy": "1.26.4",
+  "runtime_s": 21.0
+ }
+}

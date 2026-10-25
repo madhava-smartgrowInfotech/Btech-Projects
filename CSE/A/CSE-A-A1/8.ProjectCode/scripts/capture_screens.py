@@ -18,6 +18,10 @@ BASE = os.environ.get("APP_URL", "http://localhost:5301")
 OUT = os.path.join(ROOT, "docs", "screenshots")
 SAMPLE = os.path.join(ROOT, "sample_data", "sample_notes_data_structures.txt")
 RESPONSIVE = "--responsive" in sys.argv
+RICH = "--rich" in sys.argv          # also upload four notes from the evaluation corpus and take a quiz on each
+CORPUS = os.path.join(ROOT, "experiments", "corpus")
+RICH_DOCS = [("01_Data_Structures.txt", "Data Structures"), ("02_Operating_Systems.txt", "Operating Systems"),
+             ("03_Database_Systems.txt", "Database Systems"), ("06_Algorithms.txt", "Algorithms")]
 RESP_OUT = os.environ.get("RESPONSIVE_OUT", os.path.join(ROOT, "docs", "screenshots", "_responsive"))
 
 problems = []
@@ -51,15 +55,39 @@ def set_theme(page, theme):
     settle(page)
 
 
-def take_quiz(page, pattern):
+def norm_ws(t):
+    return " ".join(t.lower().split())
+
+
+def take_quiz(page, know, doc="sample_notes_data_structures.txt", doc_path=SAMPLE):
+    """Opens a quiz on `doc` and answers like a student who knows `know` of the questions: for those it picks the
+    option that makes the sentence appear verbatim in the uploaded notes, for the others a wrong option."""
     page.goto(f"{BASE}/app/quiz")
     settle(page, 600)
-    page.get_by_role("button", name="Start quiz on sample_notes_data_structures.txt").first.click()
+    page.get_by_role("button", name=f"Start quiz on {doc}").first.click()
     page.wait_for_selector("fieldset")
     page.wait_for_timeout(800)
-    n = page.locator("fieldset").count()
-    for i in range(n):
-        page.locator(f"#q{i}o{pattern[i % len(pattern)]}").check()
+    with open(doc_path, encoding="utf-8") as f:
+        notes = norm_ws(f.read())
+    qs = page.evaluate("""() => [...document.querySelectorAll('fieldset')].map(f => ({
+        stem: f.querySelector('legend').innerText, opts: [...f.querySelectorAll('label')].map(l => l.innerText.trim())}))""")
+    for i, q in enumerate(qs):
+        stem = q["stem"].split("Fill in the blank:", 1)[1].strip()
+        right = next((j for j, o in enumerate(q["opts"]) if norm_ws(stem.replace("_____", o, 1)) in notes), 0)
+        pick = right if i < know else next(j for j in range(len(q["opts"])) if j != right)
+        page.locator(f"#q{i}o{pick}").check()
+
+
+def take_quiz_open(page, know, doc_path):
+    with open(doc_path, encoding="utf-8") as f:
+        notes = norm_ws(f.read())
+    qs = page.evaluate("""() => [...document.querySelectorAll('fieldset')].map(f => ({
+        stem: f.querySelector('legend').innerText, opts: [...f.querySelectorAll('label')].map(l => l.innerText.trim())}))""")
+    for i, q in enumerate(qs):
+        stem = q["stem"].split("Fill in the blank:", 1)[1].strip()
+        right = next((j for j, o in enumerate(q["opts"]) if norm_ws(stem.replace("_____", o, 1)) in notes), 0)
+        pick = right if i < know else next(j for j in range(len(q["opts"])) if j != right)
+        page.locator(f"#q{i}o{pick}").check()
 
 
 def main():
@@ -104,10 +132,24 @@ def main():
         page.wait_for_timeout(900)
         shot(page, "06_upload-done")
 
+        if RICH:
+            for fname, subject in RICH_DOCS:
+                page.goto(f"{BASE}/app/upload")
+                settle(page, 500)
+                page.set_input_files("input[type=file]", os.path.join(CORPUS, fname))
+                page.get_by_label("Subject").fill(subject)
+                page.get_by_role("button", name="Upload & process").click()
+                page.get_by_text("Document processed").wait_for()
+                page.wait_for_timeout(500)
+
         # ---- ask a few questions
         page.goto(f"{BASE}/app/ask")
         settle(page, 600)
-        for q in ["What is the LIFO principle?", "What is a binary search tree?", "How does a queue work?"]:
+        questions = ["What is the LIFO principle?", "What is a binary search tree?", "How does a queue work?"]
+        if RICH:
+            questions = ["What is the LIFO principle?", "How does write-ahead logging guarantee durability?",
+                         "What is Dijkstra's algorithm used for?", "What is a deadlock?"]
+        for q in questions:
             page.get_by_label("Your question").fill(q)
             page.get_by_role("button", name="Ask", exact=True).click()
             page.get_by_text("Sources", exact=True).wait_for()
@@ -123,7 +165,7 @@ def main():
         page.goto(f"{BASE}/app/quiz")
         settle(page, 800)
         shot(page, "10_quiz-picker")
-        take_quiz(page, [0, 1, 2, 3, 0])
+        take_quiz(page, 4)
         shot(page, "11_quiz-taking")
         page.get_by_role("button", name="Submit quiz").click()
         page.get_by_text("Your result").wait_for()
@@ -133,11 +175,20 @@ def main():
         page.get_by_role("button", name="New quiz on this document").click()
         page.wait_for_selector("fieldset")
         page.wait_for_timeout(600)
-        for i in range(page.locator("fieldset").count()):
-            page.locator(f"#q{i}o{(i + 1) % 4}").check()
+        # same document again: answer from the notes for three of the five questions
+        take_quiz_open(page, 3, SAMPLE)
         page.get_by_role("button", name="Submit quiz").click()
         page.get_by_text("Your result").wait_for()
         page.wait_for_timeout(800)
+        if RICH:
+            plan = {"01_Data_Structures.txt": [5, 5], "02_Operating_Systems.txt": [3], "03_Database_Systems.txt": [2, 1],
+                    "06_Algorithms.txt": [4]}
+            for fname, _subject in RICH_DOCS:
+                for know in plan[fname]:
+                    take_quiz(page, know, doc=fname, doc_path=os.path.join(CORPUS, fname))
+                    page.get_by_role("button", name="Submit quiz").click()
+                    page.get_by_text("Your result").wait_for()
+                    page.wait_for_timeout(500)
 
         # ---- the rest of the app, now populated
         page.goto(f"{BASE}/app")

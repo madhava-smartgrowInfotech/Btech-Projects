@@ -1,0 +1,431 @@
+{
+ "summary": {
+  "n": 30,
+  "acceptable": 17,
+  "ambiguous": 5,
+  "poor": 8,
+  "method": "single reviewer, seed 0, first 5 questions of each of the six corpus files; acceptable = self-contained sentence with one defensible answer"
+ },
+ "items": [
+  {
+   "file": "01_Data_Structures.txt",
+   "question": "Fill in the blank: Chapel Hill, North Carolina) used singly _____ lists as file structures.",
+   "options": [
+    "implementation",
+    "hashing",
+    "linked",
+    "function"
+   ],
+   "answer": "linked",
+   "index": 0,
+   "label": "acceptable",
+   "note": ""
+  },
+  {
+   "file": "01_Data_Structures.txt",
+   "question": "Fill in the blank: The conventional implementations of _____ functions are based on the integer universe assumption that all elements of the table stem from the universe U = { 0 , .",
+   "options": [
+    "function",
+    "array",
+    "list",
+    "hash"
+   ],
+   "answer": "hash",
+   "index": 1,
+   "label": "poor",
+   "note": "sentence contains a garbled formula remnant"
+  },
+  {
+   "file": "01_Data_Structures.txt",
+   "question": "Fill in the blank: A perfect hash _____ can be created if all the keys are known ahead of time.",
+   "options": [
+    "function",
+    "case",
+    "order",
+    "called"
+   ],
+   "answer": "function",
+   "index": 2,
+   "label": "acceptable",
+   "note": ""
+  },
+  {
+   "file": "01_Data_Structures.txt",
+   "question": "Fill in the blank: If the _____ is nil, the key being searched for does not exist in the tree.",
+   "options": [
+    "linked",
+    "hashing",
+    "tree",
+    "data"
+   ],
+   "answer": "tree",
+   "index": 3,
+   "label": "acceptable",
+   "note": ""
+  },
+  {
+   "file": "01_Data_Structures.txt",
+   "question": "Fill in the blank: Since the _____ in a BST are laid out so that each comparison skips about half of the remaining tree, the lookup performance is proportional to",
+   "options": [
+    "linked",
+    "called",
+    "table",
+    "nodes"
+   ],
+   "answer": "nodes",
+   "index": 4,
+   "label": "acceptable",
+   "note": ""
+  },
+  {
+   "file": "02_Operating_Systems.txt",
+   "question": "Fill in the blank: Approaches that avoid circular waits include disabling interrupts during critical sections and using a hierarchy to determine a partial ordering of _____.",
+   "options": [
+    "page",
+    "unit",
+    "resources",
+    "process"
+   ],
+   "answer": "resources",
+   "index": 5,
+   "label": "ambiguous",
+   "note": ""
+  },
+  {
+   "file": "02_Operating_Systems.txt",
+   "question": "Fill in the blank: In this scheme, the _____ system retrieves data from secondary storage in blocks of the same size (pages).",
+   "options": [
+    "semaphore",
+    "data",
+    "operating",
+    "priority"
+   ],
+   "answer": "operating",
+   "index": 6,
+   "label": "acceptable",
+   "note": ""
+  },
+  {
+   "file": "02_Operating_Systems.txt",
+   "question": "Fill in the blank: M:1 (user-level threading) An M:1 model implies that all application-level _____ map to one kernel-level scheduled entity; the kernel has no knowledge of the application threads.",
+   "options": [
+    "threads",
+    "pages",
+    "data",
+    "deadlock"
+   ],
+   "answer": "threads",
+   "index": 7,
+   "label": "acceptable",
+   "note": ""
+  },
+  {
+   "file": "02_Operating_Systems.txt",
+   "question": "Fill in the blank: _____ pools A popular programming pattern involving threads is that of thread pools where a set number of threads are created at startup that then wait for a task to be assigned.",
+   "options": [
+    "pages",
+    "priority",
+    "multiple",
+    "thread"
+   ],
+   "answer": "thread",
+   "index": 8,
+   "label": "poor",
+   "note": "answer \"thread\" is repeated in the stem (\"thread pools\")"
+  },
+  {
+   "file": "02_Operating_Systems.txt",
+   "question": "Fill in the blank: The required disk space may be easily allocated on _____ with more recent specifications (i.e.",
+   "options": [
+    "processes",
+    "unit",
+    "time",
+    "systems"
+   ],
+   "answer": "systems",
+   "index": 9,
+   "label": "poor",
+   "note": "fragment with no context; several options fit"
+  },
+  {
+   "file": "03_Database_Systems.txt",
+   "question": "Fill in the blank: The _____ in the following example was intentionally designed to contradict most of the normal forms.",
+   "options": [
+    "constraints",
+    "relation",
+    "data",
+    "records"
+   ],
+   "answer": "data",
+   "index": 10,
+   "label": "ambiguous",
+   "note": ""
+  },
+  {
+   "file": "03_Database_Systems.txt",
+   "question": "Fill in the blank: Almost all implemented _____ control mechanisms achieve serializability by providing Conflict serializability, a broad special case of serializability (i.e., it covers, enables most serializable schedules,",
+   "options": [
+    "database",
+    "concurrency",
+    "value",
+    "internal"
+   ],
+   "answer": "concurrency",
+   "index": 11,
+   "label": "ambiguous",
+   "note": ""
+  },
+  {
+   "file": "03_Database_Systems.txt",
+   "question": "Fill in the blank: (atomic), and an aborted transaction does not affect the _____ at all.",
+   "options": [
+    "relation",
+    "transactions",
+    "database",
+    "nodes"
+   ],
+   "answer": "database",
+   "index": 12,
+   "label": "ambiguous",
+   "note": ""
+  },
+  {
+   "file": "03_Database_Systems.txt",
+   "question": "Fill in the blank: The _____ could be searched in about eight disk reads, and the desired record could be accessed in 9 disk reads.",
+   "options": [
+    "index",
+    "internal",
+    "form",
+    "tree"
+   ],
+   "answer": "index",
+   "index": 13,
+   "label": "ambiguous",
+   "note": ""
+  },
+  {
+   "file": "03_Database_Systems.txt",
+   "question": "Fill in the blank: SQL uses a Null value to indicate missing data, which has no analog in the _____ model.",
+   "options": [
+    "number",
+    "relational",
+    "control",
+    "internal"
+   ],
+   "answer": "relational",
+   "index": 14,
+   "label": "acceptable",
+   "note": ""
+  },
+  {
+   "file": "04_Computer_Networks.txt",
+   "question": "Fill in the blank: A DHCP server can manage IP settings for devices on its local _____, e.g., by assigning IP addresses to those devices automatically and dynamically.",
+   "options": [
+    "model",
+    "number",
+    "network",
+    "server"
+   ],
+   "answer": "network",
+   "index": 15,
+   "label": "acceptable",
+   "note": ""
+  },
+  {
+   "file": "04_Computer_Networks.txt",
+   "question": "Fill in the blank: The sequence _____ is set to the received acknowledgment value, i.e., x + 1, and the acknowledgment number is set to one more than the received sequence number, i.e., y + 1.",
+   "options": [
+    "path",
+    "internet",
+    "number",
+    "destination"
+   ],
+   "answer": "number",
+   "index": 16,
+   "label": "acceptable",
+   "note": ""
+  },
+  {
+   "file": "04_Computer_Networks.txt",
+   "question": "Fill in the blank: History Using a simpler, more memorable name in place of a host's numerical _____ dates back to the ARPANET era.",
+   "options": [
+    "connection",
+    "protocols",
+    "address",
+    "example"
+   ],
+   "answer": "address",
+   "index": 17,
+   "label": "acceptable",
+   "note": ""
+  },
+  {
+   "file": "04_Computer_Networks.txt",
+   "question": "Fill in the blank: The PDU is passed to layer N−1, where it is known as the service _____ unit (SDU).",
+   "options": [
+    "data",
+    "example",
+    "connection",
+    "packet"
+   ],
+   "answer": "data",
+   "index": 18,
+   "label": "acceptable",
+   "note": ""
+  },
+  {
+   "file": "04_Computer_Networks.txt",
+   "question": "Fill in the blank: If the new connection risks creating _____, permission can be denied.",
+   "options": [
+    "congestion",
+    "packets",
+    "node",
+    "example"
+   ],
+   "answer": "congestion",
+   "index": 19,
+   "label": "acceptable",
+   "note": ""
+  },
+  {
+   "file": "05_Machine_Learning.txt",
+   "question": "Fill in the blank: In this analogy, the people represent the _____, and the path taken down the mountain represents the sequence of parameter settings that the algorithm will explore.",
+   "options": [
+    "linear",
+    "classifier",
+    "algorithm",
+    "models"
+   ],
+   "answer": "algorithm",
+   "index": 20,
+   "label": "poor",
+   "note": "answer \"algorithm\" is repeated in the stem"
+  },
+  {
+   "file": "05_Machine_Learning.txt",
+   "question": "Fill in the blank: Both methods can benefit from preconditioning, where _____ descent may require less assumptions on the preconditioner.",
+   "options": [
+    "models",
+    "decision",
+    "model",
+    "gradient"
+   ],
+   "answer": "gradient",
+   "index": 21,
+   "label": "acceptable",
+   "note": ""
+  },
+  {
+   "file": "05_Machine_Learning.txt",
+   "question": "Fill in the blank: This event _____ is especially popular for classifying short texts.",
+   "options": [
+    "model",
+    "step",
+    "probability",
+    "space"
+   ],
+   "answer": "model",
+   "index": 22,
+   "label": "acceptable",
+   "note": ""
+  },
+  {
+   "file": "05_Machine_Learning.txt",
+   "question": "Fill in the blank: As shown in Figure 5, the linear line could not represent all the given _____ points due to the line not resembling the curvature of the points.",
+   "options": [
+    "algorithm",
+    "classifier",
+    "data",
+    "used"
+   ],
+   "answer": "data",
+   "index": 23,
+   "label": "acceptable",
+   "note": ""
+  },
+  {
+   "file": "05_Machine_Learning.txt",
+   "question": "Fill in the blank: partitioning of the data _____ into Voronoi cells.",
+   "options": [
+    "function",
+    "regression",
+    "problem",
+    "space"
+   ],
+   "answer": "space",
+   "index": 24,
+   "label": "acceptable",
+   "note": ""
+  },
+  {
+   "file": "06_Algorithms.txt",
+   "question": "Fill in the blank: For large n and a randomly ordered input list, _____ sort's expected (average) number of comparisons approaches α·n fewer than the worst case, where α = − 1 + ∑ k = 0 ∞ 1 2 k + 1 ≈ 0.2645.",
+   "options": [
+    "merge",
+    "queue",
+    "graph",
+    "elements"
+   ],
+   "answer": "merge",
+   "index": 25,
+   "label": "acceptable",
+   "note": ""
+  },
+  {
+   "file": "06_Algorithms.txt",
+   "question": "Fill in the blank: On average, assuming that each element is equally likely to be _____ed, binary search makes ⌊ log 2 ⁡ ( n ) ⌋ + 1 − ( 2 ⌊ log 2 ⁡ ( n ) ⌋ + 1 − ⌊ log 2 ⁡ ( n ) ⌋ − 2 ) / n iterations when the target element",
+   "options": [
+    "dist",
+    "queue",
+    "left",
+    "search"
+   ],
+   "answer": "search",
+   "index": 26,
+   "label": "poor",
+   "note": "answer \"search\" is repeated in the stem; formula noise"
+  },
+  {
+   "file": "06_Algorithms.txt",
+   "question": "Fill in the blank: That means dist[w] + _____.Edges[w,u] < dist[u].",
+   "options": [
+    "problem",
+    "array",
+    "nodes",
+    "graph"
+   ],
+   "answer": "graph",
+   "index": 27,
+   "label": "poor",
+   "note": "pseudo-code fragment"
+  },
+  {
+   "file": "06_Algorithms.txt",
+   "question": "Fill in the blank: This _____ has demonstrated better performance on machines that benefit from cache optimization.",
+   "options": [
+    "algorithm",
+    "example",
+    "equal",
+    "vertex"
+   ],
+   "answer": "algorithm",
+   "index": 28,
+   "label": "poor",
+   "note": "\"This ___\" needs the previous sentence"
+  },
+  {
+   "file": "06_Algorithms.txt",
+   "question": "Fill in the blank: BFS has been run, and the predecessors _____ have been set.",
+   "options": [
+    "search",
+    "time",
+    "nodes",
+    "element"
+   ],
+   "answer": "nodes",
+   "index": 29,
+   "label": "poor",
+   "note": "needs the previous sentence; options all fit"
+  }
+ ]
+}

@@ -1,0 +1,223 @@
+{
+  "source": "English Wikipedia",
+  "licence": "CC BY-SA 4.0",
+  "max_words_per_article": 3200,
+  "subjects": [
+    {
+      "subject": "Data Structures",
+      "file": "01_Data_Structures.txt",
+      "articles": [
+        {
+          "title": "Stack (abstract data type)",
+          "revid": 1376688119,
+          "words": 3188
+        },
+        {
+          "title": "Queue (abstract data type)",
+          "revid": 1370002097,
+          "words": 1775
+        },
+        {
+          "title": "Linked list",
+          "revid": 1376669114,
+          "words": 3181
+        },
+        {
+          "title": "Binary search tree",
+          "revid": 1380655902,
+          "words": 1887
+        },
+        {
+          "title": "Hash table",
+          "revid": 1381079633,
+          "words": 3197
+        },
+        {
+          "title": "Heap (data structure)",
+          "revid": 1377140311,
+          "words": 1811
+        }
+      ]
+    },
+    {
+      "subject": "Operating Systems",
+      "file": "02_Operating_Systems.txt",
+      "articles": [
+        {
+          "title": "Deadlock (computer science)",
+          "revid": 1380715956,
+          "words": 1533
+        },
+        {
+          "title": "Scheduling (computing)",
+          "revid": 1378469702,
+          "words": 3179
+        },
+        {
+          "title": "Memory paging",
+          "revid": 1374693251,
+          "words": 3198
+        },
+        {
+          "title": "Semaphore (programming)",
+          "revid": 1376140804,
+          "words": 2479
+        },
+        {
+          "title": "Virtual memory",
+          "revid": 1379030801,
+          "words": 3192
+        },
+        {
+          "title": "Thread (computing)",
+          "revid": 1379414888,
+          "words": 3188
+        }
+      ]
+    },
+    {
+      "subject": "Database Systems",
+      "file": "03_Database_Systems.txt",
+      "articles": [
+        {
+          "title": "Database normalization",
+          "revid": 1361644936,
+          "words": 2242
+        },
+        {
+          "title": "ACID",
+          "revid": 1381669262,
+          "words": 1882
+        },
+        {
+          "title": "B-tree",
+          "revid": 1377462701,
+          "words": 3197
+        },
+        {
+          "title": "Relational model",
+          "revid": 1361474021,
+          "words": 3199
+        },
+        {
+          "title": "Database index",
+          "revid": 1357770109,
+          "words": 2312
+        },
+        {
+          "title": "Concurrency control",
+          "revid": 1373785457,
+          "words": 2647
+        }
+      ]
+    },
+    {
+      "subject": "Computer Networks",
+      "file": "04_Computer_Networks.txt",
+      "articles": [
+        {
+          "title": "Transmission Control Protocol",
+          "revid": 1379364197,
+          "words": 3180
+        },
+        {
+          "title": "Domain Name System",
+          "revid": 1381408454,
+          "words": 3186
+        },
+        {
+          "title": "OSI model",
+          "revid": 1379327825,
+          "words": 3181
+        },
+        {
+          "title": "Routing",
+          "revid": 1376698447,
+          "words": 2935
+        },
+        {
+          "title": "Network congestion",
+          "revid": 1380967227,
+          "words": 1950
+        },
+        {
+          "title": "Dynamic Host Configuration Protocol",
+          "revid": 1379205233,
+          "words": 3156
+        }
+      ]
+    },
+    {
+      "subject": "Machine Learning",
+      "file": "05_Machine_Learning.txt",
+      "articles": [
+        {
+          "title": "Overfitting",
+          "revid": 1374396766,
+          "words": 2372
+        },
+        {
+          "title": "Gradient descent",
+          "revid": 1373673523,
+          "words": 3183
+        },
+        {
+          "title": "Decision tree learning",
+          "revid": 1373673315,
+          "words": 3198
+        },
+        {
+          "title": "Naive Bayes classifier",
+          "revid": 1361005901,
+          "words": 3181
+        },
+        {
+          "title": "K-means clustering",
+          "revid": 1380990513,
+          "words": 3196
+        },
+        {
+          "title": "Support vector machine",
+          "revid": 1377218945,
+          "words": 3187
+        }
+      ]
+    },
+    {
+      "subject": "Algorithms",
+      "file": "06_Algorithms.txt",
+      "articles": [
+        {
+          "title": "Dijkstra's algorithm",
+          "revid": 1379857671,
+          "words": 3184
+        },
+        {
+          "title": "Merge sort",
+          "revid": 1369367310,
+          "words": 3069
+        },
+        {
+          "title": "Quicksort",
+          "revid": 1380361759,
+          "words": 3166
+        },
+        {
+          "title": "Binary search",
+          "revid": 1379979921,
+          "words": 3173
+        },
+        {
+          "title": "Dynamic programming",
+          "revid": 1376326876,
+          "words": 3109
+        },
+        {
+          "title": "Breadth-first search",
+          "revid": 1381045311,
+          "words": 1381
+        }
+      ]
+    }
+  ]
+}

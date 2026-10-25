@@ -1,0 +1,119 @@
+{
+ "base": "http://127.0.0.1:8301",
+ "runs_per_endpoint": 30,
+ "login": {
+  "n": 10,
+  "median_ms": 127.6,
+  "p95_ms": 137.0,
+  "min_ms": 106.7,
+  "max_ms": 177.5
+ },
+ "health": {
+  "n": 30,
+  "median_ms": 2.0,
+  "p95_ms": 2.8,
+  "min_ms": 1.2,
+  "max_ms": 3.4
+ },
+ "uploads": [
+  {
+   "file": "01_Data_Structures.txt",
+   "kb": 88.1,
+   "chunks_added": 101,
+   "chunks_total": 101,
+   "topics": 12,
+   "ms": 2501.2
+  },
+  {
+   "file": "02_Operating_Systems.txt",
+   "kb": 104.0,
+   "chunks_added": 112,
+   "chunks_total": 213,
+   "topics": 12,
+   "ms": 2326.9
+  },
+  {
+   "file": "03_Database_Systems.txt",
+   "kb": 92.3,
+   "chunks_added": 104,
+   "chunks_total": 317,
+   "topics": 12,
+   "ms": 200.7
+  },
+  {
+   "file": "04_Computer_Networks.txt",
+   "kb": 109.7,
+   "chunks_added": 118,
+   "chunks_total": 435,
+   "topics": 12,
+   "ms": 232.4
+  },
+  {
+   "file": "05_Machine_Learning.txt",
+   "kb": 98.1,
+   "chunks_added": 123,
+   "chunks_total": 558,
+   "topics": 12,
+   "ms": 390.1
+  },
+  {
+   "file": "06_Algorithms.txt",
+   "kb": 92.7,
+   "chunks_added": 114,
+   "chunks_total": 672,
+   "topics": 12,
+   "ms": 1072.4
+  }
+ ],
+ "ask": {
+  "n": 30,
+  "median_ms": 29.5,
+  "p95_ms": 35.3,
+  "min_ms": 13.1,
+  "max_ms": 135.6
+ },
+ "documents_list": {
+  "n": 30,
+  "median_ms": 5.8,
+  "p95_ms": 6.9,
+  "min_ms": 3.8,
+  "max_ms": 8.7
+ },
+ "dashboard": {
+  "n": 30,
+  "median_ms": 4.2,
+  "p95_ms": 5.8,
+  "min_ms": 2.6,
+  "max_ms": 6.4
+ },
+ "history": {
+  "n": 30,
+  "median_ms": 4.1,
+  "p95_ms": 10.6,
+  "min_ms": 2.4,
+  "max_ms": 29.0
+ },
+ "quiz_generate": {
+  "n": 30,
+  "median_ms": 23.1,
+  "p95_ms": 28.2,
+  "min_ms": 17.0,
+  "max_ms": 34.7
+ },
+ "quiz_submit": {
+  "n": 30,
+  "median_ms": 24.5,
+  "p95_ms": 2172.4,
+  "min_ms": 6.2,
+  "max_ms": 2436.0
+ },
+ "roadmap": {
+  "n": 30,
+  "median_ms": 7.0,
+  "p95_ms": 10.0,
+  "min_ms": 5.5,
+  "max_ms": 10.4
+ },
+ "delete": 247.5,
+ "total_chunks_indexed": 672
+}

@@ -1,0 +1,1 @@
+{"model": "BAAI/bge-small-en-v1.5", "dim": 384, "chunks": 672, "embed_chunks_s": 52.3, "embed_query_ms_each": 4.4}

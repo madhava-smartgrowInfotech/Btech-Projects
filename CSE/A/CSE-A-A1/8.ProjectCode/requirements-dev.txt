@@ -1,0 +1,8 @@
+pytest==8.3.3
+httpx==0.27.2
+matplotlib
+playwright
+python-pptx
+python-docx
+PyMuPDF
+pywin32

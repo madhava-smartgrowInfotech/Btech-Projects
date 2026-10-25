@@ -1,0 +1,19 @@
+
+== backend: http://127.0.0.1:8305 ==
+[PASS] GET /api/health
+[PASS] engine loaded - models/ artifacts load with the installed scikit-learn
+[PASS] GET /api/metrics - accuracy=0.9733333333333334
+[PASS] score attack preset -> attack - high
+[PASS] score normal preset -> normal
+[PASS] POST /api/ids/score-batch - 60 attacks / 60 normal
+[PASS] batch rejects non-CSV (400)
+[PASS] GET /api/alerts has entries - total=61
+[PASS] DELETE /api/alerts
+[PASS] POST /api/crypto/encrypt
+[PASS] decrypt round-trip
+[PASS] tampered ciphertext rejected (400)
+[PASS] empty plaintext rejected (400)
+[PASS] POST /api/crypto/encrypt-file
+[PASS] file decrypt round-trip
+
+15/15 checks passed

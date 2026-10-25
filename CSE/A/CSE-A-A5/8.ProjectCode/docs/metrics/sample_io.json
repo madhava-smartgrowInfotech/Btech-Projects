@@ -1,0 +1,85 @@
+{
+ "attack_req": {
+  "proto": "tcp",
+  "service": "ftp",
+  "state": "RST",
+  "dur": 3.5,
+  "sbytes": 85000,
+  "dbytes": 1200,
+  "rate": 95000,
+  "spkts": 35,
+  "dpkts": 4,
+  "ct_srv_src": 12,
+  "ct_dst_ltm": 15
+ },
+ "attack_resp": {
+  "label": "attack",
+  "confidence": 0.8440300536249989,
+  "severity": "high",
+  "xgb_score": 0.4485992193222046,
+  "cnn_score": 0.9963257908821106,
+  "alert": {
+   "timestamp": "2026-10-25 08:57:34",
+   "severity": "high",
+   "confidence": 0.8440300536249989,
+   "label": "attack",
+   "features": {
+    "proto": "tcp",
+    "service": "ftp",
+    "state": "RST",
+    "sbytes": 85000,
+    "dbytes": 1200,
+    "rate": 95000,
+    "ct_srv_src": 12
+   },
+   "scores": {
+    "xgb": 0.4485992193222046,
+    "cnn": 0.9963257908821106
+   }
+  }
+ },
+ "normal_req": {
+  "proto": "tcp",
+  "service": "http",
+  "state": "CON",
+  "dur": 0.3,
+  "sbytes": 900,
+  "dbytes": 700,
+  "rate": 12000,
+  "spkts": 7,
+  "dpkts": 5,
+  "ct_srv_src": 1,
+  "ct_dst_ltm": 1
+ },
+ "normal_resp": {
+  "label": "normal",
+  "confidence": 0.4580198725641064,
+  "severity": "low",
+  "xgb_score": 0.033848028630018234,
+  "cnn_score": 0.9142078161239624
+ },
+ "enc_req": {
+  "plaintext": "Quarterly payroll export - confidential"
+ },
+ "enc_resp": {
+  "ciphertext": "2mSrflJYn6ItVT1wMqGEQoqGxydDuNgQz1cFuE8rH1yewGckqAB7",
+  "nonce": "/bE1BSizpoUG59kq",
+  "tag": "Dcl1xvdC57l+8SrIR1tT5g==",
+  "ephemeral_public": "BFxP6HV3qRUuxqORG4YMYp9hZ5sYxiyCOCSAyiR08W4LKfSRt2z5wSzfSXBm9RwX9OT8ky1vND2PmQ5nMYPHTwY=",
+  "algorithm": "AES-256-GCM",
+  "key_exchange": "ECDH P-256 + HKDF-SHA256",
+  "note": "Ciphertext, nonce, tag are real values. Decrypt with /api/crypto/decrypt using the same ephemeral_public."
+ },
+ "dec_resp": {
+  "plaintext": "Quarterly payroll export - confidential",
+  "verified": true
+ },
+ "tamper_status": 400,
+ "tamper_resp": {
+  "detail": "Decryption failed (tag verification or key mismatch): "
+ },
+ "empty_status": 400,
+ "empty_resp": {
+  "detail": "Plaintext cannot be empty"
+ }
+}

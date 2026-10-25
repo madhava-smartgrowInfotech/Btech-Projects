@@ -1,0 +1,36 @@
+# NARRATIVE - the story every document must tell (CSE-A-A5, CipherGuard Shield)
+
+Read `docs/REPORT_FACTS.md` for every number. This file fixes the *claims*, the terminology and the honest caveats so the eleven documents agree.
+
+## Terminology
+- Product **CipherGuard Shield**; its two parts **SecureChannel** (crypto) and **ThreatSense Engine** (IDS); the **console** (React) and the **legacy dashboard** (web/).
+- "Shipped model" / "shipped bundle" = models/ + reports/ as delivered, trained on the **synthetic** 12,000-row dataset. "Real-trained bundle" = the model trained in this documentation run on the official UNSW-NB15 training set (experiments/unsw_nb15/official/models). Never say "the model achieves 97.33%" without saying "on synthetic data".
+- "Official partition" = UNSW-NB15 official training set (175,341 flows) -> official testing set (82,332 flows). "Paper protocol" = 9,000 balanced flows, 70/15/15, 10 repetitions (the base paper's style of experiment).
+- The ensemble is "stacked" (logistic-regression meta-model on the XGBoost and CNN probabilities). Do NOT call it the base paper's DSMMN score-level fusion; it is a simpler analogue. Do NOT claim quantum or EECC components - neither is implemented.
+
+## The seven messages
+1. **What was built:** one platform with two protections around a cloud data path - ECDH P-256 + HKDF-SHA256 + AES-256-GCM authenticated encryption, and an XGBoost + 1D-CNN + logistic-regression-stacking intrusion detector with alert log and live console. Both are real, tested code (26 pytest tests, 15 smoke checks).
+2. **Deviation from the batch objective:** objective 1 asked for AES + RSA. The product uses ECDH instead of RSA for key agreement (smaller keys, forward secrecy per message because every message uses a fresh ephemeral key). An RSA-2048/3072-OAEP + AES-GCM hybrid was *benchmarked* as the baseline: at 1 KB RSA-OAEP encryption is cheaper (0.03 ms versus 0.12 ms for SecureChannel) but the cloud-side decrypt is dearer (0.45 ms for RSA-2048 and 1.35 ms for RSA-3072 versus 0.10 ms, about 4x and 13x), and the wrapped key is 256 B versus a 65 B ephemeral point.
+3. **Crypto results:** 6 tamper cases x 1,000 trials all behaved as expected (1000/1000); nonces never repeated in 20,000 encryptions; fixed envelope overhead 93 bytes; sub-millisecond for payloads up to 100 KB; SecureChannel costs more than raw AES-GCM on large payloads because of base64 and ephemeral key work.
+4. **The synthetic-data trap:** the shipped 97.33% (accuracy on 1,800 synthetic rows) is a property of the generator: 2.5% injected label noise caps accuracy at 97.5%, and all three models score identically. On the 82,332 real test flows the same shipped model scores 0.660 (AUC 0.657); a real-trained model scored on the synthetic CSV gets 0.373. The synthetic number says nothing about real traffic. This is the most important finding and is stated in every results section.
+5. **Real results:** official partition (5 seeds): stacked 0.890 ± 0.002 accuracy, F1 0.907, ROC-AUC 0.984, FPR 0.222; XGBoost alone is better at 0.910 (FPR 0.156); CNN alone 0.841. Under the paper protocol (10 runs) stacked 0.938, XGBoost 0.939, random forest 0.939 - i.e. no gain from stacking and no gain from the CNN beyond XGBoost. The weak spots are false alarms on normal traffic (22.6% of normal flows at threshold 0.5) and Fuzzers (13.3% missed); raising the threshold to 0.9 gives accuracy 0.921 / FPR 0.096. `sttl` dominates feature importance (a known UNSW-NB15 artefact).
+6. **Against the base paper:** paper reports mean accuracy 0.9487 (proposed), 0.9354 (best baseline), precision 0.97, FPR 0.03 on 9,000 balanced samples; our stacked model gets 0.938 / precision 0.934 / FPR 0.067 under a comparable protocol - about one point lower than their proposed model, level with their strongest baseline. Their subset, hyper-parameters and test fraction are not published, so the comparison is indicative. The paper's EECC and quantum-inspired network are not reproduced.
+7. **The gap the survey named - "both operate together and the combined overhead is measured":** one protected 100 KB transfer (score one flow + encrypt + decrypt) costs 5.67 ms in process (IDS 81%, encrypt 11%, decrypt 8%); through HTTP, score + encrypt + decrypt as three calls costs 8.1 ms (1 KB). Detection dominates the overhead, not encryption. Caveat: the API does not gate a transfer on the verdict - the two lanes run side by side and the operator decides.
+
+## Honest limitations (use consistently)
+Default model trained on synthetic data; real-trained bundle is an experiment, not the default; official test set is temporally shifted and harder than a random split; no live packet capture (flows are records or CSV rows); mock in-process cloud with a process-lifetime key pair; no authentication, TLS or rate limiting; in-memory alert list lost on restart (max 500); no database; no adversarial/evasion testing of the IDS; no multi-user or load testing; Docker and the TensorFlow code path not exercised; the PyTorch CNN is trained with unweighted BCE although the README says balanced weighting; the UNSW-NB15 `sttl` artefact inflates results; 22.6% false alarms on normal traffic at threshold 0.5 would swamp an operator in production; measured on a shared i5-12500 laptop-class machine (timings indicative).
+
+## Objectives versus outcomes (batch objectives, 6.OBJECTIVES&PROBLEM STATEMENT.docx)
+| # | Objective | Outcome |
+|---|---|---|
+| 1 | Hybrid AES + RSA encryption | **Partly met by substitution:** hybrid asymmetric+symmetric scheme implemented with ECDH P-256 + AES-256-GCM; RSA-OAEP + AES-GCM implemented only as a benchmark baseline |
+| 2 | Secure key generation, distribution, storage | **Met for generation/distribution** (fresh ephemeral P-256 key per message, HKDF-derived 256-bit key, public key in the envelope); **storage is not met** - the cloud key pair lives in process memory only |
+| 3 | Transmission module: encrypt before upload, decrypt after download | **Met against a mock cloud:** encrypt, decrypt-and-verify, file mode up to 5 MB, tamper rejection; no real cloud provider or upload |
+| 4 | Classifier on a benchmark intrusion dataset | **Met in the experiments** (real UNSW-NB15: 0.890 stacked, 0.910 XGBoost); the shipped default model is trained on synthetic data |
+| 5 | Integrate detection so suspicious sessions are flagged and logged | **Partly met:** flows are scored, attacks flagged and appended to a 500-entry in-memory alert log with severity; detection is not coupled to a specific transfer session and nothing is blocked automatically |
+| 6 | Evaluate enc/dec time, throughput overhead, detection accuracy | **Met:** crypto latency by size and algorithm, throughput, combined per-transfer overhead, detection metrics with seeds, threshold and per-category analysis |
+
+## Documents and where they differ
+- Chapter documents 9, 10, 11, 12, 14, 15 and the full report 17 are built from the same block modules (ch*.py) - write once.
+- Decks and the IEEE paper condense the same facts; they must not contradict the chapters.
+- Screens: docs/screenshots 01-09 (shipped bundle, synthetic sample), 10 (real flows, shipped model, 65% agreement), 11 and 12 (real-trained bundle, 88.79% on the official test set; 101/120 on the real sample).

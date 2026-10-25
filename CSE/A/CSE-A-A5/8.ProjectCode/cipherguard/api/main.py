@@ -5,6 +5,7 @@ Serves IDS inference, SecureChannel crypto, metrics, and static frontend.
 import base64
 import io
 import json
+import os
 import time
 from pathlib import Path
 from typing import Optional
@@ -21,8 +22,9 @@ from cipherguard.ids.features import FEATURE_NAMES, CATEGORICAL_FEATURES
 
 BASE_DIR = Path(__file__).resolve().parents[2]
 WEB_DIR = BASE_DIR / "web"
-MODELS_DIR = BASE_DIR / "models"
-REPORTS_DIR = BASE_DIR / "reports"
+# Optional overrides so a different model bundle (for example the one trained on real UNSW-NB15 flows in experiments/) can be served
+MODELS_DIR = Path(os.environ.get("CIPHERGUARD_MODELS_DIR") or BASE_DIR / "models")
+REPORTS_DIR = Path(os.environ.get("CIPHERGUARD_REPORTS_DIR") or BASE_DIR / "reports")
 
 app = FastAPI(
     title="CipherGuard Shield",

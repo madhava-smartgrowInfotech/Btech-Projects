@@ -1,0 +1,357 @@
+{
+  "machine": {
+    "python": "3.11.9",
+    "cryptography": "42.0.7",
+    "platform": "Windows-10-10.0.26300-SP0",
+    "processor": "Intel64 Family 6 Model 151 Stepping 5, GenuineIntel"
+  },
+  "secure_channel_ecdh_aesgcm": {
+    "1 KB": {
+      "bytes": 1024,
+      "encrypt": {
+        "median_ms": 0.12235000031068921,
+        "p95_ms": 0.14969999756431207,
+        "reps": 300
+      },
+      "decrypt": {
+        "median_ms": 0.10350000229664147,
+        "p95_ms": 0.11269999959040433,
+        "reps": 300
+      },
+      "encrypt_throughput_mb_s": 7.981712280508117
+    },
+    "10 KB": {
+      "bytes": 10240,
+      "encrypt": {
+        "median_ms": 0.14460000238614157,
+        "p95_ms": 0.16030000551836565,
+        "reps": 300
+      },
+      "decrypt": {
+        "median_ms": 0.1155500031018164,
+        "p95_ms": 0.13580000086221844,
+        "reps": 300
+      },
+      "encrypt_throughput_mb_s": 67.53544148582901
+    },
+    "100 KB": {
+      "bytes": 102400,
+      "encrypt": {
+        "median_ms": 0.5103500006953254,
+        "p95_ms": 0.6176999959279783,
+        "reps": 300
+      },
+      "decrypt": {
+        "median_ms": 0.30160000096657313,
+        "p95_ms": 0.48750000132713467,
+        "reps": 300
+      },
+      "encrypt_throughput_mb_s": 191.35152320358267
+    },
+    "1 MB": {
+      "bytes": 1048576,
+      "encrypt": {
+        "median_ms": 4.263499999069609,
+        "p95_ms": 4.582699999446049,
+        "reps": 40
+      },
+      "decrypt": {
+        "median_ms": 2.990450000652345,
+        "p95_ms": 3.6199999958625995,
+        "reps": 40
+      },
+      "encrypt_throughput_mb_s": 234.54907944604724
+    },
+    "5 MB": {
+      "bytes": 5242880,
+      "encrypt": {
+        "median_ms": 21.386699998402037,
+        "p95_ms": 22.829100002127234,
+        "reps": 15
+      },
+      "decrypt": {
+        "median_ms": 14.213499998732004,
+        "p95_ms": 15.499900000577327,
+        "reps": 15
+      },
+      "encrypt_throughput_mb_s": 233.7901593220828
+    }
+  },
+  "aes256gcm_only": {
+    "1 KB": {
+      "encrypt": {
+        "median_ms": 0.008199996955227107,
+        "p95_ms": 0.009199997293762863,
+        "reps": 300
+      },
+      "decrypt": {
+        "median_ms": 0.007599999662488699,
+        "p95_ms": 0.008100003469735384,
+        "reps": 300
+      },
+      "throughput_mb_s": 119.09303202576045
+    },
+    "10 KB": {
+      "encrypt": {
+        "median_ms": 0.0092999980552122,
+        "p95_ms": 0.009999996109399945,
+        "reps": 300
+      },
+      "decrypt": {
+        "median_ms": 0.009000003046821803,
+        "p95_ms": 0.0092999980552122,
+        "reps": 300
+      },
+      "throughput_mb_s": 1050.0674238879908
+    },
+    "100 KB": {
+      "encrypt": {
+        "median_ms": 0.02600000152597204,
+        "p95_ms": 0.02649999805726111,
+        "reps": 300
+      },
+      "decrypt": {
+        "median_ms": 0.025800000003073364,
+        "p95_ms": 0.030800001695752144,
+        "reps": 300
+      },
+      "throughput_mb_s": 3756.0093949397956
+    },
+    "1 MB": {
+      "encrypt": {
+        "median_ms": 0.787150001997361,
+        "p95_ms": 1.4934999999240972,
+        "reps": 40
+      },
+      "decrypt": {
+        "median_ms": 0.796950000221841,
+        "p95_ms": 1.2819000039598905,
+        "reps": 40
+      },
+      "throughput_mb_s": 1270.4058914597483
+    },
+    "5 MB": {
+      "encrypt": {
+        "median_ms": 3.8948000001255423,
+        "p95_ms": 4.450400003406685,
+        "reps": 15
+      },
+      "decrypt": {
+        "median_ms": 3.3265999954892322,
+        "p95_ms": 4.099699996004347,
+        "reps": 15
+      },
+      "throughput_mb_s": 1283.7629659645768
+    }
+  },
+  "rsa2048_oaep_aesgcm": {
+    "keygen_ms_one_time": 68.10859999677632,
+    "sizes": {
+      "1 KB": {
+        "encrypt": {
+          "median_ms": 0.028800001018680632,
+          "p95_ms": 0.04579999949783087,
+          "reps": 300
+        },
+        "decrypt": {
+          "median_ms": 0.44889999844599515,
+          "p95_ms": 0.6598999971174635,
+          "reps": 300
+        },
+        "wrapped_key_bytes": 256
+      },
+      "10 KB": {
+        "encrypt": {
+          "median_ms": 0.03170000127283856,
+          "p95_ms": 0.03529999958118424,
+          "reps": 300
+        },
+        "decrypt": {
+          "median_ms": 0.44300000081420876,
+          "p95_ms": 0.6510999955935404,
+          "reps": 300
+        },
+        "wrapped_key_bytes": 256
+      },
+      "100 KB": {
+        "encrypt": {
+          "median_ms": 0.049700000090524554,
+          "p95_ms": 0.0914999982342124,
+          "reps": 300
+        },
+        "decrypt": {
+          "median_ms": 0.4705499959527515,
+          "p95_ms": 0.680199998896569,
+          "reps": 300
+        },
+        "wrapped_key_bytes": 256
+      },
+      "1 MB": {
+        "encrypt": {
+          "median_ms": 0.8106000022962689,
+          "p95_ms": 1.2872000006609596,
+          "reps": 40
+        },
+        "decrypt": {
+          "median_ms": 1.2302499999350403,
+          "p95_ms": 1.5267000053427182,
+          "reps": 40
+        },
+        "wrapped_key_bytes": 256
+      },
+      "5 MB": {
+        "encrypt": {
+          "median_ms": 3.7738000028184615,
+          "p95_ms": 4.102500002773013,
+          "reps": 15
+        },
+        "decrypt": {
+          "median_ms": 3.6946999971405603,
+          "p95_ms": 4.1196000020136125,
+          "reps": 15
+        },
+        "wrapped_key_bytes": 256
+      }
+    }
+  },
+  "rsa3072_oaep_aesgcm": {
+    "keygen_ms_one_time": 104.1590000022552,
+    "sizes": {
+      "1 KB": {
+        "encrypt": {
+          "median_ms": 0.04430000262800604,
+          "p95_ms": 0.04990000161342323,
+          "reps": 300
+        },
+        "decrypt": {
+          "median_ms": 1.3514000020222738,
+          "p95_ms": 1.7697999937809072,
+          "reps": 300
+        },
+        "wrapped_key_bytes": 384
+      },
+      "10 KB": {
+        "encrypt": {
+          "median_ms": 0.04579999949783087,
+          "p95_ms": 0.05200000305194408,
+          "reps": 300
+        },
+        "decrypt": {
+          "median_ms": 1.457899998058565,
+          "p95_ms": 2.0147999966866337,
+          "reps": 300
+        },
+        "wrapped_key_bytes": 384
+      },
+      "100 KB": {
+        "encrypt": {
+          "median_ms": 0.06510000093840063,
+          "p95_ms": 0.09190000128000975,
+          "reps": 300
+        },
+        "decrypt": {
+          "median_ms": 1.441500000510132,
+          "p95_ms": 2.1905000030528754,
+          "reps": 300
+        },
+        "wrapped_key_bytes": 384
+      },
+      "1 MB": {
+        "encrypt": {
+          "median_ms": 0.9699500005808659,
+          "p95_ms": 1.3274000011733733,
+          "reps": 40
+        },
+        "decrypt": {
+          "median_ms": 2.236199998151278,
+          "p95_ms": 2.7688999980455264,
+          "reps": 40
+        },
+        "wrapped_key_bytes": 384
+      },
+      "5 MB": {
+        "encrypt": {
+          "median_ms": 3.805699998338241,
+          "p95_ms": 4.395299998577684,
+          "reps": 15
+        },
+        "decrypt": {
+          "median_ms": 4.699099998106249,
+          "p95_ms": 6.391599999915343,
+          "reps": 15
+        },
+        "wrapped_key_bytes": 384
+      }
+    }
+  },
+  "key_setup": {
+    "ecdh_p256_keygen": {
+      "median_ms": 0.024100001610349864,
+      "p95_ms": 0.030700000934302807,
+      "reps": 300
+    },
+    "ecdh_exchange_plus_hkdf": {
+      "median_ms": 0.053499999921768904,
+      "p95_ms": 0.07309999637072906,
+      "reps": 300
+    }
+  },
+  "tamper_tests": {
+    "untouched message accepted": {
+      "trials": 1000,
+      "as_expected": 1000
+    },
+    "ciphertext bit flipped": {
+      "trials": 1000,
+      "as_expected": 1000
+    },
+    "tag bit flipped": {
+      "trials": 1000,
+      "as_expected": 1000
+    },
+    "nonce bit flipped": {
+      "trials": 1000,
+      "as_expected": 1000
+    },
+    "ciphertext truncated by one byte": {
+      "trials": 1000,
+      "as_expected": 1000
+    },
+    "decrypted with another party's key": {
+      "trials": 1000,
+      "as_expected": 1000
+    }
+  },
+  "uniqueness": {
+    "encryptions": 20000,
+    "distinct_nonces": 20000,
+    "distinct_ciphertexts_for_identical_plaintext": 20000
+  },
+  "wire_overhead": {
+    "1 KB": {
+      "plaintext_bytes": 1024,
+      "fixed_overhead_bytes": 93,
+      "overhead_percent": 9.08203125
+    },
+    "10 KB": {
+      "plaintext_bytes": 10240,
+      "fixed_overhead_bytes": 93,
+      "overhead_percent": 0.9082031250000001
+    },
+    "100 KB": {
+      "plaintext_bytes": 102400,
+      "fixed_overhead_bytes": 93,
+      "overhead_percent": 0.0908203125
+    },
+    "1 MB": {
+      "plaintext_bytes": 1048576,
+      "fixed_overhead_bytes": 93,
+      "overhead_percent": 0.008869171142578125
+    },
+    "5 MB": {
+      "plaintext_bytes": 5242880,
+      "fixed_overhead_bytes": 93,
+      "overhead_percent": 0.0017738342285156252
+    }
+  }
+}

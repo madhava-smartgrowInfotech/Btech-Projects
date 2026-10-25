@@ -1,0 +1,52 @@
+{
+  "data_mode": "real UNSW-NB15 (official training set -> official testing set, seed 42)",
+  "dataset_rows": 257673,
+  "splits": {
+    "train": 149039,
+    "val": 26302,
+    "test": 82332
+  },
+  "accuracy": 0.8878807753971725,
+  "precision": 0.8418072677005813,
+  "recall": 0.9806538427600812,
+  "f1": 0.9059414515849645,
+  "roc_auc": 0.9839227113595551,
+  "confusion_matrix": [
+    [
+      28646,
+      8354
+    ],
+    [
+      877,
+      44455
+    ]
+  ],
+  "confusion_labels": [
+    "normal",
+    "attack"
+  ],
+  "xgb_accuracy": 0.9101200019433513,
+  "cnn_accuracy": 0.8356653549045329,
+  "meta_coef": [
+    [
+      6.768252321719661,
+      2.9716586590534138
+    ]
+  ],
+  "meta_intercept": [
+    -4.416856548486589
+  ],
+  "class_balance": {
+    "neg": 56000,
+    "pos": 119341
+  },
+  "input_dim": 192,
+  "cnn_backend": "torch",
+  "technology": {
+    "model_a": "XGBoost (Gradient-boosted trees)",
+    "model_b": "1D Convolutional Neural Network (2 conv layers + pooling + dense, PyTorch)",
+    "fusion": "Logistic Regression stacking",
+    "dataset": "UNSW-NB15 (real flows)",
+    "crypto": "AES-256-GCM + ECDH P-256 + HKDF-SHA256"
+  }
+}

@@ -1,0 +1,419 @@
+{
+  "base": "http://127.0.0.1:8915",
+  "first_detection_after_start_seconds": 4.553170919418335,
+  "status_during_simulation": {
+    "mode": "simulation",
+    "windows_completed": 13,
+    "active_mitigations": 21,
+    "window_seconds": 2
+  },
+  "live_sim_windows_scored": 13,
+  "live_sim_by_prediction": {
+    "Attack": 10,
+    "Benign": 3
+  },
+  "live_sim_by_severity": {
+    "Critical": 4,
+    "High": 3,
+    "Low": 3,
+    "Medium": 3
+  },
+  "live_sim_quarantines_recorded": 21,
+  "latency": [
+    {
+      "path": "/api/status",
+      "method": "GET",
+      "n": 100,
+      "status": 200,
+      "mean_ms": 8.036587999522453,
+      "p50_ms": 3.5441000072751194,
+      "p95_ms": 19.892199998139404,
+      "max_ms": 26.742599991848692
+    },
+    {
+      "path": "/api/health",
+      "method": "GET",
+      "n": 100,
+      "status": 200,
+      "mean_ms": 12.673607999604428,
+      "p50_ms": 12.892300001112744,
+      "p95_ms": 27.967300004092976,
+      "max_ms": 134.02830000268295
+    },
+    {
+      "path": "/api/interfaces",
+      "method": "GET",
+      "n": 100,
+      "status": 200,
+      "mean_ms": 40.30938100098865,
+      "p50_ms": 35.7166000030702,
+      "p95_ms": 55.46370000229217,
+      "max_ms": 192.60160000703763
+    },
+    {
+      "path": "/api/settings",
+      "method": "GET",
+      "n": 100,
+      "status": 200,
+      "mean_ms": 7.950332000327762,
+      "p50_ms": 3.716500010341406,
+      "p95_ms": 23.614899997483008,
+      "max_ms": 28.22740000556223
+    },
+    {
+      "path": "/api/mitigations",
+      "method": "GET",
+      "n": 100,
+      "status": 200,
+      "mean_ms": 12.03006900017499,
+      "p50_ms": 8.727599997655489,
+      "p95_ms": 24.660900002345443,
+      "max_ms": 214.25570000428706
+    },
+    {
+      "path": "/api/model/metrics",
+      "method": "GET",
+      "n": 100,
+      "status": 200,
+      "mean_ms": 8.383720999845536,
+      "p50_ms": 4.254600004060194,
+      "p95_ms": 20.757999998750165,
+      "max_ms": 31.101100001251325
+    },
+    {
+      "path": "/api/detections/latest",
+      "method": "GET",
+      "n": 100,
+      "status": 200,
+      "mean_ms": 9.387747000000672,
+      "p50_ms": 6.551900005433708,
+      "p95_ms": 24.789099988993257,
+      "max_ms": 28.415399996447377
+    },
+    {
+      "path": "/",
+      "method": "GET",
+      "n": 30,
+      "status": 200,
+      "mean_ms": 9.852856666839216,
+      "p50_ms": 12.37520000722725,
+      "p95_ms": 18.832000001566485,
+      "max_ms": 27.184799997485243
+    },
+    {
+      "path": "/static/results/confusion_matrix.png",
+      "method": "GET",
+      "n": 30,
+      "status": 200,
+      "mean_ms": 11.432600000504559,
+      "p50_ms": 13.226499999291264,
+      "p95_ms": 20.182799999020062,
+      "max_ms": 44.74399999890011
+    },
+    {
+      "path": "/api/settings",
+      "method": "POST",
+      "n": 50,
+      "status": 200,
+      "mean_ms": 10.913044000044465,
+      "p50_ms": 13.674000001628883,
+      "p95_ms": 16.5695999894524,
+      "max_ms": 27.070899988757446
+    },
+    {
+      "path": "/api/detections?limit=50",
+      "method": "GET",
+      "n": 60,
+      "status": 200,
+      "mean_ms": 10.380748334622089,
+      "p50_ms": 6.879499997012317,
+      "p95_ms": 25.195100010023452,
+      "max_ms": 28.401100003975444
+    },
+    {
+      "path": "/api/detections?limit=500",
+      "method": "GET",
+      "n": 60,
+      "status": 200,
+      "mean_ms": 9.999214999455338,
+      "p50_ms": 5.924600001890212,
+      "p95_ms": 25.279599998611957,
+      "max_ms": 30.032399998162873
+    },
+    {
+      "path": "/api/detections/latest",
+      "method": "GET",
+      "n": 60,
+      "status": 200,
+      "mean_ms": 7.861954999922697,
+      "p50_ms": 2.960700003313832,
+      "p95_ms": 23.519099995610304,
+      "max_ms": 34.812700003385544
+    },
+    {
+      "path": "/api/mitigations",
+      "method": "GET",
+      "n": 60,
+      "status": 200,
+      "mean_ms": 6.794551666098414,
+      "p50_ms": 3.9077999972505495,
+      "p95_ms": 18.476199998985976,
+      "max_ms": 24.49839998735115
+    },
+    {
+      "path": "/api/status",
+      "method": "GET",
+      "n": 60,
+      "status": 200,
+      "mean_ms": 6.3999266652293345,
+      "p50_ms": 3.2613999937893823,
+      "p95_ms": 22.306600003503263,
+      "max_ms": 28.861799990409054
+    }
+  ],
+  "probes": [
+    {
+      "name": "limit not a number",
+      "method": "GET",
+      "path": "/api/detections?limit=abc",
+      "status": 400,
+      "expected": 400,
+      "ok": true,
+      "body": "{\"error\":\"Invalid 'limit' parameter; expected an integer.\"} "
+    },
+    {
+      "name": "limit SQL-looking string",
+      "method": "GET",
+      "path": "/api/detections?limit=1;DROP TABLE detections",
+      "status": 400,
+      "expected": 400,
+      "ok": true,
+      "body": "{\"error\":\"Invalid 'limit' parameter; expected an integer.\"} "
+    },
+    {
+      "name": "limit negative clamps to 1",
+      "method": "GET",
+      "path": "/api/detections?limit=-5",
+      "status": 200,
+      "expected": 200,
+      "ok": true,
+      "body": "{\"by_prediction\":{\"Attack\":10,\"Benign\":3},\"by_severity\":{\"Critical\":4,\"High\":3,\"Low\":3,\"Medium\":3},\"detections\":[{\"byte_rate\":415385.0,\"confidence\":1.0,\"destina"
+    },
+    {
+      "name": "limit huge clamps to 500",
+      "method": "GET",
+      "path": "/api/detections?limit=99999999999",
+      "status": 200,
+      "expected": 200,
+      "ok": true,
+      "body": "{\"by_prediction\":{\"Attack\":10,\"Benign\":3},\"by_severity\":{\"Critical\":4,\"High\":3,\"Low\":3,\"Medium\":3},\"detections\":[{\"byte_rate\":415385.0,\"confidence\":1.0,\"destina"
+    },
+    {
+      "name": "unknown endpoint -> JSON 404",
+      "method": "GET",
+      "path": "/api/does-not-exist",
+      "status": 404,
+      "expected": 404,
+      "ok": true,
+      "body": "{\"error\":\"Unknown endpoint.\"} "
+    },
+    {
+      "name": "window_seconds below range",
+      "method": "POST",
+      "path": "/api/settings",
+      "status": 400,
+      "expected": 400,
+      "ok": true,
+      "body": "{\"error\":\"window_seconds must be between 2 and 120.\"} "
+    },
+    {
+      "name": "window_seconds above range",
+      "method": "POST",
+      "path": "/api/settings",
+      "status": 400,
+      "expected": 400,
+      "ok": true,
+      "body": "{\"error\":\"window_seconds must be between 2 and 120.\"} "
+    },
+    {
+      "name": "window_seconds as text",
+      "method": "POST",
+      "path": "/api/settings",
+      "status": 400,
+      "expected": 400,
+      "ok": true,
+      "body": "{\"error\":\"Invalid window_seconds; expected an integer.\"} "
+    },
+    {
+      "name": "window_seconds float string",
+      "method": "POST",
+      "path": "/api/settings",
+      "status": 400,
+      "expected": 400,
+      "ok": true,
+      "body": "{\"error\":\"Invalid window_seconds; expected an integer.\"} "
+    },
+    {
+      "name": "quarantine_seconds below range",
+      "method": "POST",
+      "path": "/api/settings",
+      "status": 400,
+      "expected": 400,
+      "ok": true,
+      "body": "{\"error\":\"quarantine_seconds must be between 5 and 3600.\"} "
+    },
+    {
+      "name": "quarantine_seconds above range",
+      "method": "POST",
+      "path": "/api/settings",
+      "status": 400,
+      "expected": 400,
+      "ok": true,
+      "body": "{\"error\":\"quarantine_seconds must be between 5 and 3600.\"} "
+    },
+    {
+      "name": "malformed JSON body tolerated",
+      "method": "POST",
+      "path": "/api/settings",
+      "status": 200,
+      "expected": 200,
+      "ok": true,
+      "body": "{\"ok\":true,\"quarantine_seconds\":40,\"window_seconds\":10} "
+    },
+    {
+      "name": "array JSON body",
+      "method": "POST",
+      "path": "/api/settings",
+      "status": 200,
+      "expected": [
+        200,
+        400,
+        500
+      ],
+      "ok": true,
+      "body": "{\"ok\":true,\"quarantine_seconds\":40,\"window_seconds\":10} "
+    },
+    {
+      "name": "path traversal in results route",
+      "method": "GET",
+      "path": "/static/results/..%2f..%2fapp.py",
+      "status": 404,
+      "expected": [
+        400,
+        404
+      ],
+      "ok": true,
+      "body": "{\"error\":\"Unknown endpoint.\"} "
+    },
+    {
+      "name": "path traversal (plain ..)",
+      "method": "GET",
+      "path": "/static/results/../../app.py",
+      "status": 404,
+      "expected": [
+        400,
+        404
+      ],
+      "ok": true,
+      "body": "{\"error\":\"Unknown endpoint.\"} "
+    },
+    {
+      "name": "missing results file",
+      "method": "GET",
+      "path": "/static/results/nope.png",
+      "status": 404,
+      "expected": 404,
+      "ok": true,
+      "body": "{\"error\":\"Unknown endpoint.\"} "
+    },
+    {
+      "name": "wrong method on /api/status",
+      "method": "POST",
+      "path": "/api/status",
+      "status": 405,
+      "expected": 405,
+      "ok": true,
+      "body": "<!doctype html> <html lang=en> <title>405 Method Not Allowed</title> <h1>Method Not Allowed</h1> <p>The method is not allowed for the requested URL.</p> "
+    },
+    {
+      "name": "wrong method on /api/detections",
+      "method": "DELETE",
+      "path": "/api/detections",
+      "status": 405,
+      "expected": 405,
+      "ok": true,
+      "body": "<!doctype html> <html lang=en> <title>405 Method Not Allowed</title> <h1>Method Not Allowed</h1> <p>The method is not allowed for the requested URL.</p> "
+    },
+    {
+      "name": "monitor/start bad window",
+      "method": "POST",
+      "path": "/api/monitor/start",
+      "status": 400,
+      "expected": 400,
+      "ok": true,
+      "body": "{\"error\":\"window_seconds must be between 2 and 120.\"} "
+    },
+    {
+      "name": "demo/start bad window",
+      "method": "POST",
+      "path": "/api/demo/start",
+      "status": 400,
+      "expected": 400,
+      "ok": true,
+      "body": "{\"error\":\"window_seconds must be between 2 and 120.\"} "
+    },
+    {
+      "name": "demo/start twice -> 409",
+      "method": "POST",
+      "path": "/api/demo/start",
+      "status": 200,
+      "expected": 200,
+      "ok": true,
+      "body": "{\"mode\":\"simulation\",\"ok\":true,\"window_seconds\":2} "
+    },
+    {
+      "name": "second start while running",
+      "method": "POST",
+      "path": "/api/demo/start",
+      "status": 409,
+      "expected": 409,
+      "ok": true,
+      "body": "{\"error\":\"Stop the current session before starting a new one.\"} "
+    },
+    {
+      "name": "monitor/start while simulation runs",
+      "method": "POST",
+      "path": "/api/monitor/start",
+      "status": 409,
+      "expected": 409,
+      "ok": true,
+      "body": "{\"error\":\"Stop the current session before starting a new one.\"} "
+    },
+    {
+      "name": "very long interface name accepted but not echoed unsafely",
+      "method": "POST",
+      "path": "/api/settings",
+      "status": 200,
+      "expected": 200,
+      "ok": true,
+      "body": "{\"ok\":true,\"quarantine_seconds\":40,\"window_seconds\":10} "
+    },
+    {
+      "name": "live capture start without Npcap",
+      "method": "POST",
+      "path": "/api/monitor/start",
+      "status": 200,
+      "expected": [
+        200,
+        500
+      ],
+      "ok": true,
+      "body": "{\"interface\":\"default\",\"mode\":\"live\",\"ok\":true,\"window_seconds\":2} ",
+      "capture_error_after_6s": "Packet capture driver unavailable: Sniffing and sending packets is not available at layer 2: winpcap is not installed. You may use conf.L3socket or conf.L3socket6 to access layer 3. Install Npcap (https://npcap.com) or use Simulation Mode.",
+      "mode_after_6s": "stopped"
+    }
+  ],
+  "probes_ok": 25,
+  "probes_total": 25,
+  "healthy_after_probes": true
+}

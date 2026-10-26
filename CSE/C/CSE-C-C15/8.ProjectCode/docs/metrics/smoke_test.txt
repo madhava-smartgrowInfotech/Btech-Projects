@@ -1,0 +1,28 @@
+PASS  GET /api/status
+PASS  GET /api/interfaces
+PASS  GET /api/settings
+PASS  POST /api/settings rejects window_seconds=1 (400)
+PASS  POST /api/settings rejects quarantine_seconds=99999 (400)
+PASS  POST /api/settings saves valid values
+PASS  settings persisted in the running backend
+PASS  POST /api/demo/start
+PASS  second start is refused (409)
+PASS  live start while simulating is refused (409)
+PASS  status reports simulation mode
+PASS  simulation scored at least 4 new windows
+PASS  detection row has every field the UI reads
+PASS  detection detail has features/distributed/severity/actions
+PASS  by_severity keys are valid
+PASS  GET /api/detections/latest
+PASS  bad limit is a 400
+PASS  GET /api/mitigations shape
+PASS  GET /api/health has a current sample
+PASS  GET /api/model/metrics
+PASS  result plot confusion_matrix.png
+PASS  result plot roc_curve.png
+PASS  result plot feature_importance.png
+PASS  POST /api/demo/stop
+PASS  status is stopped afterwards
+Frontend not reachable at http://127.0.0.1:5999 (HTTPConnectionPool(host='127.0.0.1', port=5999): Max retries exceeded with url: / (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=5999): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it"))) - skipped proxy checks.
+
+All smoke checks passed.

@@ -1,0 +1,74 @@
+{
+  "rows_after_cap": 120000,
+  "benign": 51912,
+  "attack": 68088,
+  "mixed_test": {
+    "accuracy": 0.9993333333333333,
+    "precision": 0.9997060984570169,
+    "recall": 0.9991188133352915,
+    "f1": 0.9994123696195093,
+    "fpr": 0.00038528221922558276,
+    "tn": 10378,
+    "fp": 4,
+    "fn": 12,
+    "tp": 13606,
+    "n": 24000,
+    "roc_auc": 0.99984904027014
+  },
+  "hybrid_on_real_all_flows": {
+    "accuracy": 0.9995481627500056,
+    "precision": 0.9998046493455753,
+    "recall": 0.9993985643653291,
+    "f1": 0.9996015656127687,
+    "fpr": 0.00025583822837143617,
+    "tn": 97693,
+    "fp": 25,
+    "fn": 77,
+    "tp": 127950,
+    "n": 225745,
+    "roc_auc": 0.9999275915486275
+  },
+  "note_real_flows_overlap": "hybrid_on_real_all_flows includes flows seen in training (about 80 % of the sampled rows)",
+  "hybrid_on_sim_windows": {
+    "window_2s": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": 0.0,
+      "tn": 1046,
+      "fp": 0,
+      "fn": 0,
+      "tp": 954,
+      "n": 2000,
+      "roc_auc": 1.0
+    },
+    "window_5s": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": 0.0,
+      "tn": 1046,
+      "fp": 0,
+      "fn": 0,
+      "tp": 954,
+      "n": 2000,
+      "roc_auc": 1.0
+    },
+    "window_10s": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": 0.0,
+      "tn": 1046,
+      "fp": 0,
+      "fn": 0,
+      "tp": 954,
+      "n": 2000,
+      "roc_auc": 1.0
+    }
+  },
+  "elapsed_seconds": 84.2
+}

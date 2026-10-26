@@ -1,0 +1,40 @@
+{
+  "base": "http://127.0.0.1:8410",
+  "python": "3.11.9",
+  "machine": "Intel64 Family 6 Model 151 Stepping 5, GenuineIntel",
+  "health": {
+    "n": 50,
+    "median_ms": 3.0,
+    "mean_ms": 3.2,
+    "p95_ms": 4.7,
+    "max_ms": 6.5
+  },
+  "model_metrics": {
+    "n": 50,
+    "median_ms": 3.5,
+    "mean_ms": 3.6,
+    "p95_ms": 5.3,
+    "max_ms": 5.6
+  },
+  "insights": {
+    "n": 30,
+    "median_ms": 14.5,
+    "mean_ms": 16.3,
+    "p95_ms": 24.6,
+    "max_ms": 44.4
+  },
+  "predict_k10": {
+    "n": 30,
+    "median_ms": 147.8,
+    "mean_ms": 207.0,
+    "p95_ms": 593.9,
+    "max_ms": 812.4
+  },
+  "predict_k50": {
+    "n": 30,
+    "median_ms": 198.5,
+    "mean_ms": 263.6,
+    "p95_ms": 582.9,
+    "max_ms": 716.2
+  }
+}

@@ -1,0 +1,6 @@
+{
+ "smoke": 15,
+ "unit_app": 7,
+ "edge_api": 29,
+ "note": "smoke_test.py 15/15, pytest tests 7 passed, scripts/edge_tests.py 29/29"
+}

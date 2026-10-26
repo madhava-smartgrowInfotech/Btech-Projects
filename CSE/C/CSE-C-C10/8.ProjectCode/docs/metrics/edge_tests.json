@@ -1,0 +1,238 @@
+{
+  "n": 29,
+  "passed": 29,
+  "cases": [
+    {
+      "case": "valid request",
+      "route": "POST /predict",
+      "expected": 200,
+      "got": 200,
+      "pass": true,
+      "ms": 11327.4
+    },
+    {
+      "case": "k not in {10,20,30,50}",
+      "route": "POST /predict",
+      "expected": 422,
+      "got": 422,
+      "pass": true,
+      "ms": 6.9
+    },
+    {
+      "case": "negative funding",
+      "route": "POST /predict",
+      "expected": 422,
+      "got": 422,
+      "pass": true,
+      "ms": 3.8
+    },
+    {
+      "case": "funding above 1e10",
+      "route": "POST /predict",
+      "expected": 422,
+      "got": 422,
+      "pass": true,
+      "ms": 4.4
+    },
+    {
+      "case": "funding rounds above 20",
+      "route": "POST /predict",
+      "expected": 422,
+      "got": 422,
+      "pass": true,
+      "ms": 4.7
+    },
+    {
+      "case": "relationships above 200",
+      "route": "POST /predict",
+      "expected": 422,
+      "got": 422,
+      "pass": true,
+      "ms": 4.9
+    },
+    {
+      "case": "description over 2000 characters",
+      "route": "POST /predict",
+      "expected": 422,
+      "got": 422,
+      "pass": true,
+      "ms": 6.0
+    },
+    {
+      "case": "empty description (falls back to industry text)",
+      "route": "POST /predict",
+      "expected": 200,
+      "got": 200,
+      "pass": true,
+      "ms": 69.6
+    },
+    {
+      "case": "non-numeric funding",
+      "route": "POST /predict",
+      "expected": 422,
+      "got": 422,
+      "pass": true,
+      "ms": 3.7
+    },
+    {
+      "case": "unknown industry and state (handled by one-hot ignore)",
+      "route": "POST /predict",
+      "expected": 200,
+      "got": 200,
+      "pass": true,
+      "ms": 97.9
+    },
+    {
+      "case": "zero funding, zero rounds",
+      "route": "POST /predict",
+      "expected": 200,
+      "got": 200,
+      "pass": true,
+      "ms": 34.2
+    },
+    {
+      "case": "maximum values",
+      "route": "POST /predict",
+      "expected": 200,
+      "got": 200,
+      "pass": true,
+      "ms": 35.7
+    },
+    {
+      "case": "empty body (all defaults)",
+      "route": "POST /predict",
+      "expected": 200,
+      "got": 200,
+      "pass": true,
+      "ms": 29.2
+    },
+    {
+      "case": "form post with empty description",
+      "route": "POST /predict-form",
+      "expected": 400,
+      "got": 400,
+      "pass": true,
+      "ms": 0
+    },
+    {
+      "case": "form post with bad k (falls back to default)",
+      "route": "POST /predict-form",
+      "expected": 200,
+      "got": 200,
+      "pass": true,
+      "ms": 0
+    },
+    {
+      "case": "GET /api/health",
+      "route": "GET /api/health",
+      "expected": 200,
+      "got": 200,
+      "pass": true,
+      "ms": 0
+    },
+    {
+      "case": "GET /api/model-metrics",
+      "route": "GET /api/model-metrics",
+      "expected": 200,
+      "got": 200,
+      "pass": true,
+      "ms": 0
+    },
+    {
+      "case": "GET /api/insights",
+      "route": "GET /api/insights",
+      "expected": 200,
+      "got": 200,
+      "pass": true,
+      "ms": 0
+    },
+    {
+      "case": "GET /api/config",
+      "route": "GET /api/config",
+      "expected": 200,
+      "got": 200,
+      "pass": true,
+      "ms": 0
+    },
+    {
+      "case": "GET /api/feature-importance?top=5",
+      "route": "GET /api/feature-importance?top=5",
+      "expected": 200,
+      "got": 200,
+      "pass": true,
+      "ms": 0
+    },
+    {
+      "case": "GET /",
+      "route": "GET /",
+      "expected": 200,
+      "got": 200,
+      "pass": true,
+      "ms": 0
+    },
+    {
+      "case": "GET /predict",
+      "route": "GET /predict",
+      "expected": 200,
+      "got": 200,
+      "pass": true,
+      "ms": 0
+    },
+    {
+      "case": "GET /performance",
+      "route": "GET /performance",
+      "expected": 200,
+      "got": 200,
+      "pass": true,
+      "ms": 0
+    },
+    {
+      "case": "GET /insights",
+      "route": "GET /insights",
+      "expected": 200,
+      "got": 200,
+      "pass": true,
+      "ms": 0
+    },
+    {
+      "case": "auth/me without token",
+      "route": "GET /api/auth/me",
+      "expected": 401,
+      "got": 401,
+      "pass": true,
+      "ms": 0
+    },
+    {
+      "case": "login with wrong password",
+      "route": "POST /api/auth/login",
+      "expected": 401,
+      "got": 401,
+      "pass": true,
+      "ms": 0
+    },
+    {
+      "case": "login with demo credentials",
+      "route": "POST /api/auth/login",
+      "expected": 200,
+      "got": 200,
+      "pass": true,
+      "ms": 0
+    },
+    {
+      "case": "auth/me with token",
+      "route": "GET /api/auth/me",
+      "expected": 200,
+      "got": 200,
+      "pass": true,
+      "ms": 0
+    },
+    {
+      "case": "auth/me with tampered token",
+      "route": "GET /api/auth/me",
+      "expected": 401,
+      "got": 401,
+      "pass": true,
+      "ms": 0
+    }
+  ]
+}

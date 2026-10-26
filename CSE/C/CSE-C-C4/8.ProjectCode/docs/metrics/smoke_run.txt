@@ -1,0 +1,28 @@
+[PASS] health ok and trained
+[PASS] tickers lists the universe
+[PASS] tickers match health
+[PASS] metrics has every ticker
+[PASS] metrics shape
+[PASS] four deep tiers
+[PASS] five baselines
+[PASS] metrics/{ticker}
+[PASS] forecast short has 5 days
+[PASS] forecast short band brackets the prediction
+[PASS] forecast long has 30 days
+[PASS] forecast long band brackets the prediction
+[PASS] history returns requested days
+[PASS] overlay dates equal the frontend business-day calendar
+[PASS] history rows have OHLCV
+[PASS] sentiment has meta, daily scores and headlines
+[PASS] sentiment scores within [-1, 1]
+[PASS] invalid ticker -> 400
+[PASS] unknown ticker -> 404
+[PASS] bad horizon -> 422
+[PASS] history days out of range -> 422
+[PASS] unknown /api path stays 404
+[PASS] website serves the app shell
+[PASS] website proxies /api to the backend
+[PASS] API serves the built site
+[PASS] API serves client routes (SPA fallback)
+
+All smoke checks passed.

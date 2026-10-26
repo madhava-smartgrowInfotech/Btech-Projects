@@ -1,0 +1,126 @@
+{
+ "host": "http://127.0.0.1:8404",
+ "endpoints": {
+  "health": {
+   "path": "/api/health",
+   "status": 200,
+   "bytes": 169,
+   "n": 50,
+   "first_ms": 101.64690000237897,
+   "median_ms": 2.1320500018191524,
+   "p95_ms": 15.975899994373322,
+   "max_ms": 24.875999995856546,
+   "mean_ms": 4.9142740000388585
+  },
+  "tickers": {
+   "path": "/api/tickers",
+   "status": 200,
+   "bytes": 680,
+   "n": 50,
+   "first_ms": 23.122300000977702,
+   "median_ms": 2.1951500020804815,
+   "p95_ms": 15.922900012810715,
+   "max_ms": 25.152399990474805,
+   "mean_ms": 7.40469999902416
+  },
+  "metrics_all": {
+   "path": "/api/metrics",
+   "status": 200,
+   "bytes": 76413,
+   "n": 30,
+   "first_ms": 33.16839999752119,
+   "median_ms": 13.102499993692618,
+   "p95_ms": 31.68349999759812,
+   "max_ms": 34.40269999555312,
+   "mean_ms": 17.914423333422747
+  },
+  "metrics_one": {
+   "path": "/api/metrics/TSLA",
+   "status": 200,
+   "bytes": 7572,
+   "n": 50,
+   "first_ms": 25.19840000604745,
+   "median_ms": 11.747599994123448,
+   "p95_ms": 16.303600001265295,
+   "max_ms": 23.155500006396323,
+   "mean_ms": 9.131481998774689
+  },
+  "forecast_short": {
+   "path": "/api/forecast/TSLA?horizon=short",
+   "status": 200,
+   "bytes": 408,
+   "n": 50,
+   "first_ms": 19.352599992998876,
+   "median_ms": 11.320149998937268,
+   "p95_ms": 16.003199998522177,
+   "max_ms": 20.772500007296912,
+   "mean_ms": 8.777357999060769
+  },
+  "forecast_long": {
+   "path": "/api/forecast/TSLA?horizon=long",
+   "status": 200,
+   "bytes": 2046,
+   "n": 50,
+   "first_ms": 17.76679999602493,
+   "median_ms": 7.3262000005343,
+   "p95_ms": 16.3569999858737,
+   "max_ms": 26.594499999191612,
+   "mean_ms": 8.816626001207624
+  },
+  "history_120d": {
+   "path": "/api/history/TSLA?days=120",
+   "status": 200,
+   "bytes": 11877,
+   "n": 8,
+   "first_ms": 680.3404999955092,
+   "median_ms": 139.39645000209566,
+   "p95_ms": 190.03929999598768,
+   "max_ms": 308.56869999843184,
+   "mean_ms": 164.39363750032499
+  },
+  "sentiment": {
+   "path": "/api/sentiment/TSLA",
+   "status": 200,
+   "bytes": 2043,
+   "n": 8,
+   "first_ms": 5954.281400001491,
+   "median_ms": 4581.940200005192,
+   "p95_ms": 4827.638499991735,
+   "max_ms": 5355.087599993567,
+   "mean_ms": 4620.595474998481
+  },
+  "error_invalid_ticker": {
+   "path": "/api/forecast/T5LA",
+   "status": 400,
+   "bytes": 63,
+   "n": 30,
+   "first_ms": 27.355199999874458,
+   "median_ms": 1.483599997300189,
+   "p95_ms": 14.345900010084733,
+   "max_ms": 19.34679999249056,
+   "mean_ms": 4.604770000635956
+  },
+  "error_unknown_ticker": {
+   "path": "/api/forecast/ZZZZ",
+   "status": 404,
+   "bytes": 62,
+   "n": 30,
+   "first_ms": 16.37969999865163,
+   "median_ms": 1.8540999953984283,
+   "p95_ms": 15.91250000637956,
+   "max_ms": 16.698599996743724,
+   "mean_ms": 7.359269999627334
+  },
+  "frontend_index": {
+   "path": "/",
+   "status": 200,
+   "bytes": 1437,
+   "n": 30,
+   "first_ms": 26.685899996664375,
+   "median_ms": 2.1560000022873282,
+   "p95_ms": 16.071399993961677,
+   "max_ms": 20.874399997410364,
+   "mean_ms": 6.5300733321540365
+  }
+ }
+}

@@ -9,3 +9,9 @@ data/news_cache/
 .env
 .venv311/
 frontend/node_modules/
+
+data/external/
+logs/
+docs/pdf/
+docs/_preview/
+docs/_chk/

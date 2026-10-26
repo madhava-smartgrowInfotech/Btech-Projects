@@ -30,19 +30,24 @@ def env_port(name: str, default: int) -> int:
 API = f"http://127.0.0.1:{env_port('BACKEND_PORT', 8404)}"
 WEB = f"http://localhost:{env_port('FRONTEND_PORT', 5404)}"
 
-# (file name, route, selector to wait for, selector to scroll to, theme)
+# (file name, route, selector to wait for, selector to scroll to, theme, pixels left above the scrolled-to element)
 SCREENS = [
-    ("01_landing_light", "/", ".hero-card .recharts-line", None, "light"),
-    ("02_landing_dark", "/", ".hero-card .recharts-line", None, "dark"),
-    ("03_dashboard", "/app", ".ticker-card", None, "light"),
-    ("04_forecast_5day", "/app/forecast?t=TSLA&h=short", ".chart-box .recharts-line", ".chart-box", "light"),
-    ("05_forecast_30day", "/app/forecast?t=MSFT&h=long", ".chart-box .recharts-line", ".chart-box", "light"),
-    ("06_models_comparison", "/app/models?t=NVDA", ".chart-box .recharts-bar-rectangle", ".chart-box", "light"),
-    ("07_models_training", "/app/models?t=NVDA&tab=training", ".chart-box .recharts-line", ".chart-box", "light"),
-    ("08_sentiment", "/app/sentiment?t=TSLA", ".headline", ".chart-box", "light"),
-    ("09_about", "/app/about", ".tbl", None, "light"),
-    ("10_dashboard_dark", "/app", ".ticker-card", None, "dark"),
-    ("11_forecast_dark", "/app/forecast?t=AAPL", ".chart-box .recharts-line", ".chart-box", "dark"),
+    ("01_landing_light", "/", ".hero-card .recharts-line", None, "light", 0),
+    ("02_landing_dark", "/", ".hero-card .recharts-line", None, "dark", 0),
+    ("03_dashboard", "/app", ".ticker-card", None, "light", 0),
+    ("04_forecast_5day", "/app/forecast?t=TSLA&h=short", ".chart-box .recharts-line", ".chart-box", "light", 110),
+    ("05_forecast_30day", "/app/forecast?t=MSFT&h=long", ".chart-box .recharts-line", ".chart-box", "light", 110),
+    ("06_models_comparison", "/app/models?t=NVDA", ".chart-box .recharts-bar-rectangle", None, "light", 0),
+    ("07_models_training", "/app/models?t=NVDA&tab=training", ".chart-box .recharts-line", ".chart-box", "light", 110),
+    ("08_sentiment", "/app/sentiment?t=TSLA", ".headline", None, "light", 0),
+    ("09_about", "/app/about", ".tbl", None, "light", 0),
+    ("10_dashboard_dark", "/app", ".ticker-card", None, "dark", 0),
+    ("11_forecast_dark", "/app/forecast?t=AAPL", ".chart-box .recharts-line", ".chart-box", "dark", 110),
+    ("12_models_table", "/app/models?t=NVDA", ".tbl", ".tbl", "light", 150),
+    ("13_sentiment_headlines", "/app/sentiment?t=TSLA", ".headline", ".chart-box", "light", 110),
+    ("14_forecast_table", "/app/forecast?t=TSLA&h=short", ".tbl", ".tbl", "light", 150),
+    ("16_forecast_top", "/app/forecast?t=NVDA&h=short", ".chart-box .recharts-line", None, "light", 0),
+    ("15_dashboard_tickers", "/app", ".ticker-card", ".ticker-card", "light", 120),
 ]
 
 
@@ -58,7 +63,7 @@ def main():
             browser = p.chromium.launch()
         except Exception:  # no downloaded Chromium: use the installed Chrome
             browser = p.chromium.launch(channel="chrome")
-        for name, route, ready, scroll_to, scheme in SCREENS:
+        for name, route, ready, scroll_to, scheme, offset in SCREENS:
             ctx = browser.new_context(viewport={"width": 1440, "height": 900}, color_scheme=scheme)
             page = ctx.new_page()
             page.goto(WEB + route, wait_until="networkidle", timeout=240000)
@@ -70,7 +75,7 @@ def main():
                 page.wait_for_timeout(100)
             page.evaluate("window.scrollTo(0, 0)")
             if scroll_to:
-                page.evaluate(f"window.scrollTo(0, document.querySelector('{scroll_to}').getBoundingClientRect().top + window.scrollY - 330)")
+                page.evaluate(f"window.scrollTo(0, document.querySelector('{scroll_to}').getBoundingClientRect().top + window.scrollY - {offset})")
             page.wait_for_timeout(1800)  # let chart animations finish
             path = os.path.join(OUT, f"{name}.png")
             page.screenshot(path=path)

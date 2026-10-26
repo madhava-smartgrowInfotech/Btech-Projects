@@ -10,6 +10,12 @@ from doc_common import metrics
 _g = metrics("gold_retrain")["results"]
 _s = metrics("seeds")
 _nf = metrics("noise_free_leakage")
+_sc = metrics("synthetic_corpus")
+_nn = metrics("neural_adapter")
+_N_USEFUL = _sc["n_sweep"]["smallest_n_within_1_2x"]["4.85"]
+_nn0 = _nn["summary"]["by_sigma"][0]
+_NN_T = _nn["summary"]["timing"]
+_NP = metrics("security_probe")["n_probes"]
 
 
 def sec_lit_overview(d):
@@ -111,8 +117,8 @@ def sec_related(d):
         "extracted verbatim training sequences, which shows that the influence a client leaves in a text model can be concrete and not only statistical.")
     d.h3("Regulation and adapters")
     d.p("Article 17 of the GDPR [20] grants the right to erasure, the legal anchor of the whole field. LoRA [22] fixes the pretrained weights and trains low-rank update "
-        "matrices, so the object a client contributes in a federated LLM pipeline is a small tensor, which is why the project's per-client vector is a reasonable, if "
-        "much smaller, stand-in for it.")
+        "matrices, so the object a client contributes in a federated LLM pipeline is a small tensor; the project's per-client vector is a much smaller stand-in for it, and the "
+        "neural study of Chapter 8 uses real low-rank adapters of a small recurrent network.")
 
 
 def sec_lit_algorithms(d):
@@ -129,17 +135,19 @@ def sec_lit_algorithms(d):
              ["Summation-form unlearning", "[18]", "Statistical-query learners", "Implemented: the aggregate is a sum of per-client terms"],
              ["Gaussian mechanism on a clipped sum", "[10], [11]", "Noise standard deviation = multiplier x clipping norm", "Implemented with one release and no accountant"]],
             "Approaches reported in the literature and the choice made in this project", widths=[0.22, 0.14, 0.3, 0.34], font=9)
-    d.p("**Data in this project.** ForgetSafe uses no benchmark. Its corpus is the built-in set of 25 training sentences (five clients with five records each), five public "
-        "evaluation sentences and five non-member sentences in `certified_unlearning/dataset.py`. The choice follows from the objective of a fully offline, reproducible demonstrator, "
-        "and it is the main reason that the project's numbers cannot be compared with those of papers evaluated on CIFAR or TOFU. **Algorithms in this project** are a "
-        "character-bigram language model, L2 clipping, a Gaussian-noise sum, subtraction-based removal, a loss-based membership attack and a SHA-256 hash chain, each justified in Chapter 6.")
+    d.p("**Data in this project.** ForgetSafe uses no benchmark; all data are synthetic and generated offline. The shipped corpus is 25 training sentences (five clients with five records each), "
+        "five public evaluation sentences and five non-member sentences in `certified_unlearning/dataset.py`; the measurement study adds a seeded-grammar corpus (200 training and 200 held-out "
+        "sentences per client, up to 4,000 clients) and a template language for eight neural clients. Because the data are synthetic and the models small, the project's numbers cannot be compared "
+        "with those of papers evaluated on CIFAR or TOFU. **Algorithms in this project** are a character-bigram language model and a GRU with low-rank adapters, L2 clipping, a Gaussian-noise sum, "
+        "subtraction-based removal, a loss-based membership attack and a SHA-256 hash chain, each justified in Chapter 6.")
     d.p("**Why subtraction is exact here and not in LLM training.** Removal by subtraction is exact when the released model is a function of the clients' contributions that "
         "is linear in them and when each contribution depends only on that client's data. ForgetSafe's aggregate is of this form: every client's bigram-count vector is computed "
         "from its own records alone, the vectors are clipped and summed once, and the sum is divided by a count. Removing a client therefore leaves exactly the sum of the "
         "others. In federated LLM training the situation is different. Training runs for many rounds, and each client's update in round t is computed from the global model "
         "produced in round t-1, which already contains every other client's earlier contributions; the update is also a non-linear function of the weights. Subtracting the "
         "client's recorded updates then removes only the first-order, direct part of its influence. This is why the surveyed methods calibrate stored updates [17], retrain "
-        "shards [12], prune memorised parameters [2] or optimise an unlearning objective [3], [4], and why the project's claim of exactness is restricted to its one-shot linear aggregate.")
+        "shards [12], prune memorised parameters [2] or optimise an unlearning objective [3], [4]. The project's claim of exactness is therefore stated for a one-shot linear aggregate of "
+        "per-client vectors, which is what both the bigram product and the neural adapter study use.")
 
 
 def sec_lit_strengths(d):
@@ -171,8 +179,9 @@ def sec_gap(d):
         "**Little attention is given to how reliable the evidence is.** A certificate or attack score is useful only if its limits are known: the noise level at which the attack is "
         "informative, whether the reference comparison is independent, and whether the recorded privacy parameter is valid.",
     ])
-    d.p("ForgetSafe addresses the first three parts at demonstrator scale and addresses the fourth by measuring its own evidence. It does not close the gap for real LLMs: it "
-        "shows the shape of the pipeline and where its weak points are on a model small enough to examine completely.")
+    d.p("ForgetSafe addresses the first three parts at three scales (the five-client bigram product, a synthetic corpus of up to 4,000 clients, and eight clients with neural adapters) "
+        "and addresses the fourth by measuring its own evidence. It does not claim to close the gap for pre-trained billion-parameter LLMs; it shows the shape of the pipeline and "
+        "its weak points on models small enough to examine completely.")
 
 
 def sec_novelty(d):
@@ -181,17 +190,19 @@ def sec_novelty(d):
         "ForgetSafe adds or does differently. None of it is claimed as new to the field, and the systems are not compared numerically, because their tasks, data and metrics differ.")
     d.table([["Element", "Base paper [1]", "Closest technical work [2]-[4]", "ForgetSafe (this project)"],
              ["Nature of the work", "Survey of sign-language recognition; taxonomy and gaps", "New unlearning algorithms with experiments", "Runnable system joining training, removal, verification and audit, plus a measurement study"],
-             ["Subject", "Continuous sign language recognition", "Federated and federated-LLM unlearning", "Federated unlearning with certificates for an LLM-adapter stand-in"],
              ["What is reused", "The method: taxonomy, comparison, gap", "The problem setting and the retraining reference", "Method from [1]; setting and reference from [2]-[4]"],
-             ["Removal mechanism", "Not applicable", "Pruning [2]; unlearning algorithms [3]; primal-dual optimisation [4]", "Exact subtraction of the tracked clipped update from a noisy sum"],
-             ["Evidence of removal", "Not applicable", "Experimental metrics (forgetting, utility, attacks)", "Per-request certificate: reference distance, attack AUC before and after, utility retention, model hashes"],
-             ["Record keeping", "Not applicable", "Not part of the methods", "Hash-chained ledger with a verifier and a documented tamper study"],
-             ["Models and data", "Sign-language video datasets", "CIFAR, EMNIST, MedMNIST, Income, TOFU and MUSE with deep models", "Character-bigram proxy (1,089 parameters) on 25 synthetic sentences"],
-             ["Self-assessment", "Lists open research gaps of CSLR", "Reports gains over baselines", "Tests its own certificate: noise dominance, identity-style reference, epsilon validity range, ledger blind spots"]],
+             ["Removal mechanism", "Not applicable", "Pruning [2]; unlearning algorithms [3]; primal-dual optimisation [4]", "Exact subtraction of the tracked clipped update from a noisy sum, on bigram counts and on neural adapter vectors"],
+             ["Evidence of removal", "Not applicable", "Experimental metrics (forgetting, utility, attacks)", "Per-request certificate (reference distance, attack AUC before and after, utility retention, model hashes) and a fresh-noise retraining comparison"],
+             ["Record keeping", "Not applicable", "Not part of the methods", "Hash-chained ledger with a verifier and a measured tamper study"],
+             ["Models and data", "Sign-language video datasets", "CIFAR, EMNIST, MedMNIST, Income, TOFU and MUSE with deep models", f"Bigram model (1,089 parameters), a {_nn['base']['base_parameters']:,}-parameter GRU with low-rank adapters, synthetic corpora"],
+             ["Privacy and scale", "Not applicable", "Bounds relative to retraining [4]; empirical resilience", f"Measures when epsilon below 1 and a useful model coexist: from {_N_USEFUL:,} clients on the synthetic corpus"],
+             ["Self-assessment", "Lists open research gaps of CSLR", "Reports gains over baselines", f"Tests its own certificate and service: noise dominance, identity-style reference, epsilon validity range, ledger blind spots, load, {_NP} security probes, scripted acceptance"]],
             "Differences from the base paper and the closest technical work", widths=[0.15, 0.2, 0.3, 0.35], font=9)
     g = _g[0]
     d.p("The last row is the contribution the project is most ready to defend. With the default noise, an unlearned model lies at an L2 distance of "
         f"{g['l2_unlearned_vs_fresh_retrain']['mean']:.0f} from a retrain that draws fresh noise, and two independent retrains lie at "
         f"{g['l2_fresh_retrain_vs_fresh_retrain']['mean']:.0f} from each other (200 pairs): the gap is the noise, not a residue of the removed client. "
         f"Without noise, the attack AUC falls from {_nf['mean_auc_before']:.2f} to {_nf['mean_auc_after']:.2f}. These two measurements, rather than the 1e-14 reference distance, "
-        "are the evidence that removal worked, and they are reported in Chapter 8.")
+        "are the evidence that removal worked, and they are reported in Chapter 8. The neural adapter study repeats both measurements on a different model: the client-level attack AUC falls from "
+        f"{_nn0['client_auc_before']['mean']:.2f} to {_nn0['client_auc_after']['mean']:.2f}, equal to a fresh retraining ({_nn0['client_auc_retrain']['mean']:.2f}), and the removal takes "
+        f"{_NN_T['subtract_us_median']:.0f} microseconds against {_NN_T['retrain_seven_adapters_s_median']:.1f} s for retraining the seven retained adapters.")

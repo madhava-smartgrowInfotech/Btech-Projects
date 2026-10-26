@@ -181,26 +181,33 @@ def _abstract():
     s = metrics("seeds")
     nf = metrics("noise_free_leakage")
     g = metrics("gold_retrain")["results"][0]
+    nn = metrics("neural_adapter")
+    sc = metrics("synthetic_corpus")
+    sp = metrics("security_probe")
+    ac = metrics("acceptance")
+    s0 = nn["summary"]["by_sigma"][0]
+    nb = nn["base"]
     return [
         "Federated learning keeps raw data on client devices, yet each client's influence stays in the shared model parameters. Regulations such as the General Data "
         "Protection Regulation grant users a right to erasure, and retraining a large federated language model for every request is impractical. Existing federated "
         "unlearning methods mostly remove influence heuristically, and few can show a regulator that forgetting actually happened. The base paper recorded for this batch "
         "(Khan et al., IEEE Access, 2025) is a review in an unrelated field; only its review method, a taxonomy with strengths, limitations and an explicit research gap, is "
         "adopted here to frame federated unlearning.",
-        "This project builds ForgetSafe, a certified federated-unlearning demonstrator. Five simulated clients contribute L2-clipped parameter updates of a character-bigram "
-        "language model, which stands in for a large-language-model adapter; the coordinator releases a Gaussian-noised aggregate and reports its one-shot (epsilon, delta) "
-        "bound. To honour a deletion request, the stored update of the chosen client is subtracted and the aggregate is renormalised over the remaining clients, without "
-        "retraining. The result is checked against a retained-only recomputation, a loss-based membership-inference attack and a utility measure, and a certificate is issued "
-        "and written to a SHA-256 hash-chained audit ledger. The backend uses only the Python standard library; a React application exposes training, unlearning, a model "
-        "explorer and the audit ledger.",
-        f"The report measures the system honestly. At the default noise the released model is dominated by noise (perplexity {s['pre_unlearning_perplexity']['mean']:.0f} "
-        f"+/- {s['pre_unlearning_perplexity']['sd']:.0f} over 50 seeds, worse than a uniform model at 32), the membership attack is at chance "
-        f"(AUC {s['membership_auc_before']['mean']:.2f} before removal), and the reported epsilon of {b['epsilon']:.2f} lies outside the range in which the classical Gaussian bound is valid. "
-        f"The certificate check is an algebraic identity (distance about 1e-14) because the reference reuses the stored noise; an independent retraining with fresh noise is as "
-        f"far from the unlearned model as two independent retrainings are from each other ({g['l2_unlearned_vs_fresh_retrain']['mean']:.0f} against "
-        f"{g['l2_fresh_retrain_vs_fresh_retrain']['mean']:.0f}). With no noise the attack falls from AUC {nf['mean_auc_before']:.2f} to {nf['mean_auc_after']:.2f} after removal, "
-        "so the removal itself is real. The hash chain detects edits, deletions and re-ordering but not tail truncation or a fully re-hashed forgery. Five unit tests and "
-        "fourteen smoke-test checks pass. The report lists the work needed to move from this demonstrator to a real federated LLM.",
+        "This project builds ForgetSafe, a certified federated-unlearning framework. Clients contribute L2-clipped parameter updates; the coordinator releases a Gaussian-noised "
+        "aggregate and reports its one-shot (epsilon, delta) bound. To honour a deletion request, the stored update of the chosen client is subtracted and the aggregate is "
+        "renormalised over the remaining clients, without retraining. The result is checked against a retained-only recomputation, a membership-inference attack and a utility "
+        "measure, and a certificate is issued and written to a SHA-256 hash-chained audit ledger. The delivered application (standard-library Python backend, React interface) runs "
+        "the method on a character-bigram model; two further studies on synthetic data apply the same method to a larger synthetic corpus and to LoRA-style adapters of a "
+        f"{nb['base_parameters'] // 1000}k-parameter neural language model with eight synthetic clients.",
+        f"The measurements are reported as they came out. At the default noise (sigma = 3) the five-client bigram release is dominated by noise (perplexity "
+        f"{s['pre_unlearning_perplexity']['mean']:.0f} +/- {s['pre_unlearning_perplexity']['sd']:.0f} over 50 seeds against 32 for a uniform model) and the reported epsilon of {b['epsilon']:.2f} lies "
+        f"outside the range in which the classical Gaussian bound is valid. The certificate check is an algebraic identity (distance about 1e-14); the independent check, a retraining "
+        f"with fresh noise, is as far from the unlearned model as two retrainings are from each other ({g['l2_unlearned_vs_fresh_retrain']['mean']:.0f} against "
+        f"{g['l2_fresh_retrain_vs_fresh_retrain']['mean']:.0f}), on the bigram model, the synthetic corpus and the neural adapters alike. With no noise, removal lowers the membership attack from AUC "
+        f"{nf['mean_auc_before']:.2f} to {nf['mean_auc_after']:.2f} (bigram) and from {s0['client_auc_before']['mean']:.2f} to {s0['client_auc_after']['mean']:.2f} (neural adapters), and subtraction takes "
+        f"{nn['summary']['timing']['subtract_us_median']:.0f} microseconds against {nn['summary']['timing']['retrain_seven_adapters_s_median']:.1f} s for retraining seven adapters. Epsilon below 1 and a useful model coexist only for large "
+        f"federations: on the synthetic corpus perplexity falls within 1.2 times the noise-free value from {sc['n_sweep']['smallest_n_within_1_2x']['4.85']:,} clients. Load, concurrency and 58 "
+        f"security probes on the running server found {sp['classification_counts']['defect']} defects, all reported, and {ac['journeys_passed_all_steps']} of {ac['journeys']} scripted synthetic-user journeys passed.",
     ]
 
 

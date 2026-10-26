@@ -114,20 +114,36 @@ def fig3():
 
 
 def fig6():
-    cases = metrics("audit_tamper")["cases"][1:]
-    labels = ["edit a numeric field", "flip a certificate status", "delete a middle record", "swap two records",
-              "truncate newest records", "edit + re-hash every record", "append forged valid record"]
-    fig, ax = plt.subplots(figsize=(3.45, 1.55))
-    y = np.arange(len(cases))
-    ax.barh(y, [1] * len(cases), color=[MINT if c["detected"] else ROSE for c in cases], height=0.72)
-    for i, c in enumerate(cases):
-        ax.text(0.03, i, "detected" if c["detected"] else "NOT detected", va="center", color="white", fontsize=5.8, fontweight="bold")
-    ax.set_yticks(y); ax.set_yticklabels(labels, fontsize=6); ax.invert_yaxis(); ax.set_xticks([]); ax.grid(False)
-    for sp in ("bottom", "left", "top", "right"):
-        ax.spines[sp].set_visible(False)
-    ax.tick_params(length=0)
-    fig.tight_layout(pad=0.3)
-    fig.savefig(OUT / "fig6_tamper.png", dpi=300, facecolor="white")
+    """(a) synthetic corpus: clients needed for a useful release at epsilon < 1; (b) neural adapters: attack AUC and cost."""
+    plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 6.5, "axes.spines.top": False, "axes.spines.right": False,
+                         "axes.grid": True, "grid.color": "#e3e7ef", "grid.linewidth": 0.5})
+    sc = metrics("synthetic_corpus")["n_sweep"]["rows"]
+    nn = metrics("neural_adapter")["summary"]["by_sigma"]
+    fig, ax = plt.subplots(1, 2, figsize=(3.45, 2.0), gridspec_kw={"width_ratios": [1, 1.1]})
+    a = ax[0]
+    for sg, col, lab in ((1.0, AMBER, "$\\sigma$=1"), (4.85, INDIGO, "$\\sigma$=4.85 ($\\epsilon<1$)")):
+        rr = [r for r in sc if r["sigma"] == sg]
+        a.plot([r["n_clients"] for r in rr], [r["ratio_to_noise_free"] for r in rr], color=col, marker="o", ms=2.3, lw=1.1, label=lab)
+    a.axhline(1.2, color=ROSE, ls="--", lw=0.8); a.text(5.5, 1.35, "1.2x", color=ROSE, fontsize=5.8)
+    a.set_xscale("log"); a.set_yscale("log")
+    a.set_xlabel("federated clients n"); a.set_ylabel("perplexity / noise-free")
+    a.legend(fontsize=5, frameon=False, loc="upper right")
+    a.set_title("(a) synthetic corpus", fontsize=6.5, fontweight="bold")
+    b = ax[1]
+    keep = [r for r in nn if r["sigma"] in (0.0, 0.01, 0.03, 0.05, 0.1, 0.3, 1.0)]
+    x = np.arange(len(keep))
+    get = lambda r, k: r[k]["mean"] if isinstance(r[k], dict) else r[k]
+    b.plot(x, [get(r, "client_auc_before") for r in keep], color=AMBER, marker="s", ms=2.3, lw=1.1, label="before")
+    b.plot(x, [get(r, "client_auc_after") for r in keep], color=MINT, marker="^", ms=2.3, lw=1.1, label="after removal")
+    b.plot(x, [get(r, "client_auc_retrain") for r in keep], color=INDIGO, marker="o", ms=2.0, lw=0.8, ls=":", label="fresh retrain")
+    b.axhline(0.5, color=ROSE, ls="--", lw=0.7)
+    b.axvspan(4.5, 6.4, color="#f3d6da", alpha=0.6, lw=0); b.text(5.45, 0.93, "model\ndestroyed", ha="center", fontsize=5.2, color=ROSE)
+    b.set_xticks(x); b.set_xticklabels(["0" if r["sigma"] == 0 else f"{r['sigma']:g}" for r in keep], fontsize=5.6)
+    b.set_xlabel("noise multiplier $\\sigma$"); b.set_ylabel("client-level attack AUC"); b.set_ylim(0.38, 1.0)
+    b.legend(fontsize=5, frameon=False, loc="upper right", bbox_to_anchor=(0.74, 1.0))
+    b.set_title("(b) neural adapters", fontsize=6.5, fontweight="bold")
+    fig.tight_layout(pad=0.4)
+    fig.savefig(OUT / "fig6_scale.png", dpi=300, facecolor="white")
     plt.close(fig)
 
 
@@ -139,7 +155,7 @@ def crop(src, box, dst, width=1100):
 
 def screens():
     crop("09_unlearning_certificate.png", (290, 515, 1420, 900), "fig4_certificate.png")
-    crop("13_audit_ledger.png", (290, 280, 1420, 900), "fig5_audit.png")
+    crop("13_audit_ledger.png", (290, 280, 1420, 780), "fig5_audit.png")
 
 
 if __name__ == "__main__":

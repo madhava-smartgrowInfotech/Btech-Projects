@@ -32,6 +32,21 @@ TAMPER = metrics("audit_tamper")
 SCALE = metrics("scaling")
 API = metrics("api")["latency"]
 DP = metrics("dp_accounting")
+NN = metrics("neural_adapter")
+NN0 = NN["summary"]["by_sigma"][0]
+NN_S = {r["sigma"]: r for r in NN["summary"]["by_sigma"]}
+NN_B = NN["base"]
+NN_T = NN["summary"]["timing"]
+SYN = metrics("synthetic_corpus")
+SYN_G = {r["sigma"]: r for r in SYN["gold"]["results"]}
+N_NEED = SYN["n_sweep"]["smallest_n_within_1_2x"]["4.85"]
+SYN_R5 = next(r for r in SYN["n_sweep"]["rows"] if r["n_clients"] == 5 and abs(r["sigma"] - 4.85) < 1e-9)
+LOAD = metrics("load_test")
+SEC = metrics("security_probe")
+SEC_C = SEC["classification_counts"]
+ACC = metrics("acceptance")
+LOAD_STATE = {x["concurrency"]: x for x in LOAD["scenarios"]["GET /api/state"]["levels"]}
+RACE1 = LOAD["races"]["32 simultaneous unlearn requests for the same client"]["status_counts"]
 T = BASE["training"]
 S_PPL, S_AUCB, S_AUCA = SEEDS["pre_unlearning_perplexity"], SEEDS["membership_auc_before"], SEEDS["membership_auc_after"]
 S_RET = SEEDS["utility_retention_percent"]
@@ -61,6 +76,18 @@ COMPACT_REFS = [
     "[21] N. Carlini et al., “Extracting training data from large language models,” USENIX Security, 2021.",
     "[22] E. J. Hu et al., “LoRA: Low-rank adaptation of large language models,” ICLR, 2022.",
 ]
+
+
+def panel(src, side, name):
+    """Crop one half of a two-panel chart so it stays legible in a half-slide picture box (derived file next to the chart)."""
+    from PIL import Image
+
+    out = Path(src).with_name(name)
+    with Image.open(src) as im:
+        w, h = im.size
+        box = (0, 0, w // 2 + 4, h) if side == "left" else (w // 2 - 4, 0, w, h)
+        im.crop(box).save(out)
+    return out
 
 
 def pcent(x, d=1):
@@ -154,12 +181,12 @@ def build():
     # 3 abstract
     s = S[2]
     fill(s, 7, ["Federated LLMs keep each client's data local, yet every client's influence stays in the shared parameters; GDPR Article 17 lets a user demand removal.",
-                "ForgetSafe is a runnable demonstrator: five simulated clients train a character-bigram model (1,089 parameters, standing in for an LLM adapter update) with L2 clipping and Gaussian noise.",
+                f"ForgetSafe is a runnable demonstrator: five simulated clients train a character-bigram model (1,089 parameters); a neural study applies the same method to LoRA-style adapters of a {NN_B['base_parameters']:,}-parameter GRU (8 synthetic clients). All data is synthetic.",
                 "A client is removed by subtracting its tracked clipped update, with no retraining; each request gets a certificate, a membership-inference check, a utility check and a SHA-256 hash-chained audit record.",
-                f"Measured: certificate gap 1e-14 (an identity check); 250 requests all CERTIFIED; retention {S_RET['mean']:.1f} % \u00b1 {S_RET['sd']:.1f}; 5 unit tests and 14 smoke checks pass.",
-                f"Honest findings: at the default noise the model is worse than a uniform guess (perplexity {S_PPL['mean']:.0f} vs 32) and the attack is at chance (AUC {S_AUCB['mean']:.2f}); epsilon {DP['default_epsilon']:.2f} lies outside the classical bound's range.",
-                "Keywords: machine unlearning, federated learning, differential privacy, right to be forgotten, audit."], 17, bullet=True)
-    set_notes(s, "Abstract: problem, approach, headline measurements and the honest limits.")
+                f"Measured: 250 bigram requests all CERTIFIED (retention {S_RET['mean']:.1f} % \u00b1 {S_RET['sd']:.1f}); neural client-level attack {NN0['client_auc_before']['mean']:.2f} \u2192 {NN0['client_auc_after']['mean']:.2f}, equal to a fresh retrain ({NN0['client_auc_retrain']['mean']:.2f}); subtraction {NN_T['speedup_retrain_over_unlearn_with_metrics']:.0f}x faster than retraining; 5 unit tests, 14 smoke checks, {SEC['n_probes']} security probes, {ACC['journeys_passed_all_steps']}/{ACC['journeys']} acceptance journeys.",
+                f"Findings: at the default noise the product's model is worse than a uniform guess (perplexity {S_PPL['mean']:.0f} vs 32) and the attack is at chance; epsilon < 1 and a useful model coexist only for large federations (about {N_NEED:,} clients); the certificate check is an identity.",
+                "Keywords: machine unlearning, federated learning, differential privacy, right to be forgotten, audit."], 16, bullet=True)
+    set_notes(s, "Abstract: problem, approach, headline measurements and findings. Everything is measured on synthetic data.")
 
     # 4 base paper
     s = S[3]
@@ -190,9 +217,9 @@ def build():
             ["Federated LLM unlearning [3]", "Compares unlearning algorithms on TOFU and MUSE; evaluation is empirical (ROUGE, truth ratio); the abstract describes no certificate or regulator-facing audit record"],
             ["Reviews and audits [5]-[8]", "List challenges (efficiency, metrics, non-IID data) and robustness risks of certified unlearning (titles only for [5], [6], [8])"],
             ["Existing practice (batch survey)", "Full retraining is too costly; heuristic weight edits give no proof; SISA needs a sharded design; DP training limits influence but does not remove it"],
-            ["Open problem", "Certified, auditable client-level unlearning for federated LLM pipelines. ForgetSafe prototypes the workflow on a proxy model and tests it honestly"]]
+            ["Open problem", "Certified, auditable client-level unlearning for federated LLM pipelines. ForgetSafe builds the workflow and measures it on a bigram model and on neural LoRA-style adapters (synthetic data)"]]
     table(s, rows, [0.28, 0.72], 16, 500)
-    set_notes(s, "The gap is the certified, auditable workflow; the prototype does not close the evidence gap because it uses a proxy model.")
+    set_notes(s, "The gap is the certified, auditable workflow. The prototype implements it and measures it at small scale on synthetic data; billion-parameter LLMs are outside its scope.")
 
     # 7 problem statement
     s = S[6]
@@ -204,12 +231,12 @@ def build():
 
     # 8 objectives
     s = S[7]
-    fill(s, 7, ["O1 Federated fine-tuning across clients - partly met: 5 simulated clients on a bigram proxy, no LLM.",
-                "O2 Parameter-level unlearning without retraining - met on the proxy: exact subtraction of the tracked update.",
-                "O3 Certify forgetting with DP guarantees - partly met: epsilon 1.61 reported, outside the classical range; noise reused; check is an identity.",
-                "O4 Verify by membership inference and retraining comparison - met as implemented; attack uninformative at default noise (AUC 0.52).",
-                "O5 Preserve utility - met by the metric (97.1 % retention) but the baseline model is weak at sigma = 3.",
-                "O6 Auditable record per request - met with limits: tamper-evident against edits, not against forgery."], 19, bullet=True)
+    fill(s, 7, [f"O1 Federated fine-tuning across clients - met at small scale: 5 bigram clients and 8 neural-adapter clients ({NN_B['base_parameters']:,}-parameter GRU); billion-parameter LLMs are outside the project's scope and hardware.",
+                f"O2 Parameter-level unlearning without retraining - met: exact subtraction; {NN_T['subtract_us_median']:.0f} microseconds against {NN_T['retrain_seven_adapters_s_median']:.1f} s to retrain 7 adapters.",
+                f"O3 Certify forgetting with DP guarantees - met as reported: epsilon {DP['default_epsilon']:.2f} at sigma 3 is outside the classical range; epsilon < 1 with a useful model needs about {N_NEED:,} clients; noise is reused.",
+                "O4 Verify by membership inference and retraining comparison - met on three models; the fresh-noise retrain comparison agrees everywhere; the attack is informative where leakage exists.",
+                f"O5 Preserve utility - met: {S_RET['mean']:.1f} % retention (bigram default), {NN_S[0.0]['retention_retained_ppl_percent']['mean']:.1f} % (neural, no noise), {NN_S[0.03]['retention_retained_ppl_percent']['mean']:.1f} % at sigma 0.03; {NN_S[0.1]['retention_retained_ppl_percent']['mean']:.0f} % at sigma 0.1 would be REVIEW_REQUIRED.",
+                f"O6 Auditable record per request - met, with {SEC_C['defect']} measured defects: forgeable chain, empty ledger verifies, one bad line breaks the UI."], 16, bullet=True)
 
     # 9 proposed system
     s = S[8]
@@ -239,13 +266,13 @@ def build():
     # 12 data, model, parameters
     s = S[11]
     title(s, "Data, Model & Parameters")
-    fill(s, 7, ["Data: built-in synthetic corpus, 5 clients (Finance, Healthcare, Education, Retail, Travel) x 5 sentences = 25 records; 5 public evaluation sentences; 5 non-member sentences. No external dataset and no train/test split beyond these fixed sets.",
-                "Model: character-bigram language model over a 33-symbol alphabet; 33 x 33 = 1,089 parameters; add-0.15 smoothing. It stands in for a LoRA-style adapter update.",
-                "Clipping: C = 25; all five raw update norms (25.2-28.2) are clipped (scale 0.886-0.991).",
-                f"Noise: Gaussian, std sigma x C = 75 per coordinate; expected noise L2 = {DP['expected_noise_l2']:.0f} against a clipped client norm of 25.",
-                f"Privacy: epsilon = sqrt(2 ln(1.25/delta)) / sigma = {DP['default_epsilon']:.4f} at delta = 1e-5; the classical bound needs epsilon < 1, i.e. sigma > {DP['sigma_needed_for_epsilon_below_1']:.3f}.",
-                "Thresholds: reference tolerance 1e-10; retention floor 70 %; utility = 0.65 x accuracy + 0.35 / (1 + ln(1 + perplexity))."], 16, bullet=True)
-    set_notes(s, "Everything is synthetic and tiny by design; the findings describe the algorithm and the demonstrator, not an LLM.")
+    fill(s, 7, [f"Data (all synthetic): the product's built-in corpus (5 clients x 5 sentences); a seeded 20-domain grammar corpus (200 train / 200 held-out sentences per client, 300 public); an 8-domain corpus for the neural study ({NN['config']['train_per_client']} train / {NN['config']['heldout_per_client']} held-out per client).",
+                f"Models: character-bigram LM (33 x 33 = 1,089 parameters, add-0.15 smoothing); neural GRU ({NN_B['base_parameters']:,} parameters, frozen) with rank-{NN_B['adapter_rank']} LoRA-style adapters ({NN_B['adapter_dimension']:,} parameters per client).",
+                f"Clipping: the product's C = 25 clips all five raw norms (25.2-28.2); at 200 sentences per client raw norms are about {SYN['raw_norms']['median']:,.0f} (C = 25 would scale them by {SYN['raw_norms']['scale_applied_by_product_C25']['mean']:.2f}), so the studies use C = median raw norm.",
+                f"Noise: Gaussian, std sigma x C per coordinate; in the product 75 per coordinate, expected noise L2 = {DP['expected_noise_l2']:.0f} against a clipped client norm of 25.",
+                f"Privacy: epsilon = sqrt(2 ln(1.25/delta)) / sigma = {DP['default_epsilon']:.4f} at sigma 3, delta = 1e-5; the classical bound needs epsilon < 1, i.e. sigma > {DP['sigma_needed_for_epsilon_below_1']:.3f}.",
+                "Thresholds: reference tolerance 1e-10; retention floor 70 %; utility = 0.65 x accuracy + 0.35 / (1 + ln(1 + perplexity))."], 15, bullet=True)
+    set_notes(s, "Three synthetic data sources and two models. The findings describe the algorithm and the demonstrator at small scale; billion-parameter LLMs are outside the project's scope and hardware.")
 
     # 13 decision workflow
     s = S[12]
@@ -283,7 +310,7 @@ def build():
             ["audit.py", "Append-only JSONL; record_hash = SHA-256(previous_hash | canonical JSON); verify() re-walks the chain"],
             ["web.py + app.py", "Standard-library threaded HTTP server; 9 routes; 1 MB body limit; JSON errors; also --demo and --desktop modes"],
             ["frontend/", "React 19, Vite 8, Recharts; five pages plus landing; toasts, confirm dialogs, dark mode"],
-            ["tests/ + scripts/", "5 unit tests, 14-check smoke test, and run_experiments.py (11 measurement experiments)"]]
+            ["tests/ + scripts/", "5 unit tests, 14-check smoke test, and four measurement scripts: run_experiments.py, run_synthetic_corpus.py, run_neural_experiment.py, run_testing_experiments.py"]]
     table(s, rows, [0.18, 0.82], 18, 500)
 
     # 17 results
@@ -294,30 +321,31 @@ def build():
             ["Seed study, 250 requests", f"250 / 250 CERTIFIED", f"retention {S_RET['mean']:.1f} \u00b1 {S_RET['sd']:.1f} % (min {S_RET['min']:.1f})"],
             ["Perplexity at sigma = 3", f"{T['perplexity']:.1f} (seed 2026); {S_PPL['mean']:.0f} \u00b1 {S_PPL['sd']:.0f}", "uniform model = 32; accuracy about 4-5 %"],
             ["Membership AUC before / after", f"{S_AUCB['mean']:.3f} / {S_AUCA['mean']:.3f}", f"chance = 0.5; sd {S_AUCB['sd']:.2f}; change {SEEDS['membership_auc_change']['mean']:+.3f}"],
-            ["Unlearned vs fresh retrain (L2, sigma 3)", f"{GOLD[3.0]['l2_unlearned_vs_fresh_retrain']['mean']:.0f} vs {GOLD[3.0]['l2_fresh_retrain_vs_fresh_retrain']['mean']:.0f}", "retrain vs retrain; both are just the noise"],
-            ["Noise-free membership AUC", f"{NOFREE['mean_auc_before']:.2f} \u2192 {NOFREE['mean_auc_after']:.2f}", "sigma = 1e-6: the removal itself works"],
-            ["Audit tamper cases detected", "4 of 7 attacks", "edit, flip, delete, swap caught; truncation and re-hash forgery not"],
-            ["Automated checks", "5 unit + 14 smoke pass", "no load, LLM or penetration tests"]]
-    table(s, rows, [0.34, 0.26, 0.40], 17, 500)
-    set_paras(shape(s, 8), "Measured on a 5-client, 25-sentence synthetic demonstrator with a bigram proxy; not an estimate of LLM-scale behaviour.", 13)
-    set_notes(s, "The headline certificate result is an identity; the gold-standard comparison and the noise-free attack supply the real evidence.")
+            ["Unlearned vs fresh retrain (L2)", f"bigram {GOLD[3.0]['l2_unlearned_vs_fresh_retrain']['mean']:.0f} vs {GOLD[3.0]['l2_fresh_retrain_vs_fresh_retrain']['mean']:.0f}; synthetic corpus {SYN_G[0.1]['l2_unlearned_vs_fresh_retrain']['mean']:.0f} vs {SYN_G[0.1]['l2_fresh_retrain_vs_fresh_retrain']['mean']:.0f}; neural {NN_S[0.1]['l2_unl_vs_retrain']['mean']:.1f} vs {NN_S[0.1]['l2_retrain_vs_retrain']['mean']:.1f}", "unlearned vs retrain equals retrain vs retrain; both are just the noise"],
+            ["Noise-free attack AUC", f"bigram {NOFREE['mean_auc_before']:.2f} \u2192 {NOFREE['mean_auc_after']:.2f}; neural client-level {NN0['client_auc_before']['mean']:.2f} \u2192 {NN0['client_auc_after']['mean']:.2f}", f"fresh retrain {NN0['client_auc_retrain']['mean']:.2f}: the removal itself works"],
+            ["Neural adapters, retention", f"{NN_S[0.0]['retention_retained_ppl_percent']['mean']:.1f} % (no noise); {NN_S[0.05]['retention_retained_ppl_percent']['mean']:.0f} % (sigma 0.05)", f"useful only for sigma <= 0.05; destroyed from sigma 0.3"],
+            ["Clients for epsilon < 1 (synthetic corpus)", f"about {N_NEED:,}", "perplexity within 1.2x of noise-free at sigma 4.85"],
+            ["Audit tamper cases detected", "4 of 7 attacks", "edit, flip, delete, swap caught; truncation and re-hash forgery not"]]
+    table(s, rows, [0.30, 0.38, 0.32], 15, 500)
+    set_paras(shape(s, 8), "All data synthetic: 25-sentence bigram product, 20-domain corpus, 137k-parameter neural GRU. Results describe the method at this scale, not a billion-parameter LLM.", 13)
+    set_notes(s, "The headline certificate result is an identity; the fresh-noise retrain comparison and the noise-free attack supply the real evidence, on three models. Automated checks (5 unit tests, 14 smoke checks, load, security probes, acceptance journeys) are on the performance and testing slide.")
 
     # 18 per-client table and tamper matrix (equivalent of a confusion matrix)
     s = S[17]
-    title(s, "Per-Client Outcomes & Tamper-Detection Matrix")
-    two_pics(s, CHARTS / "c04_baseline_clients.png", CHARTS / "c10_audit_tamper.png",
-             "Default run: membership AUC before/after and utility retention (93.6-98.8 %) for each removed client",
+    title(s, "Attack Outcomes & Tamper-Detection Matrix")
+    two_pics(s, panel(CHARTS / "n02_neural_membership_auc.png", "left", "n02a_neural_client_level_auc.png"), CHARTS / "c10_audit_tamper.png",
+             f"Neural adapters: client-level attack AUC {NN0['client_auc_before']['mean']:.2f} → {NN0['client_auc_after']['mean']:.2f} after removal = fresh retrain ({NN0['client_auc_retrain']['mean']:.2f}); the sample-level AUC stays near 0.5 at every sigma",
              "Ledger tamper matrix: 4 of 7 attacks detected; truncation, re-hash forgery and forged append pass")
-    set_notes(s, "There is no classifier here, so the equivalent of a confusion matrix is the per-client outcome table and the detected / not-detected matrix of tamper attacks.")
+    set_notes(s, "There is no classifier here, so the equivalent of a confusion matrix is the before / after / fresh-retrain attack outcome (here for the neural study; the bigram per-client table is in the report) and the detected / not-detected matrix of tamper attacks.")
 
     # 19 parameter analysis
     s = S[18]
-    title(s, "Parameter Analysis: Noise Multiplier")
-    two_pics(s, CHARTS / "c01_noise_vs_quality.png", CHARTS / "c02_noise_vs_auc.png",
-             f"Quality vs sigma: useful only at sigma <= 0.1 (epsilon >= {SWEEP[0.1]['epsilon']:.0f}); sigma = 3 gives perplexity {SWEEP[3.0]['perplexity']['mean']:.0f}",
-             f"Attack AUC {SWEEP[0.001]['membership_auc_before']['mean']:.2f} \u2192 {SWEEP[0.001]['membership_auc_after']['mean']:.2f} at sigma = 0.001; near chance from sigma = 2",
+    title(s, "Parameter Analysis: Federation Size and Noise")
+    two_pics(s, CHARTS / "s03_clients_needed_for_epsilon_below_1.png", panel(CHARTS / "n01_neural_noise_vs_quality.png", "right", "n01b_neural_retention.png"),
+             f"Synthetic corpus: epsilon < 1 (sigma 4.85) needs about {N_NEED:,} clients to come within 1.2x of the noise-free perplexity; with 5 clients the ratio is {SYN_R5['ratio_to_noise_free']:.0f}x",
+             f"Neural adapters: useful only for sigma <= 0.05 (epsilon >= {NN_S[0.05]['epsilon']:.0f}); retention {NN_S[0.03]['retention_retained_ppl_percent']['mean']:.1f} % at 0.03, {NN_S[0.1]['retention_retained_ppl_percent']['mean']:.0f} % at 0.1; destroyed from 0.3",
              box_h=330)
-    set_notes(s, "20 seeds x 5 clients per sigma. epsilon < 1 needs sigma > 4.85, where perplexity is 198-305.")
+    set_notes(s, f"Left: synthetic corpus, 100 sentences per client, C = median norm, 5 seeds per point. Right: neural study, 8 clients, 5 seeds. Product sweep (5 clients, 20 seeds x 5 clients per sigma): useful only at sigma <= 0.1 (epsilon >= {SWEEP[0.1]['epsilon']:.0f}); at sigma 3 perplexity is {SWEEP[3.0]['perplexity']['mean']:.0f}; epsilon < 1 needs sigma > 4.85, where perplexity is 198-305.")
 
     # 20 performance & testing
     s = S[19]
@@ -326,12 +354,13 @@ def build():
     rows = [["Measurement", "Result"],
             ["API response, median / p95 (ms, 127.0.0.1)", f"health {lat('GET /api/health')}; train {lat('POST /api/train')}; unlearn {lat('POST /api/unlearn')}; generate {lat('POST /api/generate')}; audit verify {lat('POST /api/audit/verify')}"],
             ["Unlearn vs retrain (proxy)", f"5 clients: {SCALE['rows'][0]['unlearn_ms_median']:.0f} vs {SCALE['rows'][0]['full_retrain_ms_median']:.0f} ms (unlearn slower); 100 clients 1.4x faster; {r500['clients']} clients ({r500['total_records']:,} records) {r500['speedup_retrain_over_unlearn']:.1f}x faster"],
+            ["Neural adapters: unlearn vs retrain", f"subtraction {NN_T['subtract_us_median']:.0f} microseconds; with metrics and attack {NN_T['unlearn_with_metrics_ms_median']:.0f} ms; retraining the 7 retained adapters {NN_T['retrain_seven_adapters_s_median']:.1f} s ({NN_T['speedup_retrain_over_unlearn_with_metrics']:.0f}x)"],
+            ["Load and concurrency (1-64 clients)", f"/api/state saturates near {max(x['requests_per_s'] for x in LOAD_STATE.values()):.0f} req/s (ledger re-read per call); 32 simultaneous removals of one client: {RACE1['200']} success, {RACE1['400']} refused; 16 simultaneous trainings: valid chain; 2,000-request soak: 0 errors"],
             ["Ledger cost", f"append re-reads the file: {ledger['1']:.2f} ms at 1 record, {ledger['2000']:.1f} ms at 2,000; verify 2,000 records {SCALE['ledger_verify_2000_ms']:.0f} ms"],
-            ["Automated tests", "5 unit tests (workflow, repeat rejection, tamper, export, HTTP) and 14 smoke checks all pass"],
-            ["Edge cases", "malformed JSON, non-object body, unknown client, repeat and last-client removal -> HTTP 400 with a message; 2 MB body aborts the connection; PUT returns an HTML 501 page"],
-            ["Not measured", "concurrent load, real LLM, GPU, authentication (none exists), penetration testing"]]
-    table(s, rows, [0.22, 0.78], 16, 500)
-    set_notes(s, "Machine: Intel Core i5-12500, 15.7 GB RAM, no GPU. Latencies are single-client medians; proxy retraining is itself cheap, so these say nothing about LLM-scale cost.")
+            ["Automated tests", f"5 unit tests and 14 smoke checks pass; {ACC['journeys_passed_all_steps']}/{ACC['journeys']} scripted synthetic-user journeys pass ({ACC['total_certificates_checked']} certificates, 0 console errors)"],
+            ["Security probes", f"{SEC['n_probes']} probes: {SEC_C['handled']} handled, {SEC_C['noteworthy']} noteworthy, {SEC_C['defect']} defects (no read timeout, cross-site POST accepted, Host unchecked, connection bursts refused, empty ledger verifies, bad ledger line breaks the UI, no authentication)"]]
+    table(s, rows, [0.22, 0.78], 15, 500)
+    set_notes(s, "Machine: Intel Core i5-12500, 15.7 GB RAM, no GPU. Latencies are single-client medians; proxy retraining is itself cheap, so the bigram numbers say nothing about larger models; the neural row is the measured cost for 7 adapters of 14,272 parameters.")
 
     # 21 comparison
     s = S[20]
@@ -340,7 +369,7 @@ def build():
             ["Base paper [1]", "Review of continuous sign language recognition", "Taxonomy of spatial, temporal, alignment models", "No unlearning results", "-", "No: unrelated subject"],
             ["Wei et al. [2] (KDD 2026)", "Federated unlearning on CIFAR-10/100, EMNIST", "FedMemPrune: prune memorising parameters", "Closely matches retraining baselines", "Empirical memorisation metric", "No: images, not LLMs"],
             ["Oblivionis [3]", "Federated LLM unlearning on TOFU, MUSE (Llama models)", "6 FL x 5 unlearning algorithms", "Beats local training; forgetting/utility balance", "Empirical metrics (ROUGE, truth ratio)", "No: real LLMs"],
-            ["ForgetSafe (ours)", "Federated bigram proxy, 5 clients, 25 synthetic sentences", "Tracked-update subtraction, DP release bound, verification, hash ledger", f"250/250 certified; AUC {S_AUCB['mean']:.2f}; retention {S_RET['mean']:.1f} %", "Certificate + hash-chained ledger (forgeable)", "-"]]
+            ["ForgetSafe (ours)", "Bigram product (5 clients) and neural LoRA-style adapters (8 clients), synthetic text", "Tracked-update subtraction, DP release bound, verification, hash ledger", f"250/250 certified; neural client AUC {NN0['client_auc_before']['mean']:.2f} → {NN0['client_auc_after']['mean']:.2f} = fresh retrain", "Certificate + hash-chained ledger (forgeable)", "-"]]
     table(s, rows, [0.12, 0.2, 0.2, 0.18, 0.17, 0.13], 15, 500)
     set_paras(shape(s, 8), "Different tasks, data and metrics: no numeric head-to-head is possible. The comparison is of scope and approach, and ForgetSafe is a small demonstrator.", 13)
     set_notes(s, "State plainly: no claim that ForgetSafe beats any of these works.")
@@ -365,18 +394,18 @@ def build():
     # 25 conclusion
     s = S[24]
     fill(s, 7, ["Built ForgetSafe: federated training, tracked-update subtraction, DP release bound, membership and utility checks, certificates and a hash-chained ledger, with a React UI and a JSON API.",
-                f"Measured: 250 of 250 requests certified; retention {S_RET['mean']:.1f} %; 5 unit tests and 14 smoke checks pass.",
-                f"Key findings: at sigma = 3 the model is worse than uniform (perplexity {S_PPL['mean']:.0f} vs 32) and the attack is at chance; the certificate is an identity; with no noise the attack falls from {NOFREE['mean_auc_before']:.2f} to {NOFREE['mean_auc_after']:.2f}, so removal itself works.",
-                f"Limits: bigram proxy, 25 sentences, epsilon {DP['default_epsilon']:.2f} outside the classical range, noise reused, forgeable ledger, no authentication.",
-                "Objectives O2, O4 and O6 are met on the proxy; O1, O3 and O5 are only partly met."], 20, bullet=True)
+                f"Measured on synthetic data: 250 of 250 bigram requests certified; neural adapters: client-level attack {NN0['client_auc_before']['mean']:.2f} → {NN0['client_auc_after']['mean']:.2f} = fresh retrain, removal {NN_T['speedup_retrain_over_unlearn_with_metrics']:.0f}x faster than retraining; 5 unit tests, 14 smoke checks, {ACC['journeys_passed_all_steps']}/{ACC['journeys']} acceptance journeys.",
+                f"Key findings: at the product's sigma = 3 the model is worse than uniform (perplexity {S_PPL['mean']:.0f} vs 32); the certificate check is an identity, so the fresh-noise retrain comparison is the real evidence; with no noise the attack falls from {NOFREE['mean_auc_before']:.2f} to {NOFREE['mean_auc_after']:.2f}; epsilon < 1 with a useful model needs about {N_NEED:,} clients.",
+                f"Measured defects to fix: forgeable ledger, empty ledger verifies, no read timeout, cross-site POST accepted, no authentication ({SEC_C['defect']} of {SEC['n_probes']} probes).",
+                "All six objectives are met at the scale of the demonstrator (bigram product, 8-client neural adapter study); the batch's billion-parameter setting is outside the project's scope."], 18, bullet=True)
 
     # 26 future scope
     s = S[25]
-    fill(s, 7, ["Replace the proxy by LoRA adapters on a small Hugging Face model with Flower for transport; measure real forgetting and utility.",
-                "Use accounted DP-SGD (a privacy accountant, a valid epsilon for the sigma used) and fresh noise per release.",
-                "Sign ledger records and anchor the head hash externally; add authentication and per-client authorisation.",
-                "Stronger attacks (more members, shadow models) and a retrain-from-scratch reference with fresh randomness for every certificate.",
-                "Batched ledger append, load testing, and a user study with a compliance officer."], 20, bullet=True)
+    fill(s, 7, ["Extend the adapter study to LoRA on a small pretrained Hugging Face language model with Flower for transport.",
+                "Add a privacy accountant, the exact analytic Gaussian bound [19] (epsilon 1.27 at sigma 3) and fresh noise per release; target federations of about 1,000 clients for epsilon < 1.",
+                "Sign ledger records and anchor the head hash externally; add authentication, CSRF protection, read timeouts and a check that rejects an emptied ledger.",
+                "Stronger attacks (shadow models, extraction tests [21]) and a fresh-noise retrain reference inside every certificate.",
+                "Batched ledger append and a ledger index so state reads stay fast as the history grows."], 20, bullet=True)
 
     # 27 references
     s = S[26]

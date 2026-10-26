@@ -26,6 +26,13 @@ def _src(rel: str, start: int, end: int, must: str, dedent: bool = True) -> str:
     return textwrap.dedent(chunk) if dedent else chunk
 
 
+def _trim(d, rows, drop):
+    """Report mode: drop rows whose first cell starts with one of `drop`; chapter documents keep every row."""
+    if not getattr(d, "report", False):
+        return rows
+    return [r for r in rows if not any(str(r[0]).startswith(x) for x in drop)]
+
+
 def _phi(x: float) -> float:
     return 0.5 * math.erfc(-x / math.sqrt(2.0))
 
@@ -47,6 +54,14 @@ def _eps_exact(sigma: float, delta: float = 1e-5) -> float:
 
 def _eps_classical(sigma: float, delta: float = 1e-5) -> float:
     return math.sqrt(2.0 * math.log(1.25 / delta)) / sigma
+
+
+def _nn():
+    return metrics("neural_adapter")
+
+
+def _syn():
+    return metrics("synthetic_corpus")
 
 
 def _differencing_error() -> float:
@@ -91,17 +106,23 @@ def sec_method_overview(d):
     d.p("The methodology has two layers: the method that the product implements, and the method by which it was evaluated. The product method "
         "is a single pipeline of seven steps, from client updates to an audit record. The evaluation method is a set of repeatable experiments "
         "that treat the product as a black box and measure what its certificate does and does not establish.")
-    d.p("The design of the product followed the review method of the base paper [1]: organise the existing approaches into a taxonomy, compare "
-        "their strengths and limitations, and read the open gap from the comparison. The base paper applies that method to continuous sign-language "
-        "recognition; the subject is unrelated, so no algorithm and no result was taken from it. Applied to machine unlearning, the method gave the "
-        "decisions in the table below.")
-    d.table([["Approach class", "Strength", "Limitation", "Decision in ForgetSafe"],
-             ["Full retraining", "Strongest removal baseline", "Cost grows with model and data", "Used as the reference computation, and in the retrain-from-scratch experiment"],
-             ["Gradient or weight heuristics", "Fast", "No evidence that the data is gone", "Not used for certification"],
-             ["Sharded training (SISA) [12]", "Limits the retraining scope", "Adds training-architecture complexity", "Left as a future back end"],
-             ["Differentially private training [10], [11]", "Bounds one client's influence", "Privacy-utility trade-off", "Gaussian noise and an (epsilon, delta) figure included"],
-             ["Tracked additive updates", "Exact subtraction at O(d) cost", "Requires protected storage of every update", "Used by the demonstrator"]],
-            "Approach classes and the resulting design decisions", widths=[0.22, 0.2, 0.25, 0.33], font=9.5)
+    if getattr(d, "report", False):
+        d.p("The design followed the review method of the base paper [1], whose subject (sign-language recognition) is unrelated, so nothing but the method was taken: "
+            "organise the approaches, compare strengths and limitations, read the gap. Applied to unlearning (Chapter 2) it gave these decisions: full retraining only as the reference "
+            "computation; no heuristic methods for certification; sharded training [12] left as a future back end; Gaussian noise with an (epsilon, delta) figure [10], [11]; "
+            "and exact subtraction of tracked additive updates.")
+    else:
+        d.p("The design of the product followed the review method of the base paper [1]: organise the existing approaches into a taxonomy, compare "
+            "their strengths and limitations, and read the open gap from the comparison. The base paper applies that method to continuous sign-language "
+            "recognition; the subject is unrelated, so no algorithm and no result was taken from it. Applied to machine unlearning, the method gave the "
+            "decisions in the table below.")
+        d.table([["Approach class", "Strength", "Limitation", "Decision in ForgetSafe"],
+                 ["Full retraining", "Strongest removal baseline", "Cost grows with model and data", "Used as the reference computation, and in the retrain-from-scratch experiment"],
+                 ["Gradient or weight heuristics", "Fast", "No evidence that the data is gone", "Not used for certification"],
+                 ["Sharded training (SISA) [12]", "Limits the retraining scope", "Adds training-architecture complexity", "Left as a future back end"],
+                 ["Differentially private training [10], [11]", "Bounds one client's influence", "Privacy-utility trade-off", "Gaussian noise and an (epsilon, delta) figure included"],
+                 ["Tracked additive updates", "Exact subtraction at O(d) cost", "Requires protected storage of every update", "Used by the demonstrator"]],
+                "Approach classes and the resulting design decisions", widths=[0.22, 0.2, 0.25, 0.33], font=9.5)
     d.h3("The product pipeline")
     d.numbered([
         "**Build client updates.** Each client's records are normalised and turned into a vector of character-bigram counts (1,089 coordinates).",
@@ -117,13 +138,16 @@ def sec_method_overview(d):
         "otherwise `REVIEW_REQUIRED`; the certificate is appended to the ledger, whose hash chain can be verified at any time.",
     ])
     d.h3("The evaluation method")
-    d.p("Because the application reports its own verdict, a verdict alone is weak evidence. The evaluation therefore adds experiments that the "
-        "application does not run itself (`scripts/run_experiments.py`, each writing `experiments/<name>/metrics.json`): the default configuration "
-        f"(seed {base['config']['seed']}); a study of 50 seeds with all five clients removed in turn (250 unlearning requests); a sweep of the noise "
-        "multiplier from 0.001 to 10 with 20 seeds per value; a comparison of the unlearned model with a true retrain that draws fresh noise (200 pairs "
-        "at each of two noise levels); a noise-free run that shows what the attack sees without noise; sequential removal from five clients to one; "
-        "seven tampering attacks on the ledger; scaling from 5 to 500 synthetic clients; and 100 requests per endpoint against the live server. All "
-        "of them run on one Intel Core i5-12500 machine with 15.7 GB of RAM and use only the standard library.")
+    d.p("Because the application reports its own verdict, a verdict alone is weak evidence. Four sets of experiments therefore treat the product as a "
+        "black box. (1) `scripts/run_experiments.py` runs the default configuration "
+        f"(seed {base['config']['seed']}), 50 seeds with every client removed in turn (250 requests), a noise sweep from 0.001 to 10, a comparison with a true "
+        "retrain that draws fresh noise, a noise-free run, sequential removal, seven ledger attacks, scaling to 500 synthetic clients and 100 requests per "
+        "endpoint. (2) `scripts/run_synthetic_corpus.py` repeats the study with the real engine on a larger synthetic corpus (20 domains, 200 sentences per "
+        "client) and finds the federation size at which epsilon below 1 and a useful model coexist. (3) `scripts/run_neural_experiment.py` applies the same "
+        "clip, noise and subtract rules to LoRA-style adapters of a small neural language model trained on synthetic text. (4) "
+        "`scripts/run_testing_experiments.py` measures load and concurrency, 58 security probes and 20 scripted synthetic-user acceptance journeys against "
+        "the running application. All of them run on one Intel Core i5-12500 workstation with 15.7 GB of RAM, write `experiments/<name>/metrics.json`, and use "
+        "synthetic data only.")
 
 
 # ------------------------------------------------------------------------------------------------------------------ dataset
@@ -141,21 +165,44 @@ def sec_dataset(d):
             align=["l", "l", "c", "c", "c", "c", "c", "c"])
     d.p(f"Together the clients hold 25 sentences, 1,258 bigram transitions, and {sum(1 for v in union if v)} distinct non-zero cells out of the 1,089 "
         "possible. The samples below show the character of the text; every sentence is a short, generic statement tied to the client's domain.")
-    d.bullets([f"{r[0].domain}: \"{r[0].records[0]}\"" for r in rows])
-    d.p(f"The **public evaluation set** has {len(public)} sentences ({pub_tr} transitions) on privacy and learning themes and is used to compute "
-        f"perplexity and next-character accuracy for every model state. The **non-member set** has {len(nonmember)} sentences ({non_tr} transitions) "
-        "that no client holds; it supplies the negative class of the membership attack. Measured against the union of the client corpora, "
-        f"{pub_un * 100:.1f} percent of the public-set transitions and {non_un * 100:.1f} percent of the non-member transitions never occur in "
-        "training, which is why the smoothing constant of the model matters.")
-    d.table([["Set", "Sentences", "Role", "Used by"],
-             ["Client records", "5 per client, 25 in all", "Source of each client's update; the 'member' class of the attack", "`train()`, `membership_auc()`"],
-             ["Public evaluation", "5", "Utility measurement on data that no client owns", "`metrics()`"],
-             ["Non-member texts", "5", "'Non-member' class of the attack", "`unlearn()`"]],
-            "Roles of the three fixed sets", widths=[0.2, 0.2, 0.38, 0.22], font=9.5)
+    if not getattr(d, "report", False):
+        d.bullets([f"{r[0].domain}: \"{r[0].records[0]}\"" for r in rows])
+    if getattr(d, "report", False):
+        d.p(f"The public evaluation set has {len(public)} sentences and measures perplexity and accuracy; the non-member set has {len(nonmember)} sentences and supplies the "
+            f"negative class of the attack. {pub_un * 100:.1f} percent of the public-set transitions and {non_un * 100:.1f} percent of the non-member transitions never occur in "
+            "training, which is why the smoothing constant matters.")
+    else:
+        d.p(f"The **public evaluation set** has {len(public)} sentences ({pub_tr} transitions) on privacy and learning themes and is used to compute "
+            f"perplexity and next-character accuracy for every model state. The **non-member set** has {len(nonmember)} sentences ({non_tr} transitions) "
+            "that no client holds; it supplies the negative class of the membership attack. Measured against the union of the client corpora, "
+            f"{pub_un * 100:.1f} percent of the public-set transitions and {non_un * 100:.1f} percent of the non-member transitions never occur in "
+            "training, which is why the smoothing constant of the model matters.")
+    if not getattr(d, "report", False):
+        d.table([["Set", "Sentences", "Role", "Used by"],
+                 ["Client records", "5 per client, 25 in all", "Source of each client's update; the 'member' class of the attack", "`train()`, `membership_auc()`"],
+                 ["Public evaluation", "5", "Utility measurement on data that no client owns", "`metrics()`"],
+                 ["Non-member texts", "5", "'Non-member' class of the attack", "`unlearn()`"]],
+                "Roles of the three fixed sets", widths=[0.2, 0.2, 0.38, 0.22], font=9.5)
     d.p("There is no train, validation and test split in the machine-learning sense, because nothing is fitted by optimisation; the three sets "
-        "have disjoint roles instead. The size is the main limitation of the data. Twenty-five sentences give a membership attack with only 5 "
-        "member and 5 non-member scores, so the AUC moves in steps of 0.04, and a single sentence can change it by 0.2. The experiments "
-        "compensate by repeating the whole procedure over 50 seeds, but they cannot make the corpus larger.")
+        "have disjoint roles instead. Twenty-five sentences are too few for a bigram model to learn from and give the membership attack only 5 member "
+        "and 5 non-member scores (AUC steps of 0.04). The study therefore adds two larger synthetic corpora, described next, which supply the data for "
+        "every result beyond the default run.")
+    d.h3("Two larger synthetic corpora")
+    d.p("**Synthetic-grammar corpus** (`scripts/run_synthetic_corpus.py`). A seeded template grammar with 12 sentence templates, and 3 more that insert one "
+        "of six private pseudo-words per client, generates sentences for 20 domains (Finance, Healthcare, Education, Retail, Travel and 15 more, each with "
+        "its own roles, nouns, adjectives, verbs and adverbs). Client i holds 200 training sentences of domain i. Its non-members are 200 held-out "
+        "sentences of the same generator that were never trained on (the sentence-level attack) and 200 held-out sentences of other clients (the "
+        "domain-level attack); a 300-sentence public set spread over the domains measures utility. With 200 against 200 scores the attack resolution is "
+        "5e-5 instead of 0.04. **Neural corpus** (`scripts/run_neural_experiment.py`). A second grammar builds 8 client domains from pseudo-word "
+        "vocabularies (14 syllables, 20 nouns, 15 verbs and 15 adjectives per domain, 6 to 10 sentence skeletons), so no real-language knowledge can "
+        "leak in. Each client has 150 training and 150 held-out sentences (overlap checked: 0); a 6,000-sentence public pool pre-trains the base network, a "
+        "200-sentence public set measures utility, and 150 sentences of an outsider domain that never joins the federation form the negative class of the "
+        "client-level attack.")
+    d.table([["Source", "Clients x sentences", "Non-members of the attack", "Used for"],
+             ["Product corpus", "5 x 5", "5 fixed sentences", "Default run, 50 seeds, noise sweep, API tests"],
+             ["Synthetic-grammar corpus", "up to 20 x 200; up to 4,000 x 100", "200 held-out of the same client; 200 of other clients", "Clip norm, domain-level attack, epsilon against federation size, timing"],
+             ["Neural corpus", "8 x 150", "150 held-out of the same client; 150 outsider", "Adapter study"]],
+            "The three data sources (all synthetic)", widths=[0.2, 0.22, 0.3, 0.28], font=9)
 
 
 # ------------------------------------------------------------------------------------------------------------------ preprocessing
@@ -165,23 +212,36 @@ def sec_preprocessing(d):
         "turn a client's sentences into the vector that the federated protocol treats as the client's update.")
     d.h3("Normalisation")
     d.code(_src("certified_unlearning/model.py", 12, 19, "ALPHABET", dedent=False), "alphabet, index and `normalize_text()` (model.py)")
-    d.p("Text is lower-cased, every character outside the 33-symbol alphabet is replaced by a space, runs of whitespace are collapsed and the ends "
-        "are stripped. The alphabet is the start marker `^`, the end marker `$`, the space, the 26 lower-case letters and the four punctuation "
-        "marks `.`, `,`, `?` and `!`. Digits, accented letters and other punctuation are therefore lost, which is acceptable for the English "
-        "sentences of the corpus and would be the first thing to change for a real tokenizer.")
+    if getattr(d, "report", False):
+        d.p("Text is lower-cased, characters outside the 33-symbol alphabet (start and end markers, space, 26 letters, `. , ? !`) become spaces, whitespace runs are "
+            "collapsed and the ends stripped; digits and accents are therefore lost, which a real tokenizer would change.")
+    else:
+        d.p("Text is lower-cased, every character outside the 33-symbol alphabet is replaced by a space, runs of whitespace are collapsed and the ends "
+            "are stripped. The alphabet is the start marker `^`, the end marker `$`, the space, the 26 lower-case letters and the four punctuation "
+            "marks `.`, `,`, `?` and `!`. Digits, accented letters and other punctuation are therefore lost, which is acceptable for the English "
+            "sentences of the corpus and would be the first thing to change for a real tokenizer.")
     d.h3("Bigram counting")
     d.code(_src("certified_unlearning/model.py", 22, 33, "def _offset", dedent=False), "`_offset()` and `raw_update()` (model.py)")
-    d.p("Each normalised record is wrapped as `^text$`, and every pair of adjacent symbols adds one to a cell of a 33 x 33 table stored as a flat "
-        "list; the cell for the transition from `a` to `b` is at `index(a) * 33 + index(b)`. As a worked example, the record `go.` becomes "
-        "`^go.$` and adds one to the cells (`^`, g), (g, o), (o, `.`) and (`.`, `$`). A client's raw update is the sum over its five records, "
-        "and its largest single count in the corpus is 9. The vector is a count of events, which makes the aggregate linear in the data: adding "
-        "or removing a record adds or removes its counts, the property that exact unlearning will rely on.")
+    if getattr(d, "report", False):
+        d.p("Each record is wrapped as `^text$` and every adjacent pair adds one to a cell of a 33 x 33 table stored as a flat list (the cell for `a` to `b` is at "
+            "`index(a) * 33 + index(b)`); `go.` adds one to (`^`, g), (g, o), (o, `.`) and (`.`, `$`). The vector counts events, so the aggregate is linear in the data: "
+            "the property that exact unlearning relies on.")
+    else:
+        d.p("Each normalised record is wrapped as `^text$`, and every pair of adjacent symbols adds one to a cell of a 33 x 33 table stored as a flat "
+            "list; the cell for the transition from `a` to `b` is at `index(a) * 33 + index(b)`. As a worked example, the record `go.` becomes "
+            "`^go.$` and adds one to the cells (`^`, g), (g, o), (o, `.`) and (`.`, `$`). A client's raw update is the sum over its five records, "
+            "and its largest single count in the corpus is 9. The vector is a count of events, which makes the aggregate linear in the data: adding "
+            "or removing a record adds or removes its counts, the property that exact unlearning will rely on.")
     d.h3("Clipping")
     d.code(_src("certified_unlearning/model.py", 40, 44, "def clipped_update", dedent=False), "`clipped_update()` (model.py)")
-    d.p("The raw update is scaled by `min(1, C / norm)` with C = 25. All five raw norms (25.219 to 28.231) exceed C, so all five clients are "
-        "clipped, with scales from 0.886 to 0.991 and a clipped norm of exactly 25. Clipping serves two purposes: it bounds the influence of any one "
-        "client, which is what the differential-privacy calibration needs, and it equalises the five clients. Its cost is distortion: the "
-        "client with the largest raw norm (Healthcare, 28.231) is scaled down by 11.4 percent.")
+    if getattr(d, "report", False):
+        d.p("The raw update is scaled by `min(1, C / norm)` with C = 25. All five raw norms (25.219 to 28.231) exceed C, so all five clients are clipped (scales 0.886 to 0.991, "
+            "clipped norm exactly 25). Clipping bounds one client's influence, which the differential-privacy calibration needs, at the cost of distortion (Healthcare is scaled down by 11.4 percent).")
+    else:
+        d.p("The raw update is scaled by `min(1, C / norm)` with C = 25. All five raw norms (25.219 to 28.231) exceed C, so all five clients are "
+            "clipped, with scales from 0.886 to 0.991 and a clipped norm of exactly 25. Clipping serves two purposes: it bounds the influence of any one "
+            "client, which is what the differential-privacy calibration needs, and it equalises the five clients. Its cost is distortion: the "
+            "client with the largest raw norm (Healthcare, 28.231) is scaled down by 11.4 percent.")
 
 
 # ------------------------------------------------------------------------------------------------------------------ algorithm choice
@@ -189,7 +249,7 @@ def sec_algorithm_choice(d):
     d.h2("Algorithm Choice and Justification")
     d.p("The central choice is how to remove a client's influence. The table lists the alternatives considered and the reason each was not "
         "adopted; the descriptions come from the cited works and are about the technique in general, not about their reported numbers.")
-    d.table([["Alternative", "Idea", "Why it was not used here"],
+    d.table(_trim(d, [["Alternative", "Idea", "Why it was not used here"],
              ["Retrain from scratch", "Train again on the retained clients", "Exact, but it is the cost that motivates the problem; used only as a reference"],
              ["SISA sharding [12]", "Train shard models and retrain only the shard that held the data", "Needs a different training architecture and an ensemble; no shard structure in a single aggregate"],
              ["Gradient ascent and weight heuristics", "Move the weights away from the data to be forgotten", "No evidence of removal and no clean reference; the batch literature survey lists this as a weakness"],
@@ -197,7 +257,7 @@ def sec_algorithm_choice(d):
              ["Influence-based unlearning [14]", "Remove influence with an approximate update and bounded excess risk", "Same requirement of a differentiable empirical risk"],
              ["FedEraser [17]", "Reconstruct the global model from stored historical client updates, calibrated with a few rounds", "Aimed at multi-round training; ForgetSafe aggregates once, so exact subtraction is possible"],
              ["Memorisation pruning [2]", "Reset parameters responsible for memorised content", "Needs a trained deep model and a memorisation metric"],
-             ["Federated LLM unlearning [3]", "Unified framework of federated algorithms and unlearning algorithms for LLMs", "Needs an LLM and GPUs; the target of the future back end"]],
+             ["Federated LLM unlearning [3]", "Unified framework of federated algorithms and unlearning algorithms for LLMs", "Needs an LLM and GPUs; the target of the future back end"]], ("Influence-based", "Memorisation pruning", "Federated LLM unlearning")),
             "Alternatives considered", widths=[0.22, 0.39, 0.39], font=9.5)
     d.p("**Why tracked additive updates.** The aggregate is a sum. If the coordinator stores each client's clipped update, then removing client j "
         "is the subtraction of a stored vector, and the result is the same vector that a recomputation over the remaining clients would give. "
@@ -217,6 +277,14 @@ def sec_algorithm_choice(d):
         "needs only the model's outputs, and it is the one most often used as a first check of unlearning claims. **SHA-256 hash chain.** Linking "
         "each record to its predecessor makes ordinary edits detectable with the standard library alone; signatures and external anchoring were "
         "left out of scope.")
+    syn = _syn()
+    rn = syn["raw_norms"]
+    d.p("**Clip norm and adapters.** The clip norm decides how much of each update survives. On the 25-sentence corpus the product's C = 25 is close to the raw "
+        f"norms (25.2 to 28.2). On 200-sentence clients the raw norms have median {rn['median']:,.0f}, so C = 25 scales every update by "
+        f"{rn['scale_applied_by_product_C25']['mean']:.3f}, about {rn['ratio_median_norm_to_C25']:.0f} times down, and the noise-free perplexity is 11.1 instead of 8.8. "
+        "The larger studies therefore set C to the median raw norm of the clients, which leaves most updates unclipped and keeps the sensitivity bound. For the "
+        "neural model the communicated update is a LoRA-style adapter [22] whose down-projection is fixed and shared by all clients (LoRA-FA), so the average of "
+        "the trained factors equals the factor of the average weight update: aggregation stays linear, which is the only property exact subtraction needs.")
 
 
 # ------------------------------------------------------------------------------------------------------------------ mathematics
@@ -247,11 +315,16 @@ Release (epsilon)  epsilon = sqrt(2 ln(1.25 / delta)) / sigma,            delta 
         rows.append([f"{s:g}", f"{c:.3f}", f"{e:.3f}", "conservative (larger than exact)" if c >= e else "optimistic (smaller than exact)"])
     d.table(rows, "Reported and exact epsilon for the Gaussian mechanism (delta = 1e-5)", widths=[0.12, 0.28, 0.32, 0.28], font=9.5,
             align=["c", "c", "c", "l"])
-    d.p("At the default noise level the reported figure is conservative: the exact value is about 1.27, lower than 1.615. At low noise it is not: "
-        "below sigma of about 0.6 the classical formula reports a smaller epsilon than the exact one, which is the region where the model is useful. The "
-        "application does not distinguish the two cases, and it does not account for repeated releases. Both are stated as limitations. The table "
-        "was computed when this report was built, by the function `_eps_exact` in `scripts/rc_method.py`, from the formula of [19]; it is not an "
-        "output of the application.")
+    if getattr(d, "report", False):
+        d.p("At the default noise level the reported figure is conservative (exact epsilon about 1.27, below 1.615); below sigma of about 0.6 the classical formula reports a smaller "
+            "epsilon than the exact one, which is the region where the model is useful. The application does not distinguish the two cases or account for repeated releases. The table was "
+            "computed when this report was built, by `_eps_exact` in `scripts/rc_method.py` from the formula of [19]; it is not an output of the application.")
+    else:
+        d.p("At the default noise level the reported figure is conservative: the exact value is about 1.27, lower than 1.615. At low noise it is not: "
+            "below sigma of about 0.6 the classical formula reports a smaller epsilon than the exact one, which is the region where the model is useful. The "
+            "application does not distinguish the two cases, and it does not account for repeated releases. Both are stated as limitations. The table "
+            "was computed when this report was built, by the function `_eps_exact` in `scripts/rc_method.py`, from the formula of [19]; it is not an "
+            "output of the application.")
     d.h3("Unlearning, reference and certificate")
     d.code("""Unlearning of j    s' = s - u_j ,   n' = n - 1 ,   theta' = s' / n'
 Reference          theta_ref = ( z + sum_{k active, k != j} u_k ) / n'         (same stored z and u_k)
@@ -282,6 +355,18 @@ Membership AUC     fraction of (member, non-member) pairs with  -L(member) > -L(
         f"that follow. The default model has perplexity {base['training']['perplexity']:.2f} and accuracy {base['training']['next_character_accuracy'] * 100:.2f} percent, so it "
         "is worse than uniform. The utility score weights accuracy more than perplexity and compresses perplexity logarithmically; it is a "
         "dashboard indicator that the project defined, not a standard metric, and a retention of 100 percent means only that the score did not fall.")
+    d.h3("Clip-norm rule and the neural adapter")
+    d.code("""Clip-norm rule           C = median_k ||phi_k||_2                      (larger studies; the product keeps C = 25)
+Adapter vector           theta_k = [B_h (192 x 64), B_o (31 x 64)] flattened,     dim = (192 + 31) * 64 = 14,272
+Forward pass             H = GRU(embedding(x));  H' = H + (H A_h^T) B_h^T;  logits = H' W^T + b + (H' A_o^T) B_o^T
+                         A_h, A_o: fixed random matrices (rank 64) shared by all clients;  GRU, W, b frozen
+Same protocol            u_k = theta_k * min(1, C / ||theta_k||),   s = sum u_k + z,   z ~ N(0, (sigma*C)^2 I),   theta = s / n
+Unlearning of j          s' = s - u_j,   theta' = s' / (n - 1)                                  (identical to the bigram product)""", "adapter formulation")
+    d.p("Because A is shared, the mean of the factors B is exactly the factor of the mean weight update, so the aggregate is linear in the stored "
+        "vectors. The larger studies use three scores. The *sentence-level AUC* compares a client's training sentences with its own held-out sentences (does the "
+        "model memorise sentences?). The *domain-level* (bigram corpus) or *client-level* (neural corpus) AUC compares the client's text with other "
+        "clients' or an outsider domain's text (does the model carry the client's domain?). *Retention* on the neural model is 100 min(1, PPL_before / "
+        "PPL_after) over the retained clients, and is undefined once perplexity reaches the cap of 1e9, because the model is then destroyed by the noise.")
 
 
 # ------------------------------------------------------------------------------------------------------------------ model and training
@@ -290,14 +375,14 @@ def sec_model_training(d):
     t = base["training"]
     d.h2("Model Architecture and Training")
     d.p("The language model is a character-bigram table: a 33 x 33 matrix of parameters that gives, for each previous character, a "
-        "distribution over the next one. It has 1,089 parameters, no hidden layers and no gradient-trained weights. It is not a neural network and "
-        "not a language model of the kind that the project title refers to; it is the smallest object that has the properties the federated "
+        "distribution over the next one. It has 1,089 parameters, no hidden layers and no gradient-trained weights. It is not a neural network; the "
+        "neural adapter study below applies the same protocol to one. It is the smallest object that has the properties the federated "
         "unlearning protocol needs (a flat parameter vector, an additive update, a loss that can be measured per record) and runs offline. The "
         "source file says so, and the user interface repeats it in a standing note.")
     d.p("'Training' is correspondingly simple. There are no epochs, no optimiser and no learning rate. One federated round consists of computing "
         f"the five clipped updates, summing them, adding the noise and dividing by five; the default run took {t['train_ms']:.1f} ms. The "
         "configuration is fixed in the engine's constructor and shown in the next table.")
-    d.table([["Setting", "Value", "Where set"],
+    d.table(_trim(d, [["Setting", "Value", "Where set"],
              ["Clients / records", "5 clients, 5 sentences each (25 records)", "`dataset.py`"],
              ["Parameter dimension", "1,089 (33 x 33)", "`model.py`, `DIMENSION`"],
              ["Clip norm C", "25.0", "`FederatedUnlearningEngine(clip_norm=25.0)`"],
@@ -308,19 +393,42 @@ def sec_model_training(d):
              ["Probability smoothing", "0.15", "`CharacterLanguageModel.smoothing`"],
              ["Utility weights", "0.65 accuracy, 0.35 perplexity term", "`metrics()`"],
              ["Certification thresholds", "reference distance <= 1e-10, retention >= 70 percent", "`unlearn()`"],
-             ["Sample length", "180 characters through the API, 120 by default", "`web.py`, `engine.generate()`"]],
+             ["Sample length", "180 characters through the API, 120 by default", "`web.py`, `engine.generate()`"]], ("Probability smoothing", "Utility weights", "Sample length", "Random seed")),
             "Configuration of the demonstrator", widths=[0.28, 0.44, 0.28], font=9.5)
     d.h3("Why the default model is noise-dominated")
-    d.p("The size of the signal and the noise explains the quality of the default model. Each client contributes at most 9 to a cell, and after "
-        "division by five the largest signal in a cell is about 1.8. The noise has standard deviation 75 in the sum and 15 in the model. The model "
-        "keeps only the positive part of each parameter and adds 0.15, so each row of the table is dominated by random positive values of mean about "
-        "6 (15 divided by the square root of 2 pi) and spread of the same order, and the signal in the 268 non-zero cells is small against them. "
-        f"The result on the public set is perplexity {t['perplexity']:.2f} and next-character accuracy {t['next_character_accuracy'] * 100:.2f} percent for "
-        "seed 2026; over 50 seeds the perplexity is 142.2 plus or minus 27.5. Section 'Results' of the report shows how this changes with sigma: "
-        "useful quality needs sigma of 0.1 or less, where epsilon is 48 or more.")
-    d.p("The consequence for the design is that the default values were chosen to make the privacy figure look moderate, not to make the model "
-        "useful. The demonstrator is honest about the pipeline and the verification, and the project reports its limits instead of tuning the "
-        "defaults to hide them.")
+    if getattr(d, "report", False):
+        d.p("Each client contributes at most 9 to a cell, so the largest signal in a cell of the model is about 1.8, while the noise has standard deviation 15 in the model; "
+            "keeping the positive part of each parameter and adding 0.15 leaves every row dominated by random values, and the 268 non-zero cells carry little against them. "
+            f"The result on the public set is perplexity {t['perplexity']:.2f} and next-character accuracy {t['next_character_accuracy'] * 100:.2f} percent for seed 2026 "
+            "(142.2 plus or minus 27.5 over 50 seeds); useful quality needs sigma of 0.1 or less, where epsilon is 48 or more.")
+    else:
+        d.p("The size of the signal and the noise explains the quality of the default model. Each client contributes at most 9 to a cell, and after "
+            "division by five the largest signal in a cell is about 1.8. The noise has standard deviation 75 in the sum and 15 in the model. The model "
+            "keeps only the positive part of each parameter and adds 0.15, so each row of the table is dominated by random positive values of mean about "
+            "6 (15 divided by the square root of 2 pi) and spread of the same order, and the signal in the 268 non-zero cells is small against them. "
+            f"The result on the public set is perplexity {t['perplexity']:.2f} and next-character accuracy {t['next_character_accuracy'] * 100:.2f} percent for "
+            "seed 2026; over 50 seeds the perplexity is 142.2 plus or minus 27.5. Section 'Results' of the report shows how this changes with sigma: "
+            "useful quality needs sigma of 0.1 or less, where epsilon is 48 or more.")
+    if not getattr(d, "report", False):
+        d.p("The consequence for the design is that the default values were chosen to make the privacy figure look moderate, not to make the model "
+            "useful. The demonstrator is honest about the pipeline and the verification, and the project reports its limits instead of tuning the "
+            "defaults to hide them.")
+    nn = _nn()
+    cs = [x["C"] for x in nn["per_seed"]]
+    d.h3("Configuration of the neural adapter study")
+    d.table([["Setting", "Value"],
+             ["Base network", f"Character GRU, embedding 32, hidden 192, {nn['base']['base_parameters']:,} parameters, frozen after pre-training"],
+             ["Pre-training", "6,000 synthetic public sentences, 2,500 steps, batch 64, learning rate 3e-3 then 1e-3"],
+             ["Adapter", f"LoRA-FA, rank {nn['base']['adapter_rank']}, on the hidden-state residual and the output projection; {nn['base']['adapter_dimension']:,} trainable parameters per client"],
+             ["Adapter training", f"Adam, learning rate 5e-3, 256 tokens per batch, {nn['config']['chosen']['epochs']} epochs; rank and epochs chosen by a pilot on one client (lowest held-out perplexity)"],
+             ["Federation", f"8 clients, one aggregation round, C = median raw norm ({min(cs):.1f} to {max(cs):.1f}), delta 1e-5, 5 seeds, 40 removal requests per sigma"],
+             ["Noise multipliers", ", ".join(f"{x:g}" for x in nn["config"]["sigmas"])],
+             ["Cost", f"{nn['runtime_seconds']:.0f} s for the whole experiment on 4 CPU threads (pre-training cached)"]],
+            "Configuration of the neural adapter study", widths=[0.24, 0.76], font=9.5)
+    d.p("The bigram product and the neural study share every rule of the protocol (clip, sum, Gaussian noise, divide, subtract) and differ in the "
+        "vector that is aggregated: 1,089 bigram counts in one case, 14,272 adapter coefficients in the other. The neural study shows that the method does "
+        "not depend on the bigram table; its scale (a 137k-parameter network, 8 clients, one round) is the boundary of what the project demonstrates, and "
+        "billion-parameter pretrained models are outside its scope and hardware.")
 
 
 # ------------------------------------------------------------------------------------------------------------------ application architecture
@@ -335,7 +443,7 @@ def sec_app_arch(d):
         "re-entrant lock; every route that touches the engine runs inside `with application.lock`, so two simultaneous requests are serialised and "
         "the engine never sees a half-updated state. The engine is replaced as a whole on `POST /api/session`, and there is exactly one engine for "
         "all callers: two browser tabs share one session.")
-    d.table([["Component", "Technology (as declared)", "Purpose"],
+    d.table(_trim(d, [["Component", "Technology (as declared)", "Purpose"],
              ["Back end", "Python 3.10+ standard library (measured on 3.11.9)", "Engine, model, ledger, HTTP server"],
              ["UI framework", "React 19, React DOM 19", "Pages and components"],
              ["Routing", "React Router 7", "Seven routes: landing, five application pages and a not-found page"],
@@ -343,11 +451,34 @@ def sec_app_arch(d):
              ["Charts", "Recharts 3", "Bar, grouped-bar, line and area charts"],
              ["Motion", "Framer Motion 14, GSAP 3, Lenis", "Page transitions, count-up, smooth scrolling"],
              ["Icons and effects", "lucide-react, canvas-confetti", "Icons"],
-             ["Desktop UI", "Tkinter (standard library)", "Original desktop window"]],
+             ["Desktop UI", "Tkinter (standard library)", "Original desktop window"]], ("Motion", "Icons and effects", "Desktop UI")),
             "Technology stack", widths=[0.2, 0.42, 0.38], font=9.5)
-    d.p("The front end can also be built for production with `npm run build`; `npm run preview` serves the build on the same port and keeps the "
-        "same proxy. The Python server does not serve the React build, so a deployment would need a reverse proxy in front of both. This is "
-        "recorded as future work and is not hidden by the run script.")
+    if not getattr(d, "report", False):
+        d.p("The front end can also be built for production with `npm run build`; `npm run preview` serves the build on the same port and keeps the "
+            "same proxy. The Python server does not serve the React build, so a deployment would need a reverse proxy in front of both. This is "
+            "recorded as future work and is not hidden by the run script.")
+    ld = metrics("load_test")
+    d.h3("Measured load behaviour")
+    rows = [["Scenario", "Clients 1", "Clients 4", "Clients 16", "Clients 64"]]
+    for name, v in ld["scenarios"].items():
+        lv = {x["concurrency"]: x for x in v["levels"]}
+        rows.append([name] + [f"{lv[c]['requests_per_s']:.0f} req/s, p95 {lv[c]['p95_ms']:.0f} ms, {lv[c]['errors_5xx_or_connection']} err" for c in (1, 4, 16, 64)])
+    d.table(rows, "Throughput, tail latency and errors under concurrent clients (127.0.0.1, 500 requests or 20 s per level)", widths=[0.2, 0.2, 0.2, 0.2, 0.2], font=8.5)
+    r1 = ld["races"]["32 simultaneous unlearn requests for the same client"]
+    r2 = ld["races"]["16 simultaneous train requests"]
+    so = ld["soak"]
+    if getattr(d, "report", False):
+        d.p(f"The lock holds: 32 simultaneous removals of one client gave one success and 31 refusals (chain valid), 16 simultaneous trainings gave {r2['ledger_records']} contiguous "
+            "records, and a verifier racing 8 writers never read an invalid chain. Capacity is bounded by the design: `/api/state` re-reads and re-verifies the whole ledger on every call, so it "
+            f"saturates near 80 requests per second and its median rose from {so['state_ms_first50']['p50_ms']:.0f} to {so['state_ms_last50']['p50_ms']:.0f} ms over a {so['requests']:,}-request "
+            f"soak (0 errors) as the ledger grew to {so['ledger_records_end']} records; at 64 simultaneous clients up to 19 of 500 `/api/state` requests failed.")
+    else:
+        d.p(f"The lock does its job: 32 simultaneous removals of one client produced exactly one success and 31 refusals ({r1['ledger_records']} ledger records, chain valid); "
+            f"16 simultaneous training requests produced {r2['ledger_records']} contiguous records; 8 writers and a verifier found no invalid read. Capacity is limited by the design, not "
+            f"by the lock alone: `/api/state` re-reads and re-verifies the whole ledger on every call, so it saturates near 80 requests per second, and over a "
+            f"{so['requests']:,}-request soak (0 errors) its median rose from {so['state_ms_first50']['p50_ms']:.0f} to {so['state_ms_last50']['p50_ms']:.0f} ms as the ledger "
+            f"grew to {so['ledger_records_end']} records. At 64 simultaneous clients a few connections fail (up to 19 of 500 on `/api/state`); there is no queue "
+            "or pool, only one thread per connection.")
 
 
 # ------------------------------------------------------------------------------------------------------------------ code walkthrough
@@ -362,12 +493,13 @@ def sec_walkthrough(d):
         "once, with a standard deviation of noise multiplier times clip norm for every coordinate, and added to form `noisy_sum`; the model is "
         "`noisy_sum` divided by the client count. Only `noisy_sum` and the model are used for the model; the stored `updates` and `noise` are what "
         "make removal possible later.")
-    d.h3("Unlearning: guards")
     if not getattr(d, "report", False):
-        d.code(_src("certified_unlearning/engine.py", 221, 229, "def unlearn"), "guards of `unlearn()` (engine.py)")
-    d.p("Four conditions raise before any state changes: the model has not been trained, the client id is unknown, the client was already "
-        "removed, or only one client is left. The untrained case raises `RuntimeError`, the unknown id `KeyError`, and the other two `ValueError`; the web "
-        "layer maps all of them to HTTP 400.")
+        d.h3("Unlearning: guards")
+        if not getattr(d, "report", False):
+            d.code(_src("certified_unlearning/engine.py", 221, 229, "def unlearn"), "guards of `unlearn()` (engine.py)")
+        d.p("Four conditions raise before any state changes: the model has not been trained, the client id is unknown, the client was already "
+            "removed, or only one client is left. The untrained case raises `RuntimeError`, the unknown id `KeyError`, and the other two `ValueError`; the web "
+            "layer maps all of them to HTTP 400.")
     d.h3("Unlearning: subtraction, reference and decision")
     d.code(_src("certified_unlearning/engine.py", 236, 250, "target_update"), "core of `unlearn()` (engine.py)")
     d.p("The first three statements are the unlearning: subtract the stored update from the noisy sum, drop the client from the active list and "
@@ -422,56 +554,85 @@ def sec_api(d):
                                  "membership_auc_after", "perplexity_before", "perplexity_after", "utility_retention_percent", "clients_before", "clients_after")}
     show["certificate_id"] = "(random per run)"
     d.code("POST /api/unlearn   {\"client_id\": \"client_finance\"}\n" + json.dumps(show, indent=2), "request and (abbreviated) response")
-    d.p("Behaviour at the edges was measured against the live server (the results chapter discusses it). The table gives the observed status for "
-        "each case; an oversized body does not reach the client as an HTTP response.")
-    rows = [["Case", "HTTP status", "Observed response"]]
-    for e in api["edge_cases"]:
-        status = "connection aborted" if e["status"] == -1 else str(e["status"])
-        resp = str(e["response"]).replace("\n", " ")
-        resp = "stdlib HTML 501 page" if resp.startswith("<!DOCTYPE") else (resp[:70] + ("..." if len(resp) > 70 else ""))
-        if e["response"] == "ok":
-            resp = "accepted"
-        rows.append([e["case"], status, resp])
-    d.table(rows, "Measured API behaviour at the edges", widths=[0.38, 0.17, 0.45], font=8.5)
+    if getattr(d, "report", False):
+        d.p("The 19 edge cases measured against the live server are tabulated in the testing chapter; two of them are defects.")
+    else:
+        d.p("Behaviour at the edges was measured against the live server (the results chapter discusses it). The table gives the observed status for "
+            "each case; an oversized body does not reach the client as an HTTP response.")
+        rows = [["Case", "HTTP status", "Observed response"]]
+        for e in api["edge_cases"]:
+            status = "connection aborted" if e["status"] == -1 else str(e["status"])
+            resp = str(e["response"]).replace("\n", " ")
+            resp = "stdlib HTML 501 page" if resp.startswith("<!DOCTYPE") else (resp[:70] + ("..." if len(resp) > 70 else ""))
+            if e["response"] == "ok":
+                resp = "accepted"
+            rows.append([e["case"], status, resp])
+        d.table(rows, "Measured API behaviour at the edges", widths=[0.38, 0.17, 0.45], font=8.5)
     d.p("Two behaviours are defects rather than design. When a body exceeds 1,000,000 bytes the handler raises before reading it and the "
         "connection is closed, so a client sees a reset instead of a clean 400. And a method that the handler does not define (for example PUT) "
-        "returns the HTML error page of the standard library, not a JSON error. Neither affects the main flow.")
+        "returns the HTML error page of the standard library, not a JSON error. Neither affects the main flow; the security probes below add eight further defects.")
 
 
 # ------------------------------------------------------------------------------------------------------------------ security
 def sec_security(d):
-    audit = metrics("audit_tamper")
+    from collections import Counter
+
+    sp = metrics("security_probe")
+    ac = metrics("acceptance")
+    cc = sp["classification_counts"]
     d.h2("Security and Error Handling")
-    d.p("ForgetSafe is a local demonstrator, and its security measures match that role. This section lists what the code does, and then what "
-        "it does not do, because the second list matters more to anyone who might reuse the design.")
+    d.p("ForgetSafe is a local demonstrator, so its controls are modest; what matters is that they were measured. `scripts/run_testing_experiments.py` "
+        f"sent {sp['n_probes']} synthetic malicious or malformed requests to the running server, classified each result as handled, handled with noteworthy "
+        "behaviour or defect, and checked after every group that `/api/health` still answered.")
     d.h3("What the code does")
     d.bullets([
-        "**Localhost binding.** The server binds to 127.0.0.1 unless `--host` is given, and the Vite server is bound to 127.0.0.1 too.",
-        "**Input checks.** The body size is limited to 1,000,000 bytes, the body must be a JSON object, `client_id` must be present, and an id that "
-        "is not one of the five known clients is rejected before any engine state changes. Seed text for generation is normalised to the 33-symbol "
-        "alphabet, so it cannot carry markup into the model; a 5,000-character seed was accepted and processed (measured).",
-        "**No file serving.** The server has no static-file route, so a path such as `/../../etc/passwd` returns 404 (measured). The ledger path is fixed in code.",
-        "**Output escaping.** The legacy page escapes every server value with an `esc()` function before inserting it as HTML; React escapes by default.",
-        "**Thread safety.** One re-entrant lock serialises engine access inside a process.",
-        "**Failure isolation.** Exceptions are caught per request and returned as JSON; one failing request does not stop the server.",
-        "**Tamper evidence.** The ledger detects ordinary edits, deletions and re-ordering.",
+        "**Localhost binding** of both servers; **no file serving** (a path such as `/../../etc/passwd` returns 404); a fixed ledger path.",
+        "**Input checks.** Body limited to 1,000,000 bytes, JSON object required, `client_id` required and validated against the five known clients before any "
+        "state changes; seed text is normalised to the 33-symbol alphabet (a 5,000-character seed was accepted).",
+        "**Output escaping.** The legacy page escapes every server value; React escapes by default.",
+        "**One re-entrant lock** serialises engine access; exceptions are caught per request and returned as JSON, so one failure does not stop the server.",
+        "**Tamper evidence.** The ledger detects edits, deletions and re-ordering; three attack classes go undetected (Chapter 7 and the results chapter).",
     ])
-    d.h3("What the code does not do")
-    d.table([["Gap", "Consequence"],
-             ["No authentication or authorisation", "Anyone who can reach the port can train, remove a client or start a new session; there is no distinction between operator and auditor"],
-             ["One global engine", "All callers share one session; a second tab can reset or modify the first user's state"],
-             ["No TLS, no rate limit", "Acceptable on localhost, unacceptable on a network"],
-             ["Noise reused across releases, no privacy accountant", "Releasing both the pre- and post-removal models would reveal the removed client's update exactly (Section 'Mathematical Formulation'); the certificate repeats the training-time epsilon"],
-             ["Updates stored unprotected in memory", "They are the most sensitive artefacts; a real deployment would encrypt them and restrict access"],
-             ["Ledger has no signature or external anchor", "Three of seven tampering attacks go undetected: " + "; ".join(a for a in audit["undetected_attacks"])],
-             ["No file lock on the ledger", "Two server processes writing the same file could interleave records"],
-             ["Error text echoed to the client", "Exception messages, including the unknown client id supplied by the caller, are returned in the JSON error"]],
-            "Security gaps of the demonstrator", widths=[0.32, 0.68], font=9.5)
+    d.h3("Measured security probes")
+    if not getattr(d, "report", False):
+        groups = Counter()
+        kinds = {}
+        for pr in sp["probes"]:
+            groups[pr["group"]] += 1
+            kinds.setdefault(pr["group"], Counter())[pr["classification"]] += 1
+        rows = [["Probe group", "Probes", "Handled", "Noteworthy", "Defects"]]
+        for g, n in groups.most_common():
+            k = kinds[g]
+            rows.append([g, str(n), str(k["handled"]), str(k["noteworthy"]), str(k["defect"])])
+        rows.append(["**Total**", str(sp["n_probes"]), str(cc["handled"]), str(cc["noteworthy"]), str(cc["defect"])])
+        d.table(rows, "Security probes by group", widths=[0.4, 0.15, 0.15, 0.15, 0.15], font=9.5, align=["l", "c", "c", "c", "c"])
+    d.p(f"{cc['handled']} probes were handled correctly, {cc['noteworthy']} were handled with behaviour worth knowing, and {cc['defect']} are defects. The server stayed "
+        f"alive after all of them (alive: {sp['server_alive_after_all']}). The defects, with their evidence and the fix each one calls for, are:")
+    d.table([["Defect", "Evidence", "Fix"],
+             ["Negative Content-Length", "`Content-Length: -1` with the socket left open: the handler thread blocks in `rfile.read(-1)`, no response within 4 s", "Reject negative lengths with 400; set a socket timeout"],
+             ["No read timeout", "500 bytes declared, 30 sent: the server waits indefinitely for the rest", "Per-connection timeout on the handler"],
+             ["Cross-site POST accepted (CSRF)", "`text/plain` POST with a foreign Origin: HTTP 200 and the removal is executed", "Require JSON content type and an authentication header or token; check Origin"],
+             ["Host header not validated", "Host `evil.example`: HTTP 200 (DNS-rebinding precondition)", "Allow-list the Host header"],
+             ["Connection bursts", "64 simultaneous new connections: 34 served, 30 refused (WinError 10061)", "Bounded worker pool, larger listen backlog, reverse proxy"],
+             ["One bad ledger line stops the UI", "A garbage line appended to the file: `/api/state` returns 500 and the interface cannot load", "Quarantine unreadable lines; keep `/api/state` alive and report the failure"],
+             ["Empty ledger verifies as valid", "File truncated to zero bytes: verify answers valid with 0 records", "Anchor record count and last hash outside the file (signature or external store)"],
+             ["No authentication", "Every route works without credentials: read the full audit log, erase a client, retrain and discard certificates", "Authentication, operator and auditor roles, TLS"]],
+            "Defects found by the security probes", widths=[0.22, 0.46, 0.32], font=8.5)
+    if getattr(d, "report", False):
+        d.p("The 15 noteworthy behaviours are not defects: duplicate JSON keys resolve to the last, a 100 kB client id is echoed back, unsupported methods return the "
+            "standard-library HTML 501 page, security headers are absent, 200 idle connections each hold a thread, and a half-closed request that the client abandoned is still executed.")
+    else:
+        d.p("The noteworthy behaviours are not defects but should be known. Two Content-Length headers are resolved by taking the first (HTTP 400 on the "
+            "mismatch); duplicate JSON keys resolve to the last; a 100 kB client id is echoed back in the 400 response; an HTTP/0.9-style request line is served; "
+            "OPTIONS, HEAD, TRACE, PUT, DELETE and PATCH return the standard-library HTML 501 page; the security headers X-Content-Type-Options, "
+            "Content-Security-Policy and X-Frame-Options are absent and the server banner shows the Python version; a POST without a Content-Type is accepted; 200 idle "
+            "connections each hold a thread (4 to 204) while the health check stays at p95 12.6 ms; and a half-closed request that was abandoned by the client is still "
+            "executed afterwards.")
     d.h3("Error handling in the user interface")
-    d.p("The front end turns every failed call into a toast that shows the server's message and stays for eight seconds, keeps the page "
-        "usable, and offers a retry in the full-page error state when the first state request fails. Buttons are disabled while an action is "
-        "running, which prevents double submission, and the unlearning page shows an explanatory empty state when fewer than two clients remain. "
-        "These measures handle the user's mistakes; they are not security controls, because the server does not depend on them.")
+    d.p("The front end turns every failed call into a toast that shows the server's message, keeps the page usable and offers a retry when the first state "
+        "request fails; buttons are disabled while an action runs, and the unlearning page shows an explanatory empty state when fewer than two clients remain. "
+        f"These measures handle mistakes, not attacks. A scripted run of {ac['journeys']} randomised synthetic-user journeys (desktop and phone width, light and dark "
+        f"theme, cancelled dialogs) passed every step in {ac['journeys_passed_all_steps']} of {ac['journeys']} journeys with {ac['console_error_journeys']} console errors.")
 
 
 # ------------------------------------------------------------------------------------------------------------------ installation
@@ -495,7 +656,9 @@ def sec_install(d):
             "Ways to run the application", widths=[0.38, 0.62], font=9.5)
     d.h3("Tests and measurements")
     d.code("python -m unittest discover -s tests -v     # 5 tests\npython scripts/smoke_test.py                    # 14 end-to-end API checks\n"
-           "python scripts/run_experiments.py               # writes experiments/*/metrics.json\npython scripts/make_charts.py                   # writes docs/charts/*.png",
+           "python scripts/run_experiments.py               # writes experiments/*/metrics.json\npython scripts/run_synthetic_corpus.py          # larger synthetic corpus study and git timeline\n"
+           "python scripts/run_neural_experiment.py         # neural adapter study (needs torch and numpy, CPU is enough)\npython scripts/run_testing_experiments.py       # load, security probes, scripted acceptance (needs Chrome and Playwright)\n"
+           "python scripts/make_charts.py                   # writes docs/charts/*.png",
            "verification commands")
     if not getattr(d, "report", False):
         d.p("The smoke test starts its own server on a spare port with a throw-away working directory, so it does not touch the real audit "

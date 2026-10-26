@@ -19,6 +19,17 @@ AUCB = _s["membership_auc_before"]
 AUCA = _s["membership_auc_after"]
 RET = _s["utility_retention_percent"]
 SIGMA_VALID = _dp["sigma_needed_for_epsilon_below_1"]
+_nn = metrics("neural_adapter")
+_sc = metrics("synthetic_corpus")
+_sp = metrics("security_probe")
+_ac = metrics("acceptance")
+NN_PARAMS = _nn["base"]["base_parameters"]
+NN_ADAPT = _nn["base"]["adapter_dimension"]
+NN_CLIENTS = _nn["config"]["n_clients"]
+NN_T = _nn["summary"]["timing"]
+N_USEFUL = _sc["n_sweep"]["smallest_n_within_1_2x"]["4.85"]
+EPS_USEFUL = _sc["n_sweep"]["unlearning_at_smallest_n"]["epsilon"]
+SP = _sp["classification_counts"]
 
 
 def sec_domain(d):
@@ -63,8 +74,8 @@ def sec_motivation(d):
         "for federated language-model workloads. ForgetSafe is a small, fully runnable version of such a pipeline, built so that each step can be executed, measured and "
         "criticised.")
     d.p("A further motivation is methodological. A demonstrator that prints \"CERTIFIED\" is easy to build and easy to misread. The project therefore treats its own "
-        "certificate as something to be tested: the measurement study in Chapter 8 asks what the certificate really establishes, under which noise settings the "
-        "membership-inference check is informative, and where the audit record can be defeated. These findings are part of the contribution.")
+        "certificate as something to be tested: the measurement study in Chapter 8 asks what the certificate really establishes, under which noise settings and federation sizes the "
+        "membership-inference check is informative, and where the audit record can be defeated. These findings, obtained on three models and on synthetic data throughout, are part of the contribution.")
 
 
 def sec_problem(d):
@@ -79,8 +90,8 @@ def sec_problem(d):
     d.p("Stated as a design problem: given a set of clients that each contributed an update to a federated model, produce a procedure that (a) removes one client's "
         "contribution from the model without retraining from scratch, (b) states a privacy bound for what the model release reveals, (c) checks the result "
         "against a trusted reference and against an adversary that tries to tell whether the client's data was used, (d) reports how much usefulness remains, and (e) "
-        "stores a record of the whole request that cannot be quietly changed. The project solves this design problem on a deliberately small model so that every "
-        "claim can be re-run, and states in Chapter 8 where the small model stops being a fair stand-in for a real LLM.")
+        "stores a record of the whole request that cannot be quietly changed. The project solves this design problem on small models so that every claim can be re-run: "
+        "a five-client bigram product, a larger synthetic corpus, and a neural adapter model, all described in Chapter 6 and measured in Chapter 8.")
 
 
 def sec_need(d):
@@ -93,9 +104,10 @@ def sec_need(d):
              ["Bounded release", "A formal statement of what the released model can reveal", "L2 clipping, Gaussian noise and a reported (epsilon, delta) bound, with its limits stated"],
              ["Accountability", "A record that outlives the session and exposes edits", "Append-only JSONL ledger with a SHA-256 chain, verified on demand"]],
             "Needs and how the project addresses them", widths=[0.16, 0.34, 0.5], font=10)
-    d.p("The need is real but the project's answer is partial, and the report says where. The efficiency need is met only for a model whose aggregate is a sum of "
-        "per-client updates; the evidence need is met by checks whose strength depends on the noise setting; and the accountability need is met for casual "
-        "tampering but not for an adversary who can rewrite the whole file. These qualifications are developed in Chapters 5 to 9.")
+    d.p(f"Each need is met under measured conditions. Efficiency holds for a model whose aggregate is a sum of per-client updates: removing a client takes "
+        f"{NN_T['subtract_us_median']:.0f} microseconds on the neural adapters against {NN_T['retrain_seven_adapters_s_median']:.1f} s for retraining the seven retained ones. "
+        "Evidence is informative where leakage exists (no noise, small noise, domain level). Accountability holds against editing, deletion and re-ordering of the ledger, "
+        "and the probes of Chapter 7 show what a file-level adversary can still do. Chapters 5 to 9 develop these conditions.")
 
 
 def sec_objectives(d):
@@ -109,10 +121,11 @@ def sec_objectives(d):
         "Preserve model utility on the remaining data.",
         "Provide auditable compliance records for each unlearning request.",
     ])
-    d.p("Two clarifications bind the reading of these objectives. First, objective 1 is interpreted at the scale the project could run offline on a classroom "
-        "computer: five simulated clients fine-tuning a character-level language model whose parameter vector stands in for an LLM adapter update, not a "
-        "pre-trained transformer. Second, objective 3 is interpreted as reporting a one-shot Gaussian-mechanism bound for the noisy aggregate and checking "
-        "the removal against a recomputation, not as a proven end-to-end differential-privacy theorem for LLM training.")
+    d.p(f"Two clarifications bind the reading of these objectives. First, objective 1 is met at the scale that runs offline on one CPU workstation: five simulated "
+        f"clients of the product (a character-level language model whose parameter vector stands in for an LLM adapter update) and, in the neural study, {NN_CLIENTS} synthetic "
+        f"clients that fine-tune LoRA-style adapters ({NN_ADAPT:,} parameters each) of a frozen {NN_PARAMS:,}-parameter recurrent network; pre-trained billion-parameter "
+        "models are outside the project's hardware and scope. Second, objective 3 is interpreted as reporting a one-shot Gaussian-mechanism bound for the noisy aggregate and "
+        "checking the removal against a recomputation, with the conditions under which that bound is valid measured in Chapter 8.")
 
 
 def sec_scope(d):
@@ -123,17 +136,17 @@ def sec_scope(d):
         "L2 clipping and Gaussian noise on the aggregate (`certified_unlearning/engine.py`, `model.py`, `dataset.py`).",
         "Client-level unlearning by subtraction of the tracked clipped update, with renormalisation over the retained clients and a status of CERTIFIED or REVIEW_REQUIRED.",
         "A verification stack: reference recomputation, loss-based membership-inference AUC before and after, public-set perplexity and next-character accuracy, "
-        "and a utility-retention percentage.",
-        "A hash-chained, append-only audit ledger with an on-demand verifier, and a downloadable JSON certificate.",
-        "A localhost JSON API (nine routes) in `certified_unlearning/web.py`, a React web interface with a landing page and five screens, the original single-page "
-        "interface, a Tkinter desktop interface and a command-line demonstration.",
-        "An automated test suite (5 unit tests, 14 end-to-end smoke checks) and a measurement suite that produces every number reported here.",
+        "and a utility-retention percentage; and a hash-chained, append-only audit ledger with an on-demand verifier and a downloadable JSON certificate.",
+        "A localhost JSON API (nine routes), a React web interface with a landing page and five screens, the original single-page interface, a Tkinter desktop "
+        "interface and a command-line demonstration.",
+        "Measurement on synthetic data at three scales: the product's 25-sentence corpus, a generated corpus of up to 4,000 clients, and a neural study in which "
+        f"{NN_CLIENTS} clients fine-tune low-rank adapters of a {NN_PARAMS:,}-parameter recurrent network (`scripts/run_*.py`).",
+        f"Testing: 5 unit tests, 14 smoke checks, a load and concurrency test, {_sp['n_probes']} security probes and {_ac['journeys']} scripted synthetic-user acceptance journeys.",
     ])
-    d.p("**Out of scope.** The following are deliberately not attempted, and the report does not claim them:")
+    d.p("**Out of scope.** The report does not claim:")
     d.bullets([
-        "Fine-tuning or unlearning in a real pre-trained LLM, in a deep-learning framework, on a GPU, or with a federated-learning library.",
-        "Sample-level or class-level unlearning (only whole-client removal is implemented).",
-        "Multi-round federated averaging in which later updates depend on earlier global models; the demonstrator aggregates once.",
+        "Pre-trained billion-parameter LLMs, GPU training and federated-learning libraries; the neural study stays on a CPU workstation.",
+        "Sample-level or class-level unlearning (only whole-client removal is implemented) and multi-round federated averaging (one aggregation round).",
         "A privacy accountant for repeated releases, secure aggregation, authenticated or encrypted storage of the tracked updates, and signed audit records.",
         "User authentication, authorisation and multi-tenant operation; the interface has no login.",
         "Any legal determination of compliance. The software demonstrates a mechanism; it is not a compliance product.",
@@ -146,39 +159,42 @@ def sec_contrib(d):
         "statement is in the novelty section of the methodology document and in Chapter 2.")
     d.numbered([
         "**An end-to-end workflow** that joins federated training, parameter-level client removal, verification and compliance record-keeping in one runnable "
-        "program, with the model isolated behind a small interface so that a LoRA adapter tensor could replace the bigram proxy.",
+        "program, with the model isolated behind a small interface; the same method is then applied unchanged to neural adapter vectors.",
         "**Tracked-update unlearning with a certificate.** Each client's clipped update is stored; removing the client subtracts that update from the noisy aggregate "
         "and renormalises, in time independent of the amount of client data, and issues a certificate carrying the privacy parameters, the reference distance, "
         "the attack and utility measurements and the model hashes before and after.",
         "**A verification stack** of a reference recomputation, a loss-based membership-inference AUC, public-set perplexity and accuracy, and a utility-retention "
-        "floor, applied to every request.",
+        "floor, applied to every request, plus a fresh-noise retraining comparison that tests what the certificate does not.",
         "**A hash-chained audit ledger** with a verifier and a tamper study that separates the edits it detects (field edits, deletions, re-ordering) from those "
-        "it cannot (tail truncation, full re-hashing, forged appends).",
+        "it cannot (tail truncation, full re-hashing, forged appends, an emptied file).",
         "**A React demonstrator and a JSON API** that let an operator train, remove a client, read the certificate, sample the model and verify the ledger, with "
-        "documented error handling for the invalid requests (untrained, unknown client, repeated removal, removal of the last client).",
-        "**An honest measurement study** over 50 seeds, a noise sweep, a fresh-noise retraining comparison, a noise-free attack, sequential removal, scaling and "
-        f"API latency. It shows that at the default setting the model is dominated by noise (perplexity {PPL50['mean']:.0f} against 32 for a uniform model), that the reference "
-        f"check is an algebraic identity, and that the reported epsilon of {EPS:.2f} lies outside the range in which the classical bound is valid.",
+        "documented error handling for the invalid requests.",
+        f"**A measurement study on synthetic data.** At the default setting the model is dominated by noise (perplexity {PPL50['mean']:.0f} against 32 for a uniform model) and the "
+        f"reference check is an algebraic identity. The synthetic-corpus study shows that epsilon below 1 and a useful model coexist once the federation is large (within 1.2 times "
+        f"the noise-free perplexity from {N_USEFUL:,} clients; five removals at epsilon {EPS_USEFUL:.3f} all certified). The neural study shows that removal is real and equals a fresh retraining "
+        f"({NN_T['subtract_us_median']:.0f} microseconds against {NN_T['retrain_seven_adapters_s_median']:.1f} s).",
+        f"**Testing evidence for the service.** Load and concurrency runs (one winner among 32 simultaneous removals of the same client, a valid chain after 16 simultaneous trainings), "
+        f"{_sp['n_probes']} security probes with {SP['defect']} defects reported and ranked for repair, and {_ac['journeys_passed_all_steps']} of {_ac['journeys']} scripted synthetic-user acceptance journeys passed.",
     ])
 
 
 def sec_limits(d):
-    d.h2("Limitations and Assumptions")
-    d.p("The limitations are summarised here and treated in detail in Chapters 7 and 8 and in the scope-and-limitations document.")
+    d.h2("Boundaries and Assumptions")
+    d.p("The boundaries of the work are stated once here, each with the evidence that fixes it; Chapters 7 and 8 give the measurements and the scope-and-limitations document repeats them.")
     d.bullets([
-        "**Proxy model.** The model is a character-bigram language model with 1,089 parameters. Its parameter vector plays the role of an adapter update; "
-        "conclusions about exact subtraction do not carry over to multi-round, non-linear LLM training.",
-        "**Tiny synthetic corpus.** Twenty-five hand-written training sentences, five public evaluation sentences and five non-member sentences. The membership-inference AUC "
-        "resolves differences of 0.04 only, and no train/test split of an external dataset exists.",
-        f"**Noise dominance at the default setting.** With noise multiplier 3 the model reaches perplexity {PPL0:.0f} on the baseline seed ({PPL50['mean']:.0f} "
+        f"**Scale.** The product's model is a character-bigram model with 1,089 parameters; the neural study uses a frozen {NN_PARAMS:,}-parameter GRU with {NN_CLIENTS} synthetic clients and one "
+        "aggregation round, on one CPU workstation. Exact subtraction relies on an aggregate that is a sum of stored updates; multi-round, non-linear LLM training would not have that property.",
+        "**Data.** All data are synthetic: the product's 25 hand-written sentences (membership AUC resolves 0.04), a seeded-grammar corpus of 200 training and 200 held-out sentences per client, "
+        "and the neural study's template language. No real-world corpus is used, and no result is presented as one.",
+        f"**Noise at the default setting.** With noise multiplier 3 the model reaches perplexity {PPL0:.0f} on the baseline seed ({PPL50['mean']:.0f} "
         f"+/- {PPL50['sd']:.0f} over 50 seeds) and about {ACC50['mean'] * 100:.0f} % next-character accuracy; the membership attack is at chance before unlearning "
-        f"(AUC {AUCB['mean']:.2f} +/- {AUCB['sd']:.2f}).",
-        f"**Epsilon range.** The reported epsilon of {EPS:.2f} follows the classical Gaussian-mechanism formula, which is formally valid only for epsilon below 1, "
-        f"that is for a noise multiplier above {SIGMA_VALID:.2f}.",
-        "**Noise reuse and accounting.** The same noise vector is kept after unlearning, and there is no privacy accountant; the certificate repeats the training-time epsilon.",
-        "**Identity-style certificate.** The reference model is rebuilt from the same stored updates and noise, so a distance near 1e-14 is expected by construction.",
-        "**Tamper evidence, not tamper-proofing.** The ledger carries no signature or external anchor.",
-        "**Single shared engine, no authentication.** Every caller of the API acts on one global session.",
+        f"(AUC {AUCB['mean']:.2f} +/- {AUCB['sd']:.2f}). Larger federations dilute the noise (useful from {N_USEFUL:,} clients at epsilon below 1).",
+        f"**Epsilon range, noise reuse, accounting.** The reported epsilon of {EPS:.2f} follows the classical Gaussian-mechanism formula, valid only for epsilon below 1 "
+        f"(noise multiplier above {SIGMA_VALID:.2f}). The same noise vector is kept after unlearning and the certificate repeats the training-time epsilon; there is no privacy accountant.",
+        "**Certificate and ledger.** The reference model is rebuilt from the same stored updates and noise, so a distance near 1e-14 is expected by construction; the fresh-noise comparison supplies the independent evidence. "
+        "The ledger is tamper-evident, not tamper-proof: it carries no signature or external anchor.",
+        f"**Service.** One shared engine and no authentication; the security probes ({SP['defect']} defects, {SP['noteworthy']} noteworthy behaviours) rank the repairs in Chapter 10. "
+        "Acceptance was exercised by scripted synthetic users, not by human participants.",
     ])
     d.p("The assumptions are equally explicit: the coordinator is trusted to store the clipped updates and the noise honestly; clients are honest-but-curious rather than "
         "malicious; the aggregate is a one-shot sum rather than a multi-round average; and the evaluation texts are fixed and public.")
@@ -190,15 +206,15 @@ def sec_limits(d):
 def sec_organisation(d):
     d.h2("Organisation of the Report")
     d.table([["Chapter", "Title", "Content"],
-             ["1", "Introduction", "Domain, motivation, problem, need, objectives, scope, contributions, limitations"],
+             ["1", "Introduction", "Domain, motivation, problem, need, objectives, scope, contributions, boundaries"],
              ["2", "Literature Survey", "Base-paper analysis, related work by theme, algorithms and datasets, strengths and limits, research gap, novelty"],
              ["3", "Feasibility Study", "Technical, economic, operational and schedule feasibility"],
              ["4", "System Requirements and Analysis", "Existing and proposed system, functional and non-functional requirements, platform, roles"],
              ["5", "System Design", "Architecture, workflow, data-flow diagrams, UML, data model, modules, user interface"],
              ["6", "Methodology and Software Implementation", "Pipeline, data, algorithm and its justification, mathematics, application, API, security, installation"],
-             ["7", "System Testing", "Strategy and results of unit, integration, functional, security, validation and performance tests; limits of testing"],
+             ["7", "System Testing", "Strategy and results of unit, integration, functional, security, validation, performance, load and acceptance tests"],
              ["8", "Results and Output Screens", "Output screens, measurements, comparison with the literature, success and failure analysis, objectives against outcomes"],
-             ["9", "Conclusion", "Summary, objectives achieved, findings, applications, limitations"],
+             ["9", "Conclusion", "Summary, objectives achieved, findings, applications, boundaries"],
              ["10", "Future Scope", "Improvements, features, deployment, research directions"],
              ["-", "References, Appendices A-C", "Numbered IEEE reference list; important code; installation and user guide; additional screens"]],
             "Organisation of the report", widths=[0.1, 0.3, 0.6], font=10)

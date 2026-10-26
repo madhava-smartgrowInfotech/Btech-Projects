@@ -1,0 +1,1333 @@
+{
+  "probes": [
+    {
+      "group": "Content-Length",
+      "case": "non-numeric value 'abc'",
+      "classification": "handled",
+      "evidence": "HTTP 400: {\n  \"error\": \"invalid literal for int() with base 10: 'abc'\"\n}",
+      "observed": {
+        "status": 400,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 62,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:03 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "content-length": "62",
+          "cache-control": "no-store"
+        },
+        "elapsed_ms": 1.5235999890137464,
+        "body_head": "{\n  \"error\": \"invalid literal for int() with base 10: 'abc'\"\n}",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "Content-Length",
+      "case": "empty value",
+      "classification": "handled",
+      "evidence": "HTTP 400: {\n  \"error\": \"invalid literal for int() with base 10: ''\"\n}",
+      "observed": {
+        "status": 400,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 59,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:03 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "content-length": "59",
+          "cache-control": "no-store"
+        },
+        "elapsed_ms": 1.3187000004108995,
+        "body_head": "{\n  \"error\": \"invalid literal for int() with base 10: ''\"\n}",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "Content-Length",
+      "case": "huge value 99999999999",
+      "classification": "handled",
+      "evidence": "HTTP 400: {\n  \"error\": \"Request body is too large\"\n}",
+      "observed": {
+        "status": 400,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 42,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:03 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "content-length": "42",
+          "cache-control": "no-store"
+        },
+        "elapsed_ms": 1.4584000018658116,
+        "body_head": "{\n  \"error\": \"Request body is too large\"\n}",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "Content-Length",
+      "case": "negative value -1 (client keeps the socket open)",
+      "classification": "defect",
+      "evidence": "server thread blocks in rfile.read(-1) until the client closes: no response within 4 s",
+      "observed": {
+        "status": null,
+        "server_closed": false,
+        "send_error": null,
+        "body_bytes": 0,
+        "headers": {},
+        "elapsed_ms": 4009.7147000051336,
+        "body_head": ""
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "Content-Length",
+      "case": "negative value -1 followed by half-close",
+      "classification": "noteworthy",
+      "evidence": "once the client closes its side the abandoned request IS executed: the first probe's unlearn ran after the client had gone (this request then got HTTP 400: already unlearned)",
+      "observed": {
+        "status": 400,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 58,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:07 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "content-length": "58",
+          "cache-control": "no-store"
+        },
+        "elapsed_ms": 32.04790000745561,
+        "body_head": "{\n  \"error\": \"client_finance has already been unlearned\"\n}",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "Content-Length",
+      "case": "declared 500 bytes, 30 sent, socket kept open",
+      "classification": "defect",
+      "evidence": "server waits for the missing bytes indefinitely (no read timeout)",
+      "observed": {
+        "status": null,
+        "server_closed": false,
+        "send_error": null,
+        "body_bytes": 0,
+        "headers": {},
+        "elapsed_ms": 4011.2900999956764,
+        "body_head": ""
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "Content-Length",
+      "case": "declared 5 bytes, 30 sent",
+      "classification": "handled",
+      "evidence": "HTTP 400: {\n  \"error\": \"Unterminated string starting at: line 1 column 2 (char 1",
+      "observed": {
+        "status": 400,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 74,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:11 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "content-length": "74",
+          "cache-control": "no-store"
+        },
+        "elapsed_ms": 1.6002000047592446,
+        "body_head": "{\n  \"error\": \"Unterminated string starting at: line 1 column 2 (char 1)\"\n}",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "Content-Length",
+      "case": "body sent without Content-Length",
+      "classification": "handled",
+      "evidence": "HTTP 400: {\n  \"error\": \"client_id is required\"\n}",
+      "observed": {
+        "status": 400,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 38,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:11 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "content-length": "38",
+          "cache-control": "no-store"
+        },
+        "elapsed_ms": 9.369099992909469,
+        "body_head": "{\n  \"error\": \"client_id is required\"\n}",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "Content-Length",
+      "case": "two Content-Length headers (5 and 30)",
+      "classification": "noteworthy",
+      "evidence": "HTTP 400: {\n  \"error\": \"Unterminated string starting at: line 1 column 2 (char 1 (first header wins, as http.client semantics)",
+      "observed": {
+        "status": 400,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 74,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:11 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "content-length": "74",
+          "cache-control": "no-store"
+        },
+        "elapsed_ms": 1.377299995510839,
+        "body_head": "{\n  \"error\": \"Unterminated string starting at: line 1 column 2 (char 1)\"\n}",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "Body content",
+      "case": "invalid UTF-8 body",
+      "classification": "handled",
+      "evidence": "HTTP 400: {\n  \"error\": \"'utf-8' codec can't decode byte 0xff in position 0: inva",
+      "observed": {
+        "status": 400,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 87,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:11 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "content-length": "87",
+          "cache-control": "no-store"
+        },
+        "elapsed_ms": 1.8069000070681795,
+        "body_head": "{\n  \"error\": \"'utf-8' codec can't decode byte 0xff in position 0: invalid start byte\"\n}",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "Body content",
+      "case": "JSON nested 10,000 deep",
+      "classification": "handled",
+      "evidence": "HTTP 400: {\n  \"error\": \"maximum recursion depth exceeded while decoding a JSON a",
+      "observed": {
+        "status": 400,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 99,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:11 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "content-length": "99",
+          "cache-control": "no-store"
+        },
+        "elapsed_ms": 2.2631000028923154,
+        "body_head": "{\n  \"error\": \"maximum recursion depth exceeded while decoding a JSON array from a unicode string\"\n}",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "Body content",
+      "case": "duplicate JSON keys",
+      "classification": "noteworthy",
+      "evidence": "HTTP 200: last key wins, text starts 'privacybsov '",
+      "observed": {
+        "status": 200,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 60,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:11 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "content-length": "60",
+          "cache-control": "no-store"
+        },
+        "elapsed_ms": 1.9277000101283193,
+        "body_head": "{\n  \"text\": \"privacybsov btrppsvyklrcxrvymej,..!qgnlgpynl\"\n}",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "Body content",
+      "case": "seed given as a number",
+      "classification": "handled",
+      "evidence": "HTTP 200 (converted with str())",
+      "observed": {
+        "status": 200,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 60,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:11 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "content-length": "60",
+          "cache-control": "no-store"
+        },
+        "elapsed_ms": 2.478299997164868,
+        "body_head": "{\n  \"text\": \"privacybsov btrppsvyklrcxrvymej,..!qgnlgpynl\"\n}",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "Body content",
+      "case": "seed null",
+      "classification": "handled",
+      "evidence": "HTTP 200: {\n  \"text\": \"none mlzciuovuu.xtdrcxrvymej,..!qgnlgpynl\"\n}",
+      "observed": {
+        "status": 200,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 57,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:11 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "content-length": "57",
+          "cache-control": "no-store"
+        },
+        "elapsed_ms": 2.7003000141121447,
+        "body_head": "{\n  \"text\": \"none mlzciuovuu.xtdrcxrvymej,..!qgnlgpynl\"\n}",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "Body content",
+      "case": "empty body on /api/unlearn",
+      "classification": "handled",
+      "evidence": "HTTP 400: {\n  \"error\": \"client_id is required\"\n}",
+      "observed": {
+        "status": 400,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 38,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:11 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "content-length": "38",
+          "cache-control": "no-store"
+        },
+        "elapsed_ms": 1.4956999948481098,
+        "body_head": "{\n  \"error\": \"client_id is required\"\n}",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "client_id values",
+      "case": "number 5",
+      "classification": "handled",
+      "evidence": "HTTP 400: {\n  \"error\": \"'Unknown client: 5'\"\n}",
+      "observed": {
+        "status": 400,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 36,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:11 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "content-length": "36",
+          "cache-control": "no-store"
+        },
+        "elapsed_ms": 0.741399999242276,
+        "body_head": "{\n  \"error\": \"'Unknown client: 5'\"\n}",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "client_id values",
+      "case": "list ['client_finance']",
+      "classification": "handled",
+      "evidence": "HTTP 400: {\n  \"error\": \"\\\"Unknown client: ['client_finance']\\\"\"\n}",
+      "observed": {
+        "status": 400,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 55,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:11 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "content-length": "55",
+          "cache-control": "no-store"
+        },
+        "elapsed_ms": 0.7000000041443855,
+        "body_head": "{\n  \"error\": \"\\\"Unknown client: ['client_finance']\\\"\"\n}",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "client_id values",
+      "case": "null",
+      "classification": "handled",
+      "evidence": "HTTP 400: {\n  \"error\": \"'Unknown client: None'\"\n}",
+      "observed": {
+        "status": 400,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 39,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:11 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "content-length": "39",
+          "cache-control": "no-store"
+        },
+        "elapsed_ms": 0.6582000060006976,
+        "body_head": "{\n  \"error\": \"'Unknown client: None'\"\n}",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "client_id values",
+      "case": "object",
+      "classification": "handled",
+      "evidence": "HTTP 400: {\n  \"error\": \"\\\"Unknown client: {'a': 1}\\\"\"\n}",
+      "observed": {
+        "status": 400,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 45,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:11 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "content-length": "45",
+          "cache-control": "no-store"
+        },
+        "elapsed_ms": 16.739300001063384,
+        "body_head": "{\n  \"error\": \"\\\"Unknown client: {'a': 1}\\\"\"\n}",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "client_id values",
+      "case": "true",
+      "classification": "handled",
+      "evidence": "HTTP 400: {\n  \"error\": \"'Unknown client: True'\"\n}",
+      "observed": {
+        "status": 400,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 39,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:11 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "content-length": "39",
+          "cache-control": "no-store"
+        },
+        "elapsed_ms": 0.9063999896170571,
+        "body_head": "{\n  \"error\": \"'Unknown client: True'\"\n}",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "client_id values",
+      "case": "path traversal ../../etc/passwd",
+      "classification": "handled",
+      "evidence": "HTTP 400: {\n  \"error\": \"'Unknown client: ../../etc/passwd'\"\n}",
+      "observed": {
+        "status": 400,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 51,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:11 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "content-length": "51",
+          "cache-control": "no-store"
+        },
+        "elapsed_ms": 0.9764999995240942,
+        "body_head": "{\n  \"error\": \"'Unknown client: ../../etc/passwd'\"\n}",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "client_id values",
+      "case": "NUL byte appended",
+      "classification": "handled",
+      "evidence": "HTTP 400: {\n  \"error\": \"'Unknown client: client_finance\\\\x00'\"\n}",
+      "observed": {
+        "status": 400,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 54,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:11 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "content-length": "54",
+          "cache-control": "no-store"
+        },
+        "elapsed_ms": 0.7828999951016158,
+        "body_head": "{\n  \"error\": \"'Unknown client: client_finance\\\\x00'\"\n}",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "client_id values",
+      "case": "CRLF appended",
+      "classification": "handled",
+      "evidence": "HTTP 400: {\n  \"error\": \"'Unknown client: client_finance\\\\r\\\\nX: y'\"\n}",
+      "observed": {
+        "status": 400,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 59,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:11 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "content-length": "59",
+          "cache-control": "no-store"
+        },
+        "elapsed_ms": 0.7659000111743808,
+        "body_head": "{\n  \"error\": \"'Unknown client: client_finance\\\\r\\\\nX: y'\"\n}",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "client_id values",
+      "case": "trailing space",
+      "classification": "handled",
+      "evidence": "HTTP 400: {\n  \"error\": \"'Unknown client: client_finance '\"\n}",
+      "observed": {
+        "status": 400,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 50,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:11 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "content-length": "50",
+          "cache-control": "no-store"
+        },
+        "elapsed_ms": 0.7653999928152189,
+        "body_head": "{\n  \"error\": \"'Unknown client: client_finance '\"\n}",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "client_id values",
+      "case": "upper case",
+      "classification": "handled",
+      "evidence": "HTTP 400: {\n  \"error\": \"'Unknown client: CLIENT_FINANCE'\"\n}",
+      "observed": {
+        "status": 400,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 49,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:11 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "content-length": "49",
+          "cache-control": "no-store"
+        },
+        "elapsed_ms": 20.29709999624174,
+        "body_head": "{\n  \"error\": \"'Unknown client: CLIENT_FINANCE'\"\n}",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "client_id values",
+      "case": "SQL-like",
+      "classification": "handled",
+      "evidence": "HTTP 400: {\n  \"error\": \"\\\"Unknown client: x'; DROP TABLE users;--\\\"\"\n}",
+      "observed": {
+        "status": 400,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 60,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:11 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "content-length": "60",
+          "cache-control": "no-store"
+        },
+        "elapsed_ms": 13.617699994938448,
+        "body_head": "{\n  \"error\": \"\\\"Unknown client: x'; DROP TABLE users;--\\\"\"\n}",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "client_id values",
+      "case": "100 kB string",
+      "classification": "noteworthy",
+      "evidence": "HTTP 400; the 100,035-byte response echoes the id back (reflection / amplification)",
+      "observed": {
+        "status": 400,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 100035,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:11 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "content-length": "100035",
+          "cache-control": "no-store"
+        },
+        "elapsed_ms": 2.4234000011347234,
+        "body_head": "{\n  \"error\": \"'Unknown client: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "Body size cap",
+      "case": "exactly 1,000,000 bytes",
+      "classification": "handled",
+      "evidence": "HTTP 200, response 1,000,042 bytes in 138 ms",
+      "observed": {
+        "status": 200,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 1000042,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:11 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "content-length": "1000042",
+          "cache-control": "no-store"
+        },
+        "elapsed_ms": 138.0040999938501,
+        "body_head": "{\n  \"text\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "Body size cap",
+      "case": "999,999 bytes",
+      "classification": "handled",
+      "evidence": "HTTP 200, response 1,000,041 bytes in 131 ms",
+      "observed": {
+        "status": 200,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 1000041,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:11 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "content-length": "1000041",
+          "cache-control": "no-store"
+        },
+        "elapsed_ms": 131.36529999610502,
+        "body_head": "{\n  \"text\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "Body size cap",
+      "case": "1,000,001 bytes",
+      "classification": "handled",
+      "evidence": "HTTP 400, response 42 bytes in 1 ms",
+      "observed": {
+        "status": 400,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 42,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:11 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "content-length": "42",
+          "cache-control": "no-store"
+        },
+        "elapsed_ms": 1.2754000053973868,
+        "body_head": "{\n  \"error\": \"Request body is too large\"\n}",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "Body size cap",
+      "case": "1.5 MB body",
+      "classification": "handled",
+      "evidence": "HTTP 400, send_error=False: server answers before reading the body, so the client may see a reset instead of the 400",
+      "observed": {
+        "status": 400,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 42,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:11 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "content-length": "42",
+          "cache-control": "no-store"
+        },
+        "elapsed_ms": 2.3087000008672476,
+        "body_head": "{\n  \"error\": \"Request body is too large\"\n}",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "Headers and request line",
+      "case": "encoded CRLF in the path",
+      "classification": "handled",
+      "evidence": "HTTP 404; no header injected into the response",
+      "observed": {
+        "status": 404,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 32,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:11 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "content-length": "32",
+          "cache-control": "no-store"
+        },
+        "elapsed_ms": 1.639399997657165,
+        "body_head": "{\n  \"error\": \"Route not found\"\n}",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "Headers and request line",
+      "case": "100 kB header line",
+      "classification": "handled",
+      "evidence": "HTTP 431",
+      "observed": {
+        "status": 431,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 355,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:11 GMT",
+          "connection": "close",
+          "content-type": "text/html;charset=utf-8",
+          "content-length": "355"
+        },
+        "elapsed_ms": 1.586500002304092,
+        "body_head": "<!DOCTYPE HTML>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"utf-8\">\n        <title>Error response</title>\n    </head>\n    <body>\n        <h1>Error respon",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "Headers and request line",
+      "case": "10,000 headers",
+      "classification": "handled",
+      "evidence": "HTTP 431",
+      "observed": {
+        "status": 431,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 333,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:11 GMT",
+          "connection": "close",
+          "content-type": "text/html;charset=utf-8",
+          "content-length": "333"
+        },
+        "elapsed_ms": 2.5679000100353733,
+        "body_head": "<!DOCTYPE HTML>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"utf-8\">\n        <title>Error response</title>\n    </head>\n    <body>\n        <h1>Error respon",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "Headers and request line",
+      "case": "HTTP/0.9 style request line",
+      "classification": "noteworthy",
+      "evidence": "served: status line absent, 67 body bytes (stdlib legacy behaviour)",
+      "observed": {
+        "status": null,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 67,
+        "headers": {},
+        "elapsed_ms": 1.1986000026809052,
+        "body_head": "{\n  \"status\": \"ok\",\n  \"service\": \"certified-federated-unlearning\"\n}",
+        "raw_responses_seen": 0
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "Headers and request line",
+      "case": "two pipelined requests in one packet",
+      "classification": "handled",
+      "evidence": "1 response(s) returned; the server answers once and closes (HTTP/1.0, no keep-alive)",
+      "observed": {
+        "status": 200,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 67,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:11 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "content-length": "67",
+          "cache-control": "no-store"
+        },
+        "elapsed_ms": 2.142400000593625,
+        "body_head": "{\n  \"status\": \"ok\",\n  \"service\": \"certified-federated-unlearning\"\n}",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "Headers and request line",
+      "case": "garbage request line",
+      "classification": "handled",
+      "evidence": "stdlib answers with an HTML 400 error page and, lacking a protocol version, no status line (HTTP/0.9 fallback)",
+      "observed": {
+        "status": null,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 362,
+        "headers": {},
+        "elapsed_ms": 20.220899998093955,
+        "body_head": "<!DOCTYPE HTML>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"utf-8\">\n        <title>Error response</title>\n    </head>\n    <body>\n        <h1>Error respon",
+        "raw_responses_seen": 0
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "Headers and request line",
+      "case": "double slashes in the path",
+      "classification": "handled",
+      "evidence": "HTTP 404",
+      "observed": {
+        "status": 404,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 32,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:11 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "content-length": "32",
+          "cache-control": "no-store"
+        },
+        "elapsed_ms": 1.7382999940309674,
+        "body_head": "{\n  \"error\": \"Route not found\"\n}",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "Headers and request line",
+      "case": "70 kB query string",
+      "classification": "handled",
+      "evidence": "HTTP 414",
+      "observed": {
+        "status": 414,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 327,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:11 GMT",
+          "connection": "close",
+          "content-type": "text/html;charset=utf-8",
+          "content-length": "327"
+        },
+        "elapsed_ms": 3.7518000026466325,
+        "body_head": "<!DOCTYPE HTML>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"utf-8\">\n        <title>Error response</title>\n    </head>\n    <body>\n        <h1>Error respon",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "HTTP methods",
+      "case": "OPTIONS",
+      "classification": "noteworthy",
+      "evidence": "HTTP 501, Content-Type text/html;charset=utf-8: stdlib 501 page, not JSON",
+      "observed": {
+        "status": 501,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 360,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:11 GMT",
+          "connection": "close",
+          "content-type": "text/html;charset=utf-8",
+          "content-length": "360"
+        },
+        "elapsed_ms": 3.0242999928304926,
+        "body_head": "<!DOCTYPE HTML>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"utf-8\">\n        <title>Error response</title>\n    </head>\n    <body>\n        <h1>Error respon",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "HTTP methods",
+      "case": "HEAD",
+      "classification": "noteworthy",
+      "evidence": "HTTP 501, Content-Type text/html;charset=utf-8: stdlib 501 page, not JSON",
+      "observed": {
+        "status": 501,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 0,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:12 GMT",
+          "connection": "close",
+          "content-type": "text/html;charset=utf-8",
+          "content-length": "357"
+        },
+        "elapsed_ms": 2.322600004845299,
+        "body_head": "",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "HTTP methods",
+      "case": "TRACE",
+      "classification": "noteworthy",
+      "evidence": "HTTP 501, Content-Type text/html;charset=utf-8: stdlib 501 page, not JSON",
+      "observed": {
+        "status": 501,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 358,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:12 GMT",
+          "connection": "close",
+          "content-type": "text/html;charset=utf-8",
+          "content-length": "358"
+        },
+        "elapsed_ms": 2.1471000072779134,
+        "body_head": "<!DOCTYPE HTML>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"utf-8\">\n        <title>Error response</title>\n    </head>\n    <body>\n        <h1>Error respon",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "HTTP methods",
+      "case": "PUT",
+      "classification": "noteworthy",
+      "evidence": "HTTP 501, Content-Type text/html;charset=utf-8: stdlib 501 page, not JSON",
+      "observed": {
+        "status": 501,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 356,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:12 GMT",
+          "connection": "close",
+          "content-type": "text/html;charset=utf-8",
+          "content-length": "356"
+        },
+        "elapsed_ms": 1.7888000002130866,
+        "body_head": "<!DOCTYPE HTML>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"utf-8\">\n        <title>Error response</title>\n    </head>\n    <body>\n        <h1>Error respon",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "HTTP methods",
+      "case": "DELETE",
+      "classification": "noteworthy",
+      "evidence": "HTTP 501, Content-Type text/html;charset=utf-8: stdlib 501 page, not JSON",
+      "observed": {
+        "status": 501,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 359,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:12 GMT",
+          "connection": "close",
+          "content-type": "text/html;charset=utf-8",
+          "content-length": "359"
+        },
+        "elapsed_ms": 1.1855000047944486,
+        "body_head": "<!DOCTYPE HTML>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"utf-8\">\n        <title>Error response</title>\n    </head>\n    <body>\n        <h1>Error respon",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "HTTP methods",
+      "case": "PATCH",
+      "classification": "noteworthy",
+      "evidence": "HTTP 501, Content-Type text/html;charset=utf-8: stdlib 501 page, not JSON",
+      "observed": {
+        "status": 501,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 358,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:12 GMT",
+          "connection": "close",
+          "content-type": "text/html;charset=utf-8",
+          "content-length": "358"
+        },
+        "elapsed_ms": 1.449599993065931,
+        "body_head": "<!DOCTYPE HTML>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"utf-8\">\n        <title>Error response</title>\n    </head>\n    <body>\n        <h1>Error respon",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "Browser-facing hardening",
+      "case": "CORS: Origin header from another site on GET /api/state",
+      "classification": "handled",
+      "evidence": "no Access-Control-Allow-Origin header, so a browser blocks cross-site JavaScript from reading the response",
+      "observed": {
+        "status": 200,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 7348,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:12 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "content-length": "7348",
+          "cache-control": "no-store"
+        },
+        "elapsed_ms": 11.487900002975948,
+        "body_head": "{\n  \"trained\": true,\n  \"session_id\": \"b7e63e74-ed74-460b-88d7-f9de2c32120e\",\n  \"metrics\": {\n    \"active_clients\": 5,\n    \"epsilon\": 1.6149350875351296,\n    \"del",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "Browser-facing hardening",
+      "case": "cross-site 'simple' POST (Content-Type text/plain, Origin evil.example) to /api/unlearn",
+      "classification": "defect",
+      "evidence": "HTTP 200: the server ignores Content-Type and Origin and executes the removal; a web page the operator visits can issue this request (CSRF) because there is no token, no authentication and no preflight is required for text/plain",
+      "observed": {
+        "status": 200,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 1131,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:12 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "content-length": "1131",
+          "cache-control": "no-store"
+        },
+        "elapsed_ms": 47.912099995301105,
+        "body_head": "{\n  \"certificate_id\": \"CERT-DD270AEA63D9\",\n  \"session_id\": \"e81b3e66-d560-4f8d-9bce-afd287384876\",\n  \"client_id\": \"client_finance\",\n  \"client_name\": \"Client 01 ",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "Browser-facing hardening",
+      "case": "Host header evil.example (DNS-rebinding precondition)",
+      "classification": "defect",
+      "evidence": "HTTP 200: Host is not validated",
+      "observed": {
+        "status": 200,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 10063,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:12 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "content-length": "10063",
+          "cache-control": "no-store"
+        },
+        "elapsed_ms": 23.361400002613664,
+        "body_head": "{\n  \"trained\": true,\n  \"session_id\": \"e3a63fad-7df2-4448-b874-c9c179e727ee\",\n  \"metrics\": {\n    \"active_clients\": 5,\n    \"epsilon\": 1.6149350875351296,\n    \"del",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "Browser-facing hardening",
+      "case": "security response headers on /api/state",
+      "classification": "noteworthy",
+      "evidence": "Cache-Control: no-store; Server: CertifiedUnlearning/1.0 Python/3.11.9; missing: x-content-type-options, content-security-policy, x-frame-options, strict-transport-security, referrer-policy",
+      "observed": {
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:12 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "content-length": "10063",
+          "cache-control": "no-store"
+        }
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "Browser-facing hardening",
+      "case": "security response headers on the legacy page /",
+      "classification": "noteworthy",
+      "evidence": "HTTP 200; missing: x-content-type-options, content-security-policy, x-frame-options",
+      "observed": {
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:12 GMT",
+          "content-type": "text/html; charset=utf-8",
+          "content-length": "12992",
+          "cache-control": "no-store"
+        }
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "Browser-facing hardening",
+      "case": "POST without a Content-Type",
+      "classification": "noteworthy",
+      "evidence": "HTTP 200: Content-Type is ignored",
+      "observed": {
+        "status": 200,
+        "server_closed": true,
+        "send_error": null,
+        "body_bytes": 60,
+        "headers": {
+          "server": "CertifiedUnlearning/1.0 Python/3.11.9",
+          "date": "Mon, 26 Oct 2026 15:11:12 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "content-length": "60",
+          "cache-control": "no-store"
+        },
+        "elapsed_ms": 1.6826999926706776,
+        "body_head": "{\n  \"text\": \"privacybsov btrppsvyklrcxrvymej,..!qgnlgpynl\"\n}",
+        "raw_responses_seen": 1
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "Connections",
+      "case": "slowloris: one connection holds a half-sent body for 5 s while 100 other requests are made",
+      "classification": "handled",
+      "evidence": "95 concurrent health requests, all 200, p95 3.6 ms (thread per connection); but no read timeout exists, so the stalled thread lives until the client disconnects",
+      "observed": {
+        "requests": 95,
+        "status_counts": {
+          "200": 95
+        },
+        "p50_ms": 1.9606999994721264,
+        "p95_ms": 3.6210000107530504,
+        "p99_ms": 19.174800007021986,
+        "max_ms": 19.174800007021986,
+        "mean_ms": 2.308518947163401
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "Connections",
+      "case": "200 idle connections held open",
+      "classification": "noteworthy",
+      "evidence": "200 sockets opened; server threads 4 -> 204 while idle -> 4 after close; health p95 12.6 ms. Idle connections each pin a thread, there is no connection limit or idle timeout",
+      "observed": {
+        "opened": 200,
+        "server_threads_before": 4,
+        "server_threads_during": 204,
+        "server_threads_after": 4,
+        "p50_ms": 1.6495000018039718,
+        "p95_ms": 12.58340000640601,
+        "p99_ms": 15.61539999966044,
+        "max_ms": 15.61539999966044,
+        "mean_ms": 2.9475833337831623
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "Connections",
+      "case": "burst of 16 / 64 / 128 simultaneous new connections",
+      "classification": "defect",
+      "evidence": "16: {'ok': 16} (p95 of the successful ones 1034 ms, max 1034 ms); 64: {'ok': 34, 'ConnectionRefusedError: [WinError 10061] No connection could be made because the tar': 30} (p95 of the successful ones 2039 ms, max 2039 ms); 128: {'ok': 43, 'ConnectionRefusedError: [WinError 10061] No connection could be made because the tar': 85} (p95 of the successful ones 2029 ms, max 2030 ms); the stdlib listen backlog is 5, so bursts of new connections are delayed by SYN retransmission (0.5-2 s) or refused",
+      "observed": {
+        "bursts": [
+          {
+            "simultaneous_connections": 16,
+            "outcomes": {
+              "ok": 16
+            },
+            "p50_ms": 518.326999997953,
+            "p95_ms": 1033.7239000073168,
+            "p99_ms": 1033.7239000073168,
+            "max_ms": 1033.7239000073168,
+            "mean_ms": 389.8023749989079
+          },
+          {
+            "simultaneous_connections": 64,
+            "outcomes": {
+              "ok": 34,
+              "ConnectionRefusedError: [WinError 10061] No connection could be made because the tar": 30
+            },
+            "p50_ms": 1017.2904000064591,
+            "p95_ms": 2038.773599997512,
+            "p99_ms": 2039.2723999975715,
+            "max_ms": 2039.2723999975715,
+            "mean_ms": 960.3994264693671
+          },
+          {
+            "simultaneous_connections": 128,
+            "outcomes": {
+              "ok": 43,
+              "ConnectionRefusedError: [WinError 10061] No connection could be made because the tar": 85
+            },
+            "p50_ms": 515.9606999950483,
+            "p95_ms": 2029.4381999992765,
+            "p99_ms": 2029.6461999969324,
+            "max_ms": 2029.6461999969324,
+            "mean_ms": 714.7773651163862
+          }
+        ],
+        "listen_backlog_request_queue_size": 5
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "Data integrity",
+      "case": "garbage line appended to the ledger file while the server runs",
+      "classification": "defect",
+      "evidence": "GET /api/state -> 500, POST /api/train -> 400, POST /api/audit/verify -> 200 {'valid': False, 'detail': 'Invalid audit JSON on line 11'}: the whole UI stops loading until the file is repaired by hand (fail closed, but no recovery path)",
+      "observed": {
+        "GET /api/state": 500,
+        "POST /api/train": 400,
+        "POST /api/audit/verify": 200,
+        "verify_body": {
+          "valid": false,
+          "detail": "Invalid audit JSON on line 11"
+        },
+        "state_body": {
+          "error": "Invalid audit JSON on line 11"
+        },
+        "health": 200
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "Data integrity",
+      "case": "ledger restored",
+      "classification": "handled",
+      "evidence": "service recovers as soon as the file is valid again",
+      "observed": {
+        "GET /api/state": 200
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "Data integrity",
+      "case": "ledger file truncated to zero bytes (attacker with file access)",
+      "classification": "defect",
+      "evidence": "verify -> {'valid': True, 'detail': 'Verified 0 audit record(s)'}: an empty ledger verifies as valid, so deleting the whole history is not detected",
+      "observed": {
+        "verify": {
+          "valid": true,
+          "detail": "Verified 0 audit record(s)"
+        }
+      },
+      "server_alive_after": true
+    },
+    {
+      "group": "Authentication",
+      "case": "unauthenticated caller capabilities",
+      "classification": "defect",
+      "evidence": "every route works with no credentials: read full audit log with hashes and client ids (HTTP 200), erase a client from the model (HTTP 200), download certificate (HTTP 200), retrain and discard certificates (HTTP 200), sample the model (HTTP 200), reset the session and discard all state (HTTP 200)",
+      "observed": {
+        "read_full_audit_log_with_hashes_and_client_ids": {
+          "status": 200,
+          "records_returned": 1
+        },
+        "erase_a_client_from_the_model": {
+          "status": 200,
+          "certificate_status": "CERTIFIED"
+        },
+        "download_certificate": {
+          "status": 200
+        },
+        "retrain_and_discard_certificates": {
+          "status": 200
+        },
+        "sample_the_model": {
+          "status": 200
+        },
+        "reset_the_session_and_discard_all_state": {
+          "status": 200
+        }
+      },
+      "server_alive_after": true
+    }
+  ],
+  "classification_counts": {
+    "handled": 35,
+    "defect": 8,
+    "noteworthy": 15
+  },
+  "n_probes": 58,
+  "server_alive_after_all": true,
+  "defects": [
+    {
+      "case": "Content-Length: negative value -1 (client keeps the socket open)",
+      "evidence": "server thread blocks in rfile.read(-1) until the client closes: no response within 4 s"
+    },
+    {
+      "case": "Content-Length: declared 500 bytes, 30 sent, socket kept open",
+      "evidence": "server waits for the missing bytes indefinitely (no read timeout)"
+    },
+    {
+      "case": "Browser-facing hardening: cross-site 'simple' POST (Content-Type text/plain, Origin evil.example) to /api/unlearn",
+      "evidence": "HTTP 200: the server ignores Content-Type and Origin and executes the removal; a web page the operator visits can issue this request (CSRF) because there is no token, no authentication and no preflight is required for text/plain"
+    },
+    {
+      "case": "Browser-facing hardening: Host header evil.example (DNS-rebinding precondition)",
+      "evidence": "HTTP 200: Host is not validated"
+    },
+    {
+      "case": "Connections: burst of 16 / 64 / 128 simultaneous new connections",
+      "evidence": "16: {'ok': 16} (p95 of the successful ones 1034 ms, max 1034 ms); 64: {'ok': 34, 'ConnectionRefusedError: [WinError 10061] No connection could be made because the tar': 30} (p95 of the successful ones 2039 ms, max 2039 ms); 128: {'ok': 43, 'ConnectionRefusedError: [WinError 10061] No connection could be made because the tar': 85} (p95 of the successful ones 2029 ms, max 2030 ms); the stdlib listen backlog is 5, so bursts of new connections are delayed by SYN retransmission (0.5-2 s) or refused"
+    },
+    {
+      "case": "Data integrity: garbage line appended to the ledger file while the server runs",
+      "evidence": "GET /api/state -> 500, POST /api/train -> 400, POST /api/audit/verify -> 200 {'valid': False, 'detail': 'Invalid audit JSON on line 11'}: the whole UI stops loading until the file is repaired by hand (fail closed, but no recovery path)"
+    },
+    {
+      "case": "Data integrity: ledger file truncated to zero bytes (attacker with file access)",
+      "evidence": "verify -> {'valid': True, 'detail': 'Verified 0 audit record(s)'}: an empty ledger verifies as valid, so deleting the whole history is not detected"
+    },
+    {
+      "case": "Authentication: unauthenticated caller capabilities",
+      "evidence": "every route works with no credentials: read full audit log with hashes and client ids (HTTP 200), erase a client from the model (HTTP 200), download certificate (HTTP 200), retrain and discard certificates (HTTP 200), sample the model (HTTP 200), reset the session and discard all state (HTTP 200)"
+    }
+  ]
+}

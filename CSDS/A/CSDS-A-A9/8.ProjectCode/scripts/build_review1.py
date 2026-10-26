@@ -88,6 +88,8 @@ def title_slide(s, label_note):
 def build():
     nf = metrics("noise_free_leakage")
     seeds = metrics("seeds")
+    nn0 = metrics("neural_adapter")["summary"]["by_sigma"][0]
+    nn_b = metrics("neural_adapter")["base"]
     prs = Presentation(SRC)
     S = list(prs.slides)
     cp = prs.core_properties
@@ -108,8 +110,8 @@ def build():
     set_paras(shape(s, 2), "Abstract: removing a client without retraining")
     fit(s, 8, "A federated LLM keeps every client's influence in its shared parameters. The GDPR lets a user demand erasure, but retraining a large model for each request is impractical and heuristic unlearning gives no proof of forgetting.", 15)
     fit(s, 13, "Track each client's clipped update, subtract it on request, bound the noisy release with differential privacy, verify with a membership-inference test and a retained-only recomputation, and chain every request in a SHA-256 audit ledger.", 15)
-    fit(s, 18, "ForgetSafe: a Python API (port 8109) and React UI (port 5109) that issue a certificate per request. It runs on a character-level proxy for an LLM adapter update, not on a real LLM.", 15)
-    set_notes(s, "The problem, the idea and the deliverable. The prototype is a demonstrator on a small proxy model; the later reviews report what it does and does not prove.")
+    fit(s, 18, "ForgetSafe: a Python API (port 8109) and React UI (port 5109) that issue a certificate per request. The engine runs on a character-bigram model and, in a second study, on a neural GRU with LoRA-style adapters, both on synthetic data.", 15)
+    set_notes(s, "The problem, the idea and the deliverable. The prototype is a demonstrator on small models and synthetic data; the later reviews report what it proves and what it measures.")
 
     # 4 base paper
     s = S[3]
@@ -147,8 +149,8 @@ def build():
     set_paras(shape(s, 8), "Takeaway")
     fill(s, 9, f"With no DP noise, an attacker recognises a client's own sentences almost perfectly (AUC {nf['mean_auc_before']:.2f}). Subtracting the tracked update brings it to {nf['mean_auc_after']:.2f}. At the default noise the attack is already near chance ({seeds['membership_auc_before']['mean']:.2f}).", 14)
     set_paras(shape(s, 13), "Caveat")
-    fill(s, 14, "Our own early measurement on a 25-sentence proxy model. It shows that training leaves a measurable trace and that removal can erase it; it is not a field result. The literature [2]-[4], [7] motivates the problem.", 14)
-    set_notes(s, "No-noise = noise multiplier 1e-6, five clients, one removal each. Default noise = sigma 3, mean over 50 seeds x 5 clients (250 requests). Both come from experiments/noise_free_leakage and experiments/seeds.")
+    fill(s, 14, f"Synthetic-data measurements: the 25-sentence bigram model above, and a {nn_b['base_parameters']:,}-parameter neural GRU with LoRA-style adapters (8 clients), where the client-level attack falls from {nn0['client_auc_before']['mean']:.2f} to {nn0['client_auc_after']['mean']:.2f}, the same as a fresh retrain ({nn0['client_auc_retrain']['mean']:.2f}). Literature [2]-[4], [7] motivates the problem.", 14)
+    set_notes(s, "No-noise = noise multiplier 1e-6, five clients, one removal each. Default noise = sigma 3, mean over 50 seeds x 5 clients (250 requests). Both come from experiments/noise_free_leakage and experiments/seeds. The neural figures come from experiments/neural_adapter (sigma 0, 5 seeds x 8 clients).")
 
     # 7 existing system
     s = S[6]
@@ -211,15 +213,15 @@ def build():
         (12, 13, "Parameter-level unlearning", "Subtract the tracked update, renormalise over the retained clients; no retraining and no raw data."),
         (17, 18, "DP certificate", "Epsilon and delta from the Gaussian-mechanism bound, plus a recomputation from the retained updates."),
         (22, 23, "Verification", "Loss-based membership AUC, perplexity, next-character accuracy and utility retention per request."),
-        (27, 28, "Audit and application", "SHA-256 hash-chained ledger; Python API and React UI. The model is a character-level proxy for an LLM adapter.")]:
+        (27, 28, "Audit and application", "SHA-256 hash-chained ledger; Python API and React UI. Shown on a bigram model and on neural LoRA-style adapters (synthetic data).")]:
         set_paras(shape(s, tid), ttl)
         fit(s, bid, body, 12)
-    set_notes(s, "The approach in five blocks. The proxy model can later be replaced by a LoRA adapter tensor without changing the verification and audit workflow.")
+    set_notes(s, "The approach in five blocks. The same clip, noisy-sum, subtraction, verification and audit workflow runs on the bigram model and on LoRA-style adapters of a small GRU (neural study, synthetic data).")
 
     # 13 architecture
     s = S[12]
     pic(s, DIAG / "01_system_architecture.png", (215, 118, 790, 482), remove_ids=(4,), name="System architecture diagram")
-    set_paras(shape(s, 5), "Proposed architecture: React UI, Python API, federated unlearning engine, bigram proxy model and hash-chained ledger")
+    set_paras(shape(s, 5), "Proposed architecture: React UI, Python API, federated unlearning engine, bigram model and hash-chained ledger")
     set_notes(s, "Browser to React to the Python API; the engine trains, unlearns and verifies; every event is appended to the JSONL ledger.")
 
     # 14 expected outcomes
@@ -230,7 +232,7 @@ def build():
         (17, 18, "Attack evidence", "Membership AUC before and after each removal."),
         (22, 23, "Utility check", "Perplexity, accuracy and a retention score for the retained model."),
         (27, 28, "Tamper-evident record", "Every training and unlearning event chained with SHA-256."),
-        (32, 33, "Working demonstrator", "Python API and React UI that run offline on one PC.")]:
+        (32, 33, "Working demonstrator", "Python API and React UI that run offline on one PC, plus the same method on a small neural adapter model.")]:
         set_paras(shape(s, tid), ttl)
         fill(s, bid, body, 16)
     set_notes(s, "Expected outcomes are targets at this stage; what was actually achieved, including the shortfalls, is reported in the later reviews.")

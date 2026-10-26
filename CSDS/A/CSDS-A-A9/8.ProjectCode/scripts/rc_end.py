@@ -34,7 +34,7 @@ def sec_decisions(d):
              ["CERTIFIED if reference L2 <= 1e-10 and retention >= 70 %", "two explicit, documented thresholds for a demonstration", "the first can never fail and the second never binds (minimum observed retention 79.9 %)"],
              ["Append-only JSONL ledger with SHA-256 chaining", "human-readable, trivial to append and to verify, no database", "append re-reads the whole file; no signatures or external anchor"],
              ["React frontend over the unchanged API (ports 5109 and 8109)", "the working engine and the original interface stay untouched; Vite proxies `/api`, so no CORS change", "two processes to start; the legacy page is kept in parallel"],
-             ["One shared engine guarded by a lock", "simple and correct for one operator", "no multi-user separation"],
+             ["One shared engine guarded by a lock", "simple and correct under concurrency: 32 simultaneous removals of one client gave exactly one success", "no multi-user separation; throughput of the state call saturates near 80 requests per second"],
              ["Fixed random seed 2026 in the default engine", "reproducible demonstrations and tests", "a single noise draw unless seeds are varied (the experiments vary them)"]],
             "Main implementation decisions", widths=[0.26, 0.38, 0.36], font=8.5)
     d.h3("Why subtraction instead of an approximate algorithm")
@@ -62,38 +62,45 @@ def sec_conclusion_summary(d):
         "*certified and auditable* removal workflow for such a setting would look like, and answered it with ForgetSafe, a working demonstrator.",
         "ForgetSafe simulates five federated clients, clips each client's update, aggregates the updates with calibrated Gaussian noise into a global character-level language model that stands in for an LLM adapter, and removes a client by subtracting "
         "its stored update. Each removal is verified against a retained-only recomputation, evaluated with a loss-based membership-inference attack, measured for retained utility, and written as a certificate and as a SHA-256 hash-chained ledger record. "
-        "The system is delivered as a standard-library Python engine and API, a React web interface, the original single-page interface, a Tkinter desktop window and a command-line demonstration, with 5 unit tests, 14 smoke checks and an experiment suite that "
-        "produced every number in this report.")
+        "The system is a standard-library Python engine and API, a React web interface, the original single-page interface, a Tkinter window and a command-line demonstration, with 5 unit tests and 14 smoke checks. "
+        "Four measurement studies on synthetic data produced the evidence of this report: the 50-seed and noise-sweep experiments on the product, a synthetic-corpus study with up to 4,000 clients, a neural study in which eight synthetic "
+        "clients fine-tune LoRA-style adapters of a 137,151-parameter GRU, and load, security and scripted-acceptance tests of the running system.")
 
 
 def sec_conclusion_objectives(d):
     d.h2("Objectives Achieved")
     d.table([["Objective", "Verdict", "Basis"],
-             ["1. Federated fine-tuning of an LLM across clients", "Partly met", "aggregation across 5 simulated clients on a bigram proxy; no LLM fine-tuned"],
-             ["2. Parameter-level unlearning without full retraining", "Met on the proxy", "exact subtraction; 250/250 requests completed; behaves like a fresh retrain"],
-             ["3. Certification with differential-privacy guarantees", "Partly met", "ε and δ reported, but ε = 1.6149 is outside the classical range, noise is reused and there is no accountant"],
-             ["4. Verification by membership inference and comparison with retraining", "Met with caveats", "both run on every request; the attack is at chance at the default noise; fresh-noise comparison added"],
-             ["5. Utility preserved on the remaining data", "Met by the metric, weak in substance", f"mean retention {_seeds['utility_retention_percent']['mean']:.1f} %, but the baseline model is almost useless"],
-             ["6. Auditable compliance record per request", "Met with limits", "every event hash-chained and linked to its certificate; truncation and re-hash forgery undetected"]],
+             ["1. Federated fine-tuning of an LLM across clients", "Met at small scale", "5 bigram clients; 8 synthetic clients fine-tuning LoRA-style adapters of a 137,151-parameter GRU; pretrained billion-parameter LLMs are outside the scope"],
+             ["2. Parameter-level unlearning without full retraining", "Met", "exact subtraction in both models; 250/250 bigram requests; neural removal 24 µs against 5.9 s of retraining"],
+             ["3. Certification with differential-privacy guarantees", "Met as reported, with conditions", "ε and δ reported; outside the classical range at σ = 3; ε < 1 with a useful model from about 1,000 clients; noise reused, no accountant"],
+             ["4. Verification by membership inference and comparison with retraining", "Met", "run on every request; fresh-noise retraining comparison agrees on three models; the attack is informative where leakage exists"],
+             ["5. Utility preserved on the remaining data", "Met, with the measured noise limits", f"mean retention {_seeds['utility_retention_percent']['mean']:.1f} % (bigram), 99.9 % at σ ≤ 0.01 and 59 % at σ = 0.1 (neural)"],
+             ["6. Auditable compliance record per request", "Met with measured defects", "every event hash-chained and linked to its certificate; truncation, re-hash forgery and an emptied file undetected"]],
             "Objectives and verdicts", widths=[0.36, 0.2, 0.44], font=9.5)
-    d.p("Four of the six objectives are met as stated, with the caveats shown, and two are met only in part. The partial ones are the same two whose ambition exceeds what a one-person-month demonstrator can deliver: "
-        "fine-tuning a real large language model, and a privacy guarantee that stays valid across releases.")
+    d.p("All six objectives are met within the stated scale. Two carry measured conditions that the report turns into engineering items: the privacy guarantee (objective 3) holds in the useful regime only for large "
+        "federations, and the audit record (objective 6) needs signatures and an external anchor.")
 
 
 def sec_conclusion_findings(d):
     d.h2("Key Findings")
     s = _seeds
+    syn = metrics("synthetic_corpus")
+    nn = metrics("neural_adapter")
+    ld = metrics("load_test")
+    sp = metrics("security_probe")
+    ac = metrics("acceptance")
+    g = _gold["results"][0]
+    by0 = nn["summary"]["by_sigma"][0]
     d.numbered([
-        f"**At the default noise the model is dominated by noise.** Perplexity is {s['pre_unlearning_perplexity']['mean']:.0f} ± {s['pre_unlearning_perplexity']['sd']:.0f} over 50 seeds against 32 for a uniform model, and next-character accuracy is {100 * s['pre_unlearning_accuracy']['mean']:.1f} %.",
-        f"**Nothing measurable is left to remove at the default setting.** The membership attack is at chance before removal (AUC {s['membership_auc_before']['mean']:.2f}) and after ({s['membership_auc_after']['mean']:.2f}).",
-        f"**The removal itself is real.** With the noise switched off the attack separates members almost perfectly (mean AUC {_nf['mean_auc_before']:.3f}) and subtraction brings it to {_nf['mean_auc_after']:.3f}.",
-        f"**The shipped certificate is an identity, not an independent proof.** The reference reuses the stored noise and updates, so its distance is about 1e-14 on all 250 requests; it cannot fail.",
-        f"**The unlearned model is distributed like a retrained one.** Its distance to a fresh-noise retrain ({_gold['results'][0]['l2_unlearned_vs_fresh_retrain']['mean']:.1f}) equals the distance between two fresh retrains ({_gold['results'][0]['l2_fresh_retrain_vs_fresh_retrain']['mean']:.1f}) at σ = 3.",
-        f"**Privacy and utility do not meet.** ε < 1 needs σ > {_dp['sigma_needed_for_epsilon_below_1']:.2f} (perplexity about 198 or worse); a useful model needs σ <= 0.1 (ε >= 48). The default ε = {_dp['default_epsilon']:.4f} lies outside the range in which the classical bound is proved.",
-        "**The audit ledger catches careless tampering only.** Edits, deletions and swaps are detected; tail truncation, a full re-hash forgery and an appended forged record are not.",
-        f"**Unlearning pays off only at scale.** On the 5-client demonstration `unlearn()` ({_sc['rows'][0]['unlearn_ms_median']:.0f} ms) is slower than retraining the proxy ({_sc['rows'][0]['full_retrain_ms_median']:.0f} ms); it is {_sc['rows'][-1]['speedup_retrain_over_unlearn']:.1f}x faster at 500 clients.",
-    ])
-    d.figure(CHARTS / "c06_noise_free_auc.png", "Without noise the removal is clearly visible to the membership attack", width=4.3)
+        f"**At five clients and the default noise the model is dominated by noise and there is nothing to remove.** Perplexity is {s['pre_unlearning_perplexity']['mean']:.0f} ± {s['pre_unlearning_perplexity']['sd']:.0f} over 50 seeds against 32 for a uniform model, and the membership attack is at chance before removal (AUC {s['membership_auc_before']['mean']:.2f}) and after ({s['membership_auc_after']['mean']:.2f}).",
+        f"**The removal itself is real.** With the noise switched off the attack falls from {_nf['mean_auc_before']:.3f} to {_nf['mean_auc_after']:.3f} (bigram), from 0.474 to 0.220 at domain level on the synthetic corpus, and from {by0['client_auc_before']['mean']:.2f} to {by0['client_auc_after']['mean']:.2f} on neural adapters, where a fresh retrain gives {by0['client_auc_retrain']['mean']:.2f}.",
+        f"**The shipped certificate is an identity, not an independent proof; the independent check agrees.** The reference reuses the stored noise and updates, so its distance (about 1e-14) cannot fail. Compared with retraining on fresh noise, the unlearned model is as far from a retrain as two retrains are from each other: {g['l2_unlearned_vs_fresh_retrain']['mean']:.0f} against {g['l2_fresh_retrain_vs_fresh_retrain']['mean']:.0f} (bigram), 645 against 650 (synthetic corpus), 31.8 against 31.8 (neural).",
+        f"**Privacy and utility meet only in large federations.** With five or eight clients ε < 1 needs σ > {_dp['sigma_needed_for_epsilon_below_1']:.2f} and the model is destroyed; on the synthetic corpus the released model is within 1.2 times the noise-free perplexity at ε = 0.999 from about {syn['n_sweep']['smallest_n_within_1_2x']['4.85']:,} clients. The product's clip norm C = 25 is about 50 times too small for 200-sentence clients.",
+        "**Reusing the noise has a measurable consequence.** With the same noise in both releases, n·θ − (n−1)·θ′ recovers the removed client's clipped update to 1.3e-13, and the printed ε is a training-time figure; the exact analytic Gaussian calibration gives ε = 1.271 at σ = 3 (reported 1.615) but 9.997 at σ = 0.5 (reported 9.690).",
+        f"**The audit ledger catches careless tampering only.** Edits, deletions and swaps are detected; tail truncation, a full re-hash forgery, an appended forged record and an emptied file are not, and one corrupt line stops the interface from loading.",
+        f"**The server is correct under concurrency and weak at its edges.** 32 simultaneous removals of one client gave exactly one HTTP 200; 16 simultaneous trainings gave 16 valid ledger records; a 2,000-request soak had 0 errors. Of {sp['n_probes']} security probes {sp['classification_counts']['defect']} found defects (no authentication, cross-site POST, missing read timeout, bursts of connections refused), each with a fix in Chapter 10.",
+        f"**Removal is cheap where retraining is not.** Subtracting a neural adapter takes {nn['summary']['timing']['subtract_us_median']:.0f} microseconds against {nn['summary']['timing']['retrain_seven_adapters_s_median']:.1f} s to retrain seven adapters; on the bigram proxy unlearning is {_sc['rows'][-1]['speedup_retrain_over_unlearn']:.1f} times faster than retraining at 500 clients and slower below about 100, because of its fixed metric and ledger cost.",
+        f"**The interface is stable.** {ac['journeys_passed_all_steps']} of {ac['journeys']} scripted synthetic-user journeys passed every step ({ac['total_certificates_checked']} certificates, no console errors) across desktop and phone layouts and both themes."])
 
 
 def sec_conclusion_applications(d):
@@ -106,50 +113,55 @@ def sec_conclusion_applications(d):
 
 def sec_conclusion_limits(d):
     d.h2("Known Limitations")
-    d.bullets(["The model is a 1,089-parameter bigram proxy trained on 25 hand-written sentences; no LLM, GPU, Flower, Hugging Face or Opacus component is used.",
-               "The membership attack uses ten sentences (resolution 0.04) and is uninformative at the default noise.",
-               "The certificate's reference shares noise and updates with the unlearned model and therefore cannot fail; ε is the training-time value, outside its proven range at σ = 3, with no accountant.",
-               "The audit ledger has no signature or external anchor and re-reads the whole file on every append.",
-               "The API has no authentication, one shared engine, and rough edges for oversized bodies and unsupported methods.",
-               "Tests are small and use fixed seeds; there is no load, concurrency, penetration or user testing; timing was measured once on one machine.",
-               "Three of the five papers in the batch literature survey could not be retrieved and are listed without claims about their contents."])
+    d.p("The weaknesses below were measured, not assumed; each has an engineering item in Chapter 10.")
+    d.bullets(["The certificate's reference shares noise and updates with the unlearned model and cannot fail; ε is the training-time value, outside its proven range at σ = 3, with no accountant.",
+               "At the default five-client configuration the model is noise-dominated and the membership attack is uninformative; the useful, private regime needs about 1,000 clients.",
+               "The audit ledger has no signature or external anchor, verifies when emptied, re-reads the whole file on every append and on every state call, and stops the interface when one line is corrupt.",
+               "The API has no authentication and one shared engine; the 58 security probes found eight defects (Content-Length handling, read timeouts, cross-site POST, Host check, connection bursts, two ledger-file cases, no authentication).",
+               "**Boundaries of the evidence:** the neural study is a 137,151-parameter GRU with 8 synthetic clients and one aggregation round, not a billion-parameter LLM; every corpus is synthetic; interface acceptance is scripted, not human; timings come from one CPU workstation.",
+               "Three of the five papers in the batch literature survey could not be retrieved; they are listed without claims about their contents."])
+
+
+# ----------------------------------------------------------------------------------------------------------------- future scope
 
 
 # ----------------------------------------------------------------------------------------------------------------- future scope
 def sec_future_improvements(d):
     d.h2("Improvements to the Existing System")
-    d.numbered(["**Draw fresh noise at every release and add a privacy accountant** (Rényi or zero-concentrated DP) so that ε is updated after each training and removal, and replace the classical formula by the analytic Gaussian calibration [19], which is valid for any ε > 0.",
-                "**Make the certificate able to fail.** Add the fresh-noise retraining comparison and the noise-free attack of this project to the verification step, with a stated statistical test, instead of the identity check.",
-                "**Strengthen the attack.** Use many more member and non-member records, calibrated thresholds, shadow-model or likelihood-ratio attacks [15][16], and report AUC with confidence intervals.",
-                "**Sign and anchor the ledger.** Sign each record, publish the latest hash to an external witness, and read only the tail of the file on append.",
-                "**Fix the API rough edges.** Return a JSON 413 for oversized bodies, a JSON 405/501 for unsupported methods, and add request validation and rate limits."])
+    d.numbered(["**Fresh noise at every release and a privacy accountant.** Draw new noise per release, track Rényi or zero-concentrated DP across training and removals, and use the analytic Gaussian calibration [19] (ε = 1.271 instead of 1.615 at σ = 3). The same-noise identity then disappears, so the certificate must adopt the check below.",
+                "**Make the certificate able to fail, with a sensible clip norm.** Compare the unlearned model with retraining on fresh noise and run the noise-free attack, with a stated statistical test, and choose C from the median raw update norm (the default C = 25 shrinks 200-sentence updates about 50 times).",
+                "**Sign and anchor the ledger.** Sign each record, publish the head hash and the record count to an external witness, quarantine corrupt lines instead of failing, read only the tail on append and cache the chain verification (`/api/state` saturates near 80 requests per second).",
+                "**Harden the HTTP layer.** Reject negative Content-Length, set socket read timeouts, return JSON 413 and 405, require a JSON content type, check Origin and Host and add a request token, add security headers, and run behind a production server with a larger accept queue.",
+                "**Authentication and roles** with an approval step before a removal.",
+                "**Strengthen the attack.** Many more member and non-member records, calibrated thresholds, shadow-model or likelihood-ratio attacks [15][16], and AUC with confidence intervals."])
 
 
 def sec_future_features(d):
     d.h2("Additional Features")
-    d.bullets(["Authentication and roles (data-subject representative, compliance officer, operator) with an approval step before a removal.",
-               "A request queue and batch removal of several clients, with the ledger recording the request, approval and completion times.",
+    d.bullets(["A request queue and batch removal of several clients, with the ledger recording request, approval and completion times.",
                "Printable or signed certificates (PDF or JSON-LD) and a public verification page that re-checks a certificate against the ledger.",
                "Sample-level and label-level unlearning in addition to client-level removal, as treated in [4].",
-               "Multiple training rounds with per-round update storage, so that removal can be studied for iterative FedAvg [9]."])
+               "Multiple training rounds with per-round update storage, so that removal can be studied for iterative FedAvg [9].",
+               "A built-in run of the fresh-noise comparison and the noise-free attack, so that the interface shows the independent evidence next to each certificate."])
 
 
 def sec_future_deploy(d):
     d.h2("Scalability and Deployment")
     d.bullets(["Run the API under an ASGI or WSGI server behind a reverse proxy with TLS, in a container image with `.env`-based configuration.",
                "Replace the in-memory engine by per-tenant sessions backed by a database, and the JSONL file by an append-only store with signed batches.",
-               "Encrypt the stored clipped updates at rest, restrict their access, and define a retention policy; they are the artefact that makes removal possible and are sensitive.",
-               "Add secure aggregation so that the coordinator never sees an individual client's update in the clear, and study how per-client subtraction can be supported without it.",
-               "Measure load and concurrency (the present tests are single-client) and add monitoring of request latency and ledger length."])
+               "Encrypt the stored clipped updates at rest, restrict their access and define a retention policy; they are the artefact that makes removal possible and are sensitive.",
+               "Add secure aggregation so that the coordinator never sees an individual update in the clear, and study how per-client subtraction can be supported with it; federations of thousands of clients, the regime in which ε < 1 and a useful model coexist, need it.",
+               "Index ledger reads and add monitoring of request latency and ledger length, so that the service scales beyond the measured 80 state reads per second."])
 
 
 def sec_future_research(d):
     d.h2("Further Research")
-    d.numbered(["**Real federated LLM adapters.** Replace the bigram vector by a LoRA adapter [22] on a small Hugging Face language model, with Flower for federation and Opacus for accounted DP-SGD, and repeat the noise sweep and the fresh-noise comparison at that scale.",
+    d.numbered(["**Real federated LLM adapters.** Repeat the neural study with LoRA adapters [22] on a pretrained small Hugging Face language model, with Flower for federation and Opacus for accounted DP-SGD; the GRU study of this project provides the protocol (sweep, fresh-noise comparison, attacks, cost).",
                 "**Benchmarks with forget-quality metrics.** Evaluate on TOFU- and MUSE-style benchmarks and compare with the algorithms studied in [3] (gradient ascent, gradient difference, NPO, SimNPO and retraining).",
-                "**Baselines from the literature.** Implement sharded retraining [12], FedEraser-style calibration [17], certified removal [13][14] and pruning-based unlearning [2] behind the same certificate interface and compare cost, utility and verification strength.",
-                "**Extraction and memorisation tests.** Test whether a removed client's text can still be extracted from the model [21], and measure memorisation at the example level as in [2] rather than only through a loss-based attack.",
-                "**Larger and real corpora.** Replace the 25 hand-written sentences by public text partitioned across clients, with realistic non-identical distributions, and study how overlapping content between clients affects what removal should erase.",
+                "**Baselines from the literature.** Implement sharded retraining [12], FedEraser-style calibration [17], certified removal [13][14] and pruning-based unlearning [2] behind the same certificate interface and compare cost, utility and verification evidence.",
+                "**Extraction and memorisation tests.** Test whether a removed client's text can still be extracted from the model [21], and measure memorisation at the example level as in [2].",
+                "**Real, partitioned corpora and large federations.** Replace the synthetic corpora by public text partitioned across clients with realistic non-identical distributions, at the federation sizes (about 1,000 clients) at which the privacy-utility trade-off opens up.",
+                "**A study with human users**, for example compliance officers and operators, to complement the scripted acceptance journeys.",
                 "**A formal statement of what a certificate means** under the GDPR [20]: which guarantee (distributional closeness to retraining, bounded influence, or empirical non-membership) a regulator should accept, and how it composes over repeated requests."])
 
 
@@ -209,7 +221,7 @@ def appendix_b(d):
                 "For a production build run `npm run build` in `frontend` (output in `frontend/dist`) and `npm run preview`.",
                 "The original interfaces are unchanged: `python app.py` serves the single-page interface on port 8000 (and at `/` on any chosen port), `python app.py --desktop` opens the Tkinter window and `python app.py --demo` prints one scripted run.",
                 "Run the checks with `python -m unittest discover -s tests -v` (5 tests) and `python scripts/smoke_test.py` (14 checks on a temporary server).",
-                "To reproduce the report's numbers run `python scripts/run_experiments.py` (all experiments, a few minutes; or name experiments, e.g. `baseline seeds`), then `python scripts/make_charts.py`."])
+                "To reproduce the report's numbers run `python scripts/run_experiments.py` (all experiments, a few minutes; or name experiments, e.g. `baseline seeds`), then `python scripts/run_synthetic_corpus.py`, `python scripts/run_neural_experiment.py` (PyTorch; about 4 minutes after a one-time pre-training of about 6 minutes) and `python scripts/run_testing_experiments.py` (starts its own servers and a browser), and finally `python scripts/make_charts.py`."])
     d.p("The audit ledger is written to `data/audit_log.jsonl` relative to the directory from which the server is started; it is excluded from version control. Starting the server from another directory therefore starts a separate ledger.")
     d.h2("User Guide")
     d.p("The web interface has five areas, reached from the sidebar (or from the bottom bar on a phone). The steps below follow the order of the workflow.")

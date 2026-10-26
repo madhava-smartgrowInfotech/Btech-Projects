@@ -194,13 +194,100 @@ Reading: an unlearned model is as far from an independent retrain as two indepen
 - Exact analytic Gaussian mechanism (Balle and Wang, ref [19]), delta = 1e-5: sigma = 3 -> epsilon 1.271 (reported 1.615, conservative there); sigma = 0.5 -> 9.997 (reported 9.690: the classical formula UNDERSTATES epsilon where the model is useful); sigma = 4.85 -> 0.750.
 - Because the noise vector is reused, n*theta_before - (n-1)*theta_after equals the removed client's clipped update (rounding error ~1e-13): anyone holding both released models can recover the update. The API never returns parameter vectors, so this is not reachable through the application.
 
+### 5.13 Synthetic corpus study with the real engine (experiments/synthetic_corpus; all data synthetic, seeded grammar)
+
+- Corpus: 20 domains, per client 200 training sentences (members), 200 held-out sentences from the same generator (non-members), 300-sentence public set; membership AUC resolution 5e-5. Two attacks: `auc_same` (client's training vs its own held-out sentences = sentence-level memorisation) and `auc_other` (client's training sentences vs other clients' held-out sentences = domain-level leakage).
+- Clip norm: raw update norms of 200-sentence clients have median 1239 (range 1178-1408); the product's C = 25 scales every update by 0.020 (about 50x down). Noise-free perplexity: 11.1 at C = 25 versus 8.8 at C = median norm.
+
+| n clients | sigma | epsilon | perplexity (before removal) | domain AUC before -> after | sentence AUC before -> after | certified |
+|---|---|---|---|---|---|---|
+| 10 | 1e-09 | 4.845e+09 | 8.8 | 0.474 -> 0.220 | 0.506 -> 0.506 | 100% |
+| 10 | 0.001 | 4845 | 8.8 | 0.474 -> 0.226 | 0.506 -> 0.506 | 100% |
+| 10 | 0.01 | 484.5 | 9.1 | 0.475 -> 0.248 | 0.506 -> 0.506 | 100% |
+| 10 | 0.1 | 48.45 | 12.7 | 0.472 -> 0.324 | 0.506 -> 0.502 | 100% |
+| 10 | 0.3 | 16.15 | 26.3 | 0.482 -> 0.403 | 0.502 -> 0.500 | 100% |
+| 10 | 1 | 4.845 | 92.8 | 0.490 -> 0.463 | 0.498 -> 0.496 | 100% |
+| 10 | 3 | 1.615 | 310.9 | 0.499 -> 0.488 | 0.496 -> 0.497 | 100% |
+| 10 | 10 | 0.4845 | 1145.4 | 0.500 -> 0.497 | 0.498 -> 0.499 | 100% |
+
+Fresh-noise retrain at n = 10: sigma 1e-09: L2 unlearned-vs-retrain 6.432e-06 vs retrain-vs-retrain 6.551e-06, perplexity 8.9 vs 8.9; sigma 0.1: L2 unlearned-vs-retrain 645.2 vs retrain-vs-retrain 649.8, perplexity 13.5 vs 13.5; sigma 1: L2 unlearned-vs-retrain 6452 vs retrain-vs-retrain 6498, perplexity 106.2 vs 103.7.
+- The bigram model does not memorise individual sentences: sentence-level AUC is 0.50 before and after at every sigma, even with no noise. The leakage that exists and that removal erases is domain-level (0.474 -> 0.220 without noise).
+
+Clients needed for a useful release at epsilon < 1 (sigma = 4.85, 100 sentences per client, C = median norm; perplexity ratio to the noise-free model):
+
+| n clients | 5 | 10 | 20 | 50 | 100 | 200 | 500 | 1000 | 2000 | 4000 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| ratio | 102.23 | 45.91 | 23.82 | 8.25 | 4.05 | 2.25 | 1.39 | 1.17 | 1.07 | 1.03 |
+
+Smallest n within 1.2x of the noise-free perplexity: sigma 1 -> 200, sigma 3 -> 1000, sigma 4.85 -> 1000, sigma 10 -> 2000 clients. Because the noise is added once to the SUM and the sum is divided by n, a larger federation dilutes it: epsilon < 1 and a useful model coexist only for hundreds to thousands of clients, never for five.
+- At n = 1000, sigma = 4.85, epsilon = 0.999: five sequential removals all CERTIFIED.
+- Timing at n = 20 x 200 sentences (unmodified engine, median of 5): train 585 ms, unlearn() 1425 ms, retrain on retained clients 550 ms (unlearn() is 2.6x SLOWER than the proxy retrain: it also computes metrics, two membership attacks and the audit write).
+
+### 5.14 Neural LoRA-style adapter study (experiments/neural_adapter; synthetic text, torch CPU)
+
+- Model: character-level GRU, 137,151 parameters, frozen after pre-training on a synthetic public pool (6000 sentences, 2500 steps); per-client adapter = low-rank (rank 64) update of 14,272 parameters; 8 synthetic client domains x 150 training / 150 held-out sentences; 5 seeds; 234 s run on the CPU. The ForgetSafe method (clip to C = median raw norm, sum, Gaussian noise sigma*C, /n; unlearn by subtracting the stored clipped adapter) is applied unchanged to these parameter vectors.
+- Adapting helps: held-out perplexity on a client's own domain 102 (base) -> 2.41 (its adapter); a single adapter's sample-level AUC 0.74; raw adapter-update norm 13.2. The base model scores public perplexity 1.65; averaged adapters raise it to about 3.3 (adapters slightly hurt generic text).
+
+| sigma | epsilon | public ppl before | retained ppl before -> after | client-level AUC before -> after (fresh retrain) | sample AUC before -> after | L2 unlearned-vs-retrain / retrain-vs-retrain | retained-ppl retention % |
+|---|---|---|---|---|---|---|---|
+| 0 | inf | 3.26 | 9.2 -> 8.99 | 0.779 -> 0.534 (0.532) | 0.500 -> 0.485 | 0.8667 / 0.868 | 99.9 |
+| 0.003 | 1615 | 3.25 | 9.21 -> 9 | 0.779 -> 0.534 (0.530) | 0.500 -> 0.485 | 1.291 / 1.288 | 99.9 |
+| 0.01 | 484.5 | 3.27 | 9.25 -> 9.06 | 0.779 -> 0.534 (0.534) | 0.499 -> 0.484 | 3.313 / 3.311 | 99.8 |
+| 0.03 | 161.5 | 3.47 | 10 -> 10.1 | 0.754 -> 0.502 (0.524) | 0.498 -> 0.484 | 9.599 / 9.618 | 98.5 |
+| 0.05 | 96.9 | 4.23 | 12.6 -> 13.7 | 0.761 -> 0.531 (0.577) | 0.502 -> 0.488 | 15.94 / 16.01 | 92.1 |
+| 0.1 | 48.45 | 15 | 47.3 -> 81.6 | 0.735 -> 0.561 (0.501) | 0.501 -> 0.492 | 31.76 / 31.8 | 59.2 |
+| 0.3 | 16.15 | 9.43e+08 | 1e+09 -> 1e+09 | 0.456 -> 0.410 (0.564) | 0.503 -> 0.501 | 96.01 / 95.84 | - |
+| 1 | 4.845 | 1e+09 | 1e+09 -> 1e+09 | 0.478 -> 0.473 (0.405) | 0.506 -> 0.506 | 319.2 / 319.6 | - |
+| 3 | 1.615 | 1e+09 | 1e+09 -> 1e+09 | 0.466 -> 0.465 (0.436) | 0.506 -> 0.506 | 960.6 / 959.7 | - |
+
+- Identity check max abs deviation about 2.9e-06 (float32). Models are 'destroyed' (retention undefined) for sigma >= 0.3; usable only for sigma <= 0.05 (epsilon >= 97). Cost: subtraction 24 microseconds; unlearn with metrics and attack 91 ms; retraining the 7 retained adapters 5.9 s -> 65x faster (bare subtraction 244469x).
+- Same two honest findings as the bigram product: removal is real without noise (client-level AUC 0.78 -> 0.53, equal to a fresh retrain 0.53), and at the sigma that makes epsilon < 1 (sigma >= 4.85, here 8 clients) the model is destroyed. Scale of the neural study: 137k-parameter GRU, 8 synthetic clients, one aggregation round; it is not a billion-parameter LLM and says nothing about one.
+
+### 5.15 Load and concurrency (experiments/load_test; 127.0.0.1, single machine)
+
+| Scenario | concurrency 1 | 4 | 16 | 64 |
+|---|---|---|---|---|
+| GET /api/health (req/s, p95 ms, 5xx or connection errors) | 233, 21, 0 | 1070, 15, 0 | 488, 15, 0 | 315, 1017, 0 |
+| GET /api/state (req/s, p95 ms, 5xx or connection errors) | 68, 29, 0 | 77, 66, 0 | 86, 202, 0 | 85, 1627, 19 |
+| POST /api/generate (req/s, p95 ms, 5xx or connection errors) | 180, 19, 0 | 371, 25, 0 | 189, 78, 1 | 241, 1035, 5 |
+| mixed read/write (req/s, p95 ms, 5xx or connection errors) | 48, 54, 0 | 49, 155, 0 | 34, 671, 0 | 26, 2911, 0 |
+- Race: 32 simultaneous unlearn requests for the same client: status_counts={'200': 1, '400': 31}; ledger_records=2; unlearning_events=1; ledger_valid=True
+- Race: 16 simultaneous train requests: status_counts={'200': 16}; ledger_records=16; ledger_valid=True; records_equal_ok_responses=True
+- Race: 8 writers (120 train requests) while one thread verifies the chain: writes_ok=120; verify_invalid=0; final_ledger_valid=True
+- Soak: 2000 mixed requests, 0 errors; state-read p50 26 ms (first 50) -> 68 ms (last 50) as the ledger grew to 400 records (the cost of re-reading the whole ledger on every state call); server RSS 26 -> 31 MB. Throughput of /api/state saturates near 80 req/s (it re-reads and re-verifies the ledger every call).
+
+### 5.16 Security probes (experiments/security_probe; synthetic malicious inputs against the real server)
+
+- 58 probes: 35 handled, 15 handled with noteworthy behaviour, 8 defects; server alive after all probes: True.
+  - DEFECT: negative value -1 (client keeps the socket open) -> server thread blocks in rfile.read(-1) until the client closes: no response within 4 s
+  - DEFECT: declared 500 bytes, 30 sent, socket kept open -> server waits for the missing bytes indefinitely (no read timeout)
+  - DEFECT: cross-site 'simple' POST (Content-Type text/plain, Origin evil.example) to /api/unlearn -> HTTP 200: the server ignores Content-Type and Origin and executes the removal; a web page the operator visits can issue this request (CSRF) because there is no token, no authentication and no prefligh
+  - DEFECT: Host header evil.example (DNS-rebinding precondition) -> HTTP 200: Host is not validated
+  - DEFECT: burst of 16 / 64 / 128 simultaneous new connections -> 16: {'ok': 16} (p95 of the successful ones 1034 ms, max 1034 ms); 64: {'ok': 34, 'ConnectionRefusedError: [WinError 10061] No connection could be made because the tar': 30} (p95 of the successful ones
+  - DEFECT: garbage line appended to the ledger file while the server runs -> GET /api/state -> 500, POST /api/train -> 400, POST /api/audit/verify -> 200 {'valid': False, 'detail': 'Invalid audit JSON on line 11'}: the whole UI stops loading until the file is repaired by hand 
+  - DEFECT: ledger file truncated to zero bytes (attacker with file access) -> verify -> {'valid': True, 'detail': 'Verified 0 audit record(s)'}: an empty ledger verifies as valid, so deleting the whole history is not detected
+  - DEFECT: unauthenticated caller capabilities -> every route works with no credentials: read full audit log with hashes and client ids (HTTP 200), erase a client from the model (HTTP 200), download certificate (HTTP 200), retrain and discard certifi
+
+### 5.17 Scripted synthetic-user acceptance (experiments/acceptance; Playwright + Chrome, not a human study)
+
+- 20 randomised journeys (11 desktop 1440x900, 9 phone 390x844; 14 in dark mode; 3 cancelled the first dialog); 20/20 passed every step (load page, train, generate, unlearn with certificate, audit verify, theme toggle, no console errors); 49 certificates checked; mean journey 13.4 s; training-page load p50 1600 ms; 0 journeys with console errors.
+
+### 5.18 Project timeline from git (experiments/timeline)
+
+- 2026-09-16 to 2026-09-19: Batch documents prepared (file modification times of 1.-6. batch documents (2026-09-19) and of the base-paper PDFs; not in git history)
+- 2026-09-21: Repository set-up: initial project files, batch folders and master prompts (commit 83bbd9b8 (20 files in the batch folder); commits 57ebf6ff, c527e811, d04fd80b, 9a8a1f80 the same day)
+- 2026-09-25: Backend implementation: first commit that contains certified_unlearning/, tests/, README and PROJECT_REPORT (commit 5ad8648b: 7 backend files, 1217 lines; file modification times of the backend files are also 2026-09-25)
+- 2026-09-26: Prompt files restored (commit 6a99e011 (3 files))
+- 2026-10-15: React front end built over the unchanged API (commit 1b862143: 39 files, 5005 lines in frontend/; docs/FRONTEND_PLAN.md and scripts/smoke_test.py added in the same commit)
+- 2026-10-26: Measurements, screenshots, diagrams and the eleven submission documents (commit 753ac74f: 94 files under 8.ProjectCode and the root documents)
+- Not recorded in git, so not dated: Design and implementation steps before the 2026-09-25 commit (the backend has no history of its own; git shows it arriving in one commit); Dates of guide meetings, reviews and test runs (not recorded in the repository); The calendar of the report writing other than the 2026-10-26 commit.
+
 ## 6. Tests
 
 - `python -m unittest discover -s tests -v`: **5 tests, all pass** (0.79 s): full train+unlearn workflow, repeat-unlearn rejection, audit tamper, certificate export, localhost health/state endpoints.
 - `python scripts/smoke_test.py`: **14 checks, all pass** (health, fresh state, pre-train rejections, train, generate, unlearn+certificate, repeat rejection, certificate download, audit verify, ledger order, new session).
-- `python scripts/run_experiments.py`: measurement suite written for this report (11 experiments).
-- Not tested: concurrency under load, browser automation tests in the repo (UI checked manually with Playwright captures), any real LLM, any penetration test. A built frontend/dist is present.
-
+- `python scripts/run_experiments.py`: measurement suite written for this report (11 experiments); see also the three scripts below.
+- Beyond the repo tests, the report adds measured studies on synthetic data: `scripts/run_synthetic_corpus.py` (larger corpus, clip norm, clients needed for epsilon < 1, timeline), `scripts/run_neural_experiment.py` (GRU + LoRA-style adapters), `scripts/run_testing_experiments.py` (load/concurrency, 58 security probes, 20 scripted synthetic-user acceptance journeys). The repo itself has no browser-automation test suite (the acceptance journeys live in scripts/). Scale boundaries that remain by design: the neural study is a 137k-parameter GRU, not a billion-parameter LLM; the acceptance run is scripted, not a human study; the machine is one CPU workstation.
 ## 7. Size of the code
 
 Python: engine.py 297, model.py 122, audit.py 65, dataset.py 101, web.py 247, gui.py 379 (Tkinter), app.py 59; tests 85; smoke test 120. React: pages ~970 lines plus shared UI kit.

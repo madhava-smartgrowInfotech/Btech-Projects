@@ -312,10 +312,14 @@ def sec_modules(d):
         ("app.py", "Entry point with three modes", "`run_demo()`, `main()` (`--demo`, `--desktop`, `--port`, `--host`, `--open-browser`)"),
         ("tests/test_end_to_end.py", "Unit and endpoint tests (5 tests)", "`FederatedUnlearningTests`"),
         ("scripts/smoke_test.py", "End-to-end API check (14 checks)", "`run()`, `call()`, `check()`"),
+        ("scripts/run_experiments.py", "Default-configuration measurements (11 experiments)", "`exp_baseline()`, `exp_seeds()`, `exp_sweep()`, `exp_gold()`, `exp_audit()`, `exp_api()`"),
+        ("scripts/run_synthetic_corpus.py", "Synthetic-grammar corpus study with the real engine; git timeline", "`Corpus`, `section_sweep()`, `section_n_sweep()`, `section_timeline()`"),
+        ("scripts/run_neural_experiment.py", "GRU with LoRA-style adapters on synthetic text (torch)", "`Base`, `Adapter`, `train_adapter()`, `main()`"),
+        ("scripts/run_testing_experiments.py", "Load, concurrency, security probes, scripted acceptance", "load levels, races, probe groups, Playwright journeys"),
     ]
     for rel, resp, keys in mods:
         rows.append([f"`{rel}`", str(_loc(rel)), resp, keys])
-    d.table(rows, "Back-end and test modules", widths=[0.3, 0.07, 0.28, 0.35], font=9)
+    d.table(rows, "Back-end, test and measurement modules", widths=[0.3, 0.07, 0.28, 0.35], font=9)
     d.p("`web.py` holds the single largest block of text, but most of it is the embedded legacy page (about 90 lines of HTML, CSS and JavaScript); "
         "its Python logic is about 140 lines from `ApplicationState` to `run_web()`.")
     d.h3("Engine module")

@@ -16,6 +16,9 @@ _nf = metrics("noise_free_leakage")
 _seq = metrics("sequential")
 _dp = metrics("dp_accounting")
 _sc = metrics("scaling")
+_syn = metrics("synthetic_corpus")
+_nn = metrics("neural_adapter")
+_sp = metrics("security_probe")
 _samples = json.loads((ROOT / "docs" / "sample_io" / "samples.json").read_text(encoding="utf-8"))
 
 
@@ -145,13 +148,118 @@ def sec_screens(d, all_screens=False):
 
 
 # ----------------------------------------------------------------------------------------------------------------- engine results
+def _studies_synthetic_neural(d):
+    """Synthetic-corpus study (real engine, larger federations) and neural adapter study; numbers from experiments/synthetic_corpus and neural_adapter."""
+    rep = _rep(d)
+    s, nn = _syn, _nn
+    rn = s["raw_norms"]
+    clip = {(r["clip_mode"], r["sigma"]): r for r in s["clip"]["rows"]}
+    c25 = lambda sg: clip[("C = 25 (product default)", sg)]  # noqa: E731
+    cmed = lambda sg: clip[("C = median raw norm", sg)]  # noqa: E731
+    d.h3("Synthetic-corpus study: more data, larger federations")
+    d.p(("`scripts/run_synthetic_corpus.py` generates a seeded synthetic corpus (template grammar, 20 domains; 200 training, 200 held-out and a 300-sentence public set per client) and runs the real engine on it, with a *sentence-level* attack (a client's training sentences against its own held-out sentences) and a *domain-level* attack (against other clients' held-out sentences).") if rep else ("The 25-sentence corpus is too small for the bigram model to learn and gives the membership attack only five members. `scripts/run_synthetic_corpus.py` therefore generates a seeded "
+        "synthetic corpus (a template grammar with per-domain vocabularies, 20 domains) with 200 training sentences and 200 held-out sentences per client plus a 300-sentence public set, "
+        "and runs the real engine classes on it. Two attacks are used: *sentence-level* (a client's training sentences against its own held-out sentences, which measures memorisation) "
+        "and *domain-level* (its training sentences against other clients' held-out sentences, which measures leakage of what the client's data is about); their resolution is 5e-5."))
+    d.p((f"The raw norm of a 200-sentence update has median {rn['median']:,.0f}, so the product's C = 25 scales it by {rn['scale_applied_by_product_C25']['mean']:.3f} (about {rn['ratio_median_norm_to_C25']:.0f} times); noise-free perplexity is {c25(1e-09)['ppl_before']['mean']:.1f} at C = 25 against {cmed(1e-09)['ppl_before']['mean']:.1f} at the median norm, so the study uses C = median norm.") if rep else (f"**Clip norm.** The raw update norm of a 200-sentence client has median {rn['median']:,.0f} (range {rn['min']:,.0f} to {rn['max']:,.0f}), so the product's C = 25 scales every update by "
+        f"{rn['scale_applied_by_product_C25']['mean']:.3f}, about {rn['ratio_median_norm_to_C25']:.0f} times down. Without noise this costs utility (perplexity {c25(1e-09)['ppl_before']['mean']:.1f} at C = 25 against "
+        f"{cmed(1e-09)['ppl_before']['mean']:.1f} at the median norm, because the fixed smoothing constant then dominates the shrunken counts); with noise the small C seems to help "
+        f"(perplexity {c25(1.0)['ppl_before']['mean']:.1f} against {cmed(1.0)['ppl_before']['mean']:.1f} at σ = 1) only because it flattens the predictions: accuracy is identical "
+        f"({100 * c25(1.0)['acc_before']['mean']:.1f} %). The study therefore uses C = median norm, the setting that preserves the signal."))
+    rows = []
+    for r in s["sweep"]["rows"]:
+        if r["n_clients"] != 10 or r["sigma"] not in (1e-09, 0.1, 1.0, 3.0):
+            continue
+        eps = "no noise" if r["sigma"] < 1e-6 else f"{r['epsilon']:.3g}"
+        sg = "1e-9" if r["sigma"] < 1e-6 else f"{r['sigma']:g}"
+        rows.append([sg, eps, f"{r['ppl_before']['mean']:.1f}", f"{r['auc_other_before']['mean']:.3f} → {r['auc_other_after']['mean']:.3f}",
+                     f"{r['auc_same_before']['mean']:.3f} → {r['auc_same_after']['mean']:.3f}", pc(r["certified_fraction"], 0)])
+    d.table([["σ", "ε", "Perplexity", "Domain-level AUC", "Sentence-level AUC", "Certified"]] + rows,
+            "Synthetic-corpus study, 10 clients, 200 sentences each (50 requests per row)", widths=[0.1, 0.12, 0.16, 0.24, 0.26, 0.12], font=9, align=["c"] * 6)
+    g = {x["sigma"]: x for x in s["gold"]["results"]}
+    g01, g1 = g[0.1], g[1.0]
+    d.p((f"The sentence-level AUC stays at 0.50 at every σ: a bigram model does not memorise sentences. The domain-level AUC is 0.474 with the client in the model and falls to 0.220 without noise (0.324 at σ = 0.1) once it is removed; the noise hides this at σ ≥ 1. Fresh-noise retraining gives the same picture (L2 {g01['l2_unlearned_vs_fresh_retrain']['mean']:.0f} against {g01['l2_fresh_retrain_vs_fresh_retrain']['mean']:.0f} at σ = 0.1).") if rep else (f"A bigram model does not memorise sentences: the sentence-level AUC stays at 0.50 before and after removal at every σ, even with no noise. What it does carry is the *domain*: the domain-level "
+        f"attack is at chance with the client in the model (0.474) and falls to 0.220 without noise (0.472 to 0.324 at σ = 0.1) once the client is removed, because its now-unseen text is less likely under "
+        f"the model than the other clients' text: the fall is the size of the footprint that subtraction removes. At σ ≥ 1 the noise hides the effect (0.490 → 0.463). The fresh-noise comparison above repeats at this scale: the unlearned model is {g01['l2_unlearned_vs_fresh_retrain']['mean']:.0f} from a "
+        f"fresh retrain and two retrains are {g01['l2_fresh_retrain_vs_fresh_retrain']['mean']:.0f} apart at σ = 0.1 ({g1['l2_unlearned_vs_fresh_retrain']['mean']:.0f} against "
+        f"{g1['l2_fresh_retrain_vs_fresh_retrain']['mean']:.0f} at σ = 1), with equal perplexity ({g1['perplexity_unlearned']['mean']:.1f} and {g1['perplexity_fresh_retrain']['mean']:.1f})."))
+    if not rep:
+        d.figure(CHARTS / "s02_clip_norm_choice.png", "Perplexity for three choices of the clip norm, with noise (left) and without (right)", width=5.4)
+        d.figure(CHARTS / "s04_synthetic_fresh_retrain.png", "Distance between the unlearned model and a fresh retrain, against two fresh retrains (synthetic corpus, 10 clients)", width=4.8)
+    d.figure(CHARTS / "s01_synthetic_noise_sweep.png", "Synthetic corpus: perplexity against σ for 5, 10 and 20 clients (left) and the two membership attacks for 10 clients (right)", width=5.7)
+    d.p(("**Large federations make ε < 1 useful.** The noise is added once to the sum, which is divided by the number of clients n, so the relative noise shrinks with n. The table gives the perplexity relative to the noise-free model (100 sentences per client, five seeds; * = within 1.2 times).") if rep else ("**Large federations make ε < 1 useful.** The noise is added once to the sum and the sum is divided by the number of clients n, so the relative noise shrinks as n grows. The table gives the "
+        "perplexity of the released model relative to the noise-free model (100 synthetic sentences per client, C = median norm, five seeds); a value of 1.2 or less is marked with an asterisk."))
+    nrows = {(r["n_clients"], r["sigma"]): r for r in s["n_sweep"]["rows"]}
+    rows = []
+    for n in (5, 20, 100, 500, 1000, 4000):
+        row = [f"{n:,}"]
+        for sg in (1.0, 3.0, 4.85, 10.0):
+            r = nrows[(n, sg)]
+            row.append(f"{r['ratio_to_noise_free']:.2f}" + ("*" if r["within_1_2x"] else ""))
+        rows.append(row)
+    d.table([["Clients n", "σ = 1 (ε 4.84)", "σ = 3 (ε 1.61)", "σ = 4.85 (ε 1.00)", "σ = 10 (ε 0.48)"]] + rows,
+            "Perplexity relative to the noise-free model against federation size (* = within 1.2x)", widths=[0.16, 0.21, 0.21, 0.21, 0.21], font=9.5, align=["c"] * 5)
+    sm = s["n_sweep"]["smallest_n_within_1_2x"]
+    u = s["n_sweep"]["unlearning_at_smallest_n"]
+    ret = min(x["retention_percent"] for x in u["sequential_removals"])
+    d.figure(CHARTS / "s03_clients_needed_for_epsilon_below_1.png", "Perplexity relative to the noise-free model against the number of federated clients, for four noise levels", width=4.9)
+    d.p((f"With ε < 1 (σ = 4.85) the model is within 1.2 times the noise-free perplexity from {sm['4.85']:,} clients ({sm['3.0']:,} at σ = 3, {sm['1.0']} at σ = 1); at n = {u['n_clients']:,} (ε = {u['epsilon']:.3f}) five removals were all {u['sequential_removals'][0]['status']} with retention ≥ {ret:.3f} %. The five-client demonstration is far too small a federation for the Gaussian mechanism: the proxy is private and useful only in the regime a real federated service lives in.") if rep else (f"With ε below 1 (σ = 4.85) the model is within 1.2 times the noise-free perplexity from about {sm['4.85']:,} clients, and within 1.2 times at the default σ = 3 from {sm['3.0']:,}; at σ = 1 "
+        f"{sm['1.0']} clients suffice. At n = {u['n_clients']:,}, σ = {u['sigma']} (ε = {u['epsilon']:.3f}) five successive removals were all {u['sequential_removals'][0]['status']} with retention of at least {ret:.3f} %. "
+        "The conclusion for the privacy-utility trade-off is therefore not that the Gaussian mechanism is unusable but that the five-client demonstration is far too small a federation for it: "
+        f"the proxy is private and useful only in the regime a real federated service lives in. Timing at 20 clients of 200 sentences: training {s['timing']['train_ms_median']:.0f} ms, `unlearn()` "
+        f"{s['timing']['unlearn_ms_median']:.0f} ms, retraining on the 19 retained clients {s['timing']['retrain_retained_ms_median']:.0f} ms; the fixed cost of the metrics and the two attacks again exceeds the proxy's retraining time."))
+
+    d.h3("Neural adapter study: the same method on a small neural model")
+    base, cfg = nn["base"], nn["config"]
+    ao = nn["summary"]["adapter_only"]
+    d.p((f"`scripts/run_neural_experiment.py` applies the release and removal unchanged to a small neural model: a frozen character-level GRU ({base['base_parameters']:,} parameters) pre-trained on synthetic public text, and {cfg['n_clients']} synthetic client domains that each train a LoRA-style adapter ({base['adapter_dimension']:,} parameters, rank {base['adapter_rank']}) on {cfg['train_per_client']} sentences; five seeds, {nn['runtime_seconds']:.0f} s on the CPU. Adapting cuts a client's own-domain perplexity from {ao['base_own_heldout_ppl']['mean']:.0f} to {ao['own_heldout_ppl']['mean']:.2f}.") if rep else (f"To check that the method is not an artefact of a count-based model, `scripts/run_neural_experiment.py` applies ForgetSafe's release and removal unchanged to the parameters of a small neural "
+        f"language model. A character-level GRU with {base['base_parameters']:,} parameters is pre-trained on a synthetic public pool and frozen; {cfg['n_clients']} synthetic client domains "
+        f"(own vocabulary and sentence templates, {cfg['train_per_client']} training and {cfg['heldout_per_client']} held-out sentences each) each train a LoRA-style low-rank adapter "
+        f"({base['adapter_dimension']:,} parameters, rank {base['adapter_rank']}); the flattened adapters are clipped to the median norm, summed, noised with σ·C and divided by n, and a client is removed by subtracting its stored "
+        f"adapter. Five seeds, {nn['runtime_seconds']:.0f} s on the CPU. Adapting helps a client's own domain a great deal (held-out perplexity {ao['base_own_heldout_ppl']['mean']:.0f} for the base model, "
+        f"{ao['own_heldout_ppl']['mean']:.2f} with its adapter) and a single adapter already leaks (sample-level AUC {ao['sample_auc']['mean']:.2f}, client-level AUC {ao['client_auc']['mean']:.2f})."))
+    by = {r["sigma"]: r for r in nn["summary"]["by_sigma"]}
+
+    def cap(x):
+        return "≥ 1e8 (destroyed)" if x >= 1e8 else f"{x:.3g}"
+
+    rows = []
+    for sg in ((0.0, 0.05, 0.1, 0.3, 3.0) if rep else (0.0, 0.01, 0.05, 0.1, 0.3, 1.0, 3.0)):
+        r = by[sg]
+        rv = r["retention_retained_ppl_percent"]
+        rv = rv["mean"] if isinstance(rv, dict) else rv
+        rows.append([f"{sg:g}", "no noise" if r["epsilon"] is None else f"{r['epsilon']:.3g}",
+                     f"{cap(r['retained_ppl_before']['mean'])} → {cap(r['retained_ppl_after']['mean'])}",
+                     f"{r['client_auc_before']['mean']:.3f} → {r['client_auc_after']['mean']:.3f} ({r['client_auc_retrain']['mean']:.3f})",
+                     f"{r['l2_unl_vs_retrain']['mean']:.4g} / {r['l2_retrain_vs_retrain']['mean']:.4g}", "-" if rv is None else f"{rv:.1f}"])
+    d.table([["σ", "ε", "Retained-client perplexity", "Client-level AUC before → after (fresh retrain)", "L2 unlearned / retrain vs retrain / retrain", "Retention %"]] + rows,
+            "Neural adapter study: removal of one of eight clients (40 requests per row)", widths=[0.07, 0.1, 0.22, 0.27, 0.22, 0.12], font=8.5, align=["c"] * 6)
+    d.figure(CHARTS / "n02_neural_membership_auc.png", "Client-level (left) and sample-level (right) membership AUC before removal, after removal and after a fresh retrain", width=5.6)
+    if not rep:
+        d.figure(CHARTS / "n01_neural_noise_vs_quality.png", "Neural adapter study: perplexity against σ (left) and utility retention after removal (right)", width=5.4)
+    tm = nn["summary"]["timing"]
+    sq = nn["summary"]["sequential"]
+    d.p((f"Removal is real (client-level AUC {by[0.0]['client_auc_before']['mean']:.2f} → {by[0.0]['client_auc_after']['mean']:.2f}, where a fresh retrain sits, {by[0.0]['client_auc_retrain']['mean']:.2f}), and the unlearned model is as far from a fresh retrain as two retrains are from each other at every σ ({by[0.1]['l2_unl_vs_retrain']['mean']:.1f} and {by[0.1]['l2_retrain_vs_retrain']['mean']:.1f} at σ = 0.1). Utility holds to σ = 0.03 (retention {by[0.03]['retention_retained_ppl_percent']['mean']:.1f} %), falls to {by[0.1]['retention_retained_ppl_percent']['mean']:.1f} % at σ = 0.1, below the 70 % floor, and the model is destroyed from σ = 0.3, while ε < 1 needs σ > 4.85. Subtracting an adapter takes {tm['subtract_us_median']:.0f} microseconds against {tm['retrain_seven_adapters_s_median']:.1f} s for retraining the seven retained adapters.") if rep else (f"The three findings of the bigram product recur on a neural model. *Removal is real*: without noise the client-level attack falls from {by[0.0]['client_auc_before']['mean']:.2f} to {by[0.0]['client_auc_after']['mean']:.2f}, "
+        f"exactly where a fresh retrain without the client sits ({by[0.0]['client_auc_retrain']['mean']:.2f}); the sample-level AUC of the released average stays at 0.50 because averaging eight adapters hides what a single adapter memorises. "
+        f"*The unlearned model is distributed like a retrained one*: its distance to a fresh retrain equals the distance between two fresh retrains at every σ (for example {by[0.1]['l2_unl_vs_retrain']['mean']:.1f} and "
+        f"{by[0.1]['l2_retrain_vs_retrain']['mean']:.1f} at σ = 0.1), and the same-noise identity check agrees to float32 rounding ({by[0.0]['identity_max_abs']['mean']:.0e} to {by[3.0]['identity_max_abs']['mean']:.0e}). "
+        f"*Privacy and utility compete*: retention of the retained clients' perplexity is {by[0.01]['retention_retained_ppl_percent']['mean']:.1f} % at σ = 0.01, {by[0.05]['retention_retained_ppl_percent']['mean']:.1f} % at σ = 0.05 and "
+        f"{by[0.1]['retention_retained_ppl_percent']['mean']:.1f} % at σ = 0.1, below the 70 % floor, and the model is destroyed from σ = 0.3, while ε < 1 would need σ > 4.85; with eight clients the neural study sits in the same "
+        "small-federation regime as the bigram product with ten. Removing three clients one after another at σ = 0 raises the public perplexity from "
+        f"{sq['sigma=0|step=0']['public_ppl']['mean']:.2f} to {sq['sigma=0|step=3']['public_ppl']['mean']:.2f}. The cost is the clearest gain: subtraction takes {tm['subtract_us_median']:.0f} microseconds, "
+        f"the full request with metrics and attack {tm['unlearn_with_metrics_ms_median']:.0f} ms, and retraining the seven retained adapters {tm['retrain_seven_adapters_s_median']:.1f} s, which is "
+        f"{tm['speedup_retrain_over_unlearn_with_metrics']:.0f} times slower than the whole request."))
+    if not rep:
+        d.figure(CHARTS / "n03_neural_retrain_and_cost.png", "Distance to a fresh retrain against distance between fresh retrains (left) and the cost of removing one client (right)", width=5.4)
+
+
 def sec_engine_results(d):
     rep = _rep(d)
     t = _base["training"]
     d.h2("Model and Verification Results")
-    d.p("All results in this section were produced by `scripts/run_experiments.py` on the development machine and are stored in `experiments/*/metrics.json`. Throughout, "
+    d.p("The results in this section were produced by `scripts/run_experiments.py`, `scripts/run_synthetic_corpus.py` and `scripts/run_neural_experiment.py` on the development machine and are stored in `experiments/*/metrics.json`. Throughout, "
         "*perplexity* and *next-character accuracy* are measured on the five public evaluation sentences, *membership AUC* is the loss-based attack of Chapter 6 (a client's five "
-        "records against five fixed non-member sentences, so its resolution is 0.04), and *utility retention* is the utility score after removal divided by the score before, capped at 100 %.")
+        "records against five fixed non-member sentences, so its resolution is 0.04), and *utility retention* is the utility score after removal divided by the score before, capped at 100 %. The last two subsections extend the study with synthetic data: a larger corpus on the real engine, and a small neural model.")
     d.h3("Baseline run with the default configuration")
     d.p(f"With seed 2026, clip norm 25, noise multiplier 3 and δ = 1e-5 the trained model has ε = {t['epsilon']:.4f}, perplexity {t['perplexity']:.2f} and next-character accuracy "
         f"{pc(t['next_character_accuracy'], 2)} (utility {t['utility_score']:.4f}; training took {t['train_ms']:.1f} ms). A model that spread probability evenly over the 32 symbols it can emit "
@@ -164,10 +272,10 @@ def sec_engine_results(d):
             "Removing each client from the default model (seed 2026)", widths=[0.18, 0.11, 0.12, 0.15, 0.17, 0.17, 0.10], font=8.5)
     if not rep:
         d.figure(CHARTS / "c04_baseline_clients.png", "Membership AUC before and after removal, and utility retained, for each client (default run)", width=5.8)
-    d.p(f"All five requests are CERTIFIED and the reference distance is of the order of 1e-14 (largest {_base['max_reference_l2']:.2e}). Utility retention is between "
+    d.p(("All five requests are CERTIFIED, the reference distance is about 1e-14 and retention lies between 93.6 % and 98.8 %; the lowest values (Finance, Travel) rest on one correct character out of 275. The AUC values scatter around 0.5: ten sentences carry no membership signal at this noise.") if rep else (f"All five requests are CERTIFIED and the reference distance is of the order of 1e-14 (largest {_base['max_reference_l2']:.2e}). Utility retention is between "
         f"{_base['min_retention_percent']:.2f} % and {max(c['utility_retention_percent'] for c in _base['unlearning_per_client']):.2f} % (mean {_base['mean_retention_percent']:.2f} %). The two lowest values, "
         "Finance and Travel, are the two cases in which next-character accuracy fell from 5.09 % to 4.36 %, that is by two correct predictions out of 275 characters; the retention figure is therefore "
-        "dominated by a tiny accuracy count. The membership AUC values (0.04 to 0.48 before removal) scatter on both sides of 0.5: with ten sentences and a noisy model they carry no signal about membership.")
+        "dominated by a tiny accuracy count. The membership AUC values (0.04 to 0.48 before removal) scatter on both sides of 0.5: with ten sentences and a noisy model they carry no signal about membership."))
     d.h3("Fifty seeds: how stable is the default result?")
     s = _seeds
     d.p(f"To separate the behaviour of the method from the luck of one noise draw, the procedure was repeated for 50 noise seeds and for all five clients, giving {s['n_unlearning_requests']} unlearning requests.")
@@ -182,46 +290,52 @@ def sec_engine_results(d):
             "Fifty-seed study with the default configuration", widths=[0.40, 0.15, 0.15, 0.15, 0.15], font=9.5, align=["l", "c", "c", "c", "c"])
     if not rep:
         d.figure(CHARTS / "c11_seed_study.png", "Membership AUC and public-set perplexity before and after removal over 250 requests (mean +/- standard deviation)", width=5.2)
-    d.p(f"{s['status_counts']['CERTIFIED']} of {s['n_unlearning_requests']} requests are CERTIFIED, none falls below the 70 % retention floor (the minimum is {s['utility_retention_percent']['min']:.1f} %) "
+    d.p((f"{s['status_counts']['CERTIFIED']} of {s['n_unlearning_requests']} requests are CERTIFIED and none falls below the 70 % floor, but this stabilises only the bookkeeping: the membership AUC is {s['membership_auc_before']['mean']:.3f} before removal (chance) and {s['membership_auc_after']['mean']:.3f} after, and perplexity of about 142 shows a noise-dominated aggregate (expected noise norm {_dp['expected_noise_l2']:.0f} against a clipped client update of 25).") if rep else (f"{s['status_counts']['CERTIFIED']} of {s['n_unlearning_requests']} requests are CERTIFIED, none falls below the 70 % retention floor (the minimum is {s['utility_retention_percent']['min']:.1f} %) "
         f"and the largest reference distance is {s['reference_l2']['max']:.2e}. These numbers are stable, but what they stabilise is the *bookkeeping*. The informative result is the membership AUC: "
         f"{s['membership_auc_before']['mean']:.3f} before removal, which is chance, and {s['membership_auc_after']['mean']:.3f} after, a mean change of only {s['membership_auc_change']['mean']:+.3f}. At the default "
         "noise the attacker learns nothing about a client either before or after the removal, so the experiment has no leakage to show disappearing. The perplexity of about 142 (range "
         f"{s['pre_unlearning_perplexity']['min']:.0f} to {s['pre_unlearning_perplexity']['max']:.0f}) confirms that the aggregate is noise-dominated: the expected noise vector has an L2 norm of "
-        f"{_dp['expected_noise_l2']:.0f}, while a clipped client update has norm 25 (about 1 % of the noise).")
+        f"{_dp['expected_noise_l2']:.0f}, while a clipped client update has norm 25 (about 1 % of the noise)."))
     d.h3("Noise sweep: the privacy-utility trade-off")
     d.p("The noise multiplier σ was varied from 0.001 to 10 (20 seeds, five clients each, 100 requests per value). The reported ε follows the engine's formula ε = sqrt(2 ln(1.25/δ)) / σ with δ = 1e-5, "
         "so ε = 4.8448 / σ.")
     rows = []
     for r in _sweep["rows"]:
+        if rep and r["noise_multiplier"] not in (0.001, 0.1, 0.5, 1.0, 3.0, 4.85, 10.0):
+            continue
         rows.append([f"{r['noise_multiplier']:g}", f"{r['epsilon']:.3f}", f"{r['perplexity']['mean']:.1f}", pc(r['accuracy']['mean']), f"{r['membership_auc_before']['mean']:.3f}",
                      f"{r['membership_auc_after']['mean']:.3f}", f"{r['retention_percent']['mean']:.1f}"])
     d.table([["σ", "ε", "Perplexity", "Accuracy", "AUC before", "AUC after", "Retention %"]] + rows, "Noise sweep (mean over 100 requests per row)",
             widths=[0.1, 0.14, 0.15, 0.15, 0.16, 0.16, 0.14], font=9, align=["c"] * 7)
-    d.figure(CHARTS / "c01_noise_vs_quality.png", "Perplexity and next-character accuracy against the noise multiplier (dotted lines: default σ = 3 and the ε < 1 boundary at σ = 4.85)", width=5.9)
-    d.p("Three regimes are visible. For σ <= 0.1 (ε >= 48) the model is a useful bigram model: perplexity 12.5 to 16.3, accuracy about 24 %, and the membership attack works (AUC 0.86 to 0.99 before removal). "
+    if not rep:
+        d.figure(CHARTS / "c01_noise_vs_quality.png", "Perplexity and next-character accuracy against the noise multiplier (dotted lines: default σ = 3 and the ε < 1 boundary at σ = 4.85)", width=5.9)
+    d.p(("Three regimes appear: for σ ≤ 0.1 (ε ≥ 48) the model is useful (perplexity 12.5 to 16.3, accuracy about 24 %); for 0.3 ≤ σ ≤ 1 quality degrades quickly; from σ = 2 it is no better than noise (perplexity 145 at σ = 3 against 32 for a uniform model).") if rep else ("Three regimes are visible. For σ <= 0.1 (ε >= 48) the model is a useful bigram model: perplexity 12.5 to 16.3, accuracy about 24 %, and the membership attack works (AUC 0.86 to 0.99 before removal). "
         "For 0.3 <= σ <= 1 quality degrades quickly (perplexity 27 to 66, accuracy 15 % to 5 %). From σ = 2 upward the model is no better than noise; at the default σ = 3 perplexity is 145 against "
-        "32 for a uniform model, and at σ = 10 it is 305.")
-    d.figure(CHARTS / "c02_noise_vs_auc.png", "Membership AUC before and after removal against the noise multiplier (error bars: standard error)", width=4.8)
-    d.p("The attack gives the second half of the story. Where there is something to find (small σ) the removal clearly works: the mean AUC drops from 0.992 to 0.542 at σ = 0.001 and from 0.856 to 0.550 at σ = 0.1. "
+        "32 for a uniform model, and at σ = 10 it is 305."))
+    if not rep:
+        d.figure(CHARTS / "c02_noise_vs_auc.png", "Membership AUC before and after removal against the noise multiplier (error bars: standard error)", width=4.8)
+    d.p(("Where there is something to find (small σ) removal works (AUC 0.992 → 0.542 at σ = 0.001, 0.856 → 0.550 at σ = 0.1); where the noise is large the attack is already at 0.52 to 0.55, so the noise that hides the leakage also hides the removal.") if rep else ("The attack gives the second half of the story. Where there is something to find (small σ) the removal clearly works: the mean AUC drops from 0.992 to 0.542 at σ = 0.001 and from 0.856 to 0.550 at σ = 0.1. "
         "Where the noise is large the attack is already at 0.52 to 0.55 before removal, so unlearning has nothing to remove. A privacy-preserving noise level and a measurable forgetting effect "
-        "are therefore mutually exclusive in this configuration: the noise that makes the leakage invisible also makes the removal invisible.")
-    d.figure(CHARTS / "c03_privacy_utility.png", "Reported ε against perplexity: the classical bound is valid only to the left of ε = 1", width=4.6)
-    d.p(f"The classical one-shot Gaussian bound is valid for ε < 1, which needs σ > {_dp['sigma_needed_for_epsilon_below_1']:.2f}. At σ = 4.85 the model has perplexity 198 and accuracy 3.4 %. At the default σ = 3, the "
-        f"reported ε = {_dp['default_epsilon']:.4f} lies outside the range for which that bound is proved. There is no point on the curve that is both inside the proven range and useful.")
+        "are therefore mutually exclusive in this configuration: the noise that makes the leakage invisible also makes the removal invisible."))
+    if not rep:
+        d.figure(CHARTS / "c03_privacy_utility.png", "Reported ε against perplexity: the classical bound is valid only to the left of ε = 1", width=4.6)
+    d.p((f"The classical bound needs σ > {_dp['sigma_needed_for_epsilon_below_1']:.2f}; at σ = 4.85 perplexity is 198 and accuracy 3.4 %, and the default ε = {_dp['default_epsilon']:.4f} lies outside the proven range: at five clients no point is both proven and useful.") if rep else (f"The classical one-shot Gaussian bound is valid for ε < 1, which needs σ > {_dp['sigma_needed_for_epsilon_below_1']:.2f}. At σ = 4.85 the model has perplexity 198 and accuracy 3.4 %. At the default σ = 3, the "
+        f"reported ε = {_dp['default_epsilon']:.4f} lies outside the range for which that bound is proved. There is no point on the curve that is both inside the proven range and useful."))
     d.h3("What unlearning removes when there is no noise")
     nf = _nf
     rows = [[r["client_id"].replace("client_", "").title(), f"{r['member_nll_before']:.3f} → {r['member_nll_after']:.3f}", f"{r['auc_before']:.2f} → {r['auc_after']:.2f}", f"{r['retention_percent']:.2f}"] for r in nf["rows"]]
     d.table([["Client", "Member NLL (before → after)", "Membership AUC (before → after)", "Retention %"]] + rows, "Removal with σ = 1e-6 (essentially no noise)",
             widths=[0.22, 0.30, 0.32, 0.16], font=9.5, align=["l", "c", "c", "c"])
-    d.figure(CHARTS / "c06_noise_free_auc.png", "Membership AUC before and after removal with almost no noise", width=4.5)
-    d.p(f"To check that removal itself works, the noise was effectively switched off. The attack then separates a client's records from non-members almost perfectly (mean AUC {nf['mean_auc_before']:.3f}), and "
+    if not rep:
+        d.figure(CHARTS / "c06_noise_free_auc.png", "Membership AUC before and after removal with almost no noise", width=4.5)
+    d.p((f"With the noise effectively off, the attack separates members almost perfectly (mean AUC {nf['mean_auc_before']:.3f}) and subtraction brings it to {nf['mean_auc_after']:.3f}; the member loss rises from {nf['mean_member_nll_before']:.3f} to {nf['mean_member_nll_after']:.3f}. This is the evidence that removal works, which the default noise hides.") if rep else (f"To check that removal itself works, the noise was effectively switched off. The attack then separates a client's records from non-members almost perfectly (mean AUC {nf['mean_auc_before']:.3f}), and "
         f"after subtraction it falls to {nf['mean_auc_after']:.3f}, close to chance; the mean per-character loss on the removed client's own sentences rises from {nf['mean_member_nll_before']:.3f} to "
         f"{nf['mean_member_nll_after']:.3f}. Individual AUCs after removal range from 0.20 to 0.88 because the attack uses only ten sentences. This is the evidence that subtracting the stored update really removes "
-        "the client's statistical footprint from the model, and it is the experiment that the default configuration cannot provide.")
+        "the client's statistical footprint from the model, and it is the experiment that the default configuration cannot provide."))
     d.h3("An independent check: comparison with retraining on fresh noise")
-    d.p("The shipped certificate compares the unlearned model with a \"reference\" built from the retained clients' stored updates *and the same stored noise*; the two sides share every input, so their distance "
+    d.p(("The shipped certificate compares the unlearned model with a reference that shares the stored noise and updates, so its distance is zero by construction. The experiment `gold_retrain` compares it with models retrained on the retained clients with independent noise (200 pairs per σ), with two independent retrains as the yardstick.") if rep else ("The shipped certificate compares the unlearned model with a \"reference\" built from the retained clients' stored updates *and the same stored noise*; the two sides share every input, so their distance "
         "is zero up to rounding by construction. A real retraining would draw new noise. The experiment `gold_retrain` therefore compares each unlearned model with models retrained on the retained clients with "
-        "independent noise (200 pairs for each σ), and compares two independent retrainings with each other as the yardstick for how far two honest runs differ.")
+        "independent noise (200 pairs for each σ), and compares two independent retrainings with each other as the yardstick for how far two honest runs differ."))
     rows = []
     for r in _gold["results"]:
         rows.append([f"{r['noise_multiplier']:g}", f"{r['l2_unlearned_vs_fresh_retrain']['mean']:.1f} ± {r['l2_unlearned_vs_fresh_retrain']['sd']:.1f}",
@@ -231,24 +345,30 @@ def sec_engine_results(d):
                      f"{pc(r['accuracy_unlearned']['mean'], 2)} / {pc(r['accuracy_fresh_retrain']['mean'], 2)}"])
     d.table([["σ", "L2: unlearned vs fresh retrain", "L2: fresh retrain vs fresh retrain", "AUC (unlearned / retrain)", "Perplexity", "Accuracy"]] + rows,
             "Unlearned model against retraining with independent noise (200 pairs per σ)", widths=[0.07, 0.21, 0.21, 0.19, 0.16, 0.16], font=8.5, align=["c"] * 6)
-    d.figure(CHARTS / "c05_gold_retrain.png", "Distance between the unlearned model and a fresh retrain, compared with the distance between two fresh retrains", width=5.0)
+    if not rep:
+        d.figure(CHARTS / "c05_gold_retrain.png", "Distance between the unlearned model and a fresh retrain, compared with the distance between two fresh retrains", width=5.0)
     g3, g05 = _gold["results"]
-    d.p(f"At σ = 3 the unlearned model is {g3['l2_unlearned_vs_fresh_retrain']['mean']:.1f} away from a fresh retrain and two fresh retrains are {g3['l2_fresh_retrain_vs_fresh_retrain']['mean']:.1f} apart; at σ = 0.5 the figures are "
+    d.p((f"The unlearned model is as far from a fresh retrain as two retrains are from each other ({g3['l2_unlearned_vs_fresh_retrain']['mean']:.1f} against {g3['l2_fresh_retrain_vs_fresh_retrain']['mean']:.1f} at σ = 3): the distance is the injected noise, and perplexity, accuracy and AUC agree within it.") if rep else (f"At σ = 3 the unlearned model is {g3['l2_unlearned_vs_fresh_retrain']['mean']:.1f} away from a fresh retrain and two fresh retrains are {g3['l2_fresh_retrain_vs_fresh_retrain']['mean']:.1f} apart; at σ = 0.5 the figures are "
         f"{g05['l2_unlearned_vs_fresh_retrain']['mean']:.1f} and {g05['l2_fresh_retrain_vs_fresh_retrain']['mean']:.1f}. The unlearned model is therefore exactly as far from a retrained model as retrained models are from each other: "
         "the distance is the injected noise, and the unlearned model behaves like one more retrained model. Perplexity and accuracy agree to within the noise (167 against 153 at σ = 3, 46.0 against 44.6 at σ = 0.5), "
         "and the membership AUC of the unlearned model is, if anything, closer to chance than that of the retrained model (0.481 against 0.552 at σ = 3). This is the evidence that the unlearned model is "
-        "distributed like a retrained one, which the 1e-14 reference distance does not demonstrate on its own.")
-    d.h3("Sequential removal")
-    rows = []
-    for st in _seq["steps"]:
-        rows.append([str(st["step"]), st.get("removed", "-").replace("client_", "").title() if st.get("removed") else "-", str(st["active_clients"]), f"{st['perplexity']:.1f}", pc(st["next_character_accuracy"], 2),
-                     f"{st['retention_percent']:.2f}" if "retention_percent" in st else "-", st.get("status", "-").title() if st.get("status") else "-"])
-    d.table([["Step", "Removed", "Active clients", "Perplexity", "Accuracy", "Retention %", "Status"]] + rows, "Removing four of the five clients in turn (seed 2026)",
-            widths=[0.08, 0.17, 0.15, 0.15, 0.15, 0.16, 0.14], font=9.5, align=["c"] * 7)
-    d.figure(CHARTS / "c07_sequential_removal.png", "Perplexity and accuracy as clients are removed one after another", width=5.2)
-    d.p(f"All four removals are CERTIFIED and the ledger verifies afterwards (\"{_seq['audit_detail']}\"). Perplexity rises from {_seq['steps'][0]['perplexity']:.0f} to {_seq['steps'][-1]['perplexity']:.0f} as the five clients are reduced to one: "
-        "the noise vector is unchanged while the aggregate is divided by a smaller client count, so the relative weight of the noise grows. Removing the fifth client is refused with \"At least one client must remain in the model\". "
-        "Retention values remain above 93 % at every step because each is measured against the previous model, which is already poor.")
+        "distributed like a retrained one, which the 1e-14 reference distance does not demonstrate on its own."))
+    if not rep:
+        d.h3("Sequential removal")
+        rows = []
+        for st in _seq["steps"]:
+            rows.append([str(st["step"]), st.get("removed", "-").replace("client_", "").title() if st.get("removed") else "-", str(st["active_clients"]), f"{st['perplexity']:.1f}", pc(st["next_character_accuracy"], 2),
+                         f"{st['retention_percent']:.2f}" if "retention_percent" in st else "-", st.get("status", "-").title() if st.get("status") else "-"])
+        d.table([["Step", "Removed", "Active clients", "Perplexity", "Accuracy", "Retention %", "Status"]] + rows, "Removing four of the five clients in turn (seed 2026)",
+                widths=[0.08, 0.17, 0.15, 0.15, 0.15, 0.16, 0.14], font=9.5, align=["c"] * 7)
+        if not rep:
+            d.figure(CHARTS / "c07_sequential_removal.png", "Perplexity and accuracy as clients are removed one after another", width=5.2)
+        d.p(f"All four removals are CERTIFIED and the ledger verifies afterwards (\"{_seq['audit_detail']}\"). Perplexity rises from {_seq['steps'][0]['perplexity']:.0f} to {_seq['steps'][-1]['perplexity']:.0f} as the five clients are reduced to one: "
+            "the noise vector is unchanged while the aggregate is divided by a smaller client count, so the relative weight of the noise grows. Removing the fifth client is refused with \"At least one client must remain in the model\". "
+            "Retention values remain above 93 % at every step because each is measured against the previous model, which is already poor.")
+    else:
+        d.p("Removing four of the five clients in turn (seed 2026) kept every request CERTIFIED and the ledger valid; perplexity rose from 130 to 303 because the unchanged noise is divided by a smaller client count, and the fifth removal is refused (\"At least one client must remain in the model\").")
+    _studies_synthetic_neural(d)
 
 
 # ----------------------------------------------------------------------------------------------------------------- product results
@@ -277,8 +397,7 @@ def sec_product_results(d):
     d.p("Every training and every unlearning event becomes one line of `data/audit_log.jsonl`. A record keeps its event fields and adds `sequence`, `previous_hash` and `record_hash`, where the hash is the SHA-256 of "
         "the predecessor's hash, a vertical bar and the canonical (sorted, compact) JSON of the record. The first record's predecessor is 64 zeros. The certificate's `audit_record_hash` equals the hash of its own ledger record, "
         "which is how a certificate is tied to the ledger: in the capture session certificate CERT-C5427F948A72 carries 208f652b947ede28…, the hash shown in row 3 of the ledger screen.")
-    d.p("The API returned the expected status codes for all 14 smoke checks and for 18 of the 20 edge-case probes (Chapter 7); the two exceptions are described there. Typical latencies on the local loop-back were 36 ms for training and 58 ms for a complete unlearning request, "
-        "and a certificate is available for download as JSON with the audit verdict attached.")
+    d.p("The API returned the expected status codes for all 14 smoke checks and for 18 of the 20 edge-case probes (Chapter 7). It kept a correct ledger under 32 simultaneous removals and 16 simultaneous trainings, and 20 scripted synthetic-user journeys passed every step. Typical latencies on the local loop-back were 36 ms for training and 58 ms for a complete unlearning request, and a certificate is available for download as JSON with the audit verdict attached.")
 
 
 # ----------------------------------------------------------------------------------------------------------------- comparison
@@ -288,17 +407,15 @@ def sec_comparison(d):
         "sign language recognition. Its subject is unrelated to federated unlearning, it reports no unlearning, privacy or language-model measurement, and this project adopts only its *review method*: a taxonomy of approaches, "
         "a comparison of strengths and limitations and the identification of open gaps. **No numerical comparison with [1] is possible, and none is made.**")
     d.p("The technically closest works are [2] (the paper named in the project's base-paper record as the 2026 base paper), [3] and [4]. They were read from the PDFs kept in the project's archive; the table "
-        "lists what they evaluate. ForgetSafe's numbers are **not comparable** with theirs: those works train real neural networks on public benchmarks, while ForgetSafe measures a 1,089-parameter bigram model on 25 hand-written sentences.")
+        "lists what they evaluate. ForgetSafe's numbers are **not comparable** with theirs: those works train real neural networks on public benchmarks, while ForgetSafe measures a 1,089-parameter bigram model on 25 hand-written sentences, synthetic corpora with up to 4,000 clients, and a 137,151-parameter GRU with LoRA-style adapters on synthetic text.")
     d.table([["Work", "Setting and data", "Method", "What it reports", "Relation to ForgetSafe"],
              ["[1] Khan et al. (IEEE Access, 2025)", "Review of continuous sign language recognition", "Taxonomy of spatial, temporal and alignment approaches", "Survey of studies, datasets, challenges and gaps", "Review method only; subject unrelated; no results to compare"],
              ["[2] Wei et al. (KDD 2026)", "Federated unlearning on CIFAR-10, CIFAR-100 and EMNIST with ResNet-18, ResNet-34 and VGG-9; six baselines", "FedMemPrune: pruning of parameters that carry memorised information, guided by a grouped memorisation metric", "Abstract: closely matches retraining-based baselines while eliminating memorisation more effectively than existing methods", "Same goal (client-level removal in FL); ForgetSafe subtracts a stored update instead of pruning, and has no image or example-level evaluation"],
              ["[3] Zhang et al., Oblivionis (arXiv, 2025)", "Federated LLM fine-tuning and unlearning with Llama-2-7B and Llama-3.x models on the TOFU and MUSE benchmarks", "Framework combining 6 federated-learning and 5 unlearning algorithms", "Forget quality and model utility across algorithm pairs; motivated by GDPR erasure", "Same problem at LLM scale; ForgetSafe is a bigram stand-in without any LLM"],
              ["[4] Jiang et al., FedORA (arXiv, 2025)", "Vertical federated learning on Income (48,842 samples), MedMNIST, CIFAR-10, CIFAR-100 and Tiny-ImageNet", "Primal-dual optimisation with a theoretical bound to training from scratch", "Unlearning effectiveness comparable to retraining at lower computation and communication", "Provides a formal bound where ForgetSafe provides an identity check; different FL setting (vertical)"]],
             "What the closest works evaluate, and why the numbers are not comparable", widths=[0.15, 0.22, 0.21, 0.21, 0.21], font=8.5)
-    d.p("Three qualitative observations follow. First, [2] and [4] both state their guarantee or their evidence against *retraining*, and ForgetSafe's fresh-noise experiment adopts the same yardstick; what the other works "
-        "have and ForgetSafe lacks is a benchmark that exercises real models. Second, [3] shows that the federated-LLM setting needs forget-quality and utility metrics on real text; the bigram perplexity here is the crudest "
-        "member of that family. Third, what ForgetSafe adds is not a stronger result but an end-to-end, inspectable workflow in which the guarantee, the attack, the utility check and the audit record are produced together "
-        "for every request, with the weaknesses of each step measured and reported.")
+    rep = bool(getattr(d, "report", False))
+    d.p(("Three qualitative observations follow. First, [2] and [4] state their evidence against *retraining*, and ForgetSafe adopts that yardstick on all three of its models (L2 875 against 881, 645 against 650, 31.8 against 31.8); what those works have and it lacks is a benchmark with real pretrained models. Second, [3] needs forget-quality and utility metrics on real text, of which bigram and GRU perplexity are the crudest. Third, ForgetSafe adds an inspectable end-to-end workflow with measured weaknesses, the federation size at which ε < 1 and a useful model coexist (about 1,000 clients) and the cost of removal against retraining (24 microseconds against 5.9 s for adapters).") if rep else ("Three qualitative observations follow. First, [2] and [4] state their guarantee or their evidence against *retraining*, and ForgetSafe adopts the same yardstick on all three of its models (fresh-noise retraining: 875 against 881, 645 against 650 and 31.8 against 31.8 in L2 distance, each equal to the distance between two retrains); what those works have and ForgetSafe lacks is a benchmark with real pretrained models. Second, [3] shows that the federated-LLM setting needs forget-quality and utility metrics on real text; the perplexities here, bigram and GRU, are the crudest members of that family, but the GRU study shows the method working on adapter parameters of the kind [3] uses. Third, what ForgetSafe adds is an end-to-end, inspectable workflow in which the guarantee, the attack, the utility check and the audit record are produced together for every request, with the weaknesses of each step measured and reported, and two quantitative results the other works do not give: the federation size at which ε < 1 and a useful model coexist (about 1,000 clients) and the cost of removal against retraining (24 microseconds against 5.9 s for adapters)."))
 
 
 # ----------------------------------------------------------------------------------------------------------------- samples
@@ -332,48 +449,50 @@ def sec_samples(d):
 def sec_success_failure(d):
     d.h2("Success and Failure Analysis")
     d.h3("What worked")
+    sp = _sp["classification_counts"]
     d.table([["Success", "Evidence"],
-             ["The unlearning workflow is complete and repeatable", "train → request → subtract → verify → certificate → ledger for every client; 250/250 certified over 50 seeds; 5 unit tests and 14 smoke checks pass"],
-             ["Removal is real when there is something to remove", "noise-free mean AUC 0.992 → 0.544; member loss 2.421 → 2.619 (Section on model and verification results)"],
-             ["The unlearned model behaves like a retrained one", "L2 distance to a fresh retrain 875.3 against 881.4 between two fresh retrains (σ = 3); 145.9 against 146.9 (σ = 0.5)"],
-             ["Guards protect the model", "untrained, unknown-client, repeat and last-client requests are all refused with a JSON error"],
-             ["The ledger catches ordinary tampering", "edits, status flips, deletions and re-orderings are detected, with the position of the first bad record"],
-             ["The interface is usable end to end", "scripted session without console errors; light, dark and 390-px layouts; the original interface still works"]],
-            "Cases in which the system succeeds", widths=[0.34, 0.66], font=9.5)
-    d.h3("What did not work, or does not show what it claims")
-    d.table([["Failure or weak point", "Evidence", "Consequence"],
-             ["The default model is noise-dominated", "perplexity 142 ± 28 against 32 for a uniform model; accuracy 3.7 %; noise norm about 100 times a client's signal", "retained \"utility\" of 97 % is measured against a model that is already almost useless"],
-             ["Nothing is visible to remove at the default setting", "membership AUC 0.524 before and 0.495 after (chance)", "the attack neither supports nor refutes forgetting at σ = 3"],
-             ["The certificate cannot fail", "reference distance 1e-14 on 250/250 requests; the reference shares the stored noise and updates", "CERTIFIED states that the arithmetic was done correctly, not that a retrained model would look the same"],
-             ["ε is outside its proven range and is not updated", "ε = 1.6149 > 1 at σ = 3; the same noise is re-used after removal; no accountant", "the privacy figure printed on the certificate is a training-time, one-release number"],
-             ["No setting is both private and useful", "ε < 1 needs σ > 4.85 (perplexity 198, accuracy 3.4 %); useful models need σ <= 0.1 (ε >= 48)", "the trade-off is inherent to the Gaussian mechanism at this tiny dimension and corpus"],
+             ["The unlearning workflow is complete and repeatable", "train → request → subtract → verify → certificate → ledger; 250/250 certified over 50 seeds; 5 unit tests, 14 smoke checks and 20/20 scripted acceptance journeys pass"],
+             ["Removal is real when there is something to remove", "bigram, no noise: AUC 0.992 → 0.544; synthetic corpus, domain level 0.474 → 0.220; neural adapters, client level 0.78 → 0.53 (a fresh retrain gives 0.53)"],
+             ["The unlearned model behaves like a retrained one", "L2 to a fresh retrain 875 against 881 between two fresh retrains (bigram, σ = 3); 645 against 650 (synthetic corpus, σ = 0.1); 31.8 against 31.8 (neural, σ = 0.1)"],
+             ["ε < 1 and a useful model coexist in a large federation", "σ = 4.85 (ε = 0.999) and perplexity within 1.17 times noise-free at 1,000 synthetic clients; five removals CERTIFIED, retention ≥ 99.998 %"],
+             ["Removal is cheap where retraining is not", "neural adapters: 24 µs to subtract against 5.9 s to retrain seven adapters; bigram proxy: 6.8 times faster than retraining at 500 clients"],
+             ["Concurrency is correct", "32 simultaneous removals of one client: one 200, 31 × 400; 16 simultaneous trainings: 16 valid ledger records; 2,000-request soak without errors"],
+             ["The guards and the interface hold up", "untrained, unknown, repeat and last-client requests refused with JSON errors; 20 journeys × 7 steps, 49 certificates, 0 console errors; light, dark and 390-px layouts"]],
+            "Cases in which the system succeeds", widths=[0.30, 0.70], font=9)
+    d.h3("Weak points and defects, as measured")
+    d.table([["Weak point or defect", "Evidence", "Consequence"],
+             ["The default model is noise-dominated", "perplexity 142 ± 28 against 32 for a uniform model; accuracy 3.7 %; noise norm about 100 times a client's signal", "retained \"utility\" of 97 % is measured against an almost useless model"],
+             ["Nothing is visible to remove at the default setting", "membership AUC 0.524 before and 0.495 after (chance); sentence-level AUC 0.50 even without noise", "at five clients and σ = 3 the attack neither supports nor refutes forgetting"],
+             ["The certificate cannot fail", "reference distance 1e-14 on 250/250 requests; the reference shares the stored noise and updates", "CERTIFIED states that the arithmetic was done correctly; the fresh-noise comparison supplies the independent evidence"],
+             ["ε is outside its proven range, noise is reused, no accountant", "ε = 1.6149 > 1 at σ = 3; with the noise reused, n·θ − (n−1)·θ′ recovers the removed update to 1.3e-13", "the certificate's ε is a one-release figure; the released models must not both be published"],
+             ["Small federations are not both private and useful", "five clients: ε < 1 gives perplexity 198 and accuracy 3.4 %; eight neural clients: destroyed from σ = 0.3, 59 % retention at σ = 0.1", "the demonstration size is the cause; 1,000 clients are needed (previous section)"],
              ["The explorer cannot show the effect", "the 44-character samples before and after a removal are identical", "the screen is illustrative only"],
-             ["The ledger is not tamper-proof", "tail truncation, re-hash forgery and appended forged records are not detected", "the ledger needs signatures and an external anchor to support a regulator"],
-             ["Unlearning is not faster on the demo", "45.3 ms against 13.4 ms for retraining the proxy; break-even near 100 clients", "the efficiency claim holds only at scale, and only for the proxy"],
-             ["API rough edges", "oversized body aborts the connection; PUT returns an HTML 501 page; no authentication", "acceptable for a local demonstrator, not for a service"]],
-            "Cases in which the system fails or the evidence is weak", widths=[0.26, 0.40, 0.34], font=8.5)
+             ["The ledger is not tamper-proof and can break the UI", "tail truncation, re-hash forgery, a forged appended record and an emptied file all verify; one garbage line makes `/api/state` return 500", "signatures, an external anchor and tolerant reading are needed (Chapter 10)"],
+             ["Defects in the HTTP layer", f"{sp['defect']} defects in {_sp['n_probes']} probes, six of them in the HTTP layer: negative and short Content-Length block a thread, a cross-site POST removes a client, Host is not checked, a 64-connection burst has 30 refused, no authentication; the other two are the ledger-file defects above", "acceptable for a local demonstrator, not for a service (Chapter 7 lists the fixes)"],
+             ["Unlearning is not faster on the small demo", "45.3 ms against 13.4 ms for retraining the proxy; break-even near 100 clients", "the efficiency claim holds at scale (500 clients, neural adapters)"]],
+            "Weak points and defects found", widths=[0.26, 0.40, 0.34], font=8.5)
 
 
 def sec_results_limits(d):
-    d.h2("Limitations of the Results")
+    d.h2("Boundaries of the Results")
+    d.p("Four boundaries define what the results of this chapter cover; each is stated with the evidence that sets it.")
     d.bullets([
-        "**A proxy, not a language model.** The results describe a character-bigram model with 1,089 parameters trained on 25 sentences. They do not transfer to LoRA adapters or to a transformer, and no LLM was fine-tuned.",
-        "**Synthetic, tiny corpus.** Five clients with five hand-written sentences each; five public evaluation and five non-member sentences. The membership AUC has a resolution of 0.04 and a large spread (standard deviation 0.22 over 250 requests).",
-        "**Utility metrics are weak.** Perplexity and next-character accuracy are computed on five sentences; accuracy moves in steps of 0.36 percentage points (one character in 275); retention is a ratio of two small numbers.",
-        "**Verification partly circular.** The shipped reference check shares noise and updates with the unlearned model; the independent evidence comes from the added fresh-noise retraining experiment.",
-        "**One machine, one run of timing.** Latency and scaling figures were measured once on one machine; medians are reported, but run-to-run variation was not studied.",
-        "**No comparison with other unlearning algorithms.** Gradient ascent, SISA-style sharding, pruning [2] and primal-dual methods [4] were not implemented, so no performance ranking is possible.",
-        "**Differential privacy is single-release.** The bound is the classical one-shot Gaussian one, used outside its proven ε < 1 range at the default; no composition across sessions, releases or removals is tracked."])
+        "**Scale.** The product is a 1,089-parameter bigram model; the neural adapter study uses a 137,151-parameter GRU with 8 synthetic clients and one aggregation round, and the synthetic-corpus study up to 4,000 synthetic clients. No pretrained billion-parameter language model is used, and no claim is made about one.",
+        "**Data.** The product's 25 sentences and every other corpus are synthetic (seeded generators); membership AUC has a resolution of 0.04 at five sentences and 5e-5 at 200, with a standard deviation of 0.22 over the 250 default requests.",
+        "**Acceptance.** Interface acceptance is established by 20 scripted synthetic-user journeys, not by human participants.",
+        "**Machine and baselines.** All timings are medians from one CPU workstation (i5-12500, 15.7 GB, no GPU); the only comparison algorithm is retraining. Gradient ascent, SISA sharding, pruning [2] and primal-dual methods [4] are compared with in the literature table, not implemented."])
 
 
 def sec_objectives(d):
     d.h2("Objectives Against Outcomes")
-    d.p("The six objectives come from the project's objectives and problem statement. The verdicts below use the evidence of this chapter and of Chapter 7.")
+    d.p("The six objectives come from the project's objectives and problem statement. The verdicts use the evidence of this chapter and of Chapter 7.")
     d.table([["No.", "Objective", "Outcome", "Verdict"],
-             ["1", "Set up federated fine-tuning of an LLM across multiple clients", "Federated aggregation of clipped, noised updates across 5 simulated clients on a bigram proxy; no LLM is fine-tuned", "Partly met"],
-             ["2", "Remove a client's influence by parameter-level unlearning without full retraining", "Exact subtraction of the tracked clipped update; 250/250 requests completed; noise-free AUC 0.992 → 0.544; behaves like a fresh retrain", "Met on the proxy"],
-             ["3", "Certify forgetting with differential-privacy based guarantees", "ε and δ reported; ε = 1.6149 outside the classical Gaussian range (needs ε < 1); noise reused; no accountant; certificate is an algebraic check", "Partly met"],
-             ["4", "Verify with membership-inference tests and comparison with retraining", "Attack and reference check run on every request; attack at chance at default noise (AUC 0.52); fresh-noise retraining comparison added (L2 875 vs 881)", "Met as implemented, with caveats"],
-             ["5", "Preserve model utility on the remaining data", "Mean retention 97.1 % ± 3.5 over 250 requests, but the baseline model is near-useless at σ = 3; at σ <= 0.1 retention is 96.5 % to 99.6 % with a useful model", "Met by the metric, weak in substance"],
-             ["6", "Provide auditable compliance records for each request", "Every training and removal is a hash-chained ledger record linked to its certificate; edits, deletions and swaps detected; truncation and re-hash forgery not", "Met with limits"]],
-            "Objectives measured against outcomes", widths=[0.06, 0.28, 0.46, 0.20], font=9)
+             ["1", "Set up federated fine-tuning of an LLM across multiple clients", "Federated aggregation of clipped, noised updates across 5 simulated clients on the bigram proxy, and across 8 synthetic clients fine-tuning LoRA-style adapters of a 137,151-parameter GRU; pretrained billion-parameter LLMs are outside the project's scope and hardware", "Met at small scale"],
+             ["2", "Remove a client's influence by parameter-level unlearning without full retraining", "Exact subtraction of the tracked update in both models; 250/250 bigram requests; neural removal 24 µs against 5.9 s retraining; behaves like a fresh retrain", "Met"],
+             ["3", "Certify forgetting with differential-privacy based guarantees", "ε and δ reported with the classical formula; outside its range at σ = 3 (ε = 1.6149); ε < 1 and a useful model coexist from about 1,000 clients (ε = 0.999); noise reused, no accountant", "Met as reported, with measured conditions"],
+             ["4", "Verify with membership-inference tests and comparison with retraining", "Attack and reference check on every request; fresh-noise retraining comparison agrees on three models (L2 875 vs 881; 645 vs 650; 31.8 vs 31.8); the attack is informative where leakage exists (noise-free, small σ, domain level)", "Met"],
+             ["5", "Preserve model utility on the remaining data", "Retention 97.1 % ± 3.5 over 250 bigram requests; neural 99.9 % at σ ≤ 0.01 and 98.5 % at σ = 0.03; 59 % at σ = 0.1 would be REVIEW_REQUIRED", "Met, with the measured noise limits"],
+             ["6", "Provide auditable compliance records for each request", "Every training and removal is a hash-chained record linked to its certificate; edits, deletions and swaps detected; truncation, re-hash forgery and an emptied file are not (findings with fixes in Chapter 10)", "Met with measured defects"]],
+            "Objectives measured against outcomes", widths=[0.06, 0.26, 0.50, 0.18], font=9)
+
+

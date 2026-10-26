@@ -223,3 +223,27 @@ def c12():
 if __name__ == "__main__":
     for f in (c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12):
         f()
+
+
+def t01():
+    sc = metrics("load_test")["scenarios"]
+    fig, ax = plt.subplots(1, 2, figsize=(8.6, 3.3))
+    cols = [INDIGO, MINT, AMBER, ROSE]
+    for (name, v), c in zip(sc.items(), cols):
+        lv = v["levels"]
+        x = [l["concurrency"] for l in lv]
+        ax[0].plot(x, [l["requests_per_s"] for l in lv], marker="o", ms=4, lw=1.4, color=c, label=name)
+        ax[1].plot(x, [l["p95_ms"] for l in lv], marker="o", ms=4, lw=1.4, color=c, label=name)
+    for a_ in ax:
+        a_.set_xscale("log", base=2); a_.set_xlabel("concurrent clients")
+    ax[0].set_yscale("log"); ax[1].set_yscale("log")
+    ax[0].set_ylabel("requests per second"); ax[1].set_ylabel("95th-percentile latency (ms)")
+    ax[0].legend(frameon=False, fontsize=7.5)
+    ax[0].set_title("Throughput vs concurrency", fontsize=9.5, fontweight="bold")
+    ax[1].set_title("Tail latency vs concurrency", fontsize=9.5, fontweight="bold")
+    fig.tight_layout()
+    save(fig, "t01_load.png")
+
+
+if __name__ == "__main__":
+    t01()

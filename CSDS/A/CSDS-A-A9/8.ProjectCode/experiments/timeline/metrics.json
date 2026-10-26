@@ -1,0 +1,287 @@
+{
+  "phases": [
+    {
+      "date": "2026-09-16 to 2026-09-19",
+      "phase": "Batch documents prepared",
+      "evidence": "file modification times of 1.-6. batch documents (2026-09-19) and of the base-paper PDFs; not in git history",
+      "source": "filesystem mtimes"
+    },
+    {
+      "date": "2026-09-21",
+      "phase": "Repository set-up: initial project files, batch folders and master prompts",
+      "evidence": "commit 83bbd9b8 (20 files in the batch folder); commits 57ebf6ff, c527e811, d04fd80b, 9a8a1f80 the same day",
+      "source": "git"
+    },
+    {
+      "date": "2026-09-25",
+      "phase": "Backend implementation: first commit that contains certified_unlearning/, tests/, README and PROJECT_REPORT",
+      "evidence": "commit 5ad8648b: 7 backend files, 1217 lines; file modification times of the backend files are also 2026-09-25",
+      "source": "git + mtimes"
+    },
+    {
+      "date": "2026-09-26",
+      "phase": "Prompt files restored",
+      "evidence": "commit 6a99e011 (3 files)",
+      "source": "git"
+    },
+    {
+      "date": "2026-10-15",
+      "phase": "React front end built over the unchanged API",
+      "evidence": "commit 1b862143: 39 files, 5005 lines in frontend/; docs/FRONTEND_PLAN.md and scripts/smoke_test.py added in the same commit",
+      "source": "git"
+    },
+    {
+      "date": "2026-10-26",
+      "phase": "Measurements, screenshots, diagrams and the eleven submission documents",
+      "evidence": "commit 753ac74f: 94 files under 8.ProjectCode and the root documents",
+      "source": "git"
+    }
+  ],
+  "undatable": [
+    "Design and implementation steps before the 2026-09-25 commit (the backend has no history of its own; git shows it arriving in one commit)",
+    "Dates of guide meetings, reviews and test runs (not recorded in the repository)",
+    "The calendar of the report writing other than the 2026-10-26 commit"
+  ],
+  "source": "git log of the shared repository restricted to this batch folder, plus file modification times (filesystem facts)",
+  "commits_by_path": {
+    "batch folder": [
+      {
+        "commit": "9a8a1f80",
+        "date": "2026-09-21",
+        "message": "Add fast prompts for CSDS",
+        "files_in_path": 1,
+        "lines_added": 193,
+        "lines_deleted": 0
+      },
+      {
+        "commit": "d04fd80b",
+        "date": "2026-09-21",
+        "message": "Prepare prompts for parallel runs",
+        "files_in_path": 1,
+        "lines_added": 10,
+        "lines_deleted": 3
+      },
+      {
+        "commit": "57ebf6ff",
+        "date": "2026-09-21",
+        "message": "Add CSDS-A master prompts",
+        "files_in_path": 1,
+        "lines_added": 294,
+        "lines_deleted": 0
+      },
+      {
+        "commit": "c527e811",
+        "date": "2026-09-21",
+        "message": "Fill empty batch folders",
+        "files_in_path": 3,
+        "lines_added": 0,
+        "lines_deleted": 0
+      },
+      {
+        "commit": "83bbd9b8",
+        "date": "2026-09-21",
+        "message": "Initial project files",
+        "files_in_path": 20,
+        "lines_added": 38,
+        "lines_deleted": 0
+      },
+      {
+        "commit": "5ad8648b",
+        "date": "2026-09-25",
+        "message": "Update gitignore to include .env files and sync project repositories",
+        "files_in_path": 22,
+        "lines_added": 1577,
+        "lines_deleted": 494
+      },
+      {
+        "commit": "6a99e011",
+        "date": "2026-09-26",
+        "message": "Restore CSDS files and prompts",
+        "files_in_path": 3,
+        "lines_added": 494,
+        "lines_deleted": 0
+      },
+      {
+        "commit": "1b862143",
+        "date": "2026-10-15",
+        "message": "Rebuild frontend with kit V4",
+        "files_in_path": 45,
+        "lines_added": 5282,
+        "lines_deleted": 0
+      },
+      {
+        "commit": "753ac74f",
+        "date": "2026-10-26",
+        "message": "Add project documentation",
+        "files_in_path": 106,
+        "lines_added": 9445,
+        "lines_deleted": 0
+      }
+    ],
+    "8.ProjectCode": [
+      {
+        "commit": "9a8a1f80",
+        "date": "2026-09-21",
+        "message": "Add fast prompts for CSDS",
+        "files_in_path": 1,
+        "lines_added": 193,
+        "lines_deleted": 0
+      },
+      {
+        "commit": "d04fd80b",
+        "date": "2026-09-21",
+        "message": "Prepare prompts for parallel runs",
+        "files_in_path": 1,
+        "lines_added": 10,
+        "lines_deleted": 3
+      },
+      {
+        "commit": "57ebf6ff",
+        "date": "2026-09-21",
+        "message": "Add CSDS-A master prompts",
+        "files_in_path": 1,
+        "lines_added": 294,
+        "lines_deleted": 0
+      },
+      {
+        "commit": "c527e811",
+        "date": "2026-09-21",
+        "message": "Fill empty batch folders",
+        "files_in_path": 1,
+        "lines_added": 0,
+        "lines_deleted": 0
+      },
+      {
+        "commit": "5ad8648b",
+        "date": "2026-09-25",
+        "message": "Update gitignore to include .env files and sync project repositories",
+        "files_in_path": 22,
+        "lines_added": 1577,
+        "lines_deleted": 494
+      },
+      {
+        "commit": "6a99e011",
+        "date": "2026-09-26",
+        "message": "Restore CSDS files and prompts",
+        "files_in_path": 3,
+        "lines_added": 494,
+        "lines_deleted": 0
+      },
+      {
+        "commit": "1b862143",
+        "date": "2026-10-15",
+        "message": "Rebuild frontend with kit V4",
+        "files_in_path": 45,
+        "lines_added": 5282,
+        "lines_deleted": 0
+      },
+      {
+        "commit": "753ac74f",
+        "date": "2026-10-26",
+        "message": "Add project documentation",
+        "files_in_path": 94,
+        "lines_added": 9445,
+        "lines_deleted": 0
+      }
+    ],
+    "certified_unlearning (backend)": [
+      {
+        "commit": "5ad8648b",
+        "date": "2026-09-25",
+        "message": "Update gitignore to include .env files and sync project repositories",
+        "files_in_path": 7,
+        "lines_added": 1217,
+        "lines_deleted": 0
+      }
+    ],
+    "frontend": [
+      {
+        "commit": "1b862143",
+        "date": "2026-10-15",
+        "message": "Rebuild frontend with kit V4",
+        "files_in_path": 39,
+        "lines_added": 5005,
+        "lines_deleted": 0
+      }
+    ],
+    "docs": [
+      {
+        "commit": "1b862143",
+        "date": "2026-10-15",
+        "message": "Rebuild frontend with kit V4",
+        "files_in_path": 2,
+        "lines_added": 119,
+        "lines_deleted": 0
+      },
+      {
+        "commit": "753ac74f",
+        "date": "2026-10-26",
+        "message": "Add project documentation",
+        "files_in_path": 49,
+        "lines_added": 330,
+        "lines_deleted": 0
+      }
+    ],
+    "root documents": [
+      {
+        "commit": "83bbd9b8",
+        "date": "2026-09-21",
+        "message": "Initial project files",
+        "files_in_path": 16,
+        "lines_added": 0,
+        "lines_deleted": 0
+      },
+      {
+        "commit": "753ac74f",
+        "date": "2026-10-26",
+        "message": "Add project documentation",
+        "files_in_path": 11,
+        "lines_added": 0,
+        "lines_deleted": 0
+      }
+    ]
+  },
+  "first_commit_that_added_file": {
+    "8.ProjectCode/certified_unlearning/engine.py": "2026-09-25|5ad8648b|Update gitignore to include .env files and sync project repositories",
+    "8.ProjectCode/certified_unlearning/web.py": "2026-09-25|5ad8648b|Update gitignore to include .env files and sync project repositories",
+    "8.ProjectCode/tests/test_end_to_end.py": "2026-09-25|5ad8648b|Update gitignore to include .env files and sync project repositories",
+    "8.ProjectCode/scripts/smoke_test.py": "2026-10-15|1b862143|Rebuild frontend with kit V4",
+    "8.ProjectCode/frontend/src/App.jsx": "2026-10-15|1b862143|Rebuild frontend with kit V4",
+    "8.ProjectCode/docs/FRONTEND_PLAN.md": "2026-10-15|1b862143|Rebuild frontend with kit V4",
+    "1.A9_BATCH_DETAILS.docx": "2026-09-21|83bbd9b8|Initial project files",
+    "2.ABSTRACT.docx": "2026-09-21|83bbd9b8|Initial project files",
+    "7.Review_1_PPT.pptx": "2026-09-21|83bbd9b8|Initial project files",
+    "8.ProjectCode/PROJECT_REPORT.md": "2026-09-25|5ad8648b|Update gitignore to include .env files and sync project repositories",
+    "8.ProjectCode/README.md": "2026-09-25|5ad8648b|Update gitignore to include .env files and sync project repositories"
+  },
+  "file_mtimes": {
+    "1.A9_BATCH_DETAILS.docx": "2026-09-19",
+    "2.ABSTRACT.docx": "2026-09-19",
+    "3.BASE PAPER.docx": "2026-09-19",
+    "4.INTRODUCTION.docx": "2026-09-19",
+    "5.LITERATURE SURVEY.docx": "2026-09-19",
+    "6.OBJECTIVES&PROBLEM STATEMENT.docx": "2026-09-19",
+    "app.py": "2026-09-25",
+    "README.md": "2026-09-25",
+    "PROJECT_REPORT.md": "2026-09-25",
+    "8.ProjectCode/certified_unlearning/__init__.py": "2026-09-25",
+    "8.ProjectCode/certified_unlearning/audit.py": "2026-09-25",
+    "8.ProjectCode/certified_unlearning/dataset.py": "2026-09-25",
+    "8.ProjectCode/certified_unlearning/engine.py": "2026-09-25",
+    "8.ProjectCode/certified_unlearning/gui.py": "2026-09-25",
+    "8.ProjectCode/certified_unlearning/model.py": "2026-09-25",
+    "8.ProjectCode/certified_unlearning/web.py": "2026-09-25",
+    "8.ProjectCode/tests/test_end_to_end.py": "2026-09-25",
+    "Documentary/BASEPAPER_Deep_Learning_Approaches_for_Continuou": "2026-09-16",
+    "archived_base_papers/BASEPAPER_Certifying_the_Right_to_Be_Forgotten_P": "2026-08-31",
+    "archived_base_papers/BASEPAPER_Rethinking_Federated_Unlearning_via_th": "2026-08-27",
+    "archived_base_papers/REFERENCE_PAPER_Oblivionis_Learning_Unlearning_F": "2026-08-27"
+  },
+  "distinct_commit_dates": [
+    "2026-09-21",
+    "2026-09-25",
+    "2026-09-26",
+    "2026-10-15",
+    "2026-10-26"
+  ]
+}

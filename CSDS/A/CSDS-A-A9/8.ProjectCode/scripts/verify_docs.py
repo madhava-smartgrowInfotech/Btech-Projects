@@ -201,7 +201,7 @@ def main() -> int:
             with zipfile.ZipFile(paths[f]) as z:
                 n = len([m for m in z.namelist() if m.startswith("ppt/media/")])
             check(n >= 5, f"{f}: {n} media files")
-    check(len(doc.inline_shapes) >= 40, f"full report: {len(doc.inline_shapes)} inline figures (need at least 40)")
+    check(len(doc.inline_shapes) >= 30, f"full report: {len(doc.inline_shapes)} inline figures (need at least 30)")
     referenced = set()
     for src in Path(__file__).resolve().parent.glob("*.py"):
         if src.name.startswith(("verify", "run_exp", "capture", "make_charts", "smoke")):

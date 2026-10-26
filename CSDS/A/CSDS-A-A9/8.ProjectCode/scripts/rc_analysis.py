@@ -12,6 +12,22 @@ UNL_P95 = _api["POST /api/unlearn"]["p95_ms"]
 STATE_P50 = _api["GET /api/state (trained)"]["p50_ms"]
 HEALTH_P50 = _api["GET /api/health"]["p50_ms"]
 TRAIN_MS = _b["training"]["train_ms"]
+_nn = metrics("neural_adapter")
+_tl = metrics("timeline")
+_ld = metrics("load_test")
+_sp = metrics("security_probe")
+_ac = metrics("acceptance")
+NN_RUN_S = _nn["runtime_seconds"]
+NN_T = _nn["summary"]["timing"]
+NN_PARAMS = _nn["base"]["base_parameters"]
+NN_CLIENTS = _nn["config"]["n_clients"]
+SP = _sp["classification_counts"]
+_scen = _ld["scenarios"]
+_levels = sorted({x["concurrency"] for v in _scen.values() for x in v["levels"]})
+ZERO_ERR_MAX = max(c for c in _levels if all(x["errors_5xx_or_connection"] == 0 for v in _scen.values() for x in v["levels"] if x["concurrency"] <= c))
+STATE_MAX_RPS = max(x["requests_per_s"] for x in _scen["GET /api/state"]["levels"])
+RACE = _ld["races"]
+SOAK = _ld["soak"]
 
 
 def sec_feasibility_technical(d):
@@ -21,10 +37,10 @@ def sec_feasibility_technical(d):
     d.p("**Technology.** The back end uses only the Python standard library: `http.server` for the API, `dataclasses`, `hashlib`, `json`, `random` and `math` for "
         "the engine, and `tkinter` for the optional desktop interface. There is no dependency to install for the engine, the API or the tests. The front end uses "
         "React 19 with Vite 8, React Router, Recharts and a few presentation libraries, and is optional: the original single-page interface served at `/` needs no build. "
-        "All components are mature and freely available.")
+        "The neural adapter study adds PyTorch 2.14 (CPU build) and NumPy. All components are mature and freely available.")
     d.p("**Skills.** The mathematics needed (vector norms, Gaussian noise, the Gaussian mechanism, AUC) is undergraduate level and was implemented directly. The "
-        "federated-learning and unlearning concepts were learned from the surveyed papers [9], [12], [13], [17]. No GPU programming or deep-learning framework skill was required, "
-        "which is both the reason the project was feasible on a classroom computer and the reason it remains a demonstrator.")
+        "federated-learning and unlearning concepts were learned from the surveyed papers [9], [12], [13], [17]. Only the neural study uses a deep-learning framework, and no GPU programming was "
+        "needed, which is why the whole project is feasible on a classroom computer.")
     d.p(f"**Performance.** On the measurement machine, training the five-client proxy takes about {TRAIN_MS:.0f} ms inside the engine and about {TRAIN_P50:.0f} ms through the API "
         f"(median); an unlearning request takes a median of {UNL_P50:.0f} ms through the API (95th percentile {UNL_P95:.0f} ms), including the attack, the metrics and the ledger write. "
         "These times are far inside what an interactive demonstration needs. The scaling experiment (Chapter 8) shows that the cost of a request does not grow with the amount "
@@ -32,10 +48,11 @@ def sec_feasibility_technical(d):
         f"while re-running the proxy training rises from {_sc[2]['full_retrain_ms_median']:.0f} ms to {_sc[4]['full_retrain_ms_median']:.0f} ms. This applies to the proxy only.")
     if not getattr(d, "report", False):
         d.figure(CHARTS / "c08_scaling.png", "Median cost of a removal request and of retraining the proxy as the number of clients grows (5 repetitions per point)", width=4.4)
-    d.p("**Technical risks.** Two risks were identified at the start and are both borne out in the results: a real LLM could not be trained or unlearned on the available "
-        "CPU-only machine, and a formal certificate for a non-linear model is a research problem. The design isolates the model behind `CharacterLanguageModel` and "
-        "`clipped_update` so that a heavier model can be substituted, but that substitution was not attempted. The project is therefore technically feasible as a "
-        "demonstrator and not as a production system.")
+    d.p(f"**Technical risks and how they were retired.** Two risks were identified at the start: a real language model could not be trained on the available CPU-only machine, and "
+        "a formal certificate for a non-linear model is a research problem. The design isolates the model behind `CharacterLanguageModel` and `clipped_update`, and the first risk "
+        f"was retired at small scale by substituting low-rank adapters of a frozen {NN_PARAMS:,}-parameter recurrent network for {NN_CLIENTS} synthetic clients: the full experiment "
+        f"(5 seeds, a sweep of 9 noise levels, retraining baselines) ran in {NN_RUN_S:.0f} s on the workstation. The second risk remains a research question; the project reports what "
+        "its certificate establishes and what it does not. Pre-trained billion-parameter models are outside the hardware, so the project is feasible as a demonstrator and not as a production system.")
 
 
 def sec_feasibility_economic(d):
@@ -44,14 +61,15 @@ def sec_feasibility_economic(d):
         "uses measured quantities where they exist.")
     d.table([["Item", "Demonstrator (this project)", "Production extension (not built)"],
              ["Software licences", "None: Python, Node.js, React, Vite and Recharts are open source", "Same, plus any managed services chosen"],
-             ["Compute", "One CPU-only workstation (i5-12500, 15.7 GB); runs in milliseconds", "GPU compute for LLM fine-tuning and for each retraining baseline"],
+             ["Compute", f"One CPU-only workstation (i5-12500, 15.7 GB); the bigram product runs in milliseconds and the whole neural study in {NN_RUN_S:.0f} s", "GPU compute for LLM fine-tuning and for each retraining baseline"],
              ["Storage", "One tracked vector of 1,089 values per client (about 8.7 kB at 64-bit precision) and a JSONL ledger", "One adapter-sized tensor per client (per round if rounds are tracked), encrypted at rest, plus signed ledger storage"],
              ["Development effort", "Student project effort", "Engineering effort for secure aggregation, privacy accounting, signing and access control"],
              ["Operating cost per request", "Negligible (tens of milliseconds)", "Depends on the model; the aim is to be far below a full retrain"]],
             "Cost elements of the demonstrator and of a production extension", widths=[0.2, 0.4, 0.4], font=10)
-    d.p("The benefit of the approach, in a real deployment, would be the avoided cost of retraining for each deletion request and the reduced risk of being unable to show "
-        "compliance. The demonstrator does not measure either benefit at LLM scale; it measures only that the removal step itself is cheap for the proxy. The economic case is "
-        "therefore plausible but unproven, and the report does not quantify it.")
+    d.p(f"The benefit of the approach is the avoided cost of retraining for each deletion request and the reduced risk of being unable to show compliance. The avoided cost is measured on the neural "
+        f"adapters: removing a client takes {NN_T['subtract_us_median']:.0f} microseconds ({NN_T['unlearn_with_metrics_ms_median']:.0f} ms with the attack and metrics) against "
+        f"{NN_T['retrain_seven_adapters_s_median']:.1f} s for retraining the seven retained adapters, a factor of {NN_T['speedup_retrain_over_unlearn_with_metrics']:.0f} with metrics. The factor grows with the "
+        "cost of one adapter fine-tune, and it is expressed in measured time on the workstation that was already available.")
 
 
 def sec_feasibility_operational(d):
@@ -64,6 +82,8 @@ def sec_feasibility_operational(d):
         "**Installation.** `run.bat` starts the API on port 8109 and the web interface on port 5109 and installs front-end dependencies on first run; `python app.py` alone "
         "starts the original interface with no installation.",
         "**Maintenance.** The engine is under 300 lines and the model under 130; the API has nine routes; the tests run in under a second. A maintainer can read the whole back end in one sitting.",
+        f"**Behaviour under load.** Up to {ZERO_ERR_MAX} concurrent clients produced no failed request in any scenario; at 64 clients `/api/state` reached {STATE_MAX_RPS:.0f} requests per second at most and some requests failed (Chapter 7). "
+        f"The {_ac['journeys']} scripted acceptance journeys completed with a mean of {_ac['mean_duration_s']:.0f} s each.",
         "**Constraints on operation.** The system keeps one global session in memory, has no login, and loses the trained model when the server restarts (the ledger survives). It "
         "is suitable for a laboratory demonstration and not for shared or unattended operation.",
     ])
@@ -71,30 +91,27 @@ def sec_feasibility_operational(d):
 
 def sec_feasibility_schedule(d):
     d.h2("Schedule Feasibility")
-    d.p("The calendar dates of the work were not recorded in the project files, so no dates are claimed. The work followed this order, each phase building on the previous one:")
-    d.table([["Phase", "Work", "Output"],
-             ["1", "Reading the abstract, base-paper record and literature survey; fixing the objectives", "Batch documents 2 to 6"],
-             ["2", "Design of the pipeline: clipped updates, noisy aggregate, subtraction, verification and ledger", "`PROJECT_REPORT.md` design and requirement mapping"],
-             ["3", "Implementation of the engine, the model, the ledger and the sample corpus; first tests", "`certified_unlearning/` package, `tests/`"],
-             ["4", "Localhost web interface, Tkinter desktop interface, command-line demonstration", "`web.py`, `gui.py`, `app.py`"],
-             ["5", "React front end designed against the existing JSON API (no back-end change)", "`frontend/`, `docs/FRONTEND_PLAN.md`"],
-             ["6", "Measurement suite, screenshots, diagrams and the submission documents", "`scripts/`, `experiments/`, `docs/`, batch documents 7 to 19"]],
-            "Phases of the work in order", widths=[0.1, 0.55, 0.35], font=10)
-    d.p("The schedule was feasible because the scope was fixed to a model that runs in milliseconds; an LLM-based version would have added data preparation, training time "
-        "and hardware procurement that the phases above do not contain.")
+    d.p("The dates below are those recoverable from the project's git history and file modification times (`experiments/timeline/metrics.json`); each row names its evidence.")
+    rows = [["Date", "Phase", "Evidence"]]
+    for ph in _tl["phases"]:
+        rows.append([ph["date"].replace(" to ", " - "), ph["phase"], ph["evidence"].split(";")[0]])
+    d.table(rows, "Phases of the work with dates taken from git", widths=[0.17, 0.45, 0.38], font=9)
+    d.p("The backend arrives in a single commit (2026-09-25), the React front end three weeks later on top of the unchanged API, and the measurement and documentation work in the final "
+        "week. The schedule was feasible because the scope was fixed to models that run in milliseconds or minutes on one workstation; a version built on a pre-trained LLM would add data preparation, "
+        "training time and hardware procurement.")
 
 
 def sec_feasibility_summary(d):
     d.h2("Advantages and Constraints Summary")
     d.table([["Dimension", "Verdict", "Basis", "Main constraint"],
-             ["Technical", "Feasible as a demonstrator", "Standard-library back end; 5 unit tests and 14 smoke checks pass; millisecond latencies", "No real LLM, no GPU; certificate meaning limited"],
+             ["Technical", "Feasible as a demonstrator", f"Standard-library back end; 5 unit tests and 14 smoke checks pass; neural adapter study in {NN_RUN_S:.0f} s on the CPU", "Scale: pre-trained billion-parameter LLMs are outside the hardware"],
              ["Economic", "Feasible; benefit not quantified", "No licences; one workstation", "Production costs (compute, secure storage) not estimated"],
              ["Operational", "Feasible for a laboratory demonstration", "Four-step workflow, confirmations, one-command start", "No authentication, one shared session, model not persisted"],
-             ["Schedule", "Feasible at this scope", "Small code base and fast tests", "Dates not recorded; a real-LLM version would need much longer"]],
+             ["Schedule", "Feasible at this scope", "Small code base and fast tests; dated phases from git", "A pre-trained-LLM version would need much longer"]],
             "Feasibility summary", widths=[0.15, 0.2, 0.35, 0.3], font=10)
-    d.p("The advantages are low cost, transparency (every number can be reproduced by `scripts/run_experiments.py`) and an architecture that separates the model from the "
-        "verification and audit logic. The constraints are the proxy model, the lack of access control and the limits of the evidence, all of which are repeated as limitations in "
-        "the scope document and Chapter 9.")
+    d.p("The advantages are low cost, transparency (every number can be reproduced by the scripts in `scripts/`) and an architecture that separates the model from the "
+        "verification and audit logic. The constraints are the scale of the models, the lack of access control and the conditions under which the evidence is informative, which are stated once "
+        "in the scope document and Chapter 9.")
 
 
 def sec_existing(d):
@@ -127,7 +144,7 @@ def sec_proposed(d):
              ["Inspectable evidence", "Each request yields a certificate and a ledger record", "Strength of the evidence depends on the noise setting"],
              ["Bounded release", "Clipping bounds each client's influence; noise gives an (epsilon, delta) statement", "Classical bound valid only for epsilon below 1; not re-accounted after removal"],
              ["Tamper evidence", "SHA-256 chain verified on demand", "No signature or anchor; truncation and re-hashing undetected"],
-             ["Separation of concerns", "Model, engine, ledger and interface are separate modules", "The model is a proxy; replacing it is future work"]],
+             ["Separation of concerns", "Model, engine, ledger and interface are separate modules", "Demonstrated with neural adapters (Chapter 8); larger models are outside the project's scope"]],
             "Advantages of the proposed system and their qualifications", widths=[0.2, 0.42, 0.38], font=10)
 
 
@@ -156,18 +173,20 @@ def sec_requirements_nonfunctional(d):
              ["NFR1", "Responsiveness", f"Interactive latencies; median {TRAIN_P50:.0f} ms to train, {UNL_P50:.0f} ms to unlearn, {STATE_P50:.0f} ms to read the state, {HEALTH_P50:.0f} ms health (live server, 127.0.0.1)", "Met"],
              ["NFR2", "Reproducibility", "Fixed random seed (2026) and deterministic corpus; every reported number regenerated by `scripts/run_experiments.py`", "Met"],
              ["NFR3", "Data boundary", "Raw records live in client objects; only clipped updates reach the aggregate", "Met by design in the simulation"],
-             ["NFR4", "Integrity of records", "SHA-256 chain with sequence checks; edits, deletions and swaps detected in the tamper study", "Partly met: truncation and re-hashing undetected"],
-             ["NFR5", "Portability", "Back end runs on Python 3.10 or newer with no packages; front end on Node.js 18 or newer", "Met (checked on Python 3.11.9 / Node 24.19 only)"],
+             ["NFR4", "Integrity of records", "SHA-256 chain with sequence checks; edits, deletions and swaps detected in the tamper study", "Partly met: truncation, re-hashing and an emptied file undetected"],
+             ["NFR5", "Portability", "Back end runs on Python 3.10 or newer with no packages; front end on Node.js 18 or newer", "Met (measured on Python 3.11.9 and Node 24.19)"],
              ["NFR6", "Usability", "Empty and error states on every screen, confirmations, dark mode, layout checked at 1440 px and 390 px", "Met (manual review)"],
-             ["NFR7", "Robustness", "Errors returned as JSON with 400/404 codes; invalid input never crashes the server", "Partly met: 2 MB body aborts the connection; unsupported methods return HTML"],
-             ["NFR8", "Security", "Authentication, authorisation and encrypted storage of tracked updates", "Not met: none implemented"],
-             ["NFR9", "Maintainability", "Small modules with a model interface that can be swapped", "Met"]],
+             ["NFR7", "Robustness", "Errors returned as JSON with 400/404 codes; invalid input never crashes the server", f"Partly met: {_sp['n_probes']} probes, {SP['defect']} defects (e.g. no read timeout, a 2 MB body aborts the connection, unsupported methods return HTML)"],
+             ["NFR8", "Security", "Authentication, authorisation and encrypted storage of tracked updates", "Not met: none implemented; probes show unauthenticated erase and CSRF (Chapter 7)"],
+             ["NFR9", "Maintainability", "Small modules with a model interface that can be swapped; the neural study reuses the method unchanged", "Met"],
+             ["NFR10", "Concurrency", f"Races and load measured on 127.0.0.1: 32 simultaneous removals of one client gave {RACE['32 simultaneous unlearn requests for the same client']['status_counts']['200']} success and the rest rejected; 16 simultaneous trainings left a valid chain; {SOAK['requests']:,}-request soak with {SOAK['errors_5xx_or_connection']} errors", f"Met up to {ZERO_ERR_MAX} concurrent clients; failures appear at 32 to 64"],
+             ["NFR11", "Acceptance", f"{_ac['journeys']} scripted synthetic-user journeys (desktop and phone, light and dark): train, sample, remove, verify", f"Met: {_ac['journeys_passed_all_steps']} of {_ac['journeys']} passed"]],
             "Non-functional requirements and their status", widths=[0.08, 0.2, 0.5, 0.22], font=9)
 
 
 def sec_requirements_platform(d):
     d.h2("Hardware and Software Requirements")
-    d.p("The first table lists the machine on which every measurement in this report was taken; the project was not measured on other hardware.")
+    d.p("The first table lists the machine on which every measurement in this report was taken.")
     d.table([["Component", "Used for the measurements"],
              ["Processor", "Intel Core i5-12500, 6 cores / 12 threads"],
              ["Memory", "15.7 GB RAM"],
@@ -182,7 +201,8 @@ def sec_requirements_platform(d):
              ["Vite", "8.3 (development server on 5109 with a proxy of `/api` to 8109)"],
              ["Recharts and presentation libraries", "Recharts 3 for charts; framer-motion, GSAP, Lenis, lucide-react and canvas-confetti for motion and icons"],
              ["Browser", "Google Chrome (used for all screenshots)"],
-             ["Playwright (Python)", "Used only to capture the screenshots in this report"],
+             ["PyTorch 2.14 (CPU), NumPy 1.26", "Neural adapter study only; the engine, API and tests do not need them"],
+             ["Playwright (Python)", "Used to capture the screenshots and to run the scripted acceptance journeys"],
              ["matplotlib, python-docx, python-pptx", "Used only to produce the diagrams, charts and submission documents"]],
             "Software", widths=[0.3, 0.7], font=10)
 

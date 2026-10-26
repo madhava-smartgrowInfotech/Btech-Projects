@@ -136,11 +136,80 @@ def _eps(sigma, d=1e-5):
 w("- Exact analytic Gaussian mechanism (Balle and Wang, ref [19]), delta = 1e-5: sigma = 3 -> epsilon %.3f (reported 1.615, conservative there); sigma = 0.5 -> %.3f (reported 9.690: the classical formula UNDERSTATES epsilon where the model is useful); sigma = 4.85 -> %.3f." % (_eps(3.0), _eps(0.5), _eps(4.85)))
 w("- Because the noise vector is reused, n*theta_before - (n-1)*theta_after equals the removed client's clipped update (rounding error ~1e-13): anyone holding both released models can recover the update. The API never returns parameter vectors, so this is not reachable through the application.\n")
 
+import json as _json
+
+
+def _L(name):
+    return _json.loads((ROOT / "experiments" / name / "metrics.json").read_text(encoding="utf-8"))
+
+
+_sc, _nn, _ld, _sp, _ac, _tl = (_L(n) for n in ("synthetic_corpus", "neural_adapter", "load_test", "security_probe", "acceptance", "timeline"))
+
+w("### 5.13 Synthetic corpus study with the real engine (experiments/synthetic_corpus; all data synthetic, seeded grammar)\n")
+w("- Corpus: 20 domains, per client 200 training sentences (members), 200 held-out sentences from the same generator (non-members), 300-sentence public set; membership AUC resolution 5e-5. Two attacks: `auc_same` (client's training vs its own held-out sentences = sentence-level memorisation) and `auc_other` (client's training sentences vs other clients' held-out sentences = domain-level leakage).")
+w(f"- Clip norm: raw update norms of 200-sentence clients have median {_sc['raw_norms']['median']:.0f} (range {_sc['raw_norms']['min']:.0f}-{_sc['raw_norms']['max']:.0f}); the product's C = 25 scales every update by {_sc['raw_norms']['scale_applied_by_product_C25']['mean']:.3f} (about {_sc['raw_norms']['ratio_median_norm_to_C25']:.0f}x down). Noise-free perplexity: 11.1 at C = 25 versus 8.8 at C = median norm.")
+w("\n| n clients | sigma | epsilon | perplexity (before removal) | domain AUC before -> after | sentence AUC before -> after | certified |\n|---|---|---|---|---|---|---|")
+for r in _sc["sweep"]["rows"]:
+    if r["n_clients"] == 10:
+        w(f"| {r['n_clients']} | {r['sigma']:g} | {r['epsilon']:.4g} | {r['ppl_before']['mean']:.1f} | {r['auc_other_before']['mean']:.3f} -> {r['auc_other_after']['mean']:.3f} | {r['auc_same_before']['mean']:.3f} -> {r['auc_same_after']['mean']:.3f} | {pct(r['certified_fraction'], 0)} |")
+_g = _sc["gold"]["results"]
+w("\nFresh-noise retrain at n = 10: " + "; ".join(f"sigma {x['sigma']:g}: L2 unlearned-vs-retrain {x['l2_unlearned_vs_fresh_retrain']['mean']:.4g} vs retrain-vs-retrain {x['l2_fresh_retrain_vs_fresh_retrain']['mean']:.4g}, perplexity {x['perplexity_unlearned']['mean']:.1f} vs {x['perplexity_fresh_retrain']['mean']:.1f}" for x in _g) + ".")
+w("- The bigram model does not memorise individual sentences: sentence-level AUC is 0.50 before and after at every sigma, even with no noise. The leakage that exists and that removal erases is domain-level (0.474 -> 0.220 without noise).")
+w("\nClients needed for a useful release at epsilon < 1 (sigma = 4.85, 100 sentences per client, C = median norm; perplexity ratio to the noise-free model):\n")
+w("| n clients | " + " | ".join(str(r['n_clients']) for r in _sc['n_sweep']['rows'] if r['sigma'] == 4.85) + " |")
+w("|---|" + "---|" * len([r for r in _sc['n_sweep']['rows'] if r['sigma'] == 4.85]))
+w("| ratio | " + " | ".join(f"{r['ratio_to_noise_free']:.2f}" for r in _sc['n_sweep']['rows'] if r['sigma'] == 4.85) + " |")
+_sm = _sc["n_sweep"]["smallest_n_within_1_2x"]
+w(f"\nSmallest n within 1.2x of the noise-free perplexity: sigma 1 -> {_sm['1.0']}, sigma 3 -> {_sm['3.0']}, sigma 4.85 -> {_sm['4.85']}, sigma 10 -> {_sm['10.0']} clients. Because the noise is added once to the SUM and the sum is divided by n, a larger federation dilutes it: epsilon < 1 and a useful model coexist only for hundreds to thousands of clients, never for five.")
+_u = _sc["n_sweep"]["unlearning_at_smallest_n"]
+w(f"- At n = {_u['n_clients']}, sigma = {_u['sigma']}, epsilon = {_u['epsilon']:.3f}: five sequential removals all {_u['sequential_removals'][0]['status']}.")
+_t = _sc["timing"]
+w(f"- Timing at n = 20 x 200 sentences (unmodified engine, median of 5): train {_t['train_ms_median']:.0f} ms, unlearn() {_t['unlearn_ms_median']:.0f} ms, retrain on retained clients {_t['retrain_retained_ms_median']:.0f} ms (unlearn() is {1 / _t['retrain_over_unlearn']:.1f}x SLOWER than the proxy retrain: it also computes metrics, two membership attacks and the audit write).\n")
+
+w("### 5.14 Neural LoRA-style adapter study (experiments/neural_adapter; synthetic text, torch CPU)\n")
+_c, _b = _nn["config"], _nn["base"]
+w(f"- Model: character-level GRU, {_b['base_parameters']:,} parameters, frozen after pre-training on a synthetic public pool ({_c['public_train']} sentences, {_c['base']['pretrain_steps']} steps); per-client adapter = low-rank (rank {_b['adapter_rank']}) update of {_b['adapter_dimension']:,} parameters; {_c['n_clients']} synthetic client domains x {_c['train_per_client']} training / {_c['train_per_client']} held-out sentences; 5 seeds; {_nn['runtime_seconds']:.0f} s run on the CPU. The ForgetSafe method (clip to C = median raw norm, sum, Gaussian noise sigma*C, /n; unlearn by subtracting the stored clipped adapter) is applied unchanged to these parameter vectors.")
+_ao = _nn["summary"]["adapter_only"]
+w(f"- Adapting helps: held-out perplexity on a client's own domain {_ao['base_own_heldout_ppl']['mean']:.0f} (base) -> {_ao['own_heldout_ppl']['mean']:.2f} (its adapter); a single adapter's sample-level AUC {_ao['sample_auc']['mean']:.2f}; raw adapter-update norm {_ao['raw_norm']['mean']:.1f}. The base model scores public perplexity {_b['public_ppl']:.2f}; averaged adapters raise it to about 3.3 (adapters slightly hurt generic text).\n")
+w("| sigma | epsilon | public ppl before | retained ppl before -> after | client-level AUC before -> after (fresh retrain) | sample AUC before -> after | L2 unlearned-vs-retrain / retrain-vs-retrain | retained-ppl retention % |\n|---|---|---|---|---|---|---|---|")
+for r in _nn["summary"]["by_sigma"]:
+    eps = "inf" if r["epsilon"] is None else f"{r['epsilon']:.4g}"
+    _rv = r["retention_retained_ppl_percent"]
+    _rv = _rv["mean"] if isinstance(_rv, dict) else _rv
+    ret = "-" if _rv is None else f"{_rv:.1f}"
+    w(f"| {r['sigma']:g} | {eps} | {r['public_ppl_before']['mean']:.3g} | {r['retained_ppl_before']['mean']:.3g} -> {r['retained_ppl_after']['mean']:.3g} | {r['client_auc_before']['mean']:.3f} -> {r['client_auc_after']['mean']:.3f} ({r['client_auc_retrain']['mean']:.3f}) | {r['sample_auc_before']['mean']:.3f} -> {r['sample_auc_after']['mean']:.3f} | {r['l2_unl_vs_retrain']['mean']:.4g} / {r['l2_retrain_vs_retrain']['mean']:.4g} | {ret} |")
+_tm = _nn["summary"]["timing"]
+w(f"\n- Identity check max abs deviation about {max(r['identity_max_abs']['mean'] if isinstance(r['identity_max_abs'], dict) else r['identity_max_abs'] for r in _nn['summary']['by_sigma']):.1e} (float32). Models are 'destroyed' (retention undefined) for sigma >= 0.3; usable only for sigma <= 0.05 (epsilon >= 97). Cost: subtraction {_tm['subtract_us_median']:.0f} microseconds; unlearn with metrics and attack {_tm['unlearn_with_metrics_ms_median']:.0f} ms; retraining the 7 retained adapters {_tm['retrain_seven_adapters_s_median']:.1f} s -> {_tm['speedup_retrain_over_unlearn_with_metrics']:.0f}x faster (bare subtraction {_tm['speedup_retrain_over_subtract']:.0f}x).")
+w("- Same two honest findings as the bigram product: removal is real without noise (client-level AUC 0.78 -> 0.53, equal to a fresh retrain 0.53), and at the sigma that makes epsilon < 1 (sigma >= 4.85, here 8 clients) the model is destroyed. Scale of the neural study: 137k-parameter GRU, 8 synthetic clients, one aggregation round; it is not a billion-parameter LLM and says nothing about one.\n")
+
+w("### 5.15 Load and concurrency (experiments/load_test; 127.0.0.1, single machine)\n")
+w("| Scenario | concurrency 1 | 4 | 16 | 64 |\n|---|---|---|---|---|")
+for k, v in _ld["scenarios"].items():
+    lv = {x["concurrency"]: x for x in v["levels"]}
+    w(f"| {k} (req/s, p95 ms, 5xx or connection errors) | " + " | ".join(f"{lv[c]['requests_per_s']:.0f}, {lv[c]['p95_ms']:.0f}, {lv[c]['errors_5xx_or_connection']}" for c in (1, 4, 16, 64)) + " |")
+for k, v in _ld["races"].items():
+    w(f"- Race: {k}: " + "; ".join(f"{a}={b}" for a, b in v.items() if a in ('status_counts', 'ledger_valid', 'ledger_records', 'unlearning_events', 'records_equal_ok_responses', 'final_ledger_valid', 'verify_invalid', 'writes_ok')))
+_so = _ld["soak"]
+w(f"- Soak: {_so['requests']} mixed requests, {_so['errors_5xx_or_connection']} errors; state-read p50 {_so['state_ms_first50']['p50_ms']:.0f} ms (first 50) -> {_so['state_ms_last50']['p50_ms']:.0f} ms (last 50) as the ledger grew to {_so['ledger_records_end']} records (the cost of re-reading the whole ledger on every state call); server RSS {_so['rss_mb_before']:.0f} -> {_so['rss_mb_after']:.0f} MB. Throughput of /api/state saturates near 80 req/s (it re-reads and re-verifies the ledger every call).\n")
+
+w("### 5.16 Security probes (experiments/security_probe; synthetic malicious inputs against the real server)\n")
+w(f"- {_sp['n_probes']} probes: {_sp['classification_counts']['handled']} handled, {_sp['classification_counts']['noteworthy']} handled with noteworthy behaviour, {_sp['classification_counts']['defect']} defects; server alive after all probes: {_sp['server_alive_after_all']}.")
+for p in _sp["probes"]:
+    if p["classification"] == "defect":
+        w(f"  - DEFECT: {p['case'][:110]} -> {str(p['evidence'])[:200]}")
+w("\n### 5.17 Scripted synthetic-user acceptance (experiments/acceptance; Playwright + Chrome, not a human study)\n")
+w(f"- {_ac['journeys']} randomised journeys ({_ac['desktop_journeys']} desktop 1440x900, {_ac['mobile_journeys']} phone 390x844; {_ac['dark_mode_journeys']} in dark mode; {_ac['cancelled_dialog_journeys']} cancelled the first dialog); {_ac['journeys_passed_all_steps']}/{_ac['journeys']} passed every step (load page, train, generate, unlearn with certificate, audit verify, theme toggle, no console errors); {_ac['total_certificates_checked']} certificates checked; mean journey {_ac['mean_duration_s']:.1f} s; training-page load p50 {_ac['training_page_load_ms']['p50_ms']:.0f} ms; {_ac['console_error_journeys']} journeys with console errors.\n")
+
+w("### 5.18 Project timeline from git (experiments/timeline)\n")
+for p in _tl["phases"]:
+    w(f"- {p['date']}: {p['phase']} ({p['evidence'][:130]})")
+w("- Not recorded in git, so not dated: " + "; ".join(_tl["undatable"]) + ".\n")
+
 w("## 6. Tests\n")
 w("- `python -m unittest discover -s tests -v`: **5 tests, all pass** (0.79 s): full train+unlearn workflow, repeat-unlearn rejection, audit tamper, certificate export, localhost health/state endpoints.")
 w("- `python scripts/smoke_test.py`: **14 checks, all pass** (health, fresh state, pre-train rejections, train, generate, unlearn+certificate, repeat rejection, certificate download, audit verify, ledger order, new session).")
-w("- `python scripts/run_experiments.py`: measurement suite written for this report (11 experiments).")
-w("- Not tested: concurrency under load, browser automation tests in the repo (UI checked manually with Playwright captures), any real LLM, any penetration test. A built frontend/dist is present.\n")
+w("- `python scripts/run_experiments.py`: measurement suite written for this report (11 experiments); see also the three scripts below.")
+w("- Beyond the repo tests, the report adds measured studies on synthetic data: `scripts/run_synthetic_corpus.py` (larger corpus, clip norm, clients needed for epsilon < 1, timeline), `scripts/run_neural_experiment.py` (GRU + LoRA-style adapters), `scripts/run_testing_experiments.py` (load/concurrency, 58 security probes, 20 scripted synthetic-user acceptance journeys). The repo itself has no browser-automation test suite (the acceptance journeys live in scripts/). Scale boundaries that remain by design: the neural study is a 137k-parameter GRU, not a billion-parameter LLM; the acceptance run is scripted, not a human study; the machine is one CPU workstation.")
 
 w("## 7. Size of the code\n")
 w("Python: engine.py 297, model.py 122, audit.py 65, dataset.py 101, web.py 247, gui.py 379 (Tkinter), app.py 59; tests 85; smoke test 120. React: pages ~970 lines plus shared UI kit.\n")

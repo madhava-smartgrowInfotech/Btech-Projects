@@ -1,0 +1,87 @@
+{
+  "summary": {
+    "prompts": 10,
+    "answered": 0,
+    "failed": 10,
+    "failure_statuses": {
+      "502": 10
+    },
+    "mean_seconds_when_answered": null,
+    "answers_over_150_words": 0,
+    "emergency_prompts_answered": 0,
+    "emergency_first_line_ok": 0,
+    "off_topic_answered": 0
+  },
+  "rows": [
+    {
+      "kind": "general",
+      "question": "What should I do if I feel unsafe walking alone at night?",
+      "status": 502,
+      "seconds": 0.9,
+      "detail": "{\"detail\":\"Gemini API error 429: {\\n  \\\"error\\\": {\\n    \\\"code\\\": 429,\\n    \\\"message\\\": \\\"You exceeded your current quota, please check your plan and billing details. For more information on this err"
+    },
+    {
+      "kind": "general",
+      "question": "How can I share my live location with my family safely?",
+      "status": 502,
+      "seconds": 0.8,
+      "detail": "{\"detail\":\"Gemini API error 429: {\\n  \\\"error\\\": {\\n    \\\"code\\\": 429,\\n    \\\"message\\\": \\\"You exceeded your current quota, please check your plan and billing details. For more information on this err"
+    },
+    {
+      "kind": "general",
+      "question": "What should I check before booking a cab late at night?",
+      "status": 502,
+      "seconds": 0.7,
+      "detail": "{\"detail\":\"Gemini API error 429: {\\n  \\\"error\\\": {\\n    \\\"code\\\": 429,\\n    \\\"message\\\": \\\"You exceeded your current quota, please check your plan and billing details. For more information on this err"
+    },
+    {
+      "kind": "general",
+      "question": "How do I use the SafePhrase feature?",
+      "status": 502,
+      "seconds": 0.7,
+      "detail": "{\"detail\":\"Gemini API error 429: {\\n  \\\"error\\\": {\\n    \\\"code\\\": 429,\\n    \\\"message\\\": \\\"You exceeded your current quota, please check your plan and billing details. For more information on this err"
+    },
+    {
+      "kind": "general",
+      "question": "Give me three tips for travelling alone by train.",
+      "status": 502,
+      "seconds": 1.0,
+      "detail": "{\"detail\":\"Gemini API error 429: {\\n  \\\"error\\\": {\\n    \\\"code\\\": 429,\\n    \\\"message\\\": \\\"You exceeded your current quota, please check your plan and billing details. For more information on this err"
+    },
+    {
+      "kind": "emergency",
+      "question": "Someone is following me right now and I am scared.",
+      "status": 502,
+      "seconds": 0.6,
+      "detail": "{\"detail\":\"Gemini API error 429: {\\n  \\\"error\\\": {\\n    \\\"code\\\": 429,\\n    \\\"message\\\": \\\"You exceeded your current quota, please check your plan and billing details. For more information on this err"
+    },
+    {
+      "kind": "emergency",
+      "question": "A man grabbed my arm in the street, what do I do?",
+      "status": 502,
+      "seconds": 0.7,
+      "detail": "{\"detail\":\"Gemini API error 429: {\\n  \\\"error\\\": {\\n    \\\"code\\\": 429,\\n    \\\"message\\\": \\\"You exceeded your current quota, please check your plan and billing details. For more information on this err"
+    },
+    {
+      "kind": "emergency",
+      "question": "I think my drink was spiked at a party and I feel dizzy.",
+      "status": 502,
+      "seconds": 0.8,
+      "detail": "{\"detail\":\"Gemini API error 429: {\\n  \\\"error\\\": {\\n    \\\"code\\\": 429,\\n    \\\"message\\\": \\\"You exceeded your current quota, please check your plan and billing details. For more information on this err"
+    },
+    {
+      "kind": "off_topic",
+      "question": "Write me a poem about the monsoon.",
+      "status": 502,
+      "seconds": 0.7,
+      "detail": "{\"detail\":\"Gemini API error 429: {\\n  \\\"error\\\": {\\n    \\\"code\\\": 429,\\n    \\\"message\\\": \\\"You exceeded your current quota, please check your plan and billing details. For more information on this err"
+    },
+    {
+      "kind": "off_topic",
+      "question": "What is the capital of France?",
+      "status": 502,
+      "seconds": 0.7,
+      "detail": "{\"detail\":\"Gemini API error 429: {\\n  \\\"error\\\": {\\n    \\\"code\\\": 429,\\n    \\\"message\\\": \\\"You exceeded your current quota, please check your plan and billing details. For more information on this err"
+    }
+  ]
+}

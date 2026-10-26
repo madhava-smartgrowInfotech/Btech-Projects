@@ -1,0 +1,74 @@
+[
+  {
+    "file": "01_landing.png",
+    "shows": "Landing page, signed out"
+  },
+  {
+    "file": "02_register.png",
+    "shows": "Registration form with the details filled in"
+  },
+  {
+    "file": "03_profile_guardians.png",
+    "shows": "Profile with three trusted guardians saved"
+  },
+  {
+    "file": "04_dashboard.png",
+    "shows": "Dashboard: SOS, status tiles, risk areas loaded from the model"
+  },
+  {
+    "file": "05_route_search.png",
+    "shows": "Safe Routes: destination search (Nominatim) with suggestions"
+  },
+  {
+    "file": "06_route_delhi_jaipur.png",
+    "shows": "Delhi to Jaipur: two real OSRM alternatives scored by district risk"
+  },
+  {
+    "file": "07_route_details.png",
+    "shows": "Route cards: distance, duration, risk tier shares, AI route advice"
+  },
+  {
+    "file": "08_route_hyderabad_vijayawada.png",
+    "shows": "Hyderabad to Vijayawada route with the risk heat layer"
+  },
+  {
+    "file": "09_ai_assistant.png",
+    "shows": "AI Guardian chat: question sent to the Gemini-backed endpoint"
+  },
+  {
+    "file": "10_safephrase.png",
+    "shows": "SafePhrase settings: phrases, fingerprints, sensitivity"
+  },
+  {
+    "file": "11_safephrase_added.png",
+    "shows": "A second cover phrase added; only a SHA-256 fingerprint is shown"
+  },
+  {
+    "file": "12_emergency_started.png",
+    "shows": "Emergency screen right after SOS: tracking link, delivery status, live map"
+  },
+  {
+    "file": "13_emergency_evidence.png",
+    "shows": "Emergency screen with a photo and an audio clip saved (SHA-256 shown) and the path so far"
+  },
+  {
+    "file": "14_guardian_tracking.png",
+    "shows": "Guardian's tracking page, no login: live position and path over WebSocket"
+  },
+  {
+    "file": "15_hold_to_cancel.png",
+    "shows": "Hold-to-cancel progress ring half full"
+  },
+  {
+    "file": "16_dashboard_after_sos.png",
+    "shows": "Dashboard after cancelling: the emergency is logged in recent activity"
+  },
+  {
+    "file": "17_guardian_cancelled.png",
+    "shows": "Guardian's page after the user confirmed safe (cancelled)"
+  },
+  {
+    "file": "18_profile_activity.png",
+    "shows": "Profile with guardians and recent activity"
+  }
+]

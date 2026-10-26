@@ -1,0 +1,178 @@
+{
+  "base": "http://127.0.0.1:8107",
+  "latency": {
+    "GET /api/health": {
+      "n": 30,
+      "mean_ms": 2.3,
+      "median_ms": 2.1,
+      "p95_ms": 4.1,
+      "max_ms": 5.5
+    },
+    "GET /api/risk/areas (467 rows)": {
+      "n": 30,
+      "mean_ms": 36.2,
+      "median_ms": 31.1,
+      "p95_ms": 81.3,
+      "max_ms": 87.8
+    },
+    "POST /api/auth/login (bcrypt)": {
+      "n": 15,
+      "mean_ms": 285.2,
+      "median_ms": 279.0,
+      "p95_ms": 314.6,
+      "max_ms": 330.0
+    },
+    "GET /api/auth/me": {
+      "n": 30,
+      "mean_ms": 5.1,
+      "median_ms": 4.9,
+      "p95_ms": 6.7,
+      "max_ms": 9.4
+    },
+    "POST /api/guardians": {
+      "n": 30,
+      "mean_ms": 11.0,
+      "median_ms": 10.9,
+      "p95_ms": 13.3,
+      "max_ms": 16.0
+    },
+    "GET /api/guardians": {
+      "n": 30,
+      "mean_ms": 7.3,
+      "median_ms": 6.9,
+      "p95_ms": 10.8,
+      "max_ms": 11.0
+    },
+    "POST /api/sos/start (30 guardians, no channel configured)": {
+      "n": 15,
+      "mean_ms": 50.7,
+      "median_ms": 34.2,
+      "p95_ms": 137.4,
+      "max_ms": 181.6
+    },
+    "POST /api/sos/{id}/location": {
+      "n": 30,
+      "mean_ms": 15.3,
+      "median_ms": 14.7,
+      "p95_ms": 20.4,
+      "max_ms": 22.2
+    },
+    "GET /api/track/{token} (public)": {
+      "n": 30,
+      "mean_ms": 9.4,
+      "median_ms": 8.3,
+      "p95_ms": 15.3,
+      "max_ms": 15.5
+    },
+    "POST /api/sos/{id}/evidence (100 KB)": {
+      "n": 10,
+      "mean_ms": 15.0,
+      "median_ms": 13.3,
+      "p95_ms": 24.0,
+      "max_ms": 24.0
+    },
+    "POST /api/sos/{id}/evidence (1 MB)": {
+      "n": 10,
+      "mean_ms": 19.1,
+      "median_ms": 18.4,
+      "p95_ms": 23.8,
+      "max_ms": 23.8
+    },
+    "POST /api/sos/{id}/evidence (5 MB)": {
+      "n": 10,
+      "mean_ms": 68.2,
+      "median_ms": 61.0,
+      "p95_ms": 117.9,
+      "max_ms": 117.9
+    },
+    "GET /api/sos/{id}/evidence": {
+      "n": 30,
+      "mean_ms": 9.6,
+      "median_ms": 8.7,
+      "p95_ms": 15.3,
+      "max_ms": 18.0
+    },
+    "POST /api/routes/plan (live OSRM + 467-district scoring)": {
+      "n": 5,
+      "mean_ms": 1628.6,
+      "median_ms": 1591.1,
+      "p95_ms": 2001.5,
+      "max_ms": 2001.5
+    }
+  },
+  "websocket": {
+    "one_viewer_post_to_receive": {
+      "n": 30,
+      "mean_ms": 15.4,
+      "median_ms": 13.2,
+      "p95_ms": 17.2,
+      "max_ms": 77.1
+    },
+    "five_viewers_post_to_all_received": {
+      "n": 30,
+      "mean_ms": 14.6,
+      "median_ms": 14.4,
+      "p95_ms": 18.8,
+      "max_ms": 19.3
+    },
+    "unknown_token_connection": "accepted"
+  },
+  "access_control": {
+    "no token: GET /api/guardians": 401,
+    "no token: POST /api/sos/start": 401,
+    "no token: POST /api/ai/ask": 401,
+    "no token: POST /api/routes/plan": 401,
+    "forged token: GET /api/auth/me": 401,
+    "tampered signature: GET /api/auth/me": 401,
+    "user B reads user A session": 404,
+    "user B pushes location to A session": 404,
+    "user B cancels A session": 404,
+    "user B lists A evidence": 404,
+    "user B uploads evidence to A session": 404,
+    "user B edits A guardian": 404,
+    "user B deletes A guardian": 404,
+    "user B sees A guardians in own list (count)": 0,
+    "public track with wrong token": 404,
+    "public track with right token": 200,
+    "public GET /api/risk/areas without login": 200,
+    "GET stored evidence file with no token": 200,
+    "guessing evidence file with session id only": 404
+  },
+  "input_handling": {
+    "register: 5-char password": 422,
+    "register: 6-char password 'aaaaaa' (accepted = no strength rule)": 200,
+    "register: bad email": 422,
+    "register: duplicate email": 400,
+    "login: wrong password": 401,
+    "login: 25 consecutive wrong passwords (status set)": [
+      401
+    ],
+    "sos/start: latitude 999 (accepted = no range check)": 200,
+    "sos/start: missing lat": 422,
+    "evidence: kind=video": 400,
+    "evidence: empty file": 400,
+    "evidence: 20 MB upload (accepted = no size limit)": {
+      "status": 200,
+      "seconds": 0.24
+    },
+    "evidence: .html file labelled photo, served back": {
+      "upload": 200,
+      "served": {
+        "status": 200,
+        "content_type": "text/html; charset=utf-8"
+      }
+    },
+    "location push after cancel": 400,
+    "track page after cancel (still readable)": 200,
+    "track page exposes path points": 91,
+    "ai/ask: empty body": 422
+  },
+  "evidence_integrity": {
+    "stored_hash_matches_file": true,
+    "hash_matches_after_one_bit_flip": false,
+    "sha256_hex_length": 64,
+    "sha256_1MB_ms": 1.05,
+    "verify_endpoint_exists": false
+  },
+  "jwt_secret_is_default_value": false
+}

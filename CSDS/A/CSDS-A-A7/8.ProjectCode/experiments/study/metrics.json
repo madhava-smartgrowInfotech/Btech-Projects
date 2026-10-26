@@ -1,0 +1,1101 @@
+{
+  "data": {
+    "raw_rows": 9017,
+    "rows_after_total_removal": 8597,
+    "years": [
+      2001,
+      2002,
+      2003,
+      2004,
+      2005,
+      2006,
+      2007,
+      2008,
+      2009,
+      2010,
+      2011,
+      2012
+    ],
+    "state_ut_count": 35,
+    "district_state_pairs": 827,
+    "geocoded_pairs": 467,
+    "geocode_rate": 0.5647,
+    "years_reported_distribution": {
+      "1": 34,
+      "2": 27,
+      "3": 14,
+      "4": 12,
+      "5": 31,
+      "6": 6,
+      "7": 22,
+      "8": 9,
+      "9": 3,
+      "10": 23,
+      "11": 8,
+      "12": 638
+    },
+    "geocoded_years_reported_mean": 11.71,
+    "crime_rate_describe": {
+      "count": 467.0,
+      "mean": 225.41,
+      "std": 204.01,
+      "min": 0.0,
+      "25%": 73.5,
+      "50%": 179.75,
+      "75%": 308.88,
+      "max": 1191.58
+    }
+  },
+  "coverage_by_state": [
+    {
+      "state": "UTTAR PRADESH",
+      "total": 77,
+      "geocoded": 0,
+      "rate": 0.0
+    },
+    {
+      "state": "MADHYA PRADESH",
+      "total": 53,
+      "geocoded": 45,
+      "rate": 0.849
+    },
+    {
+      "state": "RAJASTHAN",
+      "total": 49,
+      "geocoded": 32,
+      "rate": 0.653
+    },
+    {
+      "state": "MAHARASHTRA",
+      "total": 46,
+      "geocoded": 32,
+      "rate": 0.696
+    },
+    {
+      "state": "BIHAR",
+      "total": 44,
+      "geocoded": 39,
+      "rate": 0.886
+    },
+    {
+      "state": "TAMIL NADU",
+      "total": 42,
+      "geocoded": 19,
+      "rate": 0.452
+    },
+    {
+      "state": "ODISHA",
+      "total": 36,
+      "geocoded": 30,
+      "rate": 0.833
+    },
+    {
+      "state": "GUJARAT",
+      "total": 36,
+      "geocoded": 23,
+      "rate": 0.639
+    },
+    {
+      "state": "JAMMU & KASHMIR",
+      "total": 35,
+      "geocoded": 22,
+      "rate": 0.629
+    },
+    {
+      "state": "KARNATAKA",
+      "total": 35,
+      "geocoded": 26,
+      "rate": 0.743
+    },
+    {
+      "state": "PUNJAB",
+      "total": 35,
+      "geocoded": 22,
+      "rate": 0.629
+    },
+    {
+      "state": "ANDHRA PRADESH",
+      "total": 34,
+      "geocoded": 18,
+      "rate": 0.529
+    },
+    {
+      "state": "ASSAM",
+      "total": 33,
+      "geocoded": 23,
+      "rate": 0.697
+    },
+    {
+      "state": "WEST BENGAL",
+      "total": 30,
+      "geocoded": 0,
+      "rate": 0.0
+    },
+    {
+      "state": "CHHATTISGARH",
+      "total": 29,
+      "geocoded": 16,
+      "rate": 0.552
+    },
+    {
+      "state": "JHARKHAND",
+      "total": 26,
+      "geocoded": 21,
+      "rate": 0.808
+    },
+    {
+      "state": "KERALA",
+      "total": 26,
+      "geocoded": 15,
+      "rate": 0.577
+    },
+    {
+      "state": "HARYANA",
+      "total": 24,
+      "geocoded": 19,
+      "rate": 0.792
+    },
+    {
+      "state": "DELHI",
+      "total": 24,
+      "geocoded": 0,
+      "rate": 0.0
+    },
+    {
+      "state": "ARUNACHAL PRADESH",
+      "total": 17,
+      "geocoded": 13,
+      "rate": 0.765
+    },
+    {
+      "state": "HIMACHAL PRADESH",
+      "total": 15,
+      "geocoded": 12,
+      "rate": 0.8
+    },
+    {
+      "state": "UTTARAKHAND",
+      "total": 13,
+      "geocoded": 0,
+      "rate": 0.0
+    },
+    {
+      "state": "MANIPUR",
+      "total": 12,
+      "geocoded": 9,
+      "rate": 0.75
+    },
+    {
+      "state": "NAGALAND",
+      "total": 11,
+      "geocoded": 10,
+      "rate": 0.909
+    },
+    {
+      "state": "TRIPURA",
+      "total": 10,
+      "geocoded": 0,
+      "rate": 0.0
+    },
+    {
+      "state": "MIZORAM",
+      "total": 8,
+      "geocoded": 8,
+      "rate": 1.0
+    },
+    {
+      "state": "MEGHALAYA",
+      "total": 7,
+      "geocoded": 7,
+      "rate": 1.0
+    },
+    {
+      "state": "A & N ISLANDS",
+      "total": 6,
+      "geocoded": 0,
+      "rate": 0.0
+    },
+    {
+      "state": "SIKKIM",
+      "total": 4,
+      "geocoded": 4,
+      "rate": 1.0
+    },
+    {
+      "state": "PUDUCHERRY",
+      "total": 3,
+      "geocoded": 0,
+      "rate": 0.0
+    },
+    {
+      "state": "GOA",
+      "total": 2,
+      "geocoded": 2,
+      "rate": 1.0
+    },
+    {
+      "state": "DAMAN & DIU",
+      "total": 2,
+      "geocoded": 0,
+      "rate": 0.0
+    },
+    {
+      "state": "LAKSHADWEEP",
+      "total": 1,
+      "geocoded": 0,
+      "rate": 0.0
+    },
+    {
+      "state": "CHANDIGARH",
+      "total": 1,
+      "geocoded": 0,
+      "rate": 0.0
+    },
+    {
+      "state": "D & N HAVELI",
+      "total": 1,
+      "geocoded": 0,
+      "rate": 0.0
+    }
+  ],
+  "states_with_no_geocoded_district": [
+    "A & N ISLANDS",
+    "CHANDIGARH",
+    "D & N HAVELI",
+    "DAMAN & DIU",
+    "DELHI",
+    "LAKSHADWEEP",
+    "PUDUCHERRY",
+    "TRIPURA",
+    "UTTAR PRADESH",
+    "UTTARAKHAND",
+    "WEST BENGAL"
+  ],
+  "geocode_sanity": {
+    "outside_india_bbox": 0,
+    "districts_sharing_identical_coordinates": 2,
+    "distinct_coordinates": 466
+  },
+  "reproduction": {
+    "silhouette": 0.5798,
+    "davies_bouldin": 0.531,
+    "calinski_harabasz": 1155.4,
+    "tier_counts": {
+      "low": 278,
+      "medium": 148,
+      "high": 41
+    },
+    "agreement_with_shipped_district_risk_csv": 1.0,
+    "shipped_model_loads": true
+  },
+  "one_feature_equivalence": {
+    "tier_ranges_crimes_per_year": {
+      "low": [
+        0.0,
+        212.0
+      ],
+      "medium": [
+        215.5,
+        522.0
+      ],
+      "high": [
+        537.67,
+        1191.58
+      ]
+    },
+    "threshold_low_medium": 213.75,
+    "threshold_medium_high": 529.83,
+    "threshold_rule_agreement_with_kmeans": 1.0
+  },
+  "k_sweep": [
+    {
+      "k": 2,
+      "silhouette": 0.6616,
+      "davies_bouldin": 0.5507,
+      "inertia": 159.78
+    },
+    {
+      "k": 3,
+      "silhouette": 0.5798,
+      "davies_bouldin": 0.531,
+      "inertia": 78.09
+    },
+    {
+      "k": 4,
+      "silhouette": 0.5955,
+      "davies_bouldin": 0.4932,
+      "inertia": 41.78
+    },
+    {
+      "k": 5,
+      "silhouette": 0.5598,
+      "davies_bouldin": 0.5181,
+      "inertia": 29.63
+    },
+    {
+      "k": 6,
+      "silhouette": 0.5615,
+      "davies_bouldin": 0.54,
+      "inertia": 20.49
+    },
+    {
+      "k": 7,
+      "silhouette": 0.5557,
+      "davies_bouldin": 0.5382,
+      "inertia": 14.86
+    },
+    {
+      "k": 8,
+      "silhouette": 0.5525,
+      "davies_bouldin": 0.5018,
+      "inertia": 11.34
+    }
+  ],
+  "seed_stability": {
+    "runs": 30,
+    "min_ari_vs_shipped": 0.6594,
+    "mean_ari": 0.7898,
+    "silhouette_min": 0.5749,
+    "silhouette_max": 0.5808
+  },
+  "alternative_tiering": {
+    "gaussian_mixture": {
+      "agreement_with_kmeans": 0.7259,
+      "ari_vs_kmeans": 0.3672,
+      "tier_counts": {
+        "low": 181,
+        "medium": 214,
+        "high": 72
+      }
+    },
+    "agglomerative_ward": {
+      "agreement_with_kmeans": 0.833,
+      "ari_vs_kmeans": 0.6026,
+      "tier_counts": {
+        "low": 231,
+        "medium": 164,
+        "high": 72
+      }
+    },
+    "equal_count_terciles": {
+      "agreement_with_kmeans": 0.4925,
+      "ari_vs_kmeans": 0.4043,
+      "tier_counts": {
+        "low": 156,
+        "medium": 155,
+        "high": 156
+      }
+    },
+    "fixed_100_300_cutoffs": {
+      "agreement_with_kmeans": 0.546,
+      "ari_vs_kmeans": 0.3108,
+      "tier_counts": {
+        "low": 148,
+        "medium": 196,
+        "high": 123
+      }
+    }
+  },
+  "top_high_risk_districts": [
+    {
+      "state": "ANDHRA PRADESH",
+      "district": "WEST GODAVARI",
+      "crime_rate": 1191.6,
+      "years_reported": 12
+    },
+    {
+      "state": "ANDHRA PRADESH",
+      "district": "VIJAYAWADA",
+      "crime_rate": 1059.0,
+      "years_reported": 5
+    },
+    {
+      "state": "ANDHRA PRADESH",
+      "district": "GUNTUR",
+      "crime_rate": 1032.5,
+      "years_reported": 12
+    },
+    {
+      "state": "RAJASTHAN",
+      "district": "JAIPUR",
+      "crime_rate": 1001.4,
+      "years_reported": 5
+    },
+    {
+      "state": "ANDHRA PRADESH",
+      "district": "KRISHNA",
+      "crime_rate": 895.2,
+      "years_reported": 12
+    },
+    {
+      "state": "ANDHRA PRADESH",
+      "district": "KHAMMAM",
+      "crime_rate": 876.5,
+      "years_reported": 12
+    },
+    {
+      "state": "MADHYA PRADESH",
+      "district": "INDORE",
+      "crime_rate": 866.0,
+      "years_reported": 12
+    },
+    {
+      "state": "MAHARASHTRA",
+      "district": "MUMBAI",
+      "crime_rate": 850.2,
+      "years_reported": 5
+    },
+    {
+      "state": "ASSAM",
+      "district": "NAGAON",
+      "crime_rate": 849.2,
+      "years_reported": 12
+    },
+    {
+      "state": "ANDHRA PRADESH",
+      "district": "KURNOOL",
+      "crime_rate": 820.8,
+      "years_reported": 12
+    },
+    {
+      "state": "ANDHRA PRADESH",
+      "district": "EAST GODAVARI",
+      "crime_rate": 792.8,
+      "years_reported": 12
+    },
+    {
+      "state": "KERALA",
+      "district": "KOLLAM",
+      "crime_rate": 792.7,
+      "years_reported": 10
+    }
+  ],
+  "high_tier_by_state": {
+    "ANDHRA PRADESH": 12,
+    "RAJASTHAN": 11,
+    "KERALA": 4,
+    "MADHYA PRADESH": 4,
+    "ASSAM": 3,
+    "MAHARASHTRA": 3,
+    "CHHATTISGARH": 2,
+    "HARYANA": 1
+  },
+  "crime_mix": {
+    "cruelty_by_husband_share_of_all_counted_crimes": 0.3998,
+    "rape_share": 0.1304,
+    "kidnapping_share": 0.1166,
+    "assault_on_modesty_share": 0.2583,
+    "insult_modesty_share": 0.0525,
+    "dowry_deaths_share": 0.0418
+  },
+  "state_year_file": {
+    "rows": 736,
+    "years": [
+      2001,
+      2021
+    ],
+    "states": 70
+  },
+  "city_coverage": {
+    "cities": 40,
+    "nearest_district_km": {
+      "Hyderabad": 149.0,
+      "Secunderabad": 147.3,
+      "Vijayawada": 3.5,
+      "Warangal": 195.0,
+      "Visakhapatnam": 7.8,
+      "Delhi": 24.1,
+      "Jaipur": 3.2,
+      "Agra": 54.0,
+      "Mumbai": 2.5,
+      "Pune": 4.5,
+      "Chennai": 0.1,
+      "Bengaluru": 14.4,
+      "Kolkata": 190.7,
+      "Patna": 2.2,
+      "Lucknow": 231.3,
+      "Kanpur": 164.3,
+      "Ahmedabad": 23.7,
+      "Surat": 26.4,
+      "Bhopal": 1.1,
+      "Indore": 1.1,
+      "Nagpur": 28.8,
+      "Raipur": 1.5,
+      "Guwahati": 4.4,
+      "Bhubaneswar": 20.0,
+      "Kochi": 4.0,
+      "Thiruvananthapuram": 4.2,
+      "Chandigarh": 8.3,
+      "Ranchi": 3.3,
+      "Dehradun": 70.4,
+      "Srinagar": 1.5,
+      "Panaji": 22.0,
+      "Shimla": 0.3,
+      "Gandhinagar": 1.5,
+      "Coimbatore": 6.3,
+      "Madurai": 63.0,
+      "Varanasi": 113.4,
+      "Amritsar": 0.6,
+      "Jodhpur": 6.5,
+      "Mysuru": 39.1,
+      "Imphal": 8.3
+    },
+    "median_km": 8.1,
+    "max_km": 231.3,
+    "within_25km": 27,
+    "within_50km": 30,
+    "over_100km": 7
+  },
+  "routes": [
+    {
+      "pair": "Hyderabad - Vijayawada",
+      "alternatives": 1,
+      "distance_km": [
+        273.5
+      ],
+      "duration_min": [
+        217.1
+      ],
+      "points": 3857,
+      "samples_used": 483,
+      "score_day": [
+        4.246
+      ],
+      "score_night": [
+        6.794
+      ],
+      "tier_samples_route0": {
+        "low": 91,
+        "medium": 0,
+        "high": 392
+      },
+      "recommended": 0,
+      "fastest": 0,
+      "recommended_is_fastest": true,
+      "extra_minutes_vs_fastest": 0.0,
+      "ranking_same_day_night": true,
+      "nearest_district_km_mean": 103.9,
+      "nearest_district_km_max": 186.1
+    },
+    {
+      "pair": "Hyderabad - Warangal",
+      "alternatives": 2,
+      "distance_km": [
+        148.8,
+        157.3
+      ],
+      "duration_min": [
+        124.7,
+        126.9
+      ],
+      "points": 2132,
+      "samples_used": 267,
+      "score_day": [
+        2.873,
+        2.518
+      ],
+      "score_night": [
+        4.596,
+        4.028
+      ],
+      "tier_samples_route0": {
+        "low": 142,
+        "medium": 0,
+        "high": 125
+      },
+      "recommended": 1,
+      "fastest": 0,
+      "recommended_is_fastest": false,
+      "extra_minutes_vs_fastest": 2.2,
+      "ranking_same_day_night": true,
+      "nearest_district_km_mean": 185.3,
+      "nearest_district_km_max": 203.6
+    },
+    {
+      "pair": "Visakhapatnam - Vijayawada",
+      "alternatives": 1,
+      "distance_km": [
+        342.6
+      ],
+      "duration_min": [
+        254.7
+      ],
+      "points": 4113,
+      "samples_used": 515,
+      "score_day": [
+        5.0
+      ],
+      "score_night": [
+        8.0
+      ],
+      "tier_samples_route0": {
+        "low": 0,
+        "medium": 0,
+        "high": 515
+      },
+      "recommended": 0,
+      "fastest": 0,
+      "recommended_is_fastest": true,
+      "extra_minutes_vs_fastest": 0.0,
+      "ranking_same_day_night": true,
+      "nearest_district_km_mean": 36.1,
+      "nearest_district_km_max": 88.1
+    },
+    {
+      "pair": "Delhi - Jaipur",
+      "alternatives": 2,
+      "distance_km": [
+        284.9,
+        311.6
+      ],
+      "duration_min": [
+        216.6,
+        218.7
+      ],
+      "points": 3365,
+      "samples_used": 421,
+      "score_day": [
+        3.204,
+        4.22
+      ],
+      "score_night": [
+        5.127,
+        6.753
+      ],
+      "tier_samples_route0": {
+        "low": 129,
+        "medium": 96,
+        "high": 196
+      },
+      "recommended": 0,
+      "fastest": 0,
+      "recommended_is_fastest": true,
+      "extra_minutes_vs_fastest": 0.0,
+      "ranking_same_day_night": true,
+      "nearest_district_km_mean": 23.1,
+      "nearest_district_km_max": 59.9
+    },
+    {
+      "pair": "Delhi - Agra",
+      "alternatives": 2,
+      "distance_km": [
+        203.4,
+        210.2
+      ],
+      "duration_min": [
+        152.2,
+        161.5
+      ],
+      "points": 2768,
+      "samples_used": 346,
+      "score_day": [
+        4.545,
+        4.429
+      ],
+      "score_night": [
+        7.272,
+        7.087
+      ],
+      "tier_samples_route0": {
+        "low": 0,
+        "medium": 63,
+        "high": 283
+      },
+      "recommended": 1,
+      "fastest": 0,
+      "recommended_is_fastest": false,
+      "extra_minutes_vs_fastest": 9.4,
+      "ranking_same_day_night": true,
+      "nearest_district_km_mean": 45.3,
+      "nearest_district_km_max": 79.1
+    },
+    {
+      "pair": "Mumbai - Pune",
+      "alternatives": 1,
+      "distance_km": [
+        144.8
+      ],
+      "duration_min": [
+        115.9
+      ],
+      "points": 2540,
+      "samples_used": 318,
+      "score_day": [
+        1.846
+      ],
+      "score_night": [
+        2.953
+      ],
+      "tier_samples_route0": {
+        "low": 172,
+        "medium": 126,
+        "high": 20
+      },
+      "recommended": 0,
+      "fastest": 0,
+      "recommended_is_fastest": true,
+      "extra_minutes_vs_fastest": 0.0,
+      "ranking_same_day_night": true,
+      "nearest_district_km_mean": 22.4,
+      "nearest_district_km_max": 44.9
+    },
+    {
+      "pair": "Chennai - Bengaluru",
+      "alternatives": 2,
+      "distance_km": [
+        327.3,
+        342.9
+      ],
+      "duration_min": [
+        247.5,
+        258.9
+      ],
+      "points": 4771,
+      "samples_used": 597,
+      "score_day": [
+        2.304,
+        2.46
+      ],
+      "score_night": [
+        3.686,
+        3.936
+      ],
+      "tier_samples_route0": {
+        "low": 373,
+        "medium": 47,
+        "high": 177
+      },
+      "recommended": 0,
+      "fastest": 0,
+      "recommended_is_fastest": true,
+      "extra_minutes_vs_fastest": 0.0,
+      "ranking_same_day_night": true,
+      "nearest_district_km_mean": 31.1,
+      "nearest_district_km_max": 75.7
+    },
+    {
+      "pair": "Kolkata - Patna",
+      "alternatives": 2,
+      "distance_km": [
+        604.7,
+        636.4
+      ],
+      "duration_min": [
+        446.4,
+        484.1
+      ],
+      "points": 8388,
+      "samples_used": 1049,
+      "score_day": [
+        1.153,
+        1.364
+      ],
+      "score_night": [
+        1.845,
+        2.182
+      ],
+      "tier_samples_route0": {
+        "low": 942,
+        "medium": 107,
+        "high": 0
+      },
+      "recommended": 0,
+      "fastest": 0,
+      "recommended_is_fastest": true,
+      "extra_minutes_vs_fastest": 0.0,
+      "ranking_same_day_night": true,
+      "nearest_district_km_mean": 61.4,
+      "nearest_district_km_max": 195.0
+    },
+    {
+      "pair": "Lucknow - Kanpur",
+      "alternatives": 2,
+      "distance_km": [
+        94.2,
+        95.7
+      ],
+      "duration_min": [
+        65.1,
+        66.2
+      ],
+      "points": 1014,
+      "samples_used": 127,
+      "score_day": [
+        1.024,
+        1.023
+      ],
+      "score_night": [
+        1.638,
+        1.636
+      ],
+      "tier_samples_route0": {
+        "low": 125,
+        "medium": 2,
+        "high": 0
+      },
+      "recommended": 1,
+      "fastest": 0,
+      "recommended_is_fastest": false,
+      "extra_minutes_vs_fastest": 1.1,
+      "ranking_same_day_night": true,
+      "nearest_district_km_mean": 198.7,
+      "nearest_district_km_max": 231.3
+    },
+    {
+      "pair": "Ahmedabad - Surat",
+      "alternatives": 2,
+      "distance_km": [
+        255.3,
+        251.5
+      ],
+      "duration_min": [
+        187.9,
+        187.9
+      ],
+      "points": 2063,
+      "samples_used": 258,
+      "score_day": [
+        1.134,
+        1.0
+      ],
+      "score_night": [
+        1.814,
+        1.6
+      ],
+      "tier_samples_route0": {
+        "low": 235,
+        "medium": 23,
+        "high": 0
+      },
+      "recommended": 1,
+      "fastest": 0,
+      "recommended_is_fastest": false,
+      "extra_minutes_vs_fastest": 0.0,
+      "ranking_same_day_night": true,
+      "nearest_district_km_mean": 23.3,
+      "nearest_district_km_max": 42.8
+    },
+    {
+      "pair": "Bhopal - Indore",
+      "alternatives": 2,
+      "distance_km": [
+        188.4,
+        256.2
+      ],
+      "duration_min": [
+        206.8,
+        204.5
+      ],
+      "points": 2198,
+      "samples_used": 275,
+      "score_day": [
+        3.991,
+        3.108
+      ],
+      "score_night": [
+        6.385,
+        4.972
+      ],
+      "tier_samples_route0": {
+        "low": 0,
+        "medium": 111,
+        "high": 164
+      },
+      "recommended": 1,
+      "fastest": 1,
+      "recommended_is_fastest": true,
+      "extra_minutes_vs_fastest": 0.0,
+      "ranking_same_day_night": true,
+      "nearest_district_km_mean": 21.1,
+      "nearest_district_km_max": 45.6
+    },
+    {
+      "pair": "Nagpur - Raipur",
+      "alternatives": 1,
+      "distance_km": [
+        285.0
+      ],
+      "duration_min": [
+        224.9
+      ],
+      "points": 3002,
+      "samples_used": 376,
+      "score_day": [
+        2.217
+      ],
+      "score_night": [
+        3.547
+      ],
+      "tier_samples_route0": {
+        "low": 231,
+        "medium": 49,
+        "high": 96
+      },
+      "recommended": 0,
+      "fastest": 0,
+      "recommended_is_fastest": true,
+      "extra_minutes_vs_fastest": 0.0,
+      "ranking_same_day_night": true,
+      "nearest_district_km_mean": 23.0,
+      "nearest_district_km_max": 50.3
+    },
+    {
+      "pair": "Bengaluru - Mysuru",
+      "alternatives": 1,
+      "distance_km": [
+        143.5
+      ],
+      "duration_min": [
+        118.8
+      ],
+      "points": 1978,
+      "samples_used": 248,
+      "score_day": [
+        2.222
+      ],
+      "score_night": [
+        3.555
+      ],
+      "tier_samples_route0": {
+        "low": 46,
+        "medium": 202,
+        "high": 0
+      },
+      "recommended": 0,
+      "fastest": 0,
+      "recommended_is_fastest": true,
+      "extra_minutes_vs_fastest": 0.0,
+      "ranking_same_day_night": true,
+      "nearest_district_km_mean": 25.6,
+      "nearest_district_km_max": 45.2
+    },
+    {
+      "pair": "Kochi - Thiruvananthapuram",
+      "alternatives": 2,
+      "distance_km": [
+        208.2,
+        202.3
+      ],
+      "duration_min": [
+        202.2,
+        208.0
+      ],
+      "points": 6307,
+      "samples_used": 789,
+      "score_day": [
+        3.531,
+        3.57
+      ],
+      "score_night": [
+        5.65,
+        5.712
+      ],
+      "tier_samples_route0": {
+        "low": 86,
+        "medium": 326,
+        "high": 377
+      },
+      "recommended": 0,
+      "fastest": 0,
+      "recommended_is_fastest": true,
+      "extra_minutes_vs_fastest": 0.0,
+      "ranking_same_day_night": true,
+      "nearest_district_km_mean": 24.1,
+      "nearest_district_km_max": 34.9
+    },
+    {
+      "pair": "Chandigarh - Delhi",
+      "alternatives": 2,
+      "distance_km": [
+        269.2,
+        288.3
+      ],
+      "duration_min": [
+        201.4,
+        225.5
+      ],
+      "points": 2336,
+      "samples_used": 292,
+      "score_day": [
+        2.634,
+        1.95
+      ],
+      "score_night": [
+        4.214,
+        3.12
+      ],
+      "tier_samples_route0": {
+        "low": 54,
+        "medium": 190,
+        "high": 48
+      },
+      "recommended": 1,
+      "fastest": 0,
+      "recommended_is_fastest": false,
+      "extra_minutes_vs_fastest": 24.1,
+      "ranking_same_day_night": true,
+      "nearest_district_km_mean": 17.6,
+      "nearest_district_km_max": 36.9
+    },
+    {
+      "pair": "Hyderabad - Secunderabad",
+      "alternatives": 1,
+      "distance_km": [
+        7.9
+      ],
+      "duration_min": [
+        10.5
+      ],
+      "points": 295,
+      "samples_used": 37,
+      "score_day": [
+        1.0
+      ],
+      "score_night": [
+        1.6
+      ],
+      "tier_samples_route0": {
+        "low": 37,
+        "medium": 0,
+        "high": 0
+      },
+      "recommended": 0,
+      "fastest": 0,
+      "recommended_is_fastest": true,
+      "extra_minutes_vs_fastest": 0.0,
+      "ranking_same_day_night": true,
+      "nearest_district_km_mean": 148.4,
+      "nearest_district_km_max": 149.0
+    }
+  ],
+  "route_summary": {
+    "pairs_requested": 16,
+    "pairs_routed": 16,
+    "pairs_with_alternatives": 10,
+    "alternatives_histogram": {
+      "1": 6,
+      "2": 10
+    },
+    "recommended_is_fastest": 11,
+    "ranking_same_day_night": 16,
+    "mean_extra_minutes_when_alternatives": 3.7,
+    "mean_nearest_district_km_along_routes": 61.9,
+    "max_nearest_district_km_along_routes": 231.3,
+    "score_one_route_ms_mean": 304.5,
+    "night_changes_ranking": 0,
+    "sample_n_changes_ranking": 1,
+    "weights_change_ranking": 0,
+    "multi_route_pairs": 10
+  },
+  "night_multiplier": {
+    "day_score": 2.5,
+    "night_score": 4.0,
+    "ratio": 1.6,
+    "constant": 1.6
+  },
+  "tier_scores_day": {
+    "low": 1.0,
+    "medium": 2.5,
+    "high": 5.0
+  }
+}

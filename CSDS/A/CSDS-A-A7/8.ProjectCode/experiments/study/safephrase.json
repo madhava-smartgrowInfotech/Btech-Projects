@@ -1,0 +1,169 @@
+{
+  "thresholds": {
+    "Low": 1,
+    "Medium": 0.85,
+    "High": 0.75,
+    "Ultra": 0.6
+  },
+  "n_negative_transcripts": 40,
+  "by_sensitivity": {
+    "Low": {
+      "positive_transcripts": 24,
+      "triggered": 13,
+      "recall": 0.542,
+      "by_category": {
+        "exact": {
+          "hit": 5,
+          "n": 5
+        },
+        "embedded": {
+          "hit": 5,
+          "n": 5
+        },
+        "one_word_dropped": {
+          "hit": 0,
+          "n": 6
+        },
+        "one_word_misheard": {
+          "hit": 0,
+          "n": 5
+        },
+        "reordered": {
+          "hit": 3,
+          "n": 3
+        }
+      },
+      "negative_checks": 80,
+      "false_triggers": 0,
+      "false_trigger_rate": 0,
+      "false_trigger_examples": []
+    },
+    "Medium": {
+      "positive_transcripts": 24,
+      "triggered": 13,
+      "recall": 0.542,
+      "by_category": {
+        "exact": {
+          "hit": 5,
+          "n": 5
+        },
+        "embedded": {
+          "hit": 5,
+          "n": 5
+        },
+        "one_word_dropped": {
+          "hit": 0,
+          "n": 6
+        },
+        "one_word_misheard": {
+          "hit": 0,
+          "n": 5
+        },
+        "reordered": {
+          "hit": 3,
+          "n": 3
+        }
+      },
+      "negative_checks": 80,
+      "false_triggers": 0,
+      "false_trigger_rate": 0,
+      "false_trigger_examples": []
+    },
+    "High": {
+      "positive_transcripts": 24,
+      "triggered": 18,
+      "recall": 0.75,
+      "by_category": {
+        "exact": {
+          "hit": 5,
+          "n": 5
+        },
+        "embedded": {
+          "hit": 5,
+          "n": 5
+        },
+        "one_word_dropped": {
+          "hit": 3,
+          "n": 6
+        },
+        "one_word_misheard": {
+          "hit": 2,
+          "n": 5
+        },
+        "reordered": {
+          "hit": 3,
+          "n": 3
+        }
+      },
+      "negative_checks": 80,
+      "false_triggers": 0,
+      "false_trigger_rate": 0,
+      "false_trigger_examples": []
+    },
+    "Ultra": {
+      "positive_transcripts": 24,
+      "triggered": 24,
+      "recall": 1,
+      "by_category": {
+        "exact": {
+          "hit": 5,
+          "n": 5
+        },
+        "embedded": {
+          "hit": 5,
+          "n": 5
+        },
+        "one_word_dropped": {
+          "hit": 6,
+          "n": 6
+        },
+        "one_word_misheard": {
+          "hit": 5,
+          "n": 5
+        },
+        "reordered": {
+          "hit": 3,
+          "n": 3
+        }
+      },
+      "negative_checks": 80,
+      "false_triggers": 8,
+      "false_trigger_rate": 0.1,
+      "false_trigger_examples": [
+        {
+          "transcript": "can you help me with my homework",
+          "phrase": "help me sheguard"
+        },
+        {
+          "transcript": "please help me find my keys",
+          "phrase": "help me sheguard"
+        },
+        {
+          "transcript": "tell me about sheguard",
+          "phrase": "help me sheguard"
+        },
+        {
+          "transcript": "my brother is coming now",
+          "phrase": "please call my brother now"
+        },
+        {
+          "transcript": "help me",
+          "phrase": "help me sheguard"
+        },
+        {
+          "transcript": "call my brother",
+          "phrase": "please call my brother now"
+        },
+        {
+          "transcript": "please call me now",
+          "phrase": "please call my brother now"
+        },
+        {
+          "transcript": "call my sister now",
+          "phrase": "please call my brother now"
+        }
+      ]
+    }
+  },
+  "match_microseconds": 1.47
+}

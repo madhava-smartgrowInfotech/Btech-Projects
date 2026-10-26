@@ -1,0 +1,30 @@
+{
+  "folds": 5,
+  "articles": 300,
+  "rows": 31094,
+  "attributes_calendar_only_unseen_article": {
+    "RMSE": 18.454278295615875,
+    "MAE": 11.00519073831675,
+    "MAPE (%)": 105.41950966552835,
+    "MAPE_excluded_zero_rows": 613,
+    "R2": 0.2736794771343204,
+    "WAPE (%)": 56.54458701691421
+  },
+  "product_type_mean_baseline_unseen_article": {
+    "RMSE": 21.713963625170614,
+    "MAE": 13.126439874859997,
+    "MAPE (%)": 166.7791615255632,
+    "MAPE_excluded_zero_rows": 613,
+    "R2": -0.005570204349500285,
+    "WAPE (%)": 67.44354908289739
+  },
+  "full_features_unseen_article_lags_assumed_known": {
+    "RMSE": 12.253015813682257,
+    "MAE": 6.2812166165133165,
+    "MAPE (%)": 55.75861970381341,
+    "MAPE_excluded_zero_rows": 613,
+    "R2": 0.6798008515971167,
+    "WAPE (%)": 32.27284360533017
+  },
+  "note": "Articles in the test fold are never in the training fold. The third row still uses the held-out article's own lag features, so it is not a cold-start result - it shows what history is worth."
+}

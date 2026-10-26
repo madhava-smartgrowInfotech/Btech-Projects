@@ -1,0 +1,121 @@
+import { Fragment, useState } from 'react'
+import { Sparkles } from 'lucide-react'
+import { Alert, Button, Card, PageHeader, Skeleton, Textarea } from '../components/ui'
+import { ActionError, useAction } from '../components/app/common'
+import { api } from '../lib/api'
+import { usePipeline } from '../lib/pipeline'
+
+const PROMPTS = ['Summarize the model results.', 'Which features matter most, and why?', 'Did domain adaptation help?', 'Why did demand increase?']
+
+/** Inline **bold** and `code` only; everything else stays plain text (no HTML is ever injected). */
+function inline(text) {
+  return text.split(/(\*\*[^*]+\*\*|`[^`]+`)/g).map((part, i) => {
+    if (part.startsWith('**') && part.endsWith('**')) return <strong key={i}>{part.slice(2, -2)}</strong>
+    if (part.startsWith('`') && part.endsWith('`')) return <code key={i}>{part.slice(1, -1)}</code>
+    return <Fragment key={i}>{part}</Fragment>
+  })
+}
+
+function Answer({ text }) {
+  const blocks = text.split(/\n{2,}/).filter(Boolean)
+  return (
+    <div className="answer" aria-live="polite">
+      {blocks.map((b, i) => {
+        const lines = b.split('\n')
+        if (lines.every((l) => /^\s*[*-]\s+/.test(l))) {
+          return (
+            <ul key={i}>
+              {lines.map((l, j) => (
+                <li key={j}>{inline(l.replace(/^\s*[*-]\s+/, ''))}</li>
+              ))}
+            </ul>
+          )
+        }
+        return <p key={i}>{inline(lines.join(' '))}</p>
+      })}
+    </div>
+  )
+}
+
+export default function Insights() {
+  const { state } = usePipeline()
+  const explain = useAction()
+  const summary = useAction()
+  const [question, setQuestion] = useState('')
+  const [answer, setAnswer] = useState(null) // {title, text}
+
+  const configured = state?.gemini_configured
+  const ask = async () => {
+    const out = await explain.run(() => api('/api/ai/explain', { method: 'POST', body: { question } }))
+    if (out) setAnswer({ title: 'Explanation', text: out.answer })
+  }
+  const summarize = async () => {
+    const out = await summary.run(() => api('/api/ai/forecast-summary', { method: 'POST' }))
+    if (out) setAnswer({ title: 'Forecast summary', text: out.answer })
+  }
+  const busy = explain.loading || summary.loading
+
+  return (
+    <>
+      <PageHeader
+        eyebrow="09 · AI insights"
+        title="AI insights"
+        description="Optional plain-language explanations from Gemini. It only sees aggregated numbers (metrics, top features, domain-shift stats), never your raw rows."
+      />
+      <div className="page-stack">
+        {!state ? (
+          <Skeleton height={160} />
+        ) : !configured ? (
+          <Alert tone="info">
+            AI Insights is optional and not configured. Add a <code>GEMINI_API_KEY</code> to <code>.env</code> and restart the backend to enable it. Every other
+            page works without it.
+          </Alert>
+        ) : (
+          <Alert tone="success">Gemini is configured. Questions are answered from your latest metrics, feature importance and domain-shift results.</Alert>
+        )}
+
+        <Card title="Ask about your results">
+          <div className="stack">
+            <Textarea
+              label="Your question"
+              rows={3}
+              value={question}
+              onChange={(e) => setQuestion(e.target.value)}
+              placeholder="e.g. Why did demand increase?"
+              hint="Leave it empty to get a summary of the model results."
+            />
+            <div className="chips" role="group" aria-label="Suggested questions">
+              {PROMPTS.map((p) => (
+                <button key={p} type="button" className="prompt-chip" onClick={() => setQuestion(p)}>
+                  {p}
+                </button>
+              ))}
+            </div>
+            <ActionError error={explain.error || summary.error} />
+            <div className="row">
+              <Button variant="primary" icon={Sparkles} loading={explain.loading} disabled={!configured || busy} onClick={ask}>
+                Get AI explanation
+              </Button>
+              <Button loading={summary.loading} disabled={!configured || busy || !state?.forecast_done} onClick={summarize}>
+                Summarize latest forecast
+              </Button>
+            </div>
+            {configured && !state?.forecast_done && <span className="small muted">Generate a forecast first to enable the forecast summary.</span>}
+            {!state?.xgboost_trained && configured && (
+              <span className="small muted">Train a model first for richer answers; without results the AI has little to explain.</span>
+            )}
+          </div>
+        </Card>
+
+        {busy && <Skeleton height={140} />}
+        {answer && !busy && (
+          <section aria-label={answer.title} className="stack">
+            <h2 className="display-sm">{answer.title}</h2>
+            <Answer text={answer.text} />
+            <p className="small muted">Generated by Gemini from aggregated results. Treat it as an explanation, not a forecast.</p>
+          </section>
+        )}
+      </div>
+    </>
+  )
+}

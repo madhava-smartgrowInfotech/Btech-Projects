@@ -1,0 +1,69 @@
+/* TrendCast screens - small additions on top of the V2 kit styles (still flat colour, hard edges, no gradients). */
+
+.nav-label { flex: 1; min-width: 0; }
+.nav-step { font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600; color: var(--muted); }
+.nav-link.active .nav-step { color: var(--ink); }
+.nav-done {
+  width: 18px; height: 18px; display: grid; place-items: center; flex: none;
+  background: var(--lime); color: var(--ink); border: 2px solid var(--ink);
+}
+
+/* sidebar scrolls instead of clipping on short screens */
+.sidebar { overflow-y: auto; }
+
+/* pills for feature names, categories */
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  font-family: var(--font-mono); font-size: 0.78rem; font-weight: 600; padding: 3px 9px;
+  border: 2px solid var(--line); background: var(--surface); overflow-wrap: anywhere;
+}
+.chip.lime { background: var(--lime); color: var(--ink); border-color: var(--ink); }
+.chip.sky { background: var(--sky); color: var(--ink); border-color: var(--ink); }
+
+/* metric tiles */
+.metric-grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); }
+.page-stack { display: flex; flex-direction: column; gap: 28px; }
+.two-col { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); }
+.two-col > * { min-width: 0; }
+
+/* range slider */
+.range { width: 100%; appearance: none; height: 16px; background: var(--surface); border: var(--bw) solid var(--line); cursor: pointer; margin: 8px 0; }
+.range::-webkit-slider-thumb { appearance: none; width: 26px; height: 26px; background: var(--lime); border: var(--bw) solid var(--ink); box-shadow: var(--shadow-xs); cursor: grab; }
+.range::-moz-range-thumb { width: 22px; height: 22px; border-radius: 0; background: var(--lime); border: var(--bw) solid var(--ink); cursor: grab; }
+.range:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
+
+/* pipeline step cards on the overview */
+.step-card { display: flex; flex-direction: column; gap: 10px; height: 100%; }
+.step-card .step-no { font-family: var(--font-display); font-size: 2.4rem; line-height: 0.8; -webkit-text-stroke: 2px var(--fg); color: transparent; }
+.step-card.is-done .step-no { color: var(--lime); -webkit-text-stroke: 2px var(--ink); }
+.step-card p { color: var(--muted); flex: 1; }
+
+/* AI answer */
+.answer { border: var(--bw) solid var(--line); background: var(--surface); padding: 18px 20px; box-shadow: var(--shadow-sm); }
+.answer p + p, .answer p + ul, .answer ul + p { margin-top: 12px; }
+.answer ul { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 6px; }
+.answer code { background: var(--lime); color: var(--ink); padding: 0 5px; font-size: 0.9em; }
+
+/* prompts that fill the question box */
+.prompt-chip { cursor: pointer; text-align: left; font: inherit; font-family: var(--font-mono); font-size: 0.78rem; font-weight: 600; padding: 6px 10px; border: 2px solid var(--line); background: var(--surface); color: var(--fg); }
+.prompt-chip:hover { background: var(--lime); color: var(--ink); border-color: var(--ink); }
+
+/* number column delta tone */
+.tone-good { background: var(--lime) !important; color: var(--ink) !important; border-color: var(--ink) !important; }
+.tone-bad { background: var(--coral) !important; color: var(--ink) !important; border-color: var(--ink) !important; }
+
+/* wide tables keep their own scroll area */
+.table-wrap { max-width: 100%; }
+
+/* narrow screens: tighter shell padding, stacked actions */
+@media (max-width: 480px) {
+  .shell-content { padding: 20px 12px 96px; }
+  .card { padding: 14px; }
+  .page-header h1 { font-size: clamp(1.9rem, 10vw, 2.6rem); }
+}
+
+.footer-note { color: var(--bg); opacity: 0.8; max-width: 60ch; }
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}

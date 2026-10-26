@@ -1,0 +1,56 @@
+{
+  "test_rows": 6515,
+  "actual_units": 80699.0,
+  "XGBoost": {
+    "predicted_units": 99704.14070760133,
+    "bias_pct": 23.55065206210898,
+    "understock_units": 13198.32263072906,
+    "overstock_units": 32203.463338330388,
+    "understock_pct_of_demand": 16.355001463127252,
+    "overstock_pct_of_demand": 39.90565352523623,
+    "wape_pct": 56.26065498836349,
+    "p90_buffer": {
+      "understock_pct_of_demand": 2.7072574288862774,
+      "overstock_pct_of_demand": 134.34016304269497
+    },
+    "p95_buffer": {
+      "understock_pct_of_demand": 1.9019874163665493,
+      "overstock_pct_of_demand": 163.9330268415908
+    }
+  },
+  "Moving average (7d)": {
+    "predicted_units": 85932.0,
+    "bias_pct": 6.4845908871237565,
+    "understock_units": 23735.285714285717,
+    "overstock_units": 28968.285714285714,
+    "understock_pct_of_demand": 29.412118755233298,
+    "overstock_pct_of_demand": 35.89670964235705,
+    "wape_pct": 65.30882839759035,
+    "p90_buffer": {
+      "understock_pct_of_demand": 7.7808015963379535,
+      "overstock_pct_of_demand": 147.21994495338336
+    },
+    "p95_buffer": {
+      "understock_pct_of_demand": 5.752007698778902,
+      "overstock_pct_of_demand": 182.58461893798975
+    }
+  },
+  "Seasonal naive (lag 7)": {
+    "predicted_units": 87148.0,
+    "bias_pct": 7.991424924720257,
+    "understock_units": 20531.0,
+    "overstock_units": 26980.0,
+    "understock_pct_of_demand": 25.441455284452104,
+    "overstock_pct_of_demand": 33.43288020917235,
+    "wape_pct": 58.87433549362445,
+    "p90_buffer": {
+      "understock_pct_of_demand": 6.0690156298368265,
+      "overstock_pct_of_demand": 137.97128925898733
+    },
+    "p95_buffer": {
+      "understock_pct_of_demand": 4.581665565343326,
+      "overstock_pct_of_demand": 171.33386539261483
+    }
+  },
+  "note": "Units are daily article units in the 20% test window; the buffer rows use the test residual std (illustrative, not out-of-sample)."
+}

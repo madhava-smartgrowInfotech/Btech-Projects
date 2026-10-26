@@ -1,0 +1,73 @@
+{
+  "top10_by_shap": [
+    {
+      "feature": "lag_1",
+      "mean_abs_shap": 8.746772766113281,
+      "gain_importance": 0.119526207447052
+    },
+    {
+      "feature": "rolling_mean_7",
+      "mean_abs_shap": 3.118921995162964,
+      "gain_importance": 0.04463030397891998
+    },
+    {
+      "feature": "day_of_year",
+      "mean_abs_shap": 1.9689311981201172,
+      "gain_importance": 0.04343919828534126
+    },
+    {
+      "feature": "price",
+      "mean_abs_shap": 1.9011850357055664,
+      "gain_importance": 0.01418137364089489
+    },
+    {
+      "feature": "sales_channel_id",
+      "mean_abs_shap": 1.5280028581619263,
+      "gain_importance": 0.020454637706279755
+    },
+    {
+      "feature": "day",
+      "mean_abs_shap": 1.117047905921936,
+      "gain_importance": 0.04251104220747948
+    },
+    {
+      "feature": "dow_cos",
+      "mean_abs_shap": 0.8057389259338379,
+      "gain_importance": 0.030726999044418335
+    },
+    {
+      "feature": "rolling_mean_28",
+      "mean_abs_shap": 0.7901142239570618,
+      "gain_importance": 0.013731561601161957
+    },
+    {
+      "feature": "dow_sin",
+      "mean_abs_shap": 0.6944344639778137,
+      "gain_importance": 0.018994413316249847
+    },
+    {
+      "feature": "week_of_year",
+      "mean_abs_shap": 0.6806010603904724,
+      "gain_importance": 0.03264369070529938
+    }
+  ],
+  "spearman_rank_corr_shap_vs_gain": 0.40149223633797126,
+  "shap_additivity_max_abs_error": 8.392333984375e-05,
+  "n_test_rows": 6515,
+  "top3_share_of_total_abs_shap_pct": 52.354592084884644,
+  "top3_by_gain": [
+    "is_month_end",
+    "lag_1",
+    "quarter"
+  ],
+  "note": "SHAP values come from XGBoost's built-in exact TreeSHAP (pred_contribs); the web app itself shows gain importance only.",
+  "weekday_mean_shap_calendar": {
+    "0": -1.9804999828338623,
+    "1": 0.45829999446868896,
+    "2": 2.2114999294281006,
+    "3": 0.42829999327659607,
+    "4": 0.260699987411499,
+    "5": 0.9905999898910522,
+    "6": -2.280400037765503
+  }
+}

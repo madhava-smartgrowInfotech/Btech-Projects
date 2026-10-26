@@ -1,0 +1,51 @@
+{
+  "stages_seconds": {
+    "upload+clean+merge (684k rows)": 3.492,
+    "explore (aggregate daily)": 2.714,
+    "build features": 0.941,
+    "moving-average baseline": 0.077,
+    "train XGBoost (default)": 1.053,
+    "train XGBoost (tuned)": 29.635,
+    "domain adaptation run": 3.668,
+    "train XGBoost (default, again)": 1.333
+  },
+  "latency_ms": {
+    "GET /api/health": {
+      "n": 20,
+      "median": 3.2,
+      "p95": 28.7,
+      "max": 28.7
+    },
+    "GET /api/state": {
+      "n": 20,
+      "median": 3.1,
+      "p95": 28.7,
+      "max": 30.4
+    },
+    "GET /api/evaluation": {
+      "n": 20,
+      "median": 17.1,
+      "p95": 34.3,
+      "max": 36.1
+    },
+    "POST /api/forecast (7 d)": {
+      "n": 20,
+      "median": 44.9,
+      "p95": 58.8,
+      "max": 66.1
+    },
+    "POST /api/forecast (14 d)": {
+      "n": 20,
+      "median": 75.3,
+      "p95": 95.8,
+      "max": 101.8
+    },
+    "POST /api/forecast (30 d)": {
+      "n": 20,
+      "median": 155.9,
+      "p95": 168.8,
+      "max": 178.0
+    }
+  },
+  "note": "Measured on 127.0.0.1 with other jobs running on the same machine; real H&M subset of 684,392 transaction rows."
+}

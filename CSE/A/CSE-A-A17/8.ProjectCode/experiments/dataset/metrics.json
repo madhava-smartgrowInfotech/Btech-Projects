@@ -1,0 +1,16 @@
+{
+  "raw_rows": 684392,
+  "clean_rows": 605178,
+  "articles": 300,
+  "customers": 276168,
+  "date_min": "2018-09-20",
+  "date_max": "2019-01-04",
+  "daily_rows": 30481,
+  "feature_rows": 31094,
+  "feature_cols": 31,
+  "zero_demand_share_pct": 1.9714414356467487,
+  "channel_rows_raw": {
+    "1": 227131,
+    "2": 378047
+  }
+}

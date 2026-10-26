@@ -1,0 +1,9 @@
+{
+ "images": 7701,
+ "rejected": 1208,
+ "rate": 0.1568627450980392,
+ "reasons": {
+  "multiple_faces": 1197,
+  "no_face": 11
+ }
+}

@@ -1,0 +1,58 @@
+{
+ "dataset": "LFW identities with >= 10 photos",
+ "victims": 154,
+ "thresholds": {
+  "identity": 0.4,
+  "frame_consistency": 0.45
+ },
+ "by_challenge": {
+  "TURN_LEFT": {
+   "liveness_only": 152,
+   "full_chain": 147,
+   "liveness_only_rate": 0.987012987012987,
+   "full_chain_rate": 0.9545454545454546
+  },
+  "TURN_RIGHT": {
+   "liveness_only": 150,
+   "full_chain": 145,
+   "liveness_only_rate": 0.974025974025974,
+   "full_chain_rate": 0.9415584415584416
+  },
+  "LOOK_UP": {
+   "liveness_only": 128,
+   "full_chain": 123,
+   "liveness_only_rate": 0.8311688311688312,
+   "full_chain_rate": 0.7987012987012987
+  },
+  "LOOK_DOWN": {
+   "liveness_only": 120,
+   "full_chain": 112,
+   "liveness_only_rate": 0.7792207792207793,
+   "full_chain_rate": 0.7272727272727273
+  },
+  "TILT_LEFT": {
+   "liveness_only": 113,
+   "full_chain": 108,
+   "liveness_only_rate": 0.7337662337662337,
+   "full_chain_rate": 0.7012987012987013
+  },
+  "TILT_RIGHT": {
+   "liveness_only": 113,
+   "full_chain": 107,
+   "liveness_only_rate": 0.7337662337662337,
+   "full_chain_rate": 0.6948051948051948
+  },
+  "OPEN_MOUTH": {
+   "liveness_only": 78,
+   "full_chain": 75,
+   "liveness_only_rate": 0.5064935064935064,
+   "full_chain_rate": 0.487012987012987
+  },
+  "CLOSE_EYES": {
+   "liveness_only": 87,
+   "full_chain": 81,
+   "liveness_only_rate": 0.564935064935065,
+   "full_chain_rate": 0.525974025974026
+  }
+ }
+}

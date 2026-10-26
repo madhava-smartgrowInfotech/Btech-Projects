@@ -1,0 +1,381 @@
+{
+ "login_wrong": [
+  401,
+  {
+   "detail": "That email and password do not match. Use one of the demo logins shown on the sign-in page."
+  }
+ ],
+ "anon_overview": [
+  401,
+  {
+   "detail": "Please sign in to continue."
+  }
+ ],
+ "analyst_decision": [
+  403,
+  {
+   "detail": "Only moderators can record decisions or retrain the model."
+  }
+ ],
+ "accounts_page": {
+  "total": 4533,
+  "page": 1,
+  "page_size": 3,
+  "pages": 1511,
+  "threshold": 0.5,
+  "items": [
+   {
+    "id": 4286,
+    "handle": "quartzaurora00880118",
+    "display_name": "Haze",
+    "score": 1.0,
+    "flagged": true,
+    "status": "pending",
+    "cluster_id": "BN-04235",
+    "followers": 22,
+    "following": 22,
+    "account_age_days": 33,
+    "degree": 18,
+    "flagged_neighbours": 16
+   },
+   {
+    "id": 4281,
+    "handle": "juniper2",
+    "display_name": "Juniper",
+    "score": 1.0,
+    "flagged": true,
+    "status": "pending",
+    "cluster_id": "BN-04235",
+    "followers": 15,
+    "following": 112,
+    "account_age_days": 35,
+    "degree": 20,
+    "flagged_neighbours": 18
+   },
+   {
+    "id": 4261,
+    "handle": "dune.thistle26830652",
+    "display_name": "Lantern",
+    "score": 1.0,
+    "flagged": true,
+    "status": "pending",
+    "cluster_id": "BN-04235",
+    "followers": 5,
+    "following": 34,
+    "account_age_days": 34,
+    "degree": 26,
+    "flagged_neighbours": 22
+   }
+  ]
+ },
+ "account_detail": {
+  "id": 4286,
+  "handle": "quartzaurora00880118",
+  "display_name": "Haze",
+  "score": 1.0,
+  "flagged": true,
+  "threshold": 0.5,
+  "status": "pending",
+  "model": "GraphSAGE",
+  "model_scores": [
+   {
+    "model": "baseline",
+    "label": "Feature-only baseline (MLP)",
+    "score": 0.9986709356307983,
+    "flagged": true,
+    "uses_graph": false
+   },
+   {
+    "model": "gcn",
+    "label": "GCN",
+    "score": 0.9996609687805176,
+    "flagged": true,
+    "uses_graph": true
+   },
+   {
+    "model": "gat",
+    "label": "GAT",
+    "score": 0.9999903440475464,
+    "flagged": true,
+    "uses_graph": true
+   },
+   {
+    "model": "sage",
+    "label": "GraphSAGE",
+    "score": 1.0,
+    "flagged": true,
+    "uses_graph": true
+   }
+  ],
+  "profile": {
+   "followers": 22,
+   "following": 22,
+   "posts": 5,
+   "bio_length": 0,
+   "has_profile_pic": false,
+   "account_age_days": 33,
+   "peak_hour": 22,
+   "posts_per_day": 1.45,
+   "interactions_per_week": 99.6
+  },
+  "dataset_label": "fake",
+  "origin": "injected",
+  "cluster_id": "BN-04235",
+  "cluster_size": 56,
+  "explanation": {
+   "margin": 16.990447998046875,
+   "own_total": 5.376106262207031,
+   "network": 9.734701156616211,
+   "top": [
+    {
+     "feature": "log_account_age_days",
+     "label": "Account age (log days)",
+     "group": "Temporal pattern",
+     "value": 3.4990265369415283,
+     "z": -4.402295112609863,
+     "contribution": 1.9262824058532715
+    },
+    {
+     "feature": "peak_hour_share",
+     "label": "Share of activity in peak hour",
+     "group": "Temporal pattern",
+     "value": 0.36415567994117737,
+     "z": 2.3722567558288574,
+     "contribution": 1.0477898120880127
+    },
+    {
+     "feature": "posting_burstiness",
+     "label": "Posting burstiness",
+     "group": "Temporal pattern",
+     "value": 0.6548213958740234,
+     "z": 1.9862273931503296,
+     "contribution": 0.8887731432914734
+    },
+    {
+     "feature": "username_digit_ratio",
+     "label": "Digits in username",
+     "group": "Profile metadata",
+     "value": 0.44615790247917175,
+     "z": 2.4543297290802,
+     "contribution": 0.5485243201255798
+    },
+    {
+     "feature": "log_interactions_per_week",
+     "label": "Interactions per week (log)",
+     "group": "Interaction frequency",
+     "value": 4.61151123046875,
+     "z": 1.3915458917617798,
+     "contribution": 0.2601667642593384
+    },
+    {
+     "feature": "log_posts_per_day",
+     "label": "Posts per day (log)",
+     "group": "Temporal pattern",
+     "value": 0.3737035393714905,
+     "z": 0.594045102596283,
+     "contribution": 0.22429174184799194
+    },
+    {
+     "feature": "log_followers",
+     "label": "Followers (log)",
+     "group": "Profile metadata",
+     "value": 3.1354942321777344,
+     "z": -1.2996320724487305,
+     "contribution": 0.1735963076353073
+    }
+   ]
+  },
+  "neighbourhood": {
+   "degree": 18,
+   "flagged": 16,
+   "mean_score": 0.8901249766349792,
+   "injected_ties": 18
+  },
+  "history": []
+ },
+ "cluster_first": {
+  "id": "BN-00112",
+  "rank": 2,
+  "kind": "coordinated",
+  "size": 65,
+  "mean_score": 0.9612287282943726,
+  "flagged_share": 0.9538461538461539,
+  "density": 0.26153846153846155,
+  "internal_edges": 544,
+  "peak_hour": 22,
+  "peak_hour_share": 0.9384615384615385,
+  "created_span_days": 17,
+  "median_posts_per_day": 1.25,
+  "median_account_age_days": 244,
+  "status": "pending"
+ },
+ "cluster_headline": "65 accounts tied to each other (26% of possible ties), 94% most active around 22:00, created within about 17 days of each other.",
+ "unknown_account": [
+  404,
+  {
+   "detail": "No account with id 99999999."
+  }
+ ],
+ "decision": [
+  201,
+  {
+   "id": 1,
+   "target_type": "account",
+   "target_id": "4286",
+   "decision": "confirm",
+   "affected_accounts": 1,
+   "at": "2026-10-26T05:38:44.856480+00:00"
+  }
+ ],
+ "analyst_retrain": [
+  403,
+  {
+   "detail": "Only moderators can record decisions or retrain the model."
+  }
+ ],
+ "undo_used": [
+  409,
+  {
+   "detail": "That decision was already used to train a model run and cannot be undone."
+  }
+ ],
+ "probes": {
+  "probe_bad_token": [
+   401,
+   {
+    "detail": "Your session has expired. Please sign in again."
+   }
+  ],
+  "probe_bad_decision": [
+   422,
+   {
+    "detail": [
+     {
+      "type": "literal_error",
+      "loc": [
+       "body",
+       "decision"
+      ],
+      "msg": "Input should be 'confirm' or 'dismiss'",
+      "input": "maybe",
+      "ctx": {
+       "expected": "'confirm' or 'dismiss'"
+      }
+     }
+    ]
+   }
+  ],
+  "probe_bad_account_id": [
+   422,
+   {
+    "detail": "Account ids are numbers."
+   }
+  ],
+  "probe_missing_cluster": [
+   404,
+   {
+    "detail": "No cluster BN-99999. It may have changed after the model was retrained."
+   }
+  ],
+  "probe_missing_account_decision": [
+   404,
+   {
+    "detail": "No account with id 99999999."
+   }
+  ],
+  "probe_page_size": 422,
+  "probe_negative_id": 404,
+  "probe_retrain_without_decisions": [
+   409,
+   {
+    "detail": "There are no moderator decisions yet. Confirm or dismiss a few flagged accounts first."
+   }
+  ]
+ },
+ "retrain_wrong": {
+  "description": "One confirmation of a flagged account and of cluster BN-00112 (65 accounts), both correct, and two deliberate errors: a dismissal of a fake account (@juniper2) and a dismissal of the whole cluster BN-03963 (62 accounts, a true botnet).",
+  "run": {
+   "id": 1,
+   "started_at": "2026-10-26T05:38:44.894215",
+   "finished_at": "2026-10-26T05:40:17.660532",
+   "status": "done",
+   "feedback_labels": 129,
+   "best": "sage",
+   "f1_before": {
+    "baseline": 0.8333333333333334,
+    "gcn": 0.8472906403940886,
+    "gat": 0.9014084507042254,
+    "sage": 0.9459459459459459
+   },
+   "f1_after": {
+    "baseline": 0.8301886792452831,
+    "gcn": 0.7653061224489796,
+    "gat": 0.8868778280542986,
+    "sage": 0.9049773755656109
+   },
+   "message": "99 moderator labels used in training."
+  },
+  "seconds": 93.2,
+  "health_after": {
+   "status": "ok",
+   "accounts": 4533,
+   "edges": 94456,
+   "model": "GraphSAGE",
+   "trained_at": "2026-10-26T05:40:17+00:00",
+   "flagged": 534,
+   "botnets": 7,
+   "best_f1": 0.9393326641903492,
+   "baseline_f1": 0.8269937022607627
+  }
+ },
+ "retrain_correct": {
+  "description": "Confirmation of the three largest coordinated clusters (BN-00112, BN-03963, BN-03936) and dismissal of three flagged accounts whose dataset label is genuine; every decision agrees with the dataset labels.",
+  "run": {
+   "id": 1,
+   "started_at": "2026-10-26T05:44:43.811064",
+   "finished_at": "2026-10-26T05:45:44.004419",
+   "status": "done",
+   "feedback_labels": 187,
+   "best": "gat",
+   "f1_before": {
+    "baseline": 0.8333333333333334,
+    "gcn": 0.8472906403940886,
+    "gat": 0.9014084507042254,
+    "sage": 0.9459459459459459
+   },
+   "f1_after": {
+    "baseline": 0.8356807511737089,
+    "gcn": 0.8258706467661692,
+    "gat": 0.892018779342723,
+    "sage": 0.9469026548672567
+   },
+   "message": "144 moderator labels used in training."
+  },
+  "seconds": 60.3,
+  "health_after": {
+   "status": "ok",
+   "accounts": 4533,
+   "edges": 94456,
+   "model": "GAT",
+   "trained_at": "2026-10-26T05:45:43+00:00",
+   "flagged": 521,
+   "botnets": 8,
+   "best_f1": 0.9001419758151261,
+   "baseline_f1": 0.8269937022607627
+  },
+  "decisions": {
+   "confirm_clusters": [
+    "BN-00112",
+    "BN-03963",
+    "BN-03936"
+   ],
+   "dismiss_genuine": [
+    2653,
+    55,
+    3936
+   ],
+   "confirm_lone": []
+  }
+ },
+ "retrain_reading": "In scenario A every decision agrees with the dataset labels. Confirming botnets the model already scores near 100 % adds little information, so F1 barely moves for the baseline (+0.2 points) and GraphSAGE (+0.1) and falls for GCN (-2.1) and GAT (-0.9). With so few labels these changes are of the size of the seed-to-seed variation in Section 8.2.1, so the run shows that the loop works and does not damage the model, not that it improves it. One side effect is a defect worth recording: after this run the application served GAT instead of GraphSAGE, because the best architecture is picked on the validation F1 of a single seed and the validation set has just lost the reviewed accounts, although GraphSAGE has the higher test F1 after the run (0.947 against 0.892). Retraining can therefore switch the served model to a worse one. In scenario B the two errors cost F1 for every model: GCN falls by 8.2 points, GraphSAGE by 4.1, GAT by 1.5 and the baseline by 0.3, the number of botnets shown drops from 8 to 7 because the 62 accounts of the wrongly dismissed botnet were relabelled genuine, and 534 accounts remain flagged instead of 548. The loop learns whatever it is told: it makes moderator decisions valuable, and moderator errors costly. Two runs with one seed each do not support any statistical statement, but the direction is clear and follows from how the labels are used."
+}

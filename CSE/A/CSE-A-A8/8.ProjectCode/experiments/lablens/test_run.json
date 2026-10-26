@@ -1,0 +1,8 @@
+{
+  "pytest": {"command": "python -m pytest tests -q", "file": "tests/test_lablens.py", "passed": 36, "failed": 0, "seconds": 3.2},
+  "smoke_test": {"command": "python scripts/smoke_test.py", "api_checks_passed": 24, "browser_checks_passed": 7, "failed": 0, "result": "All smoke checks passed."},
+  "ui_check": {"command": "python scripts/ui_check.py", "note": "script exists (360/768/1440 px, light/dark, drawer, keyboard, reduced motion); not re-run in the documentation pass"},
+  "machine": {"cpu": "Intel Core i5-12500 (6 cores / 12 threads)", "ram_gb": 15.7, "os": "Windows 11 Pro", "gpu": "none", "python": "3.11.9",
+              "scikit_learn": "1.5.0", "pymupdf": "1.28.2", "opencv": "4.11.0", "sqlalchemy": "2.0.30", "fastapi": "0.143.3", "uvicorn": "0.54.0",
+              "numpy": "1.26.4", "node": "24.19.0", "react": "18.3.1", "recharts": "2.15.4", "vite": "5.4.21"}
+}

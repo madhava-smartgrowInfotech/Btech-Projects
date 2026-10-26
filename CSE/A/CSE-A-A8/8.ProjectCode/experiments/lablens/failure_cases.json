@@ -1,0 +1,340 @@
+{
+  "false positive row": [
+    {
+      "report": "plain_01",
+      "kind": "false positive row",
+      "pred_name": "Sample Collected",
+      "value": 12.0,
+      "pred_low": -4.0,
+      "pred_high": 2026.0
+    },
+    {
+      "report": "plain_03",
+      "kind": "false positive row",
+      "pred_name": "Sample Collected",
+      "value": 12.0,
+      "pred_low": -4.0,
+      "pred_high": 2026.0
+    },
+    {
+      "report": "plain_05",
+      "kind": "false positive row",
+      "pred_name": "Sample Collected",
+      "value": 12.0,
+      "pred_low": -4.0,
+      "pred_high": 2026.0
+    },
+    {
+      "report": "plain_07",
+      "kind": "false positive row",
+      "pred_name": "Sample Collected",
+      "value": 12.0,
+      "pred_low": -4.0,
+      "pred_high": 2026.0
+    },
+    {
+      "report": "plain_09",
+      "kind": "false positive row",
+      "pred_name": "Sample Collected",
+      "value": 12.0,
+      "pred_low": -4.0,
+      "pred_high": 2026.0
+    },
+    {
+      "report": "plain_11",
+      "kind": "false positive row",
+      "pred_name": "Sample Collected",
+      "value": 12.0,
+      "pred_low": -4.0,
+      "pred_high": 2026.0
+    }
+  ],
+  "field error: unit": [
+    {
+      "report": "plain_03",
+      "kind": "field error: unit",
+      "gt": "Free T4",
+      "gt_unit": "ng/dL",
+      "value": 0.9,
+      "pred_name": "Free T4",
+      "pred_unit": null,
+      "pred_low": 0.8,
+      "pred_high": 1.8,
+      "pred_status": "NORMAL"
+    },
+    {
+      "report": "plain_04",
+      "kind": "field error: unit",
+      "gt": "Homocysteine",
+      "gt_unit": "umol/L",
+      "value": 14.1,
+      "pred_name": "Homocysteine",
+      "pred_unit": null,
+      "pred_low": 5.0,
+      "pred_high": 15.0,
+      "pred_status": "NORMAL"
+    },
+    {
+      "report": "plain_04",
+      "kind": "field error: unit",
+      "gt": "TSH",
+      "gt_unit": "uIU/mL",
+      "value": 2.5,
+      "pred_name": "TSH",
+      "pred_unit": null,
+      "pred_low": 0.4,
+      "pred_high": 4.0,
+      "pred_status": "NORMAL"
+    },
+    {
+      "report": "plain_05",
+      "kind": "field error: unit",
+      "gt": "Free T4",
+      "gt_unit": "ng/dL",
+      "value": 0.7,
+      "pred_name": "Free T4",
+      "pred_unit": null,
+      "pred_low": 0.8,
+      "pred_high": 1.8,
+      "pred_status": "LOW"
+    },
+    {
+      "report": "plain_06",
+      "kind": "field error: unit",
+      "gt": "CRP",
+      "gt_unit": "mg/L",
+      "value": 4.8,
+      "pred_name": "CRP",
+      "pred_unit": null,
+      "pred_low": null,
+      "pred_high": 5.0,
+      "pred_status": "NORMAL"
+    },
+    {
+      "report": "plain_07",
+      "kind": "field error: unit",
+      "gt": "Homocysteine",
+      "gt_unit": "umol/L",
+      "value": 2.5,
+      "pred_name": "Homocysteine",
+      "pred_unit": null,
+      "pred_low": 5.0,
+      "pred_high": 15.0,
+      "pred_status": "LOW"
+    }
+  ],
+  "field error: name": [
+    {
+      "report": "plain_11",
+      "kind": "field error: name",
+      "gt": "Sodium Bicarbonate",
+      "gt_unit": "mEq/L",
+      "value": 27.3,
+      "pred_name": "Sodium",
+      "pred_unit": "mEq/L",
+      "pred_low": 22.0,
+      "pred_high": 29.0,
+      "pred_status": "NORMAL"
+    },
+    {
+      "report": "plain_12",
+      "kind": "field error: name",
+      "gt": "Sodium Bicarbonate",
+      "gt_unit": "mEq/L",
+      "value": 23.9,
+      "pred_name": "Sodium",
+      "pred_unit": "mEq/L",
+      "pred_low": 22.0,
+      "pred_high": 29.0,
+      "pred_status": "NORMAL"
+    },
+    {
+      "report": "paren_05",
+      "kind": "field error: name",
+      "gt": "Sodium Bicarbonate",
+      "gt_unit": "mEq/L",
+      "value": 28.4,
+      "pred_name": "Sodium",
+      "pred_unit": "mEq/L",
+      "pred_low": 22.0,
+      "pred_high": 29.0,
+      "pred_status": "NORMAL"
+    },
+    {
+      "report": "paren_09",
+      "kind": "field error: name",
+      "gt": "Sodium Bicarbonate",
+      "gt_unit": "mEq/L",
+      "value": 25.3,
+      "pred_name": "Sodium",
+      "pred_unit": "mEq/L",
+      "pred_low": 22.0,
+      "pred_high": 29.0,
+      "pred_status": "NORMAL"
+    },
+    {
+      "report": "paren_12",
+      "kind": "field error: name",
+      "gt": "Sodium Bicarbonate",
+      "gt_unit": "mEq/L",
+      "value": 27.6,
+      "pred_name": "Sodium",
+      "pred_unit": "mEq/L",
+      "pred_low": 22.0,
+      "pred_high": 29.0,
+      "pred_status": "NORMAL"
+    },
+    {
+      "report": "flag_01",
+      "kind": "field error: name",
+      "gt": "Sodium Bicarbonate",
+      "gt_unit": "mEq/L",
+      "value": 26.9,
+      "pred_name": "Sodium",
+      "pred_unit": "mEq/L",
+      "pred_low": 22.0,
+      "pred_high": 29.0,
+      "pred_status": "NORMAL"
+    }
+  ],
+  "field error: name,unit,range": [
+    {
+      "report": "paren_03",
+      "kind": "field error: name,unit,range",
+      "gt": "RDW",
+      "gt_unit": "%",
+      "value": 12.0,
+      "pred_name": "Sample Collected",
+      "pred_unit": null,
+      "pred_low": -4.0,
+      "pred_high": 2026.0,
+      "pred_status": "NORMAL"
+    }
+  ],
+  "field error: name,unit": [
+    {
+      "report": "flag_12",
+      "kind": "field error: name,unit",
+      "gt": "Sodium Bicarbonate",
+      "gt_unit": "mEq/L",
+      "value": 19.6,
+      "pred_name": "Sodium",
+      "pred_unit": null,
+      "pred_low": 22.0,
+      "pred_high": 29.0,
+      "pred_status": "LOW"
+    },
+    {
+      "report": "flag_13",
+      "kind": "field error: name,unit",
+      "gt": "Sodium Bicarbonate",
+      "gt_unit": "mEq/L",
+      "value": 31.4,
+      "pred_name": "Sodium",
+      "pred_unit": null,
+      "pred_low": 22.0,
+      "pred_high": 29.0,
+      "pred_status": "HIGH"
+    },
+    {
+      "report": "ocr_noise_00",
+      "kind": "field error: name,unit",
+      "gt": "CRP",
+      "gt_unit": "mg/L",
+      "value": 4.4,
+      "pred_name": "Cr",
+      "pred_unit": null,
+      "pred_low": null,
+      "pred_high": 5.0,
+      "pred_status": "NORMAL"
+    },
+    {
+      "report": "ocr_noise_00",
+      "kind": "field error: name,unit",
+      "gt": "Homocysteine",
+      "gt_unit": "umol/L",
+      "value": 17.3,
+      "pred_name": "Hornocsteine",
+      "pred_unit": null,
+      "pred_low": 5.0,
+      "pred_high": 15.0,
+      "pred_status": "HIGH"
+    },
+    {
+      "report": "ocr_noise_01",
+      "kind": "field error: name,unit",
+      "gt": "Homocysteine",
+      "gt_unit": "umol/L",
+      "value": 9.3,
+      "pred_name": "Omocysteine",
+      "pred_unit": null,
+      "pred_low": 5.0,
+      "pred_high": 15.0,
+      "pred_status": "NORMAL"
+    },
+    {
+      "report": "ocr_noise_05",
+      "kind": "field error: name,unit",
+      "gt": "Homocysteine",
+      "gt_unit": "umol/L",
+      "value": 2.5,
+      "pred_name": "Hohmocystcine",
+      "pred_unit": null,
+      "pred_low": 5.0,
+      "pred_high": 15.0,
+      "pred_status": "LOW"
+    }
+  ],
+  "missed row": [
+    {
+      "report": "tabular_00",
+      "kind": "missed row",
+      "gt": "ESR",
+      "value": 13.3
+    },
+    {
+      "report": "tabular_00",
+      "kind": "missed row",
+      "gt": "Urea",
+      "value": 23.1
+    },
+    {
+      "report": "tabular_00",
+      "kind": "missed row",
+      "gt": "MCH",
+      "value": 35.1
+    },
+    {
+      "report": "tabular_00",
+      "kind": "missed row",
+      "gt": "SGOT",
+      "value": 8.7
+    },
+    {
+      "report": "tabular_00",
+      "kind": "missed row",
+      "gt": "Triglycerides",
+      "value": 89.1
+    },
+    {
+      "report": "tabular_00",
+      "kind": "missed row",
+      "gt": "Hematocrit",
+      "value": 49.5
+    }
+  ],
+  "field error: name,unit,range,status": [
+    {
+      "report": "ocr_noise_03",
+      "kind": "field error: name,unit,range,status",
+      "gt": "Free T4",
+      "gt_unit": "ng/dL",
+      "value": 0.5,
+      "pred_name": "Bilirubin Total",
+      "pred_unit": "mg/dL",
+      "pred_low": 0.2,
+      "pred_high": 1.2,
+      "pred_status": "NORMAL"
+    }
+  ]
+}

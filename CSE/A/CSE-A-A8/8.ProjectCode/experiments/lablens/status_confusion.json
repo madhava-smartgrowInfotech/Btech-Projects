@@ -1,0 +1,11 @@
+{
+  "counts": {
+    "LOW|LOW": 335,
+    "NORMAL|NORMAL": 875,
+    "HIGH|HIGH": 257,
+    "LOW|NORMAL": 1
+  },
+  "ground_truth_rows": 1680,
+  "rows_not_detected": 212,
+  "note": "gt status = reference rule applied to the generated value and the generated range; rows the parser did not produce are excluded"
+}

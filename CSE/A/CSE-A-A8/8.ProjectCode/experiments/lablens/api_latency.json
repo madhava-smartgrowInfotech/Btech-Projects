@@ -1,0 +1,59 @@
+{
+  "seed_five_reports_s": 1.05,
+  "endpoints": {
+    "GET /api/health": {
+      "median_ms": 0.9,
+      "p95_ms": 1.2,
+      "max_ms": 1.8,
+      "n": 100
+    },
+    "POST /api/auth/login": {
+      "median_ms": 1.0,
+      "p95_ms": 1.2,
+      "max_ms": 1.6,
+      "n": 100
+    },
+    "GET /api/dashboard": {
+      "median_ms": 4.7,
+      "p95_ms": 5.8,
+      "max_ms": 41.6,
+      "n": 100
+    },
+    "GET /api/reports": {
+      "median_ms": 2.9,
+      "p95_ms": 3.2,
+      "max_ms": 4.1,
+      "n": 100
+    },
+    "GET /api/reports/{id}": {
+      "median_ms": 7.2,
+      "p95_ms": 8.5,
+      "max_ms": 10.1,
+      "n": 100
+    },
+    "GET /api/trends": {
+      "median_ms": 2.1,
+      "p95_ms": 2.5,
+      "max_ms": 3.2,
+      "n": 100
+    },
+    "GET /api/compare": {
+      "median_ms": 4.4,
+      "p95_ms": 5.1,
+      "max_ms": 6.0,
+      "n": 100
+    },
+    "GET /api/insights": {
+      "median_ms": 16.4,
+      "p95_ms": 19.2,
+      "max_ms": 23.7,
+      "n": 100
+    },
+    "POST /api/reports (PDF upload)": {
+      "median_ms": 209.8,
+      "p95_ms": 414.2,
+      "max_ms": 585.8,
+      "n": 30
+    }
+  }
+}

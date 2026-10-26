@@ -1,0 +1,397 @@
+{
+  "protocol": {
+    "corpus": "synthetic, generated with seed 42: 120 reports (8 layouts x 15), 12 dictionary tests + 2 unseen tests each, plus header decoys and a date line",
+    "labels": "generated ground truth (not manually labelled real reports)",
+    "pdf_text_layer_only": true,
+    "machine": {
+      "cpu": "Intel64 Family 6 Model 151 Stepping 5, GenuineIntel",
+      "python": "3.11.9",
+      "platform": "Windows-10-10.0.26300-SP0"
+    },
+    "wall_seconds": 40.6
+  },
+  "extraction": {
+    "overall": {
+      "reports_rows": 1680,
+      "predicted_rows": 1525,
+      "row_precision": 0.9626,
+      "row_recall": 0.8738,
+      "row_f1": 0.9161,
+      "name_acc": 0.9564,
+      "unit_acc": 0.8713,
+      "range_acc": 0.9986,
+      "status_acc": 0.9993,
+      "exact_row_rate": 0.7292,
+      "name_acc_dict_tests": 0.9873,
+      "name_acc_ood_tests": 0.7714,
+      "false_positive_rows": 57
+    },
+    "per_layout": {
+      "plain": {
+        "reports_rows": 210,
+        "predicted_rows": 217,
+        "row_precision": 0.9677,
+        "row_recall": 1.0,
+        "row_f1": 0.9836,
+        "name_acc": 0.9905,
+        "unit_acc": 0.9381,
+        "range_acc": 1.0,
+        "status_acc": 1.0,
+        "exact_row_rate": 0.9286,
+        "name_acc_dict_tests": 1.0,
+        "name_acc_ood_tests": 0.9333,
+        "false_positive_rows": 7
+      },
+      "paren": {
+        "reports_rows": 210,
+        "predicted_rows": 217,
+        "row_precision": 0.9677,
+        "row_recall": 1.0,
+        "row_f1": 0.9836,
+        "name_acc": 0.981,
+        "unit_acc": 0.881,
+        "range_acc": 0.9952,
+        "status_acc": 1.0,
+        "exact_row_rate": 0.8667,
+        "name_acc_dict_tests": 0.9944,
+        "name_acc_ood_tests": 0.9,
+        "false_positive_rows": 7
+      },
+      "flag": {
+        "reports_rows": 210,
+        "predicted_rows": 217,
+        "row_precision": 0.9677,
+        "row_recall": 1.0,
+        "row_f1": 0.9836,
+        "name_acc": 0.9762,
+        "unit_acc": 0.5762,
+        "range_acc": 1.0,
+        "status_acc": 1.0,
+        "exact_row_rate": 0.5619,
+        "name_acc_dict_tests": 1.0,
+        "name_acc_ood_tests": 0.8333,
+        "false_positive_rows": 7
+      },
+      "colon": {
+        "reports_rows": 210,
+        "predicted_rows": 217,
+        "row_precision": 0.9677,
+        "row_recall": 1.0,
+        "row_f1": 0.9836,
+        "name_acc": 0.9762,
+        "unit_acc": 0.9095,
+        "range_acc": 1.0,
+        "status_acc": 1.0,
+        "exact_row_rate": 0.8857,
+        "name_acc_dict_tests": 1.0,
+        "name_acc_ood_tests": 0.8333,
+        "false_positive_rows": 7
+      },
+      "unit_last": {
+        "reports_rows": 210,
+        "predicted_rows": 217,
+        "row_precision": 0.9677,
+        "row_recall": 1.0,
+        "row_f1": 0.9836,
+        "name_acc": 0.9714,
+        "unit_acc": 0.9429,
+        "range_acc": 1.0,
+        "status_acc": 1.0,
+        "exact_row_rate": 0.9143,
+        "name_acc_dict_tests": 1.0,
+        "name_acc_ood_tests": 0.8,
+        "false_positive_rows": 7
+      },
+      "mixed_sep": {
+        "reports_rows": 210,
+        "predicted_rows": 217,
+        "row_precision": 0.9677,
+        "row_recall": 1.0,
+        "row_f1": 0.9836,
+        "name_acc": 0.9762,
+        "unit_acc": 0.9333,
+        "range_acc": 1.0,
+        "status_acc": 1.0,
+        "exact_row_rate": 0.9095,
+        "name_acc_dict_tests": 1.0,
+        "name_acc_ood_tests": 0.8333,
+        "false_positive_rows": 7
+      },
+      "tabular": {
+        "reports_rows": 210,
+        "predicted_rows": 7,
+        "row_precision": 0.0,
+        "row_recall": 0.0,
+        "row_f1": 0.0,
+        "name_acc": null,
+        "unit_acc": null,
+        "range_acc": null,
+        "status_acc": null,
+        "exact_row_rate": 0.0,
+        "name_acc_dict_tests": null,
+        "name_acc_ood_tests": null,
+        "false_positive_rows": 7
+      },
+      "ocr_noise": {
+        "reports_rows": 210,
+        "predicted_rows": 216,
+        "row_precision": 0.963,
+        "row_recall": 0.9905,
+        "row_f1": 0.9766,
+        "name_acc": 0.8221,
+        "unit_acc": 0.9183,
+        "range_acc": 0.9952,
+        "status_acc": 0.9952,
+        "exact_row_rate": 0.7667,
+        "name_acc_dict_tests": 0.9157,
+        "name_acc_ood_tests": 0.2667,
+        "false_positive_rows": 8
+      }
+    },
+    "failure_kinds": {
+      "false positive row": 57,
+      "field error: unit": 179,
+      "field error: name": 54,
+      "field error: name,unit,range": 1,
+      "field error: name,unit": 8,
+      "missed row": 212,
+      "field error: name,unit,range,status": 1
+    }
+  },
+  "name_normalisation": {
+    "n_dictionary_names": 55,
+    "trials_per_name": 30,
+    "noise": {
+      "0.0": {
+        "tfidf_0.55": 1.0,
+        "difflib_0.60": 1.0,
+        "exact_match": 1.0
+      },
+      "0.05": {
+        "tfidf_0.55": 0.9606,
+        "difflib_0.60": 0.9939,
+        "exact_match": 0.6861
+      },
+      "0.1": {
+        "tfidf_0.55": 0.8903,
+        "difflib_0.60": 0.9812,
+        "exact_match": 0.4933
+      },
+      "0.2": {
+        "tfidf_0.55": 0.7309,
+        "difflib_0.60": 0.9455,
+        "exact_match": 0.237
+      }
+    },
+    "threshold_sweep": [
+      {
+        "threshold": 0.3,
+        "acc_noise_10": 0.9648,
+        "acc_noise_20": 0.9073,
+        "false_snap_rate_ood": 0.5417,
+        "synonym_acc": 0.7368
+      },
+      {
+        "threshold": 0.35,
+        "acc_noise_10": 0.963,
+        "acc_noise_20": 0.8885,
+        "false_snap_rate_ood": 0.3333,
+        "synonym_acc": 0.7368
+      },
+      {
+        "threshold": 0.4,
+        "acc_noise_10": 0.9533,
+        "acc_noise_20": 0.8624,
+        "false_snap_rate_ood": 0.2917,
+        "synonym_acc": 0.7368
+      },
+      {
+        "threshold": 0.45,
+        "acc_noise_10": 0.943,
+        "acc_noise_20": 0.8242,
+        "false_snap_rate_ood": 0.2917,
+        "synonym_acc": 0.7368
+      },
+      {
+        "threshold": 0.5,
+        "acc_noise_10": 0.9164,
+        "acc_noise_20": 0.783,
+        "false_snap_rate_ood": 0.2083,
+        "synonym_acc": 0.6842
+      },
+      {
+        "threshold": 0.55,
+        "acc_noise_10": 0.8903,
+        "acc_noise_20": 0.7182,
+        "false_snap_rate_ood": 0.1667,
+        "synonym_acc": 0.5263
+      },
+      {
+        "threshold": 0.6,
+        "acc_noise_10": 0.8691,
+        "acc_noise_20": 0.6667,
+        "false_snap_rate_ood": 0.1667,
+        "synonym_acc": 0.5263
+      },
+      {
+        "threshold": 0.65,
+        "acc_noise_10": 0.8358,
+        "acc_noise_20": 0.5945,
+        "false_snap_rate_ood": 0.0833,
+        "synonym_acc": 0.5263
+      },
+      {
+        "threshold": 0.7,
+        "acc_noise_10": 0.8097,
+        "acc_noise_20": 0.5309,
+        "false_snap_rate_ood": 0.0417,
+        "synonym_acc": 0.5263
+      },
+      {
+        "threshold": 0.75,
+        "acc_noise_10": 0.7679,
+        "acc_noise_20": 0.4709,
+        "false_snap_rate_ood": 0.0417,
+        "synonym_acc": 0.4737
+      },
+      {
+        "threshold": 0.8,
+        "acc_noise_10": 0.6982,
+        "acc_noise_20": 0.3982,
+        "false_snap_rate_ood": 0.0,
+        "synonym_acc": 0.4737
+      },
+      {
+        "threshold": 0.85,
+        "acc_noise_10": 0.6164,
+        "acc_noise_20": 0.3224,
+        "false_snap_rate_ood": 0.0,
+        "synonym_acc": 0.4211
+      }
+    ],
+    "synonyms": {
+      "n": 19,
+      "shipped_threshold": 0.55,
+      "correct": [
+        "Haemoglobin",
+        "Platelets",
+        "SGPT (ALT)",
+        "Serum Creatinine",
+        "Cholesterol Total",
+        "Triglyceride",
+        "Urea Nitrogen",
+        "Vitamin B-12",
+        "Total Bilirubin",
+        "Serum Sodium"
+      ],
+      "wrong_or_unmatched": {
+        "Hb": null,
+        "Hgb": null,
+        "Blood Sugar Fasting": null,
+        "Total Leucocyte Count": null,
+        "TLC": null,
+        "LDL": null,
+        "HDL": null,
+        "Glycosylated Hemoglobin": "Hemoglobin",
+        "Red Blood Cell Count": null
+      }
+    },
+    "ood_names": {
+      "n": 24,
+      "shipped_threshold": 0.55,
+      "wrongly_snapped": {
+        "Sodium Bicarbonate": "Sodium",
+        "Lipoprotein (a)": "Total Protein",
+        "Apolipoprotein B": "Total Protein",
+        "Insulin Fasting": "Fasting Glucose"
+      }
+    }
+  },
+  "classification": {
+    "random_cases": 20000,
+    "disagreements_with_reference_rule": 0,
+    "boundary_5_in_5to10": "NORMAL",
+    "boundary_10_in_5to10": "NORMAL",
+    "just_below": "LOW",
+    "just_above": "HIGH"
+  },
+  "insight_coverage": {
+    "knowledge_base_entries": 17,
+    "dictionary_tests": 55,
+    "dictionary_tests_with_specific_text": 17,
+    "coverage_of_dictionary": 0.3091,
+    "abnormal_dictionary_rows_in_corpus": 565,
+    "abnormal_rows_with_specific_text": 202,
+    "abnormal_rows_specific_rate": 0.3575
+  },
+  "latency": {
+    "report_rows": 14,
+    "pdf_bytes": 4356,
+    "text_layer_extraction": {
+      "mean_ms": 1.26,
+      "median_ms": 1.37,
+      "p95_ms": 1.56,
+      "max_ms": 1.93,
+      "n": 100
+    },
+    "field_extraction": {
+      "mean_ms": 7.55,
+      "median_ms": 7.16,
+      "p95_ms": 10.13,
+      "max_ms": 11.43,
+      "n": 100
+    },
+    "classification": {
+      "mean_ms": 0.02,
+      "median_ms": 0.02,
+      "p95_ms": 0.02,
+      "max_ms": 0.03,
+      "n": 100
+    },
+    "insight_generation_all_abnormal": {
+      "mean_ms": 0.01,
+      "median_ms": 0.01,
+      "p95_ms": 0.01,
+      "max_ms": 0.04,
+      "n": 100
+    },
+    "end_to_end_pipeline_with_db": {
+      "mean_ms": 53.7,
+      "median_ms": 52.71,
+      "p95_ms": 60.96,
+      "max_ms": 85.36,
+      "n": 40
+    },
+    "field_extraction_scaling_by_rows": {
+      "14": {
+        "mean_ms": 8.07,
+        "median_ms": 7.87,
+        "p95_ms": 10.35,
+        "max_ms": 10.98,
+        "n": 30
+      },
+      "50": {
+        "mean_ms": 29.71,
+        "median_ms": 29.29,
+        "p95_ms": 34.76,
+        "max_ms": 35.57,
+        "n": 30
+      },
+      "100": {
+        "mean_ms": 57.94,
+        "median_ms": 58.08,
+        "p95_ms": 69.12,
+        "max_ms": 69.72,
+        "n": 30
+      },
+      "200": {
+        "mean_ms": 112.45,
+        "median_ms": 112.96,
+        "p95_ms": 127.44,
+        "max_ms": 129.71,
+        "n": 30
+      }
+    },
+    "tesseract_available": false
+  }
+}

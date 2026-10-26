@@ -1,0 +1,24 @@
+{
+ "screens": [
+  "01_landing",
+  "02_landing_features",
+  "03_login",
+  "04_keys",
+  "05_send_form",
+  "06_send_result",
+  "07_send_capacity_blocked",
+  "08_analysis",
+  "09_analysis_histograms",
+  "10_analysis_bitplanes",
+  "11_receive_result",
+  "12_receive_wrong_key",
+  "13_robustness_results",
+  "14_robustness_detail",
+  "15_capacity_table",
+  "16_benchmark",
+  "17_log",
+  "18_log_detail"
+ ],
+ "first_op": 5,
+ "last_op": 9
+}

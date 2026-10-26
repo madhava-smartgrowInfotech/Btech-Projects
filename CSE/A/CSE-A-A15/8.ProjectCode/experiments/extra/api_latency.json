@@ -1,0 +1,112 @@
+{
+  "login": {
+    "n": 10,
+    "median_ms": 286.7,
+    "p95_ms": 315.5,
+    "min_ms": 247.8,
+    "max_ms": 315.5
+  },
+  "health": {
+    "n": 20,
+    "median_ms": 2.3,
+    "p95_ms": 25.6,
+    "min_ms": 1.8,
+    "max_ms": 25.6
+  },
+  "keys/generate 2048": {
+    "n": 5,
+    "median_ms": 42.9,
+    "p95_ms": 152.3,
+    "min_ms": 35.4,
+    "max_ms": 152.3
+  },
+  "keys/generate 3072": {
+    "n": 5,
+    "median_ms": 223.4,
+    "p95_ms": 350.6,
+    "min_ms": 115.9,
+    "max_ms": 350.6
+  },
+  "keys/generate 4096": {
+    "n": 3,
+    "median_ms": 505.4,
+    "p95_ms": 1160.8,
+    "min_ms": 492.7,
+    "max_ms": 1160.8
+  },
+  "keys list": {
+    "n": 10,
+    "median_ms": 5.8,
+    "p95_ms": 7.5,
+    "min_ms": 5.1,
+    "max_ms": 7.5
+  },
+  "send (21 KiB memo, 512x512 cover, RSA-3072)": {
+    "n": 10,
+    "median_ms": 437.7,
+    "p95_ms": 534.5,
+    "min_ms": 418.5,
+    "max_ms": 534.5
+  },
+  "send (21 KiB memo, 1280x720 cover)": {
+    "n": 10,
+    "median_ms": 1873.4,
+    "p95_ms": 2154.4,
+    "min_ms": 1683.9,
+    "max_ms": 2154.4
+  },
+  "download stego PNG": {
+    "n": 10,
+    "median_ms": 7.8,
+    "p95_ms": 19.5,
+    "min_ms": 6.8,
+    "max_ms": 19.5
+  },
+  "receive (RSA-3072)": {
+    "n": 10,
+    "median_ms": 198.2,
+    "p95_ms": 234.8,
+    "min_ms": 186.6,
+    "max_ms": 234.8
+  },
+  "analysis metrics": {
+    "n": 10,
+    "median_ms": 5.2,
+    "p95_ms": 6.0,
+    "min_ms": 4.4,
+    "max_ms": 6.0
+  },
+  "histogram + bit planes, first render": {
+    "n": 3,
+    "median_ms": 942.4,
+    "max_ms": 1031.6
+  },
+  "robustness (9 attacks)": {
+    "n": 5,
+    "median_ms": 542.6,
+    "p95_ms": 587.7,
+    "min_ms": 520.5,
+    "max_ms": 587.7
+  },
+  "benchmark/capacity": {
+    "n": 5,
+    "median_ms": 75.5,
+    "p95_ms": 82.6,
+    "min_ms": 72.5,
+    "max_ms": 82.6
+  },
+  "benchmark/run (6 covers x 3 sizes, RSA-2048)": {
+    "n": 2,
+    "median_ms": 14962.4,
+    "p95_ms": 15140.5,
+    "min_ms": 14784.3,
+    "max_ms": 15140.5
+  },
+  "log (100 rows)": {
+    "n": 10,
+    "median_ms": 12.9,
+    "p95_ms": 30.4,
+    "min_ms": 11.9,
+    "max_ms": 30.4
+  }
+}

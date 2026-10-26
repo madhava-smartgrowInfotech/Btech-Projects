@@ -1,0 +1,319 @@
+{
+  "dataset": {
+    "rows": 23360,
+    "crops": [
+      "Tomato",
+      "Onion",
+      "Potato",
+      "Wheat",
+      "Rice",
+      "Mango",
+      "Cotton",
+      "Maize"
+    ],
+    "regions": 8,
+    "grades": [
+      "A",
+      "B",
+      "C",
+      "Reject"
+    ],
+    "feature_columns": 19,
+    "date_from": "2022-01-01",
+    "date_to": "2024-12-28",
+    "sampling": "every 3rd day, 8 crops x 8 regions",
+    "price_min": 402.0248071002912,
+    "price_max": 19176.334944789425,
+    "price_mean": 3795.878090127481,
+    "source": "synthetic: price = base x grade premium x region x demand/supply x season x weather x freshness x fuel^0.15 x trend, plus N(0, 3.5%) noise (features.py::true_price)",
+    "generator_noise_sigma": 0.035
+  },
+  "shipped_gbr": {
+    "split": "85/15 random, random_state=42",
+    "train_rows": 19856,
+    "test_rows": 3504,
+    "mae": 164.61055124565996,
+    "rmse": 252.23797083808944,
+    "r2": 0.9915679208792036,
+    "mape": 0.05080647634844005,
+    "hyperparameters": {
+      "n_estimators": 300,
+      "max_depth": 4,
+      "learning_rate": 0.06
+    },
+    "band_nominal_coverage": 0.7,
+    "band_empirical_coverage": 0.6932077625570776,
+    "band_mean_width": 1088.1479109436507,
+    "band_width_pct_of_price": 0.231186822819812,
+    "band_crossing_rows": 119
+  },
+  "per_crop": {
+    "Tomato": {
+      "rows": 424,
+      "mae": 97.15882055076376,
+      "mape": 0.049055528533283085
+    },
+    "Onion": {
+      "rows": 465,
+      "mae": 112.43085040703424,
+      "mape": 0.06275552849799858
+    },
+    "Potato": {
+      "rows": 449,
+      "mae": 98.57964382749898,
+      "mape": 0.07737600387022694
+    },
+    "Wheat": {
+      "rows": 420,
+      "mae": 117.66639416035582,
+      "mape": 0.04106025998192696
+    },
+    "Rice": {
+      "rows": 436,
+      "mae": 157.7644230350024,
+      "mape": 0.044087569503320004
+    },
+    "Mango": {
+      "rows": 429,
+      "mae": 250.31670407891372,
+      "mape": 0.04782128282409381
+    },
+    "Cotton": {
+      "rows": 437,
+      "mae": 383.24796249704553,
+      "mape": 0.042804829079887884
+    },
+    "Maize": {
+      "rows": 444,
+      "mae": 103.57438396796698,
+      "mape": 0.03967268559057789
+    }
+  },
+  "per_grade": {
+    "A": {
+      "rows": 1001,
+      "mae": 198.88336701378296,
+      "mape": 0.0422038711473641
+    },
+    "B": {
+      "rows": 1326,
+      "mae": 155.6348141773705,
+      "mape": 0.04163752709770482
+    },
+    "C": {
+      "rows": 837,
+      "mae": 140.7531293184588,
+      "mape": 0.04985013038543506
+    },
+    "Reject": {
+      "rows": 340,
+      "mae": 157.4440833683898,
+      "mape": 0.11424675894781394
+    }
+  },
+  "noise_floor": {
+    "generating_function_vs_observed": {
+      "mae": 105.52773464321973,
+      "rmse": 161.13739711967526,
+      "r2": 0.9965588275820506,
+      "mape": 0.02802741115140009
+    },
+    "model_vs_noise_free_truth": {
+      "mae": 120.46368977824973,
+      "rmse": 191.99172437323048,
+      "r2": 0.9950861329031704,
+      "mape": 0.039850894385203325
+    },
+    "note": "the observed price equals the noise-free formula x (1 + N(0, 0.035)); no model can beat the first line on this data"
+  },
+  "baselines": {
+    "crop_mean": {
+      "mae": 990.0478779845448,
+      "rmse": 1457.3758980427203,
+      "r2": 0.7185139279328552,
+      "mape": 0.3282747087536619
+    },
+    "crop_x_grade_mean": {
+      "mae": 714.3076860876828,
+      "rmse": 1036.3190300070626,
+      "r2": 0.85766860976079,
+      "mape": 0.20173508358208764
+    },
+    "linear_regression": {
+      "mae": 527.7077805987994,
+      "rmse": 834.0988148986255,
+      "r2": 0.9077962141736424,
+      "mape": 0.20624531284821992
+    },
+    "random_forest_200": {
+      "mae": 245.28213672034144,
+      "rmse": 355.06271560166954,
+      "r2": 0.9832920223499135,
+      "mape": 0.07232219517090155
+    },
+    "gradient_boosting_shipped": {
+      "mae": 164.61055124565996,
+      "rmse": 252.23797083808944,
+      "r2": 0.9915679208792036,
+      "mape": 0.05080647634844005
+    }
+  },
+  "time_holdout": {
+    "train_rows": 15616,
+    "test_rows": 7744,
+    "train_period": "2022-01-01 to 2023-12-31",
+    "test_period": "2024-01-01 to 2024-12-28",
+    "mae": 191.8086958518348,
+    "rmse": 309.22754139213913,
+    "r2": 0.9879404712855299,
+    "mape": 0.05116465546179922,
+    "note": "year_trend in the generator is (year-2023)*0.03; 2024 values of that feature lie outside the 2022-2023 training range"
+  },
+  "seed_study": {
+    "runs": [
+      {
+        "seed": 0,
+        "mae": 162.27827141680046,
+        "rmse": 253.40631391040068,
+        "r2": 0.9914515183825681,
+        "mape": 0.050103003805704295
+      },
+      {
+        "seed": 1,
+        "mae": 159.253126577774,
+        "rmse": 242.22830666439208,
+        "r2": 0.9922886629147871,
+        "mape": 0.04857335509553599
+      },
+      {
+        "seed": 2,
+        "mae": 165.27890754097476,
+        "rmse": 248.9809993937771,
+        "r2": 0.9918211887021404,
+        "mape": 0.04904683651537816
+      },
+      {
+        "seed": 3,
+        "mae": 170.60198080610382,
+        "rmse": 264.04409013313114,
+        "r2": 0.9912706668076021,
+        "mape": 0.05031740438917796
+      },
+      {
+        "seed": 4,
+        "mae": 156.41528093249545,
+        "rmse": 237.31437494191448,
+        "r2": 0.9925875137525052,
+        "mape": 0.048975230755640295
+      }
+    ],
+    "mae_mean": 162.7655134548297,
+    "mae_std": 5.491518229171735,
+    "r2_mean": 0.9918839101119206,
+    "r2_std": 0.0005535898408616595,
+    "mape_mean": 0.04940316611228733
+  },
+  "feature_importance_grouped": [
+    {
+      "feature": "Crop type",
+      "importance": 0.7154867079580314
+    },
+    {
+      "feature": "Quality grade",
+      "importance": 0.14160574688188118
+    },
+    {
+      "feature": "Market supply",
+      "importance": 0.07262120503700686
+    },
+    {
+      "feature": "Market demand",
+      "importance": 0.043743333922622564
+    },
+    {
+      "feature": "Seasonal timing",
+      "importance": 0.019665115571360327
+    },
+    {
+      "feature": "Regional market factor",
+      "importance": 0.00441434704198571
+    },
+    {
+      "feature": "Time since harvest",
+      "importance": 0.0010699486123447095
+    },
+    {
+      "feature": "Multi-year market trend",
+      "importance": 0.0010034031909340348
+    },
+    {
+      "feature": "Transport / fuel cost",
+      "importance": 0.0002564973487553631
+    },
+    {
+      "feature": "Rainfall",
+      "importance": 8.833124827791138e-05
+    },
+    {
+      "feature": "Average temperature",
+      "importance": 4.536318679997568e-05
+    }
+  ],
+  "train_model_py": {
+    "test_mae": 164.61055124565996,
+    "test_r2": 0.9915679208792036,
+    "matches_replica": 1.0
+  },
+  "served_forecast": {
+    "combinations": 256,
+    "best_sell_day_zero_share": 0.2421875,
+    "best_sell_day_mean": 6.17578125,
+    "best_sell_day_hist": {
+      "0": 62,
+      "1": 26,
+      "2": 11,
+      "3": 6,
+      "4": 3,
+      "5": 2,
+      "6": 17,
+      "7": 22,
+      "8": 11,
+      "9": 15,
+      "10": 10,
+      "11": 12,
+      "12": 12,
+      "13": 20,
+      "14": 27
+    },
+    "mean_gain_pct_if_waiting_to_best_day": 14.573279464554425,
+    "median_gain_pct": 8.387773812711163,
+    "max_gain_pct": 135.68855541302779,
+    "mean_30d_range_pct": 33.51509413127935,
+    "price_by_grade_mean": {
+      "A": 4628.72375,
+      "B": 4018.5815624999996,
+      "C": 3286.5679687499996,
+      "Reject": 1762.6790624999999
+    },
+    "price_by_crop_mean": {
+      "Tomato": 2313.4037500000004,
+      "Onion": 1836.6571875,
+      "Potato": 1720.9003125,
+      "Wheat": 2448.6378125,
+      "Rice": 3157.7365625,
+      "Mango": 5491.7496875,
+      "Cotton": 8117.569375,
+      "Maize": 2306.45
+    },
+    "latency_ms_median": 13.089250001939945,
+    "latency_ms_p95": 29.918925003585173,
+    "latency_ms_max": 96.70090000145137,
+    "note": "market context (rain, temperature, demand, supply, fuel) in the forecast is a deterministic hash of crop/region/date, not an external feed",
+    "grade_price_order_holds": {
+      "ok": 64,
+      "of": 64
+    }
+  },
+  "computed_on": "2026-10-26",
+  "runtime_seconds": 530.0
+}

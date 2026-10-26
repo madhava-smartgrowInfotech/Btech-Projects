@@ -1,0 +1,42 @@
+{
+  "weights": {
+    "price": 0.38,
+    "distance": 0.22,
+    "quality_fit": 0.18,
+    "reliability": 0.14,
+    "spoilage_risk": 0.08
+  },
+  "weights_sum": 1.0,
+  "towns": 8,
+  "buyers": 4,
+  "combinations": 256,
+  "replica_matches_served_top1": "256/256",
+  "weight_perturbation": {
+    "trials_per_combination": 100,
+    "multiplier_range": [
+      0.5,
+      1.5
+    ],
+    "top1_unchanged_mean": 0.9770703125,
+    "top1_unchanged_min": 0.74,
+    "rank_correlation_mean": 0.9478203125
+  },
+  "top_buyer_share": {
+    "Harvest & Co.": 0.328125,
+    "Coastal Fresh Distributors": 0.28125,
+    "GreenMart Wholesale": 0.21875,
+    "Riverstone Foods": 0.171875
+  },
+  "mean_top_score": 76.003125,
+  "mean_score_spread_top_to_bottom": 18.074939624260864,
+  "term_variation_across_buyers": {
+    "price": 0.020626211113336988,
+    "distance": 0.05182758478299496,
+    "quality_fit": 0.0,
+    "reliability": 0.009391485505499137,
+    "spoilage_risk": 0.012513535869158487
+  },
+  "latency_ms_median": 64.6506999983103,
+  "latency_ms_p95": 107.14297499725944,
+  "note": "buyer offers are base price x a hash-derived factor in [0.90, 1.18]; they are simulated, not quotes from real buyers"
+}

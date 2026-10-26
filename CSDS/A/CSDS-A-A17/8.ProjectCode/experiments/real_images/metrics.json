@@ -1,0 +1,305 @@
+{
+  "dataset": {
+    "name": "Fresh and Rotten Fruits Dataset for Machine-Based Evaluation of Fruit Quality",
+    "authors": "Sultana, Jahan, Uddin (2022), Data in Brief 44:108552, Mendeley Data doi:10.17632/bdd69gyhv8.1",
+    "licence": "CC BY 4.0",
+    "obtained_from": "Hugging Face mirror Project-AgML/fresh_rotten_fruit_classification (raw config)",
+    "images_used": 3200,
+    "fresh": 1600,
+    "rotten": 1600,
+    "fruits": [
+      "apple",
+      "banana",
+      "grape",
+      "guava",
+      "jujube",
+      "orange",
+      "pomegranate",
+      "strawberry"
+    ],
+    "per_fruit_counts": {
+      "apple": {
+        "fresh": 200,
+        "rotten": 200
+      },
+      "banana": {
+        "fresh": 200,
+        "rotten": 200
+      },
+      "grape": {
+        "fresh": 200,
+        "rotten": 200
+      },
+      "guava": {
+        "fresh": 200,
+        "rotten": 200
+      },
+      "jujube": {
+        "fresh": 200,
+        "rotten": 200
+      },
+      "orange": {
+        "fresh": 200,
+        "rotten": 200
+      },
+      "pomegranate": {
+        "fresh": 200,
+        "rotten": 200
+      },
+      "strawberry": {
+        "fresh": 200,
+        "rotten": 200
+      }
+    },
+    "caveat": "fresh/rotten is a binary freshness label, not the A/B/C/Reject grade; mapping fresh->{A,B} and rotten->{C,Reject} is an assumption of this check"
+  },
+  "shipped_model_on_real_photos": {
+    "predicted_grade_share_by_label": {
+      "fresh": {
+        "A": 0.00125,
+        "B": 0.998125,
+        "C": 0.000625,
+        "Reject": 0.0
+      },
+      "rotten": {
+        "A": 0.000625,
+        "B": 0.99125,
+        "C": 0.008125,
+        "Reject": 0.0
+      }
+    },
+    "mapped_binary_accuracy": 0.50375,
+    "mapped_binary_f1_fresh": 0.6681989134977017,
+    "auc_fresh_vs_rotten_using_pA_plus_pB": 0.5714384765625,
+    "share_predicted_A_overall": 0.0009375,
+    "share_predicted_Reject_overall": 0.0,
+    "mean_top_probability": 0.6634287498958747
+  },
+  "shipped_model_per_fruit": {
+    "apple": {
+      "n": 400,
+      "mapped_accuracy": 0.5025,
+      "auc": 0.787575,
+      "accepted_share_fresh": 1.0,
+      "accepted_share_rotten": 0.995
+    },
+    "banana": {
+      "n": 400,
+      "mapped_accuracy": 0.52,
+      "auc": 0.7596,
+      "accepted_share_fresh": 1.0,
+      "accepted_share_rotten": 0.96
+    },
+    "grape": {
+      "n": 400,
+      "mapped_accuracy": 0.5,
+      "auc": 0.5125000000000001,
+      "accepted_share_fresh": 1.0,
+      "accepted_share_rotten": 1.0
+    },
+    "guava": {
+      "n": 400,
+      "mapped_accuracy": 0.5,
+      "auc": 0.3540999999999999,
+      "accepted_share_fresh": 1.0,
+      "accepted_share_rotten": 1.0
+    },
+    "jujube": {
+      "n": 400,
+      "mapped_accuracy": 0.4975,
+      "auc": 0.18572500000000003,
+      "accepted_share_fresh": 0.995,
+      "accepted_share_rotten": 1.0
+    },
+    "orange": {
+      "n": 400,
+      "mapped_accuracy": 0.5,
+      "auc": 0.45198750000000004,
+      "accepted_share_fresh": 1.0,
+      "accepted_share_rotten": 1.0
+    },
+    "pomegranate": {
+      "n": 400,
+      "mapped_accuracy": 0.5,
+      "auc": 0.638425,
+      "accepted_share_fresh": 1.0,
+      "accepted_share_rotten": 1.0
+    },
+    "strawberry": {
+      "n": 400,
+      "mapped_accuracy": 0.51,
+      "auc": 0.81455,
+      "accepted_share_fresh": 1.0,
+      "accepted_share_rotten": 0.98
+    }
+  },
+  "features_trained_on_real_labels": {
+    "five_fold_cv_accuracy_mean": 0.90625,
+    "five_fold_cv_accuracy_std": 0.007328774624724106,
+    "five_fold_cv_auc_mean": 0.96985546875,
+    "leave_fruits_out_accuracy_mean": 0.66875,
+    "leave_fruits_out_auc_mean": 0.7476609375000001,
+    "leave_fruits_out_folds": 4,
+    "importance": [
+      {
+        "feature": "mean_hue",
+        "importance": 0.2906429478384069
+      },
+      {
+        "feature": "mean_saturation",
+        "importance": 0.1216641200008284
+      },
+      {
+        "feature": "texture_energy",
+        "importance": 0.09624569995715267
+      },
+      {
+        "feature": "mean_value",
+        "importance": 0.08802898601226415
+      },
+      {
+        "feature": "edge_density",
+        "importance": 0.07428729576296045
+      },
+      {
+        "feature": "texture_contrast",
+        "importance": 0.07024919885891011
+      },
+      {
+        "feature": "size_score",
+        "importance": 0.06153558012583741
+      },
+      {
+        "feature": "texture_homogeneity",
+        "importance": 0.0575860740416115
+      },
+      {
+        "feature": "color_uniformity",
+        "importance": 0.05450486698047381
+      },
+      {
+        "feature": "saturation_std",
+        "importance": 0.05243057166262256
+      },
+      {
+        "feature": "blemish_ratio",
+        "importance": 0.032824658758931875
+      }
+    ],
+    "majority_baseline": 0.5
+  },
+  "feature_means_real_vs_synthetic": {
+    "mean_hue": {
+      "real_fresh": 0.14132882118011722,
+      "real_rotten": 0.14113724304848044,
+      "synthetic_A": 0.28,
+      "synthetic_B": 0.27,
+      "synthetic_C": 0.26,
+      "synthetic_Reject": 0.24,
+      "real_fresh_std": 0.1664981864717547,
+      "real_rotten_std": 0.24997187764661025
+    },
+    "mean_saturation": {
+      "real_fresh": 0.7472426927416932,
+      "real_rotten": 0.696201903773289,
+      "synthetic_A": 0.62,
+      "synthetic_B": 0.52,
+      "synthetic_C": 0.4,
+      "synthetic_Reject": 0.28,
+      "real_fresh_std": 0.12945045172273076,
+      "real_rotten_std": 0.1379127494212803
+    },
+    "mean_value": {
+      "real_fresh": 0.5941255758416419,
+      "real_rotten": 0.5240212634871988,
+      "synthetic_A": 0.66,
+      "synthetic_B": 0.58,
+      "synthetic_C": 0.48,
+      "synthetic_Reject": 0.36,
+      "real_fresh_std": 0.14488757821281867,
+      "real_rotten_std": 0.13692997965461134
+    },
+    "saturation_std": {
+      "real_fresh": 0.12774984893261218,
+      "real_rotten": 0.13637440596608555,
+      "synthetic_A": 0.09,
+      "synthetic_B": 0.14,
+      "synthetic_C": 0.2,
+      "synthetic_Reject": 0.27,
+      "real_fresh_std": 0.024223852194430778,
+      "real_rotten_std": 0.024274072556148673
+    },
+    "color_uniformity": {
+      "real_fresh": 0.7189503323482532,
+      "real_rotten": 0.6999763068746117,
+      "synthetic_A": 0.9,
+      "synthetic_B": 0.74,
+      "synthetic_C": 0.55,
+      "synthetic_Reject": 0.35,
+      "real_fresh_std": 0.05329247482774771,
+      "real_rotten_std": 0.053402959623527084
+    },
+    "texture_contrast": {
+      "real_fresh": 0.022582641229612923,
+      "real_rotten": 0.017682564290851462,
+      "synthetic_A": 0.18,
+      "synthetic_B": 0.3,
+      "synthetic_C": 0.46,
+      "synthetic_Reject": 0.64,
+      "real_fresh_std": 0.014574263793528596,
+      "real_rotten_std": 0.012234159770398793
+    },
+    "texture_homogeneity": {
+      "real_fresh": 0.9241595211589917,
+      "real_rotten": 0.9365819741633071,
+      "synthetic_A": 0.86,
+      "synthetic_B": 0.72,
+      "synthetic_C": 0.56,
+      "synthetic_Reject": 0.38,
+      "real_fresh_std": 0.0446261961487027,
+      "real_rotten_std": 0.03167496629762995
+    },
+    "texture_energy": {
+      "real_fresh": 0.6708455721658038,
+      "real_rotten": 0.7374194362122322,
+      "synthetic_A": 0.55,
+      "synthetic_B": 0.42,
+      "synthetic_C": 0.3,
+      "synthetic_Reject": 0.18,
+      "real_fresh_std": 0.14398315202416676,
+      "real_rotten_std": 0.13476968258241187
+    },
+    "edge_density": {
+      "real_fresh": 0.08554993458176259,
+      "real_rotten": 0.11548037654280538,
+      "synthetic_A": 0.09,
+      "synthetic_B": 0.15,
+      "synthetic_C": 0.23,
+      "synthetic_Reject": 0.33,
+      "real_fresh_std": 0.06311426447221596,
+      "real_rotten_std": 0.0675162566488285
+    },
+    "blemish_ratio": {
+      "real_fresh": 0.14521301804106582,
+      "real_rotten": 0.14024281146198786,
+      "synthetic_A": 0.02,
+      "synthetic_B": 0.07,
+      "synthetic_C": 0.15,
+      "synthetic_Reject": 0.3,
+      "real_fresh_std": 0.03356519102622158,
+      "real_rotten_std": 0.03905273522435527
+    },
+    "size_score": {
+      "real_fresh": 0.5958358140425248,
+      "real_rotten": 0.4715457638827237,
+      "synthetic_A": 0.82,
+      "synthetic_B": 0.68,
+      "synthetic_C": 0.52,
+      "synthetic_Reject": 0.35,
+      "real_fresh_std": 0.2576029789908974,
+      "real_rotten_std": 0.23345442477834127
+    }
+  },
+  "share_real_images_outside_every_synthetic_profile_3sd": 0.9978125,
+  "runtime_seconds": 624.7
+}

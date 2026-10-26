@@ -1,0 +1,346 @@
+{
+  "dataset": {
+    "rows": 6000,
+    "per_grade": 1500,
+    "classes": [
+      "A",
+      "B",
+      "C",
+      "Reject"
+    ],
+    "n_features": 11,
+    "features": [
+      "mean_hue",
+      "mean_saturation",
+      "mean_value",
+      "saturation_std",
+      "color_uniformity",
+      "texture_contrast",
+      "texture_homogeneity",
+      "texture_energy",
+      "edge_density",
+      "blemish_ratio",
+      "size_score"
+    ],
+    "label_noise_fraction": 0.06,
+    "noisy_labels_actual": 360,
+    "split": "80/20 stratified, random_state=42",
+    "train_rows": 4800,
+    "test_rows": 1200,
+    "source": "synthetic: per-grade normal distributions in the CV feature space (generate_dataset.py), 6% labels moved to a neighbouring grade",
+    "replica_identical_to_generate": true
+  },
+  "shipped_rf": {
+    "hyperparameters": {
+      "n_estimators": 250,
+      "max_depth": 9,
+      "min_samples_leaf": 4,
+      "random_state": 42
+    },
+    "test_accuracy": 0.9233333333333333,
+    "macro_f1": 0.9244114679447771,
+    "weighted_f1": 0.9226592066240603,
+    "per_class": {
+      "A": {
+        "precision": 0.9278350515463918,
+        "recall": 0.9642857142857143,
+        "f1-score": 0.9457092819614711,
+        "support": 280.0
+      },
+      "B": {
+        "precision": 0.9240924092409241,
+        "recall": 0.8615384615384616,
+        "f1-score": 0.89171974522293,
+        "support": 325.0
+      },
+      "C": {
+        "precision": 0.9087947882736156,
+        "recall": 0.8942307692307693,
+        "f1-score": 0.901453957996769,
+        "support": 312.0
+      },
+      "Reject": {
+        "precision": 0.9331103678929766,
+        "recall": 0.9858657243816255,
+        "f1-score": 0.9587628865979382,
+        "support": 283.0
+      }
+    },
+    "labels": [
+      "A",
+      "B",
+      "C",
+      "Reject"
+    ],
+    "confusion_matrix": [
+      [
+        270,
+        10,
+        0,
+        0
+      ],
+      [
+        21,
+        280,
+        24,
+        0
+      ],
+      [
+        0,
+        13,
+        279,
+        20
+      ],
+      [
+        0,
+        0,
+        4,
+        279
+      ]
+    ],
+    "mean_confidence_correct": 0.8691768361400947,
+    "mean_confidence_wrong": 0.7880440204357931,
+    "train_accuracy": 0.939375,
+    "accuracy_vs_clean_labels_on_same_test_rows": 0.9808333333333333,
+    "test_rows_with_noisy_label": 71,
+    "max_possible_accuracy_if_noise_unlearnable": 0.9408333333333333,
+    "adjacent_error_share": 1.0,
+    "errors": 92
+  },
+  "feature_importance": {
+    "impurity": [
+      {
+        "feature": "blemish_ratio",
+        "importance": 0.24137519447047906
+      },
+      {
+        "feature": "color_uniformity",
+        "importance": 0.23933971952851066
+      },
+      {
+        "feature": "texture_homogeneity",
+        "importance": 0.15621864968616134
+      },
+      {
+        "feature": "texture_contrast",
+        "importance": 0.10876983743899231
+      },
+      {
+        "feature": "edge_density",
+        "importance": 0.10696672722535236
+      },
+      {
+        "feature": "texture_energy",
+        "importance": 0.04004693837167417
+      },
+      {
+        "feature": "saturation_std",
+        "importance": 0.03672981377382317
+      },
+      {
+        "feature": "mean_saturation",
+        "importance": 0.027089026737403057
+      },
+      {
+        "feature": "size_score",
+        "importance": 0.025074090126360016
+      },
+      {
+        "feature": "mean_value",
+        "importance": 0.01465015423091449
+      },
+      {
+        "feature": "mean_hue",
+        "importance": 0.0037398484103294363
+      }
+    ],
+    "permutation_accuracy_drop": [
+      {
+        "feature": "color_uniformity",
+        "mean": 0.20949999999999996,
+        "std": 0.009910712498212343
+      },
+      {
+        "feature": "blemish_ratio",
+        "mean": 0.2018333333333333,
+        "std": 0.008965985104208516
+      },
+      {
+        "feature": "texture_homogeneity",
+        "mean": 0.08125,
+        "std": 0.00872615799383288
+      },
+      {
+        "feature": "texture_contrast",
+        "mean": 0.03925000000000001,
+        "std": 0.00336340601176842
+      },
+      {
+        "feature": "edge_density",
+        "mean": 0.03208333333333333,
+        "std": 0.0036940267098835872
+      },
+      {
+        "feature": "texture_energy",
+        "mean": 0.007250000000000012,
+        "std": 0.0025013885033005963
+      },
+      {
+        "feature": "saturation_std",
+        "mean": 0.0071666666666666545,
+        "std": 0.0014529663145135506
+      },
+      {
+        "feature": "mean_saturation",
+        "mean": 0.004500000000000015,
+        "std": 0.0014043582955293875
+      },
+      {
+        "feature": "size_score",
+        "mean": 0.0025833333333333485,
+        "std": 0.0012610621625351104
+      },
+      {
+        "feature": "mean_value",
+        "mean": 0.0007500000000000174,
+        "std": 0.0010833333333333584
+      },
+      {
+        "feature": "mean_hue",
+        "mean": -0.0008333333333333526,
+        "std": 0.0005270462766947421
+      }
+    ]
+  },
+  "seed_study": {
+    "runs": [
+      {
+        "seed": 0,
+        "accuracy": 0.925,
+        "macro_f1": 0.9259178490342237
+      },
+      {
+        "seed": 1,
+        "accuracy": 0.925,
+        "macro_f1": 0.9261325016625103
+      },
+      {
+        "seed": 2,
+        "accuracy": 0.9308333333333333,
+        "macro_f1": 0.931631634995592
+      },
+      {
+        "seed": 3,
+        "accuracy": 0.9308333333333333,
+        "macro_f1": 0.9319425797763226
+      },
+      {
+        "seed": 4,
+        "accuracy": 0.9316666666666666,
+        "macro_f1": 0.9327856308641521
+      }
+    ],
+    "accuracy_mean": 0.9286666666666665,
+    "accuracy_std": 0.0033644382063643483,
+    "accuracy_min": 0.925,
+    "accuracy_max": 0.9316666666666666,
+    "macro_f1_mean": 0.9296820392665601,
+    "macro_f1_std": 0.003365694319726647
+  },
+  "baselines": {
+    "majority_class": {
+      "accuracy": 0.2708333333333333,
+      "macro_f1": 0.10655737704918032
+    },
+    "logistic_regression": {
+      "accuracy": 0.9308333333333333,
+      "macro_f1": 0.9318676464113227
+    },
+    "decision_tree_depth9": {
+      "accuracy": 0.885,
+      "macro_f1": 0.886976976589129
+    },
+    "knn_k15": {
+      "accuracy": 0.93,
+      "macro_f1": 0.9309217604433898
+    },
+    "hist_gradient_boosting": {
+      "accuracy": 0.9216666666666666,
+      "macro_f1": 0.9228582042671072
+    },
+    "random_forest_shipped": {
+      "accuracy": 0.9233333333333333,
+      "macro_f1": 0.9244114679447771
+    }
+  },
+  "clean_label_reference": {
+    "accuracy_trained_and_tested_on_clean_labels": 0.98,
+    "macro_f1": 0.9800231742039223,
+    "note": "same features, labels before the 6% neighbour-grade noise was applied"
+  },
+  "ablation_drop_group": {
+    "colour (hue, saturation, value, saturation_std, uniformity)": {
+      "removed": [
+        "mean_hue",
+        "mean_saturation",
+        "mean_value",
+        "saturation_std",
+        "color_uniformity"
+      ],
+      "accuracy": 0.9116666666666666,
+      "macro_f1": 0.9128998369743224
+    },
+    "texture (GLCM contrast, homogeneity, energy)": {
+      "removed": [
+        "texture_contrast",
+        "texture_homogeneity",
+        "texture_energy"
+      ],
+      "accuracy": 0.9166666666666666,
+      "macro_f1": 0.9178516243277594
+    },
+    "edge_density": {
+      "removed": [
+        "edge_density"
+      ],
+      "accuracy": 0.9183333333333333,
+      "macro_f1": 0.9195281525781172
+    },
+    "blemish_ratio": {
+      "removed": [
+        "blemish_ratio"
+      ],
+      "accuracy": 0.9233333333333333,
+      "macro_f1": 0.9244222047632943
+    },
+    "size_score": {
+      "removed": [
+        "size_score"
+      ],
+      "accuracy": 0.9233333333333333,
+      "macro_f1": 0.9244849498000725
+    }
+  },
+  "ablation_only_group": {
+    "colour (hue, saturation, value, saturation_std, uniformity)": {
+      "accuracy": 0.85
+    },
+    "texture (GLCM contrast, homogeneity, energy)": {
+      "accuracy": 0.8308333333333333
+    },
+    "edge_density": {
+      "accuracy": 0.6716666666666666
+    },
+    "blemish_ratio": {
+      "accuracy": 0.75
+    },
+    "size_score": {
+      "accuracy": 0.5633333333333334
+    }
+  },
+  "train_model_py": {
+    "test_accuracy": 0.9233333333333333,
+    "matches_replica": true
+  },
+  "runtime_seconds": 53.0
+}

@@ -1,0 +1,65 @@
+{
+  "environment": {
+    "cpu": "Intel64 Family 6 Model 151 Stepping 5, GenuineIntel",
+    "python": "3.11.9",
+    "os": "Windows-10-10.0.26300-SP0",
+    "note": "API and client on the same machine over 127.0.0.1; other jobs were running on the machine"
+  },
+  "photo_bytes": 48246,
+  "login": {
+    "n": 30,
+    "median_ms": 325.3,
+    "p95_ms": 349.0,
+    "max_ms": 356.8,
+    "mean_ms": 323.2
+  },
+  "health": {
+    "n": 30,
+    "median_ms": 1.6,
+    "p95_ms": 4.7,
+    "max_ms": 4.9,
+    "mean_ms": 2.0
+  },
+  "upload_and_grade": {
+    "n": 20,
+    "median_ms": 173.9,
+    "p95_ms": 207.3,
+    "max_ms": 208.1,
+    "mean_ms": 173.5
+  },
+  "price_predict": {
+    "n": 30,
+    "median_ms": 54.9,
+    "p95_ms": 119.4,
+    "max_ms": 123.4,
+    "mean_ms": 60.0
+  },
+  "delivery_recommend": {
+    "n": 30,
+    "median_ms": 99.8,
+    "p95_ms": 147.9,
+    "max_ms": 148.8,
+    "mean_ms": 88.9
+  },
+  "marketplace_listings": {
+    "n": 30,
+    "median_ms": 17.7,
+    "p95_ms": 36.5,
+    "max_ms": 49.1,
+    "mean_ms": 17.4
+  },
+  "admin_overview": {
+    "n": 30,
+    "median_ms": 22.8,
+    "p95_ms": 46.0,
+    "max_ms": 46.8,
+    "mean_ms": 23.7
+  },
+  "admin_model_insights": {
+    "n": 30,
+    "median_ms": 112.9,
+    "p95_ms": 149.5,
+    "max_ms": 447.7,
+    "mean_ms": 123.9
+  }
+}

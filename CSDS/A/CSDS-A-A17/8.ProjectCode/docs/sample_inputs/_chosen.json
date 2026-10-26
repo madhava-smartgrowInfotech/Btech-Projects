@@ -1,0 +1,59 @@
+{
+  "Onion": {
+    "scanned": 40,
+    "grade_counts": {
+      "A": 0,
+      "B": 40,
+      "C": 0,
+      "Reject": 0
+    },
+    "kept": [
+      {
+        "file": "onion_1.jpg",
+        "candidate_index": 0,
+        "grade": "B",
+        "confidence": 0.742
+      }
+    ]
+  },
+  "Potato": {
+    "scanned": 40,
+    "grade_counts": {
+      "A": 1,
+      "B": 39,
+      "C": 0,
+      "Reject": 0
+    },
+    "kept": [
+      {
+        "file": "potato_1.jpg",
+        "candidate_index": 0,
+        "grade": "B",
+        "confidence": 0.662
+      },
+      {
+        "file": "potato_2.jpg",
+        "candidate_index": 23,
+        "grade": "A",
+        "confidence": 0.834
+      }
+    ]
+  },
+  "Tomato": {
+    "scanned": 40,
+    "grade_counts": {
+      "A": 0,
+      "B": 40,
+      "C": 0,
+      "Reject": 0
+    },
+    "kept": [
+      {
+        "file": "tomato_1.jpg",
+        "candidate_index": 0,
+        "grade": "B",
+        "confidence": 0.701
+      }
+    ]
+  }
+}

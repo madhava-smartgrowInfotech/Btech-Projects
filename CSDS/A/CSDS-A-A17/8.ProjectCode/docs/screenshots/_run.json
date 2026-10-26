@@ -1,0 +1,142 @@
+{
+  "screens": [
+    {
+      "file": "01_landing.png",
+      "shows": "Landing page: hero, product pitch and platform statistics"
+    },
+    {
+      "file": "01b_landing_full.png",
+      "shows": "Landing page, full length"
+    },
+    {
+      "file": "02_login.png",
+      "shows": "Log-in page with the demo-account shortcuts"
+    },
+    {
+      "file": "03_login_error.png",
+      "shows": "Failure case: wrong password is rejected by the API (HTTP 401) and reported"
+    },
+    {
+      "file": "04_signup.png",
+      "shows": "Sign-up page: role choice (farmer, buyer, distributor), region and contact details"
+    },
+    {
+      "file": "05_farmer_dashboard.png",
+      "shows": "Farmer dashboard before the upload: crop, quantity and photo drop zone, existing listings"
+    },
+    {
+      "file": "06_upload_preview.png",
+      "shows": "A real tomato photograph (tomato_1.jpg) selected for grading, with preview"
+    },
+    {
+      "file": "07_grading_result.png",
+      "shows": "Grading result: grade, confidence, class probabilities, computer-vision features and SHAP explanation"
+    },
+    {
+      "file": "07b_grading_full.png",
+      "shows": "Listing workspace, full length, after grading"
+    },
+    {
+      "file": "08_price_forecast.png",
+      "shows": "Price forecast: current price, 30-day curve with confidence band, best day to sell and SHAP drivers"
+    },
+    {
+      "file": "08b_price_forecast_scrolled.png",
+      "shows": "Price forecast panel, lower part"
+    },
+    {
+      "file": "09_delivery_planner.png",
+      "shows": "Delivery planner: buyers ranked by price, distance, reliability and spoilage risk, with the best route"
+    },
+    {
+      "file": "10_publish_listing.png",
+      "shows": "Asking price entered and the Publish listing action"
+    },
+    {
+      "file": "11_listing_published.png",
+      "shows": "Listing published to the marketplace"
+    },
+    {
+      "file": "12_farmer_listings.png",
+      "shows": "Farmer dashboard with graded listings (tomato, onion, potatoes) and their status"
+    },
+    {
+      "file": "12b_farmer_listings_scrolled.png",
+      "shows": "Farmer listings, lower part"
+    },
+    {
+      "file": "13_marketplace.png",
+      "shows": "Buyer marketplace: listed crops with grade, quantity and asking price"
+    },
+    {
+      "file": "14_listing_detail.png",
+      "shows": "Listing detail for the buyer: quality breakdown and market price trend"
+    },
+    {
+      "file": "15_place_order_dialog.png",
+      "shows": "Place-order dialog: quantity and agreed price"
+    },
+    {
+      "file": "16_buyer_orders.png",
+      "shows": "Buyer orders: the new order is in the placed state"
+    },
+    {
+      "file": "17_farmer_orders_placed.png",
+      "shows": "Farmer orders: placed orders waiting for confirmation"
+    },
+    {
+      "file": "18_farmer_orders_confirmed.png",
+      "shows": "Farmer orders after confirming one order"
+    },
+    {
+      "file": "19_distributor_deliveries.png",
+      "shows": "Distributor: confirmed orders ready to ship"
+    },
+    {
+      "file": "20_distributor_in_transit.png",
+      "shows": "Distributor: orders in transit with Live monitor and Mark delivered actions"
+    },
+    {
+      "file": "21_live_monitoring_start.png",
+      "shows": "Live monitoring just after opening the WebSocket"
+    },
+    {
+      "file": "22_live_monitoring.png",
+      "shows": "Live monitoring after about one minute of streaming: temperature, humidity and shock traces (a humidity step is visible; readings still inside the alarm band, so no banner yet)"
+    },
+    {
+      "file": "23_admin_overview.png",
+      "shows": "Admin overview: users by role, listings, orders and gross volume"
+    },
+    {
+      "file": "24_model_insights.png",
+      "shows": "Admin model insights: both models, accuracy, MAE/R2, feature importance and training-data disclosure"
+    },
+    {
+      "file": "24b_model_insights_scrolled.png",
+      "shows": "Model insights, lower part"
+    },
+    {
+      "file": "22b_live_alert.png",
+      "shows": "Live monitoring 44.2 s after opening the page: the first anomaly (an injected event) raises the red Cold-chain alert toast"
+    },
+    {
+      "file": "22c_live_alert_later.png",
+      "shows": "Live monitoring 215.0 s after opening the page; red in-page banner shown: True"
+    }
+  ],
+  "ids": {
+    "onion": 2,
+    "potato": 3,
+    "potato2": 4,
+    "order_placed": 1,
+    "order_confirmed": 2,
+    "tomato": 5,
+    "shipment_url": "http://127.0.0.1:5190/distributor/shipments/1"
+  },
+  "alert_timing": {
+    "seconds_until_banner": 44.2,
+    "seconds_at_second_shot": 215.0,
+    "banner_visible_at_second_shot": true
+  }
+}

@@ -1,0 +1,79 @@
+[
+ {
+  "file": "happy_01.jpg",
+  "true": "happy",
+  "index": 2544,
+  "dominant": "Happy",
+  "conf": 0.473,
+  "kind": "basic",
+  "top_basic": "Happy",
+  "top_compound": "Angrily Disgusted",
+  "top_compound_conf": 0.0
+ },
+ {
+  "file": "neutral_02.jpg",
+  "true": "neutral",
+  "index": 5083,
+  "dominant": "Fear",
+  "conf": 0.237,
+  "kind": "basic",
+  "top_basic": "Fear",
+  "top_compound": "Angrily Disgusted",
+  "top_compound_conf": 0.001
+ },
+ {
+  "file": "sad_03.jpg",
+  "true": "sad",
+  "index": 5515,
+  "dominant": "Sad",
+  "conf": 0.48,
+  "kind": "basic",
+  "top_basic": "Sad",
+  "top_compound": "Sadly Angry",
+  "top_compound_conf": 0.0
+ },
+ {
+  "file": "angry_04.jpg",
+  "true": "angry",
+  "index": 305,
+  "dominant": "Angry",
+  "conf": 0.746,
+  "kind": "basic",
+  "top_basic": "Angry",
+  "top_compound": "Angrily Disgusted",
+  "top_compound_conf": 0.0
+ },
+ {
+  "file": "fear_05.jpg",
+  "true": "fear",
+  "index": 1122,
+  "dominant": "Fear",
+  "conf": 0.439,
+  "kind": "basic",
+  "top_basic": "Fear",
+  "top_compound": "Angrily Disgusted",
+  "top_compound_conf": 0.0
+ },
+ {
+  "file": "disgust_06.jpg",
+  "true": "disgust",
+  "index": 1056,
+  "dominant": "Angry",
+  "conf": 0.478,
+  "kind": "basic",
+  "top_basic": "Angry",
+  "top_compound": "Angrily Disgusted",
+  "top_compound_conf": 0.0
+ },
+ {
+  "file": "surprise_07.jpg",
+  "true": "surprise",
+  "index": 6861,
+  "dominant": "Fear",
+  "conf": 0.522,
+  "kind": "basic",
+  "top_basic": "Fear",
+  "top_compound": "Angrily Disgusted",
+  "top_compound_conf": 0.0
+ }
+]

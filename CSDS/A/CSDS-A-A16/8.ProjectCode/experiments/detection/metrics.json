@@ -1,0 +1,12 @@
+{
+  "n_images": 1000,
+  "note": "scale 1x = native 48x48 FER2013 pixels",
+  "haar_detection_rate_scale_1x": 0.0,
+  "haar_detection_rate_scale_2x": 0.54,
+  "haar_detection_rate_scale_3x": 0.565,
+  "haar_detection_rate_scale_4x": 0.561,
+  "haar_detection_rate_scale_6x": 0.586,
+  "detected_at_3x": 565,
+  "accuracy_via_haar_crop_on_detected": 0.5575221238938053,
+  "accuracy_direct_64px_on_same_images": 0.6619469026548672
+}

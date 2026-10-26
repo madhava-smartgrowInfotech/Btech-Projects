@@ -1,0 +1,66 @@
+{
+  "n": 1100,
+  "per_compound_class": 100,
+  "final_model": {
+    "0.05": {
+      "threshold": 0.05,
+      "compound_roc_auc_macro": 0.4971404545454545,
+      "mean_compound_prob_on_true_compound": 0.06864330917596817,
+      "dominant_is_correct_compound": 0.0,
+      "micro_f1": 0.30105641924620563,
+      "macro_f1": 0.2653702988336562,
+      "exact_match_ratio": 0.0,
+      "compound_recall": 0.9663636363636363
+    },
+    "0.1": {
+      "threshold": 0.1,
+      "compound_roc_auc_macro": 0.4971404545454545,
+      "mean_compound_prob_on_true_compound": 0.06864330917596817,
+      "dominant_is_correct_compound": 0.0,
+      "micro_f1": 0.44215784215784215,
+      "macro_f1": 0.1752878760325646,
+      "exact_match_ratio": 0.0,
+      "compound_recall": 0.012727272727272728
+    },
+    "0.2": {
+      "threshold": 0.2,
+      "compound_roc_auc_macro": 0.4971404545454545,
+      "mean_compound_prob_on_true_compound": 0.06864330917596817,
+      "dominant_is_correct_compound": 0.0,
+      "micro_f1": 0.452962460425147,
+      "macro_f1": 0.15032835391909424,
+      "exact_match_ratio": 0.0,
+      "compound_recall": 0.0
+    },
+    "0.3": {
+      "threshold": 0.3,
+      "compound_roc_auc_macro": 0.4971404545454545,
+      "mean_compound_prob_on_true_compound": 0.06864330917596817,
+      "dominant_is_correct_compound": 0.0,
+      "micro_f1": 0.4008363201911589,
+      "macro_f1": 0.11568435541779341,
+      "exact_match_ratio": 0.0,
+      "compound_recall": 0.0
+    },
+    "0.5": {
+      "threshold": 0.5,
+      "compound_roc_auc_macro": 0.4971404545454545,
+      "mean_compound_prob_on_true_compound": 0.06864330917596817,
+      "dominant_is_correct_compound": 0.0,
+      "micro_f1": 0.10964794410104811,
+      "macro_f1": 0.02461093014838943,
+      "exact_match_ratio": 0.0,
+      "compound_recall": 0.0
+    }
+  },
+  "real_only_control": {
+    "threshold": 0.5,
+    "compound_roc_auc_macro": 0.5024863636363636,
+    "mean_compound_prob_on_true_compound": 8.076365338638425e-05,
+    "dominant_is_correct_compound": 0.0,
+    "micro_f1": 0.005405405405405406,
+    "macro_f1": 0.0027254041925567954,
+    "exact_match_ratio": 0.0,
+    "compound_recall": 0.0
+  }
+}

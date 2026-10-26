@@ -1,0 +1,317 @@
+{
+  "base": "http://127.0.0.1:8116",
+  "latency": [
+    {
+      "label": "GET /api/health",
+      "n": 100,
+      "status": 200,
+      "mean_ms": 1.9111299992073327,
+      "p50_ms": 1.748299997416325,
+      "p95_ms": 3.056699992157519,
+      "max_ms": 6.5341000008629635
+    },
+    {
+      "label": "POST /api/auth/login (bcrypt)",
+      "n": 20,
+      "status": 200,
+      "mean_ms": 223.64866000061738,
+      "p50_ms": 219.161000000895,
+      "p95_ms": 239.88449999887962,
+      "max_ms": 298.2486999972025
+    },
+    {
+      "label": "GET /api/auth/me",
+      "n": 100,
+      "status": 200,
+      "mean_ms": 3.2796039992535952,
+      "p50_ms": 3.0417000089073554,
+      "p95_ms": 4.687900000135414,
+      "max_ms": 5.919499992160127
+    },
+    {
+      "label": "POST /api/analyze anonymous (face)",
+      "n": 60,
+      "status": 200,
+      "mean_ms": 20.12856666648683,
+      "p50_ms": 19.34590000018943,
+      "p95_ms": 26.16670000134036,
+      "max_ms": 36.499199995887466
+    },
+    {
+      "label": "POST /api/analyze authenticated (face, persisted)",
+      "n": 60,
+      "status": 200,
+      "mean_ms": 29.004876666052343,
+      "p50_ms": 27.769400010583922,
+      "p95_ms": 35.95670001232065,
+      "max_ms": 45.68789999757428
+    },
+    {
+      "label": "POST /api/analyze (no face found)",
+      "n": 40,
+      "status": 200,
+      "mean_ms": 2.583890001551481,
+      "p50_ms": 2.4286000116262585,
+      "p95_ms": 3.4582999942358583,
+      "max_ms": 4.067900008521974
+    },
+    {
+      "label": "GET /api/history?limit=20",
+      "n": 60,
+      "status": 200,
+      "mean_ms": 7.233553334178093,
+      "p50_ms": 6.600699998671189,
+      "p95_ms": 11.337399992044084,
+      "max_ms": 14.014200001838617
+    },
+    {
+      "label": "POST /api/analyze (2000x1500 JPEG, no face)",
+      "n": 10,
+      "status": 200,
+      "mean_ms": 59.69683000294026,
+      "p50_ms": 61.297800013562664,
+      "p95_ms": 64.74770000204444,
+      "max_ms": 75.42999999714084
+    }
+  ],
+  "cors_unlisted_origin_allow_origin_header": null,
+  "cors_listed_origin_allow_origin_header": "http://localhost:3000",
+  "probes": [
+    {
+      "name": "register duplicate email -> 409",
+      "status": 409,
+      "expected": [
+        409
+      ],
+      "ok": true,
+      "body": "{\"detail\":\"Email already registered\"}"
+    },
+    {
+      "name": "register 5-char password -> 422",
+      "status": 422,
+      "expected": [
+        422
+      ],
+      "ok": true,
+      "body": "{\"detail\":[{\"type\":\"string_too_short\",\"loc\":[\"body\",\"password\"],\"msg\":\"String should have at least 6 characters\",\"input\":\"12345\",\"ctx\":{\"min"
+    },
+    {
+      "name": "register missing field -> 422",
+      "status": 422,
+      "expected": [
+        422
+      ],
+      "ok": true,
+      "body": "{\"detail\":[{\"type\":\"missing\",\"loc\":[\"body\",\"name\"],\"msg\":\"Field required\",\"input\":{\"email\":\"a@b.com\"}},{\"type\":\"missing\",\"loc\":[\"body\",\"pass"
+    },
+    {
+      "name": "register with e-mail 'not-an-email' accepted?",
+      "status": 201,
+      "expected": [
+        201,
+        422
+      ],
+      "ok": true,
+      "body": "{\"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxYjExZmZkNy1kYzM1LTQzNDMtOWM1MC03NzdiNjFhZjgxNzYiLCJleHAiOjE3OTM2MjU3NDR9.HhCp3SlX"
+    },
+    {
+      "name": "login wrong password -> 401",
+      "status": 401,
+      "expected": [
+        401
+      ],
+      "ok": true,
+      "body": "{\"detail\":\"Invalid email or password\"}"
+    },
+    {
+      "name": "login SQL-looking e-mail -> 401",
+      "status": 401,
+      "expected": [
+        401
+      ],
+      "ok": true,
+      "body": "{\"detail\":\"Invalid email or password\"}"
+    },
+    {
+      "name": "malformed JSON -> 422",
+      "status": 422,
+      "expected": [
+        422
+      ],
+      "ok": true,
+      "body": "{\"detail\":[{\"type\":\"json_invalid\",\"loc\":[\"body\",1],\"msg\":\"JSON decode error\",\"input\":{},\"ctx\":{\"error\":\"Expecting property name enclosed in "
+    },
+    {
+      "name": "/me without token -> 401",
+      "status": 401,
+      "expected": [
+        401
+      ],
+      "ok": true,
+      "body": "{\"detail\":\"Not authenticated\"}"
+    },
+    {
+      "name": "/me tampered token -> 401",
+      "status": 401,
+      "expected": [
+        401
+      ],
+      "ok": true,
+      "body": "{\"detail\":\"Not authenticated\"}"
+    },
+    {
+      "name": "history without token -> 401",
+      "status": 401,
+      "expected": [
+        401
+      ],
+      "ok": true,
+      "body": "{\"detail\":\"Not authenticated\"}"
+    },
+    {
+      "name": "history item of another user -> 404",
+      "status": 404,
+      "expected": [
+        404
+      ],
+      "ok": true,
+      "body": "{\"detail\":\"Not found\"}"
+    },
+    {
+      "name": "delete item of another user -> 404",
+      "status": 404,
+      "expected": [
+        404
+      ],
+      "ok": true,
+      "body": "{\"detail\":\"Not found\"}"
+    },
+    {
+      "name": "history limit=-5",
+      "status": 200,
+      "expected": [
+        200,
+        422,
+        500
+      ],
+      "ok": true,
+      "body": "{\"items\":[{\"id\":\"859ed38d-bc52-4da6-b298-39d1b418e2d6\",\"created_at\":\"2026-10-26T13:22:24.438883\",\"face_detected\":true,\"basic_emotions\":[{\"ke"
+    },
+    {
+      "name": "history limit=100000",
+      "status": 200,
+      "expected": [
+        200
+      ],
+      "ok": true,
+      "body": "{\"items\":[{\"id\":\"859ed38d-bc52-4da6-b298-39d1b418e2d6\",\"created_at\":\"2026-10-26T13:22:24.438883\",\"face_detected\":true,\"basic_emotions\":[{\"ke"
+    },
+    {
+      "name": "history limit=abc -> 422",
+      "status": 422,
+      "expected": [
+        422
+      ],
+      "ok": true,
+      "body": "{\"detail\":[{\"type\":\"int_parsing\",\"loc\":[\"query\",\"limit\"],\"msg\":\"Input should be a valid integer, unable to parse string as an integer\",\"inpu"
+    },
+    {
+      "name": "analyze without file -> 422",
+      "status": 422,
+      "expected": [
+        422
+      ],
+      "ok": true,
+      "body": "{\"detail\":[{\"type\":\"missing\",\"loc\":[\"body\",\"image\"],\"msg\":\"Field required\",\"input\":null}]}"
+    },
+    {
+      "name": "analyze with a text file",
+      "status": 500,
+      "expected": [
+        200,
+        400,
+        415,
+        422,
+        500
+      ],
+      "ok": true,
+      "body": "Internal Server Error"
+    },
+    {
+      "name": "analyze with an empty file",
+      "status": 500,
+      "expected": [
+        200,
+        400,
+        415,
+        422,
+        500
+      ],
+      "ok": true,
+      "body": "Internal Server Error"
+    },
+    {
+      "name": "analyze with truncated JPEG",
+      "status": 500,
+      "expected": [
+        200,
+        400,
+        415,
+        422,
+        500
+      ],
+      "ok": true,
+      "body": "Internal Server Error"
+    },
+    {
+      "name": "analyze 6000x6000 JPEG (decode cost)",
+      "status": 200,
+      "expected": [
+        200
+      ],
+      "ok": true,
+      "body": "{\"id\":null,\"created_at\":\"2026-10-26T13:22:26.344008Z\",\"face_detected\":false,\"basic_emotions\":[],\"compound_emotions\":[],\"dominant\":null,\"thum"
+    },
+    {
+      "name": "path traversal in thumbnail URL",
+      "status": 404,
+      "expected": [
+        400,
+        404
+      ],
+      "ok": true,
+      "body": "{\"detail\":\"Not Found\"}"
+    },
+    {
+      "name": "unknown endpoint -> 404",
+      "status": 404,
+      "expected": [
+        404
+      ],
+      "ok": true,
+      "body": "{\"detail\":\"Not Found\"}"
+    },
+    {
+      "name": "wrong method on /api/health -> 405",
+      "status": 405,
+      "expected": [
+        405
+      ],
+      "ok": true,
+      "body": "{\"detail\":\"Method Not Allowed\"}"
+    },
+    {
+      "name": "CORS preflight from an unlisted origin",
+      "status": 400,
+      "expected": [
+        200,
+        400
+      ],
+      "ok": true,
+      "body": "Disallowed CORS origin"
+    }
+  ],
+  "probes_ok": 24,
+  "probes_total": 24,
+  "healthy_after_probes": true
+}

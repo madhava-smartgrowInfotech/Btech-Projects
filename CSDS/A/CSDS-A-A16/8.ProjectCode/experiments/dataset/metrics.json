@@ -1,0 +1,28 @@
+{
+  "source": "Hugging Face Jeneral/fer-2013 (FER2013 pickles)",
+  "image_size_native": 48,
+  "model_input": 64,
+  "n_train": 28709,
+  "n_test": 7178,
+  "class_counts": {
+    "train": {
+      "angry": 3995,
+      "disgust": 436,
+      "fear": 4097,
+      "happy": 7215,
+      "sad": 4830,
+      "surprise": 3171,
+      "neutral": 4965
+    },
+    "test": {
+      "angry": 958,
+      "disgust": 111,
+      "fear": 1024,
+      "happy": 1774,
+      "sad": 1247,
+      "surprise": 831,
+      "neutral": 1233
+    }
+  },
+  "test_majority_baseline": 0.24714405126776262
+}

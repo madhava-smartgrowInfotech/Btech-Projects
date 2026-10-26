@@ -1,0 +1,135 @@
+{
+  "accuracy": 0.5813597102256896,
+  "macro_f1": 0.5380824948432106,
+  "weighted_f1": 0.5871879761354638,
+  "per_class": {
+    "angry": {
+      "precision": 0.5051975051975052,
+      "recall": 0.5073068893528184,
+      "f1": 0.50625,
+      "support": 958
+    },
+    "disgust": {
+      "precision": 1.0,
+      "recall": 0.1891891891891892,
+      "f1": 0.3181818181818182,
+      "support": 111
+    },
+    "fear": {
+      "precision": 0.35635123614663256,
+      "recall": 0.408203125,
+      "f1": 0.380518889394629,
+      "support": 1024
+    },
+    "happy": {
+      "precision": 0.8812080536912752,
+      "recall": 0.7401352874859075,
+      "f1": 0.8045343137254902,
+      "support": 1774
+    },
+    "sad": {
+      "precision": 0.42916915720263,
+      "recall": 0.5757818765036087,
+      "f1": 0.4917808219178082,
+      "support": 1247
+    },
+    "surprise": {
+      "precision": 0.7082405345211581,
+      "recall": 0.7653429602888087,
+      "f1": 0.7356853672643147,
+      "support": 831
+    },
+    "neutral": {
+      "precision": 0.6045785639958376,
+      "recall": 0.47120843471208435,
+      "f1": 0.5296262534184139,
+      "support": 1233
+    }
+  },
+  "confusion_matrix": [
+    [
+      486,
+      0,
+      144,
+      37,
+      197,
+      29,
+      65
+    ],
+    [
+      46,
+      21,
+      21,
+      0,
+      19,
+      2,
+      2
+    ],
+    [
+      113,
+      0,
+      418,
+      25,
+      278,
+      129,
+      61
+    ],
+    [
+      60,
+      0,
+      104,
+      1313,
+      142,
+      53,
+      102
+    ],
+    [
+      129,
+      0,
+      210,
+      35,
+      718,
+      22,
+      133
+    ],
+    [
+      20,
+      0,
+      115,
+      27,
+      16,
+      636,
+      17
+    ],
+    [
+      108,
+      0,
+      161,
+      53,
+      303,
+      27,
+      581
+    ]
+  ],
+  "labels": [
+    "angry",
+    "disgust",
+    "fear",
+    "happy",
+    "sad",
+    "surprise",
+    "neutral"
+  ],
+  "compound_on_real_test": {
+    "n": 7178,
+    "top_compound_contains_true_basic": 0.1943438283644469,
+    "chance_top_compound_contains_true_basic": 0.2537931558550115,
+    "any_compound_ge_0.5": 0.0,
+    "any_compound_ge_0.3": 0.0,
+    "dominant_is_compound": 0.0,
+    "mean_top_compound_confidence": 0.00018608524987939745,
+    "mean_score_true_basic_is_component": 9.11516763153486e-05,
+    "mean_score_true_basic_not_component": 9.101338946493343e-05
+  },
+  "parameters": 770130
+}

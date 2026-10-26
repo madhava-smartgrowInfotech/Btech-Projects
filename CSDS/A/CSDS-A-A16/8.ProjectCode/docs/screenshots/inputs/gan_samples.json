@@ -1,0 +1,16 @@
+[
+ {
+  "file": "gan_happily_surprised.jpg",
+  "condition": "happily_surprised",
+  "top_compound_conf": 0.015,
+  "dominant": "Sad",
+  "dominant_conf": 0.533
+ },
+ {
+  "file": "gan_angrily_disgusted.jpg",
+  "condition": "angrily_disgusted",
+  "top_compound_conf": 0.011,
+  "dominant": "Angry",
+  "dominant_conf": 0.543
+ }
+]

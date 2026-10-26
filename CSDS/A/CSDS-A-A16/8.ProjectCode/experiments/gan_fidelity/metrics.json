@@ -1,0 +1,87 @@
+{
+  "basic": {
+    "angry": {
+      "stage1_accuracy_on_generated": 0.292
+    },
+    "disgust": {
+      "stage1_accuracy_on_generated": 0.006
+    },
+    "fear": {
+      "stage1_accuracy_on_generated": 0.288
+    },
+    "happy": {
+      "stage1_accuracy_on_generated": 0.002
+    },
+    "sad": {
+      "stage1_accuracy_on_generated": 0.452
+    },
+    "surprise": {
+      "stage1_accuracy_on_generated": 0.0
+    },
+    "neutral": {
+      "stage1_accuracy_on_generated": 0.01
+    }
+  },
+  "compound": {
+    "happily_surprised": {
+      "stage1_top1_in_pair": 0.002,
+      "stage1_top2_equals_pair": 0.0
+    },
+    "happily_disgusted": {
+      "stage1_top1_in_pair": 0.012,
+      "stage1_top2_equals_pair": 0.0
+    },
+    "sadly_fearful": {
+      "stage1_top1_in_pair": 0.696,
+      "stage1_top2_equals_pair": 0.056
+    },
+    "sadly_angry": {
+      "stage1_top1_in_pair": 0.698,
+      "stage1_top2_equals_pair": 0.534
+    },
+    "sadly_surprised": {
+      "stage1_top1_in_pair": 0.406,
+      "stage1_top2_equals_pair": 0.0
+    },
+    "sadly_disgusted": {
+      "stage1_top1_in_pair": 0.416,
+      "stage1_top2_equals_pair": 0.0
+    },
+    "fearfully_angry": {
+      "stage1_top1_in_pair": 0.538,
+      "stage1_top2_equals_pair": 0.294
+    },
+    "fearfully_surprised": {
+      "stage1_top1_in_pair": 0.274,
+      "stage1_top2_equals_pair": 0.014
+    },
+    "angrily_surprised": {
+      "stage1_top1_in_pair": 0.368,
+      "stage1_top2_equals_pair": 0.0
+    },
+    "angrily_disgusted": {
+      "stage1_top1_in_pair": 0.264,
+      "stage1_top2_equals_pair": 0.014
+    },
+    "disgustedly_surprised": {
+      "stage1_top1_in_pair": 0.012,
+      "stage1_top2_equals_pair": 0.0
+    }
+  },
+  "mean_basic_conditional_accuracy": 0.15,
+  "mean_compound_top1_in_pair": 0.33509090909090905,
+  "mean_compound_top2_equals_pair": 0.08290909090909092,
+  "chance_top1_in_pair": 0.2857142857142857,
+  "chance_top2_equals_pair": 0.047619047619047616,
+  "frechet_distance_stage1_features": {
+    "generated_basic_vs_real_train_subset": 170.99272343462027,
+    "real_test_vs_real_train_subset": 14.454737382658152,
+    "generated_compound_vs_real_train_subset": 170.19556480909387,
+    "note": "256-d penultimate features of the stage-1 CNN, not Inception features; values are not comparable with published FID"
+  },
+  "pixelwise_std_within_class": {
+    "generated": 52.981658935546875,
+    "real": 60.20518112182617
+  },
+  "generator_parameters": 1128353
+}

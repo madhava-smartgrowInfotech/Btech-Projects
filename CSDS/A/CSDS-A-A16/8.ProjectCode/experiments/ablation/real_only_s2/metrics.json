@@ -1,0 +1,159 @@
+{
+  "accuracy": 0.5642240178322653,
+  "macro_f1": 0.5372318946081592,
+  "weighted_f1": 0.5702402398070279,
+  "per_class": {
+    "angry": {
+      "precision": 0.550531914893617,
+      "recall": 0.4321503131524008,
+      "f1": 0.4842105263157895,
+      "support": 958
+    },
+    "disgust": {
+      "precision": 0.723404255319149,
+      "recall": 0.3063063063063063,
+      "f1": 0.43037974683544306,
+      "support": 111
+    },
+    "fear": {
+      "precision": 0.45569620253164556,
+      "recall": 0.24609375,
+      "f1": 0.31959416613823716,
+      "support": 1024
+    },
+    "happy": {
+      "precision": 0.9212717638152914,
+      "recall": 0.6860202931228861,
+      "f1": 0.7864297253634895,
+      "support": 1774
+    },
+    "sad": {
+      "precision": 0.3559135847674844,
+      "recall": 0.7794707297514034,
+      "f1": 0.48868778280542985,
+      "support": 1247
+    },
+    "surprise": {
+      "precision": 0.7943262411347518,
+      "recall": 0.6738868832731648,
+      "f1": 0.7291666666666666,
+      "support": 831
+    },
+    "neutral": {
+      "precision": 0.5622076707202993,
+      "recall": 0.48742903487429035,
+      "f1": 0.522154648132059,
+      "support": 1233
+    }
+  },
+  "confusion_matrix": [
+    [
+      414,
+      5,
+      59,
+      20,
+      368,
+      13,
+      79
+    ],
+    [
+      28,
+      34,
+      9,
+      0,
+      38,
+      0,
+      2
+    ],
+    [
+      95,
+      3,
+      252,
+      9,
+      495,
+      83,
+      87
+    ],
+    [
+      61,
+      1,
+      52,
+      1217,
+      289,
+      32,
+      122
+    ],
+    [
+      69,
+      2,
+      41,
+      16,
+      972,
+      8,
+      139
+    ],
+    [
+      26,
+      0,
+      109,
+      28,
+      69,
+      560,
+      39
+    ],
+    [
+      59,
+      2,
+      31,
+      31,
+      500,
+      9,
+      601
+    ]
+  ],
+  "labels": [
+    "angry",
+    "disgust",
+    "fear",
+    "happy",
+    "sad",
+    "surprise",
+    "neutral"
+  ],
+  "compound_on_real_test": {
+    "n": 7178,
+    "top_compound_contains_true_basic": 0.2660908331011424,
+    "chance_top_compound_contains_true_basic": 0.2537931558550115,
+    "any_compound_ge_0.5": 0.0,
+    "any_compound_ge_0.3": 0.0,
+    "dominant_is_compound": 0.0,
+    "mean_top_compound_confidence": 0.00011116627138108015,
+    "mean_score_true_basic_is_component": 4.250571510056034e-05,
+    "mean_score_true_basic_not_component": 4.3642885430017486e-05
+  },
+  "synthetic_holdout_thr0.5": {
+    "threshold": 0.5,
+    "compound_roc_auc_macro": 0.49644136363636365,
+    "mean_compound_prob_on_true_compound": 0.00012830118066631258,
+    "dominant_is_correct_compound": 0.0,
+    "micro_f1": 0.12355600200904068,
+    "macro_f1": 0.026156299840510367,
+    "exact_match_ratio": 0.0,
+    "compound_recall": 0.0
+  },
+  "config": {
+    "variant": "real_only",
+    "seed": 2,
+    "synthetic_per_compound_class": 0,
+    "epochs": 5,
+    "train_images": 28709,
+    "loss_history": [
+      0.14650770011217334,
+      0.10793337361202157,
+      0.09875086127903034,
+      0.09265091910913134,
+      0.08719573677361599
+    ],
+    "minutes": 8.420836742719015
+  }
+}

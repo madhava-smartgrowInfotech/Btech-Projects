@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-22T10:04:19Z",
+  "generated_at": "2026-10-26T14:25:16Z",
   "predatory_detection": {
     "num_examples": 40,
     "precision": 1.0,
@@ -64,5 +64,32 @@
       }
     }
   },
-  "cuad_classification": null
+  "cuad_classification": {
+    "num_examples": 240,
+    "num_categories": 20,
+    "top1_accuracy": 0.792,
+    "top3_accuracy": 0.979,
+    "per_category_accuracy": {
+      "Termination For Convenience": 1.0,
+      "Ip Ownership Assignment": 1.0,
+      "Post-Termination Services": 0.833,
+      "Renewal Term": 1.0,
+      "Governing Law": 1.0,
+      "Audit Rights": 0.917,
+      "Non-Disparagement": 0.75,
+      "Insurance": 0.917,
+      "Change Of Control": 0.833,
+      "Uncapped Liability": 0.667,
+      "License Grant": 0.75,
+      "Exclusivity": 0.667,
+      "Revenue/Profit Sharing": 0.917,
+      "Minimum Commitment": 0.75,
+      "Cap On Liability": 0.5,
+      "Liquidated Damages": 0.667,
+      "No-Solicit Of Customers": 0.583,
+      "No-Solicit Of Employees": 0.75,
+      "Non-Compete": 0.5,
+      "Warranty Duration": 0.833
+    }
+  }
 }

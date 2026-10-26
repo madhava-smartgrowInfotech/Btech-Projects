@@ -1,0 +1,243 @@
+{
+  "shipped_eval": {
+    "num_examples": 240,
+    "num_categories": 20,
+    "top1_accuracy": 0.792,
+    "top3_accuracy": 0.979,
+    "per_category_accuracy": {
+      "Termination For Convenience": 1.0,
+      "Ip Ownership Assignment": 1.0,
+      "Post-Termination Services": 0.833,
+      "Renewal Term": 1.0,
+      "Governing Law": 1.0,
+      "Audit Rights": 0.917,
+      "Non-Disparagement": 0.75,
+      "Insurance": 0.917,
+      "Change Of Control": 0.833,
+      "Uncapped Liability": 0.667,
+      "License Grant": 0.75,
+      "Exclusivity": 0.667,
+      "Revenue/Profit Sharing": 0.917,
+      "Minimum Commitment": 0.75,
+      "Cap On Liability": 0.5,
+      "Liquidated Damages": 0.667,
+      "No-Solicit Of Customers": 0.583,
+      "No-Solicit Of Employees": 0.75,
+      "Non-Compete": 0.5,
+      "Warranty Duration": 0.833
+    }
+  },
+  "centroid": {
+    "top1": 0.792,
+    "top3": 0.979,
+    "top5": 0.983,
+    "top1_without_duplicates": 0.797
+  },
+  "exact_duplicates_eval_in_train": 4,
+  "contract_disjoint": {
+    "eval_items_whose_contract_also_in_train": 192,
+    "top1": 0.8
+  },
+  "by_confidence": [
+    {
+      "band": "0.00-0.55",
+      "n": 0,
+      "top1": null
+    },
+    {
+      "band": "0.55-0.60",
+      "n": 0,
+      "top1": null
+    },
+    {
+      "band": "0.60-0.65",
+      "n": 0,
+      "top1": null
+    },
+    {
+      "band": "0.65-0.70",
+      "n": 5,
+      "top1": 0.6
+    },
+    {
+      "band": "0.70-1.00",
+      "n": 235,
+      "top1": 0.796
+    }
+  ],
+  "tie_break": {
+    "trigger_rate": 0.0,
+    "n_triggered": 0,
+    "embedding_top1_on_triggered": null,
+    "top3_on_triggered": null,
+    "unclassified_rate_below_0.35": 0.0,
+    "confidence_min_median_max": [
+      0.657,
+      0.767,
+      0.849
+    ]
+  },
+  "baselines_top1": {
+    "chance (20 categories)": 0.05,
+    "TF-IDF nearest centroid": 0.621,
+    "TF-IDF + logistic regression": 0.675,
+    "Gemini embedding 1-NN": 0.604,
+    "Gemini embedding 5-NN": 0.746,
+    "Gemini embedding + logistic regression": 0.8,
+    "Gemini embedding nearest centroid (shipped)": 0.792
+  },
+  "per_category": {
+    "Governing Law": {
+      "n": 12,
+      "recall": 1.0,
+      "precision": 1.0
+    },
+    "Termination For Convenience": {
+      "n": 12,
+      "recall": 1.0,
+      "precision": 0.667
+    },
+    "Non-Compete": {
+      "n": 12,
+      "recall": 0.5,
+      "precision": 0.6
+    },
+    "Exclusivity": {
+      "n": 12,
+      "recall": 0.667,
+      "precision": 0.571
+    },
+    "Audit Rights": {
+      "n": 12,
+      "recall": 0.917,
+      "precision": 0.846
+    },
+    "Cap On Liability": {
+      "n": 12,
+      "recall": 0.5,
+      "precision": 0.6
+    },
+    "Change Of Control": {
+      "n": 12,
+      "recall": 0.833,
+      "precision": 0.833
+    },
+    "Insurance": {
+      "n": 12,
+      "recall": 0.917,
+      "precision": 0.917
+    },
+    "Ip Ownership Assignment": {
+      "n": 12,
+      "recall": 1.0,
+      "precision": 1.0
+    },
+    "License Grant": {
+      "n": 12,
+      "recall": 0.75,
+      "precision": 0.818
+    },
+    "Liquidated Damages": {
+      "n": 12,
+      "recall": 0.667,
+      "precision": 0.889
+    },
+    "Minimum Commitment": {
+      "n": 12,
+      "recall": 0.75,
+      "precision": 0.9
+    },
+    "No-Solicit Of Customers": {
+      "n": 12,
+      "recall": 0.583,
+      "precision": 0.438
+    },
+    "No-Solicit Of Employees": {
+      "n": 12,
+      "recall": 0.75,
+      "precision": 0.75
+    },
+    "Non-Disparagement": {
+      "n": 12,
+      "recall": 0.75,
+      "precision": 1.0
+    },
+    "Post-Termination Services": {
+      "n": 12,
+      "recall": 0.833,
+      "precision": 1.0
+    },
+    "Renewal Term": {
+      "n": 12,
+      "recall": 1.0,
+      "precision": 1.0
+    },
+    "Revenue/Profit Sharing": {
+      "n": 12,
+      "recall": 0.917,
+      "precision": 0.846
+    },
+    "Uncapped Liability": {
+      "n": 12,
+      "recall": 0.667,
+      "precision": 0.727
+    },
+    "Warranty Duration": {
+      "n": 12,
+      "recall": 0.833,
+      "precision": 0.714
+    }
+  },
+  "top_confusions": [
+    {
+      "count": 4,
+      "true": "Uncapped Liability",
+      "predicted": "Cap On Liability"
+    },
+    {
+      "count": 4,
+      "true": "Non-Compete",
+      "predicted": "No-Solicit Of Customers"
+    },
+    {
+      "count": 3,
+      "true": "No-Solicit Of Employees",
+      "predicted": "No-Solicit Of Customers"
+    },
+    {
+      "count": 3,
+      "true": "No-Solicit Of Customers",
+      "predicted": "No-Solicit Of Employees"
+    },
+    {
+      "count": 3,
+      "true": "License Grant",
+      "predicted": "Exclusivity"
+    },
+    {
+      "count": 3,
+      "true": "Cap On Liability",
+      "predicted": "Warranty Duration"
+    },
+    {
+      "count": 3,
+      "true": "Cap On Liability",
+      "predicted": "Uncapped Liability"
+    },
+    {
+      "count": 2,
+      "true": "Non-Disparagement",
+      "predicted": "Termination For Convenience"
+    },
+    {
+      "count": 2,
+      "true": "No-Solicit Of Customers",
+      "predicted": "Non-Compete"
+    },
+    {
+      "count": 2,
+      "true": "Liquidated Damages",
+      "predicted": "Termination For Convenience"
+    }
+  ]
+}

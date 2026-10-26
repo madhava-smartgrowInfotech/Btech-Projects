@@ -1,0 +1,50 @@
+{
+  "contracts": 510,
+  "parsed": 510,
+  "total_seconds": 28.49,
+  "mean_seconds_per_contract": 0.0559,
+  "clauses_total": 23869,
+  "clauses_median": 20.5,
+  "clauses_mean": 46.8,
+  "clauses_min": 1,
+  "clauses_max": 611,
+  "contracts_with_header_split": 444,
+  "contracts_with_fewer_than_5_clauses": 84,
+  "mean_clause_chars_median": 1158.3,
+  "flagged_clause_share": 0.022,
+  "contracts_with_any_flag": 255,
+  "contracts_with_combo": 11,
+  "rule_clause_counts": {
+    "unilateral_termination": 84,
+    "restraint_of_trade": 163,
+    "penalty_clause": 152,
+    "auto_renewal": 66,
+    "no_refund": 72,
+    "unlimited_liability": 4
+  },
+  "combo_counts": {
+    "termination_norefund_penalty": 2,
+    "autorenew_unilateral_termination": 10
+  },
+  "grades": {
+    "A": 4,
+    "B": 169,
+    "C": 268,
+    "D": 68,
+    "F": 1
+  },
+  "score": {
+    "min": 6.9,
+    "median": 45.5,
+    "mean": 45.8,
+    "max": 85.5,
+    "stdev": 12.3
+  },
+  "component_medians": {
+    "readability": 25.65,
+    "legalese": 1.125,
+    "xrefs": 26.0,
+    "avg_sent": 28.9
+  },
+  "corr_score_vs_words": 0.297
+}

@@ -1,0 +1,41 @@
+{
+  "uploads": {
+    "freelance": {
+      "contract_id": 1,
+      "seconds": 113.6,
+      "file": "freelance_services_agreement.docx"
+    },
+    "balanced": {
+      "contract_id": 2,
+      "seconds": 15.5,
+      "file": "balanced_consulting_agreement.docx"
+    },
+    "cuad_pdf": {
+      "contract_id": 3,
+      "seconds": 54.6,
+      "file": "supply_agreement_cuad.pdf"
+    }
+  },
+  "freelance_clause_hrefs": [
+    "/app/contracts/1/clauses/1",
+    "/app/contracts/1/clauses/2",
+    "/app/contracts/1/clauses/3",
+    "/app/contracts/1/clauses/4",
+    "/app/contracts/1/clauses/5",
+    "/app/contracts/1/clauses/6",
+    "/app/contracts/1/clauses/7",
+    "/app/contracts/1/clauses/8",
+    "/app/contracts/1/clauses/9",
+    "/app/contracts/1/clauses/10",
+    "/app/contracts/1/clauses/1",
+    "/app/contracts/1/clauses/2",
+    "/app/contracts/1/clauses/3",
+    "/app/contracts/1/clauses/4",
+    "/app/contracts/1/clauses/5",
+    "/app/contracts/1/clauses/6",
+    "/app/contracts/1/clauses/7",
+    "/app/contracts/1/clauses/8",
+    "/app/contracts/1/clauses/9",
+    "/app/contracts/1/clauses/10"
+  ]
+}

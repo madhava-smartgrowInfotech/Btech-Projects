@@ -1,0 +1,21 @@
+true\pred,Governing Law,Termination For Convenience,Non-Compete,Exclusivity,Audit Rights,Cap On Liability,Change Of Control,Insurance,Ip Ownership Assignment,License Grant,Liquidated Damages,Minimum Commitment,No-Solicit Of Customers,No-Solicit Of Employees,Non-Disparagement,Post-Termination Services,Renewal Term,Revenue/Profit Sharing,Uncapped Liability,Warranty Duration
+Governing Law,12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Termination For Convenience,0,12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Non-Compete,0,1,6,1,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0
+Exclusivity,0,0,2,8,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0
+Audit Rights,0,0,0,1,11,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Cap On Liability,0,0,0,0,0,6,0,0,0,0,0,0,0,0,0,0,0,0,3,3
+Change Of Control,0,1,0,1,0,0,10,0,0,0,0,0,0,0,0,0,0,0,0,0
+Insurance,0,0,0,0,1,0,0,11,0,0,0,0,0,0,0,0,0,0,0,0
+Ip Ownership Assignment,0,0,0,0,0,0,0,0,12,0,0,0,0,0,0,0,0,0,0,0
+License Grant,0,0,0,3,0,0,0,0,0,9,0,0,0,0,0,0,0,0,0,0
+Liquidated Damages,0,2,0,0,0,0,1,0,0,0,8,0,0,0,0,0,0,1,0,0
+Minimum Commitment,0,0,0,0,0,0,0,0,0,0,1,9,0,0,0,0,0,1,0,1
+No-Solicit Of Customers,0,0,2,0,0,0,0,0,0,0,0,0,7,3,0,0,0,0,0,0
+No-Solicit Of Employees,0,0,0,0,0,0,0,0,0,0,0,0,3,9,0,0,0,0,0,0
+Non-Disparagement,0,2,0,0,0,0,0,0,0,0,0,0,1,0,9,0,0,0,0,0
+Post-Termination Services,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,10,0,0,0,0
+Renewal Term,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12,0,0,0
+Revenue/Profit Sharing,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,11,0,0
+Uncapped Liability,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,8,0
+Warranty Duration,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,10

@@ -1,0 +1,100 @@
+{
+  "contract_id": 1,
+  "clauses_in_contract": 11,
+  "endpoints": {
+    "GET /api/health": {
+      "n": 30,
+      "status": 200,
+      "median_ms": 2.5,
+      "p95_ms": 4.0,
+      "max_ms": 10.6
+    },
+    "POST /api/auth/login (bcrypt check)": {
+      "n": 10,
+      "status": 200,
+      "median_ms": 254.7,
+      "p95_ms": 260.8,
+      "max_ms": 318.3
+    },
+    "POST /api/auth/register (bcrypt hash)": {
+      "n": 10,
+      "status": 200,
+      "median_ms": 265.0,
+      "p95_ms": 268.6,
+      "max_ms": 280.1
+    },
+    "GET /api/contracts": {
+      "n": 30,
+      "status": 200,
+      "median_ms": 15.3,
+      "p95_ms": 19.0,
+      "max_ms": 22.3
+    },
+    "GET /api/contracts/{id} (report)": {
+      "n": 30,
+      "status": 200,
+      "median_ms": 9.3,
+      "p95_ms": 11.2,
+      "max_ms": 13.0
+    },
+    "GET /api/contracts/{id}/clauses/{cid}": {
+      "n": 30,
+      "status": 200,
+      "median_ms": 5.0,
+      "p95_ms": 6.1,
+      "max_ms": 7.5
+    },
+    "GET /api/contracts/{id}/graph": {
+      "n": 30,
+      "status": 200,
+      "median_ms": 9.2,
+      "p95_ms": 11.8,
+      "max_ms": 12.3
+    },
+    "GET /api/eval/metrics": {
+      "n": 30,
+      "status": 200,
+      "median_ms": 2.5,
+      "p95_ms": 3.6,
+      "max_ms": 4.1
+    },
+    "GET /api/contracts (no token -> 403)": {
+      "n": 10,
+      "status": 403,
+      "median_ms": 1.8,
+      "p95_ms": 2.3,
+      "max_ms": 2.7
+    },
+    "GET /api/contracts/999999 (404)": {
+      "n": 10,
+      "status": 404,
+      "median_ms": 5.0,
+      "p95_ms": 8.9,
+      "max_ms": 86.9
+    },
+    "POST /api/contracts/upload wrong type (400)": {
+      "n": 10,
+      "status": 400,
+      "median_ms": 4.0,
+      "p95_ms": 5.7,
+      "max_ms": 5.9
+    }
+  },
+  "uploads": {
+    "freelance": {
+      "contract_id": 1,
+      "seconds": 113.6,
+      "file": "freelance_services_agreement.docx"
+    },
+    "balanced": {
+      "contract_id": 2,
+      "seconds": 15.5,
+      "file": "balanced_consulting_agreement.docx"
+    },
+    "cuad_pdf": {
+      "contract_id": 3,
+      "seconds": 54.6,
+      "file": "supply_agreement_cuad.pdf"
+    }
+  }
+}

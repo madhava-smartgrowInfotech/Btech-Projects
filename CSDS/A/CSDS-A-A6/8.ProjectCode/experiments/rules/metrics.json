@@ -1,0 +1,370 @@
+{
+  "shipped_set": {
+    "n": 40,
+    "overall": {
+      "tp": 32,
+      "fp": 0,
+      "fn": 2,
+      "precision": 1.0,
+      "recall": 0.941,
+      "f1": 0.97
+    },
+    "per_rule": {
+      "auto_renewal": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "ip_overreach": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "no_refund": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "one_sided_arbitration": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 1,
+        "precision": 1.0,
+        "recall": 0.5,
+        "f1": 0.667
+      },
+      "penalty_clause": {
+        "tp": 5,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "restraint_of_trade": {
+        "tp": 4,
+        "fp": 0,
+        "fn": 1,
+        "precision": 1.0,
+        "recall": 0.8,
+        "f1": 0.889
+      },
+      "unilateral_termination": {
+        "tp": 6,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "unlimited_liability": {
+        "tp": 5,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      }
+    },
+    "misses": [
+      {
+        "text": "Franchisee shall not, during the term and for three years after, provide services in the Territory that compete with the Franchisor's business.",
+        "expected": [
+          "restraint_of_trade"
+        ]
+      },
+      {
+        "text": "Only the Company may refer any dispute to arbitration; the Employee shall have no right to invoke arbitration and must pursue any claim solely through internal grievance procedures.",
+        "expected": [
+          "one_sided_arbitration"
+        ]
+      }
+    ],
+    "false_alarms": []
+  },
+  "probe_set": {
+    "n": 40,
+    "overall": {
+      "tp": 11,
+      "fp": 3,
+      "fn": 13,
+      "precision": 0.786,
+      "recall": 0.458,
+      "f1": 0.579
+    },
+    "per_rule": {
+      "auto_renewal": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 1,
+        "precision": 1.0,
+        "recall": 0.667,
+        "f1": 0.8
+      },
+      "ip_overreach": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 1,
+        "precision": 1.0,
+        "recall": 0.667,
+        "f1": 0.8
+      },
+      "no_refund": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 2,
+        "precision": 1.0,
+        "recall": 0.333,
+        "f1": 0.5
+      },
+      "one_sided_arbitration": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 2,
+        "precision": 1.0,
+        "recall": 0.333,
+        "f1": 0.5
+      },
+      "penalty_clause": {
+        "tp": 1,
+        "fp": 1,
+        "fn": 2,
+        "precision": 0.5,
+        "recall": 0.333,
+        "f1": 0.4
+      },
+      "restraint_of_trade": {
+        "tp": 1,
+        "fp": 1,
+        "fn": 2,
+        "precision": 0.5,
+        "recall": 0.333,
+        "f1": 0.4
+      },
+      "unilateral_termination": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 1,
+        "precision": 1.0,
+        "recall": 0.667,
+        "f1": 0.8
+      },
+      "unlimited_liability": {
+        "tp": 1,
+        "fp": 1,
+        "fn": 2,
+        "precision": 0.5,
+        "recall": 0.333,
+        "f1": 0.4
+      }
+    },
+    "misses": [
+      {
+        "text": "The Freelancer agrees not to accept any engagement from another software house in India for twenty-four months following the end of this Agreement.",
+        "expected": [
+          "restraint_of_trade"
+        ]
+      },
+      {
+        "text": "After leaving the Company, the Employee must not carry on or be interested in a business similar to that of the Company anywhere in India for three years.",
+        "expected": [
+          "restraint_of_trade"
+        ]
+      },
+      {
+        "text": "For every day of delay the Vendor shall forfeit Rs. 50,000 from the amounts due, regardless of any loss actually suffered.",
+        "expected": [
+          "penalty_clause"
+        ]
+      },
+      {
+        "text": "If the Customer cancels the order, the Customer shall pay a sum equal to the full contract value as damages.",
+        "expected": [
+          "penalty_clause"
+        ]
+      },
+      {
+        "text": "The Company reserves the right to end this engagement whenever it chooses, with no obligation to give reasons.",
+        "expected": [
+          "unilateral_termination"
+        ]
+      },
+      {
+        "text": "The Supplier accepts responsibility for every loss of any kind suffered by the Buyer, with no upper cap.",
+        "expected": [
+          "unlimited_liability"
+        ]
+      },
+      {
+        "text": "The Consultant's liability under this Agreement shall be unlimited.",
+        "expected": [
+          "unlimited_liability"
+        ]
+      },
+      {
+        "text": "Any dispute shall be referred to a sole arbitrator appointed by the Company, whose decision shall be final.",
+        "expected": [
+          "one_sided_arbitration"
+        ]
+      },
+      {
+        "text": "Only the Company has the right to initiate arbitration; the Contractor may not approach any court or arbitral forum.",
+        "expected": [
+          "one_sided_arbitration"
+        ]
+      },
+      {
+        "text": "This Agreement will continue for further one-year periods unless the Customer gives ninety days' written notice before expiry.",
+        "expected": [
+          "auto_renewal"
+        ]
+      },
+      {
+        "text": "Everything the Freelancer creates during the Term, whether or not related to the Services, belongs to the Company from the moment of creation.",
+        "expected": [
+          "ip_overreach"
+        ]
+      },
+      {
+        "text": "Fees once paid cannot be returned for any reason.",
+        "expected": [
+          "no_refund"
+        ]
+      },
+      {
+        "text": "The Customer shall not be entitled to any refund on cancellation.",
+        "expected": [
+          "no_refund"
+        ]
+      }
+    ],
+    "false_alarms": [
+      {
+        "text": "Liquidated damages of 0.5% of the contract value per week of delay, capped at 5%, represent a genuine pre-estimate of the loss.",
+        "fired": [
+          "penalty_clause"
+        ]
+      },
+      {
+        "text": "The Employee shall not engage in any outside activity that creates a conflict of interest with the Company during employment.",
+        "fired": [
+          "restraint_of_trade"
+        ]
+      },
+      {
+        "text": "Both parties shall be liable for any and all losses caused by their own gross negligence.",
+        "fired": [
+          "unlimited_liability"
+        ]
+      }
+    ],
+    "n_positive": 24,
+    "n_negative": 16
+  },
+  "cuad_spans": {
+    "recall_proxy": {
+      "Non-Compete": {
+        "rule": "restraint_of_trade",
+        "n_spans": 257,
+        "rule_fires": 21,
+        "rate": 0.082,
+        "any_rule_fires": 22
+      },
+      "Liquidated Damages": {
+        "rule": "penalty_clause",
+        "n_spans": 121,
+        "rule_fires": 68,
+        "rate": 0.562,
+        "any_rule_fires": 69
+      },
+      "Termination For Convenience": {
+        "rule": "unilateral_termination",
+        "n_spans": 246,
+        "rule_fires": 32,
+        "rate": 0.13,
+        "any_rule_fires": 37
+      },
+      "Uncapped Liability": {
+        "rule": "unlimited_liability",
+        "n_spans": 167,
+        "rule_fires": 0,
+        "rate": 0.0,
+        "any_rule_fires": 0
+      },
+      "Renewal Term": {
+        "rule": "auto_renewal",
+        "n_spans": 208,
+        "rule_fires": 69,
+        "rate": 0.332,
+        "any_rule_fires": 70
+      },
+      "Ip Ownership Assignment": {
+        "rule": "ip_overreach",
+        "n_spans": 317,
+        "rule_fires": 0,
+        "rate": 0.0,
+        "any_rule_fires": 1
+      }
+    },
+    "false_positive_proxy": {
+      "n_spans": 5032,
+      "categories": [
+        "Governing Law",
+        "Audit Rights",
+        "Insurance",
+        "License Grant",
+        "Warranty Duration",
+        "Revenue/Profit Sharing",
+        "Minimum Commitment",
+        "Post-Termination Services",
+        "Change Of Control",
+        "Exclusivity",
+        "Cap On Liability"
+      ],
+      "any_rule_fires": 37,
+      "per_rule": {
+        "restraint_of_trade": {
+          "fires": 14,
+          "rate": 0.0028
+        },
+        "penalty_clause": {
+          "fires": 12,
+          "rate": 0.0024
+        },
+        "unilateral_termination": {
+          "fires": 10,
+          "rate": 0.002
+        },
+        "unlimited_liability": {
+          "fires": 0,
+          "rate": 0.0
+        },
+        "one_sided_arbitration": {
+          "fires": 0,
+          "rate": 0.0
+        },
+        "auto_renewal": {
+          "fires": 0,
+          "rate": 0.0
+        },
+        "ip_overreach": {
+          "fires": 0,
+          "rate": 0.0
+        },
+        "no_refund": {
+          "fires": 3,
+          "rate": 0.0006
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,151 @@
+{
+  "freelance_services_agreement.docx": {
+    "as_uploaded": {
+      "clauses": 11,
+      "rules": [
+        "auto_renewal",
+        "ip_overreach",
+        "no_refund",
+        "one_sided_arbitration",
+        "penalty_clause",
+        "restraint_of_trade",
+        "unilateral_termination",
+        "unlimited_liability"
+      ],
+      "n_rules": 8,
+      "combos": [
+        "termination_norefund_penalty",
+        "restraint_unlimited_liability",
+        "autorenew_unilateral_termination"
+      ],
+      "flagged_clauses": 8
+    },
+    "whitespace_collapsed": {
+      "clauses": 11,
+      "rules": [
+        "auto_renewal",
+        "ip_overreach",
+        "no_refund",
+        "one_sided_arbitration",
+        "penalty_clause",
+        "restraint_of_trade",
+        "unilateral_termination",
+        "unlimited_liability"
+      ],
+      "n_rules": 8,
+      "combos": [
+        "termination_norefund_penalty",
+        "restraint_unlimited_liability",
+        "autorenew_unilateral_termination"
+      ],
+      "flagged_clauses": 8
+    }
+  },
+  "freelance_services_agreement.pdf": {
+    "as_uploaded": {
+      "clauses": 11,
+      "rules": [
+        "auto_renewal",
+        "no_refund",
+        "penalty_clause",
+        "restraint_of_trade",
+        "unilateral_termination",
+        "unlimited_liability"
+      ],
+      "n_rules": 6,
+      "combos": [
+        "termination_norefund_penalty",
+        "restraint_unlimited_liability",
+        "autorenew_unilateral_termination"
+      ],
+      "flagged_clauses": 6
+    },
+    "whitespace_collapsed": {
+      "clauses": 11,
+      "rules": [
+        "auto_renewal",
+        "ip_overreach",
+        "no_refund",
+        "one_sided_arbitration",
+        "penalty_clause",
+        "restraint_of_trade",
+        "unilateral_termination",
+        "unlimited_liability"
+      ],
+      "n_rules": 8,
+      "combos": [
+        "termination_norefund_penalty",
+        "restraint_unlimited_liability",
+        "autorenew_unilateral_termination"
+      ],
+      "flagged_clauses": 8
+    }
+  },
+  "balanced_consulting_agreement.docx": {
+    "as_uploaded": {
+      "clauses": 8,
+      "rules": [],
+      "n_rules": 0,
+      "combos": [],
+      "flagged_clauses": 0
+    },
+    "whitespace_collapsed": {
+      "clauses": 8,
+      "rules": [],
+      "n_rules": 0,
+      "combos": [],
+      "flagged_clauses": 0
+    }
+  },
+  "supply_agreement: original CUAD text": {
+    "as_uploaded": {
+      "clauses": 25,
+      "rules": [
+        "auto_renewal",
+        "unilateral_termination"
+      ],
+      "n_rules": 2,
+      "combos": [
+        "autorenew_unilateral_termination"
+      ],
+      "flagged_clauses": 2
+    },
+    "whitespace_collapsed": {
+      "clauses": 25,
+      "rules": [
+        "auto_renewal",
+        "unilateral_termination"
+      ],
+      "n_rules": 2,
+      "combos": [
+        "autorenew_unilateral_termination"
+      ],
+      "flagged_clauses": 2
+    }
+  },
+  "supply_agreement_cuad.pdf": {
+    "as_uploaded": {
+      "clauses": 11,
+      "rules": [
+        "unilateral_termination"
+      ],
+      "n_rules": 1,
+      "combos": [],
+      "flagged_clauses": 1
+    },
+    "whitespace_collapsed": {
+      "clauses": 11,
+      "rules": [
+        "unilateral_termination"
+      ],
+      "n_rules": 1,
+      "combos": [],
+      "flagged_clauses": 1
+    }
+  },
+  "page_break": {
+    "pages": 2,
+    "clauses_from_pdf": 11,
+    "clauses_from_docx": 11
+  }
+}

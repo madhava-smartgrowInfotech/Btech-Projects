@@ -1,0 +1,119 @@
+{
+  "machine": {
+    "platform": "Windows-11-10.0.26300-SP0",
+    "python": "3.14.7",
+    "processor": "Intel64 Family 6 Model 151 Stepping 5, GenuineIntel"
+  },
+  "server": "uvicorn single process, SQLite file DB, 127.0.0.1",
+  "requests_per_endpoint": 200,
+  "measured_at": "2026-10-26T13:44:00",
+  "endpoints": {
+    "GET /api/locations": {
+      "n": 200,
+      "mean_ms": 2.56,
+      "p50_ms": 2.5,
+      "p95_ms": 3.3,
+      "p99_ms": 3.51,
+      "max_ms": 3.91
+    },
+    "GET /api/search": {
+      "n": 200,
+      "mean_ms": 5.65,
+      "p50_ms": 5.71,
+      "p95_ms": 6.59,
+      "p99_ms": 7.03,
+      "max_ms": 8.54
+    },
+    "POST /api/auth/login (bcrypt, cost 12)": {
+      "n": 200,
+      "mean_ms": 220.43,
+      "p50_ms": 224.89,
+      "p95_ms": 234.5,
+      "p99_ms": 245.59,
+      "max_ms": 251.0
+    },
+    "GET /api/auth/me": {
+      "n": 200,
+      "mean_ms": 3.43,
+      "p50_ms": 3.18,
+      "p95_ms": 5.4,
+      "p99_ms": 6.63,
+      "max_ms": 6.76
+    },
+    "POST /api/reservations": {
+      "n": 200,
+      "mean_ms": 19.63,
+      "p50_ms": 18.1,
+      "p95_ms": 28.2,
+      "p99_ms": 34.57,
+      "max_ms": 172.94
+    },
+    "GET /api/reservations (own bookings)": {
+      "n": 200,
+      "mean_ms": 180.07,
+      "p50_ms": 178.19,
+      "p95_ms": 207.39,
+      "p99_ms": 212.72,
+      "max_ms": 268.81
+    },
+    "GET /api/trust": {
+      "n": 200,
+      "mean_ms": 4.32,
+      "p50_ms": 4.16,
+      "p95_ms": 6.3,
+      "p99_ms": 8.18,
+      "max_ms": 9.15
+    },
+    "POST /api/reservations/{id}/checkin": {
+      "n": 200,
+      "mean_ms": 14.9,
+      "p50_ms": 13.79,
+      "p95_ms": 25.03,
+      "p99_ms": 33.54,
+      "max_ms": 83.77
+    },
+    "POST /api/reservations/{id}/checkout": {
+      "n": 200,
+      "mean_ms": 14.6,
+      "p50_ms": 13.6,
+      "p95_ms": 15.67,
+      "p99_ms": 19.05,
+      "max_ms": 109.11
+    },
+    "GET /api/admin/overview": {
+      "n": 200,
+      "mean_ms": 4.71,
+      "p50_ms": 4.52,
+      "p95_ms": 5.74,
+      "p99_ms": 6.2,
+      "max_ms": 8.42
+    },
+    "GET /api/admin/insights (60-day replay)": {
+      "n": 200,
+      "mean_ms": 60.32,
+      "p50_ms": 60.04,
+      "p95_ms": 70.78,
+      "p99_ms": 83.67,
+      "max_ms": 108.41
+    },
+    "GET /api/admin/bookings": {
+      "n": 200,
+      "mean_ms": 272.51,
+      "p50_ms": 276.5,
+      "p95_ms": 314.95,
+      "p99_ms": 325.11,
+      "max_ms": 335.04
+    },
+    "throughput_search_8_threads": {
+      "requests": 480,
+      "seconds": 3.66,
+      "req_per_s": 131.1,
+      "n": 480,
+      "mean_ms": 60.04,
+      "p50_ms": 59.97,
+      "p95_ms": 79.3,
+      "p99_ms": 87.25,
+      "max_ms": 101.84
+    }
+  }
+}

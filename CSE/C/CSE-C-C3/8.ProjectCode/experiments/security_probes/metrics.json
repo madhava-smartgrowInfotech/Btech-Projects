@@ -1,0 +1,40 @@
+{
+  "unauthenticated_demo_confirm_marks_paid": {
+    "status_before": "pending",
+    "http_status": 200,
+    "status_after": "paid",
+    "vulnerable": true
+  },
+  "past_window_accepted": {
+    "http_status": 200,
+    "accepted": true
+  },
+  "early_checkin_accepted": {
+    "days_early": 25,
+    "http_status": 200,
+    "accepted": true
+  },
+  "forged_token_with_default_secret": {
+    "http_status": 200,
+    "accepted": true
+  },
+  "login_has_no_lockout_or_rate_limit": {
+    "wrong_attempts": 30,
+    "all_401": true,
+    "correct_login_after": 200
+  },
+  "injection_inputs": {
+    "login_email_payload": 422,
+    "search_param_payload": 422,
+    "login_password_payload": 422,
+    "any_server_error": false
+  },
+  "cross_user_cancel_blocked": {
+    "http_status": 404,
+    "blocked": true
+  },
+  "markup_in_name": {
+    "http_status": 200,
+    "stored_verbatim": true
+  }
+}

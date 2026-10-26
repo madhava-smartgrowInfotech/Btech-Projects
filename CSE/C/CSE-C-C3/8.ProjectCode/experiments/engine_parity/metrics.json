@@ -1,0 +1,16 @@
+{
+  "admission": {
+    "cases": 2000,
+    "mismatches": 0
+  },
+  "trust": {
+    "cases": 8000,
+    "mismatches": 0
+  },
+  "suspension": {
+    "cases": 300,
+    "mismatches": 0
+  },
+  "total_cases": 10300,
+  "total_mismatches": 0
+}

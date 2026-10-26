@@ -1,0 +1,18 @@
+{
+  "database": "in-memory SQLite, 50 locations x 100 stored bookings = 5,000 reservations",
+  "forecast_free (admission, 100 bookings at the location)": {
+    "n": 300,
+    "mean_ms": 0.3337,
+    "p95_ms": 0.4573
+  },
+  "nearest_alternate over 49 other locations": {
+    "n": 100,
+    "mean_ms": 18.623,
+    "p95_ms": 23.4802
+  },
+  "haversine_km (one pair)": {
+    "n": 20000,
+    "mean_ms": 0.0008,
+    "p95_ms": 0.0011
+  }
+}

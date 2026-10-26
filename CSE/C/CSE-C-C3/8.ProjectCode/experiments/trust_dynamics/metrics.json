@@ -1,0 +1,56 @@
+{
+  "sessions": 100,
+  "drivers_per_setting": 200,
+  "note": "one session per day; a suspended driver books nothing, so the 14-day lockout shows up as time without sessions",
+  "by_overstay_probability": {
+    "0.0": {
+      "mean_final_trust": 5.0,
+      "std_final_trust": 0.0,
+      "mean_fee_multiplier": 0.9,
+      "share_ever_suspended": 0.0,
+      "median_first_suspension_session": null
+    },
+    "0.1": {
+      "mean_final_trust": 4.805,
+      "std_final_trust": 0.488,
+      "mean_fee_multiplier": 0.912,
+      "share_ever_suspended": 0.005,
+      "median_first_suspension_session": 90
+    },
+    "0.2": {
+      "mean_final_trust": 3.925,
+      "std_final_trust": 1.363,
+      "mean_fee_multiplier": 1.009,
+      "share_ever_suspended": 0.29,
+      "median_first_suspension_session": 30
+    },
+    "0.3": {
+      "mean_final_trust": 1.8,
+      "std_final_trust": 1.653,
+      "mean_fee_multiplier": 1.359,
+      "share_ever_suspended": 0.8,
+      "median_first_suspension_session": 26
+    },
+    "0.5": {
+      "mean_final_trust": 0.125,
+      "std_final_trust": 0.332,
+      "mean_fee_multiplier": 1.719,
+      "share_ever_suspended": 1.0,
+      "median_first_suspension_session": 8
+    },
+    "0.7": {
+      "mean_final_trust": 0.01,
+      "std_final_trust": 0.1,
+      "mean_fee_multiplier": 1.748,
+      "share_ever_suspended": 1.0,
+      "median_first_suspension_session": 5
+    },
+    "1.0": {
+      "mean_final_trust": 0.0,
+      "std_final_trust": 0.0,
+      "mean_fee_multiplier": 1.75,
+      "share_ever_suspended": 1.0,
+      "median_first_suspension_session": 4
+    }
+  }
+}

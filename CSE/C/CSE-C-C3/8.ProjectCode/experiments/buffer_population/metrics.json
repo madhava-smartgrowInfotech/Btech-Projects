@@ -1,0 +1,1125 @@
+{
+  "assumptions": {
+    "areas": "8 areas x 10 bays on a 4x2 grid, 0.012 deg (about 1.3 km) apart",
+    "area_choice": "uniform random per request",
+    "first_request": "uniform in [0, 2] h after the start",
+    "lead_time": "reservation placed 15-60 min before the planned arrival (uniform)",
+    "duration": "planned stay uniform in [1, 3] h, as in the paper",
+    "gap_after_park": "next request 15-60 min after the vehicle leaves (uniform)",
+    "outside_stops": "two stops of 8-16 h outside the system, after two random parks, as in the paper",
+    "bad_vehicles": "always leave 1 h after the reserved end; good vehicles leave exactly at the end",
+    "check_in": "every driver checks in at the planned arrival time"
+  },
+  "bad_share": 0.25,
+  "seeds": 30,
+  "by_population": {
+    "80": {
+      "static_0": {
+        "runs": 30,
+        "requests": {
+          "mean": 800.0,
+          "std": 0.0
+        },
+        "accepted": {
+          "mean": 674.1,
+          "std": 3.517
+        },
+        "no_reservation": {
+          "mean": 7.5333,
+          "std": 3.5597
+        },
+        "suspended": {
+          "mean": 118.3667,
+          "std": 1.0981
+        },
+        "no_park": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "moved_to_alternate": {
+          "mean": 1.8333,
+          "std": 1.3153
+        },
+        "alt_overflow": {
+          "mean": 0.1,
+          "std": 0.3051
+        },
+        "parks_completed": {
+          "mean": 674.1,
+          "std": 3.517
+        },
+        "success_rate": {
+          "mean": 0.8426,
+          "std": 0.0044
+        },
+        "no_park_rate": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "utilisation": {
+          "mean": 0.2766,
+          "std": 0.0067
+        },
+        "overstay_departures": {
+          "mean": 80.0,
+          "std": 0.0
+        },
+        "mean_trust_end": {
+          "mean": 4.0,
+          "std": 0.0
+        }
+      },
+      "static_1": {
+        "runs": 30,
+        "requests": {
+          "mean": 800.0,
+          "std": 0.0
+        },
+        "accepted": {
+          "mean": 668.1667,
+          "std": 4.3556
+        },
+        "no_reservation": {
+          "mean": 15.7667,
+          "std": 5.5874
+        },
+        "suspended": {
+          "mean": 116.0667,
+          "std": 2.4059
+        },
+        "no_park": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "moved_to_alternate": {
+          "mean": 0.4333,
+          "std": 0.504
+        },
+        "alt_overflow": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "parks_completed": {
+          "mean": 668.1667,
+          "std": 4.3556
+        },
+        "success_rate": {
+          "mean": 0.8352,
+          "std": 0.0054
+        },
+        "no_park_rate": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "utilisation": {
+          "mean": 0.2736,
+          "std": 0.0067
+        },
+        "overstay_departures": {
+          "mean": 80.0,
+          "std": 0.0
+        },
+        "mean_trust_end": {
+          "mean": 4.0,
+          "std": 0.0
+        }
+      },
+      "static_3": {
+        "runs": 30,
+        "requests": {
+          "mean": 800.0,
+          "std": 0.0
+        },
+        "accepted": {
+          "mean": 633.3333,
+          "std": 8.4296
+        },
+        "no_reservation": {
+          "mean": 59.9,
+          "std": 11.3391
+        },
+        "suspended": {
+          "mean": 106.7667,
+          "std": 4.7466
+        },
+        "no_park": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "moved_to_alternate": {
+          "mean": 0.0333,
+          "std": 0.1826
+        },
+        "alt_overflow": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "parks_completed": {
+          "mean": 633.3333,
+          "std": 8.4296
+        },
+        "success_rate": {
+          "mean": 0.7917,
+          "std": 0.0105
+        },
+        "no_park_rate": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "utilisation": {
+          "mean": 0.2595,
+          "std": 0.0102
+        },
+        "overstay_departures": {
+          "mean": 80.0,
+          "std": 0.0
+        },
+        "mean_trust_end": {
+          "mean": 3.9933,
+          "std": 0.0085
+        }
+      },
+      "dynamic_parksure": {
+        "runs": 30,
+        "requests": {
+          "mean": 800.0,
+          "std": 0.0
+        },
+        "accepted": {
+          "mean": 595.1667,
+          "std": 12.1544
+        },
+        "no_reservation": {
+          "mean": 108.1667,
+          "std": 16.9423
+        },
+        "suspended": {
+          "mean": 96.6667,
+          "std": 6.5355
+        },
+        "no_park": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "moved_to_alternate": {
+          "mean": 0.2,
+          "std": 0.4068
+        },
+        "alt_overflow": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "parks_completed": {
+          "mean": 595.1667,
+          "std": 12.1544
+        },
+        "success_rate": {
+          "mean": 0.744,
+          "std": 0.0152
+        },
+        "no_park_rate": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "utilisation": {
+          "mean": 0.2478,
+          "std": 0.0075
+        },
+        "overstay_departures": {
+          "mean": 79.8,
+          "std": 0.5509
+        },
+        "mean_trust_end": {
+          "mean": 3.9742,
+          "std": 0.0197
+        }
+      },
+      "dynamic_paper": {
+        "runs": 30,
+        "requests": {
+          "mean": 800.0,
+          "std": 0.0
+        },
+        "accepted": {
+          "mean": 641.4667,
+          "std": 8.9702
+        },
+        "no_reservation": {
+          "mean": 48.5667,
+          "std": 11.6551
+        },
+        "suspended": {
+          "mean": 109.9667,
+          "std": 3.9522
+        },
+        "no_park": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "moved_to_alternate": {
+          "mean": 0.2667,
+          "std": 0.4498
+        },
+        "alt_overflow": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "parks_completed": {
+          "mean": 641.4667,
+          "std": 8.9702
+        },
+        "success_rate": {
+          "mean": 0.8018,
+          "std": 0.0112
+        },
+        "no_park_rate": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "utilisation": {
+          "mean": 0.2624,
+          "std": 0.0084
+        },
+        "overstay_departures": {
+          "mean": 80.0,
+          "std": 0.0
+        },
+        "mean_trust_end": {
+          "mean": 3.9975,
+          "std": 0.0051
+        }
+      }
+    },
+    "90": {
+      "static_0": {
+        "runs": 30,
+        "requests": {
+          "mean": 900.0,
+          "std": 0.0
+        },
+        "accepted": {
+          "mean": 755.2,
+          "std": 4.452
+        },
+        "no_reservation": {
+          "mean": 16.5,
+          "std": 5.764
+        },
+        "suspended": {
+          "mean": 128.3,
+          "std": 2.7057
+        },
+        "no_park": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "moved_to_alternate": {
+          "mean": 3.7667,
+          "std": 1.888
+        },
+        "alt_overflow": {
+          "mean": 0.1667,
+          "std": 0.4611
+        },
+        "parks_completed": {
+          "mean": 755.2,
+          "std": 4.452
+        },
+        "success_rate": {
+          "mean": 0.8391,
+          "std": 0.0049
+        },
+        "no_park_rate": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "utilisation": {
+          "mean": 0.3057,
+          "std": 0.0082
+        },
+        "overstay_departures": {
+          "mean": 88.0,
+          "std": 0.0
+        },
+        "mean_trust_end": {
+          "mean": 4.0222,
+          "std": 0.0
+        }
+      },
+      "static_1": {
+        "runs": 30,
+        "requests": {
+          "mean": 900.0,
+          "std": 0.0
+        },
+        "accepted": {
+          "mean": 744.8667,
+          "std": 6.1067
+        },
+        "no_reservation": {
+          "mean": 29.6333,
+          "std": 6.2614
+        },
+        "suspended": {
+          "mean": 125.5,
+          "std": 1.9783
+        },
+        "no_park": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "moved_to_alternate": {
+          "mean": 1.0,
+          "std": 1.1447
+        },
+        "alt_overflow": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "parks_completed": {
+          "mean": 744.8667,
+          "std": 6.1067
+        },
+        "success_rate": {
+          "mean": 0.8276,
+          "std": 0.0068
+        },
+        "no_park_rate": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "utilisation": {
+          "mean": 0.3034,
+          "std": 0.0076
+        },
+        "overstay_departures": {
+          "mean": 88.0,
+          "std": 0.0
+        },
+        "mean_trust_end": {
+          "mean": 4.0219,
+          "std": 0.002
+        }
+      },
+      "static_3": {
+        "runs": 30,
+        "requests": {
+          "mean": 900.0,
+          "std": 0.0
+        },
+        "accepted": {
+          "mean": 692.4667,
+          "std": 12.0994
+        },
+        "no_reservation": {
+          "mean": 98.3333,
+          "std": 14.6554
+        },
+        "suspended": {
+          "mean": 109.2,
+          "std": 5.6775
+        },
+        "no_park": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "moved_to_alternate": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "alt_overflow": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "parks_completed": {
+          "mean": 692.4667,
+          "std": 12.0994
+        },
+        "success_rate": {
+          "mean": 0.7694,
+          "std": 0.0134
+        },
+        "no_park_rate": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "utilisation": {
+          "mean": 0.2866,
+          "std": 0.0082
+        },
+        "overstay_departures": {
+          "mean": 87.9333,
+          "std": 0.2537
+        },
+        "mean_trust_end": {
+          "mean": 4.0081,
+          "std": 0.0146
+        }
+      },
+      "dynamic_parksure": {
+        "runs": 30,
+        "requests": {
+          "mean": 900.0,
+          "std": 0.0
+        },
+        "accepted": {
+          "mean": 616.8333,
+          "std": 18.9902
+        },
+        "no_reservation": {
+          "mean": 188.0,
+          "std": 27.9272
+        },
+        "suspended": {
+          "mean": 95.1667,
+          "std": 11.5074
+        },
+        "no_park": {
+          "mean": 0.1667,
+          "std": 0.5307
+        },
+        "moved_to_alternate": {
+          "mean": 0.2,
+          "std": 0.4068
+        },
+        "alt_overflow": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "parks_completed": {
+          "mean": 616.6667,
+          "std": 19.0378
+        },
+        "success_rate": {
+          "mean": 0.6852,
+          "std": 0.0212
+        },
+        "no_park_rate": {
+          "mean": 0.0003,
+          "std": 0.0009
+        },
+        "utilisation": {
+          "mean": 0.2609,
+          "std": 0.012
+        },
+        "overstay_departures": {
+          "mean": 87.1667,
+          "std": 1.6626
+        },
+        "mean_trust_end": {
+          "mean": 3.927,
+          "std": 0.0334
+        }
+      },
+      "dynamic_paper": {
+        "runs": 30,
+        "requests": {
+          "mean": 900.0,
+          "std": 0.0
+        },
+        "accepted": {
+          "mean": 694.5667,
+          "std": 14.5144
+        },
+        "no_reservation": {
+          "mean": 91.6,
+          "std": 16.6973
+        },
+        "suspended": {
+          "mean": 113.8333,
+          "std": 4.5794
+        },
+        "no_park": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "moved_to_alternate": {
+          "mean": 0.9,
+          "std": 0.9229
+        },
+        "alt_overflow": {
+          "mean": 0.0333,
+          "std": 0.1826
+        },
+        "parks_completed": {
+          "mean": 694.5667,
+          "std": 14.5144
+        },
+        "success_rate": {
+          "mean": 0.7717,
+          "std": 0.0161
+        },
+        "no_park_rate": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "utilisation": {
+          "mean": 0.2873,
+          "std": 0.0082
+        },
+        "overstay_departures": {
+          "mean": 88.0,
+          "std": 0.0
+        },
+        "mean_trust_end": {
+          "mean": 4.01,
+          "std": 0.0132
+        }
+      }
+    },
+    "100": {
+      "static_0": {
+        "runs": 30,
+        "requests": {
+          "mean": 1000.0,
+          "std": 0.0
+        },
+        "accepted": {
+          "mean": 826.9333,
+          "std": 5.7831
+        },
+        "no_reservation": {
+          "mean": 29.9667,
+          "std": 6.9157
+        },
+        "suspended": {
+          "mean": 143.1,
+          "std": 2.6826
+        },
+        "no_park": {
+          "mean": 0.4,
+          "std": 0.6747
+        },
+        "moved_to_alternate": {
+          "mean": 6.6667,
+          "std": 2.4542
+        },
+        "alt_overflow": {
+          "mean": 0.3667,
+          "std": 0.7649
+        },
+        "parks_completed": {
+          "mean": 826.5333,
+          "std": 5.7098
+        },
+        "success_rate": {
+          "mean": 0.8265,
+          "std": 0.0057
+        },
+        "no_park_rate": {
+          "mean": 0.0005,
+          "std": 0.0008
+        },
+        "utilisation": {
+          "mean": 0.3348,
+          "std": 0.0058
+        },
+        "overstay_departures": {
+          "mean": 100.0,
+          "std": 0.0
+        },
+        "mean_trust_end": {
+          "mean": 4.0,
+          "std": 0.0
+        }
+      },
+      "static_1": {
+        "runs": 30,
+        "requests": {
+          "mean": 1000.0,
+          "std": 0.0
+        },
+        "accepted": {
+          "mean": 808.3667,
+          "std": 8.2105
+        },
+        "no_reservation": {
+          "mean": 52.7333,
+          "std": 8.7531
+        },
+        "suspended": {
+          "mean": 138.9,
+          "std": 3.9159
+        },
+        "no_park": {
+          "mean": 0.1667,
+          "std": 0.4611
+        },
+        "moved_to_alternate": {
+          "mean": 2.4333,
+          "std": 1.5466
+        },
+        "alt_overflow": {
+          "mean": 0.0667,
+          "std": 0.2537
+        },
+        "parks_completed": {
+          "mean": 808.2,
+          "std": 8.1087
+        },
+        "success_rate": {
+          "mean": 0.8082,
+          "std": 0.0081
+        },
+        "no_park_rate": {
+          "mean": 0.0002,
+          "std": 0.0006
+        },
+        "utilisation": {
+          "mean": 0.3281,
+          "std": 0.0095
+        },
+        "overstay_departures": {
+          "mean": 100.0,
+          "std": 0.0
+        },
+        "mean_trust_end": {
+          "mean": 3.999,
+          "std": 0.0031
+        }
+      },
+      "static_3": {
+        "runs": 30,
+        "requests": {
+          "mean": 1000.0,
+          "std": 0.0
+        },
+        "accepted": {
+          "mean": 725.3667,
+          "std": 15.5508
+        },
+        "no_reservation": {
+          "mean": 158.1333,
+          "std": 17.1479
+        },
+        "suspended": {
+          "mean": 116.5,
+          "std": 6.8368
+        },
+        "no_park": {
+          "mean": 0.0333,
+          "std": 0.1826
+        },
+        "moved_to_alternate": {
+          "mean": 0.0333,
+          "std": 0.1826
+        },
+        "alt_overflow": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "parks_completed": {
+          "mean": 725.3333,
+          "std": 15.4882
+        },
+        "success_rate": {
+          "mean": 0.7253,
+          "std": 0.0155
+        },
+        "no_park_rate": {
+          "mean": 0.0,
+          "std": 0.0002
+        },
+        "utilisation": {
+          "mean": 0.3024,
+          "std": 0.01
+        },
+        "overstay_departures": {
+          "mean": 99.9,
+          "std": 0.4026
+        },
+        "mean_trust_end": {
+          "mean": 3.9613,
+          "std": 0.0246
+        }
+      },
+      "dynamic_parksure": {
+        "runs": 30,
+        "requests": {
+          "mean": 1000.0,
+          "std": 0.0
+        },
+        "accepted": {
+          "mean": 630.8667,
+          "std": 17.3259
+        },
+        "no_reservation": {
+          "mean": 276.8,
+          "std": 22.3628
+        },
+        "suspended": {
+          "mean": 92.3333,
+          "std": 10.848
+        },
+        "no_park": {
+          "mean": 0.7,
+          "std": 0.9523
+        },
+        "moved_to_alternate": {
+          "mean": 0.0667,
+          "std": 0.2537
+        },
+        "alt_overflow": {
+          "mean": 0.0333,
+          "std": 0.1826
+        },
+        "parks_completed": {
+          "mean": 630.1667,
+          "std": 17.1406
+        },
+        "success_rate": {
+          "mean": 0.6302,
+          "std": 0.0171
+        },
+        "no_park_rate": {
+          "mean": 0.0011,
+          "std": 0.0015
+        },
+        "utilisation": {
+          "mean": 0.2684,
+          "std": 0.0093
+        },
+        "overstay_departures": {
+          "mean": 97.6667,
+          "std": 2.0899
+        },
+        "mean_trust_end": {
+          "mean": 3.8133,
+          "std": 0.0484
+        }
+      },
+      "dynamic_paper": {
+        "runs": 30,
+        "requests": {
+          "mean": 1000.0,
+          "std": 0.0
+        },
+        "accepted": {
+          "mean": 715.6,
+          "std": 18.5576
+        },
+        "no_reservation": {
+          "mean": 165.3,
+          "std": 21.8319
+        },
+        "suspended": {
+          "mean": 119.1,
+          "std": 6.9894
+        },
+        "no_park": {
+          "mean": 0.2333,
+          "std": 0.5683
+        },
+        "moved_to_alternate": {
+          "mean": 1.7,
+          "std": 0.9879
+        },
+        "alt_overflow": {
+          "mean": 0.0333,
+          "std": 0.1826
+        },
+        "parks_completed": {
+          "mean": 715.3667,
+          "std": 18.5295
+        },
+        "success_rate": {
+          "mean": 0.7154,
+          "std": 0.0185
+        },
+        "no_park_rate": {
+          "mean": 0.0003,
+          "std": 0.0008
+        },
+        "utilisation": {
+          "mean": 0.2988,
+          "std": 0.0101
+        },
+        "overstay_departures": {
+          "mean": 99.9,
+          "std": 0.3051
+        },
+        "mean_trust_end": {
+          "mean": 3.949,
+          "std": 0.0237
+        }
+      }
+    },
+    "110": {
+      "static_0": {
+        "runs": 30,
+        "requests": {
+          "mean": 1100.0,
+          "std": 0.0
+        },
+        "accepted": {
+          "mean": 893.9667,
+          "std": 6.8253
+        },
+        "no_reservation": {
+          "mean": 48.6,
+          "std": 6.765
+        },
+        "suspended": {
+          "mean": 157.4333,
+          "std": 3.8118
+        },
+        "no_park": {
+          "mean": 1.4333,
+          "std": 1.2507
+        },
+        "moved_to_alternate": {
+          "mean": 12.7667,
+          "std": 3.5881
+        },
+        "alt_overflow": {
+          "mean": 1.8667,
+          "std": 1.7564
+        },
+        "parks_completed": {
+          "mean": 892.5333,
+          "std": 6.6267
+        },
+        "success_rate": {
+          "mean": 0.8114,
+          "std": 0.006
+        },
+        "no_park_rate": {
+          "mean": 0.0016,
+          "std": 0.0014
+        },
+        "utilisation": {
+          "mean": 0.3642,
+          "std": 0.0088
+        },
+        "overstay_departures": {
+          "mean": 112.0,
+          "std": 0.0
+        },
+        "mean_trust_end": {
+          "mean": 3.9815,
+          "std": 0.0017
+        }
+      },
+      "static_1": {
+        "runs": 30,
+        "requests": {
+          "mean": 1100.0,
+          "std": 0.0
+        },
+        "accepted": {
+          "mean": 868.3333,
+          "std": 8.4255
+        },
+        "no_reservation": {
+          "mean": 82.1667,
+          "std": 9.9761
+        },
+        "suspended": {
+          "mean": 149.5,
+          "std": 5.3547
+        },
+        "no_park": {
+          "mean": 0.7667,
+          "std": 0.9353
+        },
+        "moved_to_alternate": {
+          "mean": 4.2667,
+          "std": 1.8742
+        },
+        "alt_overflow": {
+          "mean": 0.1,
+          "std": 0.3051
+        },
+        "parks_completed": {
+          "mean": 867.5667,
+          "std": 8.3074
+        },
+        "success_rate": {
+          "mean": 0.7887,
+          "std": 0.0076
+        },
+        "no_park_rate": {
+          "mean": 0.0009,
+          "std": 0.0011
+        },
+        "utilisation": {
+          "mean": 0.3548,
+          "std": 0.0078
+        },
+        "overstay_departures": {
+          "mean": 111.9667,
+          "std": 0.1826
+        },
+        "mean_trust_end": {
+          "mean": 3.9782,
+          "std": 0.0066
+        }
+      },
+      "static_3": {
+        "runs": 30,
+        "requests": {
+          "mean": 1100.0,
+          "std": 0.0
+        },
+        "accepted": {
+          "mean": 749.7333,
+          "std": 14.8995
+        },
+        "no_reservation": {
+          "mean": 231.7,
+          "std": 18.7693
+        },
+        "suspended": {
+          "mean": 118.5667,
+          "std": 10.1461
+        },
+        "no_park": {
+          "mean": 0.0333,
+          "std": 0.1826
+        },
+        "moved_to_alternate": {
+          "mean": 0.0667,
+          "std": 0.3651
+        },
+        "alt_overflow": {
+          "mean": 0.0,
+          "std": 0.0
+        },
+        "parks_completed": {
+          "mean": 749.7,
+          "std": 14.9116
+        },
+        "success_rate": {
+          "mean": 0.6815,
+          "std": 0.0136
+        },
+        "no_park_rate": {
+          "mean": 0.0,
+          "std": 0.0002
+        },
+        "utilisation": {
+          "mean": 0.3174,
+          "std": 0.012
+        },
+        "overstay_departures": {
+          "mean": 111.2667,
+          "std": 1.484
+        },
+        "mean_trust_end": {
+          "mean": 3.8894,
+          "std": 0.0295
+        }
+      },
+      "dynamic_parksure": {
+        "runs": 30,
+        "requests": {
+          "mean": 1100.0,
+          "std": 0.0
+        },
+        "accepted": {
+          "mean": 627.5667,
+          "std": 32.0954
+        },
+        "no_reservation": {
+          "mean": 383.1,
+          "std": 33.8713
+        },
+        "suspended": {
+          "mean": 89.3333,
+          "std": 9.9181
+        },
+        "no_park": {
+          "mean": 1.1333,
+          "std": 1.1366
+        },
+        "moved_to_alternate": {
+          "mean": 0.0333,
+          "std": 0.1826
+        },
+        "alt_overflow": {
+          "mean": 0.0333,
+          "std": 0.1826
+        },
+        "parks_completed": {
+          "mean": 626.4333,
+          "std": 31.5558
+        },
+        "success_rate": {
+          "mean": 0.5695,
+          "std": 0.0287
+        },
+        "no_park_rate": {
+          "mean": 0.0018,
+          "std": 0.0017
+        },
+        "utilisation": {
+          "mean": 0.2693,
+          "std": 0.0141
+        },
+        "overstay_departures": {
+          "mean": 105.9667,
+          "std": 3.2
+        },
+        "mean_trust_end": {
+          "mean": 3.6861,
+          "std": 0.0757
+        }
+      },
+      "dynamic_paper": {
+        "runs": 30,
+        "requests": {
+          "mean": 1100.0,
+          "std": 0.0
+        },
+        "accepted": {
+          "mean": 736.6,
+          "std": 25.1212
+        },
+        "no_reservation": {
+          "mean": 250.0,
+          "std": 31.8867
+        },
+        "suspended": {
+          "mean": 113.4,
+          "std": 10.3943
+        },
+        "no_park": {
+          "mean": 1.0,
+          "std": 0.9469
+        },
+        "moved_to_alternate": {
+          "mean": 2.4333,
+          "std": 1.4308
+        },
+        "alt_overflow": {
+          "mean": 0.0333,
+          "std": 0.1826
+        },
+        "parks_completed": {
+          "mean": 735.6,
+          "std": 25.025
+        },
+        "success_rate": {
+          "mean": 0.6687,
+          "std": 0.0227
+        },
+        "no_park_rate": {
+          "mean": 0.0014,
+          "std": 0.0013
+        },
+        "utilisation": {
+          "mean": 0.3121,
+          "std": 0.0125
+        },
+        "overstay_departures": {
+          "mean": 110.6667,
+          "std": 1.373
+        },
+        "mean_trust_end": {
+          "mean": 3.8697,
+          "std": 0.0519
+        }
+      }
+    }
+  }
+}

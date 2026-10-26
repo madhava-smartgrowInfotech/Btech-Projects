@@ -1,0 +1,11 @@
+{
+  "summary_line": "70 passed, 1 warning in 32.53s",
+  "passed": 70,
+  "failed": 0,
+  "seconds": 33.5,
+  "files": {
+    "tests/test_engine.py": 29,
+    "tests/test_api.py": 36,
+    "tests/test_sim_parity.py": 5
+  }
+}

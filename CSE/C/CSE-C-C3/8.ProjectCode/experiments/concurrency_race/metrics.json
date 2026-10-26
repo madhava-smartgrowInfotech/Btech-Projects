@@ -1,0 +1,59 @@
+{
+  "trials": 10,
+  "simultaneous_requests_per_trial": 20,
+  "bookable_bays_per_trial": 1,
+  "trials_with_overbooking": 1,
+  "max_accepted_in_a_trial": 2,
+  "per_trial": [
+    {
+      "accepted": 1,
+      "refused_409": 19,
+      "other": 0
+    },
+    {
+      "accepted": 1,
+      "refused_409": 19,
+      "other": 0
+    },
+    {
+      "accepted": 2,
+      "refused_409": 18,
+      "other": 0
+    },
+    {
+      "accepted": 1,
+      "refused_409": 19,
+      "other": 0
+    },
+    {
+      "accepted": 1,
+      "refused_409": 19,
+      "other": 0
+    },
+    {
+      "accepted": 1,
+      "refused_409": 19,
+      "other": 0
+    },
+    {
+      "accepted": 1,
+      "refused_409": 19,
+      "other": 0
+    },
+    {
+      "accepted": 1,
+      "refused_409": 19,
+      "other": 0
+    },
+    {
+      "accepted": 1,
+      "refused_409": 19,
+      "other": 0
+    },
+    {
+      "accepted": 1,
+      "refused_409": 19,
+      "other": 0
+    }
+  ]
+}

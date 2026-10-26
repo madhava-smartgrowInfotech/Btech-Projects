@@ -1,0 +1,188 @@
+{
+  "users": 9,
+  "locations": 5,
+  "reservations": 347,
+  "payments": 279,
+  "status_counts": {
+    "completed": 279,
+    "failed": 39,
+    "declined": 29,
+    "reserved": 0,
+    "active": 0,
+    "cancelled": 0
+  },
+  "insights_60d": {
+    "window_days": 60,
+    "per_location": [
+      {
+        "location_id": 1,
+        "location": "Central Station Garage",
+        "capacity": 20,
+        "current_buffer": 1,
+        "requests": 38,
+        "actual": {
+          "unable_to_park": 3,
+          "declined": 3
+        },
+        "simulated": {
+          "fixed_0": {
+            "unable_to_park": 0,
+            "declined": 0
+          },
+          "fixed_1": {
+            "unable_to_park": 0,
+            "declined": 0
+          },
+          "fixed_3": {
+            "unable_to_park": 0,
+            "declined": 0
+          },
+          "dynamic": {
+            "unable_to_park": 0,
+            "declined": 0
+          }
+        }
+      },
+      {
+        "location_id": 2,
+        "location": "Market Street Lot",
+        "capacity": 12,
+        "current_buffer": 1,
+        "requests": 36,
+        "actual": {
+          "unable_to_park": 3,
+          "declined": 4
+        },
+        "simulated": {
+          "fixed_0": {
+            "unable_to_park": 0,
+            "declined": 0
+          },
+          "fixed_1": {
+            "unable_to_park": 0,
+            "declined": 0
+          },
+          "fixed_3": {
+            "unable_to_park": 0,
+            "declined": 0
+          },
+          "dynamic": {
+            "unable_to_park": 0,
+            "declined": 0
+          }
+        }
+      },
+      {
+        "location_id": 3,
+        "location": "Riverside Parking",
+        "capacity": 15,
+        "current_buffer": 1,
+        "requests": 35,
+        "actual": {
+          "unable_to_park": 5,
+          "declined": 4
+        },
+        "simulated": {
+          "fixed_0": {
+            "unable_to_park": 0,
+            "declined": 0
+          },
+          "fixed_1": {
+            "unable_to_park": 0,
+            "declined": 0
+          },
+          "fixed_3": {
+            "unable_to_park": 0,
+            "declined": 0
+          },
+          "dynamic": {
+            "unable_to_park": 0,
+            "declined": 0
+          }
+        }
+      },
+      {
+        "location_id": 4,
+        "location": "Airport Express Park",
+        "capacity": 25,
+        "current_buffer": 1,
+        "requests": 45,
+        "actual": {
+          "unable_to_park": 3,
+          "declined": 2
+        },
+        "simulated": {
+          "fixed_0": {
+            "unable_to_park": 0,
+            "declined": 0
+          },
+          "fixed_1": {
+            "unable_to_park": 0,
+            "declined": 0
+          },
+          "fixed_3": {
+            "unable_to_park": 0,
+            "declined": 0
+          },
+          "dynamic": {
+            "unable_to_park": 0,
+            "declined": 0
+          }
+        }
+      },
+      {
+        "location_id": 5,
+        "location": "Old Town Deck",
+        "capacity": 8,
+        "current_buffer": 1,
+        "requests": 163,
+        "actual": {
+          "unable_to_park": 24,
+          "declined": 15
+        },
+        "simulated": {
+          "fixed_0": {
+            "unable_to_park": 8,
+            "declined": 16
+          },
+          "fixed_1": {
+            "unable_to_park": 4,
+            "declined": 24
+          },
+          "fixed_3": {
+            "unable_to_park": 0,
+            "declined": 40
+          },
+          "dynamic": {
+            "unable_to_park": 0,
+            "declined": 60
+          }
+        }
+      }
+    ],
+    "totals": {
+      "fixed_0": {
+        "unable_to_park": 8,
+        "declined": 16
+      },
+      "fixed_1": {
+        "unable_to_park": 4,
+        "declined": 24
+      },
+      "fixed_3": {
+        "unable_to_park": 0,
+        "declined": 40
+      },
+      "dynamic": {
+        "unable_to_park": 0,
+        "declined": 60
+      }
+    },
+    "policy": {
+      "init": 1,
+      "max": 5,
+      "reset_hours": 24
+    },
+    "note": "Simulated counts replay the location's real stored booking requests deterministically."
+  }
+}

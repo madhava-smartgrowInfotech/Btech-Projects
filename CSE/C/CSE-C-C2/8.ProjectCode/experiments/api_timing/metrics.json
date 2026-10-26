@@ -1,0 +1,203 @@
+{
+  "experiment": "api_timing",
+  "base": "http://127.0.0.1:8402",
+  "endpoints": {
+    "GET /api/health": {
+      "n": 30,
+      "median_ms": 15.01,
+      "p95_ms": 24.56,
+      "min_ms": 0.84,
+      "max_ms": 26.91,
+      "status_codes": [
+        200
+      ]
+    },
+    "GET /api/languages": {
+      "n": 30,
+      "median_ms": 14.34,
+      "p95_ms": 17.86,
+      "min_ms": 1.0,
+      "max_ms": 25.8,
+      "status_codes": [
+        200
+      ]
+    },
+    "GET /api/meta": {
+      "n": 30,
+      "median_ms": 1.25,
+      "p95_ms": 16.78,
+      "min_ms": 0.88,
+      "max_ms": 25.14,
+      "status_codes": [
+        200
+      ]
+    },
+    "GET /api/stories": {
+      "n": 30,
+      "median_ms": 1.95,
+      "p95_ms": 19.7,
+      "min_ms": 1.49,
+      "max_ms": 27.37,
+      "status_codes": [
+        200
+      ]
+    },
+    "GET /api/evaluations": {
+      "n": 30,
+      "median_ms": 10.59,
+      "p95_ms": 26.71,
+      "min_ms": 1.79,
+      "max_ms": 27.55,
+      "status_codes": [
+        200
+      ]
+    },
+    "POST /api/stories/generate (empty prompt, 422)": {
+      "n": 30,
+      "median_ms": 10.84,
+      "p95_ms": 16.02,
+      "min_ms": 1.21,
+      "max_ms": 16.15,
+      "status_codes": [
+        422
+      ]
+    },
+    "GET /api/audio/{id} (WAV download)": {
+      "n": 10,
+      "median_ms": 11.61,
+      "p95_ms": 29.46,
+      "min_ms": 6.51,
+      "max_ms": 29.46,
+      "bytes": 1758380
+    },
+    "GET /api/stories (with data)": {
+      "n": 20,
+      "median_ms": 9.33,
+      "p95_ms": 43.65,
+      "min_ms": 3.47,
+      "max_ms": 43.65
+    }
+  },
+  "generate": [
+    {
+      "order": 1,
+      "language": "en",
+      "style": "Adventure",
+      "length": "Short",
+      "http_status": 200,
+      "request_s": 42.13,
+      "cold": true,
+      "story_id": 1,
+      "words": 181,
+      "story_gen_s": 28.771,
+      "audio_s": 54.948,
+      "tts_s": 13.299,
+      "rtf": 0.242,
+      "tts_model": "facebook/mms-tts-eng",
+      "audio_id": 1
+    },
+    {
+      "order": 2,
+      "language": "en",
+      "style": "Bedtime",
+      "length": "Short",
+      "http_status": 200,
+      "request_s": 30.15,
+      "cold": false,
+      "story_id": 2,
+      "words": 133,
+      "story_gen_s": 20.801,
+      "audio_s": 43.972,
+      "tts_s": 9.283,
+      "rtf": 0.2111,
+      "tts_model": "facebook/mms-tts-eng",
+      "audio_id": 2
+    },
+    {
+      "order": 3,
+      "language": "hi",
+      "style": "Adventure",
+      "length": "Short",
+      "http_status": 200,
+      "request_s": 22.82,
+      "cold": false,
+      "story_id": 3,
+      "words": 185,
+      "story_gen_s": 20.321,
+      "audio_s": 4.43,
+      "tts_s": 2.469,
+      "rtf": 0.5573,
+      "tts_model": "facebook/mms-tts-hin",
+      "audio_id": 3
+    },
+    {
+      "order": 4,
+      "language": "fr",
+      "style": "Mystery",
+      "length": "Short",
+      "http_status": 200,
+      "request_s": 35.21,
+      "cold": false,
+      "story_id": 4,
+      "words": 140,
+      "story_gen_s": 20.618,
+      "audio_s": 58.132,
+      "tts_s": 14.554,
+      "rtf": 0.2504,
+      "tts_model": "facebook/mms-tts-fra",
+      "audio_id": 4
+    },
+    {
+      "order": 5,
+      "language": "de",
+      "style": "Fantasy",
+      "length": "Short",
+      "http_status": 200,
+      "request_s": 37.79,
+      "cold": false,
+      "story_id": 5,
+      "words": 156,
+      "story_gen_s": 20.817,
+      "audio_s": 69.092,
+      "tts_s": 16.954,
+      "rtf": 0.2454,
+      "tts_model": "facebook/mms-tts-deu",
+      "audio_id": 5
+    },
+    {
+      "order": 6,
+      "language": "es",
+      "style": "Funny",
+      "length": "Short",
+      "http_status": 200,
+      "request_s": 38.97,
+      "cold": false,
+      "story_id": 6,
+      "words": 191,
+      "story_gen_s": 21.172,
+      "audio_s": 72.254,
+      "tts_s": 17.753,
+      "rtf": 0.2457,
+      "tts_model": "facebook/mms-tts-spa",
+      "audio_id": 6
+    },
+    {
+      "order": 7,
+      "language": "en",
+      "style": "Adventure",
+      "length": "Medium",
+      "http_status": 200,
+      "request_s": 66.64,
+      "cold": false,
+      "story_id": 7,
+      "words": 335,
+      "story_gen_s": 41.088,
+      "audio_s": 117.57,
+      "tts_s": 25.508,
+      "rtf": 0.217,
+      "tts_model": "facebook/mms-tts-eng",
+      "audio_id": 7
+    }
+  ],
+  "stories_in_db": 7
+}

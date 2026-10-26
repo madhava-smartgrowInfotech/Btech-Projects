@@ -1,0 +1,166 @@
+{
+  "experiment": "pytest",
+  "python": "3.11.9",
+  "seconds": 5.8,
+  "exit_code": 0,
+  "summary_line": "29 passed",
+  "cases": [
+    {
+      "file": "tests/test_api.py",
+      "name": "test_health",
+      "result": "PASSED"
+    },
+    {
+      "file": "tests/test_api.py",
+      "name": "test_languages_only_supported",
+      "result": "PASSED"
+    },
+    {
+      "file": "tests/test_api.py",
+      "name": "test_generate_validation_empty_prompt",
+      "result": "PASSED"
+    },
+    {
+      "file": "tests/test_api.py",
+      "name": "test_generate_rejects_bad_language",
+      "result": "PASSED"
+    },
+    {
+      "file": "tests/test_api.py",
+      "name": "test_full_story_workflow",
+      "result": "PASSED"
+    },
+    {
+      "file": "tests/test_api.py",
+      "name": "test_audio_path_validation_rejects_escape",
+      "result": "PASSED"
+    },
+    {
+      "file": "tests/test_api.py",
+      "name": "test_metrics_are_real_computations",
+      "result": "PASSED"
+    },
+    {
+      "file": "tests/test_api.py",
+      "name": "test_evaluation_serialization",
+      "result": "PASSED"
+    },
+    {
+      "file": "tests/test_services.py",
+      "name": "test_word_count_and_times",
+      "result": "PASSED"
+    },
+    {
+      "file": "tests/test_services.py",
+      "name": "test_chunk_text_respects_limit_and_sentence_boundaries",
+      "result": "PASSED"
+    },
+    {
+      "file": "tests/test_services.py",
+      "name": "test_chunk_text_splits_one_long_sentence",
+      "result": "PASSED"
+    },
+    {
+      "file": "tests/test_services.py",
+      "name": "test_chunk_text_splits_on_devanagari_danda",
+      "result": "PASSED"
+    },
+    {
+      "file": "tests/test_services.py",
+      "name": "test_sanitize_filename_and_unique_names",
+      "result": "PASSED"
+    },
+    {
+      "file": "tests/test_services.py",
+      "name": "test_audio_helpers_round_trip",
+      "result": "PASSED"
+    },
+    {
+      "file": "tests/test_services.py",
+      "name": "test_read_wav_resamples_to_target",
+      "result": "PASSED"
+    },
+    {
+      "file": "tests/test_services.py",
+      "name": "test_wer_cer_known_values",
+      "result": "PASSED"
+    },
+    {
+      "file": "tests/test_services.py",
+      "name": "test_rouge_and_tfidf_bounds",
+      "result": "PASSED"
+    },
+    {
+      "file": "tests/test_services.py",
+      "name": "test_build_prompt_contains_all_controls",
+      "result": "PASSED"
+    },
+    {
+      "file": "tests/test_services.py",
+      "name": "test_parse_model_output_title_forms",
+      "result": "PASSED"
+    },
+    {
+      "file": "tests/test_services.py",
+      "name": "test_token_budgets_follow_length",
+      "result": "PASSED"
+    },
+    {
+      "file": "tests/test_services.py",
+      "name": "test_local_composer_is_prompt_conditioned_in_every_language",
+      "result": "PASSED"
+    },
+    {
+      "file": "tests/test_services.py",
+      "name": "test_generate_story_text_validation_errors",
+      "result": "PASSED"
+    },
+    {
+      "file": "tests/test_services.py",
+      "name": "test_language_table_is_consistent",
+      "result": "PASSED"
+    },
+    {
+      "file": "tests/test_services.py",
+      "name": "test_unknown_story_and_audio_are_404",
+      "result": "PASSED"
+    },
+    {
+      "file": "tests/test_services.py",
+      "name": "test_prompt_too_long_and_bad_options_rejected",
+      "result": "PASSED"
+    },
+    {
+      "file": "tests/test_services.py",
+      "name": "test_generate_with_narration_links_audio_and_streams_it",
+      "result": "PASSED"
+    },
+    {
+      "file": "tests/test_services.py",
+      "name": "test_delete_removes_audio_file_and_rows",
+      "result": "PASSED"
+    },
+    {
+      "file": "tests/test_services.py",
+      "name": "test_meta_and_unknown_api_path",
+      "result": "PASSED"
+    },
+    {
+      "file": "tests/test_services.py",
+      "name": "test_evaluation_rejects_unknown_language",
+      "result": "PASSED"
+    }
+  ],
+  "passed": 29,
+  "failed": 0,
+  "by_file": {
+    "tests/test_api.py": {
+      "total": 8,
+      "passed": 8
+    },
+    "tests/test_services.py": {
+      "total": 21,
+      "passed": 21
+    }
+  }
+}

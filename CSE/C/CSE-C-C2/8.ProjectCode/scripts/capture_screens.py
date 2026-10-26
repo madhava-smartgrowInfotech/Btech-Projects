@@ -1,7 +1,7 @@
 """Capture documentation screenshots (1440x900) of every StoryVox screen into docs/screenshots/.
 
 Needs the app running (run.bat) and Playwright:  pip install playwright   (uses the installed Chrome, no download)
-  python scripts/capture_screens.py [http://localhost:5402]
+  python scripts/capture_screens.py [http://127.0.0.1:8402]   (the API serves the built frontend; or http://127.0.0.1:5402 with Vite)
 If the library is empty it writes one real story first, so no screen is captured empty.
 """
 from __future__ import annotations
@@ -13,7 +13,7 @@ from pathlib import Path
 
 from playwright.sync_api import sync_playwright
 
-BASE = (sys.argv[1] if len(sys.argv) > 1 else "http://localhost:5402").rstrip("/")
+BASE = (sys.argv[1] if len(sys.argv) > 1 else "http://127.0.0.1:8402").rstrip("/")
 OUT = Path(__file__).resolve().parent.parent / "docs" / "screenshots"
 OUT.mkdir(parents=True, exist_ok=True)
 
@@ -92,6 +92,11 @@ with sync_playwright() as p:
     page.get_by_role("tab", name="Samples").click()
     page.evaluate("window.scrollBy(0, document.querySelector('.tabs').getBoundingClientRect().top - 90)")
     shot(page, "08_evaluation_samples")
+
+    hindi = next((x for x in stories if x.get("language_code") == "hi"), None)
+    if hindi:
+        page.goto(BASE + f"/stories/{hindi['id']}", wait_until="networkidle")
+        shot(page, "10_story_detail_hindi")
 
     browser.close()
 print("done ->", OUT)

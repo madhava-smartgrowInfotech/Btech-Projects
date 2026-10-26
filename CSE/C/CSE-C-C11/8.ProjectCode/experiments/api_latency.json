@@ -1,0 +1,158 @@
+{
+  "host": "127.0.0.1",
+  "reps": 30,
+  "login_first_ms": 284.3,
+  "login (bcrypt verify)": {
+    "n": 30,
+    "median_ms": 304.9,
+    "p95_ms": 367.4,
+    "min_ms": 234.6,
+    "max_ms": 509.0
+  },
+  "GET /health": {
+    "n": 30,
+    "median_ms": 4.3,
+    "p95_ms": 19.0,
+    "min_ms": 2.2,
+    "max_ms": 21.3
+  },
+  "GET /dashboard": {
+    "n": 30,
+    "median_ms": 67.2,
+    "p95_ms": 129.3,
+    "min_ms": 39.4,
+    "max_ms": 194.6
+  },
+  "GET /transactions": {
+    "n": 30,
+    "median_ms": 12.7,
+    "p95_ms": 38.9,
+    "min_ms": 8.4,
+    "max_ms": 96.7
+  },
+  "GET /analytics": {
+    "n": 30,
+    "median_ms": 72.1,
+    "p95_ms": 128.5,
+    "min_ms": 44.5,
+    "max_ms": 170.0
+  },
+  "GET /budgets": {
+    "n": 30,
+    "median_ms": 19.7,
+    "p95_ms": 51.6,
+    "min_ms": 8.4,
+    "max_ms": 63.7
+  },
+  "GET /goals": {
+    "n": 30,
+    "median_ms": 7.3,
+    "p95_ms": 11.6,
+    "min_ms": 5.6,
+    "max_ms": 14.0
+  },
+  "GET /investments": {
+    "n": 30,
+    "median_ms": 7.0,
+    "p95_ms": 12.8,
+    "min_ms": 5.8,
+    "max_ms": 17.8
+  },
+  "GET /assistant/insights": {
+    "n": 30,
+    "median_ms": 35.9,
+    "p95_ms": 47.9,
+    "min_ms": 26.7,
+    "max_ms": 55.0
+  },
+  "GET /notifications": {
+    "n": 30,
+    "median_ms": 18.1,
+    "p95_ms": 33.2,
+    "min_ms": 9.7,
+    "max_ms": 49.3
+  },
+  "GET /meta": {
+    "n": 30,
+    "median_ms": 7.2,
+    "p95_ms": 11.8,
+    "min_ms": 4.9,
+    "max_ms": 12.8
+  },
+  "POST /transactions/predict-category": {
+    "n": 30,
+    "median_ms": 7.9,
+    "p95_ms": 20.5,
+    "min_ms": 6.7,
+    "max_ms": 30.6
+  },
+  "POST /assistant/ask (analytics)": {
+    "n": 30,
+    "median_ms": 21.6,
+    "p95_ms": 47.9,
+    "min_ms": 10.7,
+    "max_ms": 68.7
+  },
+  "POST /assistant/ask (health)": {
+    "n": 30,
+    "median_ms": 28.4,
+    "p95_ms": 47.8,
+    "min_ms": 18.1,
+    "max_ms": 86.4
+  },
+  "POST /transactions (auto-categorise)": {
+    "n": 30,
+    "median_ms": 15.2,
+    "p95_ms": 20.2,
+    "min_ms": 12.3,
+    "max_ms": 26.8
+  },
+  "GET /reports/csv": {
+    "n": 10,
+    "median_ms": 17.7,
+    "p95_ms": 30.5,
+    "min_ms": 15.1,
+    "max_ms": 59.1
+  },
+  "GET /reports/excel": {
+    "n": 10,
+    "median_ms": 209.4,
+    "p95_ms": 341.6,
+    "min_ms": 140.0,
+    "max_ms": 1165.2
+  },
+  "GET /reports/pdf": {
+    "n": 10,
+    "median_ms": 135.5,
+    "p95_ms": 201.8,
+    "min_ms": 93.0,
+    "max_ms": 211.9
+  },
+  "POST /transactions/import/preview (100 rows)": {
+    "n": 10,
+    "median_ms": 667.0,
+    "p95_ms": 933.3,
+    "min_ms": 426.5,
+    "max_ms": 941.0
+  },
+  "demo_dashboard": {
+    "health_score": 90.4,
+    "rating": "Excellent",
+    "metrics": {
+      "monthly_income": 65000.0,
+      "monthly_expenses": 30080.0,
+      "monthly_savings": 34920.0,
+      "savings_rate": 53.72,
+      "investment_value": 84250.0,
+      "net_worth": 282632.0,
+      "total_balance": 198382.0,
+      "avg_budget_usage": 44.234
+    },
+    "alerts": 1
+  },
+  "machine": {
+    "cpu": "Intel64 Family 6 Model 151 Stepping 5, GenuineIntel",
+    "os": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.9"
+  }
+}

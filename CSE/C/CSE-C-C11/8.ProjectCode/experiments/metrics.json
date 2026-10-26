@@ -1,0 +1,1286 @@
+{
+  "generated": "2026-10-22",
+  "classifier": {
+    "seed_examples": 51,
+    "seed_categories": 11,
+    "seed_per_category": {
+      "Food": 6,
+      "Transport": 6,
+      "Entertainment": 6,
+      "Bills": 5,
+      "Shopping": 5,
+      "Education": 5,
+      "Healthcare": 5,
+      "Rent": 3,
+      "Travel": 4,
+      "Investments": 3,
+      "Salary": 3
+    },
+    "probe_examples": 198,
+    "probe_per_tier": {
+      "A": 66,
+      "B": 66,
+      "C": 66
+    },
+    "tfidf_lr": {
+      "accuracy": 0.7172,
+      "macro_precision": 0.8847,
+      "macro_recall": 0.7172,
+      "macro_f1": 0.7614,
+      "accuracy_by_tier": {
+        "A": 1.0,
+        "B": 0.97,
+        "C": 0.182
+      }
+    },
+    "keyword_table": {
+      "accuracy": 0.5152,
+      "macro_precision": 0.9517,
+      "macro_recall": 0.5152,
+      "macro_f1": 0.6623,
+      "accuracy_by_tier": {
+        "A": 0.712,
+        "B": 0.727,
+        "C": 0.106
+      }
+    },
+    "majority_class": {
+      "accuracy": 0.0909,
+      "macro_precision": 0.0083,
+      "macro_recall": 0.0909,
+      "macro_f1": 0.0152,
+      "accuracy_by_tier": {
+        "A": 0.091,
+        "B": 0.091,
+        "C": 0.091
+      }
+    },
+    "majority_label": "Food",
+    "per_category": {
+      "Food": {
+        "precision": 0.923,
+        "recall": 0.667,
+        "f1": 0.774,
+        "support": 18
+      },
+      "Transport": {
+        "precision": 0.273,
+        "recall": 1.0,
+        "f1": 0.429,
+        "support": 18
+      },
+      "Entertainment": {
+        "precision": 0.867,
+        "recall": 0.722,
+        "f1": 0.788,
+        "support": 18
+      },
+      "Bills": {
+        "precision": 0.929,
+        "recall": 0.722,
+        "f1": 0.812,
+        "support": 18
+      },
+      "Shopping": {
+        "precision": 0.917,
+        "recall": 0.611,
+        "f1": 0.733,
+        "support": 18
+      },
+      "Education": {
+        "precision": 0.824,
+        "recall": 0.778,
+        "f1": 0.8,
+        "support": 18
+      },
+      "Healthcare": {
+        "precision": 1.0,
+        "recall": 0.667,
+        "f1": 0.8,
+        "support": 18
+      },
+      "Rent": {
+        "precision": 1.0,
+        "recall": 0.667,
+        "f1": 0.8,
+        "support": 18
+      },
+      "Travel": {
+        "precision": 1.0,
+        "recall": 0.722,
+        "f1": 0.839,
+        "support": 18
+      },
+      "Investments": {
+        "precision": 1.0,
+        "recall": 0.667,
+        "f1": 0.8,
+        "support": 18
+      },
+      "Salary": {
+        "precision": 1.0,
+        "recall": 0.667,
+        "f1": 0.8,
+        "support": 18
+      }
+    },
+    "confusion_labels": [
+      "Food",
+      "Transport",
+      "Entertainment",
+      "Bills",
+      "Shopping",
+      "Education",
+      "Healthcare",
+      "Rent",
+      "Travel",
+      "Investments",
+      "Salary"
+    ],
+    "confusion_matrix": [
+      [
+        12,
+        6,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        18,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        4,
+        13,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        5,
+        0,
+        13,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        5,
+        1,
+        0,
+        11,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        3,
+        1,
+        0,
+        0,
+        14,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        5,
+        0,
+        1,
+        0,
+        0,
+        12,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        5,
+        0,
+        0,
+        0,
+        1,
+        0,
+        12,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        4,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        13,
+        0,
+        0
+      ],
+      [
+        0,
+        6,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        12,
+        0
+      ],
+      [
+        0,
+        5,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        12
+      ]
+    ],
+    "confidence_curve": [
+      {
+        "threshold": 0.0,
+        "coverage": 1.0,
+        "accuracy_on_kept": 0.717
+      },
+      {
+        "threshold": 0.1,
+        "coverage": 1.0,
+        "accuracy_on_kept": 0.717
+      },
+      {
+        "threshold": 0.15,
+        "coverage": 0.621,
+        "accuracy_on_kept": 0.943
+      },
+      {
+        "threshold": 0.2,
+        "coverage": 0.323,
+        "accuracy_on_kept": 0.984
+      },
+      {
+        "threshold": 0.25,
+        "coverage": 0.076,
+        "accuracy_on_kept": 1.0
+      },
+      {
+        "threshold": 0.3,
+        "coverage": 0.0,
+        "accuracy_on_kept": null
+      },
+      {
+        "threshold": 0.35,
+        "coverage": 0.0,
+        "accuracy_on_kept": null
+      },
+      {
+        "threshold": 0.4,
+        "coverage": 0.0,
+        "accuracy_on_kept": null
+      },
+      {
+        "threshold": 0.5,
+        "coverage": 0.0,
+        "accuracy_on_kept": null
+      },
+      {
+        "threshold": 0.6,
+        "coverage": 0.0,
+        "accuracy_on_kept": null
+      }
+    ],
+    "mean_confidence_correct": 0.197,
+    "mean_confidence_wrong": 0.13,
+    "sample_csv_rows": 34,
+    "sample_csv_accuracy": 1.0,
+    "loo_cv_accuracy_on_seed": 0.1176,
+    "loo_n": 51,
+    "learning_from_corrections": [
+      {
+        "corrections": 0,
+        "tier_C_accuracy_mean": 0.182,
+        "tier_C_accuracy_sd": 0.0
+      },
+      {
+        "corrections": 3,
+        "tier_C_accuracy_mean": 0.188,
+        "tier_C_accuracy_sd": 0.025
+      },
+      {
+        "corrections": 6,
+        "tier_C_accuracy_mean": 0.18,
+        "tier_C_accuracy_sd": 0.029
+      },
+      {
+        "corrections": 12,
+        "tier_C_accuracy_mean": 0.179,
+        "tier_C_accuracy_sd": 0.038
+      },
+      {
+        "corrections": 24,
+        "tier_C_accuracy_mean": 0.188,
+        "tier_C_accuracy_sd": 0.061
+      },
+      {
+        "corrections": 36,
+        "tier_C_accuracy_mean": 0.217,
+        "tier_C_accuracy_sd": 0.071
+      },
+      {
+        "corrections": 48,
+        "tier_C_accuracy_mean": 0.215,
+        "tier_C_accuracy_sd": 0.082
+      }
+    ],
+    "repeat_merchant_learning": {
+      "items": 66,
+      "variants_per_item": 3,
+      "tests": 198,
+      "accuracy_before_correction": 0.182,
+      "accuracy_after_one_correction": 1.0
+    },
+    "unseen_text_prediction": {
+      "text": "xyzabc123 qqq",
+      "predicted": "Transport",
+      "probabilities": {
+        "Bills": 0.0928,
+        "Education": 0.0975,
+        "Entertainment": 0.1178,
+        "Food": 0.1183,
+        "Healthcare": 0.1017,
+        "Investments": 0.0605,
+        "Rent": 0.0569,
+        "Salary": 0.0593,
+        "Shopping": 0.0955,
+        "Transport": 0.121,
+        "Travel": 0.0789
+      }
+    },
+    "errors_predicted_as_transport": 48,
+    "predict_ms_per_description": 0.84,
+    "retrain_ms_seed_only": 5.2,
+    "errors": [
+      {
+        "description": "BigBasket delivery",
+        "true": "Food",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "Dominos pizza",
+        "true": "Food",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "Blinkit groceries",
+        "true": "Food",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "Chaayos tea",
+        "true": "Food",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "Haldirams snacks",
+        "true": "Food",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "Biryani Blues",
+        "true": "Food",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "BookMyShow",
+        "true": "Entertainment",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "Disney Hotstar",
+        "true": "Entertainment",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "PlayStation store",
+        "true": "Entertainment",
+        "predicted": "Shopping",
+        "tier": "C"
+      },
+      {
+        "description": "Inox",
+        "true": "Entertainment",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "Bowling alley outing",
+        "true": "Entertainment",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "Jio 599 plan",
+        "true": "Bills",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "Airtel postpaid",
+        "true": "Bills",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "ACT Fibernet",
+        "true": "Bills",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "Tata Power",
+        "true": "Bills",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "Tata Play DTH",
+        "true": "Bills",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "UPI-AMAZON-PAY-8821",
+        "true": "Shopping",
+        "predicted": "Entertainment",
+        "tier": "B"
+      },
+      {
+        "description": "Ajio order",
+        "true": "Shopping",
+        "predicted": "Food",
+        "tier": "C"
+      },
+      {
+        "description": "Nykaa cosmetics",
+        "true": "Shopping",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "Decathlon sports shoes",
+        "true": "Shopping",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "Croma laptop bag",
+        "true": "Shopping",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "Reliance Trends",
+        "true": "Shopping",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "IKEA lamp",
+        "true": "Shopping",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "Coursera subscription",
+        "true": "Education",
+        "predicted": "Entertainment",
+        "tier": "C"
+      },
+      {
+        "description": "Byjus plan",
+        "true": "Education",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "Notebook and stationery",
+        "true": "Education",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "GATE coaching",
+        "true": "Education",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "UPI-HOSPITAL-BILL",
+        "true": "Healthcare",
+        "predicted": "Bills",
+        "tier": "B"
+      },
+      {
+        "description": "MedPlus",
+        "true": "Healthcare",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "Lab blood test",
+        "true": "Healthcare",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "Practo consult",
+        "true": "Healthcare",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "Physiotherapy session",
+        "true": "Healthcare",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "1mg medicines",
+        "true": "Healthcare",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "PG accommodation charges",
+        "true": "Rent",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "NoBroker payment",
+        "true": "Rent",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "Hostel room charges",
+        "true": "Rent",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "Paying guest fee",
+        "true": "Rent",
+        "predicted": "Education",
+        "tier": "C"
+      },
+      {
+        "description": "Room rental advance",
+        "true": "Rent",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "Lease payment",
+        "true": "Rent",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "Goibibo",
+        "true": "Travel",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "Airbnb stay",
+        "true": "Travel",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "Visa fee",
+        "true": "Travel",
+        "predicted": "Education",
+        "tier": "C"
+      },
+      {
+        "description": "Cleartrip",
+        "true": "Travel",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "Thomas Cook tour",
+        "true": "Travel",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "Zerodha funds added",
+        "true": "Investments",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "PPF deposit",
+        "true": "Investments",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "Groww investment",
+        "true": "Investments",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "NPS contribution",
+        "true": "Investments",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "Sovereign gold bond",
+        "true": "Investments",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "Gold ETF units",
+        "true": "Investments",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "Payroll credit",
+        "true": "Salary",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "Stipend",
+        "true": "Salary",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "Consulting fee received",
+        "true": "Salary",
+        "predicted": "Education",
+        "tier": "C"
+      },
+      {
+        "description": "Bonus credited",
+        "true": "Salary",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "Wages transfer",
+        "true": "Salary",
+        "predicted": "Transport",
+        "tier": "C"
+      },
+      {
+        "description": "Pay slip credit",
+        "true": "Salary",
+        "predicted": "Transport",
+        "tier": "C"
+      }
+    ],
+    "never_predicts_other": true,
+    "sklearn_version": "1.9.1"
+  },
+  "forecast": {
+    "demo_backtest": {
+      "months": [
+        "2026-05",
+        "2026-06",
+        "2026-07",
+        "2026-08",
+        "2026-09",
+        "2026-10"
+      ],
+      "actual": [
+        26579.0,
+        26878.0,
+        28384.0,
+        36118.0,
+        43579.0,
+        30080.0
+      ],
+      "steps": [
+        {
+          "predict_month": "2026-08",
+          "actual": 36118.0,
+          "linear_trend (app)": 29085.33,
+          "mean_of_all": 27280.33,
+          "mean_of_last_3": 27280.33,
+          "last_value": 28384.0
+        },
+        {
+          "predict_month": "2026-09",
+          "actual": 43579.0,
+          "linear_trend (app)": 37020.5,
+          "mean_of_all": 29489.75,
+          "mean_of_last_3": 30460.0,
+          "last_value": 36118.0
+        },
+        {
+          "predict_month": "2026-10",
+          "actual": 30080.0,
+          "linear_trend (app)": 45279.6,
+          "mean_of_all": 32307.6,
+          "mean_of_last_3": 36027.0,
+          "last_value": 43579.0
+        }
+      ],
+      "mae": {
+        "linear_trend (app)": 9596.9,
+        "mean_of_all": 8384.8,
+        "mean_of_last_3": 9301.2,
+        "last_value": 9564.7
+      },
+      "mape_pct": {
+        "linear_trend (app)": 28.4,
+        "mean_of_all": 21.4,
+        "mean_of_last_3": 24.8,
+        "last_value": 27.8
+      },
+      "app_prediction_for_next_month": {
+        "available": true,
+        "predicted_next_month_expense": 39470.53,
+        "recent_average": 36592.33,
+        "trend": "increasing",
+        "months_used": 6
+      },
+      "category_prediction": {
+        "available": true,
+        "predictions": {
+          "Bills": 1953.33,
+          "Entertainment": 1201.27,
+          "Food": 2666.27,
+          "Healthcare": 728.8,
+          "Investments": 7000.0,
+          "Rent": 18000.0,
+          "Shopping": 3313.67,
+          "Transport": 640.53,
+          "Travel": 3966.67
+        },
+        "months_used": 6
+      },
+      "demo_transactions": 68
+    },
+    "sim_users_per_setting": 2000,
+    "sim_mape_by_noise_pct": [
+      {
+        "noise_ratio": 0.05,
+        "linear_trend (app)": 13.99,
+        "mean_of_all": 16.77,
+        "mean_of_last_3": 13.11,
+        "last_value": 13.19
+      },
+      {
+        "noise_ratio": 0.1,
+        "linear_trend (app)": 18.62,
+        "mean_of_all": 20.72,
+        "mean_of_last_3": 17.07,
+        "last_value": 18.84
+      },
+      {
+        "noise_ratio": 0.2,
+        "linear_trend (app)": 30.84,
+        "mean_of_all": 31.06,
+        "mean_of_last_3": 28.23,
+        "last_value": 32.44
+      },
+      {
+        "noise_ratio": 0.3,
+        "linear_trend (app)": 53.99,
+        "mean_of_all": 54.26,
+        "mean_of_last_3": 51.11,
+        "last_value": 56.11
+      }
+    ],
+    "sim_mape_by_history_pct_noise_0.10": [
+      {
+        "history_months": 3,
+        "linear_trend (app)": 22.54,
+        "mean_of_all": 14.88,
+        "mean_of_last_3": 14.88,
+        "last_value": 17.1
+      },
+      {
+        "history_months": 4,
+        "linear_trend (app)": 20.81,
+        "mean_of_all": 15.89,
+        "mean_of_last_3": 15.97,
+        "last_value": 18.13
+      },
+      {
+        "history_months": 5,
+        "linear_trend (app)": 18.84,
+        "mean_of_all": 15.34,
+        "mean_of_last_3": 15.16,
+        "last_value": 17.68
+      },
+      {
+        "history_months": 6,
+        "linear_trend (app)": 17.59,
+        "mean_of_all": 16.56,
+        "mean_of_last_3": 15.72,
+        "last_value": 17.34
+      },
+      {
+        "history_months": 7,
+        "linear_trend (app)": 16.89,
+        "mean_of_all": 17.77,
+        "mean_of_last_3": 15.81,
+        "last_value": 18.03
+      },
+      {
+        "history_months": 8,
+        "linear_trend (app)": 17.8,
+        "mean_of_all": 20.42,
+        "mean_of_last_3": 17.65,
+        "last_value": 19.1
+      },
+      {
+        "history_months": 9,
+        "linear_trend (app)": 17.76,
+        "mean_of_all": 23.95,
+        "mean_of_last_3": 18.61,
+        "last_value": 20.15
+      },
+      {
+        "history_months": 10,
+        "linear_trend (app)": 17.87,
+        "mean_of_all": 27.98,
+        "mean_of_last_3": 19.66,
+        "last_value": 20.9
+      },
+      {
+        "history_months": 11,
+        "linear_trend (app)": 17.52,
+        "mean_of_all": 33.65,
+        "mean_of_last_3": 20.17,
+        "last_value": 21.16
+      }
+    ],
+    "min_months_required": 3,
+    "trend_labels": {
+      "increasing": "slope > 1",
+      "decreasing": "slope < -1"
+    }
+  },
+  "health": {
+    "weights": {
+      "savings_rate": 0.3,
+      "expense_ratio": 0.2,
+      "budget_adherence": 0.15,
+      "emergency_fund": 0.15,
+      "investment_diversification": 0.1,
+      "goal_progress": 0.1
+    },
+    "weights_sum": 1.0,
+    "baseline_profile_score": 80.7,
+    "baseline_components": {
+      "savings_rate": 100.0,
+      "expense_ratio": 100.0,
+      "budget_adherence": 100.0,
+      "emergency_fund": 51.3,
+      "investment_diversification": 40.0,
+      "goal_progress": 40.0
+    },
+    "sweeps": {
+      "savings_rate": [
+        [
+          -10,
+          50.7
+        ],
+        [
+          0,
+          50.7
+        ],
+        [
+          5,
+          58.2
+        ],
+        [
+          10,
+          65.7
+        ],
+        [
+          15,
+          73.2
+        ],
+        [
+          20,
+          80.7
+        ],
+        [
+          30,
+          80.7
+        ]
+      ],
+      "monthly_expenses": [
+        [
+          20000,
+          85.5
+        ],
+        [
+          32500,
+          80.7
+        ],
+        [
+          45000,
+          70.9
+        ],
+        [
+          55000,
+          63.7
+        ],
+        [
+          65000,
+          56.8
+        ],
+        [
+          75000,
+          56.3
+        ]
+      ],
+      "total_balance": [
+        [
+          0,
+          73.0
+        ],
+        [
+          50000,
+          76.8
+        ],
+        [
+          100000,
+          80.7
+        ],
+        [
+          195000,
+          88.0
+        ],
+        [
+          390000,
+          88.0
+        ],
+        [
+          600000,
+          88.0
+        ]
+      ],
+      "goal_progress": [
+        [
+          0,
+          76.7
+        ],
+        [
+          25,
+          79.2
+        ],
+        [
+          50,
+          81.7
+        ],
+        [
+          75,
+          84.2
+        ],
+        [
+          100,
+          86.7
+        ]
+      ],
+      "asset_types": [
+        [
+          0,
+          76.7
+        ],
+        [
+          1,
+          78.7
+        ],
+        [
+          2,
+          80.7
+        ],
+        [
+          3,
+          82.7
+        ],
+        [
+          4,
+          84.7
+        ],
+        [
+          5,
+          86.7
+        ],
+        [
+          6,
+          86.7
+        ]
+      ]
+    },
+    "random_profiles": 5000,
+    "score_min": 8.7,
+    "score_max": 98.2,
+    "score_mean": 60.28,
+    "rating_counts": {
+      "Fair": 1083,
+      "Good": 1594,
+      "Critical": 1425,
+      "Excellent": 218,
+      "Needs Improvement": 680
+    },
+    "monotonic_violations_when_savings_rate_plus5": 0,
+    "demo_score": null
+  },
+  "assistant": {
+    "questions": 26,
+    "answerable": 20,
+    "not_answerable": 6,
+    "answerable_handled_by_analytics": 14,
+    "unanswerable_correctly_declined": 6,
+    "unanswerable_wrongly_answered": 0,
+    "numeric_check_food_truth": 17365.0,
+    "numeric_check_food_answer": "You've spent \u20b917,365.00 on Food across your recorded transactions.",
+    "numeric_check_top_category_truth": "Rent",
+    "numeric_check_top_answer": "Your biggest spending category is Rent at \u20b9108,000.00. Next highest: Food (\u20b917,365.00), Investments (\u20b915,000.00), Shopping (\u20b913,165.00).",
+    "detail": [
+      {
+        "question": "Where am I spending the most money?",
+        "answerable": true,
+        "source": "analytics",
+        "answer": "Your biggest spending category is Rent at \u20b9108,000.00. Next highest: Food (\u20b917,365.00), Investments (\u20b915,000.00), Shopping (\u20b913,165.00)."
+      },
+      {
+        "question": "Where is my spending going?",
+        "answerable": true,
+        "source": "analytics",
+        "answer": "Your biggest spending category is Rent at \u20b9108,000.00. Next highest: Food (\u20b917,365.00), Investments (\u20b915,000.00), Shopping (\u20b913,165.00)."
+      },
+      {
+        "question": "How much did I spend on Food?",
+        "answerable": true,
+        "source": "analytics",
+        "answer": "You've spent \u20b917,365.00 on Food across your recorded transactions."
+      },
+      {
+        "question": "how much did i spend on transport",
+        "answerable": true,
+        "source": "analytics",
+        "answer": "You've spent \u20b96,485.00 on Transport across your recorded transactions."
+      },
+      {
+        "question": "What did I spend on Entertainment?",
+        "answerable": true,
+        "source": "analytics",
+        "answer": "You've spent \u20b97,282.00 on Entertainment across your recorded transactions."
+      },
+      {
+        "question": "Can I save 5000 this month?",
+        "answerable": true,
+        "source": "analytics",
+        "answer": "Based on this month so far, your income minus expenses leaves you \u20b934,920.00, which comfortably covers a \u20b95,000.00 savings goal."
+      },
+      {
+        "question": "Can I save \u20b910000 this month?",
+        "answerable": true,
+        "source": "analytics",
+        "answer": "Based on this month so far, your income minus expenses leaves you \u20b934,920.00, which comfortably covers a \u20b910,000.00 savings goal."
+      },
+      {
+        "question": "How can I reduce my expenses?",
+        "answerable": true,
+        "source": "analytics",
+        "answer": "Your highest spending categories are:\n- Rent: \u20b9108,000.00\n- Food: \u20b917,365.00\n- Investments: \u20b915,000.00\n\nA common approach is trimming your top 1-2 categories by"
+      },
+      {
+        "question": "How do I reduce expenses?",
+        "answerable": true,
+        "source": "analytics",
+        "answer": "Your highest spending categories are:\n- Rent: \u20b9108,000.00\n- Food: \u20b917,365.00\n- Investments: \u20b915,000.00\n\nA common approach is trimming your top 1-2 categories by"
+      },
+      {
+        "question": "What is my financial health?",
+        "answerable": true,
+        "source": "analytics",
+        "answer": "Your financial health score is 90.4/100 (Excellent). You're managing your finances very effectively. The area most holding you back right now is goal progress, "
+      },
+      {
+        "question": "What's my health score?",
+        "answerable": true,
+        "source": "analytics",
+        "answer": "Your financial health score is 90.4/100 (Excellent). You're managing your finances very effectively. The area most holding you back right now is goal progress, "
+      },
+      {
+        "question": "Show my score",
+        "answerable": true,
+        "source": "analytics",
+        "answer": "Your financial health score is 90.4/100 (Excellent). You're managing your finances very effectively. The area most holding you back right now is goal progress, "
+      },
+      {
+        "question": "How much did I spend on groceries?",
+        "answerable": true,
+        "source": "fallback",
+        "answer": "I can answer questions like \"How much did I spend on Food?\", \"Where am I spending the most?\", \"Can I save \u20b95000 this month?\", \"How can I reduce my expenses?\", o"
+      },
+      {
+        "question": "What is my biggest expense?",
+        "answerable": true,
+        "source": "fallback",
+        "answer": "I can answer questions like \"How much did I spend on Food?\", \"Where am I spending the most?\", \"Can I save \u20b95000 this month?\", \"How can I reduce my expenses?\", o"
+      },
+      {
+        "question": "Am I overspending on shopping?",
+        "answerable": true,
+        "source": "analytics",
+        "answer": "You've spent \u20b913,165.00 on Shopping across your recorded transactions."
+      },
+      {
+        "question": "How much have I spent on Rent?",
+        "answerable": true,
+        "source": "analytics",
+        "answer": "You've spent \u20b9108,000.00 on Rent across your recorded transactions."
+      },
+      {
+        "question": "How much do I spend on eating out?",
+        "answerable": true,
+        "source": "fallback",
+        "answer": "I can answer questions like \"How much did I spend on Food?\", \"Where am I spending the most?\", \"Can I save \u20b95000 this month?\", \"How can I reduce my expenses?\", o"
+      },
+      {
+        "question": "What was my largest purchase this month?",
+        "answerable": true,
+        "source": "fallback",
+        "answer": "I can answer questions like \"How much did I spend on Food?\", \"Where am I spending the most?\", \"Can I save \u20b95000 this month?\", \"How can I reduce my expenses?\", o"
+      },
+      {
+        "question": "Will I run out of money this month?",
+        "answerable": true,
+        "source": "fallback",
+        "answer": "I can answer questions like \"How much did I spend on Food?\", \"Where am I spending the most?\", \"Can I save \u20b95000 this month?\", \"How can I reduce my expenses?\", o"
+      },
+      {
+        "question": "Which category should I cut first?",
+        "answerable": true,
+        "source": "fallback",
+        "answer": "I can answer questions like \"How much did I spend on Food?\", \"Where am I spending the most?\", \"Can I save \u20b95000 this month?\", \"How can I reduce my expenses?\", o"
+      },
+      {
+        "question": "Tell me a joke",
+        "answerable": false,
+        "source": "fallback",
+        "answer": "I can answer questions like \"How much did I spend on Food?\", \"Where am I spending the most?\", \"Can I save \u20b95000 this month?\", \"How can I reduce my expenses?\", o"
+      },
+      {
+        "question": "What is the weather in Hyderabad today?",
+        "answerable": false,
+        "source": "fallback",
+        "answer": "I can answer questions like \"How much did I spend on Food?\", \"Where am I spending the most?\", \"Can I save \u20b95000 this month?\", \"How can I reduce my expenses?\", o"
+      },
+      {
+        "question": "Who won the cricket match?",
+        "answerable": false,
+        "source": "fallback",
+        "answer": "I can answer questions like \"How much did I spend on Food?\", \"Where am I spending the most?\", \"Can I save \u20b95000 this month?\", \"How can I reduce my expenses?\", o"
+      },
+      {
+        "question": "What is the capital of France?",
+        "answerable": false,
+        "source": "fallback",
+        "answer": "I can answer questions like \"How much did I spend on Food?\", \"Where am I spending the most?\", \"Can I save \u20b95000 this month?\", \"How can I reduce my expenses?\", o"
+      },
+      {
+        "question": "Translate hello to Telugu",
+        "answerable": false,
+        "source": "fallback",
+        "answer": "I can answer questions like \"How much did I spend on Food?\", \"Where am I spending the most?\", \"Can I save \u20b95000 this month?\", \"How can I reduce my expenses?\", o"
+      },
+      {
+        "question": "Write a poem about money",
+        "answerable": false,
+        "source": "fallback",
+        "answer": "I can answer questions like \"How much did I spend on Food?\", \"Where am I spending the most?\", \"Can I save \u20b95000 this month?\", \"How can I reduce my expenses?\", o"
+      }
+    ],
+    "llm_layer_tested": false
+  },
+  "import": {
+    "rows_in_file": 1000,
+    "injected_bad_rows": {
+      "bad_date": 28,
+      "negative_amount": 17,
+      "blank_description": 23,
+      "non_numeric_amount": 16
+    },
+    "injected_bad_total": 84,
+    "rows_skipped": 84,
+    "rows_imported": 916,
+    "clean_and_categorise_s": 6.6,
+    "commit_s": 26.04,
+    "rows_per_second_commit": 35.2,
+    "blank_category_rows_auto_labelled": 916
+  }
+}

@@ -1,0 +1,32 @@
+def trim(blocks, drop=(), drop_sections=(), replace=None, table_rows=None):
+    """Report-mode trimming helper (shared by the other chapter modules). drop: block-text prefixes to remove; drop_sections: heading
+    prefixes whose whole section is removed; replace: {prefix: block}; table_rows: {caption prefix: keep(row)}."""
+    replace = replace or {}
+    table_rows = table_rows or {}
+    out, skip_level = [], None
+    for b in blocks:
+        if b[0] in ("h1", "h2", "h3"):
+            lvl = int(b[0][1])
+            if skip_level is not None and lvl <= skip_level:
+                skip_level = None
+            if skip_level is None and any(b[1].startswith(x) for x in drop_sections):
+                skip_level = lvl
+        if skip_level is not None:
+            continue
+        v = b[1]
+        k = v[0] if isinstance(v, list) and v else (v if isinstance(v, str) else "")
+        if any(k.startswith(x) for x in drop):
+            continue
+        hit = next((x for x in replace if k.startswith(x)), None)
+        if hit:
+            if replace[hit] is not None:
+                out.append(replace[hit])
+            continue
+        if b[0] == "tab":
+            cap = next((x for x in table_rows if b[1].startswith(x)), None)
+            if cap:
+                b = ("tab", b[1], b[2], [r for r in b[3] if table_rows[cap](r)], b[4], b[5], b[6])
+        out.append(b)
+    return out
+
+

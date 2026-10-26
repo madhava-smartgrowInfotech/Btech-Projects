@@ -1,0 +1,226 @@
+{
+ "hashseed": "2",
+ "test_crop_hint": {
+  "n": 236,
+  "failed_share": 0.3220338983050847,
+  "accuracy_on_answered": 0.13125,
+  "accuracy": 0.08898305084745763,
+  "top3_accuracy": 0.3305084745762712,
+  "crop_accuracy": 0.6779661016949152,
+  "healthy_vs_diseased_accuracy": 0.3516949152542373,
+  "diseased_recall": 0.5,
+  "healthy_recall": 0.1111111111111111,
+  "predicted_healthy_share": 0.3516949152542373,
+  "macro_f1": 0.08616422551063073,
+  "ms_per_image_in_process": 62.97433771187108
+ },
+ "test_crop_hint_per_class": {
+  "Apple___Apple_scab": {
+   "precision": 0.5,
+   "recall": 0.1,
+   "f1": 0.16666666666666669,
+   "support": 10
+  },
+  "Apple___Cedar_apple_rust": {
+   "precision": 0.2857142857142857,
+   "recall": 0.2,
+   "f1": 0.23529411764705882,
+   "support": 10
+  },
+  "Apple___healthy": {
+   "precision": 0.25,
+   "recall": 0.4444444444444444,
+   "f1": 0.32,
+   "support": 9
+  },
+  "Blueberry___healthy": {
+   "precision": 0.0,
+   "recall": 0.0,
+   "f1": 0.0,
+   "support": 11
+  },
+  "Cherry_(including_sour)___healthy": {
+   "precision": 0.0,
+   "recall": 0.0,
+   "f1": 0.0,
+   "support": 10
+  },
+  "Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot": {
+   "precision": 0.0,
+   "recall": 0.0,
+   "f1": 0.0,
+   "support": 4
+  },
+  "Corn_(maize)___Common_rust_": {
+   "precision": 0.0,
+   "recall": 0.0,
+   "f1": 0.0,
+   "support": 10
+  },
+  "Corn_(maize)___Northern_Leaf_Blight": {
+   "precision": 0.0,
+   "recall": 0.0,
+   "f1": 0.0,
+   "support": 12
+  },
+  "Grape___Black_rot": {
+   "precision": 1.0,
+   "recall": 0.125,
+   "f1": 0.2222222222222222,
+   "support": 8
+  },
+  "Grape___healthy": {
+   "precision": 0.3,
+   "recall": 0.25,
+   "f1": 0.2727272727272727,
+   "support": 12
+  },
+  "Peach___healthy": {
+   "precision": 0.0,
+   "recall": 0.0,
+   "f1": 0.0,
+   "support": 9
+  },
+  "Pepper,_bell___Bacterial_spot": {
+   "precision": 0.0,
+   "recall": 0.0,
+   "f1": 0.0,
+   "support": 9
+  },
+  "Pepper,_bell___healthy": {
+   "precision": 0.0,
+   "recall": 0.0,
+   "f1": 0.0,
+   "support": 8
+  },
+  "Potato___Early_blight": {
+   "precision": 0.5714285714285714,
+   "recall": 0.5,
+   "f1": 0.5333333333333333,
+   "support": 8
+  },
+  "Potato___Late_blight": {
+   "precision": 0.0,
+   "recall": 0.0,
+   "f1": 0.0,
+   "support": 8
+  },
+  "Raspberry___healthy": {
+   "precision": 0.0,
+   "recall": 0.0,
+   "f1": 0.0,
+   "support": 7
+  },
+  "Soybean___healthy": {
+   "precision": 0.0,
+   "recall": 0.0,
+   "f1": 0.0,
+   "support": 8
+  },
+  "Squash___Powdery_mildew": {
+   "precision": 0.0,
+   "recall": 0.0,
+   "f1": 0.0,
+   "support": 6
+  },
+  "Strawberry___healthy": {
+   "precision": 0.0,
+   "recall": 0.0,
+   "f1": 0.0,
+   "support": 8
+  },
+  "Tomato___Bacterial_spot": {
+   "precision": 0.0,
+   "recall": 0.0,
+   "f1": 0.0,
+   "support": 9
+  },
+  "Tomato___Early_blight": {
+   "precision": 0.0,
+   "recall": 0.0,
+   "f1": 0.0,
+   "support": 9
+  },
+  "Tomato___Late_blight": {
+   "precision": 0.5,
+   "recall": 0.1,
+   "f1": 0.16666666666666669,
+   "support": 10
+  },
+  "Tomato___Leaf_Mold": {
+   "precision": 0.2222222222222222,
+   "recall": 0.3333333333333333,
+   "f1": 0.26666666666666666,
+   "support": 6
+  },
+  "Tomato___Septoria_leaf_spot": {
+   "precision": 0.0,
+   "recall": 0.0,
+   "f1": 0.0,
+   "support": 11
+  },
+  "Tomato___Tomato_Yellow_Leaf_Curl_Virus": {
+   "precision": 0.0,
+   "recall": 0.0,
+   "f1": 0.0,
+   "support": 6
+  },
+  "Tomato___Tomato_mosaic_virus": {
+   "precision": 0.0,
+   "recall": 0.0,
+   "f1": 0.0,
+   "support": 10
+  },
+  "Tomato___healthy": {
+   "precision": 0.08823529411764706,
+   "recall": 0.375,
+   "f1": 0.14285714285714285,
+   "support": 8
+  }
+ },
+ "test_general": {
+  "n": 236,
+  "failed_share": 0.0,
+  "accuracy_on_answered": 0.012711864406779662,
+  "accuracy": 0.012711864406779662,
+  "top3_accuracy": 0.0423728813559322,
+  "crop_accuracy": 0.13135593220338984,
+  "healthy_vs_diseased_accuracy": 0.3347457627118644,
+  "diseased_recall": 0.4178082191780822,
+  "healthy_recall": 0.2,
+  "predicted_healthy_share": 0.4364406779661017,
+  "macro_f1": 0.01349527665317139,
+  "ms_per_image_in_process": 57.944653389822015
+ },
+ "train_crop_hint": {
+  "n": 2342,
+  "failed_share": 0.3210930828351836,
+  "accuracy_on_answered": 0.13144654088050314,
+  "accuracy": 0.0892399658411614,
+  "top3_accuracy": 0.36976942783945344,
+  "crop_accuracy": 0.6789069171648164,
+  "healthy_vs_diseased_accuracy": 0.34628522630230574,
+  "diseased_recall": 0.4696586599241466,
+  "healthy_recall": 0.08947368421052632,
+  "predicted_healthy_share": 0.38727583262169085,
+  "macro_f1": 0.09637200443876119,
+  "ms_per_image_in_process": 64.13051567036929
+ },
+ "train_general": {
+  "n": 2342,
+  "failed_share": 0.0,
+  "accuracy_on_answered": 0.019214346712211786,
+  "accuracy": 0.019214346712211786,
+  "top3_accuracy": 0.060204953031596925,
+  "crop_accuracy": 0.11955593509820667,
+  "healthy_vs_diseased_accuracy": 0.374466268146883,
+  "diseased_recall": 0.37610619469026546,
+  "healthy_recall": 0.37105263157894736,
+  "predicted_healthy_share": 0.5418445772843723,
+  "macro_f1": 0.019472324682051873,
+  "ms_per_image_in_process": 56.09237288641968
+ },
+ "chance_with_crop_hint": 0.3600988700564971,
+ "chance_general": 0.02631578947368421,
+ "majority_class_test": 0.05084745762711865
+}

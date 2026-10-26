@@ -27,3 +27,11 @@ agrivision/models/*.pt
 
 # build and test scratch
 frontend/.vite/
+
+# documentation run: large experiment artefacts (re-create with scripts/run_experiments.py)
+experiments/plantdoc/cache224.npz
+experiments/plantdoc/*.keras
+experiments/plantdoc/*.npy
+scripts/_chain*.sh
+scripts/docs/.com.lock
+docs/pdf/

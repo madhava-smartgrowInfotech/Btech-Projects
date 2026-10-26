@@ -1,0 +1,275 @@
+{
+ "total": 51,
+ "PASS": 46,
+ "FAIL": 0,
+ "DEFECT": 5,
+ "by_group": {
+  "unit": {
+   "PASS": 19,
+   "FAIL": 0,
+   "DEFECT": 2
+  },
+  "api": {
+   "PASS": 27,
+   "FAIL": 0,
+   "DEFECT": 3
+  }
+ },
+ "rows": [
+  [
+   "unit",
+   "PASS",
+   "38 distinct canonical classes"
+  ],
+  [
+   "unit",
+   "PASS",
+   "get_disease_info echoes the class"
+  ],
+  [
+   "unit",
+   "PASS",
+   "unknown class falls back to Tomato healthy"
+  ],
+  [
+   "unit",
+   "PASS",
+   "every info card has all fields"
+  ],
+  [
+   "unit",
+   "PASS",
+   "healthy classes have severity none"
+  ],
+  [
+   "unit",
+   "PASS",
+   "diseased classes are not flagged healthy"
+  ],
+  [
+   "unit",
+   "PASS",
+   "urgent flag equals severity high"
+  ],
+  [
+   "unit",
+   "PASS",
+   "every PlantDoc label maps to a canonical class"
+  ],
+  [
+   "unit",
+   "PASS",
+   "PlantDoc map is one-to-one (28 labels)"
+  ],
+  [
+   "unit",
+   "PASS",
+   "every crop option has at least one candidate class"
+  ],
+  [
+   "unit",
+   "PASS",
+   "general / empty hint keeps all 38 classes"
+  ],
+  [
+   "unit",
+   "PASS",
+   "crop hint is case/space tolerant (tomato = 10 classes)"
+  ],
+  [
+   "unit",
+   "PASS",
+   "maize and corn give the same candidates"
+  ],
+  [
+   "unit",
+   "PASS",
+   "same image and same process give identical output"
+  ],
+  [
+   "unit",
+   "DEFECT",
+   "top-3 scores sum to at most 100% (92% of 59 test photos sum above 102%, max 112%)"
+  ],
+  [
+   "unit",
+   "PASS",
+   "confidence floor of the heuristic is 0.62 (it never reports low confidence)"
+  ],
+  [
+   "unit",
+   "PASS",
+   "plain green image is called healthy with confidence above 0.9"
+  ],
+  [
+   "unit",
+   "PASS",
+   "12 MP image is analysed in under 5 s"
+  ],
+  [
+   "unit",
+   "PASS",
+   "RGBA PNG is accepted"
+  ],
+  [
+   "unit",
+   "PASS",
+   "garbage bytes raise an exception (caught by the API)"
+  ],
+  [
+   "unit",
+   "DEFECT",
+   "crop options with fewer than 3 candidate classes work (10 of 19 options raise IndexError)"
+  ],
+  [
+   "api",
+   "PASS",
+   "token with a forged signature is rejected"
+  ],
+  [
+   "api",
+   "PASS",
+   "malformed token is rejected"
+  ],
+  [
+   "api",
+   "PASS",
+   "non-bearer Authorization header is rejected"
+  ],
+  [
+   "api",
+   "PASS",
+   "expired token is rejected"
+  ],
+  [
+   "api",
+   "DEFECT",
+   "token signed with the default development secret is refused (it is accepted: set AGRIVISION_SECRET in production)"
+  ],
+  [
+   "api",
+   "PASS",
+   "upper-case extension .JPG is accepted"
+  ],
+  [
+   "api",
+   "PASS",
+   ".webp extension is accepted"
+  ],
+  [
+   "api",
+   "PASS",
+   "empty file is rejected with 400"
+  ],
+  [
+   "api",
+   "PASS",
+   "file without extension is rejected"
+  ],
+  [
+   "api",
+   "PASS",
+   "11 MB upload is refused with 413"
+  ],
+  [
+   "api",
+   "PASS",
+   "path in the file name does not escape the upload folder"
+  ],
+  [
+   "api",
+   "PASS",
+   "SQL text in crop_type is stored as data (results table still works)"
+  ],
+  [
+   "api",
+   "PASS",
+   "unknown crop option falls back to all classes"
+  ],
+  [
+   "api",
+   "DEFECT",
+   "crop = blueberry works (API answers 400 UNREADABLE_IMAGE for a valid leaf photo)"
+  ],
+  [
+   "api",
+   "PASS",
+   "SQL text in the search box matches nothing"
+  ],
+  [
+   "api",
+   "PASS",
+   "limit=0 is a validation error (422)"
+  ],
+  [
+   "api",
+   "PASS",
+   "limit=101 is a validation error (422)"
+  ],
+  [
+   "api",
+   "PASS",
+   "negative offset is a validation error (422)"
+  ],
+  [
+   "api",
+   "PASS",
+   "path traversal in /uploads/ gives 404"
+  ],
+  [
+   "api",
+   "PASS",
+   "missing upload gives 404"
+  ],
+  [
+   "api",
+   "PASS",
+   "uploaded images are served without a token (the random file name is the capability)"
+  ],
+  [
+   "api",
+   "PASS",
+   "CORS allows the local web origin"
+  ],
+  [
+   "api",
+   "PASS",
+   "CORS does not allow a foreign origin"
+  ],
+  [
+   "api",
+   "PASS",
+   "profile accepts Marathi and empty crop list"
+  ],
+  [
+   "api",
+   "PASS",
+   "empty crop list falls back to tomato"
+  ],
+  [
+   "api",
+   "PASS",
+   "login with no body is 401"
+  ],
+  [
+   "api",
+   "PASS",
+   "register with no body is 400"
+  ],
+  [
+   "api",
+   "PASS",
+   "disease detail also resolves by display name"
+  ],
+  [
+   "api",
+   "DEFECT",
+   "repeated wrong passwords are throttled (there is no rate limiting: 8 attempts in 2.8 s all answered)"
+  ],
+  [
+   "api",
+   "PASS",
+   "passwords are stored as salted hashes"
+  ]
+ ]
+}

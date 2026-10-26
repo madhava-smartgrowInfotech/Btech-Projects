@@ -1,0 +1,15 @@
+{
+ "crops_that_crash": [
+  "blueberry",
+  "cherry",
+  "orange",
+  "citrus",
+  "peach",
+  "pepper",
+  "raspberry",
+  "soybean",
+  "squash",
+  "strawberry"
+ ],
+ "n_crop_options": 19
+}

@@ -1,0 +1,227 @@
+=== mobilenet --seed 42 16:52:50
+Epoch 1/20
+66/66 - 27s - 405ms/step - accuracy: 0.1760 - loss: 2.9692 - val_accuracy: 0.3889 - val_loss: 2.1729
+Epoch 2/20
+66/66 - 24s - 359ms/step - accuracy: 0.3904 - loss: 2.0286 - val_accuracy: 0.4316 - val_loss: 1.8525
+Epoch 3/20
+66/66 - 23s - 356ms/step - accuracy: 0.4682 - loss: 1.7417 - val_accuracy: 0.4744 - val_loss: 1.7299
+Epoch 4/20
+66/66 - 23s - 354ms/step - accuracy: 0.5380 - loss: 1.5264 - val_accuracy: 0.4829 - val_loss: 1.6493
+Epoch 5/20
+66/66 - 23s - 342ms/step - accuracy: 0.5683 - loss: 1.4090 - val_accuracy: 0.5342 - val_loss: 1.6045
+Epoch 6/20
+66/66 - 23s - 348ms/step - accuracy: 0.5835 - loss: 1.3177 - val_accuracy: 0.5427 - val_loss: 1.5879
+Epoch 7/20
+66/66 - 23s - 342ms/step - accuracy: 0.6210 - loss: 1.2274 - val_accuracy: 0.5556 - val_loss: 1.5620
+Epoch 8/20
+66/66 - 23s - 348ms/step - accuracy: 0.6385 - loss: 1.1667 - val_accuracy: 0.5598 - val_loss: 1.5659
+Epoch 9/20
+66/66 - 23s - 352ms/step - accuracy: 0.6366 - loss: 1.1138 - val_accuracy: 0.5427 - val_loss: 1.5570
+Epoch 10/20
+66/66 - 23s - 345ms/step - accuracy: 0.6698 - loss: 1.0489 - val_accuracy: 0.5556 - val_loss: 1.5637
+Epoch 11/20
+66/66 - 23s - 342ms/step - accuracy: 0.6817 - loss: 0.9974 - val_accuracy: 0.5556 - val_loss: 1.5647
+Epoch 12/20
+66/66 - 22s - 337ms/step - accuracy: 0.6855 - loss: 0.9989 - val_accuracy: 0.5256 - val_loss: 1.5634
+Epoch 1/12
+66/66 - 33s - 498ms/step - accuracy: 0.5365 - loss: 1.5138 - val_accuracy: 0.5299 - val_loss: 1.6755
+Epoch 2/12
+66/66 - 27s - 405ms/step - accuracy: 0.6879 - loss: 1.0181 - val_accuracy: 0.5299 - val_loss: 1.6320
+Epoch 3/12
+66/66 - 32s - 481ms/step - accuracy: 0.7595 - loss: 0.7952 - val_accuracy: 0.5299 - val_loss: 1.5535
+Epoch 4/12
+66/66 - 29s - 445ms/step - accuracy: 0.8112 - loss: 0.6302 - val_accuracy: 0.5556 - val_loss: 1.5335
+Epoch 5/12
+66/66 - 27s - 414ms/step - accuracy: 0.8544 - loss: 0.5088 - val_accuracy: 0.5513 - val_loss: 1.5318
+Epoch 6/12
+66/66 - 26s - 398ms/step - accuracy: 0.8786 - loss: 0.4297 - val_accuracy: 0.5385 - val_loss: 1.5502
+Epoch 7/12
+66/66 - 26s - 394ms/step - accuracy: 0.9042 - loss: 0.3392 - val_accuracy: 0.5641 - val_loss: 1.5575
+Epoch 8/12
+66/66 - 26s - 393ms/step - accuracy: 0.9255 - loss: 0.2905 - val_accuracy: 0.5641 - val_loss: 1.5878
+Epoch 9/12
+66/66 - 26s - 394ms/step - accuracy: 0.9445 - loss: 0.2236 - val_accuracy: 0.5598 - val_loss: 1.5987
+Epoch 10/12
+66/66 - 26s - 392ms/step - accuracy: 0.9559 - loss: 0.1984 - val_accuracy: 0.5897 - val_loss: 1.5316
+Epoch 11/12
+66/66 - 26s - 401ms/step - accuracy: 0.9602 - loss: 0.1775 - val_accuracy: 0.5726 - val_loss: 1.5702
+Epoch 12/12
+66/66 - 26s - 393ms/step - accuracy: 0.9644 - loss: 0.1554 - val_accuracy: 0.5897 - val_loss: 1.5464
+mobilenet seed 42 head acc 0.5042 -> fine-tuned acc 0.5127 macroF1 0.5035 top3 0.8136 614s
+=== mobilenet --seed 43 17:03:17
+Epoch 1/20
+66/66 - 25s - 378ms/step - accuracy: 0.1940 - loss: 2.9222 - val_accuracy: 0.3718 - val_loss: 2.1854
+Epoch 2/20
+66/66 - 24s - 358ms/step - accuracy: 0.4032 - loss: 2.0140 - val_accuracy: 0.4487 - val_loss: 1.8783
+Epoch 3/20
+66/66 - 22s - 334ms/step - accuracy: 0.4768 - loss: 1.7140 - val_accuracy: 0.5043 - val_loss: 1.7354
+Epoch 4/20
+66/66 - 22s - 330ms/step - accuracy: 0.5313 - loss: 1.5382 - val_accuracy: 0.5000 - val_loss: 1.6837
+Epoch 5/20
+66/66 - 22s - 338ms/step - accuracy: 0.5693 - loss: 1.3896 - val_accuracy: 0.5128 - val_loss: 1.6493
+Epoch 6/20
+66/66 - 22s - 337ms/step - accuracy: 0.5958 - loss: 1.3009 - val_accuracy: 0.5256 - val_loss: 1.6149
+Epoch 7/20
+66/66 - 23s - 348ms/step - accuracy: 0.6191 - loss: 1.2321 - val_accuracy: 0.5427 - val_loss: 1.6034
+Epoch 8/20
+66/66 - 22s - 338ms/step - accuracy: 0.6224 - loss: 1.1869 - val_accuracy: 0.5256 - val_loss: 1.6127
+Epoch 9/20
+66/66 - 22s - 340ms/step - accuracy: 0.6442 - loss: 1.1257 - val_accuracy: 0.5427 - val_loss: 1.5830
+Epoch 10/20
+66/66 - 23s - 347ms/step - accuracy: 0.6637 - loss: 1.0763 - val_accuracy: 0.5385 - val_loss: 1.5798
+Epoch 11/20
+66/66 - 24s - 359ms/step - accuracy: 0.6722 - loss: 1.0318 - val_accuracy: 0.5342 - val_loss: 1.6115
+Epoch 1/12
+66/66 - 47s - 716ms/step - accuracy: 0.5081 - loss: 1.5877 - val_accuracy: 0.5171 - val_loss: 1.6125
+Epoch 2/12
+66/66 - 40s - 605ms/step - accuracy: 0.6646 - loss: 1.0715 - val_accuracy: 0.5128 - val_loss: 1.5766
+Epoch 3/12
+66/66 - 51s - 772ms/step - accuracy: 0.7410 - loss: 0.8303 - val_accuracy: 0.5085 - val_loss: 1.5493
+Epoch 4/12
+66/66 - 47s - 710ms/step - accuracy: 0.8121 - loss: 0.6596 - val_accuracy: 0.5342 - val_loss: 1.5001
+Epoch 5/12
+66/66 - 82s - 1s/step - accuracy: 0.8411 - loss: 0.5358 - val_accuracy: 0.5385 - val_loss: 1.4850
+Epoch 6/12
+66/66 - 73s - 1s/step - accuracy: 0.8800 - loss: 0.4443 - val_accuracy: 0.5299 - val_loss: 1.4919
+Epoch 7/12
+66/66 - 63s - 949ms/step - accuracy: 0.9018 - loss: 0.3568 - val_accuracy: 0.5128 - val_loss: 1.4631
+Epoch 8/12
+66/66 - 76s - 1s/step - accuracy: 0.9227 - loss: 0.2877 - val_accuracy: 0.5171 - val_loss: 1.4689
+mobilenet seed 43 head acc 0.4703 -> fine-tuned acc 0.4915 macroF1 0.4802 top3 0.7797 762s
+=== mobilenet --seed 44 17:16:20
+Epoch 1/20
+66/66 - 45s - 687ms/step - accuracy: 0.1874 - loss: 2.9495 - val_accuracy: 0.3462 - val_loss: 2.1735
+Epoch 2/20
+66/66 - 29s - 434ms/step - accuracy: 0.3918 - loss: 2.0219 - val_accuracy: 0.4444 - val_loss: 1.8734
+Epoch 3/20
+66/66 - 26s - 400ms/step - accuracy: 0.4753 - loss: 1.7027 - val_accuracy: 0.4744 - val_loss: 1.7316
+Epoch 4/20
+66/66 - 25s - 382ms/step - accuracy: 0.5313 - loss: 1.4937 - val_accuracy: 0.5214 - val_loss: 1.6682
+Epoch 5/20
+66/66 - 26s - 387ms/step - accuracy: 0.5522 - loss: 1.4119 - val_accuracy: 0.5342 - val_loss: 1.6093
+Epoch 6/20
+66/66 - 27s - 402ms/step - accuracy: 0.5996 - loss: 1.2899 - val_accuracy: 0.5470 - val_loss: 1.5864
+Epoch 7/20
+66/66 - 40s - 599ms/step - accuracy: 0.6181 - loss: 1.2128 - val_accuracy: 0.5427 - val_loss: 1.5576
+Epoch 8/20
+66/66 - 25s - 383ms/step - accuracy: 0.6423 - loss: 1.1336 - val_accuracy: 0.5427 - val_loss: 1.5377
+Epoch 9/20
+66/66 - 26s - 401ms/step - accuracy: 0.6461 - loss: 1.1029 - val_accuracy: 0.5427 - val_loss: 1.5364
+Epoch 10/20
+66/66 - 28s - 417ms/step - accuracy: 0.6755 - loss: 1.0456 - val_accuracy: 0.5513 - val_loss: 1.5267
+Epoch 11/20
+66/66 - 27s - 403ms/step - accuracy: 0.6741 - loss: 1.0286 - val_accuracy: 0.5256 - val_loss: 1.5406
+Epoch 12/20
+66/66 - 27s - 404ms/step - accuracy: 0.6978 - loss: 0.9808 - val_accuracy: 0.5556 - val_loss: 1.5040
+Epoch 13/20
+66/66 - 26s - 395ms/step - accuracy: 0.6988 - loss: 0.9357 - val_accuracy: 0.5470 - val_loss: 1.5084
+Epoch 14/20
+66/66 - 29s - 434ms/step - accuracy: 0.7187 - loss: 0.9234 - val_accuracy: 0.5470 - val_loss: 1.4922
+Epoch 15/20
+66/66 - 27s - 417ms/step - accuracy: 0.7007 - loss: 0.9325 - val_accuracy: 0.5556 - val_loss: 1.5097
+Epoch 16/20
+66/66 - 27s - 414ms/step - accuracy: 0.7230 - loss: 0.8770 - val_accuracy: 0.5598 - val_loss: 1.5386
+Epoch 17/20
+66/66 - 28s - 419ms/step - accuracy: 0.7211 - loss: 0.8579 - val_accuracy: 0.5513 - val_loss: 1.5140
+Epoch 18/20
+66/66 - 28s - 424ms/step - accuracy: 0.7315 - loss: 0.8423 - val_accuracy: 0.5427 - val_loss: 1.5362
+Epoch 19/20
+66/66 - 29s - 435ms/step - accuracy: 0.7358 - loss: 0.8184 - val_accuracy: 0.5556 - val_loss: 1.5335
+Epoch 20/20
+66/66 - 29s - 434ms/step - accuracy: 0.7486 - loss: 0.7913 - val_accuracy: 0.5684 - val_loss: 1.5173
+Epoch 1/12
+66/66 - 42s - 632ms/step - accuracy: 0.5735 - loss: 1.3670 - val_accuracy: 0.5342 - val_loss: 1.6951
+Epoch 2/12
+66/66 - 33s - 506ms/step - accuracy: 0.7092 - loss: 0.8865 - val_accuracy: 0.5342 - val_loss: 1.6459
+Epoch 3/12
+66/66 - 34s - 512ms/step - accuracy: 0.7970 - loss: 0.6586 - val_accuracy: 0.5385 - val_loss: 1.6379
+Epoch 4/12
+66/66 - 34s - 512ms/step - accuracy: 0.8273 - loss: 0.5501 - val_accuracy: 0.5214 - val_loss: 1.7377
+Epoch 5/12
+66/66 - 34s - 521ms/step - accuracy: 0.8809 - loss: 0.3942 - val_accuracy: 0.5342 - val_loss: 1.7305
+Epoch 6/12
+66/66 - 36s - 538ms/step - accuracy: 0.8923 - loss: 0.3456 - val_accuracy: 0.5342 - val_loss: 1.7383
+mobilenet seed 44 head acc 0.4873 -> fine-tuned acc 0.5042 macroF1 0.4856 top3 0.8008 792s
+=== cnn --seed 42 --tag tuned --no-lr-decay --epochs 100 --patience 20 17:30:59
+Epoch 1/100
+66/66 - 22s - 328ms/step - accuracy: 0.0693 - loss: 3.5280 - val_accuracy: 0.0513 - val_loss: 3.3238
+Epoch 2/100
+66/66 - 17s - 259ms/step - accuracy: 0.0991 - loss: 3.2176 - val_accuracy: 0.0299 - val_loss: 3.3130
+Epoch 3/100
+66/66 - 17s - 260ms/step - accuracy: 0.1148 - loss: 3.1090 - val_accuracy: 0.0299 - val_loss: 3.3237
+Epoch 4/100
+66/66 - 17s - 259ms/step - accuracy: 0.1281 - loss: 3.0253 - val_accuracy: 0.0299 - val_loss: 3.4085
+Epoch 5/100
+66/66 - 17s - 262ms/step - accuracy: 0.1466 - loss: 2.9790 - val_accuracy: 0.0299 - val_loss: 3.6335
+Epoch 6/100
+66/66 - 18s - 266ms/step - accuracy: 0.1513 - loss: 2.9087 - val_accuracy: 0.0299 - val_loss: 3.8312
+Epoch 7/100
+66/66 - 17s - 254ms/step - accuracy: 0.1798 - loss: 2.8589 - val_accuracy: 0.0598 - val_loss: 3.6794
+Epoch 8/100
+66/66 - 17s - 260ms/step - accuracy: 0.1864 - loss: 2.7949 - val_accuracy: 0.0513 - val_loss: 3.5334
+Epoch 9/100
+66/66 - 17s - 257ms/step - accuracy: 0.1898 - loss: 2.7566 - val_accuracy: 0.0897 - val_loss: 3.7873
+Epoch 10/100
+66/66 - 17s - 262ms/step - accuracy: 0.2097 - loss: 2.7318 - val_accuracy: 0.0812 - val_loss: 3.7589
+Epoch 11/100
+66/66 - 17s - 261ms/step - accuracy: 0.2234 - loss: 2.6568 - val_accuracy: 0.1496 - val_loss: 3.2500
+Epoch 12/100
+66/66 - 17s - 255ms/step - accuracy: 0.2215 - loss: 2.6387 - val_accuracy: 0.1282 - val_loss: 3.4516
+Epoch 13/100
+66/66 - 17s - 251ms/step - accuracy: 0.2524 - loss: 2.5563 - val_accuracy: 0.1538 - val_loss: 3.4899
+Epoch 14/100
+66/66 - 16s - 241ms/step - accuracy: 0.2329 - loss: 2.5307 - val_accuracy: 0.1325 - val_loss: 3.4550
+Epoch 15/100
+66/66 - 16s - 240ms/step - accuracy: 0.2638 - loss: 2.4795 - val_accuracy: 0.1453 - val_loss: 3.2129
+Epoch 16/100
+66/66 - 17s - 261ms/step - accuracy: 0.2609 - loss: 2.4565 - val_accuracy: 0.1325 - val_loss: 3.8218
+Epoch 17/100
+66/66 - 22s - 328ms/step - accuracy: 0.2842 - loss: 2.4221 - val_accuracy: 0.1068 - val_loss: 4.1708
+Epoch 18/100
+66/66 - 19s - 294ms/step - accuracy: 0.2932 - loss: 2.3663 - val_accuracy: 0.1538 - val_loss: 3.2209
+Epoch 19/100
+66/66 - 19s - 281ms/step - accuracy: 0.3027 - loss: 2.3160 - val_accuracy: 0.1966 - val_loss: 2.9100
+Epoch 20/100
+66/66 - 17s - 260ms/step - accuracy: 0.3050 - loss: 2.2925 - val_accuracy: 0.0983 - val_loss: 4.0872
+Epoch 21/100
+66/66 - 19s - 288ms/step - accuracy: 0.3292 - loss: 2.2667 - val_accuracy: 0.1239 - val_loss: 3.8788
+Epoch 22/100
+66/66 - 15s - 234ms/step - accuracy: 0.3188 - loss: 2.1981 - val_accuracy: 0.0983 - val_loss: 4.4588
+Epoch 23/100
+66/66 - 16s - 238ms/step - accuracy: 0.3425 - loss: 2.1696 - val_accuracy: 0.0897 - val_loss: 4.3384
+Epoch 24/100
+66/66 - 16s - 248ms/step - accuracy: 0.3491 - loss: 2.1348 - val_accuracy: 0.1239 - val_loss: 3.9699
+Epoch 25/100
+66/66 - 16s - 245ms/step - accuracy: 0.3534 - loss: 2.1063 - val_accuracy: 0.1026 - val_loss: 4.7086
+Epoch 26/100
+66/66 - 15s - 233ms/step - accuracy: 0.3757 - loss: 2.0651 - val_accuracy: 0.1453 - val_loss: 4.4477
+Epoch 27/100
+66/66 - 16s - 239ms/step - accuracy: 0.3800 - loss: 2.0190 - val_accuracy: 0.1197 - val_loss: 4.3900
+Epoch 28/100
+66/66 - 15s - 233ms/step - accuracy: 0.3876 - loss: 1.9832 - val_accuracy: 0.0726 - val_loss: 6.0616
+Epoch 29/100
+66/66 - 17s - 252ms/step - accuracy: 0.3876 - loss: 1.9730 - val_accuracy: 0.1282 - val_loss: 4.1382
+Epoch 30/100
+66/66 - 16s - 238ms/step - accuracy: 0.4108 - loss: 1.8865 - val_accuracy: 0.1154 - val_loss: 4.5021
+Epoch 31/100
+66/66 - 16s - 240ms/step - accuracy: 0.4175 - loss: 1.8737 - val_accuracy: 0.1068 - val_loss: 4.5845
+Epoch 32/100
+66/66 - 16s - 240ms/step - accuracy: 0.4236 - loss: 1.8367 - val_accuracy: 0.0897 - val_loss: 4.8719
+Epoch 33/100
+66/66 - 16s - 237ms/step - accuracy: 0.4141 - loss: 1.8110 - val_accuracy: 0.1111 - val_loss: 4.6583
+Epoch 34/100
+66/66 - 15s - 230ms/step - accuracy: 0.4459 - loss: 1.7757 - val_accuracy: 0.0897 - val_loss: 4.7249
+Epoch 35/100
+66/66 - 16s - 237ms/step - accuracy: 0.4578 - loss: 1.7344 - val_accuracy: 0.1154 - val_loss: 4.7290
+Epoch 36/100
+66/66 - 15s - 229ms/step - accuracy: 0.4516 - loss: 1.7131 - val_accuracy: 0.1239 - val_loss: 4.2690
+Epoch 37/100
+66/66 - 15s - 233ms/step - accuracy: 0.4564 - loss: 1.6823 - val_accuracy: 0.1667 - val_loss: 3.5484
+Epoch 38/100
+66/66 - 16s - 248ms/step - accuracy: 0.4744 - loss: 1.6670 - val_accuracy: 0.1709 - val_loss: 3.2910
+Epoch 39/100
+66/66 - 16s - 242ms/step - accuracy: 0.4962 - loss: 1.5989 - val_accuracy: 0.1538 - val_loss: 3.4841
+cnn_tuned_seed42 test acc 0.1271 macroF1 0.0916 top3 0.2966 epochs 39 656s params 189655
+=== aggregate 17:42:15
+wrote D:\abstracts\Madhav\CSE\C\CSE-C-C16\8.ProjectCode\experiments\plantdoc\metrics.json ['heuristic', 'cnn', 'cnn_shipped_protocol', 'cnn_tuned', 'mobilenet', 'baseline', 'dataset']
+=== CHAIN DONE 17:42:15

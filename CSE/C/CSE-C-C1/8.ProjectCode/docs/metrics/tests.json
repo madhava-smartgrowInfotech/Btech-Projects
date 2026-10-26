@@ -1,0 +1,26 @@
+{
+ "pytest_total": 17,
+ "pytest_passed": 17,
+ "pytest_failed": 0,
+ "pytest_seconds": 5.41,
+ "pytest_names": [
+  "test_password_hashing",
+  "test_verhoeff_valid",
+  "test_invalid_checksum_rejection",
+  "test_unknown_voter_rejection",
+  "test_ineligible_voter_rejection",
+  "test_duplicate_vote_rejection",
+  "test_unauthorized_admin_route",
+  "test_unauthorized_auditor_route",
+  "test_tampered_block_detection",
+  "test_invalid_previous_hash_rejection",
+  "test_duplicate_transaction_rejection",
+  "test_malformed_input_rejection",
+  "test_expired_authorization_rejection",
+  "test_ballot_identity_separation",
+  "test_audit_logging",
+  "test_election_status_enforcement",
+  "test_encryption_roundtrip"
+ ],
+ "note": "run 2026-10-26 with DATABASE_URL pointing at a scratch SQLite file; pytest 9.1.1, Python 3.11.9"
+}

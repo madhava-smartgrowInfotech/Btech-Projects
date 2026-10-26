@@ -1,0 +1,571 @@
+{
+  "generated": "2026-10-26T06:38:50.275452Z",
+  "environment": {
+    "python": "3.11.9",
+    "platform": "Windows-10-10.0.26300-SP0",
+    "machine": "AMD64",
+    "cpu_count": 12,
+    "libs": {
+      "fastapi": "0.110.0",
+      "sqlalchemy": "2.0.30",
+      "cryptography": "42.0.7",
+      "argon2-cffi": "23.1.0"
+    }
+  },
+  "micro_timings": {
+    "sha256_tx_payload": {
+      "n": 5000,
+      "mean_ms": 0.0063,
+      "median_ms": 0.0058,
+      "p95_ms": 0.0076,
+      "min_ms": 0.0044,
+      "max_ms": 0.2262,
+      "stdev_ms": 0.0052
+    },
+    "aes256gcm_encrypt": {
+      "n": 5000,
+      "mean_ms": 0.0202,
+      "median_ms": 0.0165,
+      "p95_ms": 0.0274,
+      "min_ms": 0.0125,
+      "max_ms": 1.0545,
+      "stdev_ms": 0.035
+    },
+    "aes256gcm_decrypt": {
+      "n": 5000,
+      "mean_ms": 0.0241,
+      "median_ms": 0.0157,
+      "p95_ms": 0.029,
+      "min_ms": 0.012,
+      "max_ms": 6.1685,
+      "stdev_ms": 0.132
+    },
+    "ed25519_sign": {
+      "n": 3000,
+      "mean_ms": 0.1305,
+      "median_ms": 0.115,
+      "p95_ms": 0.1941,
+      "min_ms": 0.0887,
+      "max_ms": 2.2233,
+      "stdev_ms": 0.0779
+    },
+    "ed25519_verify": {
+      "n": 3000,
+      "mean_ms": 0.1824,
+      "median_ms": 0.1633,
+      "p95_ms": 0.2647,
+      "min_ms": 0.1267,
+      "max_ms": 1.8713,
+      "stdev_ms": 0.0838
+    },
+    "verhoeff_validate": {
+      "n": 20000,
+      "mean_ms": 0.0041,
+      "median_ms": 0.0032,
+      "p95_ms": 0.0048,
+      "min_ms": 0.0019,
+      "max_ms": 2.8554,
+      "stdev_ms": 0.0263
+    },
+    "aadhaar_salted_sha256": {
+      "n": 20000,
+      "mean_ms": 0.0027,
+      "median_ms": 0.0024,
+      "p95_ms": 0.0037,
+      "min_ms": 0.0015,
+      "max_ms": 0.135,
+      "stdev_ms": 0.0025
+    },
+    "argon2id_hash": {
+      "n": 40,
+      "mean_ms": 79.6758,
+      "median_ms": 77.2404,
+      "p95_ms": 93.811,
+      "min_ms": 69.6922,
+      "max_ms": 115.9054,
+      "stdev_ms": 8.8838
+    },
+    "argon2id_verify": {
+      "n": 40,
+      "mean_ms": 83.3289,
+      "median_ms": 80.1315,
+      "p95_ms": 110.5471,
+      "min_ms": 68.2445,
+      "max_ms": 136.2891,
+      "stdev_ms": 12.6337
+    }
+  },
+  "growth": {
+    "votes": 300,
+    "per_vote_all": {
+      "n": 300,
+      "mean_ms": 33.71,
+      "median_ms": 31.9856,
+      "p95_ms": 37.5021,
+      "min_ms": 27.9133,
+      "max_ms": 245.6826,
+      "stdev_ms": 14.3506
+    },
+    "per_vote_first_100": {
+      "n": 100,
+      "mean_ms": 33.36,
+      "median_ms": 30.9244,
+      "p95_ms": 37.8225,
+      "min_ms": 27.9133,
+      "max_ms": 141.0089,
+      "stdev_ms": 12.3084
+    },
+    "per_vote_last_100": {
+      "n": 100,
+      "mean_ms": 34.9851,
+      "median_ms": 32.3597,
+      "p95_ms": 37.5021,
+      "min_ms": 28.5988,
+      "max_ms": 245.6826,
+      "stdev_ms": 21.5293
+    },
+    "validate_chain_by_height": {
+      "25": {
+        "height_blocks": 26,
+        "valid": true,
+        "median_ms": 11.1
+      },
+      "50": {
+        "height_blocks": 51,
+        "valid": true,
+        "median_ms": 24.03
+      },
+      "100": {
+        "height_blocks": 101,
+        "valid": true,
+        "median_ms": 52.27
+      },
+      "200": {
+        "height_blocks": 201,
+        "valid": true,
+        "median_ms": 101.81
+      },
+      "300": {
+        "height_blocks": 301,
+        "valid": true,
+        "median_ms": 146.18
+      }
+    }
+  },
+  "vote_stage_breakdown_ms_mean": {
+    "authorise": 10.989,
+    "encrypt_sign_hash": 0.533,
+    "propose_block": 16.846,
+    "persist": 9.522
+  },
+  "tamper_study": {
+    "chain_height": 361,
+    "target_block": 120,
+    "cases": [
+      {
+        "case": "T1 block_hash overwritten",
+        "description": "block_hash of one block replaced",
+        "validate_chain_detects": true,
+        "validate_chain_field": "block_hash",
+        "first_invalid_block": 120,
+        "strict_audit_detects": true,
+        "strict_audit_stage": "validate_chain",
+        "tally_changed": null
+      },
+      {
+        "case": "T2 previous_hash overwritten",
+        "description": "previous_hash of one block replaced",
+        "validate_chain_detects": true,
+        "validate_chain_field": "block_hash",
+        "first_invalid_block": 120,
+        "strict_audit_detects": true,
+        "strict_audit_stage": "validate_chain",
+        "tally_changed": null
+      },
+      {
+        "case": "T3 merkle_root overwritten",
+        "description": "merkle_root of one block replaced",
+        "validate_chain_detects": true,
+        "validate_chain_field": "merkle_root",
+        "first_invalid_block": 120,
+        "strict_audit_detects": true,
+        "strict_audit_stage": "validate_chain",
+        "tally_changed": null
+      },
+      {
+        "case": "T4 block timestamp edited",
+        "description": "timestamp of one block shifted by one hour",
+        "validate_chain_detects": true,
+        "validate_chain_field": "block_hash",
+        "first_invalid_block": 120,
+        "strict_audit_detects": true,
+        "strict_audit_stage": "validate_chain",
+        "tally_changed": null
+      },
+      {
+        "case": "T5 tx_hash overwritten",
+        "description": "tx_hash of one ledger transaction replaced",
+        "validate_chain_detects": true,
+        "validate_chain_field": "merkle_root",
+        "first_invalid_block": 120,
+        "strict_audit_detects": true,
+        "strict_audit_stage": "validate_chain",
+        "tally_changed": null
+      },
+      {
+        "case": "T6 ledger payload swapped (no re-hash)",
+        "description": "encrypted_payload in ledger_transactions replaced by another ciphertext",
+        "validate_chain_detects": false,
+        "validate_chain_field": null,
+        "first_invalid_block": null,
+        "strict_audit_detects": true,
+        "strict_audit_stage": "tx_hash_recompute",
+        "tally_changed": null
+      },
+      {
+        "case": "T7 ballots table edited",
+        "description": "encrypted_choice of one row in ballots replaced by a vote for another candidate (tally source)",
+        "validate_chain_detects": false,
+        "validate_chain_field": null,
+        "first_invalid_block": null,
+        "strict_audit_detects": true,
+        "strict_audit_stage": "ballots_vs_ledger",
+        "tally_changed": true
+      },
+      {
+        "case": "T8 transaction row deleted",
+        "description": "transaction removed from a block",
+        "validate_chain_detects": true,
+        "validate_chain_field": "merkle_root",
+        "first_invalid_block": 120,
+        "strict_audit_detects": true,
+        "strict_audit_stage": "validate_chain",
+        "tally_changed": null
+      },
+      {
+        "case": "T9 middle block deleted",
+        "description": "a block and its transaction removed from the middle of the chain",
+        "validate_chain_detects": true,
+        "validate_chain_field": "previous_hash",
+        "first_invalid_block": 121,
+        "strict_audit_detects": true,
+        "strict_audit_stage": "validate_chain",
+        "tally_changed": null
+      },
+      {
+        "case": "T10 tip block deleted (truncation)",
+        "description": "newest block and its transaction removed",
+        "validate_chain_detects": false,
+        "validate_chain_field": null,
+        "first_invalid_block": null,
+        "strict_audit_detects": true,
+        "strict_audit_stage": "ballots_vs_ledger",
+        "tally_changed": null
+      },
+      {
+        "case": "T11 validator signatures forged",
+        "description": "validator_signatures replaced with random hex",
+        "validate_chain_detects": false,
+        "validate_chain_field": null,
+        "first_invalid_block": null,
+        "strict_audit_detects": true,
+        "strict_audit_stage": "validator_signatures",
+        "tally_changed": null
+      },
+      {
+        "case": "T12 payload edited and chain re-hashed",
+        "description": "attacker edits a ballot and recomputes every hash from that block to the tip",
+        "validate_chain_detects": false,
+        "validate_chain_field": null,
+        "first_invalid_block": null,
+        "strict_audit_detects": true,
+        "strict_audit_stage": "validator_signatures",
+        "tally_changed": null
+      },
+      {
+        "case": "T13 ballot+ledger edited and chain re-hashed",
+        "description": "both ballots and ledger edited consistently, hashes recomputed (signatures untouched)",
+        "validate_chain_detects": false,
+        "validate_chain_field": null,
+        "first_invalid_block": null,
+        "strict_audit_detects": true,
+        "strict_audit_stage": "validator_signatures",
+        "tally_changed": true
+      }
+    ],
+    "baseline_validate_chain": {
+      "valid": true,
+      "height": 361,
+      "last_hash": "9c08ea5b6d19f623f225f4e5de31c2e4a3f818973f0c54e602acd70d7658dafe"
+    },
+    "baseline_strict_audit": {
+      "valid": true
+    },
+    "strict_audit_ms_median": 787.5,
+    "validate_chain_ms_median": 146.18
+  },
+  "http": {
+    "health": {
+      "status": "ok",
+      "chain_valid": true,
+      "height": 1
+    },
+    "latency": {
+      "login": {
+        "n": 27,
+        "mean_ms": 97.9285,
+        "median_ms": 93.2177,
+        "p95_ms": 131.8965,
+        "min_ms": 69.4932,
+        "max_ms": 154.5896,
+        "stdev_ms": 17.8385
+      },
+      "verify": {
+        "n": 27,
+        "mean_ms": 27.8285,
+        "median_ms": 28.1733,
+        "p95_ms": 36.7278,
+        "min_ms": 16.4687,
+        "max_ms": 46.3899,
+        "stdev_ms": 6.3207
+      },
+      "cast": {
+        "n": 27,
+        "mean_ms": 35.0653,
+        "median_ms": 35.224,
+        "p95_ms": 50.0124,
+        "min_ms": 21.9184,
+        "max_ms": 59.2144,
+        "stdev_ms": 9.6093
+      },
+      "end_to_end": {
+        "n": 27,
+        "mean_ms": 161.2066,
+        "median_ms": 166.5076,
+        "p95_ms": 213.9949,
+        "min_ms": 112.5405,
+        "max_ms": 215.781,
+        "stdev_ms": 24.4403
+      }
+    },
+    "voters_through_http": 27,
+    "cookie_header": {
+      "Set-Cookie": "aegis_session=UifzFxkqBuambVjvcB-V1xGPetEGepgruiz2NDUQcow; HttpOnly; Path=/; SameSite=lax"
+    },
+    "auditor_verify_ms": 41.3,
+    "auditor_verify_result": {
+      "valid": true,
+      "height": 29,
+      "last_hash": "bb5c5dbec53cc723b9ab91cfd89c8838eff408f1d5f260edf887c9a6dfee4105"
+    },
+    "login_rate_limit_status_sequence": [
+      401,
+      401,
+      401,
+      401,
+      401,
+      401,
+      429,
+      429,
+      429,
+      429,
+      429,
+      429
+    ],
+    "matrix": [
+      {
+        "test": "Anonymous GET /api/admin/overview",
+        "expected": 401,
+        "got": 401,
+        "pass": true,
+        "note": ""
+      },
+      {
+        "test": "Anonymous POST /api/voter/.../cast",
+        "expected": 401,
+        "got": 401,
+        "pass": true,
+        "note": ""
+      },
+      {
+        "test": "SQL-injection style username on login",
+        "expected": 401,
+        "got": 401,
+        "pass": true,
+        "note": ""
+      },
+      {
+        "test": "Login with empty body fields",
+        "expected": 422,
+        "got": 422,
+        "pass": true,
+        "note": ""
+      },
+      {
+        "test": "Voter GET /api/admin/overview (RBAC)",
+        "expected": 403,
+        "got": 403,
+        "pass": true,
+        "note": ""
+      },
+      {
+        "test": "Voter GET /api/auditor/overview (RBAC)",
+        "expected": 403,
+        "got": 403,
+        "pass": true,
+        "note": ""
+      },
+      {
+        "test": "Voter POST status change (RBAC)",
+        "expected": 403,
+        "got": 403,
+        "pass": true,
+        "note": ""
+      },
+      {
+        "test": "Voter POST verify without X-CSRF-Token",
+        "expected": 403,
+        "got": 403,
+        "pass": true,
+        "note": ""
+      },
+      {
+        "test": "Aadhaar with 11 digits",
+        "expected": 400,
+        "got": 400,
+        "pass": true,
+        "note": ""
+      },
+      {
+        "test": "Aadhaar 12 digits, bad Verhoeff checksum",
+        "expected": 400,
+        "got": 400,
+        "pass": true,
+        "note": ""
+      },
+      {
+        "test": "Valid checksum, not in registry",
+        "expected": 400,
+        "got": 400,
+        "pass": true,
+        "note": ""
+      },
+      {
+        "test": "Another voter's valid Aadhaar",
+        "expected": 403,
+        "got": 403,
+        "pass": true,
+        "note": ""
+      },
+      {
+        "test": "Cast with forged auth token",
+        "expected": 400,
+        "got": 400,
+        "pass": true,
+        "note": ""
+      },
+      {
+        "test": "Voter reads results of an OPEN election",
+        "expected": 404,
+        "got": 404,
+        "pass": true,
+        "note": ""
+      },
+      {
+        "test": "Verify with own correct Aadhaar",
+        "expected": 200,
+        "got": 200,
+        "pass": true,
+        "note": ""
+      },
+      {
+        "test": "Cast with candidate id from nowhere",
+        "expected": 400,
+        "got": 400,
+        "pass": true,
+        "note": ""
+      },
+      {
+        "test": "Valid cast",
+        "expected": 200,
+        "got": 200,
+        "pass": true,
+        "note": ""
+      },
+      {
+        "test": "Replay of used token (duplicate vote)",
+        "expected": 400,
+        "got": 400,
+        "pass": true,
+        "note": ""
+      },
+      {
+        "test": "Second verify after voting",
+        "expected": 400,
+        "got": 400,
+        "pass": true,
+        "note": ""
+      },
+      {
+        "test": "Admin invalid status value",
+        "expected": 400,
+        "got": 400,
+        "pass": true,
+        "note": ""
+      },
+      {
+        "test": "Admin election with end before start",
+        "expected": 400,
+        "got": 400,
+        "pass": true,
+        "note": ""
+      },
+      {
+        "test": "Admin reads tally of OPEN election",
+        "expected": 200,
+        "got": 200,
+        "pass": true,
+        "note": "admin can see a live tally before the election closes"
+      },
+      {
+        "test": "Auditor integrity check on live chain",
+        "expected": 200,
+        "got": 200,
+        "pass": true,
+        "note": "valid=True height=29 in 41.3 ms"
+      },
+      {
+        "test": "Auditor tamper-test on cloned ledger",
+        "expected": 200,
+        "got": 200,
+        "pass": true,
+        "note": "detected=True"
+      },
+      {
+        "test": "11th failed login inside a minute is throttled",
+        "expected": 429,
+        "got": 429,
+        "pass": true,
+        "note": "sequence [401, 401, 401, 401, 401, 401, 429, 429, 429, 429, 429, 429]"
+      }
+    ],
+    "matrix_summary": {
+      "total": 25,
+      "passed": 25
+    },
+    "db_linkable_voter_ballot_rows": 28,
+    "db_ballots": 28,
+    "db_blocks": 29,
+    "db_audit_actions": {
+      "aadhaar_verify_failed": 4,
+      "aadhaar_verify_success": 28,
+      "auth_issued": 28,
+      "integrity_check": 1,
+      "login_failed": 7,
+      "login_success": 30,
+      "tamper_test": 1,
+      "vote_cast": 28,
+      "vote_rejected": 3
+    }
+  }
+}

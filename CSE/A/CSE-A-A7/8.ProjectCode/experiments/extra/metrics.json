@@ -1,0 +1,529 @@
+{
+  "dataset": {
+    "rows": 6000,
+    "n_fit": 3840,
+    "n_cal": 960,
+    "n_test": 1200,
+    "features": 36,
+    "priority_share": {
+      "1": 0.0553,
+      "2": 0.1988,
+      "3": 0.261,
+      "4": 0.267,
+      "5": 0.2178
+    },
+    "archetype_share": {
+      "minor": 0.3363,
+      "cardiac": 0.1457,
+      "respiratory": 0.1193,
+      "trauma": 0.1172,
+      "abdominal": 0.1033,
+      "infection": 0.0937,
+      "neuro": 0.0845
+    }
+  },
+  "model_comparison": {
+    "Logistic regression": {
+      "accuracy": 0.7242,
+      "within_one": 0.9967,
+      "macro_f1": 0.7268,
+      "qwk": 0.8966,
+      "top2": 0.9642,
+      "fit_seconds": 0.07
+    },
+    "Decision tree": {
+      "accuracy": 0.5467,
+      "within_one": 0.9467,
+      "macro_f1": 0.5301,
+      "qwk": 0.761,
+      "top2": 0.805,
+      "fit_seconds": 0.02
+    },
+    "Random forest": {
+      "accuracy": 0.6717,
+      "within_one": 0.9967,
+      "macro_f1": 0.6231,
+      "qwk": 0.8708,
+      "top2": 0.9508,
+      "fit_seconds": 0.52
+    },
+    "Extra trees": {
+      "accuracy": 0.6908,
+      "within_one": 0.9917,
+      "macro_f1": 0.6534,
+      "qwk": 0.8721,
+      "top2": 0.9433,
+      "fit_seconds": 0.5
+    },
+    "k-nearest neighbours": {
+      "accuracy": 0.6258,
+      "within_one": 0.9775,
+      "macro_f1": 0.5642,
+      "qwk": 0.8297,
+      "top2": 0.8925,
+      "fit_seconds": 0.0
+    },
+    "MLP": {
+      "accuracy": 0.7092,
+      "within_one": 0.9933,
+      "macro_f1": 0.7011,
+      "qwk": 0.888,
+      "top2": 0.9725,
+      "fit_seconds": 6.07
+    },
+    "HistGradientBoosting": {
+      "accuracy": 0.7033,
+      "within_one": 0.9958,
+      "macro_f1": 0.6686,
+      "qwk": 0.8843,
+      "top2": 0.9558,
+      "fit_seconds": 0.94
+    },
+    "XGBoost (shipped config)": {
+      "accuracy": 0.6825,
+      "within_one": 0.9967,
+      "macro_f1": 0.6532,
+      "qwk": 0.8768,
+      "top2": 0.955,
+      "fit_seconds": 0.48
+    }
+  },
+  "cv5_accuracy": {
+    "Logistic regression": {
+      "mean": 0.7158,
+      "std": 0.0215,
+      "folds": [
+        0.7333,
+        0.6817,
+        0.7,
+        0.7375,
+        0.7267
+      ]
+    },
+    "Random forest": {
+      "mean": 0.7112,
+      "std": 0.0091,
+      "folds": [
+        0.7233,
+        0.6992,
+        0.705,
+        0.72,
+        0.7083
+      ]
+    },
+    "XGBoost (shipped config)": {
+      "mean": 0.7237,
+      "std": 0.0152,
+      "folds": [
+        0.725,
+        0.7042,
+        0.71,
+        0.7333,
+        0.7458
+      ]
+    }
+  },
+  "shipped": {
+    "calibrated": {
+      "accuracy": 0.6942,
+      "within_one": 0.9967,
+      "macro_f1": 0.6696,
+      "qwk": 0.8796,
+      "top2": 0.9533
+    },
+    "uncalibrated": {
+      "accuracy": 0.6825,
+      "within_one": 0.9967,
+      "macro_f1": 0.6532,
+      "qwk": 0.8768,
+      "top2": 0.955
+    }
+  },
+  "ablation": {
+    "Vitals only (8)": {
+      "accuracy": 0.4058,
+      "within_one": 0.8225,
+      "macro_f1": 0.3666,
+      "qwk": 0.4888,
+      "top2": 0.7033,
+      "inputs": 8
+    },
+    "Report only (28)": {
+      "accuracy": 0.6317,
+      "within_one": 0.9725,
+      "macro_f1": 0.6146,
+      "qwk": 0.8345,
+      "top2": 0.9217,
+      "inputs": 28
+    },
+    "Fused (36)": {
+      "accuracy": 0.6825,
+      "within_one": 0.9967,
+      "macro_f1": 0.6532,
+      "qwk": 0.8768,
+      "top2": 0.955,
+      "inputs": 36
+    },
+    "Vitals + text flags (30)": {
+      "accuracy": 0.615,
+      "within_one": 0.9692,
+      "macro_f1": 0.5767,
+      "qwk": 0.8239,
+      "top2": 0.8967,
+      "inputs": 30
+    },
+    "Vitals + lab flags (14)": {
+      "accuracy": 0.4692,
+      "within_one": 0.8792,
+      "macro_f1": 0.4288,
+      "qwk": 0.6081,
+      "top2": 0.7775,
+      "inputs": 14
+    }
+  },
+  "calibration": {
+    "ece_uncalibrated": 0.0466,
+    "ece_isotonic": 0.0412,
+    "brier_uncalibrated": 0.4187,
+    "brier_isotonic": 0.4104,
+    "mean_confidence_uncalibrated": 0.6456,
+    "mean_confidence_isotonic": 0.7321,
+    "bins_uncalibrated": [
+      {
+        "lo": 0.3,
+        "hi": 0.4,
+        "n": 15,
+        "confidence": 0.3637,
+        "accuracy": 0.1333
+      },
+      {
+        "lo": 0.4,
+        "hi": 0.5,
+        "n": 181,
+        "confidence": 0.4635,
+        "accuracy": 0.5028
+      },
+      {
+        "lo": 0.5,
+        "hi": 0.6,
+        "n": 279,
+        "confidence": 0.5512,
+        "accuracy": 0.5663
+      },
+      {
+        "lo": 0.6,
+        "hi": 0.7,
+        "n": 306,
+        "confidence": 0.6468,
+        "accuracy": 0.7059
+      },
+      {
+        "lo": 0.7,
+        "hi": 0.8,
+        "n": 228,
+        "confidence": 0.746,
+        "accuracy": 0.7895
+      },
+      {
+        "lo": 0.8,
+        "hi": 0.9,
+        "n": 168,
+        "confidence": 0.8463,
+        "accuracy": 0.9107
+      },
+      {
+        "lo": 0.9,
+        "hi": 1.0,
+        "n": 23,
+        "confidence": 0.9288,
+        "accuracy": 0.8261
+      }
+    ],
+    "bins_isotonic": [
+      {
+        "lo": 0.3,
+        "hi": 0.4,
+        "n": 9,
+        "confidence": 0.383,
+        "accuracy": 0.2222
+      },
+      {
+        "lo": 0.4,
+        "hi": 0.5,
+        "n": 57,
+        "confidence": 0.4707,
+        "accuracy": 0.4035
+      },
+      {
+        "lo": 0.5,
+        "hi": 0.6,
+        "n": 189,
+        "confidence": 0.5422,
+        "accuracy": 0.5238
+      },
+      {
+        "lo": 0.6,
+        "hi": 0.7,
+        "n": 240,
+        "confidence": 0.6501,
+        "accuracy": 0.6583
+      },
+      {
+        "lo": 0.7,
+        "hi": 0.8,
+        "n": 325,
+        "confidence": 0.7451,
+        "accuracy": 0.7138
+      },
+      {
+        "lo": 0.8,
+        "hi": 0.9,
+        "n": 138,
+        "confidence": 0.8471,
+        "accuracy": 0.6594
+      },
+      {
+        "lo": 0.9,
+        "hi": 1.0,
+        "n": 242,
+        "confidence": 0.9533,
+        "accuracy": 0.9421
+      }
+    ]
+  },
+  "confidence_threshold": [
+    {
+      "threshold": 0.0,
+      "coverage": 1.0,
+      "n": 1200,
+      "accuracy": 0.6942,
+      "within_one": 0.9967
+    },
+    {
+      "threshold": 0.5,
+      "coverage": 0.9467,
+      "n": 1136,
+      "accuracy": 0.7121,
+      "within_one": 0.9982
+    },
+    {
+      "threshold": 0.6,
+      "coverage": 0.7875,
+      "n": 945,
+      "accuracy": 0.7503,
+      "within_one": 0.9979
+    },
+    {
+      "threshold": 0.7,
+      "coverage": 0.5875,
+      "n": 705,
+      "accuracy": 0.7816,
+      "within_one": 0.9972
+    },
+    {
+      "threshold": 0.8,
+      "coverage": 0.3183,
+      "n": 382,
+      "accuracy": 0.8403,
+      "within_one": 1.0
+    },
+    {
+      "threshold": 0.85,
+      "coverage": 0.255,
+      "n": 306,
+      "accuracy": 0.8758,
+      "within_one": 1.0
+    },
+    {
+      "threshold": 0.9,
+      "coverage": 0.2017,
+      "n": 242,
+      "accuracy": 0.9421,
+      "within_one": 1.0
+    },
+    {
+      "threshold": 0.95,
+      "coverage": 0.0967,
+      "n": 116,
+      "accuracy": 0.9483,
+      "within_one": 1.0
+    }
+  ],
+  "safety": {
+    "under_triage_any": 0.2133,
+    "over_triage_any": 0.0925,
+    "under_triage_2plus": 0.0033,
+    "over_triage_2plus": 0.0,
+    "p1_predicted_p3_or_lower_urgency": 2,
+    "p1_support": 66,
+    "high_risk_recall": 0.6623,
+    "high_risk_precision": 0.9058,
+    "high_risk_support": 305,
+    "high_risk_recall_at_pr_0_4": 0.8426,
+    "high_risk_precision_at_pr_0_4": 0.8159
+  },
+  "robustness_dropped_flags": [
+    {
+      "drop_rate": 0.0,
+      "accuracy": 0.6942,
+      "within_one": 0.9967,
+      "macro_f1": 0.6696,
+      "qwk": 0.8796,
+      "top2": 0.9533
+    },
+    {
+      "drop_rate": 0.1,
+      "accuracy": 0.6617,
+      "within_one": 0.9808,
+      "macro_f1": 0.6331,
+      "qwk": 0.8488,
+      "top2": 0.9308
+    },
+    {
+      "drop_rate": 0.2,
+      "accuracy": 0.6208,
+      "within_one": 0.9633,
+      "macro_f1": 0.5941,
+      "qwk": 0.8068,
+      "top2": 0.9008
+    },
+    {
+      "drop_rate": 0.3,
+      "accuracy": 0.595,
+      "within_one": 0.95,
+      "macro_f1": 0.5645,
+      "qwk": 0.7795,
+      "top2": 0.8842
+    },
+    {
+      "drop_rate": 0.5,
+      "accuracy": 0.5092,
+      "within_one": 0.895,
+      "macro_f1": 0.4647,
+      "qwk": 0.6665,
+      "top2": 0.8183
+    },
+    {
+      "drop_rate": 1.0,
+      "accuracy": 0.3392,
+      "within_one": 0.7042,
+      "macro_f1": 0.2459,
+      "qwk": 0.3149,
+      "top2": 0.64
+    }
+  ],
+  "noise_ceiling": {
+    "regenerated_matches_csv": true,
+    "oracle_accuracy_knowing_clean_severity": 0.8625,
+    "oracle_within_one": 1.0
+  },
+  "seed_stability": {
+    "runs": [
+      {
+        "seed": 1,
+        "accuracy": 0.725,
+        "within_one": 0.9883,
+        "macro_f1": 0.6963,
+        "qwk": 0.8825,
+        "top2": 0.965
+      },
+      {
+        "seed": 2,
+        "accuracy": 0.7158,
+        "within_one": 0.9925,
+        "macro_f1": 0.6701,
+        "qwk": 0.8871,
+        "top2": 0.9525
+      },
+      {
+        "seed": 3,
+        "accuracy": 0.725,
+        "within_one": 0.9975,
+        "macro_f1": 0.7058,
+        "qwk": 0.8954,
+        "top2": 0.9592
+      },
+      {
+        "seed": 4,
+        "accuracy": 0.7,
+        "within_one": 0.995,
+        "macro_f1": 0.6568,
+        "qwk": 0.8827,
+        "top2": 0.9525
+      },
+      {
+        "seed": 5,
+        "accuracy": 0.7125,
+        "within_one": 0.9925,
+        "macro_f1": 0.679,
+        "qwk": 0.8829,
+        "top2": 0.9525
+      }
+    ],
+    "accuracy_mean": 0.7157,
+    "accuracy_std": 0.0093,
+    "macro_f1_mean": 0.6816
+  },
+  "shap_global": [
+    {
+      "feature": "spo2",
+      "mean_abs_shap": 0.4219
+    },
+    {
+      "feature": "arrival_code",
+      "mean_abs_shap": 0.3247
+    },
+    {
+      "feature": "dyspnea",
+      "mean_abs_shap": 0.2711
+    },
+    {
+      "feature": "sbp",
+      "mean_abs_shap": 0.2369
+    },
+    {
+      "feature": "resp_rate",
+      "mean_abs_shap": 0.2349
+    },
+    {
+      "feature": "st_elevation",
+      "mean_abs_shap": 0.2279
+    },
+    {
+      "feature": "stroke_signs",
+      "mean_abs_shap": 0.2196
+    },
+    {
+      "feature": "lab_troponin_high",
+      "mean_abs_shap": 0.2133
+    },
+    {
+      "feature": "chest_pain",
+      "mean_abs_shap": 0.2001
+    },
+    {
+      "feature": "lab_lactate_high",
+      "mean_abs_shap": 0.1767
+    },
+    {
+      "feature": "altered_mental",
+      "mean_abs_shap": 0.1721
+    },
+    {
+      "feature": "heart_rate",
+      "mean_abs_shap": 0.1321
+    },
+    {
+      "feature": "trauma",
+      "mean_abs_shap": 0.13
+    },
+    {
+      "feature": "age",
+      "mean_abs_shap": 0.124
+    },
+    {
+      "feature": "ct_hemorrhage",
+      "mean_abs_shap": 0.1059
+    }
+  ]
+}

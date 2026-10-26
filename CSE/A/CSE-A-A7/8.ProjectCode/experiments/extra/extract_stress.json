@@ -1,0 +1,181 @@
+{
+  "cases": 40,
+  "expected_flags": 70,
+  "tp": 59,
+  "fp": 3,
+  "fn": 11,
+  "precision": 0.9516,
+  "recall": 0.8429,
+  "cases_read_exactly": 27,
+  "by_category": {
+    "plain": {
+      "cases": 10,
+      "tp": 19,
+      "fp": 1,
+      "fn": 0,
+      "exact": 9,
+      "precision": 0.95,
+      "recall": 1.0
+    },
+    "negation": {
+      "cases": 6,
+      "tp": 2,
+      "fp": 2,
+      "fn": 1,
+      "exact": 3,
+      "precision": 0.5,
+      "recall": 0.667
+    },
+    "abbreviation": {
+      "cases": 4,
+      "tp": 10,
+      "fp": 0,
+      "fn": 0,
+      "exact": 4,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    "ocr": {
+      "cases": 4,
+      "tp": 4,
+      "fp": 0,
+      "fn": 3,
+      "exact": 1,
+      "precision": 1.0,
+      "recall": 0.571
+    },
+    "labs": {
+      "cases": 5,
+      "tp": 7,
+      "fp": 0,
+      "fn": 0,
+      "exact": 5,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    "history": {
+      "cases": 3,
+      "tp": 6,
+      "fp": 0,
+      "fn": 0,
+      "exact": 3,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    "paraphrase": {
+      "cases": 5,
+      "tp": 1,
+      "fp": 0,
+      "fn": 6,
+      "exact": 0,
+      "precision": 1.0,
+      "recall": 0.143
+    },
+    "mixed": {
+      "cases": 3,
+      "tp": 10,
+      "fp": 0,
+      "fn": 1,
+      "exact": 2,
+      "precision": 1.0,
+      "recall": 0.909
+    }
+  },
+  "missed": [
+    {
+      "case": 13,
+      "category": "negation",
+      "missed": [
+        "chest_pain"
+      ]
+    },
+    {
+      "case": 22,
+      "category": "ocr",
+      "missed": [
+        "vomiting"
+      ]
+    },
+    {
+      "case": 23,
+      "category": "ocr",
+      "missed": [
+        "st_elevation"
+      ]
+    },
+    {
+      "case": 24,
+      "category": "ocr",
+      "missed": [
+        "severe_headache"
+      ]
+    },
+    {
+      "case": 33,
+      "category": "paraphrase",
+      "missed": [
+        "dyspnea"
+      ]
+    },
+    {
+      "case": 34,
+      "category": "paraphrase",
+      "missed": [
+        "chest_pain"
+      ]
+    },
+    {
+      "case": 35,
+      "category": "paraphrase",
+      "missed": [
+        "abd_pain"
+      ]
+    },
+    {
+      "case": 36,
+      "category": "paraphrase",
+      "missed": [
+        "diabetes",
+        "hypertension"
+      ]
+    },
+    {
+      "case": 37,
+      "category": "paraphrase",
+      "missed": [
+        "altered_mental"
+      ]
+    },
+    {
+      "case": 40,
+      "category": "mixed",
+      "missed": [
+        "trauma"
+      ]
+    }
+  ],
+  "spurious": [
+    {
+      "case": 8,
+      "category": "plain",
+      "extra": [
+        "vomiting"
+      ]
+    },
+    {
+      "case": 11,
+      "category": "negation",
+      "extra": [
+        "fever"
+      ]
+    },
+    {
+      "case": 16,
+      "category": "negation",
+      "extra": [
+        "chest_pain"
+      ]
+    }
+  ],
+  "note": "fragments written by the developers for this check; not independent clinical text"
+}

@@ -20,7 +20,7 @@ PASSWORD = os.environ.get("VERIVISION_DEMO_PASSWORD", "Demo@1234")
 
 
 def sample_image():
-    for pattern in ("data/test/fake/*.png", "data/test/real/*.png", "data/test/*/*.jpg"):
+    for pattern in ("data/cifake/test/fake/*.png", "data/test/fake/*.png", "data/test/real/*.png", "data/test/*/*.jpg"):
         files = sorted(glob.glob(os.path.join(ROOT, pattern)))
         if files:
             return files[0]
@@ -105,6 +105,20 @@ def main():
         shot("09_result_gradcam")
         page.get_by_role("tab", name="ResNet50").click()
         shot("10_result_gradcam_resnet")
+
+        # two more analyses: a real CIFAKE test image and a full-resolution AI image from the cross-domain probe set
+        for name, pattern in (("17_result_real", "data/cifake/test/real/*.png"), ("18_result_hires_ai", "data/xdomain/test/fake/*.jpg"), ("19_result_hires_real", "data/xdomain/test/real/*.jpg")):
+            files = sorted(glob.glob(os.path.join(ROOT, pattern)))
+            if not files:
+                continue
+            page.get_by_role("button", name="Analyze another image").click()
+            page.wait_for_selector("text=Choose an image")
+            page.set_input_files("input[type=file]", files[0])
+            page.wait_for_selector("img[alt^='Preview of']")
+            page.click("button:has-text('Analyze image')")
+            page.wait_for_selector("text=Here is what the ensemble found", timeout=300000)
+            page.wait_for_timeout(1500)
+            shot(name)
 
         # the other screens
         for path, wait, name in (

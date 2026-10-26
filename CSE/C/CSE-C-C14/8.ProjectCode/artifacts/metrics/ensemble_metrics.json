@@ -1,21 +1,26 @@
 {
-  "accuracy": 1.0,
-  "precision": 1.0,
-  "recall": 1.0,
-  "f1": 1.0,
-  "balanced_accuracy": 1.0,
-  "n_samples": 200,
-  "roc_auc": 1.0,
+  "accuracy": 0.9235,
+  "precision": 0.8818755635707844,
+  "recall": 0.978,
+  "f1": 0.9274537695590327,
+  "balanced_accuracy": 0.9235,
+  "roc_auc": 0.9865349999999999,
+  "n_samples": 2000,
   "confusion_matrix": [
     [
-      100,
-      0
+      869,
+      131
     ],
     [
-      0,
-      100
+      22,
+      978
     ]
   ],
-  "dataset": "synthetic-demo-fallback",
+  "fpr": 0.131,
+  "fnr": 0.022,
+  "predicted_fake_rate": 0.5545,
+  "gate1_fired": 7,
+  "gate2_fired": 0,
+  "dataset": "cifake-subset",
   "seed": 42
 }

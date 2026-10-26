@@ -1,10 +1,10 @@
 {
-  "created": "2026-09-12T10:35:47",
+  "created": "2026-10-22T20:31:21",
   "models": [
     {
       "model_name": "efficientnet_a1",
       "branch": "a1",
-      "training_dataset": "synthetic-demo-fallback",
+      "training_dataset": "cifake-subset",
       "image_resolution": 224,
       "class_mapping": {
         "0": "REAL",
@@ -12,15 +12,15 @@
       },
       "checkpoint_path": "models\\efficientnet_a1.pt",
       "validation": {
-        "accuracy": 1.0,
-        "f1": 1.0,
-        "roc_auc": 1.0
+        "accuracy": 0.918,
+        "f1": 0.9207729468599034,
+        "roc_auc": 0.974884
       }
     },
     {
       "model_name": "efficientnet_a2",
       "branch": "a2",
-      "training_dataset": "synthetic-demo-fallback",
+      "training_dataset": "cifake-subset",
       "image_resolution": 224,
       "class_mapping": {
         "0": "REAL",
@@ -28,15 +28,15 @@
       },
       "checkpoint_path": "models\\efficientnet_a2.pt",
       "validation": {
-        "accuracy": 1.0,
-        "f1": 1.0,
-        "roc_auc": 1.0
+        "accuracy": 0.902,
+        "f1": 0.9083255378858747,
+        "roc_auc": 0.9769079999999999
       }
     },
     {
       "model_name": "resnet50_b",
       "branch": "b",
-      "training_dataset": "synthetic-demo-fallback",
+      "training_dataset": "cifake-subset",
       "image_resolution": 320,
       "class_mapping": {
         "0": "REAL",
@@ -44,15 +44,15 @@
       },
       "checkpoint_path": "models\\resnet50_b.pt",
       "validation": {
-        "accuracy": 1.0,
-        "f1": 1.0,
-        "roc_auc": 1.0
+        "accuracy": 0.866,
+        "f1": 0.8808888888888889,
+        "roc_auc": 0.9827519999999998
       }
     },
     {
       "model_name": "mobilenetv3_c",
       "branch": "c",
-      "training_dataset": "synthetic-demo-fallback",
+      "training_dataset": "cifake-subset",
       "image_resolution": 224,
       "class_mapping": {
         "0": "REAL",
@@ -60,9 +60,9 @@
       },
       "checkpoint_path": "models\\mobilenetv3_c.pt",
       "validation": {
-        "accuracy": 1.0,
-        "f1": 1.0,
-        "roc_auc": 1.0
+        "accuracy": 0.8995,
+        "f1": 0.9040572792362769,
+        "roc_auc": 0.9669869999999999
       }
     }
   ]

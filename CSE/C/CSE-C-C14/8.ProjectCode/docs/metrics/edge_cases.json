@@ -1,0 +1,134 @@
+{
+  "cases": [
+    {
+      "case": "32 px CIFAKE test image (PNG)",
+      "status": 200,
+      "seconds": 28.63,
+      "verdict": "REAL",
+      "confidence_pct": 97.17,
+      "consistency": "4/4",
+      "cams_ok": true
+    },
+    {
+      "case": "Grayscale PNG 64 x 64",
+      "status": 200,
+      "seconds": 22.65,
+      "verdict": "REAL",
+      "confidence_pct": 100.0,
+      "consistency": "1/4",
+      "cams_ok": true
+    },
+    {
+      "case": "RGBA PNG 64 x 64 with alpha channel",
+      "status": 200,
+      "seconds": 21.53,
+      "verdict": "AI_GENERATED",
+      "confidence_pct": 100.0,
+      "consistency": "4/4",
+      "cams_ok": true
+    },
+    {
+      "case": "WebP 64 x 64",
+      "status": 200,
+      "seconds": 19.57,
+      "verdict": "AI_GENERATED",
+      "confidence_pct": 100.0,
+      "consistency": "3/4",
+      "cams_ok": true
+    },
+    {
+      "case": "Smallest accepted size, 8 x 8 PNG",
+      "status": 200,
+      "seconds": 6.02,
+      "verdict": "REAL",
+      "confidence_pct": 91.09,
+      "consistency": "3/4",
+      "cams_ok": true
+    },
+    {
+      "case": "7 x 7 PNG (below the minimum)",
+      "status": 400,
+      "seconds": 0.0,
+      "error": "The image is too small to analyze. Please upload a larger image."
+    },
+    {
+      "case": "Large JPEG 2,000 x 1,500",
+      "status": 200,
+      "seconds": 3.27,
+      "verdict": "REAL",
+      "confidence_pct": 100.0,
+      "consistency": "4/4",
+      "cams_ok": true
+    },
+    {
+      "case": "Upper-case extension .PNG",
+      "status": 200,
+      "seconds": 2.49,
+      "verdict": "REAL",
+      "confidence_pct": 97.17,
+      "consistency": "4/4",
+      "cams_ok": true
+    },
+    {
+      "case": "PNG bytes with a .jpg extension",
+      "status": 200,
+      "seconds": 1.98,
+      "verdict": "REAL",
+      "confidence_pct": 97.17,
+      "consistency": "4/4",
+      "cams_ok": true
+    },
+    {
+      "case": "Truncated JPEG (first half of the bytes)",
+      "status": 400,
+      "seconds": 0.0,
+      "error": "This file could not be decoded as an image. It may be corrupted or unsupported."
+    },
+    {
+      "case": "Text file named .png",
+      "status": 400,
+      "seconds": 0.0,
+      "error": "This file could not be decoded as an image. It may be corrupted or unsupported."
+    },
+    {
+      "case": "Empty file",
+      "status": 400,
+      "seconds": 0.0,
+      "error": "The uploaded file is empty. Please try a different image."
+    },
+    {
+      "case": "GIF image (extension not allowed)",
+      "status": 400,
+      "seconds": 0.0,
+      "error": "Unsupported file type. Please upload a PNG, JPG/JPEG or WEBP image."
+    },
+    {
+      "case": "Path-like file name ../../x.png",
+      "status": 200,
+      "seconds": 2.82,
+      "verdict": "REAL",
+      "confidence_pct": 97.17,
+      "consistency": "4/4",
+      "cams_ok": true
+    },
+    {
+      "case": "Upload of 10 MB + 1 KB",
+      "status": 413,
+      "error": "Image exceeds the 10 MB size limit. Please upload a smaller file."
+    },
+    {
+      "case": "No token",
+      "status": 401
+    },
+    {
+      "case": "Token with altered signature",
+      "status": 401
+    }
+  ],
+  "determinism": {
+    "same_image_twice_identical_probability": true,
+    "prob_fake_first": 0.02829389740531373,
+    "prob_fake_second": 0.02829389740531373
+  },
+  "device": "cpu"
+}

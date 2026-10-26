@@ -1,0 +1,13 @@
+{
+ "train_real": 3000,
+ "train_fake": 3000,
+ "val_real": 600,
+ "val_fake": 600,
+ "test_real": 1000,
+ "test_fake": 1000,
+ "pool_train": 100000,
+ "pool_test": 20000,
+ "xdomain_real": 300,
+ "xdomain_fake": 300,
+ "robust_per_class": 500
+}

@@ -1,27 +1,27 @@
 {
   "clean": {
-    "accuracy": 1.0,
-    "f1": 1.0,
-    "n_samples": 200
+    "accuracy": 0.924,
+    "f1": 0.9276190476190476,
+    "n_samples": 1000
   },
   "jpeg": {
-    "accuracy": 0.865,
-    "f1": 0.8810572687224669,
-    "n_samples": 200
+    "accuracy": 0.883,
+    "f1": 0.8933454876937101,
+    "n_samples": 1000
   },
   "resize": {
-    "accuracy": 0.495,
-    "f1": 0.4975124378109453,
-    "n_samples": 200
+    "accuracy": 0.61,
+    "f1": 0.3729903536977492,
+    "n_samples": 1000
   },
   "blur": {
-    "accuracy": 0.62,
-    "f1": 0.6576576576576577,
-    "n_samples": 200
+    "accuracy": 0.583,
+    "f1": 0.2920203735144312,
+    "n_samples": 1000
   },
   "noise": {
-    "accuracy": 1.0,
-    "f1": 1.0,
-    "n_samples": 200
+    "accuracy": 0.869,
+    "f1": 0.8829311885612153,
+    "n_samples": 1000
   }
 }

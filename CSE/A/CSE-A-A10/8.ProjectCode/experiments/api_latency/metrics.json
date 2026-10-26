@@ -1,0 +1,124 @@
+{
+  "base": "http://127.0.0.1:8310",
+  "results": [
+    {
+      "endpoint": "health: GET /api/health",
+      "n": 20,
+      "mean_ms": 5.083989999548066,
+      "median_ms": 1.7074499992304482,
+      "p95_ms": 24.553499999456108,
+      "max_ms": 24.553499999456108
+    },
+    {
+      "endpoint": "login: POST /api/auth/login",
+      "n": 20,
+      "mean_ms": 5.145719999927678,
+      "median_ms": 2.046050001808908,
+      "p95_ms": 24.39109999977518,
+      "max_ms": 24.39109999977518
+    },
+    {
+      "endpoint": "meta: GET /api/meta",
+      "n": 20,
+      "mean_ms": 10.052345000076457,
+      "median_ms": 7.99284999811789,
+      "p95_ms": 26.523200001975056,
+      "max_ms": 26.523200001975056
+    },
+    {
+      "endpoint": "pulse: GET /api/public/pulse",
+      "n": 20,
+      "mean_ms": 6.433105000905925,
+      "median_ms": 3.4945000006700866,
+      "p95_ms": 28.575200005434453,
+      "max_ms": 28.575200005434453
+    },
+    {
+      "endpoint": "live snapshot: GET /api/live",
+      "n": 20,
+      "mean_ms": 7.295014999908744,
+      "median_ms": 3.385399999388028,
+      "p95_ms": 16.250599997874815,
+      "max_ms": 16.250599997874815
+    },
+    {
+      "endpoint": "live step 2 s: POST /api/live/step",
+      "n": 20,
+      "mean_ms": 4.632909999781987,
+      "median_ms": 4.163499997957842,
+      "p95_ms": 14.352399994095322,
+      "max_ms": 14.352399994095322
+    },
+    {
+      "endpoint": "live step 60 s: POST /api/live/step",
+      "n": 10,
+      "mean_ms": 28.06265999824973,
+      "median_ms": 24.00159999888274,
+      "p95_ms": 48.378600004070904,
+      "max_ms": 48.378600004070904
+    },
+    {
+      "endpoint": "live step 300 s: POST /api/live/step",
+      "n": 5,
+      "mean_ms": 102.88145999948028,
+      "median_ms": 106.36530000192579,
+      "p95_ms": 112.52740000054473,
+      "max_ms": 112.52740000054473
+    },
+    {
+      "endpoint": "prediction: GET /api/prediction",
+      "n": 20,
+      "mean_ms": 22.254419999444508,
+      "median_ms": 19.82845000020461,
+      "p95_ms": 38.86610000336077,
+      "max_ms": 38.86610000336077
+    },
+    {
+      "endpoint": "prediction live: GET /api/prediction/live",
+      "n": 20,
+      "mean_ms": 8.124345001124311,
+      "median_ms": 3.60365000233287,
+      "p95_ms": 27.935800004343037,
+      "max_ms": 27.935800004343037
+    },
+    {
+      "endpoint": "violations: GET /api/violations",
+      "n": 20,
+      "mean_ms": 13.727940000535455,
+      "median_ms": 8.42689999990398,
+      "p95_ms": 31.6056999945431,
+      "max_ms": 31.6056999945431
+    },
+    {
+      "endpoint": "vision synthetic: GET /api/vision/synthetic?vehicles=9&ambulance=true&flash=A&seed=3",
+      "n": 20,
+      "mean_ms": 26.002804999006912,
+      "median_ms": 21.124549995874986,
+      "p95_ms": 87.4547999992501,
+      "max_ms": 87.4547999992501
+    },
+    {
+      "endpoint": "vision sample (YOLOv8): GET /api/vision/sample?conf=0.3",
+      "n": 10,
+      "mean_ms": 503.34017999921343,
+      "median_ms": 132.09759999881499,
+      "p95_ms": 3709.327399999893,
+      "max_ms": 3709.327399999893
+    },
+    {
+      "endpoint": "POST /api/benchmark (4 ctrl x 3 seeds x 1800 s, first call)",
+      "n": 1,
+      "mean_ms": 4837.170899998455
+    },
+    {
+      "endpoint": "POST /api/benchmark (cached)",
+      "n": 1,
+      "mean_ms": 12.437299999874085
+    },
+    {
+      "endpoint": "POST /api/benchmark/sweep (5 demand levels x 4 ctrl)",
+      "n": 1,
+      "mean_ms": 4022.0764000041527
+    }
+  ]
+}

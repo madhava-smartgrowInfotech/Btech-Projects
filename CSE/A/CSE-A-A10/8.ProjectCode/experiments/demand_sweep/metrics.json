@@ -1,0 +1,166 @@
+{
+  "grid": "2x2",
+  "seconds": 1200,
+  "seeds": [
+    40,
+    41,
+    42
+  ],
+  "levels": [
+    0.6,
+    0.9,
+    1.2,
+    1.5,
+    1.8
+  ],
+  "series": {
+    "fixed": [
+      {
+        "demand": 0.6,
+        "delay_mean": 26.972080633997283,
+        "delay_std": 1.330528845889016,
+        "throughput": 803.3333333333334,
+        "emergency_delay": 20.531746031746035
+      },
+      {
+        "demand": 0.9,
+        "delay_mean": 33.97436228689292,
+        "delay_std": 1.681282376843585,
+        "throughput": 1215.6666666666667,
+        "emergency_delay": 26.88131313131313
+      },
+      {
+        "demand": 1.2,
+        "delay_mean": 56.847848858138526,
+        "delay_std": 8.0916369127371,
+        "throughput": 1501.0,
+        "emergency_delay": 17.974999999999998
+      },
+      {
+        "demand": 1.5,
+        "delay_mean": 109.66103056680667,
+        "delay_std": 3.278286127163611,
+        "throughput": 1672.6666666666667,
+        "emergency_delay": 22.208333333333332
+      },
+      {
+        "demand": 1.8,
+        "delay_mean": 150.8821956292652,
+        "delay_std": 15.836993067712761,
+        "throughput": 1743.6666666666667,
+        "emergency_delay": 25.27878787878788
+      }
+    ],
+    "adaptive": [
+      {
+        "demand": 0.6,
+        "delay_mean": 20.553129686055133,
+        "delay_std": 0.6097081074307105,
+        "throughput": 808.3333333333334,
+        "emergency_delay": 18.164021164021165
+      },
+      {
+        "demand": 0.9,
+        "delay_mean": 27.24863217377674,
+        "delay_std": 1.9296033179255834,
+        "throughput": 1230.3333333333333,
+        "emergency_delay": 16.290404040404038
+      },
+      {
+        "demand": 1.2,
+        "delay_mean": 42.19591674084275,
+        "delay_std": 4.44799066884008,
+        "throughput": 1557.3333333333333,
+        "emergency_delay": 23.491666666666664
+      },
+      {
+        "demand": 1.5,
+        "delay_mean": 83.53878264128804,
+        "delay_std": 9.490450468889826,
+        "throughput": 1804.3333333333333,
+        "emergency_delay": 23.375
+      },
+      {
+        "demand": 1.8,
+        "delay_mean": 135.3092819668718,
+        "delay_std": 14.049123604976558,
+        "throughput": 1897.6666666666667,
+        "emergency_delay": 31.438888888888886
+      }
+    ],
+    "emergency": [
+      {
+        "demand": 0.6,
+        "delay_mean": 20.55489435623215,
+        "delay_std": 0.23229729964551973,
+        "throughput": 807.6666666666666,
+        "emergency_delay": 6.005291005291006
+      },
+      {
+        "demand": 0.9,
+        "delay_mean": 28.638401181264356,
+        "delay_std": 1.2875583673852444,
+        "throughput": 1226.0,
+        "emergency_delay": 6.027777777777779
+      },
+      {
+        "demand": 1.2,
+        "delay_mean": 44.622753373037405,
+        "delay_std": 4.602963101733362,
+        "throughput": 1545.6666666666667,
+        "emergency_delay": 5.508333333333333
+      },
+      {
+        "demand": 1.5,
+        "delay_mean": 86.04888268994982,
+        "delay_std": 12.185296927632189,
+        "throughput": 1796.0,
+        "emergency_delay": 4.583333333333333
+      },
+      {
+        "demand": 1.8,
+        "delay_mean": 138.11027513167153,
+        "delay_std": 15.705088018494298,
+        "throughput": 1881.6666666666667,
+        "emergency_delay": 4.683333333333334
+      }
+    ],
+    "advanced": [
+      {
+        "demand": 0.6,
+        "delay_mean": 26.363390353719325,
+        "delay_std": 0.2947296532724607,
+        "throughput": 802.3333333333334,
+        "emergency_delay": 6.637566137566137
+      },
+      {
+        "demand": 0.9,
+        "delay_mean": 30.181403497741517,
+        "delay_std": 1.4995639869878403,
+        "throughput": 1221.0,
+        "emergency_delay": 4.722222222222221
+      },
+      {
+        "demand": 1.2,
+        "delay_mean": 41.148989609433904,
+        "delay_std": 3.4222593693382364,
+        "throughput": 1562.0,
+        "emergency_delay": 4.891666666666667
+      },
+      {
+        "demand": 1.5,
+        "delay_mean": 78.80228394920094,
+        "delay_std": 9.601361576333975,
+        "throughput": 1822.0,
+        "emergency_delay": 6.25
+      },
+      {
+        "demand": 1.8,
+        "delay_mean": 127.6211488337418,
+        "delay_std": 14.55479263692635,
+        "throughput": 1892.3333333333333,
+        "emergency_delay": 4.830555555555556
+      }
+    ]
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "model": "yolov8n.pt (COCO, not fine-tuned)",
+  "mixed_traffic": {
+    "images": 293,
+    "gt_boxes_excluding_pedestrians": 1467,
+    "predicted_boxes": 537,
+    "conf": 0.3,
+    "iou_match": 0.5,
+    "per_class": {
+      "2-wheeler": {
+        "tp": 71,
+        "fp": 90,
+        "fn": 788,
+        "precision": 0.4409937888198758,
+        "recall": 0.08265424912689173,
+        "f1": 0.1392156862745098,
+        "n_gt": 859
+      },
+      "3-wheeler": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 217,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "n_gt": 217
+      },
+      "4-wheeler": {
+        "tp": 229,
+        "fp": 147,
+        "fn": 162,
+        "precision": 0.6090425531914894,
+        "recall": 0.5856777493606138,
+        "f1": 0.5971316818774446,
+        "n_gt": 391
+      },
+      "any vehicle class": {
+        "tp": 347,
+        "fp": 190,
+        "fn": 1120,
+        "precision": 0.6461824953445066,
+        "recall": 0.2365371506475801,
+        "f1": 0.3463073852295409,
+        "n_gt": 1467
+      }
+    },
+    "count_mae_per_image": 3.324232081911263,
+    "latency_ms_mean": 32.09487089035775,
+    "latency_ms_median": 30.62675000182935
+  },
+  "ambulance_classification": {
+    "images": 600,
+    "ambulance_images": 300,
+    "no_ambulance_images": 300,
+    "conf": 0.3,
+    "note": "first 300 files (by name) of each folder; positives include photos where the lights are off or not visible",
+    "lightbar_cluster_any": {
+      "tp": 4,
+      "fp": 1,
+      "fn": 296,
+      "tn": 299,
+      "precision": 0.8,
+      "recall": 0.013333333333333334,
+      "f1": 0.026229508196721315,
+      "accuracy": 0.505,
+      "false_alarm_rate": 0.0033333333333333335
+    },
+    "ambulance_flag_yolo_plus_lightbar": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 298,
+      "tn": 300,
+      "precision": 1.0,
+      "recall": 0.006666666666666667,
+      "f1": 0.013245033112582783,
+      "accuracy": 0.5033333333333333,
+      "false_alarm_rate": 0.0
+    },
+    "yolo_found_any_vehicle_in_ambulance_images": 0.9333333333333333
+  }
+}

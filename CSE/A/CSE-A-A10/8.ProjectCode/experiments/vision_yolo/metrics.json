@@ -1,0 +1,25 @@
+{
+  "available": true,
+  "model": "yolov8n.pt",
+  "sample_photo": {
+    "path": "bus.jpg",
+    "size": [
+      1080,
+      810
+    ],
+    "detections": [
+      {
+        "cls": "bus",
+        "conf": 0.873
+      }
+    ],
+    "lightbar_clusters": 0,
+    "latency_ms_mean": 50.91031499905512,
+    "latency_ms_median": 47.96804999568849,
+    "latency_ms_p95": 62.42404499898842
+  },
+  "synthetic_scene_with_yolo": {
+    "detections": []
+  },
+  "coco128_available": false
+}

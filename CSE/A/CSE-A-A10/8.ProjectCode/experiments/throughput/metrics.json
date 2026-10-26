@@ -1,0 +1,23 @@
+{
+  "2x2/fixed": {
+    "sim_seconds": 1800,
+    "wall_s": 0.16557520000060322,
+    "speedup": 10871.167007937336
+  },
+  "2x2/advanced": {
+    "sim_seconds": 1800,
+    "wall_s": 0.3263698000009754,
+    "speedup": 5515.209415620516
+  },
+  "3x3/fixed": {
+    "sim_seconds": 1800,
+    "wall_s": 0.22403879999910714,
+    "speedup": 8034.3082819486945
+  },
+  "3x3/advanced": {
+    "sim_seconds": 1800,
+    "wall_s": 0.5183415999999852,
+    "speedup": 3472.610747372856
+  },
+  "predictor_batch16_ms": 0.1772569999593543
+}

@@ -1,0 +1,114 @@
+{
+ "vision": {
+  "source": "synthetic",
+  "width": 640,
+  "height": 420,
+  "truth_count": 10,
+  "lightbars": 1,
+  "report": {
+   "counts": {
+    "car": 7,
+    "bike": 0,
+    "bus": 1,
+    "truck": 1,
+    "ambulance": 1
+   },
+   "pcu": 13.0,
+   "ratio": 0.929,
+   "level": "HIGH",
+   "emergency": true,
+   "green": 12
+  },
+  "detections": [
+   {
+    "cls": "truck",
+    "conf": 0.99,
+    "box": [
+     400,
+     95,
+     511,
+     138
+    ],
+    "lightbar": 0.0
+   },
+   {
+    "cls": "car",
+    "conf": 0.99,
+    "box": [
+     165,
+     160,
+     236,
+     195
+    ],
+    "lightbar": 0.0
+   },
+   {
+    "cls": "car",
+    "conf": 0.99,
+    "box": [
+     409,
+     160,
+     480,
+     195
+    ],
+    "lightbar": 0.0
+   }
+  ],
+  "n_detections": 10
+ },
+ "live": {
+  "t": 120,
+  "clock": "08:02:00",
+  "config": {
+   "grid": "2x2",
+   "controller": "advanced",
+   "demand": 1.4,
+   "emergencies": true,
+   "use_ml": false
+  },
+  "kpis": {
+   "demand_mult": 1.51,
+   "in_network": 74,
+   "queued": 59,
+   "avg_delay": 24.8,
+   "emg_delay": 0.0,
+   "emg_served": 0,
+   "emg_active": 0,
+   "violations": 2,
+   "red": 2,
+   "wrong": 0,
+   "throughput": 114,
+   "preemptions": 0
+  },
+  "banner": null,
+  "junctions": [
+   {
+    "junction": "J1",
+    "green": "North-South (clearing)",
+    "timer": 21,
+    "queue": "7/6/1/12",
+    "forecast": "0/0/0/0",
+    "preempt": false
+   },
+   {
+    "junction": "J2",
+    "green": "North-South",
+    "timer": 10,
+    "queue": "1/3/3/4",
+    "forecast": "0/0/0/0",
+    "preempt": false
+   }
+  ]
+ },
+ "violations": null,
+ "viol_row": {
+  "t": 28,
+  "junction": 3,
+  "approach": "E",
+  "kind": "Red-light jumping",
+  "plate": "AP09FF9188",
+  "vehicle": "truck",
+  "confidence": 0.88
+ },
+ "viol_n": 30
+}

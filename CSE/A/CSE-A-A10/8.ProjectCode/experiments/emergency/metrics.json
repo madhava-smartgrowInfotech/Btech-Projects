@@ -1,0 +1,63 @@
+{
+  "grid": "2x2",
+  "seconds": 3600,
+  "demand": 1.2,
+  "emg_rate": "1/60 per second",
+  "seeds": [
+    40,
+    41,
+    42,
+    43,
+    44
+  ],
+  "results": {
+    "fixed": {
+      "label": "Fixed-time (traditional)",
+      "n": 287,
+      "mean": 20.70731707317073,
+      "median": 21.0,
+      "p90": 38.0,
+      "max": 42.0,
+      "zero_delay_share": 0.041811846689895474,
+      "mean_travel": 32.707317073170735,
+      "network_delay": 120.5362907060055,
+      "preemptions": 0
+    },
+    "adaptive": {
+      "label": "Adaptive (queue-actuated)",
+      "n": 285,
+      "mean": 23.44561403508772,
+      "median": 23.0,
+      "p90": 44.0,
+      "max": 80.0,
+      "zero_delay_share": 0.02456140350877193,
+      "mean_travel": 35.44561403508772,
+      "network_delay": 50.08733233255212,
+      "preemptions": 0
+    },
+    "emergency": {
+      "label": "Emergency-aware adaptive (base paper)",
+      "n": 288,
+      "mean": 6.447916666666667,
+      "median": 7.0,
+      "p90": 10.0,
+      "max": 26.0,
+      "zero_delay_share": 0.03125,
+      "mean_travel": 18.447916666666668,
+      "network_delay": 57.7303147349126,
+      "preemptions": 278
+    },
+    "advanced": {
+      "label": "Advanced coordinated AI (this project)",
+      "n": 288,
+      "mean": 5.34375,
+      "median": 7.0,
+      "p90": 9.0,
+      "max": 24.0,
+      "zero_delay_share": 0.08333333333333333,
+      "mean_travel": 17.34375,
+      "network_delay": 50.85181054526427,
+      "preemptions": 268
+    }
+  }
+}

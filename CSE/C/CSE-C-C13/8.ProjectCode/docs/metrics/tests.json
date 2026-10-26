@@ -1,0 +1,7 @@
+{
+  "pytest_total": 21, "pytest_passed": 21, "pytest_seconds": 13.0,
+  "e2e_passed": 17, "e2e_total": 17,
+  "ui_passed": 18, "ui_total": 18,
+  "eval_passed": 17, "eval_total": 17,
+  "note": "pytest -q (13 s, .venv); scripts/smoke_test.py against backend 8413 + Vite 5413 on 2026-10-22; scripts/evaluate.py checks from evaluation_results.txt"
+}

@@ -1,0 +1,864 @@
+{
+  "environment": {
+    "cpu": "12th Gen Intel Core i5-12500 (6 cores / 12 threads)",
+    "ram_gb": 15.7,
+    "os": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.9",
+    "date": "2026-10-22",
+    "loopback": "127.0.0.1"
+  },
+  "browser": {
+    "crypto": {
+      "aes": {
+        "1024": {
+          "encrypt": {
+            "n": 50,
+            "mean": 0.009509999999403955,
+            "median": 0.007999999970197678,
+            "p95": 0.02,
+            "min": 0.006000000014901161,
+            "max": 0.02100000001490116
+          },
+          "decrypt": {
+            "n": 50,
+            "mean": 0.009940000002086164,
+            "median": 0.00850000001490116,
+            "p95": 0.019500000029802324,
+            "min": 0.005499999970197678,
+            "max": 0.033000000044703486
+          },
+          "sha256": {
+            "n": 50,
+            "mean": 0.0072399999991059295,
+            "median": 0.006499999985098839,
+            "p95": 0.01149999998509884,
+            "min": 0.003999999985098839,
+            "max": 0.023000000044703484
+          },
+          "overhead": 16
+        },
+        "65536": {
+          "encrypt": {
+            "n": 50,
+            "mean": 0.07031999999731779,
+            "median": 0.05949999995529651,
+            "p95": 0.13849999994039536,
+            "min": 0.04049999997019768,
+            "max": 0.16949999995529652
+          },
+          "decrypt": {
+            "n": 50,
+            "mean": 0.07263999999910592,
+            "median": 0.06550000004470348,
+            "p95": 0.1375,
+            "min": 0.04549999997019768,
+            "max": 0.20399999998509885
+          },
+          "sha256": {
+            "n": 50,
+            "mean": 0.04485000000149011,
+            "median": 0.043499999940395356,
+            "p95": 0.059000000059604644,
+            "min": 0.0375,
+            "max": 0.07849999994039536
+          },
+          "overhead": 16
+        },
+        "1048576": {
+          "encrypt": {
+            "n": 20,
+            "mean": 2.9199999988079073,
+            "median": 2.4000000059604645,
+            "p95": 6.299999997019768,
+            "min": 1.5,
+            "max": 8.899999991059303
+          },
+          "decrypt": {
+            "n": 20,
+            "mean": 2.345000000298023,
+            "median": 2,
+            "p95": 3.5,
+            "min": 1.2999999970197678,
+            "max": 5.299999997019768
+          },
+          "sha256": {
+            "n": 20,
+            "mean": 1.3149999998509885,
+            "median": 1.2999999970197678,
+            "p95": 1.5999999940395355,
+            "min": 1.0999999940395355,
+            "max": 1.9000000059604645
+          },
+          "overhead": 16
+        },
+        "10485760": {
+          "encrypt": {
+            "n": 8,
+            "mean": 22.587499998509884,
+            "median": 23.80000001192093,
+            "p95": 33.29999999701977,
+            "min": 13.200000002980232,
+            "max": 33.29999999701977
+          },
+          "decrypt": {
+            "n": 8,
+            "mean": 24.66249999962747,
+            "median": 26.19999998807907,
+            "p95": 33.900000005960464,
+            "min": 18.399999991059303,
+            "max": 33.900000005960464
+          },
+          "sha256": {
+            "n": 8,
+            "mean": 13.5,
+            "median": 12.900000005960464,
+            "p95": 18,
+            "min": 11.599999994039536,
+            "max": 18
+          },
+          "overhead": 16
+        },
+        "26214400": {
+          "encrypt": {
+            "n": 4,
+            "mean": 55.849999997764826,
+            "median": 53.79999999701977,
+            "p95": 69.70000000298023,
+            "min": 48.8999999910593,
+            "max": 69.70000000298023
+          },
+          "decrypt": {
+            "n": 4,
+            "mean": 48.75,
+            "median": 50.900000005960464,
+            "p95": 52.29999999701977,
+            "min": 44.29999999701977,
+            "max": 52.29999999701977
+          },
+          "sha256": {
+            "n": 4,
+            "mean": 25.675000000745058,
+            "median": 26.399999991059303,
+            "p95": 26.700000002980232,
+            "min": 23.700000002980232,
+            "max": 26.700000002980232
+          },
+          "overhead": 16
+        }
+      },
+      "rsa_keygen": {
+        "n": 12,
+        "mean": 111.78333333258827,
+        "median": 102.5,
+        "p95": 157.59999999403954,
+        "min": 36.400000005960464,
+        "max": 322.09999999403954
+      },
+      "rsa_wrap": {
+        "n": 40,
+        "mean": 0.029625000003725293,
+        "median": 0.029999999701976775,
+        "p95": 0.03500000014901161,
+        "min": 0.019999999552965164,
+        "max": 0.06000000014901161
+      },
+      "rsa_unwrap": {
+        "n": 40,
+        "mean": 0.7211249999888241,
+        "median": 0.7149999998509884,
+        "p95": 0.8350000001490117,
+        "min": 0.6149999998509884,
+        "max": 0.8699999995529651
+      },
+      "rsa_wrapped_bytes": 256,
+      "pbkdf2_120k": {
+        "n": 12,
+        "mean": 38.10833333184322,
+        "median": 32.79999999701977,
+        "p95": 47.69999998807907,
+        "min": 27.5,
+        "max": 80.3999999910593
+      },
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36"
+    },
+    "browser_version": "155.0.8059.85",
+    "e2e": {
+      "1024": {
+        "encrypted_up": {
+          "n": 30,
+          "mean": 41.31,
+          "median": 30.35,
+          "p95": 82.5,
+          "min": 18.1,
+          "max": 215.3
+        },
+        "plain_up": {
+          "n": 30,
+          "mean": 33.947,
+          "median": 28.9,
+          "p95": 73.7,
+          "min": 15.6,
+          "max": 88.3
+        },
+        "encrypted_down": {
+          "n": 30,
+          "mean": 31.9,
+          "median": 30.45,
+          "p95": 48.4,
+          "min": 18.5,
+          "max": 59.4
+        },
+        "plain_down": {
+          "n": 30,
+          "mean": 37.9,
+          "median": 28.6,
+          "p95": 94.6,
+          "min": 17.4,
+          "max": 124.6
+        },
+        "enc_only": {
+          "n": 30,
+          "mean": 0.033,
+          "median": 0.0,
+          "p95": 0.1,
+          "min": 0,
+          "max": 0.1
+        },
+        "dec_only": {
+          "n": 30,
+          "mean": 0.11,
+          "median": 0.1,
+          "p95": 0.3,
+          "min": 0,
+          "max": 0.4
+        }
+      },
+      "1048576": {
+        "encrypted_up": {
+          "n": 20,
+          "mean": 64.505,
+          "median": 63.05,
+          "p95": 107.4,
+          "min": 32.5,
+          "max": 122.4
+        },
+        "plain_up": {
+          "n": 20,
+          "mean": 56.91,
+          "median": 52.85,
+          "p95": 97.8,
+          "min": 28.2,
+          "max": 105.4
+        },
+        "encrypted_down": {
+          "n": 20,
+          "mean": 72.025,
+          "median": 61.05,
+          "p95": 161.1,
+          "min": 34,
+          "max": 209.1
+        },
+        "plain_down": {
+          "n": 20,
+          "mean": 55.39,
+          "median": 50.95,
+          "p95": 94.5,
+          "min": 31,
+          "max": 117
+        },
+        "enc_only": {
+          "n": 20,
+          "mean": 2.1,
+          "median": 2.1,
+          "p95": 2.9,
+          "min": 1.2,
+          "max": 4.2
+        },
+        "dec_only": {
+          "n": 20,
+          "mean": 2.345,
+          "median": 2.0,
+          "p95": 3.9,
+          "min": 1.1,
+          "max": 7.7
+        }
+      },
+      "10485760": {
+        "encrypted_up": {
+          "n": 15,
+          "mean": 217.587,
+          "median": 208.8,
+          "p95": 351.5,
+          "min": 116.1,
+          "max": 385.9
+        },
+        "plain_up": {
+          "n": 15,
+          "mean": 198.733,
+          "median": 194.4,
+          "p95": 258,
+          "min": 101.8,
+          "max": 354.1
+        },
+        "encrypted_down": {
+          "n": 15,
+          "mean": 183.027,
+          "median": 184.4,
+          "p95": 235.7,
+          "min": 113.6,
+          "max": 326.8
+        },
+        "plain_down": {
+          "n": 15,
+          "mean": 154.513,
+          "median": 157.3,
+          "p95": 196.8,
+          "min": 90.4,
+          "max": 262.4
+        },
+        "enc_only": {
+          "n": 15,
+          "mean": 21.593,
+          "median": 20.8,
+          "p95": 31.1,
+          "min": 15.2,
+          "max": 32.2
+        },
+        "dec_only": {
+          "n": 15,
+          "mean": 17.86,
+          "median": 16.9,
+          "p95": 24.8,
+          "min": 12.3,
+          "max": 25
+        }
+      }
+    }
+  },
+  "api": {
+    "register_plus_login_ms_first": 963.7,
+    "login_ms": {
+      "n": 15,
+      "mean": 307.605,
+      "median": 308.129,
+      "p95": 349.204,
+      "min": 244.337,
+      "max": 355.023
+    },
+    "login_fail_ms": {
+      "n": 10,
+      "mean": 325.948,
+      "median": 325.865,
+      "p95": 371.531,
+      "min": 295.712,
+      "max": 371.531
+    },
+    "me_ms": {
+      "n": 60,
+      "mean": 7.953,
+      "median": 6.324,
+      "p95": 17.712,
+      "min": 2.86,
+      "max": 25.504
+    },
+    "health_ms": {
+      "n": 60,
+      "mean": 1.804,
+      "median": 1.677,
+      "p95": 2.694,
+      "min": 1.181,
+      "max": 3.454
+    },
+    "upload_ms": {
+      "1024": {
+        "n": 20,
+        "mean": 27.2,
+        "median": 27.236,
+        "p95": 38.337,
+        "min": 17.686,
+        "max": 41.511
+      },
+      "65536": {
+        "n": 20,
+        "mean": 33.525,
+        "median": 32.403,
+        "p95": 44.39,
+        "min": 18.866,
+        "max": 50.653
+      },
+      "1048576": {
+        "n": 15,
+        "mean": 48.944,
+        "median": 44.536,
+        "p95": 70.282,
+        "min": 31.564,
+        "max": 73.734
+      },
+      "10485760": {
+        "n": 6,
+        "mean": 124.732,
+        "median": 138.645,
+        "p95": 163.498,
+        "min": 73.891,
+        "max": 163.498
+      },
+      "26212352": {
+        "n": 3,
+        "mean": 286.694,
+        "median": 287.532,
+        "p95": 339.284,
+        "min": 233.266,
+        "max": 339.284
+      }
+    },
+    "download_ms": {
+      "1024": {
+        "n": 20,
+        "mean": 22.005,
+        "median": 21.745,
+        "p95": 32.415,
+        "min": 12.039,
+        "max": 32.94
+      },
+      "65536": {
+        "n": 20,
+        "mean": 15.327,
+        "median": 12.09,
+        "p95": 28.115,
+        "min": 9.476,
+        "max": 34.968
+      },
+      "1048576": {
+        "n": 15,
+        "mean": 26.005,
+        "median": 22.428,
+        "p95": 34.041,
+        "min": 14.914,
+        "max": 66.547
+      },
+      "10485760": {
+        "n": 6,
+        "mean": 118.724,
+        "median": 101.726,
+        "p95": 227.747,
+        "min": 62.858,
+        "max": 227.747
+      },
+      "26212352": {
+        "n": 3,
+        "mean": 171.554,
+        "median": 177.142,
+        "p95": 193.653,
+        "min": 143.868,
+        "max": 193.653
+      }
+    },
+    "upload_limit_check": {
+      "over_25MB_status": 413
+    },
+    "list_files_ms": {
+      "n": 20,
+      "mean": 42.801,
+      "median": 40.309,
+      "p95": 58.862,
+      "min": 31.254,
+      "max": 72.324
+    },
+    "share_ms": 37.83,
+    "change_role_ms": 22.72,
+    "revoke_ms": 24.71,
+    "download_after_revoke_ms": 18.57,
+    "download_after_revoke_status": 403
+  },
+  "rbac": {
+    "cells": [
+      {
+        "principal": "owner",
+        "operation": "metadata",
+        "expected_allowed": true,
+        "status": 200,
+        "match": true
+      },
+      {
+        "principal": "owner",
+        "operation": "download",
+        "expected_allowed": true,
+        "status": 200,
+        "match": true
+      },
+      {
+        "principal": "owner",
+        "operation": "update",
+        "expected_allowed": true,
+        "status": 200,
+        "match": true
+      },
+      {
+        "principal": "owner",
+        "operation": "list_permissions",
+        "expected_allowed": true,
+        "status": 200,
+        "match": true
+      },
+      {
+        "principal": "owner",
+        "operation": "share",
+        "expected_allowed": true,
+        "status": 200,
+        "match": true
+      },
+      {
+        "principal": "owner",
+        "operation": "change_role",
+        "expected_allowed": true,
+        "status": 200,
+        "match": true
+      },
+      {
+        "principal": "owner",
+        "operation": "revoke",
+        "expected_allowed": true,
+        "status": 200,
+        "match": true
+      },
+      {
+        "principal": "owner",
+        "operation": "file_audit",
+        "expected_allowed": true,
+        "status": 200,
+        "match": true
+      },
+      {
+        "principal": "owner",
+        "operation": "delete",
+        "expected_allowed": true,
+        "status": 200,
+        "match": true
+      },
+      {
+        "principal": "editor",
+        "operation": "metadata",
+        "expected_allowed": true,
+        "status": 200,
+        "match": true
+      },
+      {
+        "principal": "editor",
+        "operation": "download",
+        "expected_allowed": true,
+        "status": 200,
+        "match": true
+      },
+      {
+        "principal": "editor",
+        "operation": "update",
+        "expected_allowed": true,
+        "status": 200,
+        "match": true
+      },
+      {
+        "principal": "editor",
+        "operation": "list_permissions",
+        "expected_allowed": true,
+        "status": 200,
+        "match": true
+      },
+      {
+        "principal": "editor",
+        "operation": "share",
+        "expected_allowed": false,
+        "status": 403,
+        "match": true
+      },
+      {
+        "principal": "editor",
+        "operation": "change_role",
+        "expected_allowed": false,
+        "status": 403,
+        "match": true
+      },
+      {
+        "principal": "editor",
+        "operation": "revoke",
+        "expected_allowed": false,
+        "status": 403,
+        "match": true
+      },
+      {
+        "principal": "editor",
+        "operation": "file_audit",
+        "expected_allowed": false,
+        "status": 403,
+        "match": true
+      },
+      {
+        "principal": "editor",
+        "operation": "delete",
+        "expected_allowed": false,
+        "status": 403,
+        "match": true
+      },
+      {
+        "principal": "viewer",
+        "operation": "metadata",
+        "expected_allowed": true,
+        "status": 200,
+        "match": true
+      },
+      {
+        "principal": "viewer",
+        "operation": "download",
+        "expected_allowed": true,
+        "status": 200,
+        "match": true
+      },
+      {
+        "principal": "viewer",
+        "operation": "update",
+        "expected_allowed": false,
+        "status": 403,
+        "match": true
+      },
+      {
+        "principal": "viewer",
+        "operation": "list_permissions",
+        "expected_allowed": true,
+        "status": 200,
+        "match": true
+      },
+      {
+        "principal": "viewer",
+        "operation": "share",
+        "expected_allowed": false,
+        "status": 403,
+        "match": true
+      },
+      {
+        "principal": "viewer",
+        "operation": "change_role",
+        "expected_allowed": false,
+        "status": 403,
+        "match": true
+      },
+      {
+        "principal": "viewer",
+        "operation": "revoke",
+        "expected_allowed": false,
+        "status": 403,
+        "match": true
+      },
+      {
+        "principal": "viewer",
+        "operation": "file_audit",
+        "expected_allowed": false,
+        "status": 403,
+        "match": true
+      },
+      {
+        "principal": "viewer",
+        "operation": "delete",
+        "expected_allowed": false,
+        "status": 403,
+        "match": true
+      },
+      {
+        "principal": "stranger",
+        "operation": "metadata",
+        "expected_allowed": false,
+        "status": 403,
+        "match": true
+      },
+      {
+        "principal": "stranger",
+        "operation": "download",
+        "expected_allowed": false,
+        "status": 403,
+        "match": true
+      },
+      {
+        "principal": "stranger",
+        "operation": "update",
+        "expected_allowed": false,
+        "status": 403,
+        "match": true
+      },
+      {
+        "principal": "stranger",
+        "operation": "list_permissions",
+        "expected_allowed": false,
+        "status": 403,
+        "match": true
+      },
+      {
+        "principal": "stranger",
+        "operation": "share",
+        "expected_allowed": false,
+        "status": 403,
+        "match": true
+      },
+      {
+        "principal": "stranger",
+        "operation": "change_role",
+        "expected_allowed": false,
+        "status": 403,
+        "match": true
+      },
+      {
+        "principal": "stranger",
+        "operation": "revoke",
+        "expected_allowed": false,
+        "status": 403,
+        "match": true
+      },
+      {
+        "principal": "stranger",
+        "operation": "file_audit",
+        "expected_allowed": false,
+        "status": 403,
+        "match": true
+      },
+      {
+        "principal": "stranger",
+        "operation": "delete",
+        "expected_allowed": false,
+        "status": 403,
+        "match": true
+      }
+    ],
+    "matched": 36,
+    "total": 36,
+    "accuracy": 1.0,
+    "unauthenticated_statuses": [
+      401,
+      401,
+      401,
+      401,
+      401
+    ],
+    "forged_token_status": 401,
+    "expired_token_status": 401,
+    "wrong_secret_token_status": 401,
+    "alg_none_token_status": 401
+  },
+  "tamper": {
+    "ciphertext_bitflip": {
+      "trials": 2000,
+      "detected": 2000
+    },
+    "wrong_key_rejected": true,
+    "audit_entries_available": 461,
+    "audit_untouched_valid": true,
+    "audit_tamper": {
+      "edit_details": {
+        "trials": 200,
+        "detected": 200
+      },
+      "edit_action": {
+        "trials": 200,
+        "detected": 200
+      },
+      "edit_success": {
+        "trials": 200,
+        "detected": 200
+      },
+      "edit_user": {
+        "trials": 200,
+        "detected": 200
+      },
+      "edit_hash": {
+        "trials": 200,
+        "detected": 200
+      },
+      "delete_entry_middle": {
+        "trials": 199,
+        "detected": 199
+      },
+      "swap_adjacent": {
+        "trials": 200,
+        "detected": 200
+      },
+      "insert_forged_entry": {
+        "trials": 200,
+        "detected": 200
+      },
+      "truncate_tail": {
+        "trials": 199,
+        "detected": 0
+      }
+    },
+    "audit_rechain_attack_detected": false
+  },
+  "audit_chain_scaling": {
+    "461": {
+      "verify_ms_median": 27.2,
+      "valid": true,
+      "checked": 463
+    },
+    "500": {
+      "verify_ms_median": 20.6,
+      "valid": true,
+      "checked": 502
+    },
+    "1000": {
+      "verify_ms_median": 93.6,
+      "valid": true,
+      "checked": 1002
+    },
+    "2000": {
+      "verify_ms_median": 80.8,
+      "valid": true,
+      "checked": 2002
+    },
+    "5000": {
+      "verify_ms_median": 403.6,
+      "valid": true,
+      "checked": 5002
+    }
+  },
+  "audit_write_ms": {
+    "n": 40,
+    "mean": 26.435,
+    "median": 18.965,
+    "p95": 89.996,
+    "min": 9.302,
+    "max": 118.468
+  },
+  "audit_live_verify": {
+    "valid": true,
+    "checked": 5043,
+    "failure_at": null,
+    "message": "Audit chain valid"
+  },
+  "storage": {
+    "objects": 200
+  },
+  "loc": {
+    "backend_py": {
+      "files": 20,
+      "lines": 1184
+    },
+    "tests_py": {
+      "files": 7,
+      "lines": 371
+    },
+    "frontend_src": {
+      "files": 39,
+      "lines": 6831
+    },
+    "scripts_py": {
+      "files": 6,
+      "lines": 1470
+    }
+  },
+  "audit_concurrency": {
+    "valid_before": true,
+    "4_workers": {
+      "requests": 100,
+      "status_401": 100,
+      "seconds": 3.55,
+      "chain_valid_after": false,
+      "failure_at": 5047,
+      "checked": 5145
+    }
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "train": {
+    "request": "POST /api/train",
+    "status": 200,
+    "response": {
+      "active_clients": 5,
+      "epsilon": 1.6149350875351296,
+      "delta": 1e-05,
+      "perplexity": 130.22138531571318,
+      "next_character_accuracy": 0.05090909090909091,
+      "utility_score": 0.0926462600496639,
+      "model_hash": "fe4d958335a7a158acdf8d5d441073a39f9d1bb70fc95141ae3dd49d5869bbba"
+    }
+  },
+  "generate_before": {
+    "request": "POST /api/generate {\"seed\": \"privacy\"}",
+    "status": 200,
+    "response": {
+      "text": "privacybsov btrppsvyklrcxrvymej,..!qgnlgpynl"
+    }
+  },
+  "unlearn": {
+    "request": "POST /api/unlearn {\"client_id\": \"client_finance\"}",
+    "status": 200,
+    "response": {
+      "certificate_id": "CERT-E4834FD06896",
+      "session_id": "d79d22d9-f68e-4c4b-9611-e8ed4e49e751",
+      "client_id": "client_finance",
+      "client_name": "Client 01 (Finance)",
+      "issued_at_utc": "2026-10-26T14:29:18+00:00",
+      "status": "CERTIFIED",
+      "method": "Tracked clipped-update subtraction with retained-client renormalization",
+      "epsilon": 1.6149350875351296,
+      "delta": 1e-05,
+      "clip_norm": 25.0,
+      "noise_multiplier": 3.0,
+      "residual_influence_l2": 2.7903189690385764e-14,
+      "reference_retrain_l2": 2.7903189690385764e-14,
+      "membership_auc_before": 0.2,
+      "membership_auc_after": 0.16,
+      "perplexity_before": 130.22138531571318,
+      "perplexity_after": 146.47196760072828,
+      "accuracy_before": 0.05090909090909091,
+      "accuracy_after": 0.04363636363636364,
+      "utility_retention_percent": 93.64532042042157,
+      "clients_before": 5,
+      "clients_after": 4,
+      "model_hash_before": "fe4d958335a7a158acdf8d5d441073a39f9d1bb70fc95141ae3dd49d5869bbba",
+      "model_hash_after": "d0f7b70df52c5d17097b83b9144b00621123921d6c60d960604fc2de312ac898",
+      "audit_record_hash": "c21d202b7a2ee6c91eba527d5d72127df7bf9b92660e16561b08403337d1dc7d"
+    }
+  },
+  "generate_after": {
+    "request": "POST /api/generate {\"seed\": \"privacy\"}",
+    "status": 200,
+    "response": {
+      "text": "privacybsov btrppsvyklrcxrvymej,..!qgnlgpynl"
+    }
+  },
+  "audit_verify": {
+    "request": "POST /api/audit/verify",
+    "status": 200,
+    "response": {
+      "valid": true,
+      "detail": "Verified 2 audit record(s)"
+    }
+  },
+  "repeat_unlearn": {
+    "request": "POST /api/unlearn {\"client_id\": \"client_finance\"}",
+    "status": 400,
+    "response": {
+      "error": "client_finance has already been unlearned"
+    }
+  },
+  "state_audit_records": [
+    {
+      "sequence": 1,
+      "event_type": "FEDERATED_TRAINING",
+      "previous_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+      "record_hash": "be69f32ebfec00d6e958aa45d74b9787103f35e8a9e4eadb785c04f23840e5c1"
+    },
+    {
+      "sequence": 2,
+      "event_type": "CLIENT_UNLEARNING",
+      "previous_hash": "be69f32ebfec00d6e958aa45d74b9787103f35e8a9e4eadb785c04f23840e5c1",
+      "record_hash": "c21d202b7a2ee6c91eba527d5d72127df7bf9b92660e16561b08403337d1dc7d"
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "steps": [
+    {
+      "step": 0,
+      "active_clients": 5,
+      "epsilon": 1.6149350875351296,
+      "delta": 1e-05,
+      "perplexity": 130.22138531571318,
+      "next_character_accuracy": 0.05090909090909091,
+      "utility_score": 0.0926462600496639,
+      "model_hash": "fe4d958335a7a158acdf8d5d441073a39f9d1bb70fc95141ae3dd49d5869bbba"
+    },
+    {
+      "step": 1,
+      "removed": "client_finance",
+      "active_clients": 4,
+      "epsilon": 1.6149350875351296,
+      "delta": 1e-05,
+      "perplexity": 146.47196760072828,
+      "next_character_accuracy": 0.04363636363636364,
+      "utility_score": 0.08675888708104479,
+      "model_hash": "d0f7b70df52c5d17097b83b9144b00621123921d6c60d960604fc2de312ac898",
+      "status": "CERTIFIED",
+      "reference_l2": 2.7903189690385764e-14,
+      "retention_percent": 93.64532042042157
+    },
+    {
+      "step": 2,
+      "removed": "client_health",
+      "active_clients": 3,
+      "epsilon": 1.6149350875351296,
+      "delta": 1e-05,
+      "perplexity": 171.2752378224503,
+      "next_character_accuracy": 0.04363636363636364,
+      "utility_score": 0.08528259599290118,
+      "model_hash": "bde3c845deedbd6ac3364544e115904f6a4224ca7a28120f06d475d628f64cfb",
+      "status": "CERTIFIED",
+      "reference_l2": 3.633449741970151e-14,
+      "retention_percent": 98.29839784970439
+    },
+    {
+      "step": 3,
+      "removed": "client_education",
+      "active_clients": 2,
+      "epsilon": 1.6149350875351296,
+      "delta": 1e-05,
+      "perplexity": 213.58792833937378,
+      "next_character_accuracy": 0.04363636363636364,
+      "utility_score": 0.08331973794493772,
+      "model_hash": "663d561aadc3c59da9c40e51ae1e58fc0401537330087dc587dd804e15069635",
+      "status": "CERTIFIED",
+      "reference_l2": 5.3000243692035394e-14,
+      "retention_percent": 97.69840724814844
+    },
+    {
+      "step": 4,
+      "removed": "client_retail",
+      "active_clients": 1,
+      "epsilon": 1.6149350875351296,
+      "delta": 1e-05,
+      "perplexity": 302.80786274497177,
+      "next_character_accuracy": 0.04363636363636364,
+      "utility_score": 0.08047492157660323,
+      "model_hash": "05024889b39de0f53ec5b24a38ac6d21ab35d14564fc02b3586ac496b2ea4109",
+      "status": "CERTIFIED",
+      "reference_l2": 1.058675518095787e-13,
+      "retention_percent": 96.58566332720045
+    }
+  ],
+  "last_client_error": "At least one client must remain in the model",
+  "audit_valid": true,
+  "audit_detail": "Verified 5 audit record(s)",
+  "statuses": [
+    "CERTIFIED",
+    "CERTIFIED",
+    "CERTIFIED",
+    "CERTIFIED"
+  ]
+}

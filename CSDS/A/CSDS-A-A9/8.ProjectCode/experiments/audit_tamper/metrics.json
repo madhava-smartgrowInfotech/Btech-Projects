@@ -1,0 +1,58 @@
+{
+  "cases": [
+    {
+      "case": "untouched ledger",
+      "detected": false,
+      "detail": "Verified 3 audit record(s)",
+      "expected_detected": false
+    },
+    {
+      "case": "edit a numeric field in a middle record",
+      "detected": true,
+      "detail": "Hash-chain verification failed at record 2",
+      "expected_detected": true
+    },
+    {
+      "case": "flip a certificate status",
+      "detected": true,
+      "detail": "Hash-chain verification failed at record 2",
+      "expected_detected": true
+    },
+    {
+      "case": "delete a middle record",
+      "detected": true,
+      "detail": "Sequence mismatch at record 2",
+      "expected_detected": true
+    },
+    {
+      "case": "swap two records",
+      "detected": true,
+      "detail": "Sequence mismatch at record 2",
+      "expected_detected": true
+    },
+    {
+      "case": "truncate the newest record(s) from the tail",
+      "detected": false,
+      "detail": "Verified 2 audit record(s)",
+      "expected_detected": false
+    },
+    {
+      "case": "edit a record AND recompute every hash (forgery)",
+      "detected": false,
+      "detail": "Verified 3 audit record(s)",
+      "expected_detected": false
+    },
+    {
+      "case": "append a forged record with a valid hash",
+      "detected": false,
+      "detail": "Verified 4 audit record(s)",
+      "expected_detected": false
+    }
+  ],
+  "detected_when_expected": 8,
+  "undetected_attacks": [
+    "truncate the newest record(s) from the tail",
+    "edit a record AND recompute every hash (forgery)",
+    "append a forged record with a valid hash"
+  ]
+}

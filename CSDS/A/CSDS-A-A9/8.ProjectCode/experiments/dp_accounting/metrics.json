@@ -1,0 +1,30 @@
+{
+  "delta": 1e-05,
+  "formula": "epsilon = sqrt(2 ln(1.25/delta)) / sigma",
+  "numerator": 4.844805262605389,
+  "default_sigma": 3.0,
+  "default_epsilon": 1.6149350875351296,
+  "sigma_needed_for_epsilon_below_1": 4.844805262605389,
+  "noise_std_per_coordinate_default": 75.0,
+  "clip_norm": 25.0,
+  "raw_update_norms": {
+    "client_finance": 26.589471600616662,
+    "client_health": 28.231188426986208,
+    "client_education": 26.40075756488817,
+    "client_retail": 25.219040425836983,
+    "client_travel": 26.551836094703507
+  },
+  "clients_clipped": 5,
+  "signal_to_noise_per_coordinate_note": "clipped L2 norm 25 spread over 1089 coordinates vs noise std 75 per coordinate",
+  "expected_noise_l2": 2475.0,
+  "epsilon_by_sigma": {
+    "0.5": 9.689610525210778,
+    "1": 4.844805262605389,
+    "2": 2.4224026313026945,
+    "3": 1.6149350875351296,
+    "4.85": 0.9989289201248226,
+    "6": 0.8074675437675648,
+    "10": 0.4844805262605389
+  },
+  "noise_reused_after_unlearning": true
+}

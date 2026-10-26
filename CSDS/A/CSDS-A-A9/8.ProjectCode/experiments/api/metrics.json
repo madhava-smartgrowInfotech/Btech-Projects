@@ -1,0 +1,167 @@
+{
+  "host": "127.0.0.1:8198",
+  "latency": {
+    "GET /api/health": {
+      "n": 100,
+      "p50_ms": 2.996700000949204,
+      "p95_ms": 25.401100007002242,
+      "max_ms": 28.728599994792603,
+      "mean_ms": 6.378662001079647
+    },
+    "GET /api/state (untrained)": {
+      "n": 100,
+      "p50_ms": 5.357100002584048,
+      "p95_ms": 24.28150000923779,
+      "max_ms": 41.26379999797791,
+      "mean_ms": 9.038387999607949
+    },
+    "POST /api/train": {
+      "n": 50,
+      "p50_ms": 36.4617999875918,
+      "p95_ms": 59.9789999978384,
+      "max_ms": 68.97349999053404,
+      "mean_ms": 40.006695999763906
+    },
+    "GET /api/state (trained)": {
+      "n": 100,
+      "p50_ms": 20.828100008657202,
+      "p95_ms": 44.2748999921605,
+      "max_ms": 56.50799999420997,
+      "mean_ms": 25.123905999935232
+    },
+    "POST /api/generate": {
+      "n": 50,
+      "p50_ms": 7.258099998580292,
+      "p95_ms": 23.586600000271574,
+      "max_ms": 26.829199996427633,
+      "mean_ms": 9.624877999885939
+    },
+    "POST /api/audit/verify": {
+      "n": 50,
+      "p50_ms": 5.8293000038247555,
+      "p95_ms": 25.233200009097345,
+      "max_ms": 37.413600002764724,
+      "mean_ms": 9.573282000492327
+    },
+    "POST /api/unlearn": {
+      "n": 30,
+      "p50_ms": 57.943499996326864,
+      "p95_ms": 82.38629999686964,
+      "max_ms": 109.29089999990538,
+      "mean_ms": 62.18263666717879
+    },
+    "GET /api/state (ledger 110 records)": {
+      "n": 1,
+      "p50_ms": 45.61149999790359
+    },
+    "GET /api/state (grown ledger)": {
+      "n": 30,
+      "p50_ms": 22.320200005196966,
+      "p95_ms": 33.400000000256114,
+      "max_ms": 37.85029999562539,
+      "mean_ms": 24.013716664921958
+    }
+  },
+  "edge_cases": [
+    {
+      "case": "unlearn before training",
+      "status": 400,
+      "response": "Train the federated model before requesting unlearning"
+    },
+    {
+      "case": "generate before training",
+      "status": 400,
+      "response": "Train the federated model first"
+    },
+    {
+      "case": "certificate before any unlearning",
+      "status": 404,
+      "response": "No certificate is available"
+    },
+    {
+      "case": "unknown route (GET)",
+      "status": 404,
+      "response": "Route not found"
+    },
+    {
+      "case": "unknown route (POST)",
+      "status": 404,
+      "response": "Route not found"
+    },
+    {
+      "case": "malformed JSON body",
+      "status": 400,
+      "response": "Expecting property name enclosed in double quotes: line 1 column 2 (char 1)"
+    },
+    {
+      "case": "JSON array instead of object",
+      "status": 400,
+      "response": "JSON body must be an object"
+    },
+    {
+      "case": "oversized body (2 MB)",
+      "status": -1,
+      "response": "[WinError 10053] An established connection was aborted by the software in your h"
+    },
+    {
+      "case": "unlearn without client_id",
+      "status": 400,
+      "response": "client_id is required"
+    },
+    {
+      "case": "unlearn unknown client id",
+      "status": 400,
+      "response": "'Unknown client: client_nobody'"
+    },
+    {
+      "case": "unlearn with SQL-ish id",
+      "status": 400,
+      "response": "\"Unknown client: x'; DROP TABLE--\""
+    },
+    {
+      "case": "generate with empty seed",
+      "status": 200,
+      "response": "ok"
+    },
+    {
+      "case": "generate with unicode seed",
+      "status": 200,
+      "response": "ok"
+    },
+    {
+      "case": "generate with 5,000-char seed",
+      "status": 200,
+      "response": "ok"
+    },
+    {
+      "case": "unsupported method (PUT)",
+      "status": 501,
+      "response": "<!DOCTYPE HTML>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"utf-8\">\n     "
+    },
+    {
+      "case": "unlearn first client ok",
+      "status": 200,
+      "response": "ok"
+    },
+    {
+      "case": "repeat unlearn same client",
+      "status": 400,
+      "response": "client_finance has already been unlearned"
+    },
+    {
+      "case": "unlearn the last remaining client",
+      "status": 400,
+      "response": "At least one client must remain in the model"
+    },
+    {
+      "case": "path traversal on /",
+      "status": 404,
+      "response": "Route not found"
+    },
+    {
+      "case": "legacy single-page UI at /",
+      "status": 200,
+      "response": "html"
+    }
+  ]
+}

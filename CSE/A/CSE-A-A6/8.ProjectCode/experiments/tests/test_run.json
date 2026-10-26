@@ -1,0 +1,12 @@
+{
+  "run_date": "2026-10-26",
+  "environment": "Python 3.14.7 project venv, Windows 11, i5-12500",
+  "unittest": {"command": "python -m unittest discover -s tests -v", "tests": 20, "passed": 20, "failed": 0, "seconds": 0.574},
+  "web_smoke": {"command": "python scripts/smoke_test.py", "checks": 34, "passed": 34, "failed": 0},
+  "earlier_records_VERIFICATION_md": {
+    "date": "2026-09-23",
+    "pip_check": "passed",
+    "tk_smoke_test": "passed",
+    "camera_check": "passed; 81 real webcam frames in a bounded diagnostic, no accuracy claim"
+  }
+}

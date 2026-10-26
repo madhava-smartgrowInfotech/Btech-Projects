@@ -1,0 +1,252 @@
+WARNING: Logging before InitGoogle() is written to STDERR
+W0000 00:00:1792992942.986846    8116 face_landmarker_graph.cc:180] Sets FaceBlendshapesGraph acceleration to xnnpack by default.
+INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+W0000 00:00:1792992943.010144   12652 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1792992943.023682   20164 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1792992943.032570   20032 face_landmarker_graph.cc:180] Sets FaceBlendshapesGraph acceleration to xnnpack by default.
+W0000 00:00:1792992943.038854    2292 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1792992943.052240   11908 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+{
+ "dataset": "CEW (Closed Eyes in the Wild), 100x100 warped faces, public research dataset",
+ "images_total": 2423,
+ "closed_images": 1192,
+ "open_images": 1231,
+ "assessed_good": 1068,
+ "coverage": 0.4407758976475444,
+ "by_class": {
+  "closed": {
+   "images": 1192,
+   "assessed_good": 529,
+   "coverage": 0.4437919463087248,
+   "quality_breakdown": {
+    "Good": 529,
+    "Blurred or hidden eyes": 480,
+    "Multiple faces": 139,
+    "Unreliable eye geometry": 5,
+    "No face": 10,
+    "Hidden eyes or poor eye lighting": 25,
+    "Poor lighting": 4
+   },
+   "ear_mean": 0.0588475236294896,
+   "ear_std": 0.03770498856987938,
+   "ear_median": 0.04839,
+   "ear_p5_p95": [
+    0.016856,
+    0.132772
+   ]
+  },
+  "open": {
+   "images": 1231,
+   "assessed_good": 539,
+   "coverage": 0.437855402112104,
+   "quality_breakdown": {
+    "Blurred or hidden eyes": 581,
+    "Multiple faces": 101,
+    "Good": 539,
+    "Hidden eyes or poor eye lighting": 9,
+    "Unreliable eye geometry": 1
+   },
+   "ear_mean": 0.29033393320964757,
+   "ear_std": 0.06672394984456557,
+   "ear_median": 0.29969,
+   "ear_p5_p95": [
+    0.148422,
+    0.386561
+   ]
+  }
+ },
+ "auc_ear_closed_vs_open": 0.9930417948241335,
+ "default_threshold_0.21": {
+  "threshold": 0.21,
+  "tp": 529,
+  "fp": 55,
+  "fn": 0,
+  "tn": 484,
+  "accuracy": 0.9485018726591761,
+  "precision": 0.9058219178082192,
+  "recall": 1.0,
+  "specificity": 0.8979591836734694,
+  "f1": 0.9505840071877808
+ },
+ "end_to_end_accuracy_unassessed_counted_wrong": 0.41807676434172514,
+ "best_threshold_in_sample_youden": {
+  "threshold": 0.17,
+  "tp": 521,
+  "fp": 33,
+  "fn": 8,
+  "tn": 506,
+  "accuracy": 0.9616104868913857,
+  "precision": 0.9404332129963899,
+  "recall": 0.9848771266540642,
+  "specificity": 0.9387755102040817,
+  "f1": 0.9621421975992613
+ },
+ "latency_ms_vision_process_640x480": {
+  "mean": 12.115274453157243,
+  "p50": 13.07,
+  "p95": 26.888,
+  "max": 75.83,
+  "n": 2423
+ },
+ "caveats": [
+  "Closed-eye images come from the Internet, open-eye images from LFW: the two classes differ in source and image conditions, so separation may be easier than within-source separation.",
+  "Still images only: blink dynamics, persistence rules and head motion are not exercised.",
+  "Best threshold is chosen on the same images (in-sample) and is reported for context only."
+ ]
+}
+{
+ "source": "open-eye CEW faces that were Good at baseline, seeded sample",
+ "n_images": 272,
+ "conditions": [
+  {
+   "condition": "baseline (unmodified)",
+   "n": 272,
+   "good": 267,
+   "good_rate": 0.9816176470588235,
+   "unable_to_assess_rate": 0.018382352941176516,
+   "quality_breakdown": {
+    "Good": 267,
+    "Multiple faces": 5
+   },
+   "false_closure_rate_among_good": 0.1198501872659176,
+   "mean_ear_good": 0.2860151731875353,
+   "mean_ear_shift_vs_baseline": 0.0
+  },
+  {
+   "condition": "brightness x0.50",
+   "n": 272,
+   "good": 1,
+   "good_rate": 0.003676470588235294,
+   "unable_to_assess_rate": 0.9963235294117647,
+   "quality_breakdown": {
+    "Blurred or hidden eyes": 267,
+    "Good": 1,
+    "Poor lighting": 3,
+    "Hidden eyes or poor eye lighting": 1
+   },
+   "false_closure_rate_among_good": 0.0,
+   "mean_ear_good": 0.3295321698157531,
+   "mean_ear_shift_vs_baseline": 0.04351699662821784
+  },
+  {
+   "condition": "brightness x0.25",
+   "n": 272,
+   "good": 0,
+   "good_rate": 0.0,
+   "unable_to_assess_rate": 1.0,
+   "quality_breakdown": {
+    "Poor lighting": 264,
+    "Blurred or hidden eyes": 8
+   },
+   "false_closure_rate_among_good": null,
+   "mean_ear_good": null,
+   "mean_ear_shift_vs_baseline": null
+  },
+  {
+   "condition": "brightness x0.12",
+   "n": 272,
+   "good": 0,
+   "good_rate": 0.0,
+   "unable_to_assess_rate": 1.0,
+   "quality_breakdown": {
+    "Poor lighting": 272
+   },
+   "false_closure_rate_among_good": null,
+   "mean_ear_good": null,
+   "mean_ear_shift_vs_baseline": null
+  },
+  {
+   "condition": "over-exposed (x1.8 + 25)",
+   "n": 272,
+   "good": 154,
+   "good_rate": 0.5661764705882353,
+   "unable_to_assess_rate": 0.4338235294117647,
+   "quality_breakdown": {
+    "Poor lighting": 76,
+    "Hidden eyes or poor eye lighting": 15,
+    "Good": 154,
+    "Blurred or hidden eyes": 15,
+    "Multiple faces": 12
+   },
+   "false_closure_rate_among_good": 0.11688311688311688,
+   "mean_ear_good": 0.2875382061907209,
+   "mean_ear_shift_vs_baseline": 0.0015230330031856254
+  },
+  {
+   "condition": "Gaussian blur sigma 2 px",
+   "n": 272,
+   "good": 0,
+   "good_rate": 0.0,
+   "unable_to_assess_rate": 1.0,
+   "quality_breakdown": {
+    "Blurred or hidden eyes": 272
+   },
+   "false_closure_rate_among_good": null,
+   "mean_ear_good": null,
+   "mean_ear_shift_vs_baseline": null
+  },
+  {
+   "condition": "Gaussian blur sigma 5 px",
+   "n": 272,
+   "good": 0,
+   "good_rate": 0.0,
+   "unable_to_assess_rate": 1.0,
+   "quality_breakdown": {
+    "Blurred or hidden eyes": 272
+   },
+   "false_closure_rate_among_good": null,
+   "mean_ear_good": null,
+   "mean_ear_shift_vs_baseline": null
+  },
+  {
+   "condition": "Gaussian noise sd 20",
+   "n": 272,
+   "good": 223,
+   "good_rate": 0.8198529411764706,
+   "unable_to_assess_rate": 0.18014705882352944,
+   "quality_breakdown": {
+    "Multiple faces": 49,
+    "Good": 223
+   },
+   "false_closure_rate_among_good": 0.14798206278026907,
+   "mean_ear_good": 0.2801580627786774,
+   "mean_ear_shift_vs_baseline": -0.005857110408857891
+  },
+  {
+   "condition": "opaque sunglasses over both eyes",
+   "n": 272,
+   "good": 2,
+   "good_rate": 0.007352941176470588,
+   "unable_to_assess_rate": 0.9926470588235294,
+   "quality_breakdown": {
+    "Hidden eyes or poor eye lighting": 257,
+    "Multiple faces": 12,
+    "Good": 2,
+    "No face": 1
+   },
+   "false_closure_rate_among_good": 0.5,
+   "mean_ear_good": 0.20455106816567242,
+   "mean_ear_shift_vs_baseline": -0.08146410502186285
+  },
+  {
+   "condition": "tinted lenses (55% dark)",
+   "n": 272,
+   "good": 177,
+   "good_rate": 0.6507352941176471,
+   "unable_to_assess_rate": 0.3492647058823529,
+   "quality_breakdown": {
+    "Good": 177,
+    "Hidden eyes or poor eye lighting": 73,
+    "Multiple faces": 22
+   },
+   "false_closure_rate_among_good": 0.0847457627118644,
+   "mean_ear_good": 0.2954838137512995,
+   "mean_ear_shift_vs_baseline": 0.00946864056376423
+  },
+  {
+   "condition": "one eye covered",
+   "n": 272,
+   "good": 0,
+   "good_rate": 0.0,
+   "u
+exit=0

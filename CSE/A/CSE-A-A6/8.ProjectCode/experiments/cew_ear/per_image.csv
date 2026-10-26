@@ -1,0 +1,2424 @@
+file,closed_truth,quality,ear,roll,ms
+closed_eye_0001.jpg_face_1.jpg,1,Good,0.04708,-4.59,36.0
+closed_eye_0002.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.83
+closed_eye_0003.jpg_face_2.jpg,1,Good,0.01926,3.675,18.45
+closed_eye_0007.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,27.87
+closed_eye_0009.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,4.36
+closed_eye_0012.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,4.44
+closed_eye_0013.BMP_face_1.jpg,1,Good,0.04136,-1.551,16.7
+closed_eye_0014.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.74
+closed_eye_0015.jpg_face_1.jpg,1,Good,0.0486,-12.273,18.38
+closed_eye_0019.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,4.45
+closed_eye_0020.jpg_face_1.jpg,1,Good,0.12539,9.716,17.68
+closed_eye_0021.jpg_face_1.jpg,1,Good,0.05056,-2.059,21.82
+closed_eye_0024.jpg_face_2.jpg,1,Good,0.0287,-21.898,17.94
+closed_eye_0030.jpg_face_2.jpg,1,Good,0.04035,-8.339,17.74
+closed_eye_0032.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,21.94
+closed_eye_0033.jpg_face_2.jpg,1,Good,0.10882,5.476,11.65
+closed_eye_0033.jpg_face_3.jpg,1,Blurred or hidden eyes,0.0,0.0,2.84
+closed_eye_0034.jpg_face_4.jpg,1,Blurred or hidden eyes,0.0,0.0,3.71
+closed_eye_0035.BMP_face_1.jpg,1,Good,0.01021,-1.113,14.26
+closed_eye_0038.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,22.49
+closed_eye_0043.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.52
+closed_eye_0045.jpg_face_1.jpg,1,Good,0.04457,-8.463,11.65
+closed_eye_0047.jpg_face_2.jpg,1,Multiple faces,0.0,0.0,21.09
+closed_eye_0053.jpg_face_3.jpg,1,Good,0.05652,0.195,12.93
+closed_eye_0059.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,2.94
+closed_eye_0060.jpg_face_1.jpg,1,Good,0.02431,0.442,15.99
+closed_eye_0061.jpg_face_1.jpg,1,Good,0.08299,-0.798,16.75
+closed_eye_0065.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.2
+closed_eye_0068.jpg_face_1.jpg,1,Good,0.03856,17.611,18.21
+closed_eye_0071.jpg_face_1.jpg,1,Good,0.10936,-6.714,23.78
+closed_eye_0072.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.91
+closed_eye_0074.jpg_face_1.jpg,1,Good,0.04524,-1.428,19.79
+closed_eye_0077.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,25.78
+closed_eye_0080.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,4.56
+closed_eye_0081.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.73
+closed_eye_0083.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.0
+closed_eye_0086.jpg_face_2.jpg,1,Good,0.04909,-5.933,15.32
+closed_eye_0087.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,25.82
+closed_eye_0089.jpg_face_1.jpg,1,Good,0.09386,6.554,17.74
+closed_eye_0091.jpg_face_1.jpg,1,Good,0.03352,-1.182,19.44
+closed_eye_0093.jpg_face_1.jpg,1,Good,0.05921,-9.275,18.07
+closed_eye_0094.jpg_face_1.jpg,1,Good,0.06304,0.056,16.66
+closed_eye_0095.jpg_face_1.jpg,1,Good,0.02927,4.713,18.59
+closed_eye_0097.jpg_face_4.jpg,1,Multiple faces,0.0,0.0,25.79
+closed_eye_0104.jpg_face_2.jpg,1,Good,0.13815,4.61,16.81
+closed_eye_0105.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,4.69
+closed_eye_0107.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,8.74
+closed_eye_0116.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,5.01
+closed_eye_0124.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.6
+closed_eye_0127.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.67
+closed_eye_0132.jpg_face_1.jpg,1,Good,0.04347,9.9,17.69
+closed_eye_0139.jpg_face_1.jpg,1,Good,0.02917,-1.474,17.96
+closed_eye_0142.jpg_face_1.jpg,1,Good,0.02799,0.316,15.37
+closed_eye_0146.jpg_face_2.jpg,1,Good,0.08719,-4.483,12.77
+closed_eye_0151.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.46
+closed_eye_0151.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.3
+closed_eye_0152.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.59
+closed_eye_0160.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.88
+closed_eye_0161.jpg_face_1.jpg,1,Good,0.052,-0.805,14.28
+closed_eye_0162.jpg_face_1.jpg,1,Good,0.02707,-2.051,14.17
+closed_eye_0165.jpg_face_2.jpg,1,Multiple faces,0.0,0.0,23.1
+closed_eye_0168.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.39
+closed_eye_0171.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.31
+closed_eye_0172.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.5
+closed_eye_0174.jpg_face_2.jpg,1,Good,0.05229,-9.394,12.3
+closed_eye_0178.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.73
+closed_eye_0180.jpg_face_1.jpg,1,Good,0.05877,1.253,14.81
+closed_eye_0181.BMP_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.85
+closed_eye_0182.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.97
+closed_eye_0183.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.78
+closed_eye_0185.jpg_face_1.jpg,1,Good,0.02187,0.638,13.32
+closed_eye_0186.jpg_face_1.jpg,1,Good,0.04349,-0.562,14.69
+closed_eye_0189.jpg_face_1.jpg,1,Good,0.1709,-11.25,14.87
+closed_eye_0189.jpg_face_2.jpg,1,Good,0.04361,-7.206,14.08
+closed_eye_0191.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.3
+closed_eye_0192.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.56
+closed_eye_0193.jpg_face_1.jpg,1,Good,0.0195,-6.505,13.29
+closed_eye_0195.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,20.25
+closed_eye_0198.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.83
+closed_eye_0207.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,4.81
+closed_eye_0207.jpg_face_2.jpg,1,Good,0.03209,-0.413,13.83
+closed_eye_0208.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.28
+closed_eye_0209.jpg_face_1.jpg,1,Good,0.10045,5.28,15.87
+closed_eye_0212.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,21.84
+closed_eye_0217.jpg_face_1.jpg,1,Good,0.0747,11.954,12.99
+closed_eye_0218.jpg_face_1.jpg,1,Unreliable eye geometry,0.0,0.0,14.4
+closed_eye_0221.BMP_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.84
+closed_eye_0226.BMP_face_1.jpg,1,Multiple faces,0.0,0.0,21.62
+closed_eye_0228.jpg_face_2.jpg,1,Good,0.04299,6.822,15.78
+closed_eye_0231.jpg_face_3.jpg,1,Good,0.02777,2.702,17.05
+closed_eye_0232.jpg_face_2.jpg,1,Multiple faces,0.0,0.0,24.96
+closed_eye_0236.jpg_face_1.jpg,1,Good,0.04814,1.22,14.74
+closed_eye_0237.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.49
+closed_eye_0238.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,2.98
+closed_eye_0241.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.6
+closed_eye_0243.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.49
+closed_eye_0243.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.2
+closed_eye_0244.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.04
+closed_eye_0247.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.91
+closed_eye_0248.jpg_face_1.jpg,1,Good,0.08763,-11.491,15.78
+closed_eye_0249.JPG_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.96
+closed_eye_0250.jpg_face_2.jpg,1,Good,0.08465,5.194,18.47
+closed_eye_0251.jpg_face_1.jpg,1,Good,0.07132,0.969,16.19
+closed_eye_0253.jpg_face_3.jpg,1,Good,0.03844,-11.804,14.11
+closed_eye_0258.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,21.62
+closed_eye_0260.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.63
+closed_eye_0261.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.54
+closed_eye_0264.BMP_face_1.jpg,1,No face,0.0,0.0,11.69
+closed_eye_0267.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.13
+closed_eye_0271.jpg_face_1.jpg,1,Good,0.04873,1.298,14.1
+closed_eye_0272.jpg_face_1.jpg,1,Good,0.03213,-0.191,15.62
+closed_eye_0276.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,4.83
+closed_eye_0279.jpg_face_2.jpg,1,Multiple faces,0.0,0.0,21.26
+closed_eye_0280.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,4.05
+closed_eye_0282.jpg_face_1.jpg,1,Good,0.0947,12.338,13.82
+closed_eye_0284.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,21.06
+closed_eye_0288.jpg_face_1.jpg,1,Good,0.01473,-0.687,11.99
+closed_eye_0290.jpg_face_1.jpg,1,Good,0.02101,0.192,14.82
+closed_eye_0296.jpg_face_3.jpg,1,Blurred or hidden eyes,0.0,0.0,3.15
+closed_eye_0297.jpg_face_1.jpg,1,Good,0.0177,-0.552,15.32
+closed_eye_0302.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.18
+closed_eye_0309.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.93
+closed_eye_0312.jpg_face_2.jpg,1,Good,0.03251,-9.545,16.63
+closed_eye_0313.jpg_face_1.jpg,1,Good,0.04606,-9.907,14.82
+closed_eye_0314.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.44
+closed_eye_0315.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.62
+closed_eye_0318.jpg_face_1.jpg,1,Good,0.07362,6.194,15.07
+closed_eye_0319.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.11
+closed_eye_0324.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,4.58
+closed_eye_0329.jpg_face_2.jpg,1,Good,0.04493,-11.433,25.0
+closed_eye_0334.BMP_face_1.jpg,1,Good,0.05151,-0.755,24.86
+closed_eye_0335.jpg_face_1.jpg,1,Good,0.12351,-4.054,24.08
+closed_eye_0336.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,4.76
+closed_eye_0341.jpg_face_2.jpg,1,Multiple faces,0.0,0.0,23.07
+closed_eye_0342.jpg_face_2.jpg,1,Good,0.0919,-10.268,14.05
+closed_eye_0344.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,4.54
+closed_eye_0345.BMP_face_1.jpg,1,Multiple faces,0.0,0.0,22.64
+closed_eye_0346.jpg_face_1.jpg,1,Good,0.06676,0.11,15.57
+closed_eye_0347.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,4.32
+closed_eye_0348.jpg_face_5.jpg,1,Good,0.08068,14.105,17.18
+closed_eye_0349.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,4.01
+closed_eye_0353.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.83
+closed_eye_0360.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.82
+closed_eye_0361.jpg_face_3.jpg,1,Multiple faces,0.0,0.0,23.45
+closed_eye_0363.jpg_face_1.jpg,1,Good,0.04202,-3.256,13.93
+closed_eye_0365.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,4.42
+closed_eye_0372.jpg_face_5.jpg,1,Good,0.06262,-6.378,20.48
+closed_eye_0374.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,27.04
+closed_eye_0377.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,9.78
+closed_eye_0378.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,8.14
+closed_eye_0380.jpg_face_1.jpg,1,Good,0.1369,5.667,20.5
+closed_eye_0382.jpg_face_1.jpg,1,Good,0.01013,-5.653,22.47
+closed_eye_0386.jpg_face_1.jpg,1,Good,0.13186,0.495,24.15
+closed_eye_0395.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,5.18
+closed_eye_0397.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,5.76
+closed_eye_0397.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,5.08
+closed_eye_0397.jpg_face_3.jpg,1,Multiple faces,0.0,0.0,35.63
+closed_eye_0398.jpg_face_1.jpg,1,Good,0.12196,-1.848,19.73
+closed_eye_0402.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,5.86
+closed_eye_0406.jpg_face_1.jpg,1,Good,0.03813,0.811,22.37
+closed_eye_0409.jpg_face_1.jpg,1,Good,0.03513,-10.246,24.79
+closed_eye_0411.jpg_face_1.jpg,1,Good,0.02452,-0.191,22.59
+closed_eye_0418.jpg_face_2.jpg,1,Good,0.05304,-4.77,26.13
+closed_eye_0421.jpg_face_1.jpg,1,Good,0.04797,-0.743,31.42
+closed_eye_0422.jpg_face_1.jpg,1,Good,0.0423,-1.462,25.14
+closed_eye_0423.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,7.93
+closed_eye_0424.jpg_face_1.jpg,1,Good,0.02204,-0.161,26.61
+closed_eye_0426.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,41.98
+closed_eye_0427.jpg_face_1.jpg,1,Good,0.02278,-2.397,43.98
+closed_eye_0428.jpg_face_1.jpg,1,Good,0.05217,-3.372,32.49
+closed_eye_0441.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,38.62
+closed_eye_0444.jpg_face_1.jpg,1,Good,0.03917,-14.753,24.88
+closed_eye_0445.jpg_face_2.jpg,1,Good,0.05397,2.434,33.65
+closed_eye_0454.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,64.68
+closed_eye_0458.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,11.04
+closed_eye_0460.jpg_face_1.jpg,1,Unreliable eye geometry,0.0,0.0,26.65
+closed_eye_0463.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,5.36
+closed_eye_0464.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,8.04
+closed_eye_0466.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,35.57
+closed_eye_0469.jpg_face_1.jpg,1,Good,0.02091,3.658,20.46
+closed_eye_0472.jpg_face_2.jpg,1,Good,0.03733,0.069,25.97
+closed_eye_0476.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,31.66
+closed_eye_0481.jpg_face_1.jpg,1,Good,0.18048,-0.068,20.04
+closed_eye_0486.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.98
+closed_eye_0488.jpg_face_1.jpg,1,Good,0.03571,12.859,18.38
+closed_eye_0489.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,4.02
+closed_eye_0492.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,4.59
+closed_eye_0493.jpg_face_1.jpg,1,Good,0.07291,3.425,18.67
+closed_eye_0494.jpg_face_1.jpg,1,Good,0.06108,1.545,42.01
+closed_eye_0501.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,4.14
+closed_eye_0503.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,6.06
+closed_eye_0505.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.79
+closed_eye_0509.jpg_face_1.jpg,1,Good,0.01013,0.447,22.06
+closed_eye_0519.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,5.78
+closed_eye_0523.jpg_face_2.jpg,1,Good,0.02796,-2.535,27.09
+closed_eye_0533.jpg_face_1.jpg,1,Good,0.12313,7.147,30.9
+closed_eye_0539.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,9.08
+closed_eye_0544.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,5.97
+closed_eye_0548.jpg_face_1.jpg,1,Good,0.09105,1.299,35.29
+closed_eye_0549.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,27.43
+closed_eye_0551.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,14.47
+closed_eye_0552.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,14.05
+closed_eye_0554.jpg_face_3.jpg,1,Blurred or hidden eyes,0.0,0.0,9.77
+closed_eye_0556.jpg_face_3.jpg,1,Blurred or hidden eyes,0.0,0.0,5.21
+closed_eye_0557.jpg_face_1.jpg,1,Good,0.03761,-11.1,26.87
+closed_eye_0557.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,13.45
+closed_eye_0559.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,4.65
+closed_eye_0560.jpg_face_4.jpg,1,Blurred or hidden eyes,0.0,0.0,5.82
+closed_eye_0565.jpg_face_1.jpg,1,Good,0.05831,-12.216,31.83
+closed_eye_0566.jpg_face_1.jpg,1,Good,0.05052,-0.789,43.68
+closed_eye_0567.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,61.51
+closed_eye_0573.jpg_face_2.jpg,1,Hidden eyes or poor eye lighting,0.0,0.0,30.53
+closed_eye_0578.jpg_face_1.jpg,1,Good,0.13278,-11.101,32.27
+closed_eye_0587.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,10.94
+closed_eye_0591.jpg_face_1.jpg,1,Good,0.05163,0.582,53.41
+closed_eye_0593.jpg_face_1.jpg,1,Good,0.20577,1.238,48.97
+closed_eye_0594.jpg_face_2.jpg,1,Multiple faces,0.0,0.0,56.81
+closed_eye_0597.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,13.06
+closed_eye_0602.jpg_face_1.jpg,1,Hidden eyes or poor eye lighting,0.0,0.0,43.2
+closed_eye_0603.jpg_face_1.jpg,1,Good,0.06232,-0.489,41.85
+closed_eye_0604.jpg_face_1.jpg,1,Good,0.0268,4.195,37.21
+closed_eye_0605.jpg_face_1.jpg,1,Hidden eyes or poor eye lighting,0.0,0.0,43.88
+closed_eye_0607.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,19.7
+closed_eye_0613.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,10.25
+closed_eye_0619.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,13.45
+closed_eye_0620.jpg_face_1.jpg,1,Good,0.10852,9.556,48.25
+closed_eye_0621.jpg_face_2.jpg,1,Multiple faces,0.0,0.0,38.09
+closed_eye_0622.jpg_face_1.jpg,1,Good,0.0759,-1.836,22.03
+closed_eye_0625.jpg_face_2.jpg,1,Good,0.0148,-0.815,30.26
+closed_eye_0627.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,5.22
+closed_eye_0633.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,7.16
+closed_eye_0636.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,30.75
+closed_eye_0638.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,4.7
+closed_eye_0639.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,4.91
+closed_eye_0641.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,4.72
+closed_eye_0643.jpg_face_1.jpg,1,Hidden eyes or poor eye lighting,0.0,0.0,21.2
+closed_eye_0644.jpg_face_1.jpg,1,Good,0.0848,1.3,19.0
+closed_eye_0645.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,4.51
+closed_eye_0646.jpg_face_1.jpg,1,Good,0.04301,3.042,17.97
+closed_eye_0649.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,7.15
+closed_eye_0653.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,5.14
+closed_eye_0656.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,42.98
+closed_eye_0657.jpg_face_1.jpg,1,Good,0.0333,9.189,30.01
+closed_eye_0658.jpg_face_2.jpg,1,Multiple faces,0.0,0.0,39.95
+closed_eye_0665.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,11.45
+closed_eye_0666.jpg_face_1.jpg,1,Good,0.14731,-1.968,23.04
+closed_eye_0667.jpg_face_2.jpg,1,Good,0.0178,-12.724,28.63
+closed_eye_0668.jpg_face_1.jpg,1,Good,0.01986,12.427,42.48
+closed_eye_0670.jpg_face_1.jpg,1,Hidden eyes or poor eye lighting,0.0,0.0,34.62
+closed_eye_0671.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,6.3
+closed_eye_0675.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,34.37
+closed_eye_0680.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,7.26
+closed_eye_0682.jpg_face_3.jpg,1,Good,0.03743,5.918,27.44
+closed_eye_0683.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,9.36
+closed_eye_0685.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,9.66
+closed_eye_0686.jpg_face_1.jpg,1,Good,0.05897,0.038,56.26
+closed_eye_0687.jpg_face_1.jpg,1,Good,0.05962,-3.421,58.28
+closed_eye_0690.jpg_face_1.jpg,1,Unreliable eye geometry,0.0,0.0,26.2
+closed_eye_0693.jpg_face_2.jpg,1,Multiple faces,0.0,0.0,44.1
+closed_eye_0693.jpg_face_3.jpg,1,Good,0.11045,-6.786,30.59
+closed_eye_0695.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,16.11
+closed_eye_0696.jpg_face_4.jpg,1,Good,0.07202,-12.841,44.77
+closed_eye_0698.jpg_face_1.jpg,1,Good,0.07586,-0.883,53.55
+closed_eye_0708.jpg_face_1.jpg,1,Good,0.02862,-21.591,75.83
+closed_eye_0709.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,50.28
+closed_eye_0710.jpg_face_1.jpg,1,Good,0.07708,-2.182,35.74
+closed_eye_0711.jpg_face_1.jpg,1,Good,0.04442,9.581,36.21
+closed_eye_0713.jpg_face_1.jpg,1,Good,0.02,7.269,37.11
+closed_eye_0717.jpg_face_4.jpg,1,Blurred or hidden eyes,0.0,0.0,40.14
+closed_eye_0720.jpg_face_2.jpg,1,Good,0.05326,-12.419,45.55
+closed_eye_0721.jpg_face_4.jpg,1,Blurred or hidden eyes,0.0,0.0,10.91
+closed_eye_0727.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,48.08
+closed_eye_0730.jpg_face_2.jpg,1,Good,0.04617,-5.64,31.32
+closed_eye_0735.jpg_face_4.jpg,1,Blurred or hidden eyes,0.0,0.0,14.23
+closed_eye_0736.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,12.01
+closed_eye_0738.jpg_face_1.jpg,1,Good,0.01875,4.905,32.7
+closed_eye_0740.jpg_face_1.jpg,1,Good,0.03194,-3.06,33.09
+closed_eye_0745.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,58.22
+closed_eye_0745.jpg_face_2.jpg,1,Good,0.03762,1.103,37.96
+closed_eye_0745.jpg_face_3.jpg,1,Blurred or hidden eyes,0.0,0.0,8.23
+closed_eye_0747.jpg_face_1.jpg,1,Good,0.03448,9.081,35.85
+closed_eye_0749.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,38.3
+closed_eye_0751.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,5.24
+closed_eye_0754.jpg_face_1.jpg,1,Good,0.02068,-10.611,27.11
+closed_eye_0766.jpg_face_1.jpg,1,Good,0.04827,-4.732,26.44
+closed_eye_0767.jpg_face_2.jpg,1,Good,0.03564,1.286,28.62
+closed_eye_0767.jpg_face_3.jpg,1,Good,0.04993,5.251,31.69
+closed_eye_0769.jpg_face_3.jpg,1,Blurred or hidden eyes,0.0,0.0,6.62
+closed_eye_0770.jpg_face_1.jpg,1,Good,0.02311,-2.712,29.37
+closed_eye_0771.jpg_face_1.jpg,1,Good,0.08033,4.596,34.57
+closed_eye_0772.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,14.84
+closed_eye_0773.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,10.27
+closed_eye_0778.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,9.45
+closed_eye_0780.jpg_face_1.jpg,1,Good,0.08794,4.83,39.82
+closed_eye_0781.jpg_face_1.jpg,1,Good,0.05791,-6.234,39.6
+closed_eye_0781.jpg_face_2.jpg,1,Good,0.0528,-14.197,33.78
+closed_eye_0785.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,49.1
+closed_eye_0786.jpg_face_1.jpg,1,Good,0.08086,1.103,33.71
+closed_eye_0788.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,13.25
+closed_eye_0789.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,66.92
+closed_eye_0791.jpg_face_2.jpg,1,Good,0.02629,-4.528,38.62
+closed_eye_0797.jpg_face_1.jpg,1,Good,0.06761,0.808,51.51
+closed_eye_0801.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,6.74
+closed_eye_0804.jpg_face_1.jpg,1,Good,0.01721,1.164,48.1
+closed_eye_0805.jpg_face_3.jpg,1,Good,0.05382,-8.501,34.1
+closed_eye_0806.jpg_face_1.jpg,1,Good,0.01972,8.58,37.7
+closed_eye_0809.jpg_face_2.jpg,1,Multiple faces,0.0,0.0,56.74
+closed_eye_0811.jpg_face_2.jpg,1,Good,0.07015,-4.455,53.65
+closed_eye_0812.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,13.76
+closed_eye_0816.jpg_face_1.jpg,1,Good,0.01655,-1.944,38.07
+closed_eye_0820.BMP_face_1.jpg,1,Multiple faces,0.0,0.0,61.19
+closed_eye_0823.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,8.74
+closed_eye_0825.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,6.35
+closed_eye_0827.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,16.3
+closed_eye_0833.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,13.31
+closed_eye_0836.jpg_face_1.jpg,1,Good,0.06236,2.016,39.02
+closed_eye_0837.jpg_face_3.jpg,1,Blurred or hidden eyes,0.0,0.0,5.71
+closed_eye_0841.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,7.28
+closed_eye_0843.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,7.29
+closed_eye_0847.jpg_face_1.jpg,1,Hidden eyes or poor eye lighting,0.0,0.0,26.69
+closed_eye_0850.JPG_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,5.85
+closed_eye_0851.jpg_face_2.jpg,1,Good,0.03031,-7.795,32.13
+closed_eye_0852.jpg_face_1.jpg,1,Good,0.03544,0.901,47.76
+closed_eye_0855.jpg_face_1.jpg,1,Good,0.0374,0.387,18.09
+closed_eye_0856.jpg_face_1.jpg,1,Good,0.05021,-2.572,23.03
+closed_eye_0859.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,11.38
+closed_eye_0860.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,14.31
+closed_eye_0862.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,15.89
+closed_eye_0863.jpg_face_1.jpg,1,Good,0.0524,-2.07,19.13
+closed_eye_0864.jpg_face_1.jpg,1,Good,0.03315,0.155,37.13
+closed_eye_0865.jpg_face_1.jpg,1,Good,0.05492,-8.327,20.65
+closed_eye_0866.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.58
+closed_eye_0867.jpg_face_1.jpg,1,Good,0.16853,1.034,18.01
+closed_eye_0870.jpg_face_1.jpg,1,Good,0.01202,4.087,17.16
+closed_eye_0873.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,4.25
+closed_eye_0880.jpg_face_1.jpg,1,Good,0.03013,-7.241,21.03
+closed_eye_0882.jpg_face_1.jpg,1,Good,0.02996,0.059,23.87
+closed_eye_0884.jpg_face_1.jpg,1,Good,0.058,4.833,18.71
+closed_eye_0886.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,27.43
+closed_eye_0887.jpg_face_1.jpg,1,Good,0.07167,13.654,15.72
+closed_eye_0888.BMP_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,4.05
+closed_eye_0890.jpg_face_1.jpg,1,Good,0.04556,0.954,20.48
+closed_eye_0891.jpg_face_2.jpg,1,Good,0.04268,3.169,17.56
+closed_eye_0892.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.51
+closed_eye_0893.jpg_face_1.jpg,1,Good,0.06759,9.445,17.61
+closed_eye_0894.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.74
+closed_eye_0895.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.57
+closed_eye_0899.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.74
+closed_eye_0900.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.84
+closed_eye_0901.jpg_face_1.jpg,1,Good,0.04888,-0.542,18.37
+closed_eye_0902.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.36
+closed_eye_0903.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,4.05
+closed_eye_0906.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.78
+closed_eye_0912.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,4.72
+closed_eye_0916.jpg_face_1.jpg,1,Good,0.09135,-5.222,19.56
+closed_eye_0917.jpg_face_3.jpg,1,Blurred or hidden eyes,0.0,0.0,3.61
+closed_eye_0918.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.54
+closed_eye_0918.jpg_face_4.jpg,1,Multiple faces,0.0,0.0,25.66
+closed_eye_0919.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,5.53
+closed_eye_0919.jpg_face_3.jpg,1,Blurred or hidden eyes,0.0,0.0,3.46
+closed_eye_0923.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.61
+closed_eye_0925.jpg_face_1.jpg,1,Good,0.07167,-5.005,13.18
+closed_eye_0927.jpg_face_1.jpg,1,Good,0.04582,4.318,17.0
+closed_eye_0932.jpg_face_1.jpg,1,No face,0.0,0.0,13.84
+closed_eye_0937.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.47
+closed_eye_0948.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,4.34
+closed_eye_0957.JPG_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.43
+closed_eye_0959.jpg_face_1.jpg,1,Good,0.04273,0.357,15.95
+closed_eye_0960.jpg_face_1.jpg,1,Good,0.03881,11.928,18.67
+closed_eye_0972.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,23.76
+closed_eye_0974.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.58
+closed_eye_0978.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.7
+closed_eye_0983.jpg_face_5.jpg,1,Good,0.04236,1.924,18.06
+closed_eye_0985.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,4.55
+closed_eye_0986.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,25.49
+closed_eye_0987.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.03
+closed_eye_0991.jpg_face_3.jpg,1,Good,0.108,-12.86,15.53
+closed_eye_1002.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.7
+closed_eye_1008.jpeg_face_1.jpg,1,Good,0.05443,-16.605,17.9
+closed_eye_1011.jpg_face_1.jpg,1,Hidden eyes or poor eye lighting,0.0,0.0,18.17
+closed_eye_1014.jpg_face_1.jpg,1,Good,0.07734,3.458,17.49
+closed_eye_1015.png_face_1.jpg,1,Good,0.14876,1.293,15.65
+closed_eye_1023.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,4.13
+closed_eye_1027.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.83
+closed_eye_1033.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,4.1
+closed_eye_1044.jpg_face_1.jpg,1,Good,0.07393,4.117,15.36
+closed_eye_1049.jpg_face_1.jpg,1,Good,0.03569,1.261,17.6
+closed_eye_1050.jpg_face_2.jpg,1,Good,0.03616,5.807,17.37
+closed_eye_1056.jpg_face_1.jpg,1,Good,0.03408,-6.469,17.6
+closed_eye_1056.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,4.32
+closed_eye_1059.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,4.21
+closed_eye_1073.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.78
+closed_eye_1076.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,4.47
+closed_eye_1077.jpg_face_3.jpg,1,Blurred or hidden eyes,0.0,0.0,4.02
+closed_eye_1079.jpg_face_1.jpg,1,Good,0.02466,-13.349,19.27
+closed_eye_1080.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,27.43
+closed_eye_1087.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,5.38
+closed_eye_1089.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,4.15
+closed_eye_1097.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,5.35
+closed_eye_1101.jpg_face_2.jpg,1,Good,0.04839,6.896,17.61
+closed_eye_1103.jpg_face_1.jpg,1,Good,0.04773,6.012,20.29
+closed_eye_1104.jpg_face_1.jpg,1,No face,0.0,0.0,17.99
+closed_eye_1108.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.94
+closed_eye_1109.jpg_face_1.jpg,1,Good,0.02945,-5.893,17.0
+closed_eye_1112.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.63
+closed_eye_1113.jpg_face_3.jpg,1,Good,0.02705,20.536,19.92
+closed_eye_1114.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,38.21
+closed_eye_1117.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,4.94
+closed_eye_1118.jpg_face_1.jpg,1,Unreliable eye geometry,0.0,0.0,15.12
+closed_eye_1119.jpg_face_1.jpg,1,Good,0.07986,2.508,19.03
+closed_eye_1120.jpg_face_1.jpg,1,Good,0.03878,-3.97,27.12
+closed_eye_1126.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,4.28
+closed_eye_1127.jpg_face_1.jpg,1,Good,0.07151,9.882,16.42
+closed_eye_1130.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,4.05
+closed_eye_1132.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.62
+closed_eye_1135.BMP_face_1.jpg,1,Good,0.06269,8.874,17.84
+closed_eye_1139.BMP_face_1.jpg,1,Multiple faces,0.0,0.0,24.15
+closed_eye_1141.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,4.2
+closed_eye_1143.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.1
+closed_eye_1145.jpg_face_1.jpg,1,No face,0.0,0.0,12.42
+closed_eye_1149.jpg_face_1.jpg,1,Good,0.03944,0.601,15.67
+closed_eye_1152.jpg_face_1.jpg,1,Good,0.0317,-14.646,15.56
+closed_eye_1153.jpg_face_1.jpg,1,Poor lighting,0.0,0.0,3.2
+closed_eye_1154.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,26.74
+closed_eye_1155.jpg_face_1.jpg,1,Good,0.02075,-3.899,14.51
+closed_eye_1161.jpg_face_1.jpg,1,Good,0.01027,-3.375,17.23
+closed_eye_1170.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.77
+closed_eye_1175.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.31
+closed_eye_1179.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.43
+closed_eye_1181.jpg_face_1.jpg,1,Good,0.06544,7.886,15.48
+closed_eye_1190.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,22.69
+closed_eye_1192.jpg_face_1.jpg,1,Good,0.02646,-0.185,13.32
+closed_eye_1193.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.19
+closed_eye_1194.jpg_face_3.jpg,1,Multiple faces,0.0,0.0,19.97
+closed_eye_1195.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.37
+closed_eye_1199.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.14
+closed_eye_1204.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.0
+closed_eye_1205.jpg_face_2.jpg,1,Good,0.03837,2.518,11.92
+closed_eye_1207.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,2.78
+closed_eye_1208.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,20.09
+closed_eye_1219.jpg_face_1.jpg,1,Good,0.06368,-2.623,12.4
+closed_eye_1220.jpg_face_1.jpg,1,Good,0.09808,1.409,16.0
+closed_eye_1223.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,25.34
+closed_eye_1224.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.62
+closed_eye_1228.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.16
+closed_eye_1229.jpg_face_1.jpg,1,Good,0.08256,9.071,13.78
+closed_eye_1232.jpg_face_2.jpg,1,Good,0.02133,-4.077,13.44
+closed_eye_1236.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.25
+closed_eye_1237.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.89
+closed_eye_1237.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,2.76
+closed_eye_1239.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.19
+closed_eye_1240.jpg_face_2.jpg,1,Good,0.03319,-10.752,15.14
+closed_eye_1242.jpg_face_1.jpg,1,Good,0.03649,6.24,14.17
+closed_eye_1243.jpg_face_4.jpg,1,Good,0.01662,-20.527,17.37
+closed_eye_1244.jpg_face_1.jpg,1,Good,0.04379,-1.087,18.63
+closed_eye_1246.jpg_face_3.jpg,1,Good,0.05666,5.225,18.7
+closed_eye_1247.jpg_face_1.jpg,1,Good,0.05353,-5.507,18.08
+closed_eye_1249.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.86
+closed_eye_1249.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.42
+closed_eye_1253.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.09
+closed_eye_1255.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.63
+closed_eye_1260.jpg_face_2.jpg,1,Good,0.02901,-17.464,16.99
+closed_eye_1261.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.58
+closed_eye_1263.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.72
+closed_eye_1264.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.5
+closed_eye_1265.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.57
+closed_eye_1266.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.59
+closed_eye_1267.jpg_face_1.jpg,1,Good,0.11153,-11.142,18.35
+closed_eye_1269.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,25.64
+closed_eye_1270.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.4
+closed_eye_1272.jpg_face_1.jpg,1,Good,0.14368,0.149,12.64
+closed_eye_1274.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,4.03
+closed_eye_1276.jpg_face_2.jpg,1,Good,0.03995,-3.01,16.74
+closed_eye_1276.jpg_face_6.jpg,1,Good,0.13185,0.131,16.8
+closed_eye_1277.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.75
+closed_eye_1278.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.8
+closed_eye_1278.jpg_face_3.jpg,1,Blurred or hidden eyes,0.0,0.0,3.35
+closed_eye_1279.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.22
+closed_eye_1281.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.49
+closed_eye_1282.jpg_face_1.jpg,1,Good,0.01509,3.631,14.73
+closed_eye_1285.jpg_face_1.jpg,1,Good,0.06247,-3.627,18.94
+closed_eye_1286.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,4.75
+closed_eye_1287.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,4.11
+closed_eye_1290.jpg_face_2.jpg,1,Good,0.05813,1.384,23.62
+closed_eye_1291.jpg_face_3.jpg,1,Good,0.07143,-9.651,19.6
+closed_eye_1292.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.71
+closed_eye_1293.jpg_face_2.jpg,1,Good,0.14342,5.68,19.06
+closed_eye_1295.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.59
+closed_eye_1295.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,4.88
+closed_eye_1297.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.67
+closed_eye_1297.jpg_face_2.jpg,1,Multiple faces,0.0,0.0,24.3
+closed_eye_1301.jpg_face_2.jpg,1,Good,0.0533,8.709,14.77
+closed_eye_1304.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,4.6
+closed_eye_1305.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,5.37
+closed_eye_1307.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,4.4
+closed_eye_1310.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,4.55
+closed_eye_1311.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,4.01
+closed_eye_1312.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.79
+closed_eye_1315.jpg_face_2.jpg,1,Good,0.0362,6.78,19.35
+closed_eye_1317.jpg_face_1.jpg,1,Good,0.05391,-6.323,17.83
+closed_eye_1318.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,4.49
+closed_eye_1319.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,4.85
+closed_eye_1321.jpg_face_2.jpg,1,Good,0.01379,-4.003,17.89
+closed_eye_1322.jpg_face_1.jpg,1,Good,0.01279,-3.711,21.67
+closed_eye_1323.jpg_face_2.jpg,1,Good,0.04646,-5.186,20.49
+closed_eye_1324.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,4.1
+closed_eye_1325.jpg_face_1.jpg,1,Good,0.1059,10.18,16.24
+closed_eye_1327.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,4.26
+closed_eye_1328.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.49
+closed_eye_1328.jpg_face_2.jpg,1,Good,0.06415,-16.561,20.48
+closed_eye_1329.jpg_face_2.jpg,1,Multiple faces,0.0,0.0,26.16
+closed_eye_1330.jpg_face_1.jpg,1,Good,0.0505,-5.932,14.8
+closed_eye_1332.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.86
+closed_eye_1332.jpg_face_3.jpg,1,Blurred or hidden eyes,0.0,0.0,3.49
+closed_eye_1333.jpg_face_10.jpg,1,Blurred or hidden eyes,0.0,0.0,3.32
+closed_eye_1334.jpg_face_1.jpg,1,Hidden eyes or poor eye lighting,0.0,0.0,17.69
+closed_eye_1335.jpg_face_2.jpg,1,Good,0.03294,-17.554,19.91
+closed_eye_1336.jpg_face_2.jpg,1,Good,0.07572,15.383,26.92
+closed_eye_1338.jpg_face_1.jpg,1,Good,0.07069,-1.672,22.72
+closed_eye_1340.BMP_face_1.jpg,1,Good,0.02848,-0.653,16.49
+closed_eye_1343.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,4.15
+closed_eye_1344.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.09
+closed_eye_1345.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.41
+closed_eye_1346.jpg_face_3.jpg,1,Good,0.08597,-7.664,20.66
+closed_eye_1350.jpg_face_2.jpg,1,Good,0.06262,-18.591,16.13
+closed_eye_1351.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.24
+closed_eye_1353.jpg_face_1.jpg,1,Good,0.03706,-10.777,17.31
+closed_eye_1354.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,4.14
+closed_eye_1356.jpg_face_10.jpg,1,Good,0.14814,-4.609,18.36
+closed_eye_1357.jpg_face_1.jpg,1,Good,0.14822,-6.961,17.85
+closed_eye_1358.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,27.97
+closed_eye_1359.jpg_face_1.jpg,1,Hidden eyes or poor eye lighting,0.0,0.0,14.72
+closed_eye_1360.jpg_face_1.jpg,1,Good,0.02587,-8.995,17.42
+closed_eye_1361.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.28
+closed_eye_1362.BMP_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.44
+closed_eye_1362.BMP_face_3.jpg,1,Good,0.04238,1.244,15.79
+closed_eye_1362.BMP_face_6.jpg,1,Good,0.0238,6.558,14.88
+closed_eye_1362.BMP_face_7.jpg,1,Good,0.01492,-8.982,16.3
+closed_eye_1363.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.03
+closed_eye_1365.jpg_face_1.jpg,1,Good,0.08918,5.003,16.01
+closed_eye_1366.BMP_face_1.jpg,1,Multiple faces,0.0,0.0,20.25
+closed_eye_1368.jpg_face_1.jpg,1,Good,0.05228,-18.299,13.14
+closed_eye_1369.BMP_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.78
+closed_eye_1376.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.41
+closed_eye_1378.jpg_face_2.jpg,1,Good,0.01583,4.268,15.68
+closed_eye_1381.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,26.77
+closed_eye_1382.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.34
+closed_eye_1383.jpg_face_1.jpg,1,Good,0.07034,6.924,14.02
+closed_eye_1386.jpg_face_2.jpg,1,Good,0.03121,-9.953,15.86
+closed_eye_1387.BMP_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.81
+closed_eye_1388.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,2.8
+closed_eye_1393.jpg_face_1.jpg,1,Hidden eyes or poor eye lighting,0.0,0.0,20.67
+closed_eye_1394.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,21.55
+closed_eye_1394.jpg_face_3.jpg,1,Good,0.07354,-1.233,11.97
+closed_eye_1394.jpg_face_4.jpg,1,Multiple faces,0.0,0.0,20.3
+closed_eye_1395.BMP_face_1.jpg,1,Good,0.0185,-1.707,12.68
+closed_eye_1396.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.95
+closed_eye_1409.jpg_face_1.jpg,1,Good,0.01984,-0.006,13.56
+closed_eye_1411.jpg_face_1.jpg,1,Good,0.01472,-1.782,13.45
+closed_eye_1416.jpg_face_1.jpg,1,Good,0.03229,-4.897,14.53
+closed_eye_1419.jpg_face_3.jpg,1,Multiple faces,0.0,0.0,22.46
+closed_eye_1420.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.81
+closed_eye_1423.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.61
+closed_eye_1426.jpg_face_1.jpg,1,Good,0.07368,3.45,13.48
+closed_eye_1427.jpg_face_2.jpg,1,Hidden eyes or poor eye lighting,0.0,0.0,15.12
+closed_eye_1431.jpg_face_2.jpg,1,No face,0.0,0.0,14.09
+closed_eye_1434.jpg_face_1.jpg,1,Good,0.04779,-4.922,14.02
+closed_eye_1435.png_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.16
+closed_eye_1444.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.25
+closed_eye_1445.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.94
+closed_eye_1447.jpg_face_4.jpg,1,Good,0.0468,-0.129,16.53
+closed_eye_1451.jpg_face_2.jpg,1,Good,0.17945,7.505,14.8
+closed_eye_1460.jpg_face_1.jpg,1,Good,0.10219,-5.718,17.75
+closed_eye_1462.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.43
+closed_eye_1463.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,4.07
+closed_eye_1464.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,26.89
+closed_eye_1465.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.86
+closed_eye_1466.jpg_face_1.jpg,1,Hidden eyes or poor eye lighting,0.0,0.0,16.51
+closed_eye_1467.jpg_face_1.jpg,1,Hidden eyes or poor eye lighting,0.0,0.0,18.92
+closed_eye_1468.jpg_face_3.jpg,1,Good,0.06962,-7.344,19.52
+closed_eye_1469.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,5.34
+closed_eye_1472.jpg_face_1.jpg,1,Good,0.05348,-2.033,17.35
+closed_eye_1475.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.71
+closed_eye_1479.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,22.64
+closed_eye_1480.jpg_face_4.jpg,1,Good,0.063,-4.775,13.88
+closed_eye_1481.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.59
+closed_eye_1483.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.92
+closed_eye_1484.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.16
+closed_eye_1486.jpg_face_2.jpg,1,Good,0.1925,-1.74,15.13
+closed_eye_1486.jpg_face_4.jpg,1,Blurred or hidden eyes,0.0,0.0,2.88
+closed_eye_1488.jpg_face_1.jpg,1,Good,0.02805,4.013,15.08
+closed_eye_1489.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.87
+closed_eye_1489.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.41
+closed_eye_1490.jpg_face_1.jpg,1,Good,0.02399,-8.34,14.16
+closed_eye_1493.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.07
+closed_eye_1495.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.93
+closed_eye_1496.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.37
+closed_eye_1497.jpg_face_1.jpg,1,Good,0.06879,-2.552,16.94
+closed_eye_1497.jpg_face_3.jpg,1,Good,0.03287,3.459,15.34
+closed_eye_1501.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.82
+closed_eye_1502.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.09
+closed_eye_1502.jpg_face_2.jpg,1,Good,0.04475,-1.857,14.31
+closed_eye_1503.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.09
+closed_eye_1505.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.37
+closed_eye_1506.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,26.04
+closed_eye_1507.jpg_face_3.jpg,1,Blurred or hidden eyes,0.0,0.0,3.7
+closed_eye_1507.jpg_face_5.jpg,1,Good,0.01354,-4.238,15.69
+closed_eye_1508.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.63
+closed_eye_1508.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.14
+closed_eye_1508.jpg_face_3.jpg,1,Blurred or hidden eyes,0.0,0.0,3.3
+closed_eye_1509.jpg_face_6.jpg,1,Blurred or hidden eyes,0.0,0.0,3.75
+closed_eye_1512.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,21.34
+closed_eye_1513.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,4.03
+closed_eye_1515.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.91
+closed_eye_1516.jpg_face_1.jpg,1,Good,0.05071,-3.324,13.22
+closed_eye_1518.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.38
+closed_eye_1519.jpg_face_2.jpg,1,Multiple faces,0.0,0.0,20.56
+closed_eye_1520.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.05
+closed_eye_1523.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,4.15
+closed_eye_1531.jpg_face_1.jpg,1,Good,0.14648,-5.426,15.27
+closed_eye_1533.jpg_face_2.jpg,1,Good,0.12387,0.154,16.56
+closed_eye_1535.jpg_face_2.jpg,1,Good,0.13268,-9.537,18.42
+closed_eye_1536.jpg_face_1.jpg,1,Good,0.04906,11.799,17.86
+closed_eye_1537.jpg_face_1.jpg,1,Good,0.11858,3.593,16.65
+closed_eye_1537.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.62
+closed_eye_1542.jpg_face_1.jpg,1,Good,0.05539,-4.146,17.4
+closed_eye_1543.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.66
+closed_eye_1548.BMP_face_1.jpg,1,Good,0.0613,-0.968,15.61
+closed_eye_1549.BMP_face_4.jpg,1,Hidden eyes or poor eye lighting,0.0,0.0,15.43
+closed_eye_1550.BMP_face_2.jpg,1,Good,0.02595,-3.047,16.11
+closed_eye_1551.BMP_face_1.jpg,1,Good,0.05515,-0.983,15.79
+closed_eye_1552.BMP_face_1.jpg,1,Good,0.04087,-2.394,14.13
+closed_eye_1553.BMP_face_2.jpg,1,Multiple faces,0.0,0.0,22.48
+closed_eye_1556.jpg_face_3.jpg,1,Blurred or hidden eyes,0.0,0.0,2.99
+closed_eye_1558.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.34
+closed_eye_1560.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.66
+closed_eye_1561.jpg_face_1.jpg,1,Good,0.07083,-7.345,13.15
+closed_eye_1564.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.32
+closed_eye_1567.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,23.84
+closed_eye_1570.jpg_face_1.jpg,1,No face,0.0,0.0,10.8
+closed_eye_1571.jpg_face_2.jpg,1,Good,0.07931,0.443,16.08
+closed_eye_1572.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.71
+closed_eye_1573.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.57
+closed_eye_1578.jpg_face_1.jpg,1,Good,0.12735,3.498,19.78
+closed_eye_1579.BMP_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.83
+closed_eye_1580.jpg_face_1.jpg,1,Good,0.11888,-14.761,13.46
+closed_eye_1581.jpg_face_1.jpg,1,Hidden eyes or poor eye lighting,0.0,0.0,14.42
+closed_eye_1582.jpg_face_1.jpg,1,Good,0.02524,-0.742,14.36
+closed_eye_1584.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,2.81
+closed_eye_1589.jpg_face_1.jpg,1,Good,0.16575,-7.508,13.0
+closed_eye_1590.jpg_face_2.jpg,1,Good,0.0765,-7.082,16.33
+closed_eye_1592.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,2.8
+closed_eye_1594.jpg_face_1.jpg,1,Good,0.03927,-13.884,15.02
+closed_eye_1600.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.59
+closed_eye_1607.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,20.17
+closed_eye_1608.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.77
+closed_eye_1613.BMP_face_1.jpg,1,No face,0.0,0.0,9.23
+closed_eye_1614.BMP_face_1.jpg,1,Good,0.03151,-1.747,14.36
+closed_eye_1618.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,2.75
+closed_eye_1621.jpg_face_1.jpg,1,Good,0.01497,-11.693,14.09
+closed_eye_1622.jpg_face_2.jpg,1,Multiple faces,0.0,0.0,19.96
+closed_eye_1627.jpg_face_1.jpg,1,Good,0.058,0.105,14.94
+closed_eye_1629.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,22.28
+closed_eye_1630.jpg_face_1.jpg,1,Good,0.05785,-0.718,13.57
+closed_eye_1631.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.89
+closed_eye_1634.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.12
+closed_eye_1638.jpg_face_1.jpg,1,Good,0.08303,-6.624,12.5
+closed_eye_1640.jpg_face_1.jpg,1,Good,0.05493,-6.81,13.99
+closed_eye_1641.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,21.82
+closed_eye_1641.jpg_face_2.jpg,1,Good,0.02999,1.612,12.42
+closed_eye_1641.jpg_face_3.jpg,1,Good,0.01863,-2.515,12.77
+closed_eye_1646.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.04
+closed_eye_1647.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,18.77
+closed_eye_1648.jpg_face_2.jpg,1,No face,0.0,0.0,9.32
+closed_eye_1649.jpg_face_1.jpg,1,Good,0.07624,2.726,12.95
+closed_eye_1652.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,20.14
+closed_eye_1653.BMP_face_1.jpg,1,Good,0.0474,5.384,10.94
+closed_eye_1655.BMP_face_1.jpg,1,Good,0.02065,1.391,13.39
+closed_eye_1655.BMP_face_2.jpg,1,Good,0.06417,1.676,12.72
+closed_eye_1659.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,18.74
+closed_eye_1660.jpg_face_1.jpg,1,Good,0.06637,-1.835,13.56
+closed_eye_1661.jpg_face_3.jpg,1,Blurred or hidden eyes,0.0,0.0,2.98
+closed_eye_1666.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.97
+closed_eye_1667.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.74
+closed_eye_1668.jpg_face_1.jpg,1,Good,0.10432,2.451,14.8
+closed_eye_1670.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,22.11
+closed_eye_1670.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.48
+closed_eye_1671.jpg_face_1.jpg,1,Good,0.19965,-1.918,14.21
+closed_eye_1673.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.09
+closed_eye_1674.BMP_face_1.jpg,1,Multiple faces,0.0,0.0,24.67
+closed_eye_1676.BMP_face_1.jpg,1,Good,0.03358,-0.166,25.45
+closed_eye_1679.BMP_face_1.jpg,1,Good,0.07248,0.397,14.83
+closed_eye_1680.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.56
+closed_eye_1681.jpg_face_2.jpg,1,Good,0.03031,-19.752,15.86
+closed_eye_1689.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.37
+closed_eye_1690.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.91
+closed_eye_1691.jpg_face_3.jpg,1,Good,0.12013,-8.34,13.41
+closed_eye_1692.jpg_face_1.jpg,1,Good,0.16811,4.08,23.85
+closed_eye_1693.jpg_face_1.jpg,1,Good,0.03902,-3.192,16.39
+closed_eye_1695.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.52
+closed_eye_1699.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.7
+closed_eye_1700.jpg_face_1.jpg,1,Good,0.06221,2.996,14.61
+closed_eye_1701.BMP_face_1.jpg,1,Good,0.07587,1.389,15.35
+closed_eye_1702.BMP_face_1.jpg,1,Good,0.10678,9.157,15.05
+closed_eye_1702.BMP_face_2.jpg,1,Good,0.04639,-21.479,13.84
+closed_eye_1705.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,21.46
+closed_eye_1707.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,2.77
+closed_eye_1711.jpg_face_1.jpg,1,Good,0.04092,-5.862,11.77
+closed_eye_1712.jpg_face_4.jpg,1,Good,0.02923,14.932,12.57
+closed_eye_1713.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,21.49
+closed_eye_1715.jpg_face_1.jpg,1,Good,0.03105,-0.88,11.77
+closed_eye_1720.jpg_face_1.jpg,1,Good,0.15608,1.879,14.73
+closed_eye_1722.jpg_face_3.jpg,1,Multiple faces,0.0,0.0,19.49
+closed_eye_1730.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.57
+closed_eye_1736.jpg_face_1.jpg,1,Good,0.11181,-3.291,11.52
+closed_eye_1738.jpg_face_1.jpg,1,Good,0.07237,3.935,13.32
+closed_eye_1740.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.58
+closed_eye_1742.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.89
+closed_eye_1745.jpg_face_3.jpg,1,Good,0.04465,8.235,12.83
+closed_eye_1749.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.69
+closed_eye_1750.jpg_face_2.jpg,1,Multiple faces,0.0,0.0,20.68
+closed_eye_1752.jpg_face_4.jpg,1,Good,0.15765,-6.108,11.35
+closed_eye_1756.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.68
+closed_eye_1760.jpg_face_1.jpg,1,Good,0.05897,-0.003,13.5
+closed_eye_1761.jpg_face_1.jpg,1,Good,0.11539,-1.041,12.73
+closed_eye_1762.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.87
+closed_eye_1763.jpg_face_2.jpg,1,Poor lighting,0.0,0.0,2.89
+closed_eye_1766.jpg_face_2.jpg,1,Good,0.02528,-2.356,12.2
+closed_eye_1768.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.69
+closed_eye_1769.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.67
+closed_eye_1770.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.98
+closed_eye_1773.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.92
+closed_eye_1775.jpg_face_2.jpg,1,Good,0.01642,0.142,13.02
+closed_eye_1776.jpg_face_3.jpg,1,Blurred or hidden eyes,0.0,0.0,3.01
+closed_eye_1777.jpg_face_1.jpg,1,Good,0.03031,-10.119,14.32
+closed_eye_1781.jpg_face_1.jpg,1,Good,0.10035,1.046,12.6
+closed_eye_1782.jpg_face_3.jpg,1,Blurred or hidden eyes,0.0,0.0,2.74
+closed_eye_1783.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.28
+closed_eye_1786.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,21.95
+closed_eye_1787.jpg_face_1.jpg,1,Good,0.03421,-9.893,12.22
+closed_eye_1789.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.99
+closed_eye_1796.jpg_face_1.jpg,1,Good,0.06041,1.801,11.97
+closed_eye_1798.jpg_face_1.jpg,1,Good,0.04477,-3.601,13.66
+closed_eye_1804.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,21.25
+closed_eye_1805.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.96
+closed_eye_1806.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.08
+closed_eye_1807.jpg_face_1.jpg,1,Good,0.04917,-0.294,12.33
+closed_eye_1808.jpg_face_1.jpg,1,Good,0.04096,-8.299,12.57
+closed_eye_1810.jpg_face_1.jpg,1,Good,0.0583,12.118,13.53
+closed_eye_1811.jpg_face_1.jpg,1,Good,0.02398,-7.754,13.25
+closed_eye_1812.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,21.72
+closed_eye_1816.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.2
+closed_eye_1819.jpg_face_1.jpg,1,Good,0.08819,-5.175,13.42
+closed_eye_1820.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,20.37
+closed_eye_1823.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.56
+closed_eye_1825.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.31
+closed_eye_1836.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.83
+closed_eye_1837.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.88
+closed_eye_1841.jpg_face_1.jpg,1,Good,0.11695,-7.965,13.42
+closed_eye_1842.jpg_face_1.jpg,1,Good,0.11964,-1.141,12.77
+closed_eye_1843.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,19.79
+closed_eye_1844.png_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.27
+closed_eye_1845.jpg_face_1.jpg,1,Good,0.12565,-5.372,11.47
+closed_eye_1848.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.6
+closed_eye_1849.jpg_face_1.jpg,1,Good,0.08042,4.067,13.81
+closed_eye_1850.jpg_face_1.jpg,1,Good,0.01605,-8.472,12.69
+closed_eye_1850.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,2.59
+closed_eye_1853.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.18
+closed_eye_1854.jpg_face_2.jpg,1,Good,0.0674,-1.092,13.58
+closed_eye_1856.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.44
+closed_eye_1858.jpg_face_1.jpg,1,Good,0.10887,11.488,13.74
+closed_eye_1858.jpg_face_2.jpg,1,Multiple faces,0.0,0.0,20.38
+closed_eye_1859.jpg_face_1.jpg,1,Hidden eyes or poor eye lighting,0.0,0.0,12.22
+closed_eye_1863.jpg_face_1.jpg,1,Good,0.04463,-4.491,13.98
+closed_eye_1865.jpg_face_3.jpg,1,Good,0.04545,3.495,14.42
+closed_eye_1866.jpg_face_1.jpg,1,Good,0.12395,-18.401,13.08
+closed_eye_1867.jpg_face_1.jpg,1,Good,0.10703,6.278,13.6
+closed_eye_1868.jpg_face_1.jpg,1,Good,0.04138,0.84,13.83
+closed_eye_1869.jpg_face_1.jpg,1,Good,0.05499,-4.048,14.25
+closed_eye_1871.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.47
+closed_eye_1877.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.45
+closed_eye_1878.jpg_face_1.jpg,1,Good,0.03614,9.195,15.86
+closed_eye_1879.jpg_face_2.jpg,1,Good,0.11243,1.079,16.56
+closed_eye_1883.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,21.74
+closed_eye_1884.jpg_face_2.jpg,1,Good,0.10123,10.907,13.76
+closed_eye_1885.jpg_face_1.jpg,1,Good,0.02219,-5.005,17.15
+closed_eye_1886.jpg_face_1.jpg,1,Good,0.07183,3.238,18.19
+closed_eye_1888.jpg_face_1.jpg,1,Good,0.0208,11.012,21.78
+closed_eye_1889.jpg_face_1.jpg,1,Good,0.01765,0.692,18.31
+closed_eye_1890.jpg_face_1.jpg,1,Good,0.02023,-4.026,16.93
+closed_eye_1894.jpg_face_1.jpg,1,Good,0.04034,-6.175,15.58
+closed_eye_1896.jpg_face_1.jpg,1,Good,0.08305,7.808,15.58
+closed_eye_1900.jpg_face_2.jpg,1,Good,0.00583,-12.884,16.48
+closed_eye_1902.jpg_face_4.jpg,1,Blurred or hidden eyes,0.0,0.0,4.25
+closed_eye_1903.jpg_face_1.jpg,1,Good,0.07404,21.444,23.85
+closed_eye_1905.jpg_face_1.jpg,1,Hidden eyes or poor eye lighting,0.0,0.0,16.29
+closed_eye_1906.jpg_face_1.jpg,1,Good,0.03535,-1.182,15.92
+closed_eye_1922.jpg_face_2.jpg,1,Good,0.02372,-4.097,16.79
+closed_eye_1924.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,4.47
+closed_eye_1925.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.84
+closed_eye_1928.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.8
+closed_eye_1931.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.01
+closed_eye_1934.png_face_1.jpg,1,Multiple faces,0.0,0.0,22.75
+closed_eye_1935.jpg_face_1.jpg,1,Poor lighting,0.0,0.0,3.34
+closed_eye_1936.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,4.12
+closed_eye_1937.jpg_face_2.jpg,1,Good,0.07079,-4.338,14.54
+closed_eye_1938.jpg_face_1.jpg,1,Good,0.03013,1.322,15.25
+closed_eye_1940.jpg_face_1.jpg,1,Good,0.02874,5.978,16.68
+closed_eye_1942.jpg_face_2.jpg,1,Good,0.04622,-1.896,15.23
+closed_eye_1943.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.98
+closed_eye_1944.jpg_face_1.jpg,1,Good,0.05189,-21.649,15.78
+closed_eye_1946.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.57
+closed_eye_1949.jpg_face_2.jpg,1,Good,0.05101,-1.214,15.33
+closed_eye_1952.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.79
+closed_eye_1953.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.14
+closed_eye_1953.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.56
+closed_eye_1955.jpg_face_1.jpg,1,Good,0.02625,12.735,13.45
+closed_eye_1956.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,23.37
+closed_eye_1958.jpg_face_1.jpg,1,Hidden eyes or poor eye lighting,0.0,0.0,13.03
+closed_eye_1959.jpg_face_2.jpg,1,Multiple faces,0.0,0.0,21.88
+closed_eye_1960.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.03
+closed_eye_1963.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.62
+closed_eye_1964.jpg_face_1.jpg,1,Good,0.08558,-10.456,11.58
+closed_eye_1966.jpg_face_1.jpg,1,Good,0.06101,-6.495,14.51
+closed_eye_1969.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,21.45
+closed_eye_1971.jpg_face_1.jpg,1,Good,0.0567,1.356,11.06
+closed_eye_1972.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.29
+closed_eye_1973.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.58
+closed_eye_1980.jpg_face_1.jpg,1,Good,0.03434,2.331,13.21
+closed_eye_1982.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,21.88
+closed_eye_1985.jpg_face_1.jpg,1,Good,0.08851,5.964,12.37
+closed_eye_1986.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.81
+closed_eye_1989.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,19.51
+closed_eye_1990.jpg_face_1.jpg,1,Good,0.04184,6.421,12.46
+closed_eye_1995.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,2.8
+closed_eye_2004.jpg_face_2.jpg,1,Good,0.08896,16.349,13.4
+closed_eye_2005.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,2.78
+closed_eye_2008.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.7
+closed_eye_2010.jpg_face_1.jpg,1,Good,0.02705,-3.339,12.75
+closed_eye_2011.jpg_face_3.jpg,1,Good,0.03645,-1.162,14.69
+closed_eye_2015.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,19.76
+closed_eye_2017.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.38
+closed_eye_2018.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.83
+closed_eye_2019.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.77
+closed_eye_2021.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.64
+closed_eye_2024.jpg_face_1.jpg,1,Good,0.05003,-13.357,11.63
+closed_eye_2025.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,4.27
+closed_eye_2026.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.82
+closed_eye_2027.jpg_face_7.jpg,1,Good,0.05402,-11.21,14.81
+closed_eye_2029.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.18
+closed_eye_2030.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,2.76
+closed_eye_2031.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.04
+closed_eye_2033.jpg_face_1.jpg,1,Good,0.01958,1.944,14.8
+closed_eye_2034.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.81
+closed_eye_2035.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.68
+closed_eye_2037.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,2.75
+closed_eye_2038.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.47
+closed_eye_2039.jpg_face_1.jpg,1,Good,0.01621,5.251,12.85
+closed_eye_2040.jpg_face_3.jpg,1,Good,0.02396,2.768,12.92
+closed_eye_2041.jpg_face_1.jpg,1,Good,0.01903,4.323,13.77
+closed_eye_2046.jpg_face_1.jpg,1,Good,0.03429,-11.958,14.22
+closed_eye_2047.jpg_face_1.jpg,1,Good,0.03068,-10.99,13.63
+closed_eye_2049.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.91
+closed_eye_2050.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.95
+closed_eye_2051.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,21.01
+closed_eye_2054.jpg_face_1.jpg,1,Good,0.08273,-4.559,12.18
+closed_eye_2062.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,2.8
+closed_eye_2064.jpg_face_1.jpg,1,Good,0.04337,-0.064,11.3
+closed_eye_2065.jpg_face_1.jpg,1,Good,0.02933,-6.758,12.62
+closed_eye_2071.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.44
+closed_eye_2074.jpg_face_3.jpg,1,Good,0.03892,5.212,13.25
+closed_eye_2075.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.38
+closed_eye_2078.jpg_face_3.jpg,1,Blurred or hidden eyes,0.0,0.0,2.61
+closed_eye_2079.jpg_face_1.jpg,1,Good,0.10748,1.54,14.21
+closed_eye_2087.jpg_face_2.jpg,1,Good,0.09126,3.059,14.26
+closed_eye_2090.jpg_face_1.jpg,1,Good,0.0158,4.729,14.17
+closed_eye_2093.jpg_face_2.jpg,1,Good,0.16457,0.691,13.47
+closed_eye_2094.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,22.34
+closed_eye_2095.jpg_face_1.jpg,1,Good,0.02524,0.342,11.93
+closed_eye_2097.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.66
+closed_eye_2098.jpg_face_2.jpg,1,Good,0.04582,11.563,15.27
+closed_eye_2099.jpg_face_1.jpg,1,Good,0.04548,7.732,13.51
+closed_eye_2100.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.52
+closed_eye_2102.jpg_face_3.jpg,1,Blurred or hidden eyes,0.0,0.0,3.92
+closed_eye_2109.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.96
+closed_eye_2111.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,21.01
+closed_eye_2114.jpg_face_2.jpg,1,Good,0.09917,-3.305,12.57
+closed_eye_2115.jpg_face_1.jpg,1,Good,0.01265,5.645,13.55
+closed_eye_2118.jpg_face_1.jpg,1,Good,0.04299,5.934,13.88
+closed_eye_2122.jpg_face_1.jpg,1,Good,0.08097,-0.469,14.88
+closed_eye_2123.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.22
+closed_eye_2125.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.26
+closed_eye_2126.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.31
+closed_eye_2128.BMP_face_1.jpg,1,Multiple faces,0.0,0.0,19.22
+closed_eye_2132.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,2.68
+closed_eye_2132.jpg_face_3.jpg,1,Blurred or hidden eyes,0.0,0.0,3.41
+closed_eye_2136.jpg_face_3.jpg,1,Blurred or hidden eyes,0.0,0.0,3.37
+closed_eye_2137.jpg_face_1.jpg,1,Good,0.07294,-3.221,12.64
+closed_eye_2138.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.71
+closed_eye_2139.jpg_face_1.jpg,1,Good,0.12072,-3.461,14.64
+closed_eye_2140.jpg_face_3.jpg,1,Blurred or hidden eyes,0.0,0.0,3.38
+closed_eye_2141.jpg_face_1.jpg,1,Good,0.04051,-7.529,13.15
+closed_eye_2142.jpg_face_2.jpg,1,Good,0.09442,3.465,14.01
+closed_eye_2144.jpg_face_2.jpg,1,Good,0.10103,-10.6,14.91
+closed_eye_2145.jpg_face_4.jpg,1,Good,0.06258,1.764,13.33
+closed_eye_2146.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,20.22
+closed_eye_2147.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.27
+closed_eye_2149.jpg_face_1.jpg,1,Good,0.09598,-8.912,12.01
+closed_eye_2152.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.79
+closed_eye_2153.jpg_face_1.jpg,1,Good,0.01114,-1.5,14.08
+closed_eye_2156.jpg_face_1.jpg,1,Good,0.02345,4.033,13.5
+closed_eye_2157.jpg_face_1.jpg,1,Good,0.02921,8.761,14.05
+closed_eye_2158.JPG_face_1.jpg,1,Multiple faces,0.0,0.0,20.01
+closed_eye_2161.jpg_face_1.jpg,1,Good,0.1091,-4.7,12.65
+closed_eye_2164.jpg_face_1.jpg,1,Hidden eyes or poor eye lighting,0.0,0.0,13.83
+closed_eye_2165.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.32
+closed_eye_2165.jpg_face_3.jpg,1,Multiple faces,0.0,0.0,20.42
+closed_eye_2167.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.6
+closed_eye_2168.jpg_face_1.jpg,1,Good,0.05944,-5.054,12.26
+closed_eye_2169.jpg_face_1.jpg,1,Good,0.0294,2.107,13.92
+closed_eye_2170.jpg_face_1.jpg,1,Good,0.03684,-0.82,12.71
+closed_eye_2172.jpg_face_1.jpg,1,Good,0.07929,4.787,12.98
+closed_eye_2179.jpg_face_2.jpg,1,Good,0.10071,5.154,12.99
+closed_eye_2181.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.36
+closed_eye_2183.jpg_face_1.jpg,1,Good,0.07291,-1.244,12.77
+closed_eye_2186.jpg_face_1.jpg,1,Hidden eyes or poor eye lighting,0.0,0.0,14.17
+closed_eye_2188.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.51
+closed_eye_2191.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.31
+closed_eye_2192.jpg_face_1.jpg,1,Good,0.03356,-9.724,14.78
+closed_eye_2200.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.05
+closed_eye_2202.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.93
+closed_eye_2203.jpg_face_2.jpg,1,Good,0.07259,5.016,12.36
+closed_eye_2205.jpg_face_2.jpg,1,Good,0.11373,3.327,14.27
+closed_eye_2207.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.58
+closed_eye_2208.jpg_face_1.jpg,1,Good,0.06125,15.478,15.09
+closed_eye_2211.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,20.15
+closed_eye_2214.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.03
+closed_eye_2215.jpg_face_1.jpg,1,Good,0.08425,0.902,12.33
+closed_eye_2216.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,20.81
+closed_eye_2217.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.58
+closed_eye_2218.jpg_face_1.jpg,1,Good,0.03454,-16.014,12.95
+closed_eye_2220.jpg_face_4.jpg,1,Good,0.04229,-1.138,14.35
+closed_eye_2222.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.47
+closed_eye_2224.jpg_face_1.jpg,1,Good,0.07941,3.499,14.69
+closed_eye_2233.jpg_face_1.jpg,1,Good,0.05776,-3.314,14.66
+closed_eye_2234.jpg_face_1.jpg,1,Good,0.10099,-1.402,14.61
+closed_eye_2234.jpg_face_2.jpg,1,Good,0.07601,2.219,13.93
+closed_eye_2234.jpg_face_3.jpg,1,Good,0.07905,6.05,14.58
+closed_eye_2238.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.43
+closed_eye_2241.jpg_face_3.jpg,1,Good,0.02485,-10.311,15.17
+closed_eye_2243.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.41
+closed_eye_2243.jpg_face_4.jpg,1,Blurred or hidden eyes,0.0,0.0,3.06
+closed_eye_2247.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.16
+closed_eye_2247.jpg_face_2.jpg,1,Good,0.02795,-3.051,14.59
+closed_eye_2249.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.68
+closed_eye_2249.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,4.24
+closed_eye_2251.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.83
+closed_eye_2255.jpg_face_1.jpg,1,Good,0.04076,-1.609,20.86
+closed_eye_2256.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.06
+closed_eye_2258.jpg_face_1.jpg,1,Good,0.14469,-3.223,15.01
+closed_eye_2259.jpg_face_1.jpg,1,Good,0.06667,9.041,16.72
+closed_eye_2260.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.46
+closed_eye_2261.jpg_face_3.jpg,1,Blurred or hidden eyes,0.0,0.0,3.02
+closed_eye_2263.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,23.54
+closed_eye_2267.jpg_face_1.jpg,1,Good,0.06202,10.679,12.88
+closed_eye_2269.jpg_face_2.jpg,1,Good,0.01588,-0.515,15.65
+closed_eye_2271.jpg_face_1.jpg,1,Good,0.06947,-1.471,13.92
+closed_eye_2288.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.85
+closed_eye_2295.jpg_face_1.jpg,1,Good,0.02882,-2.064,15.33
+closed_eye_2297.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.27
+closed_eye_2301.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.09
+closed_eye_2303.jpg_face_1.jpg,1,Good,0.02518,-5.099,14.35
+closed_eye_2303.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,2.77
+closed_eye_2304.jpg_face_16.jpg,1,Blurred or hidden eyes,0.0,0.0,3.26
+closed_eye_2308.BMP_face_1.jpg,1,Good,0.05349,3.264,14.46
+closed_eye_2309.BMP_face_1.jpg,1,Multiple faces,0.0,0.0,22.1
+closed_eye_2311.BMP_face_1.jpg,1,Hidden eyes or poor eye lighting,0.0,0.0,13.0
+closed_eye_2313.jpg_face_1.jpg,1,Good,0.12964,3.291,17.44
+closed_eye_2313.jpg_face_2.jpg,1,Good,0.04444,-9.392,13.71
+closed_eye_2315.JPG_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.42
+closed_eye_2317.jpg_face_1.jpg,1,Good,0.13112,0.937,14.01
+closed_eye_2322.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.19
+closed_eye_2327.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,2.92
+closed_eye_2329.BMP_face_2.jpg,1,Multiple faces,0.0,0.0,20.39
+closed_eye_2332.jpg_face_1.jpg,1,Hidden eyes or poor eye lighting,0.0,0.0,12.54
+closed_eye_2335.jpg_face_1.jpg,1,Good,0.02962,1.342,13.66
+closed_eye_2336.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.94
+closed_eye_2338.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,21.05
+closed_eye_2339.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.76
+closed_eye_2344.jpg_face_1.jpg,1,Good,0.03903,-8.929,11.42
+closed_eye_2346.BMP_face_1.jpg,1,Good,0.0402,-5.326,12.7
+closed_eye_2352.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.67
+closed_eye_2352.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,2.66
+closed_eye_2356.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,19.69
+closed_eye_2358.jpg_face_2.jpg,1,Good,0.0264,-0.602,11.32
+closed_eye_2363.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.63
+closed_eye_2365.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,2.28
+closed_eye_2367.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.44
+closed_eye_2369.BMP_face_1.jpg,1,Good,0.0478,3.979,19.01
+closed_eye_2372.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,27.83
+closed_eye_2372.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,2.37
+closed_eye_2373.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.57
+closed_eye_2374.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.78
+closed_eye_2377.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,2.81
+closed_eye_2378.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.29
+closed_eye_2379.jpg_face_1.jpg,1,Good,0.06253,10.628,12.87
+closed_eye_2380.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.31
+closed_eye_2382.jpg_face_1.jpg,1,Good,0.03219,-1.326,13.81
+closed_eye_2383.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,2.81
+closed_eye_2384.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,20.93
+closed_eye_2386.jpg_face_1.jpg,1,Good,0.11453,-13.25,11.47
+closed_eye_2387.jpg_face_1.jpg,1,Good,0.03006,-0.318,13.02
+closed_eye_2388.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,19.82
+closed_eye_2389.jpg_face_1.jpg,1,Good,0.04507,-1.301,13.74
+closed_eye_2391.jpg_face_1.jpg,1,Good,0.13276,5.4,21.43
+closed_eye_2392.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,4.13
+closed_eye_2393.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,5.29
+closed_eye_2395.jpg_face_1.jpg,1,Good,0.06848,-9.214,16.01
+closed_eye_2395.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,2.71
+closed_eye_2400.jpg_face_1.jpg,1,Good,0.0294,-10.98,17.0
+closed_eye_2403.jpg_face_1.jpg,1,Good,0.06501,5.168,23.99
+closed_eye_2405.jpg_face_1.jpg,1,Good,0.02019,-3.093,22.47
+closed_eye_2406.jpg_face_1.jpg,1,Good,0.12349,-6.309,35.2
+closed_eye_2408.jpg_face_1.jpg,1,Good,0.03831,-13.645,21.52
+closed_eye_2409.jpg_face_1.jpg,1,Good,0.06346,-3.793,14.77
+closed_eye_2413.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.24
+closed_eye_2413.jpg_face_3.jpg,1,Good,0.03512,-3.453,16.1
+closed_eye_2420.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,23.48
+closed_eye_2421.jpg_face_1.jpg,1,Good,0.03234,-2.622,13.98
+closed_eye_2428.jpg_face_4.jpg,1,Blurred or hidden eyes,0.0,0.0,3.55
+closed_eye_2431.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.2
+closed_eye_2435.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.72
+closed_eye_2439.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.9
+closed_eye_2440.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.93
+closed_eye_2442.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.56
+closed_eye_2444.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.53
+closed_eye_2445.jpg_face_1.jpg,1,Good,0.05203,-1.743,16.9
+closed_eye_2446.jpg_face_1.jpg,1,Good,0.0392,-5.287,15.68
+closed_eye_2447.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.69
+closed_eye_2448.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,4.67
+closed_eye_2461.jpg_face_1.jpg,1,Good,0.06136,5.212,20.14
+closed_eye_2463.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.48
+closed_eye_2464.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,4.82
+closed_eye_2466.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,45.8
+closed_eye_2472.jpg_face_1.jpg,1,Good,0.06085,-15.429,31.83
+closed_eye_2476.jpg_face_1.jpg,1,Good,0.06412,5.52,42.67
+closed_eye_2478.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.61
+closed_eye_2481.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.87
+closed_eye_2486.jpg_face_1.jpg,1,Good,0.01798,4.595,18.97
+closed_eye_2488.jpg_face_1.jpg,1,Good,0.06909,-1.752,15.08
+closed_eye_2490.jpg_face_1.jpg,1,Good,0.0175,0.941,17.37
+closed_eye_2491.jpg_face_1.jpg,1,Good,0.04631,-3.055,16.57
+closed_eye_2492.jpg_face_1.jpg,1,Good,0.03416,2.88,20.13
+closed_eye_2493.jpg_face_1.jpg,1,Good,0.01398,-2.217,27.56
+closed_eye_2495.jpg_face_1.jpg,1,Good,0.02524,9.726,19.3
+closed_eye_2499.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,25.81
+closed_eye_2500.jpg_face_1.jpg,1,Good,0.05651,-4.93,19.63
+closed_eye_2501.jpg_face_2.jpg,1,Good,0.03424,-16.274,18.02
+closed_eye_2502.jpg_face_1.jpg,1,Good,0.02582,13.783,24.38
+closed_eye_2504.jpg_face_1.jpg,1,Good,0.06019,2.338,16.28
+closed_eye_2505.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,25.86
+closed_eye_2506.jpg_face_1.jpg,1,No face,0.0,0.0,11.82
+closed_eye_2507.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.96
+closed_eye_2508.jpg_face_1.jpg,1,Good,0.03083,-17.571,17.65
+closed_eye_2511.jpg_face_1.jpg,1,Good,0.16842,-0.756,14.86
+closed_eye_2512.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.29
+closed_eye_2513.jpg_face_2.jpg,1,Good,0.1226,-4.104,16.35
+closed_eye_2518.jpg_face_1.jpg,1,Good,0.04044,-2.143,16.49
+closed_eye_2521.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.42
+closed_eye_2522.jpg_face_3.jpg,1,Good,0.02646,2.968,16.45
+closed_eye_2524.jpg_face_2.jpg,1,Good,0.04216,0.846,17.05
+closed_eye_2526.BMP_face_2.jpg,1,Multiple faces,0.0,0.0,23.3
+closed_eye_2528.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.56
+closed_eye_2530.jpg_face_1.jpg,1,Good,0.05216,-8.29,14.9
+closed_eye_2531.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.22
+closed_eye_2532.jpg_face_1.jpg,1,Good,0.1585,5.683,14.02
+closed_eye_2534.jpg_face_1.jpg,1,Good,0.04,-2.477,14.59
+closed_eye_2536.BMP_face_1.jpg,1,Multiple faces,0.0,0.0,21.0
+closed_eye_2543.jpg_face_1.jpg,1,No face,0.0,0.0,11.15
+closed_eye_2544.BMP_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.05
+closed_eye_2545.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,3.8
+closed_eye_2547.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.67
+closed_eye_2549.jpg_face_1.jpg,1,Unreliable eye geometry,0.0,0.0,12.08
+closed_eye_2551.jpg_face_3.jpg,1,Multiple faces,0.0,0.0,20.29
+closed_eye_2552.jpg_face_1.jpg,1,Good,0.028,-2.96,13.47
+closed_eye_2557.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.46
+closed_eye_2562.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.47
+closed_eye_2567.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.35
+closed_eye_2568.jpg_face_1.jpg,1,Good,0.09087,1.842,13.52
+closed_eye_2569.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.07
+closed_eye_2574.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,19.27
+closed_eye_2576.jpg_face_1.jpg,1,Good,0.03915,1.75,12.11
+closed_eye_2578.jpg_face_1.jpg,1,Good,0.02406,-1.254,13.16
+closed_eye_2582.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.94
+closed_eye_2585.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,20.8
+closed_eye_2586.jpg_face_1.jpg,1,Good,0.20145,-4.324,11.47
+closed_eye_2596.jpg_face_8.jpg,1,Blurred or hidden eyes,0.0,0.0,2.96
+closed_eye_2597.jpg_face_1.jpg,1,Good,0.03506,-2.392,13.48
+closed_eye_2600.jpg_face_1.jpg,1,Good,0.04404,3.818,13.79
+closed_eye_2601.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,21.63
+closed_eye_2603.jpg_face_1.jpg,1,Good,0.1234,-2.16,13.57
+closed_eye_2605.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.69
+closed_eye_2608.jpg_face_1.jpg,1,Good,0.09571,5.29,13.79
+closed_eye_2612.jpg_face_1.jpg,1,Good,0.10997,11.686,20.25
+closed_eye_2614.jpg_face_1.jpg,1,Good,0.0439,19.6,15.11
+closed_eye_2617.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,2.84
+closed_eye_2619.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,5.73
+closed_eye_2625.BMP_face_1.jpg,1,Good,0.03147,-0.282,19.48
+closed_eye_2626.BMP_face_1.jpg,1,Good,0.091,-6.889,14.08
+closed_eye_2627.jpg_face_1.jpg,1,Good,0.03295,-0.21,14.65
+closed_eye_2629.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.76
+closed_eye_2631.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.67
+closed_eye_2634.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,22.22
+closed_eye_2640.jpg_face_1.jpg,1,Good,0.07123,0.052,11.45
+closed_eye_2641.jpg_face_2.jpg,1,Good,0.05101,-14.67,15.4
+closed_eye_2643.jpg_face_1.jpg,1,Good,0.10158,-3.329,15.0
+closed_eye_2644.bmp_face_4.jpg,1,Good,0.05022,6.876,15.56
+closed_eye_2647.jpg_face_1.jpg,1,Good,0.03142,-1.298,18.65
+closed_eye_2648.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,4.39
+closed_eye_2651.jpg_face_1.jpg,1,Good,0.05864,2.139,19.8
+closed_eye_2657.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.71
+closed_eye_2658.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,4.7
+closed_eye_2659.jpg_face_1.jpg,1,Hidden eyes or poor eye lighting,0.0,0.0,16.55
+closed_eye_2660.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,22.53
+closed_eye_2663.jpg_face_1.jpg,1,Good,0.06491,4.894,13.59
+closed_eye_2664.jpg_face_2.jpg,1,Good,0.02682,-0.944,16.29
+closed_eye_2666.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,24.5
+closed_eye_2670.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,4.75
+closed_eye_2672.jpg_face_1.jpg,1,Good,0.05946,-0.009,14.22
+closed_eye_2677.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,25.06
+closed_eye_2680.jpg_face_2.jpg,1,Good,0.08925,-7.658,13.82
+closed_eye_2681.jpg_face_2.jpg,1,Blurred or hidden eyes,0.0,0.0,4.54
+closed_eye_2687.jpg_face_1.jpg,1,Good,0.02277,-3.842,19.74
+closed_eye_2688.jpg_face_4.jpg,1,Blurred or hidden eyes,0.0,0.0,7.88
+closed_eye_2689.jpg_face_4.jpg,1,Blurred or hidden eyes,0.0,0.0,5.0
+closed_eye_2690.jpg_face_2.jpg,1,Multiple faces,0.0,0.0,23.63
+closed_eye_2691.jpg_face_1.jpg,1,Good,0.0286,0.362,14.21
+closed_eye_2692.jpg_face_1.jpg,1,Good,0.06066,-2.19,16.38
+closed_eye_2693.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,24.47
+closed_eye_2694.jpg_face_1.jpg,1,Good,0.06604,-7.051,14.04
+closed_eye_2695.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.68
+closed_eye_2696.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.57
+closed_eye_2698.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.74
+closed_eye_2699.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,21.77
+closed_eye_2700.jpg_face_2.jpg,1,Good,0.07378,-5.629,14.09
+closed_eye_2703.jpg_face_1.jpg,1,Good,0.01904,-0.414,15.63
+closed_eye_2707.jpg_face_1.jpg,1,Good,0.03958,2.511,14.76
+closed_eye_2708.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.01
+closed_eye_2713.jpg_face_1.jpg,1,Good,0.03328,-4.841,14.78
+closed_eye_2715.jpg_face_1.jpg,1,Good,0.01141,-15.092,13.64
+closed_eye_2717.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,21.88
+closed_eye_2721.jpg_face_1.jpg,1,Good,0.06225,2.907,13.91
+closed_eye_2728.jpg_face_1.jpg,1,Poor lighting,0.0,0.0,3.15
+closed_eye_2735.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,23.05
+closed_eye_2736.jpg_face_1.jpg,1,Good,0.04367,-6.548,14.6
+closed_eye_2737.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.45
+closed_eye_2738.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,21.6
+closed_eye_2740.jpg_face_1.jpg,1,Good,0.12009,-3.776,14.91
+closed_eye_2741.jpg_face_1.jpg,1,Good,0.04241,1.346,16.49
+closed_eye_2746.BMP_face_2.jpg,1,Multiple faces,0.0,0.0,20.84
+closed_eye_2747.BMP_face_1.jpg,1,Good,0.06102,1.495,13.47
+closed_eye_2749.jpg_face_2.jpg,1,Multiple faces,0.0,0.0,20.79
+closed_eye_2750.jpg_face_1.jpg,1,Good,0.02588,-0.098,12.28
+closed_eye_2752.jpg_face_1.jpg,1,Good,0.02174,-4.509,12.99
+closed_eye_2753.jpg_face_1.jpg,1,Good,0.03496,-3.537,15.42
+closed_eye_2756.BMP_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.27
+closed_eye_2757.BMP_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,3.15
+closed_eye_2758.jpg_face_1.jpg,1,Good,0.13186,-14.526,13.59
+closed_eye_2759.BMP_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.4
+closed_eye_2764.jpg_face_1.jpg,1,Good,0.02919,-5.628,12.7
+closed_eye_2767.BMP_face_1.jpg,1,Multiple faces,0.0,0.0,19.94
+closed_eye_2768.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.81
+closed_eye_2769.jpg_face_1.jpg,1,Good,0.18394,5.742,11.57
+closed_eye_2770.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,4.02
+closed_eye_2773.jpg_face_1.jpg,1,Hidden eyes or poor eye lighting,0.0,0.0,12.56
+closed_eye_2774.jpg_face_1.jpg,1,Good,0.03206,-1.057,13.27
+closed_eye_2778.jpg_face_2.jpg,1,Good,0.03359,-7.068,12.91
+closed_eye_2780.jpg_face_1.jpg,1,Good,0.02486,0.03,13.35
+closed_eye_2782.jpg_face_1.jpg,1,Good,0.05856,-1.94,12.85
+closed_eye_2791.jpg_face_1.jpg,1,Good,0.06481,1.821,12.53
+closed_eye_2792.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.76
+closed_eye_2793.jpg_face_1.jpg,1,Good,0.05131,-4.355,13.34
+closed_eye_2794.jpg_face_1.jpg,1,Good,0.02456,4.808,12.9
+closed_eye_2795.jpg_face_1.jpg,1,Multiple faces,0.0,0.0,18.34
+closed_eye_2798.jpg_face_1.jpg,1,Good,0.02186,-0.688,12.05
+closed_eye_2801.jpg_face_2.jpg,1,Multiple faces,0.0,0.0,19.04
+closed_eye_2803.jpg_face_1.jpg,1,Blurred or hidden eyes,0.0,0.0,2.55
+closed_eye_2804.jpg_face_1.jpg,1,Hidden eyes or poor eye lighting,0.0,0.0,11.25
+closed_eye_2808.BMP_face_1.jpg,1,Multiple faces,0.0,0.0,20.36
+closed_eye_2813.BMP_face_1.jpg,1,Good,0.0211,-3.786,13.66
+closed_eye_2817.jpg_face_1.jpg,1,Good,0.03137,3.634,14.3
+closed_eye_2847.jpg_face_2.jpg,1,Good,0.03241,-2.759,13.26
+Aaron_Guiel_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.77
+Abdel_Madi_Shabneh_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.84
+Abid_Hamid_Mahmud_Al-Tikriti_0001.jpg,0,Multiple faces,0.0,0.0,19.18
+Adam_Rich_0001.jpg,0,Good,0.325,2.92,11.98
+Adolfo_Aguilar_Zinser_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.22
+Adolfo_Rodriguez_Saa_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.2
+Ahmad_Masood_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.53
+Ahmed_Ghazi_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.52
+Ainsworth_Dyer_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.83
+Akbar_Al_Baker_0001.jpg,0,Good,0.32148,2.316,14.21
+Akhmed_Zakayev_0001.jpg,0,Good,0.33938,5.183,13.05
+Al_Leiter_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.64
+Alan_Ball_0001.jpg,0,Good,0.29762,-0.746,13.98
+Alan_Greer_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.74
+Alberto_Gonzales_0001.jpg,0,Good,0.26929,-6.174,14.43
+Alberto_Sordi_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.74
+Albrecht_Mentz_0001.jpg,0,Good,0.32419,-6.451,14.47
+Alecos_Markides_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.32
+Alejandro_Gonzalez_Inarritu_0001.jpg,0,Good,0.24834,-5.829,16.53
+Alejandro_Lerner_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.26
+Aleksander_Kwasniewski_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.08
+Alex_Barros_0001.jpg,0,Good,0.2734,-0.021,13.61
+Alex_Ferguson_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.29
+Alex_Gonzalez_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.0
+Alex_Holmes_0001.jpg,0,Good,0.34358,0.1,14.37
+Alex_King_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.51
+Alexander_Losyukov_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.67
+Alexander_Payne_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.33
+Alexandra_Rozovskaya_0001.jpg,0,Good,0.34802,11.555,14.57
+Alexandra_Stevenson_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.66
+Alexandre_Despatie_0001.jpg,0,Good,0.13324,-10.756,16.21
+Alexis_Bledel_0001.jpg,0,Good,0.20788,-4.735,13.74
+Alfredo_di_Stefano_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.05
+Ali_Ahmeti_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.95
+Ali_Hammoud_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.34
+Alicia_Witt_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.94
+Alina_Kabaeva_0001.jpg,0,Multiple faces,0.0,0.0,30.89
+Alistair_MacDonald_0001.jpg,0,Good,0.09735,-6.347,14.99
+Allen_Iverson_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.89
+Allen_Rock_0001.jpg,0,Good,0.34149,-8.099,13.69
+Ally_Sheedy_0001.jpg,0,Good,0.34878,-15.553,13.9
+Aly_Wagner_0001.jpg,0,Multiple faces,0.0,0.0,20.58
+Alyse_Beaupre_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.12
+Ambrose_Lee_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.03
+Amelia_Vega_0001.jpg,0,Good,0.26077,9.66,12.54
+Amporn_Falise_0001.jpg,0,Good,0.39566,1.832,14.04
+Amy_Cotton_0001.jpg,0,Multiple faces,0.0,0.0,21.37
+Amy_Yasbeck_0001.jpg,0,Good,0.30621,-4.786,12.86
+Ana_Sebastiao_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.1
+Anastasia_Myskina_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.94
+Anders_Ebbeson_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.58
+Andre_Lange_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.56
+Andrea_Kiser_0001.jpg,0,Good,0.10232,0.67,15.5
+Andrea_Yates_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.0
+Andres_Pastrana_0001.jpg,0,Good,0.32532,-2.049,13.38
+Andrew_Bernard_0001.jpg,0,Good,0.35336,-10.672,14.78
+Andrew_Bunner_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.23
+Andrew_Caldecott_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.94
+Andrew_Firestone_0001.jpg,0,Good,0.13389,-8.257,14.62
+Andrew_Luster_0001.jpg,0,Good,0.35002,4.501,13.04
+Andy_Garcia_0001.jpg,0,Good,0.30587,-3.736,12.77
+Andy_Hebb_0001.jpg,0,Good,0.31199,2.5,14.68
+Andy_Madikians_0001.jpg,0,Good,0.19848,-3.71,15.37
+Andy_Roddick_0001.jpg,0,Multiple faces,0.0,0.0,22.16
+Ann_Veneman_0001.jpg,0,Good,0.34241,-8.912,13.31
+Anne_Cavers_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.04
+Anne_Donovan_0001.jpg,0,Good,0.35761,4.106,14.63
+Anne_Krueger_0001.jpg,0,Good,0.33969,-1.862,16.99
+Annette_Bening_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.06
+Antonio_Banderas_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.22
+Aram_Adler_0001.jpg,0,Multiple faces,0.0,0.0,24.25
+Aretha_Franklin_0001.jpg,0,Hidden eyes or poor eye lighting,0.0,0.0,13.93
+Ari_Fleischer_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,5.61
+Arie_Haan_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,5.48
+Arnaud_Clement_0001.jpg,0,Good,0.33907,0.513,17.56
+Artieas_Shanks_0001.jpg,0,Good,0.34999,2.374,15.39
+Arye_Mekel_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.84
+Asa_Hutchinson_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.54
+Ashraf_Ghani_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.82
+Asif_Hanif_0001.jpg,0,Good,0.30797,-0.294,18.08
+Asmaa_Assad_0001.jpg,0,Good,0.39317,6.236,15.54
+Astrid_Eyzaguirre_0001.jpg,0,Multiple faces,0.0,0.0,26.7
+Atiabet_Ijan_Amabel_0001.jpg,0,Good,0.29967,-4.504,13.07
+Augustin_Calleri_0001.jpg,0,Good,0.33587,11.348,15.26
+Azmi_Bishara_0001.jpg,0,Good,0.3459,-5.52,15.73
+Babe_Ruth_0001.jpg,0,Good,0.2479,-8.63,17.54
+Barbara_Esbin_0001.jpg,0,Good,0.30394,-8.933,22.89
+Barry_Alvarez_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.4
+Barry_Switzer_0001.jpg,0,Good,0.17464,-5.51,16.6
+Bartosz_Kizierowski_0001.jpg,0,Good,0.30834,0.942,15.61
+Beatriz_Merino_0001.jpg,0,Good,0.24583,0.21,17.22
+Ben_Braun_0001.jpg,0,Good,0.23217,-2.017,14.79
+Ben_Broussard_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.84
+Ben_Chandler_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.31
+Ben_Wallace_0001.jpg,0,Good,0.27956,0.306,17.94
+Benazir_Bhutto_0001.jpg,0,Good,0.40095,-1.652,14.97
+Benjamin_Bratt_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.43
+Benjamin_Martinez_0001.jpg,0,Good,0.29929,-5.891,15.67
+Bernard_Law_0001.jpg,0,Good,0.26962,-12.44,17.17
+Bernardo_Segura_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.88
+Betsy_Smith_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.02
+Betty_Garrison_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.88
+Bijan_Darvish_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.63
+Bill_Duffey_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.65
+Bill_Fennelly_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.63
+Bill_Frist_0001.jpg,0,Good,0.31088,-1.978,14.98
+Bill_Graham_0001.jpg,0,Good,0.31493,3.452,16.89
+Bill_Guerin_0001.jpg,0,Multiple faces,0.0,0.0,24.52
+Bill_Hughes_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.65
+Bill_Lerach_0001.jpg,0,Good,0.32652,-6.477,14.94
+Bill_Nelson_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.78
+Bill_Parcells_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.34
+Bill_Simon_0001.jpg,0,Good,0.23848,-10.699,15.45
+Bill_Sizemore_0001.jpg,0,Good,0.3425,-7.349,14.92
+Bill_Walton_0001.jpg,0,Good,0.28748,-8.832,16.76
+Billy_Boyd_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.86
+Billy_Crawford_0001.jpg,0,Good,0.40503,9.205,14.89
+Bison_Dele_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.95
+Bixente_LIzarazu_0001.jpg,0,Good,0.31441,1.9,18.44
+Blythe_Danner_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.08
+Blythe_Hartley_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.73
+Bob_Alper_0001.jpg,0,Good,0.30295,7.533,17.4
+Bob_Cantrell_0001.jpg,0,Good,0.31189,-7.857,15.5
+Bob_Goldman_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.58
+Bob_Melvin_0001.jpg,0,Good,0.27932,-10.875,15.48
+Bob_Newhart_0001.jpg,0,Good,0.21285,3.022,18.11
+Bob_Sulkin_0001.jpg,0,Good,0.37384,-21.644,15.48
+Bob_Wright_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.76
+Bobby_Goldwater_0001.jpg,0,Multiple faces,0.0,0.0,22.29
+Bobby_Kielty_0001.jpg,0,Good,0.27636,0.795,13.64
+Bobby_Robson_0001.jpg,0,Multiple faces,0.0,0.0,22.15
+Boris_Becker_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.3
+Boris_Jordan_0001.jpg,0,Good,0.23882,0.078,12.37
+Boris_Trajkovski_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.87
+Brad_Gushue_0001.jpg,0,Good,0.27476,0.649,13.11
+Brad_Russ_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.0
+Brad_Smith_0001.jpg,0,Good,0.34578,-3.714,14.38
+Brad_Wilk_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.98
+Brajesh_Mishra_0001.jpg,0,Good,0.34426,1.17,12.65
+Brandon_Inge_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.66
+Brandon_Larson_0001.jpg,0,Good,0.08491,-9.003,13.79
+Brandon_Webb_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.38
+Brett_Perry_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.78
+Brian_Campbell_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.22
+Brian_Cashman_0001.jpg,0,Good,0.33877,5.503,13.77
+Brian_Cook_0001.jpg,0,Multiple faces,0.0,0.0,20.58
+Brian_Gregory_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.63
+Brian_McIntyre_0001.jpg,0,Good,0.37704,-18.469,12.99
+Brian_Olson_0001.jpg,0,Good,0.36227,-8.107,16.02
+Brian_Pavlich_0001.jpg,0,Good,0.41034,1.855,15.79
+Brian_StPierre_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,5.08
+Brian_Weaver_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.71
+Brigitte_Boisselier_0001.jpg,0,Multiple faces,0.0,0.0,26.79
+Bronson_Arroyo_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.46
+Brook_Robinson_0001.jpg,0,Good,0.25101,2.568,14.87
+Bruce_Gebhardt_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.64
+Bruce_Lunsford_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.1
+Bryan_Chui_0001.jpg,0,Good,0.27941,-2.047,15.8
+Bryant_Young_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.85
+Bryce_Carmine_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.28
+Buzz_Hargrove_0001.jpg,0,Good,0.17086,0.111,13.96
+Carl_Reiner_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.14
+Carla_Gay_Balingit_0001.jpg,0,Good,0.26313,-2.37,15.3
+Carla_Myers_0001.jpg,0,Multiple faces,0.0,0.0,20.72
+Carlos_Beltran_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.36
+Carlos_Menem_0001.jpg,0,Good,0.36745,5.934,15.07
+Carlos_Ortega_0001.jpg,0,Good,0.10783,-8.839,16.12
+Carlos_Queiroz_0001.jpg,0,Multiple faces,0.0,0.0,22.51
+Carlos_Quintanilla_Schmidt_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.22
+Carlos_Savedra_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.02
+Carlton_Dotson_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.95
+Carmen_Electra_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.25
+Carol_Carmody_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.15
+Carol_Williams_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.34
+Casey_Crowder_0001.jpg,0,Good,0.32597,-7.23,15.0
+Casy_Preslar_0001.jpg,0,Good,0.43612,-3.874,16.14
+Catherine_Ndereba_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.26
+Catherine_Woodard_0001.jpg,0,Multiple faces,0.0,0.0,24.31
+Cathy_Cunningham_0001.jpg,0,Good,0.2688,-6.999,13.82
+Cathy_Freeman_0001.jpg,0,Good,0.34193,4.349,15.95
+Chan_Gailey_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.58
+Chan_Ho_Park_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.84
+Chandrika_Kumaratunga_0001.jpg,0,Multiple faces,0.0,0.0,24.63
+Chang_Tso_0001.jpg,0,Good,0.20553,-10.902,15.01
+Charla_Moye_0001.jpg,0,Good,0.29509,-1.116,16.98
+Charles_Bell_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.47
+Charles_Chandler_IV_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.0
+Charles_Richardson_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.18
+Charlie_Hunnam_0001.jpg,0,Multiple faces,0.0,0.0,22.14
+Charlize_Theron_0001.jpg,0,Good,0.29988,4.216,11.51
+Charlotte_Church_0001.jpg,0,Good,0.32847,-0.536,17.16
+Chawki_Armali_0001.jpg,0,Good,0.34945,-9.93,21.17
+Chen_Kaige_0001.jpg,0,Good,0.2709,-2.741,23.55
+Chen_Liang_Yu_0001.jpg,0,Good,0.35775,8.663,14.92
+Chen_Shui-bian_0001.jpg,0,Multiple faces,0.0,0.0,20.27
+Cherie_Blair_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.59
+Cheryl_Ford_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.01
+Cheryl_James_0001.jpg,0,Good,0.29317,-1.512,16.68
+Chick_Hearn_0001.jpg,0,Good,0.31462,0.902,16.65
+Chin-Feng_Chen_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.74
+Chin-Hui_Tsao_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.85
+Chistian_Stahl_0001.jpg,0,Multiple faces,0.0,0.0,23.19
+Choi_Sung-hong_0001.jpg,0,Good,0.23699,0.838,13.87
+Chris_Andrews_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.63
+Chris_Claiborne_0001.jpg,0,Good,0.25353,-0.018,17.26
+Chris_Cornell_0001.jpg,0,Good,0.30224,-1.986,18.08
+Chris_Forsyth_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.92
+Chris_Hernandez_0001.jpg,0,Good,0.39817,-2.781,18.6
+Chris_Noth_0001.jpg,0,Good,0.24994,4.548,16.05
+Chris_Rock_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.79
+Chris_Simon_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.23
+Chris_Whitney_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.57
+Christian_Olsson_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.36
+Christian_Wulff_0001.jpg,0,Good,0.3404,-2.4,16.56
+Christine_Baumgartner_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.01
+Christine_Gregoire_0001.jpg,0,Multiple faces,0.0,0.0,24.26
+Christoph_Daum_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.16
+Christopher_Conyers_0001.jpg,0,Good,0.36196,2.809,14.0
+Chuck_Woolery_0001.jpg,0,Good,0.33559,-9.911,14.61
+Chung_Mong-hun_0001.jpg,0,Good,0.17645,-4.422,13.72
+Cindy_Crawford_0001.jpg,0,Good,0.37685,3.006,14.99
+Ciro_Gomes_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.31
+Claire_De_Gryse_0001.jpg,0,Multiple faces,0.0,0.0,24.82
+Claire_Hentzen_0001.jpg,0,Good,0.33721,-1.871,12.3
+Claudine_Farrell_0001.jpg,0,Multiple faces,0.0,0.0,23.72
+Clifford_Etienne_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.07
+Colin_Jackson_0001.jpg,0,Good,0.30169,5.214,16.7
+Colleen_Donovan_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.71
+Collis_Temple_III_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.35
+Conrad_Black_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.17
+Craig_David_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.97
+Craig_Morgan_0001.jpg,0,Good,0.25457,0.93,17.6
+Crandall_Bowles_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.84
+Cristina_Saralegui_0001.jpg,0,Multiple faces,0.0,0.0,23.52
+Cruz_Bustamante_0001.jpg,0,Good,0.13211,-6.81,14.66
+Dagmar_Dunlevy_0001.jpg,0,Good,0.24646,-5.454,16.14
+Daisy_Fuentes_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.14
+Daja_Bedanova_0001.jpg,0,Good,0.30218,5.894,15.41
+Dale_Earnhardt_0001.jpg,0,Good,0.34701,-19.738,15.55
+Dalia_Rabin-Pelosoff_0001.jpg,0,Good,0.27399,0.974,15.14
+Damon_Stoudamire_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.19
+Dan_Dickau_0001.jpg,0,Good,0.26692,10.735,16.68
+Dan_Guerrero_0001.jpg,0,Good,0.22753,2.523,15.09
+Dan_Prinster_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.83
+Dan_Quayle_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.49
+Dan_Reeves_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.08
+DAngelo_Jimenez_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.27
+Daniel_Comisso_Urdaneta_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.73
+Daniel_Darnell_0001.jpg,0,Good,0.29434,-3.08,13.37
+Daniel_Kurtzer_0001.jpg,0,Good,0.23776,-0.188,14.13
+Daniel_Osorno_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.0
+Daniela_Hantuchova_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.56
+Daniele_Hypolito_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.21
+Daniell_Sunjata_0001.jpg,0,Good,0.2965,-1.762,14.24
+Danis_Tanovic_0001.jpg,0,Good,0.28043,9.1,14.75
+Darren_Campel_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.49
+Darren_Clarke_0001.jpg,0,Good,0.29468,-4.374,13.1
+Daryl_Hannah_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.0
+Dave_Johnson_0001.jpg,0,Good,0.15679,3.592,14.07
+Dave_Lewis_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.77
+Dave_McGinnis_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.85
+Dave_McNealey_0001.jpg,0,Good,0.18458,1.791,15.04
+Dave_Odom_0001.jpg,0,Multiple faces,0.0,0.0,21.91
+Dave_Ragone_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.14
+Dave_Robertson_0001.jpg,0,Good,0.32911,-0.253,12.02
+David_Alpay_0001.jpg,0,Good,0.285,1.701,12.74
+David_Blaine_0001.jpg,0,Good,0.29449,7.445,12.93
+David_Caruso_0001.jpg,0,Good,0.28153,0.482,14.7
+David_Coulthard_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.22
+David_Duval_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.83
+David_Eldon_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.65
+David_Hasselhoff_0001.jpg,0,Good,0.18087,-3.624,28.45
+David_Myers_0001.jpg,0,Multiple faces,0.0,0.0,29.69
+David_Sibleyk_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.89
+David_Wolf_0001.jpg,0,Good,0.38928,-2.811,13.27
+Dawn_Staley_0001.jpg,0,Multiple faces,0.0,0.0,22.33
+Dean_Jacek_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.79
+Debra_Rose_0001.jpg,0,Good,0.31053,-10.278,12.49
+Debra_Shank_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.91
+Demi_Moore_0001.jpg,0,Good,0.2895,-5.442,14.59
+Denis_Coderre_0001.jpg,0,Multiple faces,0.0,0.0,22.5
+Denis_Fassou-Nguesso_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.48
+Dennis_Erickson_0001.jpg,0,Good,0.34228,3.838,14.85
+Dennis_Kucinich_0001.jpg,0,Good,0.27606,8.298,16.52
+Denys_Arcand_0001.jpg,0,Good,0.13895,-2.832,16.8
+Dereck_Whittenburg_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.22
+Derek_King_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.34
+Derek_Lowe_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.64
+Derrick_Battie_0001.jpg,0,Good,0.35691,-3.664,17.37
+Dexter_Jackson_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.36
+Diana_Taurasi_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.28
+Diane_Ladd_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.15
+Dick_Devine_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.72
+Dick_Latessa_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.07
+Diego_Colorado_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.86
+Dieter_Zetsche_0001.jpg,0,Good,0.29529,2.875,14.95
+Dinora_Rosales_0001.jpg,0,Good,0.34976,-0.467,14.93
+Dionigi_Tettamanzi_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.02
+Dionyssis_Georgiadis_0001.jpg,0,Good,0.33677,-4.414,14.07
+Dita_Von_Tesse_0001.jpg,0,Good,0.27818,3.414,13.77
+Dominic_Monaghan_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.83
+Don_Hewitt_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.23
+Don_Meredith_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.18
+Donald_Carty_0001.jpg,0,Multiple faces,0.0,0.0,21.95
+Donald_Hays_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.58
+Donatella_Versace_0001.jpg,0,Good,0.24415,8.388,12.98
+Doris_Roberts_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.12
+Doug_Collins_0001.jpg,0,Good,0.3517,3.26,16.64
+Doug_Wilson_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.51
+Douglas_Faneuil_0001.jpg,0,Good,0.30954,-8.376,15.47
+Douglas_Meester_0001.jpg,0,Good,0.36795,-1.131,16.58
+Duane_Barber_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.56
+Duane_Lee_Chapman_0001.jpg,0,Good,0.30135,0.724,20.75
+Dwain_Kyles_0001.jpg,0,Good,0.32431,-5.291,21.0
+Dwayne_Johnson_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.36
+Dwayne_Williams_0001.jpg,0,Good,0.38453,-1.17,16.83
+E_Clay_Shaw_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.28
+Ed_Book_0001.jpg,0,Good,0.30764,-4.002,16.57
+Ed_Rosenthal_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.55
+Ed_Sullivan_0001.jpg,0,Good,0.25782,-4.109,16.69
+Eddy_Hartenstein_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.77
+Edouard_Michelin_0001.jpg,0,Good,0.33127,0.708,17.01
+Eduardo_Chillida_0001.jpg,0,Good,0.35663,-2.706,19.45
+Edward_Greenspan_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.39
+Edward_Lu_0001.jpg,0,Good,0.27271,-2.605,16.07
+Edward_Said_0001.jpg,0,Good,0.26056,-15.681,16.64
+Elena_Dementieva_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.72
+Elisabeth_Schumacher_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.07
+Elizabeth_Hill_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.56
+Elizabeth_Taylor_0001.jpg,0,Multiple faces,0.0,0.0,23.7
+Ellen_Engleman_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.43
+Ellen_Pompeo_0001.jpg,0,Good,0.14244,6.135,16.46
+Ellen_Saracini_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.25
+Emilio_Botin_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,5.56
+Emma_Nicholson_0001.jpg,0,Multiple faces,0.0,0.0,21.64
+Emmanuel_Filiberto_0001.jpg,0,Hidden eyes or poor eye lighting,0.0,0.0,13.34
+Emyr_Jones_Parry_0001.jpg,0,Good,0.38859,-1.988,15.95
+Enola_Rice_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.1
+Enrique_Bolanos_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.99
+Enrique_Iglesias_0001.jpg,0,Good,0.33754,1.097,16.01
+Enrique_Medina_Gomez_0001.jpg,0,Good,0.37392,4.364,13.82
+Enrique_Oliu_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.91
+Eric_Fehr_0001.jpg,0,Good,0.31332,-3.837,14.97
+Eric_Idle_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.23
+Eric_Lloyd_0001.jpg,0,Good,0.25545,-1.961,15.51
+Eric_Robert_Rudolph_0001.jpg,0,Multiple faces,0.0,0.0,20.34
+Erik_Morales_0001.jpg,0,Good,0.30362,6.984,11.64
+Erin_Brockovich_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.86
+Erin_Hershey_Presley_0001.jpg,0,Good,0.37701,2.741,12.9
+Ernie_Fletcher_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.89
+Ernie_Grunfeld_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.3
+Erskine_Bowles_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.93
+Erwin_Abdullah_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.72
+Estella_Warren_0001.jpg,0,Good,0.3181,-0.308,12.83
+Eurico_Guterres_0001.jpg,0,Good,0.31213,2.608,12.89
+Eva_Amurri_0001.jpg,0,Good,0.29909,-2.234,13.09
+Evan_Marriott_0001.jpg,0,Good,0.31661,-7.269,14.21
+Evan_Rachel_Wood_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.66
+Evie_Lazarou_0001.jpg,0,Multiple faces,0.0,0.0,19.19
+Evo_Morales_0001.jpg,0,Good,0.36293,-7.801,12.18
+Ewan_McGregor_0001.jpg,0,Good,0.32138,-1.524,13.68
+Fann_Wong_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.84
+Farida_Ragoonanan_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.84
+Faye_Alibocus_0001.jpg,0,Good,0.30722,0.83,15.3
+Felicity_Huffman_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.56
+Felipe_Fernandez_0001.jpg,0,Good,0.2895,-4.011,14.44
+Felix_Sanchez_0001.jpg,0,Good,0.34407,12.109,14.74
+Fernando_Hierro_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.24
+Fernando_Leon_de_Aranoa_0001.jpg,0,Good,0.40092,-1.261,13.86
+Fernando_Sanz_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.63
+Fidel_Castro_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.33
+Flavia_Delaroli_0001.jpg,0,Multiple faces,0.0,0.0,20.78
+Florecita_Cobian_0001.jpg,0,Good,0.28641,-2.818,12.31
+Francis_Ford_Coppola_0001.jpg,0,Good,0.24203,1.195,12.71
+Francisco_Garcia_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.0
+Francois_Botha_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.22
+Frank_Stallone_0001.jpg,0,Good,0.30347,6.261,14.79
+Frank_Van_Ecke_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.75
+Franklin_Brown_0001.jpg,0,Good,0.23279,4.718,13.68
+Fred_Rogers_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.29
+Fred_Swan_0001.jpg,0,Good,0.20809,-0.323,13.75
+Gabriel_Hughes_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.26
+Gabrielle_Rose_0001.jpg,0,Good,0.27204,1.667,14.17
+Garry_Kasparov_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.23
+Garry_McCoy_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.05
+Gary_Bauer_0001.jpg,0,Good,0.31942,-8.003,14.18
+Gary_Gero_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.85
+Gary_Paer_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.86
+Gary_Williams_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.47
+Gavin_Degraw_0001.jpg,0,Good,0.27295,-6.128,15.59
+Gavyn_Davies_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.83
+Gene_Autry_0001.jpg,0,Good,0.29827,-5.576,22.23
+Gene_Sauers_0001.jpg,0,Multiple faces,0.0,0.0,24.14
+Geno_Auriemma_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.9
+Geoffrey_Davis_0001.jpg,0,Good,0.22749,-1.68,14.38
+George_Blaney_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,5.66
+George_HW_Bush_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.04
+George_W_Bush_0001.jpg,0,Good,0.24569,3.871,15.72
+Georgi_Parvanov_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.39
+Geovani_Lapentti_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.93
+Gerald_Barbarito_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.16
+Gerard_de_Cortanze_0001.jpg,0,Good,0.3127,-10.569,16.78
+Gerard_Depardieu_0001.jpg,0,Good,0.37549,4.011,18.14
+Gerhard_Boekel_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.82
+Gerhard_Schmid_0001.jpg,0,Good,0.22119,-3.332,17.43
+Gerry_Parsky_0001.jpg,0,Good,0.37002,-5.314,14.45
+Ghassan_Elashi_0001.jpg,0,Multiple faces,0.0,0.0,22.07
+Gian_Marco_0001.jpg,0,Good,0.35092,3.993,15.5
+Gianna_Angelopoulos-Daskalaki_0001.jpg,0,Good,0.33383,4.735,16.79
+Gil_Cates_0001.jpg,0,Good,0.34838,-0.339,19.59
+Gil_de_Ferran_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.67
+Gilberto_Rodriguez_Orejuela_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.97
+Gilles_Panizzi_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.65
+Giulio_Andreotti_0001.jpg,0,Good,0.27358,-15.401,18.5
+GL_Peiris_0001.jpg,0,Good,0.32386,2.817,16.42
+Glenn_Rivers_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.49
+Gloria_Allred_0001.jpg,0,Good,0.3685,-8.811,16.18
+Gloria_Trevi_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.6
+Gong_Ruina_0001.jpg,0,Good,0.35742,7.572,15.23
+Goran_Persson_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.93
+Gordon_Brown_0001.jpg,0,Good,0.23626,-5.599,14.98
+Gordon_Cooper_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.56
+Grant_Rossenmeyer_0001.jpg,0,Good,0.44526,1.217,14.28
+Greg_Kinnear_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.55
+Griffin_Colvin_0001.jpg,0,Good,0.36104,6.075,14.21
+Gro_Harlem_Brundtland_0001.jpg,0,Good,0.33077,10.849,14.69
+Guennadi_Chipouline_0001.jpg,0,Good,0.26042,-4.74,16.61
+Gunilla_Backman_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.46
+Guus_Hiddink_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.28
+Gwendal_Peizerat_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.16
+Hadley_Bilger_0001.jpg,0,Good,0.2511,0.424,17.09
+Hana_Makhmalbaf_0001.jpg,0,Good,0.28855,-1.646,16.57
+Hank_Bass_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.15
+Hanns_Schumacher_0001.jpg,0,Good,0.29969,15.625,13.01
+Hans_Peter_Briegel_0001.jpg,0,Good,0.32622,-11.048,17.94
+Harvey_Wachsman_0001.jpg,0,Multiple faces,0.0,0.0,22.21
+Hayden_Panettiere_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.27
+Heather_Chinnock_0001.jpg,0,Good,0.22817,2.726,15.58
+Heather_Willson_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.2
+Hector_Grullon_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.64
+Hee-Won_Han_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.48
+Helen_Clark_0001.jpg,0,Good,0.32432,-11.368,15.51
+Helen_Darling_0001.jpg,0,Good,0.35126,3.252,15.31
+Helo_Pinheiro_0001.jpg,0,Good,0.34742,-5.379,13.86
+Henri_Proglio_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.91
+Henry_Hyde_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.56
+Herbert_Haupt_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.57
+Hermogenes_Ebdane_Jr_0001.jpg,0,Good,0.2761,-3.625,13.43
+Herta_Daeubler-Gmelin_0001.jpg,0,Multiple faces,0.0,0.0,24.19
+Hideki_Matsui_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.98
+Himmler_Rebu_0001.jpg,0,Hidden eyes or poor eye lighting,0.0,0.0,12.79
+Hipolito_Mejia_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.59
+Horace_Newcomb_0001.jpg,0,Multiple faces,0.0,0.0,22.06
+Horst_Koehler_0001.jpg,0,Good,0.37514,-14.612,17.3
+Hosni_Mubarak_0001.jpg,0,Good,0.21232,2.746,17.11
+Howard_Dean_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.69
+Howard_Smith_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.14
+Howard_Stern_0001.jpg,0,Good,0.34202,-9.287,20.6
+Hubert_Green_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.74
+Hugh_Carey_0001.jpg,0,Good,0.26623,-0.549,16.71
+Hugh_Hefner_0001.jpg,0,Good,0.26229,-3.625,15.51
+Hugo_Colace_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.02
+Hunter_Bates_0001.jpg,0,Good,0.32677,-3.075,17.0
+Hunter_Kemper_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.44
+Hussam_Mohammed_Amin_0001.jpg,0,Good,0.34554,-11.734,15.55
+Iain_Anderson_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.77
+Ibrahim_Hilal_0001.jpg,0,Good,0.32135,6.467,17.27
+Idi_Amin_0001.jpg,0,Good,0.26933,-3.013,15.91
+Ignacio_Antonio_Velasco_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.83
+Imad_Moustapha_0001.jpg,0,Good,0.29268,-5.78,15.84
+Imam_Samudra_0001.jpg,0,Good,0.3342,-4.106,16.18
+Imran_Khan_0001.jpg,0,Good,0.23505,3.406,18.03
+Ira_Einhorn_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.08
+Irene_Kahn_0001.jpg,0,Multiple faces,0.0,0.0,27.67
+Isabelle_Huppert_0001.jpg,0,Good,0.31657,1.062,15.24
+Itamar_Franco_0001.jpg,0,Good,0.34476,0.969,24.33
+Iveta_Benesova_0001.jpg,0,Good,0.33195,9.111,22.68
+Izzat_Ibrahim_0001.jpg,0,Good,0.13588,7.382,18.01
+Jack_Straw_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.21
+Jack_Valenti_0001.jpg,0,Good,0.28714,5.08,18.29
+Jacqueline_Marris_0001.jpg,0,Good,0.43763,-7.438,16.51
+Jacques_Chirac_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.58
+Jake_Plummer_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.16
+James_Ballenger_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.95
+James_Brazelton_0001.jpg,0,Good,0.25521,-4.996,16.03
+James_Brosnahan_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.74
+James_Caan_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.39
+James_Gandolfini_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.57
+James_Gibson_0001.jpg,0,Good,0.30923,4.059,14.75
+James_Harris_0001.jpg,0,Good,0.2874,0.508,15.81
+James_Hill_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.94
+James_Mathis_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.48
+James_May_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.67
+James_Phelps_0001.jpg,0,Good,0.32265,-3.967,15.1
+James_Roberts_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.83
+James_Smith_0001.jpg,0,Multiple faces,0.0,0.0,27.03
+James_Wallack_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.33
+James_Williams_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.55
+James_Wolfensohn_0001.jpg,0,Good,0.22667,10.287,16.56
+Jamie_Cooke_0001.jpg,0,Good,0.41719,-12.553,21.77
+Jamie_Villafane_0001.jpg,0,Good,0.34327,2.485,28.31
+Jan_Petersen_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.53
+Jane_Fonda_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.44
+Jane_Kaczmarek_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.38
+Jane_Krakowski_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.26
+Jane_Walker_Wood_0001.jpg,0,Good,0.33392,9.5,17.63
+Janet_Thorpe_0001.jpg,0,Multiple faces,0.0,0.0,27.41
+Janez_Drnovsek_0001.jpg,0,Good,0.29763,1.92,20.23
+Janis_Ruth_Coulter_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,6.24
+Jason_Jennings_0001.jpg,0,Good,0.29266,-9.818,25.26
+Jason_Keep_0001.jpg,0,Good,0.24445,8.052,19.66
+Jason_Statham_0001.jpg,0,Multiple faces,0.0,0.0,27.39
+Javier_Solana_0001.jpg,0,Good,0.20778,-7.926,13.8
+Javier_Vazquez_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.44
+Jay_Leno_0001.jpg,0,Good,0.22984,-1.393,15.38
+JC_Chasez_0001.jpg,0,Good,0.25092,1.491,17.32
+Jean-Claude_Trichet_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.62
+Jean-David_Levitte_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.11
+Jean-Francois_Pontal_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.57
+Jean-Marc_Olive_0001.jpg,0,Good,0.07714,-10.903,15.21
+Jean-Patrick_Nazon_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.88
+Jean_Brumley_0001.jpg,0,Multiple faces,0.0,0.0,21.0
+Jean_Nagel_0001.jpg,0,Good,0.312,-1.868,12.64
+Jeanne_Anne_Schroeder_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.05
+Jeff_Roehm_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.37
+Jeff_Van_Gundy_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.09
+Jeff_Weaver_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.71
+Jeffrey_Donaldson_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.55
+Jelena_Dokic_0001.jpg,0,Good,0.30455,-5.068,14.95
+Jennette_Bradley_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.98
+Jennifer_Capriati_0001.jpg,0,Good,0.31169,8.105,15.56
+Jennifer_Connelly_0001.jpg,0,Good,0.3491,-4.747,14.93
+Jennifer_Keller_0001.jpg,0,Good,0.22262,4.876,14.32
+Jennifer_Pena_0001.jpg,0,Good,0.02908,-12.576,14.69
+Jennifer_Reilly_0001.jpg,0,Good,0.25355,1.565,15.21
+Jennifer_Renee_Short_0001.jpg,0,Good,0.28021,-0.576,15.11
+Jennifer_Thompson_0001.jpg,0,Good,0.22284,-6.587,13.05
+Jennifer_Tilly_0001.jpg,0,Good,0.25027,9.009,14.62
+Jerome_Jenkins_0001.jpg,0,Good,0.34883,3.91,12.53
+Jerry_Falwell_0001.jpg,0,Good,0.12252,-4.206,12.68
+Jerry_Sloan_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.36
+Jesse_Jackson_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.61
+Jesse_Ventura_0001.jpg,0,Good,0.31694,-0.489,15.26
+Jessica_Alba_0001.jpg,0,Good,0.35985,-0.883,12.18
+Jewel_Howard-Taylor_0001.jpg,0,Good,0.3126,-6.434,12.94
+Jim_Bollman_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.61
+Jim_Bunning_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.76
+Jim_Calhoun_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.54
+Jim_Doyle_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.29
+Jim_Fassel_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.08
+Jim_Freudenberg_0001.jpg,0,Good,0.11321,8.498,13.4
+Jim_Hahn_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.63
+Jim_Hardin_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.9
+Jim_Harrick_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.93
+Jim_Letten_0001.jpg,0,Multiple faces,0.0,0.0,22.69
+Jim_OBrien_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.15
+Jim_Ryan_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.81
+Jim_Schwarz_0001.jpg,0,Good,0.32747,-0.089,12.42
+Jim_Thome_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.09
+Jim_Tressel_0001.jpg,0,Good,0.31124,-9.792,15.32
+Jim_Wong_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.08
+Jiri_Novak_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.46
+JJ_Redick_0001.jpg,0,Hidden eyes or poor eye lighting,0.0,0.0,15.01
+JK_Rowling_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.94
+Joan_Claybrook_0001.jpg,0,Good,0.22743,-10.445,14.14
+Joanna_Poitier_0001.jpg,0,Good,0.25755,-2.039,15.6
+Joanne_Duquette_0001.jpg,0,Unreliable eye geometry,0.0,0.0,20.7
+Joanne_Woodward_0001.jpg,0,Good,0.12323,13.538,25.7
+Joaquim_Levy_0001.jpg,0,Good,0.10509,1.697,17.29
+Joaquin_Sanchez_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.1
+Jodie_Kidd_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.5
+Joe_Calzaghe_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.01
+Joe_Carnahan_0001.jpg,0,Good,0.27682,-5.744,16.71
+Joe_Dumars_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.71
+Joe_Garner_0001.jpg,0,Good,0.33798,-3.402,18.95
+Joe_Gatti_0001.jpg,0,Good,0.31886,0.714,19.05
+Joe_Glover_0001.jpg,0,Multiple faces,0.0,0.0,26.48
+Joe_Mantegna_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.97
+Joe_Strummer_0001.jpg,0,Good,0.17681,-3.743,18.36
+Joerg_Haider_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.87
+John_Banko_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.16
+John_Barnett_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.01
+John_Eder_0001.jpg,0,Multiple faces,0.0,0.0,26.2
+John_Edwards_0001.jpg,0,Good,0.27495,-11.665,16.17
+John_Garamendi_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.8
+John_Herrington_0001.jpg,0,Good,0.26439,-0.309,25.96
+John_Malkovich_0001.jpg,0,Good,0.3683,3.528,16.8
+John_Marburger_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.91
+John_McCormack_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.86
+John_Negroponte_0001.jpg,0,Good,0.36019,-4.537,16.12
+John_Philip_Elkann_0001.jpg,0,Good,0.40034,2.855,17.54
+John_Rigas_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.78
+John_Rowland_0001.jpg,0,Good,0.26122,9.564,17.76
+John_Scarlett_0001.jpg,0,Good,0.26771,1.015,15.71
+John_Snow_0001.jpg,0,Good,0.20458,3.703,15.19
+John_Sweeney_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.41
+John_Travolta_0001.jpg,0,Good,0.22819,-8.958,17.25
+John_Walsh_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.69
+John_Wayne_0001.jpg,0,Good,0.30531,5.124,16.51
+Johnnie_Lynn_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.94
+Johnny_Benson_0001.jpg,0,Good,0.22625,-3.62,15.67
+Johnny_Depp_0001.jpg,0,Multiple faces,0.0,0.0,24.73
+Jolanta_Kwasniewski_0001.jpg,0,Good,0.14645,6.473,14.14
+Jon_Constance_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.02
+Jonathan_Arden_0001.jpg,0,Good,0.27635,5.729,18.51
+Jonathan_Byrd_0001.jpg,0,Good,0.22333,2.545,16.85
+Jonathan_Tiomkin_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.26
+Jorge_Castaneda_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.84
+Jorge_Enrique_Jimenez_0001.jpg,0,Good,0.30332,-7.447,14.02
+Jorge_Moreno_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.2
+Jorge_Quiroga_0001.jpg,0,Good,0.37782,-3.089,15.2
+Jorge_Rodolfo_Canicoba_Corral_0001.jpg,0,Good,0.25496,-12.307,14.34
+Jorma_Huhtala_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.52
+Jose_Carreras_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.03
+Jose_Jose_0001.jpg,0,Multiple faces,0.0,0.0,24.52
+Jose_Manuel_Durao_Barroso_0001.jpg,0,Good,0.29072,5.213,12.47
+Jose_Rosado_0001.jpg,0,Good,0.22067,-4.357,13.07
+Jose_Viegas_Filho_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.02
+Joseph_Galante_0001.jpg,0,Good,0.26919,0.36,16.15
+Joseph_Ganim_0001.jpg,0,Multiple faces,0.0,0.0,23.83
+Joshua_Gracin_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.8
+Joshua_Perper_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.99
+Juan_Fernandez_0001.jpg,0,Good,0.32578,-9.11,15.76
+Juan_Sanchez_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.56
+Jude_Law_0001.jpg,0,Good,0.33604,8.795,17.35
+Juergen_Schrempp_0001.jpg,0,Good,0.271,-1.153,18.28
+Juergen_Trittin_0001.jpg,0,Good,0.39623,-1.763,16.89
+Jules_Asner_0001.jpg,0,Good,0.31781,7.101,17.69
+Julia_Tymoshenko_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.72
+Julie_Andrews_0001.jpg,0,Good,0.26271,-4.892,18.28
+Julie_Infante_0001.jpg,0,Good,0.19615,-4.146,17.42
+Juliette_Lewis_0001.jpg,0,Good,0.26622,-2.423,15.45
+Julius_Barnes_0001.jpg,0,Good,0.3875,12.99,17.39
+Junko_Tabei_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.15
+Justin_Gatlin_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.4
+Justin_Timberlake_0001.jpg,0,Good,0.31133,-6.186,16.44
+Kareena_Kapoor_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.46
+Karen_Lynn_Gorney_0001.jpg,0,Good,0.1924,-0.237,16.26
+Karin_Stoiber_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.82
+Kaspar_Villiger_0001.jpg,0,Good,0.28736,8.476,14.36
+Kate_Hudson_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.95
+Kate_Lee_0001.jpg,0,Multiple faces,0.0,0.0,27.64
+Kate_Starbird_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.8
+Katharine_Hepburn_0001.jpg,0,Good,0.27833,-5.956,20.55
+Kathleen_Abernathy_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.65
+Kathryn_Grayson_0001.jpg,0,Good,0.31706,5.281,17.34
+Kathy_Baker_0001.jpg,0,Good,0.23738,8.828,23.82
+Katja_Riemann_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.39
+Kay_Bailey_Hutchison_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.22
+Keiko_Sofia_Fujimori_0001.jpg,0,Good,0.36623,5.92,19.29
+Keira_Knightley_0001.jpg,0,Good,0.34515,0.611,16.42
+Keith_Bogans_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.92
+Keith_Fotta_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.19
+Kellie_Coffey_0001.jpg,0,Good,0.26522,-0.331,21.2
+Kelly_Leigh_0001.jpg,0,Multiple faces,0.0,0.0,27.21
+Kelly_Santos_0001.jpg,0,Good,0.32058,-4.862,15.38
+Kemal_Dervis_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.54
+Ken_Balk_0001.jpg,0,Good,0.32642,5.697,14.81
+Ken_Macha_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.53
+Kenneth_Carlsen_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.02
+Kevin_Borseth_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.49
+Kevin_Harvick_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.65
+Kevin_Hearn_0001.jpg,0,Good,0.35452,5.47,16.07
+Khatol_Mohammad_Zai_0001.jpg,0,Multiple faces,0.0,0.0,23.8
+Khin_Nyunt_0001.jpg,0,Good,0.32999,-14.087,19.22
+Kim_Clijsters_0001.jpg,0,Multiple faces,0.0,0.0,28.83
+Kim_Hong-gul_0001.jpg,0,Good,0.21857,-0.625,16.21
+Kim_Jong-Il_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.79
+Kim_Ryong-sung_0001.jpg,0,Good,0.12031,0.395,17.89
+Kimberly_Stewart_0001.jpg,0,Multiple faces,0.0,0.0,25.38
+Kirsten_Dunst_0001.jpg,0,Good,0.22674,5.195,14.94
+Koji_Uehara_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.79
+Krishna_Bhadur_Mahara_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.49
+Kristanna_Loken_0001.jpg,0,Good,0.34895,-4.603,15.85
+Kristin_Scott_Thomas_0001.jpg,0,Good,0.33953,-2.796,16.66
+Kurt_Budke_0001.jpg,0,Multiple faces,0.0,0.0,25.14
+Kurt_Busch_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.84
+Kurt_Schottenheimer_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.87
+Kurt_Suzuki_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.4
+Kurt_Tanabe_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.6
+Kwon_Young-gil_0001.jpg,0,Good,0.15664,-1.188,18.2
+Kyra_Sedgwick_0001.jpg,0,Multiple faces,0.0,0.0,32.85
+Laila_Ali_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.17
+Lance_Armstrong_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.88
+Landon_Donovan_0001.jpg,0,Good,0.32173,1.049,14.34
+Larry_Coker_0001.jpg,0,Good,0.26834,3.08,16.16
+Larry_Donald_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.15
+Larry_Lucchino_0001.jpg,0,Good,0.29983,-13.576,15.78
+Larry_Pleau_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.84
+Larry_Ralston_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.54
+Lars_Burgsmuller_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.51
+Laszlo_Kovacs_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.21
+Laura_Morante_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.39
+Laura_Pausini_0001.jpg,0,Good,0.30588,6.879,17.45
+Laura_Schlessinger_0001.jpg,0,Good,0.35678,-1.415,17.94
+Laurence_Tribe_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.62
+Laurie_Chan_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.18
+Laurie_Pirtle_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.93
+Lawrence_MacAulay_0001.jpg,0,Good,0.14763,-14.573,16.49
+Leandro_Andrade_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.5
+LeAnn_Rimes_0001.jpg,0,Good,0.19158,6.773,17.2
+Lech_Walesa_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,5.42
+Lee_Ann_Terlaji_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.41
+Lee_Chang-dong_0001.jpg,0,Good,0.30607,-6.703,34.11
+Lee_Yeo-jin_0001.jpg,0,Good,0.36957,13.727,17.66
+Lene_Espersen_0001.jpg,0,Good,0.23896,0.19,17.8
+Lennart_Johansson_0001.jpg,0,Good,0.34084,4.41,16.25
+Leo_Ramirez_0001.jpg,0,Good,0.31828,-6.858,16.26
+Leslie_Ann_Woodward_0001.jpg,0,Good,0.28189,15.444,14.34
+Leslie_Moonves_0001.jpg,0,Good,0.18789,15.587,15.63
+Leslie_Wiser_Jr_0001.jpg,0,Good,0.32269,-3.477,16.75
+Lester_Holt_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.84
+Leticia_Dolera_0001.jpg,0,Good,0.3561,1.646,16.39
+Leuris_Pupo_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.85
+Liam_Neeson_0001.jpg,0,Good,0.3247,-6.415,20.07
+Lili_Marinho_0001.jpg,0,Good,0.24093,-4.195,16.51
+Lily_Tomlin_0001.jpg,0,Good,0.25778,-0.501,15.39
+Lin_Yung_Hsi_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.26
+Linda_Baboolal_0001.jpg,0,Good,0.24468,2.317,18.33
+Lindsay_Benko_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.06
+Lisa_Gottsegen_0001.jpg,0,Good,0.35078,2.409,16.07
+Liu_Xiaoqing_0001.jpg,0,Good,0.31932,12.78,17.21
+Lord_Hutton_0001.jpg,0,Good,0.28637,-4.636,15.29
+Loretta_Lynn_Harper_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.07
+Lori_Berenson_0001.jpg,0,Good,0.29888,-10.367,14.67
+Lorne_Michaels_0001.jpg,0,Good,0.33504,-0.295,13.91
+Lorraine_Bracco_0001.jpg,0,Good,0.30639,8.039,15.21
+Louis_Van_Gaal_0001.jpg,0,Good,0.33139,-5.903,15.63
+Luca_Cordero_di_Montezemolo_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.18
+Luciano_Bovicelli_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.78
+Lucio_Gutierrez_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.75
+Lucrecia_Orozco_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.01
+Ludivine_Sagnier_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.69
+Ludwig_Ovalle_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.06
+Luis_Gonzalez_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.11
+Luiz_Inacio_Lula_da_Silva_0001.jpg,0,Multiple faces,0.0,0.0,21.6
+Luo_Linquan_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.0
+Lynne_Thigpen_0001.jpg,0,Good,0.38646,-5.467,11.14
+Lyudmila_Putin_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.07
+Mack_Brown_0001.jpg,0,Good,0.38984,-9.048,15.08
+Mahmoud_Al_Zhar_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.59
+Malcolm_Wild_0001.jpg,0,Multiple faces,0.0,0.0,21.73
+Mamdouh_Habib_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.68
+Manuel_Gehring_0001.jpg,0,Good,0.24443,-1.898,12.31
+Manuel_Rosendo_0001.jpg,0,Good,0.28941,5.793,13.98
+Manuela_Montebrun_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.41
+Marc_Grossman_0001.jpg,0,Good,0.24789,8.259,13.44
+Marcelo_Ebrard_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.46
+Marcelo_Rios_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.07
+Marco_Archer_Cardoso_Moreira_0001.jpg,0,Good,0.39485,1.709,13.93
+Marco_Pantani_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.66
+Marcus_Gronholm_0001.jpg,0,Multiple faces,0.0,0.0,20.18
+Maria_Burks_0001.jpg,0,Good,0.28044,-2.456,12.85
+Mariam_Ali_Hassan_0001.jpg,0,Good,0.33354,4.343,13.72
+Maribel_Dominguez_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.42
+Marieta_Chrousala_0001.jpg,0,Good,0.30305,-3.878,14.41
+Marina_Anissina_0001.jpg,0,Multiple faces,0.0,0.0,19.32
+Mario_Cipollini_0001.jpg,0,Good,0.30297,-0.803,11.44
+Mario_Vasquez_Rana_0001.jpg,0,Good,0.27299,2.398,13.71
+Marisol_Breton_0001.jpg,0,Good,0.20152,3.262,14.51
+Mark_Cuban_0001.jpg,0,Good,0.33118,1.969,15.13
+Mark_Gottfried_0001.jpg,0,Good,0.34958,-2.346,15.03
+Mark_Martin_0001.jpg,0,Good,0.17428,1.342,13.73
+Mark_McClellan_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.07
+Mark_Podlesny_0001.jpg,0,Good,0.23574,5.858,11.88
+Mark_Rosenbaum_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.64
+Mark_Sacco_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.66
+Mark_Shapiro_0001.jpg,0,Good,0.44823,0.814,14.17
+Mark_Wahlberg_0001.jpg,0,Good,0.24807,5.841,12.86
+Markus_Naslund_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.66
+Marlon_Devonish_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.55
+Marquis_Estill_0001.jpg,0,Good,0.32078,8.388,12.37
+Marta_Dominguz_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.71
+Martha_Martinez_Flores_0001.jpg,0,Good,0.27405,11.321,13.63
+Martin_Bandier_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.7
+Martin_Kristof_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.85
+Martin_Landau_0001.jpg,0,Good,0.28777,-5.868,13.11
+Martin_Short_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.25
+Mary_Bono_0001.jpg,0,Good,0.31703,-0.506,15.7
+Mary_Carey_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.33
+Mary_Descenza_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.12
+Mary_Hill_0001.jpg,0,Good,0.07984,5.917,14.74
+Mary_Matalin_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.67
+Mary_McCarty_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.13
+Matthias_Sammer_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.13
+Maura_Tierney_0001.jpg,0,Good,0.2341,-2.922,13.49
+Maureen_Fanning_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.71
+Maurice_Papon_0001.jpg,0,Good,0.3916,-0.411,12.63
+Max_Mayfield_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.82
+Mayumi_Moriyama_0001.jpg,0,Multiple faces,0.0,0.0,19.16
+Meg_Mallon_0001.jpg,0,Good,0.19714,-4.087,11.97
+Megan_Mullally_0001.jpg,0,Multiple faces,0.0,0.0,21.89
+Meirion_Evans_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.18
+Melina_Kanakaredes_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.79
+Melinda_Czink_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.7
+Melissa_Joan_Hart_0001.jpg,0,Good,0.35102,-1.548,11.82
+Melissa_Mulloy_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.46
+Melissa_Stark_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.07
+Michael_Ballack_0001.jpg,0,Hidden eyes or poor eye lighting,0.0,0.0,14.69
+Michael_Capellas_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.86
+Michael_Chang_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.17
+Michael_Donovan_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.8
+Michael_Douglas_0001.jpg,0,Good,0.28028,3.919,15.02
+Michael_Fitzgerald_0001.jpg,0,Good,0.30751,-3.647,14.07
+Michael_Frayn_0001.jpg,0,Good,0.26793,-7.365,14.17
+Michael_J_Fox_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,7.52
+Michael_Kahn_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,5.58
+Michael_Richards_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.59
+Michael_Rolinee_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,5.73
+Michael_Shelby_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.09
+Michael_Wayne_0001.jpg,0,Multiple faces,0.0,0.0,26.96
+Michel_Minard_0001.jpg,0,Good,0.33029,0.568,13.55
+Michelle_Hofland_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.06
+Michelle_Lecky_0001.jpg,0,Good,0.32232,-6.157,14.63
+Michelle_Rodriguez_0001.jpg,0,Good,0.29243,-2.126,15.14
+Mick_McCarthy_0001.jpg,0,Multiple faces,0.0,0.0,22.08
+Mickey_Gilley_0001.jpg,0,Good,0.33457,0.638,14.44
+Mickey_Loomis_0001.jpg,0,Good,0.22576,4.02,17.72
+Miguel_Hakim_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.92
+Mike_Bryan_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.74
+Mike_Carona_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.23
+Mike_Davis_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.4
+Mike_Duke_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.66
+Mike_Maroth_0001.jpg,0,Good,0.33897,2.164,16.01
+Mike_OConnell_0001.jpg,0,Good,0.33116,10.562,18.12
+Mike_Richter_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.59
+Miranda_Gaddis_0001.jpg,0,Good,0.31565,-3.785,16.26
+Miranda_Otto_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.1
+Miroljub_0001.jpg,0,Good,0.27197,-3.098,15.6
+Mitchell_McLaughlin_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.45
+Mitchell_Swartz_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.0
+Mitt_Romney_0001.jpg,0,Good,0.34256,-11.036,15.16
+Mohamed_Benaissa_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.1
+Mohammed_Al-Douri_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.54
+Mohammed_Al_Hindi_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.07
+Molly_Sims_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.62
+Mona_Rishmawi_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.12
+Monica_Bellucci_0001.jpg,0,Good,0.35875,3.212,15.76
+Monique_Garbrecht-Enfeldt_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.73
+Moon-So-ri_0001.jpg,0,Multiple faces,0.0,0.0,24.26
+Morgan_Fairchild_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.76
+Mother_Teresa_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.22
+Muhammad_Ibrahim_Bilal_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.17
+Munir_Akram_0001.jpg,0,Good,0.30854,-5.61,13.98
+Muwafak_al-Ani_0001.jpg,0,Good,0.28197,3.701,16.12
+Na_Na_Keum_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.96
+Nancy_Demme_0001.jpg,0,Good,0.1914,2.521,19.31
+Nancy_Reagan_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.98
+Nancy_Sinatra_0001.jpg,0,Multiple faces,0.0,0.0,22.9
+Narayan_Singh_Pun_0001.jpg,0,Good,0.274,3.681,14.04
+Natalie_Coughlin_0001.jpg,0,Good,0.31041,-9.132,16.23
+Natasha_McElhone_0001.jpg,0,Good,0.29507,-13.295,14.5
+Nia_Vardalos_0001.jpg,0,Good,0.35439,1.166,15.09
+Nick_Cassavetes_0001.jpg,0,Good,0.38747,-5.928,17.19
+Nick_Reilly_0001.jpg,0,Multiple faces,0.0,0.0,24.8
+Nick_Turner_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.25
+Nicklas_Lidstrom_0001.jpg,0,Good,0.24032,3.271,12.76
+Nicolas_Eyzaguirre_0001.jpg,0,Good,0.38298,11.629,15.11
+Nicolas_Kiefer_0001.jpg,0,Multiple faces,0.0,0.0,21.43
+Nicolas_Macrozonaris_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.44
+Nicole_Parker_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.13
+Nigel_Redden_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.99
+Nikki_McKibbin_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.51
+Nino_DAngelo_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.37
+Noelle_Bush_0001.jpg,0,Good,0.38892,-0.472,14.8
+Nong_Duc_Manh_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.54
+Norio_Ohga_0001.jpg,0,Good,0.13644,-8.831,17.08
+Norm_Macdonald_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.86
+Norman_Mailer_0001.jpg,0,Good,0.17372,-1.65,16.0
+Normand_Legault_0001.jpg,0,Multiple faces,0.0,0.0,26.76
+Nuon_Chea_0001.jpg,0,Good,0.22842,-2.187,13.96
+Oleksandr_Moroz_0001.jpg,0,Good,0.33327,-0.109,18.53
+Olivier_Rochus_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.88
+Olympia_Dukakis_0001.jpg,0,Multiple faces,0.0,0.0,27.26
+Omar_el-Heib_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,5.89
+Oscar_DLeon_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.45
+Otto_Schily_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,5.81
+Ozzie_Smith_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,7.96
+Ozzy_Osbourne_0001.jpg,0,Good,0.28973,-2.204,17.95
+Pablo_Khulental_0001.jpg,0,Multiple faces,0.0,0.0,27.09
+Padraig_Harrington_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.46
+Pascal_Affi_Nguessan_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.13
+Patricia_Clarkson_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.96
+Patricia_Wartusch_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.27
+Patrick_Coleman_0001.jpg,0,Good,0.39138,-1.859,13.61
+Patrick_Rafter_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.35
+Patrick_Roy_0001.jpg,0,Multiple faces,0.0,0.0,26.02
+Patsy_Kensit_0001.jpg,0,Good,0.32389,-1.307,13.49
+Patsy_Mink_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.43
+Patti_Lank_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.93
+Patty_Duke_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.54
+Patty_Schnyder_0001.jpg,0,Multiple faces,0.0,0.0,23.87
+Patty_Sheehan_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.97
+Paul-Henri_Mathieu_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.57
+Paul_Byrd_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.78
+Paul_Coppin_0001.jpg,0,Good,0.13937,-5.024,12.73
+Paul_Desmarais_0001.jpg,0,Good,0.32571,-7.176,15.86
+Paul_Ebert_0001.jpg,0,Good,0.26816,3.699,16.31
+Paul_Farley_0001.jpg,0,Good,0.32003,8.174,14.05
+Paul_Johnson_0001.jpg,0,Good,0.15015,-0.721,15.22
+Paul_Kelleher_0001.jpg,0,Multiple faces,0.0,0.0,23.55
+Paul_Krueger_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.0
+Paul_McNulty_0001.jpg,0,Good,0.22633,-7.238,13.83
+Paul_Michael_Daniels_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.88
+Paul_Reiser_0001.jpg,0,Good,0.11548,-5.867,13.86
+Paul_Vathis_0001.jpg,0,Good,0.29275,-5.116,14.55
+Paul_Walker_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.09
+Paul_Wellstone_0001.jpg,0,Multiple faces,0.0,0.0,22.54
+Paul_Wilson_0001.jpg,0,Good,0.37833,0.547,13.54
+Paul_Wollnough_0001.jpg,0,Multiple faces,0.0,0.0,22.64
+Paula_Locke_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.7
+Paula_Zahn_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.37
+Paulie_Ayala_0001.jpg,0,Good,0.29622,6.205,13.33
+Pauline_Phillips_0001.jpg,0,Good,0.31193,-5.196,15.34
+Pele_0001.jpg,0,Good,0.22924,1.082,17.0
+Percy_Gibson_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.04
+Peri_Gilpin_0001.jpg,0,Good,0.29186,-1.787,15.85
+Perry_Compton_0001.jpg,0,Good,0.16594,-0.34,15.03
+Pervez_Musharraf_0001.jpg,0,Good,0.27711,-1.719,24.82
+Pete_Aldridge_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,6.39
+Pete_Beaudrault_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.55
+Pete_Carroll_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.42
+Pete_Sampras_0001.jpg,0,Hidden eyes or poor eye lighting,0.0,0.0,17.58
+Peter_Camejo_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.18
+Peter_Gilmour_0001.jpg,0,Good,0.24104,-2.803,16.32
+Peter_Hillary_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.45
+Peter_OToole_0001.jpg,0,Good,0.34057,1.132,19.2
+Peter_Rasmussen_0001.jpg,0,Good,0.23095,-11.121,19.49
+Peter_Struck_0001.jpg,0,Good,0.25241,-4.387,19.96
+Phil_Mickelson_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.78
+Pier_Ferdinando_Casini_0001.jpg,0,Multiple faces,0.0,0.0,25.66
+Pierce_Brosnan_0001.jpg,0,Good,0.30833,7.698,14.36
+Pierre_Boulanger_0001.jpg,0,Good,0.29493,-10.595,19.04
+Pierre_Gagnon_0001.jpg,0,Good,0.30411,5.192,20.33
+Pierre_Pettigrew_0001.jpg,0,Multiple faces,0.0,0.0,26.51
+Pierre_Png_0001.jpg,0,Good,0.28725,1.973,14.25
+Pio_Laghi_0001.jpg,0,Good,0.35373,-14.587,15.51
+Piotr_Anderszewski_0001.jpg,0,Good,0.24489,-12.961,17.02
+Porter_Goss_0001.jpg,0,Good,0.3685,-2.093,16.67
+Prince_Felipe_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.53
+Prince_Rainier_III_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.28
+Priscilla_Owen_0001.jpg,0,Good,0.35334,-7.012,17.96
+Priyanka_Chopra_0001.jpg,0,Multiple faces,0.0,0.0,31.92
+Pupi_Avati_0001.jpg,0,Good,0.10518,-3.2,14.61
+Queen_Beatrix_0001.jpg,0,Good,0.28717,0.45,17.25
+Queen_Latifah_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.08
+Queen_Noor_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,6.77
+Qusai_Hussein_0001.jpg,0,Good,0.33136,2.935,16.42
+Rachel_Hunter_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.27
+Rachel_Roy_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.37
+Rachel_Wadsworth_0001.jpg,0,Good,0.36229,4.881,15.1
+Rachel_Wheatley_0001.jpg,0,Good,0.28376,11.434,16.89
+Radovan_Karadzic_0001.jpg,0,Good,0.22557,-6.996,15.25
+Raf_Vallone_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.5
+Rafidah_Aziz_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.9
+Rafiq_Hariri_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.08
+Raghad_Saddam_Hussein_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.18
+Raja_Qureshi_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.91
+Ralph_Fiennes_0001.jpg,0,Good,0.29424,2.139,17.19
+Ralph_Firman_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,6.27
+Ralph_Friedgen_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.26
+Ralph_Lauren_0001.jpg,0,Good,0.25032,7.474,18.86
+Ramon_Delgado_0001.jpg,0,Hidden eyes or poor eye lighting,0.0,0.0,17.64
+Ramona_Rispton_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.36
+Randy_Dryer_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.11
+Randy_Travis_0001.jpg,0,Good,0.26054,-4.039,16.26
+Raoul_Ruiz_0001.jpg,0,Good,0.25218,-1.195,16.16
+Raquel_Welch_0001.jpg,0,Good,0.2276,-1.423,16.17
+Rashid_Qureshi_0001.jpg,0,Good,0.33879,-3.476,16.08
+Ratna_Sari_Dewi_Sukarno_0001.jpg,0,Good,0.32745,-8.263,17.86
+Raul_Castaneda_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.02
+Raul_Chacon_0001.jpg,0,Hidden eyes or poor eye lighting,0.0,0.0,18.6
+Ray_Halbritter_0001.jpg,0,Multiple faces,0.0,0.0,24.82
+Ray_Price_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.52
+Ray_Wasden_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,5.06
+Ray_Young_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.44
+Raymond_Arthurs_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.56
+Regina_Ip_0001.jpg,0,Good,0.32125,4.703,13.99
+Reginald_Hudlin_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.08
+Rene_Antonio_Leon_Rodriguez_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.66
+Retief_Goosen_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.68
+Rey_Sanchez_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.54
+Ricardo_Sanchez_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.54
+Riccardo_Muti_0001.jpg,0,Good,0.3524,0.798,17.76
+Richard_Chamberlain_0001.jpg,0,Good,0.26997,-2.883,16.53
+Richard_Cohen_0001.jpg,0,Good,0.14851,2.609,16.89
+Richard_Crenna_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.58
+Richard_Gephardt_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.9
+Richard_Jefferson_0001.jpg,0,Hidden eyes or poor eye lighting,0.0,0.0,16.77
+Richard_Langille_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.56
+Richard_Levin_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.69
+Richard_Palmer_0001.jpg,0,Good,0.28254,-15.546,17.73
+Richard_Perle_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.4
+Richard_Rodriguez_0001.jpg,0,Good,0.2749,0.474,14.67
+Richard_Tubb_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.48
+Richard_Ward_0001.jpg,0,Multiple faces,0.0,0.0,23.32
+Richie_Adubato_0001.jpg,0,Good,0.24046,8.547,12.2
+Rick_Barnes_0001.jpg,0,Multiple faces,0.0,0.0,23.74
+Rick_Bland_0001.jpg,0,Good,0.27765,-8.888,12.53
+Rick_Carlisle_0001.jpg,0,Good,0.39974,0.399,14.18
+Rick_Husband_0001.jpg,0,Good,0.25197,-3.862,13.45
+Ricky_Cottrill_0001.jpg,0,Multiple faces,0.0,0.0,22.26
+Riek_Blanjaar_0001.jpg,0,Good,0.22789,-9.647,12.17
+Rita_Moreno_0001.jpg,0,Good,0.34266,-3.426,15.21
+Rob_Lowe_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.4
+Robbie_Coltrane_0001.jpg,0,Multiple faces,0.0,0.0,20.24
+Robbie_Fowler_0001.jpg,0,Good,0.31471,-2.631,12.04
+Robbie_Naish_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.35
+Robert_Blake_0001.jpg,0,Good,0.36337,-4.298,14.15
+Robert_De_Niro_0001.jpg,0,Good,0.0828,-1.739,12.48
+Robert_Downey_Jr_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.63
+Robert_Fico_0001.jpg,0,Multiple faces,0.0,0.0,21.37
+Robert_Hyatt_0001.jpg,0,Good,0.2708,-1.441,12.07
+Robert_Lange_0001.jpg,0,Good,0.28643,-4.409,13.32
+Robert_Lee_Yates_Jr_0001.jpg,0,Good,0.28196,8.873,12.6
+Robert_McKee_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.8
+Robert_Pollack_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.63
+Robert_Torricelli_0001.jpg,0,Good,0.33169,-3.599,14.64
+Robert_Wiener_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.99
+Robin_Wagner_0001.jpg,0,Good,0.29839,-19.47,15.13
+Robinson_Stevenin_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.36
+Rodney_Dangerfield_0001.jpg,0,Good,0.33229,3.7,14.48
+Rodrigo_de_la_Cerna_0001.jpg,0,Good,0.31652,2.439,13.74
+Roger_Corbett_0001.jpg,0,Good,0.31578,5.416,14.66
+Roger_Federer_0001.jpg,0,Multiple faces,0.0,0.0,19.11
+Roger_Mahony_0001.jpg,0,Good,0.22505,0.918,10.96
+Roger_Moore_0001.jpg,0,Good,0.29562,3.262,13.72
+Roger_Toussaint_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.94
+Rogerio_Romero_0001.jpg,0,Multiple faces,0.0,0.0,19.94
+Roh_Moo-hyun_0001.jpg,0,Good,0.24658,-0.031,13.11
+Ronald_Brower_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.77
+Ronald_Ito_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.36
+Ronald_Reagan_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.57
+Ronald_White_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.98
+Rosario_Dawson_0001.jpg,0,Good,0.33007,-1.343,14.58
+Rosie_Perez_0001.jpg,0,Good,0.33726,-2.79,14.26
+Rowan_Williams_0001.jpg,0,Multiple faces,0.0,0.0,19.36
+Roy_Moore_0001.jpg,0,Good,0.32711,-8.504,11.7
+Roy_Williams_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.6
+Ruben_Sierra_0001.jpg,0,Good,0.34043,-1.287,14.43
+Rubens_Barrichello_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.46
+Rudolph_Giuliani_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.07
+Rudy_Tomjanovich_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,6.39
+Russ_Ortiz_0001.jpg,0,Good,0.31812,8.758,21.29
+Ruth_Bader_Ginsburg_0001.jpg,0,Good,0.27863,-4.951,24.46
+Ruth_Christofferson_0001.jpg,0,Good,0.29245,5.806,26.41
+Ruth_Pearce_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,6.02
+S_Jayakumar_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,6.0
+Sachiko_Yamada_0001.jpg,0,Good,0.13743,-6.76,31.0
+Sada_Jacobson_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,8.35
+Saeed_Mortazavi_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,10.25
+Sam_Torrance_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.94
+Samantha_Daniels_0001.jpg,0,Good,0.31343,0.412,31.1
+Samira_Makhmalbaf_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,6.41
+San_Lan_0001.jpg,0,Good,0.23736,-1.687,24.01
+Sandra_Banning_0001.jpg,0,Multiple faces,0.0,0.0,26.48
+Sandy_Wise_0001.jpg,0,Good,0.36095,-4.151,14.65
+Sanjay_Chawla_0001.jpg,0,Good,0.30126,-6.102,14.83
+Sarah_Michelle_Gellar_0001.jpg,0,Good,0.31992,-0.602,14.73
+Sarah_Weddington_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.75
+Sasha_Cohen_0001.jpg,0,Good,0.28233,-2.555,16.36
+Scott_Blum_0001.jpg,0,Good,0.27498,-9.307,14.09
+Scott_Fawell_0001.jpg,0,Good,0.26065,2.262,13.0
+Scott_Hubbard_0001.jpg,0,Multiple faces,0.0,0.0,21.55
+Scott_OGrady_0001.jpg,0,Good,0.23686,-1.767,13.28
+Scott_Ritter_0001.jpg,0,Good,0.28599,-0.927,16.64
+Scott_Rudin_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.51
+Scott_Weiland_0001.jpg,0,Good,0.36338,-4.474,20.93
+Scott_Wittman_0001.jpg,0,Multiple faces,0.0,0.0,27.16
+Sean_Combs_0001.jpg,0,Good,0.378,-2.221,13.47
+Sean_Hayes_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.99
+Serge_Klarsfeld_0001.jpg,0,Good,0.35257,-7.127,14.89
+Serge_Melac_0001.jpg,0,Good,0.27341,-1.134,16.7
+Sergei_Yushenkov_0001.jpg,0,Good,0.41207,-5.049,16.67
+Seth_Gorney_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.64
+Severino_Antinori_0001.jpg,0,Good,0.28366,-1.829,19.48
+Seydou_Diarra_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,6.2
+Shafal_Mosed_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.47
+Sharon_Frey_0001.jpg,0,Good,0.29624,1.062,19.44
+Sharon_Robinson_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.26
+Shaukat_Aziz_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.77
+Sheikh_Ahmed_Yassin_0001.jpg,0,Good,0.09441,0.213,22.63
+Sheila_Fraser_0001.jpg,0,Good,0.31237,0.392,30.77
+Shi_Guangsheng_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.87
+Shigeo_Nagashima_0001.jpg,0,Good,0.23195,-1.815,19.27
+Shobha_De_0001.jpg,0,Good,0.37802,5.132,18.76
+Sidney_Poitier_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.29
+Silvia_Farina_Elia_0001.jpg,0,Good,0.35485,-5.813,17.34
+Silvie_Cabero_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.26
+Sivan_Klein_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.42
+Sonya_Walger_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.39
+Stacey_Dales-Schuman_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.69
+Stacy_Dragila_0001.jpg,0,Good,0.32481,-3.636,16.05
+Stan_Kroenke_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.3
+Stanley_Nelson_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.19
+Stefano_Accorsi_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.44
+Stepan_Demirchian_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.29
+Stephen_Keener_0001.jpg,0,Good,0.37193,-4.372,17.65
+Stephen_Oake_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.25
+Stephen_Swindal_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.53
+Stephen_Webster_0001.jpg,0,Good,0.32529,-1.925,17.27
+Steve_Allan_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.4
+Steve_Backley_0001.jpg,0,Multiple faces,0.0,0.0,22.66
+Steve_Ballmer_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.44
+Steve_Blake_0001.jpg,0,Good,0.32908,-0.559,12.64
+Steve_Lavin_0001.jpg,0,Good,0.25735,3.399,14.68
+Steve_Lenard_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.76
+Steve_Pagliuca_0001.jpg,0,Good,0.31734,5.17,25.36
+Steve_Peace_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,5.86
+Steve_Rush_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.94
+Steve_Wariner_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,15.31
+Steve_Zahn_0001.jpg,0,Good,0.30138,-3.079,32.48
+Steven_Curtis_Chapman_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.76
+Stuart_Knoll_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.92
+Sue_Grafton_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.64
+Sue_Guevara_0001.jpg,0,Multiple faces,0.0,0.0,25.54
+Sue_Johnston_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.24
+Sureyya_Ayhan_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.48
+Sushma_Swaraj_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.13
+Susilo_Bambang_Yudhoyono_0001.jpg,0,Good,0.20273,0.664,14.88
+Suzanne_Gaudet_0001.jpg,0,Multiple faces,0.0,0.0,23.76
+Suzie_McConnell_Serio_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.77
+Sven_Goran_Eriksson_0001.jpg,0,Good,0.295,5.733,16.27
+Svend_Robinson_0001.jpg,0,Multiple faces,0.0,0.0,23.62
+Svetlana_Koroleva_0001.jpg,0,Good,0.27743,0.992,15.44
+Sybille_Schmid_0001.jpg,0,Good,0.28975,4.458,15.97
+Sylvie_Guillem_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.26
+Tab_Baldwin_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.63
+Tabare_Vazquez_0001.jpg,0,Multiple faces,0.0,0.0,23.86
+Taha_Yassin_Ramadan_0001.jpg,0,Good,0.30803,4.007,12.75
+Takashi_Yamamoto_0001.jpg,0,Good,0.29366,4.4,15.62
+Takenori_Kanzaki_0001.jpg,0,Good,0.33911,1.484,16.09
+Takuma_Sato_0001.jpg,0,Good,0.28605,-8.955,15.31
+Talal_Keenaan_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.3
+Tamara_Brooks_0001.jpg,0,Good,0.26902,-1.127,15.54
+Taoufik_Mathlouthi_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.32
+Tara_Dawn_Christensen_0001.jpg,0,Good,0.21403,3.044,13.19
+Tatiana_Paus_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.9
+Tavis_Smiley_0001.jpg,0,Good,0.32288,4.972,13.99
+Taylor_Twellman_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.87
+Tayshaun_Prince_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.84
+Tayyeb_Abdel_Rahim_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.07
+Ted_Williams_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.62
+Teresa_Heinz_Kerry_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.13
+Teresa_Worbis_0001.jpg,0,Good,0.32549,4.565,13.63
+Teri_ORourke_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.74
+Terry_Lynn_Barton_0001.jpg,0,Multiple faces,0.0,0.0,20.85
+Teruaki_Masumoto_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.18
+Thomas_Cloyd_0001.jpg,0,Good,0.37624,-4.381,11.47
+Thomas_Daily_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.85
+Thomas_Franklin_0001.jpg,0,Good,0.30329,-9.432,14.8
+Tian_Liang_0001.jpg,0,Good,0.36604,-2.969,13.61
+Tiffany_Limos_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.74
+Tim_Blake_Nelson_0001.jpg,0,Good,0.25109,6.751,12.93
+Tim_Curley_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.61
+Tim_Henman_0001.jpg,0,Good,0.33604,0.758,13.07
+Tim_Jones_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.86
+Tim_Pawlenty_0001.jpg,0,Good,0.30566,5.837,12.49
+Timothy_Coughlin_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.61
+Tina_Conner_0001.jpg,0,Good,0.27727,-2.585,15.29
+Tina_Sinatra_0001.jpg,0,Good,0.22646,9.295,13.97
+Tino_Martinez_0001.jpg,0,Good,0.33008,-0.153,12.07
+Tippi_Hedren_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.78
+Tirunesh_Dibaba_0001.jpg,0,Good,0.29919,-1.74,12.83
+Todd_Haynes_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.58
+Todd_MacCulloch_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.26
+Tom_Amstutz_0001.jpg,0,Good,0.30388,1.808,14.47
+Tom_Coughlin_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.99
+Tom_Cruise_0001.jpg,0,Good,0.16843,-0.619,14.82
+Tom_Curley_0001.jpg,0,Good,0.39601,-0.06,14.0
+Tom_Hanusik_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.04
+Tom_Jones_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.74
+Tom_OBrien_0001.jpg,0,Good,0.26607,-2.396,14.89
+Tom_Poston_0001.jpg,0,Multiple faces,0.0,0.0,19.59
+Tom_Reilly_0001.jpg,0,Good,0.24105,-3.03,13.42
+Tom_Rouen_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.24
+Tom_Schnackenberg_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.57
+Tom_Sizemore_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.74
+Tommy_Amaker_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.29
+Tommy_Lasorda_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.22
+Tomoko_Hagiwara_0001.jpg,0,Good,0.32289,8.199,12.32
+Toni_Braxton_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.48
+Tony_Shalhoub_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.39
+Troy_Aikman_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.6
+Troy_Jenkins_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.23
+Tubby_Smith_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.54
+Tyler_Grillo_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.13
+Uma_Thurman_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.28
+Uzi_Landau_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.54
+Vadim_Devyatovskiy_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.47
+Vadim_Strogalev_0001.jpg,0,Good,0.23978,9.695,14.46
+Valentino_Rossi_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.05
+Valeri_Bure_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.55
+Vanessa_Williams_0001.jpg,0,Good,0.32989,2.295,15.6
+Vassilis_Xiros_0001.jpg,0,Good,0.39512,-2.963,16.76
+Victor_Hanescu_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.93
+Victoria_Beckham_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.35
+Vladimir_Meciar_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.06
+Vladimir_Ustinov_0001.jpg,0,Good,0.30825,-8.52,14.05
+Walt_Harris_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.58
+Wang_Fei_0001.jpg,0,Multiple faces,0.0,0.0,20.55
+Warren_Truss_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.77
+Wayne_Brady_0001.jpg,0,Good,0.2777,-8.604,11.36
+Wendy_Kennedy_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,4.06
+Wilfredo_Moreno_0001.jpg,0,Good,0.29517,6.198,13.51
+Will_Young_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.61
+William_Bulger_0001.jpg,0,Good,0.22368,-5.782,12.64
+William_Hochul_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.56
+William_Hyde_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.64
+William_Martin_0001.jpg,0,Multiple faces,0.0,0.0,22.42
+William_Rosenberg_0001.jpg,0,Good,0.21112,-4.627,11.23
+William_Swor_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,3.29
+William_Umbach_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.73
+William_Webster_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.65
+Willie_Nelson_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.5
+Wilma_McNabb_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.44
+Winston_Churchill_0001.jpg,0,Multiple faces,0.0,0.0,17.9
+Yana_Klochkova_0001.jpg,0,Good,0.21299,0.101,12.83
+Yashwant_Sinha_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.61
+Yasushi_Akashi_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.72
+Yekaterina_Guseva_0001.jpg,0,Good,0.26564,-1.675,12.52
+Yoelbi_Quesada_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.58
+Yory_Boy_Campas_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.72
+Young_Kim_0001.jpg,0,Good,0.2772,-14.399,12.74
+Zach_Safrin_0001.jpg,0,Blurred or hidden eyes,0.0,0.0,2.81
+Zahir_Shah_0001.jpg,0,Good,0.33911,-3.607,13.08
+Zhang_Yimou_0001.jpg,0,Good,0.25758,-3.297,13.54
+Zhang_Ziyi_0001.jpg,0,Good,0.21887,-4.852,13.98
+Zinedine_Zidane_0001.jpg,0,Good,0.30008,-8.77,13.43
+Zorica_Radovic_0001.jpg,0,Good,0.36168,-1.028,14.02
+Zulfiqar_Ahmed_0001.jpg,0,Good,0.23597,-1.642,12.38

@@ -1,0 +1,40 @@
+{
+  "login_ms": 2.2189000010257587,
+  "GET /api/health": {
+    "n": 100,
+    "mean_ms": 2.671808999948553,
+    "p50_ms": 2.612000003864523,
+    "p95_ms": 3.5014999957638793,
+    "max_ms": 4.64300000021467
+  },
+  "POST tick (simulation, monitoring on)": {
+    "n": 150,
+    "mean_ms": 2.606560000034127,
+    "p50_ms": 2.300599997397512,
+    "p95_ms": 3.765399997064378,
+    "max_ms": 20.80190000560833
+  },
+  "camera source start_ms (loads MediaPipe model)": 939.2363000006299,
+  "POST frame (real face JPEG 640x480, monitoring on)": {
+    "n": 150,
+    "mean_ms": 32.7713413334277,
+    "p50_ms": 31.227699997543823,
+    "p95_ms": 47.81160000129603,
+    "max_ms": 56.10960000194609
+  },
+  "frame_states": {
+    "Unable to assess": 63,
+    "Normal": 87
+  },
+  "frame_qualities": {
+    "Good": 150
+  },
+  "frame_jpeg_bytes": 21350,
+  "GET /api/history (limit 500)": {
+    "n": 50,
+    "mean_ms": 3.891136000165716,
+    "p50_ms": 3.5853000008501112,
+    "p95_ms": 5.755400001362432,
+    "max_ms": 9.093199994822498
+  }
+}

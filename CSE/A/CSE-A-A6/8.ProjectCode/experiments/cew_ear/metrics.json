@@ -1,0 +1,911 @@
+{
+  "cew": {
+    "dataset": "CEW (Closed Eyes in the Wild), 100x100 warped faces, public research dataset",
+    "images_total": 2423,
+    "closed_images": 1192,
+    "open_images": 1231,
+    "assessed_good": 1068,
+    "coverage": 0.4407758976475444,
+    "by_class": {
+      "closed": {
+        "images": 1192,
+        "assessed_good": 529,
+        "coverage": 0.4437919463087248,
+        "quality_breakdown": {
+          "Good": 529,
+          "Blurred or hidden eyes": 480,
+          "Multiple faces": 139,
+          "Unreliable eye geometry": 5,
+          "No face": 10,
+          "Hidden eyes or poor eye lighting": 25,
+          "Poor lighting": 4
+        },
+        "ear_mean": 0.0588475236294896,
+        "ear_std": 0.03770498856987938,
+        "ear_median": 0.04839,
+        "ear_p5_p95": [
+          0.016856,
+          0.132772
+        ]
+      },
+      "open": {
+        "images": 1231,
+        "assessed_good": 539,
+        "coverage": 0.437855402112104,
+        "quality_breakdown": {
+          "Blurred or hidden eyes": 581,
+          "Multiple faces": 101,
+          "Good": 539,
+          "Hidden eyes or poor eye lighting": 9,
+          "Unreliable eye geometry": 1
+        },
+        "ear_mean": 0.29033393320964757,
+        "ear_std": 0.06672394984456557,
+        "ear_median": 0.29969,
+        "ear_p5_p95": [
+          0.148422,
+          0.386561
+        ]
+      }
+    },
+    "auc_ear_closed_vs_open": 0.9930417948241335,
+    "default_threshold_0.21": {
+      "threshold": 0.21,
+      "tp": 529,
+      "fp": 55,
+      "fn": 0,
+      "tn": 484,
+      "accuracy": 0.9485018726591761,
+      "precision": 0.9058219178082192,
+      "recall": 1.0,
+      "specificity": 0.8979591836734694,
+      "f1": 0.9505840071877808
+    },
+    "end_to_end_accuracy_unassessed_counted_wrong": 0.41807676434172514,
+    "best_threshold_in_sample_youden": {
+      "threshold": 0.17,
+      "tp": 521,
+      "fp": 33,
+      "fn": 8,
+      "tn": 506,
+      "accuracy": 0.9616104868913857,
+      "precision": 0.9404332129963899,
+      "recall": 0.9848771266540642,
+      "specificity": 0.9387755102040817,
+      "f1": 0.9621421975992613
+    },
+    "threshold_sweep": [
+      {
+        "threshold": 0.1,
+        "tp": 450,
+        "fp": 7,
+        "fn": 79,
+        "tn": 532,
+        "accuracy": 0.9194756554307116,
+        "precision": 0.9846827133479212,
+        "recall": 0.8506616257088847,
+        "specificity": 0.987012987012987,
+        "f1": 0.9127789046653144
+      },
+      {
+        "threshold": 0.11,
+        "tp": 470,
+        "fp": 11,
+        "fn": 59,
+        "tn": 528,
+        "accuracy": 0.9344569288389513,
+        "precision": 0.9771309771309772,
+        "recall": 0.888468809073724,
+        "specificity": 0.9795918367346939,
+        "f1": 0.9306930693069307
+      },
+      {
+        "threshold": 0.12,
+        "tp": 481,
+        "fp": 13,
+        "fn": 48,
+        "tn": 526,
+        "accuracy": 0.9428838951310862,
+        "precision": 0.9736842105263158,
+        "recall": 0.9092627599243857,
+        "specificity": 0.9758812615955473,
+        "f1": 0.9403714565004888
+      },
+      {
+        "threshold": 0.13,
+        "tp": 496,
+        "fp": 16,
+        "fn": 33,
+        "tn": 523,
+        "accuracy": 0.954119850187266,
+        "precision": 0.96875,
+        "recall": 0.9376181474480151,
+        "specificity": 0.9703153988868275,
+        "f1": 0.9529298751200769
+      },
+      {
+        "threshold": 0.14,
+        "tp": 505,
+        "fp": 24,
+        "fn": 24,
+        "tn": 515,
+        "accuracy": 0.9550561797752809,
+        "precision": 0.9546313799621928,
+        "recall": 0.9546313799621928,
+        "specificity": 0.9554730983302412,
+        "f1": 0.9546313799621928
+      },
+      {
+        "threshold": 0.15,
+        "tp": 513,
+        "fp": 28,
+        "fn": 16,
+        "tn": 511,
+        "accuracy": 0.9588014981273408,
+        "precision": 0.9482439926062847,
+        "recall": 0.9697542533081286,
+        "specificity": 0.948051948051948,
+        "f1": 0.9588785046728971
+      },
+      {
+        "threshold": 0.16,
+        "tp": 516,
+        "fp": 31,
+        "fn": 13,
+        "tn": 508,
+        "accuracy": 0.9588014981273408,
+        "precision": 0.943327239488117,
+        "recall": 0.9754253308128544,
+        "specificity": 0.9424860853432282,
+        "f1": 0.9591078066914498
+      },
+      {
+        "threshold": 0.17,
+        "tp": 521,
+        "fp": 33,
+        "fn": 8,
+        "tn": 506,
+        "accuracy": 0.9616104868913857,
+        "precision": 0.9404332129963899,
+        "recall": 0.9848771266540642,
+        "specificity": 0.9387755102040817,
+        "f1": 0.9621421975992613
+      },
+      {
+        "threshold": 0.18,
+        "tp": 523,
+        "fp": 39,
+        "fn": 6,
+        "tn": 500,
+        "accuracy": 0.9578651685393258,
+        "precision": 0.9306049822064056,
+        "recall": 0.9886578449905482,
+        "specificity": 0.9276437847866419,
+        "f1": 0.9587534372135655
+      },
+      {
+        "threshold": 0.19,
+        "tp": 525,
+        "fp": 42,
+        "fn": 4,
+        "tn": 497,
+        "accuracy": 0.9569288389513109,
+        "precision": 0.9259259259259259,
+        "recall": 0.9924385633270322,
+        "specificity": 0.922077922077922,
+        "f1": 0.958029197080292
+      },
+      {
+        "threshold": 0.2,
+        "tp": 527,
+        "fp": 48,
+        "fn": 2,
+        "tn": 491,
+        "accuracy": 0.9531835205992509,
+        "precision": 0.9165217391304348,
+        "recall": 0.996219281663516,
+        "specificity": 0.9109461966604824,
+        "f1": 0.9547101449275363
+      },
+      {
+        "threshold": 0.21,
+        "tp": 529,
+        "fp": 55,
+        "fn": 0,
+        "tn": 484,
+        "accuracy": 0.9485018726591761,
+        "precision": 0.9058219178082192,
+        "recall": 1.0,
+        "specificity": 0.8979591836734694,
+        "f1": 0.9505840071877808
+      },
+      {
+        "threshold": 0.22,
+        "tp": 529,
+        "fp": 62,
+        "fn": 0,
+        "tn": 477,
+        "accuracy": 0.9419475655430711,
+        "precision": 0.8950930626057529,
+        "recall": 1.0,
+        "specificity": 0.8849721706864564,
+        "f1": 0.9446428571428571
+      },
+      {
+        "threshold": 0.23,
+        "tp": 529,
+        "fp": 86,
+        "fn": 0,
+        "tn": 453,
+        "accuracy": 0.9194756554307116,
+        "precision": 0.8601626016260162,
+        "recall": 1.0,
+        "specificity": 0.8404452690166976,
+        "f1": 0.9248251748251748
+      },
+      {
+        "threshold": 0.24,
+        "tp": 529,
+        "fp": 104,
+        "fn": 0,
+        "tn": 435,
+        "accuracy": 0.9026217228464419,
+        "precision": 0.8357030015797788,
+        "recall": 1.0,
+        "specificity": 0.8070500927643784,
+        "f1": 0.9104991394148021
+      },
+      {
+        "threshold": 0.25,
+        "tp": 529,
+        "fp": 124,
+        "fn": 0,
+        "tn": 415,
+        "accuracy": 0.8838951310861424,
+        "precision": 0.8101071975497703,
+        "recall": 1.0,
+        "specificity": 0.7699443413729128,
+        "f1": 0.8950930626057529
+      },
+      {
+        "threshold": 0.26,
+        "tp": 529,
+        "fp": 144,
+        "fn": 0,
+        "tn": 395,
+        "accuracy": 0.8651685393258427,
+        "precision": 0.7860326894502229,
+        "recall": 1.0,
+        "specificity": 0.7328385899814471,
+        "f1": 0.8801996672212978
+      },
+      {
+        "threshold": 0.27,
+        "tp": 529,
+        "fp": 171,
+        "fn": 0,
+        "tn": 368,
+        "accuracy": 0.8398876404494382,
+        "precision": 0.7557142857142857,
+        "recall": 1.0,
+        "specificity": 0.6827458256029685,
+        "f1": 0.8608624898291294
+      },
+      {
+        "threshold": 0.28,
+        "tp": 529,
+        "fp": 206,
+        "fn": 0,
+        "tn": 333,
+        "accuracy": 0.8071161048689138,
+        "precision": 0.7197278911564626,
+        "recall": 1.0,
+        "specificity": 0.6178107606679035,
+        "f1": 0.8370253164556962
+      },
+      {
+        "threshold": 0.29,
+        "tp": 529,
+        "fp": 237,
+        "fn": 0,
+        "tn": 302,
+        "accuracy": 0.7780898876404494,
+        "precision": 0.6906005221932114,
+        "recall": 1.0,
+        "specificity": 0.5602968460111317,
+        "f1": 0.816988416988417
+      },
+      {
+        "threshold": 0.3,
+        "tp": 529,
+        "fp": 272,
+        "fn": 0,
+        "tn": 267,
+        "accuracy": 0.7453183520599251,
+        "precision": 0.6604244694132334,
+        "recall": 1.0,
+        "specificity": 0.49536178107606677,
+        "f1": 0.7954887218045112
+      },
+      {
+        "threshold": 0.31,
+        "tp": 529,
+        "fp": 308,
+        "fn": 0,
+        "tn": 231,
+        "accuracy": 0.7116104868913857,
+        "precision": 0.6320191158900836,
+        "recall": 1.0,
+        "specificity": 0.42857142857142855,
+        "f1": 0.7745241581259151
+      },
+      {
+        "threshold": 0.32,
+        "tp": 529,
+        "fp": 345,
+        "fn": 0,
+        "tn": 194,
+        "accuracy": 0.6769662921348315,
+        "precision": 0.6052631578947368,
+        "recall": 1.0,
+        "specificity": 0.35992578849721707,
+        "f1": 0.7540983606557377
+      },
+      {
+        "threshold": 0.33,
+        "tp": 529,
+        "fp": 384,
+        "fn": 0,
+        "tn": 155,
+        "accuracy": 0.6404494382022472,
+        "precision": 0.579408543263965,
+        "recall": 1.0,
+        "specificity": 0.287569573283859,
+        "f1": 0.7337031900138696
+      },
+      {
+        "threshold": 0.34,
+        "tp": 529,
+        "fp": 421,
+        "fn": 0,
+        "tn": 118,
+        "accuracy": 0.6058052434456929,
+        "precision": 0.5568421052631579,
+        "recall": 1.0,
+        "specificity": 0.2189239332096475,
+        "f1": 0.7153482082488167
+      }
+    ],
+    "latency_ms_vision_process_640x480": {
+      "mean": 12.115274453157243,
+      "p50": 13.07,
+      "p95": 26.888,
+      "max": 75.83,
+      "n": 2423
+    },
+    "caveats": [
+      "Closed-eye images come from the Internet, open-eye images from LFW: the two classes differ in source and image conditions, so separation may be easier than within-source separation.",
+      "Still images only: blink dynamics, persistence rules and head motion are not exercised.",
+      "Best threshold is chosen on the same images (in-sample) and is reported for context only."
+    ]
+  },
+  "cew_geometry_only": {
+    "note": "Geometry only: same landmarks/EAR as Vision, first detected face, no quality gates.",
+    "images_total": 2423,
+    "face_found": 2407,
+    "closed_found": 1176,
+    "open_found": 1231,
+    "auc_ear_closed_vs_open": 0.9888094961786502,
+    "default_threshold_0.21": {
+      "threshold": 0.21,
+      "tp": 1167,
+      "fp": 179,
+      "fn": 9,
+      "tn": 1052,
+      "accuracy": 0.9218944744495222,
+      "precision": 0.8670133729569094,
+      "recall": 0.9923469387755102,
+      "specificity": 0.8545897644191714,
+      "f1": 0.9254559873116575
+    },
+    "best_threshold_in_sample_youden": {
+      "threshold": 0.17,
+      "tp": 1148,
+      "fp": 99,
+      "fn": 28,
+      "tn": 1132,
+      "accuracy": 0.9472372247611134,
+      "precision": 0.9206094627105053,
+      "recall": 0.9761904761904762,
+      "specificity": 0.9195775792038993,
+      "f1": 0.9475856376392902
+    },
+    "threshold_sweep": [
+      {
+        "threshold": 0.1,
+        "tp": 953,
+        "fp": 19,
+        "fn": 223,
+        "tn": 1212,
+        "accuracy": 0.8994599085999169,
+        "precision": 0.9804526748971193,
+        "recall": 0.810374149659864,
+        "specificity": 0.9845653939886271,
+        "f1": 0.8873370577281192
+      },
+      {
+        "threshold": 0.11,
+        "tp": 1001,
+        "fp": 24,
+        "fn": 175,
+        "tn": 1207,
+        "accuracy": 0.917324470294973,
+        "precision": 0.9765853658536585,
+        "recall": 0.8511904761904762,
+        "specificity": 0.9805036555645816,
+        "f1": 0.9095865515674694
+      },
+      {
+        "threshold": 0.12,
+        "tp": 1050,
+        "fp": 30,
+        "fn": 126,
+        "tn": 1201,
+        "accuracy": 0.9351890319900291,
+        "precision": 0.9722222222222222,
+        "recall": 0.8928571428571429,
+        "specificity": 0.9756295694557271,
+        "f1": 0.9308510638297872
+      },
+      {
+        "threshold": 0.13,
+        "tp": 1085,
+        "fp": 38,
+        "fn": 91,
+        "tn": 1193,
+        "accuracy": 0.9464063149148317,
+        "precision": 0.9661620658949243,
+        "recall": 0.9226190476190477,
+        "specificity": 0.9691307879772543,
+        "f1": 0.9438886472379295
+      },
+      {
+        "threshold": 0.14,
+        "tp": 1104,
+        "fp": 63,
+        "fn": 72,
+        "tn": 1168,
+        "accuracy": 0.9439135853759867,
+        "precision": 0.9460154241645244,
+        "recall": 0.9387755102040817,
+        "specificity": 0.9488220958570268,
+        "f1": 0.942381562099872
+      },
+      {
+        "threshold": 0.15,
+        "tp": 1122,
+        "fp": 72,
+        "fn": 54,
+        "tn": 1159,
+        "accuracy": 0.9476526796842543,
+        "precision": 0.9396984924623115,
+        "recall": 0.9540816326530612,
+        "specificity": 0.9415109666937449,
+        "f1": 0.9468354430379747
+      },
+      {
+        "threshold": 0.16,
+        "tp": 1134,
+        "fp": 88,
+        "fn": 42,
+        "tn": 1143,
+        "accuracy": 0.9459908599916909,
+        "precision": 0.9279869067103109,
+        "recall": 0.9642857142857143,
+        "specificity": 0.9285134037367994,
+        "f1": 0.9457881567973311
+      },
+      {
+        "threshold": 0.17,
+        "tp": 1148,
+        "fp": 99,
+        "fn": 28,
+        "tn": 1132,
+        "accuracy": 0.9472372247611134,
+        "precision": 0.9206094627105053,
+        "recall": 0.9761904761904762,
+        "specificity": 0.9195775792038993,
+        "f1": 0.9475856376392902
+      },
+      {
+        "threshold": 0.18,
+        "tp": 1158,
+        "fp": 111,
+        "fn": 18,
+        "tn": 1120,
+        "accuracy": 0.9464063149148317,
+        "precision": 0.9125295508274232,
+        "recall": 0.9846938775510204,
+        "specificity": 0.9098294069861901,
+        "f1": 0.947239263803681
+      },
+      {
+        "threshold": 0.19,
+        "tp": 1162,
+        "fp": 130,
+        "fn": 14,
+        "tn": 1101,
+        "accuracy": 0.9401744910677191,
+        "precision": 0.8993808049535603,
+        "recall": 0.9880952380952381,
+        "specificity": 0.8943948009748173,
+        "f1": 0.9416531604538088
+      },
+      {
+        "threshold": 0.2,
+        "tp": 1165,
+        "fp": 151,
+        "fn": 11,
+        "tn": 1080,
+        "accuracy": 0.9326963024511841,
+        "precision": 0.8852583586626139,
+        "recall": 0.9906462585034014,
+        "specificity": 0.8773354995938262,
+        "f1": 0.934991974317817
+      },
+      {
+        "threshold": 0.21,
+        "tp": 1167,
+        "fp": 179,
+        "fn": 9,
+        "tn": 1052,
+        "accuracy": 0.9218944744495222,
+        "precision": 0.8670133729569094,
+        "recall": 0.9923469387755102,
+        "specificity": 0.8545897644191714,
+        "f1": 0.9254559873116575
+      },
+      {
+        "threshold": 0.22,
+        "tp": 1170,
+        "fp": 206,
+        "fn": 6,
+        "tn": 1025,
+        "accuracy": 0.9119235562941421,
+        "precision": 0.8502906976744186,
+        "recall": 0.9948979591836735,
+        "specificity": 0.8326563769293257,
+        "f1": 0.9169278996865203
+      },
+      {
+        "threshold": 0.23,
+        "tp": 1171,
+        "fp": 252,
+        "fn": 5,
+        "tn": 979,
+        "accuracy": 0.8932280847528044,
+        "precision": 0.8229093464511595,
+        "recall": 0.9957482993197279,
+        "specificity": 0.7952883834281073,
+        "f1": 0.9011158137745287
+      },
+      {
+        "threshold": 0.24,
+        "tp": 1173,
+        "fp": 285,
+        "fn": 3,
+        "tn": 946,
+        "accuracy": 0.8803489821354383,
+        "precision": 0.8045267489711934,
+        "recall": 0.9974489795918368,
+        "specificity": 0.768480909829407,
+        "f1": 0.8906605922551253
+      },
+      {
+        "threshold": 0.25,
+        "tp": 1173,
+        "fp": 328,
+        "fn": 3,
+        "tn": 903,
+        "accuracy": 0.8624844204403822,
+        "precision": 0.7814790139906729,
+        "recall": 0.9974489795918368,
+        "specificity": 0.7335499593826158,
+        "f1": 0.8763541277549496
+      },
+      {
+        "threshold": 0.26,
+        "tp": 1173,
+        "fp": 387,
+        "fn": 3,
+        "tn": 844,
+        "accuracy": 0.8379725799750727,
+        "precision": 0.7519230769230769,
+        "recall": 0.9974489795918368,
+        "specificity": 0.685621445978879,
+        "f1": 0.8574561403508771
+      },
+      {
+        "threshold": 0.27,
+        "tp": 1173,
+        "fp": 450,
+        "fn": 3,
+        "tn": 781,
+        "accuracy": 0.8117989198171999,
+        "precision": 0.722735674676525,
+        "recall": 0.9974489795918368,
+        "specificity": 0.6344435418359058,
+        "f1": 0.8381564844587353
+      },
+      {
+        "threshold": 0.28,
+        "tp": 1173,
+        "fp": 508,
+        "fn": 3,
+        "tn": 723,
+        "accuracy": 0.7877025342750311,
+        "precision": 0.6977989292088043,
+        "recall": 0.9974489795918368,
+        "specificity": 0.587327376116978,
+        "f1": 0.8211410570528527
+      },
+      {
+        "threshold": 0.29,
+        "tp": 1173,
+        "fp": 567,
+        "fn": 3,
+        "tn": 664,
+        "accuracy": 0.7631906938097216,
+        "precision": 0.6741379310344827,
+        "recall": 0.9974489795918368,
+        "specificity": 0.5393988627132412,
+        "f1": 0.8045267489711934
+      },
+      {
+        "threshold": 0.3,
+        "tp": 1174,
+        "fp": 644,
+        "fn": 2,
+        "tn": 587,
+        "accuracy": 0.7316161196510179,
+        "precision": 0.6457645764576457,
+        "recall": 0.9982993197278912,
+        "specificity": 0.4768480909829407,
+        "f1": 0.7842351369405478
+      },
+      {
+        "threshold": 0.31,
+        "tp": 1175,
+        "fp": 719,
+        "fn": 1,
+        "tn": 512,
+        "accuracy": 0.7008724553385958,
+        "precision": 0.6203801478352693,
+        "recall": 0.9991496598639455,
+        "specificity": 0.4159220146222583,
+        "f1": 0.7654723127035831
+      },
+      {
+        "threshold": 0.32,
+        "tp": 1176,
+        "fp": 808,
+        "fn": 0,
+        "tn": 423,
+        "accuracy": 0.6643124221022019,
+        "precision": 0.592741935483871,
+        "recall": 1.0,
+        "specificity": 0.3436230706742486,
+        "f1": 0.7443037974683544
+      },
+      {
+        "threshold": 0.33,
+        "tp": 1176,
+        "fp": 876,
+        "fn": 0,
+        "tn": 355,
+        "accuracy": 0.6360614873286249,
+        "precision": 0.5730994152046783,
+        "recall": 1.0,
+        "specificity": 0.2883834281072299,
+        "f1": 0.7286245353159851
+      },
+      {
+        "threshold": 0.34,
+        "tp": 1176,
+        "fp": 949,
+        "fn": 0,
+        "tn": 282,
+        "accuracy": 0.6057332779393436,
+        "precision": 0.5534117647058824,
+        "recall": 1.0,
+        "specificity": 0.22908204711616573,
+        "f1": 0.7125113601938806
+      }
+    ],
+    "ear_mean_closed": 0.06524227861977122,
+    "ear_mean_open": 0.28556348535069487
+  },
+  "robustness": {
+    "source": "open-eye CEW faces that were Good at baseline, seeded sample",
+    "n_images": 272,
+    "conditions": [
+      {
+        "condition": "baseline (unmodified)",
+        "n": 272,
+        "good": 267,
+        "good_rate": 0.9816176470588235,
+        "unable_to_assess_rate": 0.018382352941176516,
+        "quality_breakdown": {
+          "Good": 267,
+          "Multiple faces": 5
+        },
+        "false_closure_rate_among_good": 0.1198501872659176,
+        "mean_ear_good": 0.2860151731875353,
+        "mean_ear_shift_vs_baseline": 0.0
+      },
+      {
+        "condition": "brightness x0.50",
+        "n": 272,
+        "good": 1,
+        "good_rate": 0.003676470588235294,
+        "unable_to_assess_rate": 0.9963235294117647,
+        "quality_breakdown": {
+          "Blurred or hidden eyes": 267,
+          "Good": 1,
+          "Poor lighting": 3,
+          "Hidden eyes or poor eye lighting": 1
+        },
+        "false_closure_rate_among_good": 0.0,
+        "mean_ear_good": 0.3295321698157531,
+        "mean_ear_shift_vs_baseline": 0.04351699662821784
+      },
+      {
+        "condition": "brightness x0.25",
+        "n": 272,
+        "good": 0,
+        "good_rate": 0.0,
+        "unable_to_assess_rate": 1.0,
+        "quality_breakdown": {
+          "Poor lighting": 264,
+          "Blurred or hidden eyes": 8
+        },
+        "false_closure_rate_among_good": null,
+        "mean_ear_good": null,
+        "mean_ear_shift_vs_baseline": null
+      },
+      {
+        "condition": "brightness x0.12",
+        "n": 272,
+        "good": 0,
+        "good_rate": 0.0,
+        "unable_to_assess_rate": 1.0,
+        "quality_breakdown": {
+          "Poor lighting": 272
+        },
+        "false_closure_rate_among_good": null,
+        "mean_ear_good": null,
+        "mean_ear_shift_vs_baseline": null
+      },
+      {
+        "condition": "over-exposed (x1.8 + 25)",
+        "n": 272,
+        "good": 154,
+        "good_rate": 0.5661764705882353,
+        "unable_to_assess_rate": 0.4338235294117647,
+        "quality_breakdown": {
+          "Poor lighting": 76,
+          "Hidden eyes or poor eye lighting": 15,
+          "Good": 154,
+          "Blurred or hidden eyes": 15,
+          "Multiple faces": 12
+        },
+        "false_closure_rate_among_good": 0.11688311688311688,
+        "mean_ear_good": 0.2875382061907209,
+        "mean_ear_shift_vs_baseline": 0.0015230330031856254
+      },
+      {
+        "condition": "Gaussian blur sigma 2 px",
+        "n": 272,
+        "good": 0,
+        "good_rate": 0.0,
+        "unable_to_assess_rate": 1.0,
+        "quality_breakdown": {
+          "Blurred or hidden eyes": 272
+        },
+        "false_closure_rate_among_good": null,
+        "mean_ear_good": null,
+        "mean_ear_shift_vs_baseline": null
+      },
+      {
+        "condition": "Gaussian blur sigma 5 px",
+        "n": 272,
+        "good": 0,
+        "good_rate": 0.0,
+        "unable_to_assess_rate": 1.0,
+        "quality_breakdown": {
+          "Blurred or hidden eyes": 272
+        },
+        "false_closure_rate_among_good": null,
+        "mean_ear_good": null,
+        "mean_ear_shift_vs_baseline": null
+      },
+      {
+        "condition": "Gaussian noise sd 20",
+        "n": 272,
+        "good": 223,
+        "good_rate": 0.8198529411764706,
+        "unable_to_assess_rate": 0.18014705882352944,
+        "quality_breakdown": {
+          "Multiple faces": 49,
+          "Good": 223
+        },
+        "false_closure_rate_among_good": 0.14798206278026907,
+        "mean_ear_good": 0.2801580627786774,
+        "mean_ear_shift_vs_baseline": -0.005857110408857891
+      },
+      {
+        "condition": "opaque sunglasses over both eyes",
+        "n": 272,
+        "good": 2,
+        "good_rate": 0.007352941176470588,
+        "unable_to_assess_rate": 0.9926470588235294,
+        "quality_breakdown": {
+          "Hidden eyes or poor eye lighting": 257,
+          "Multiple faces": 12,
+          "Good": 2,
+          "No face": 1
+        },
+        "false_closure_rate_among_good": 0.5,
+        "mean_ear_good": 0.20455106816567242,
+        "mean_ear_shift_vs_baseline": -0.08146410502186285
+      },
+      {
+        "condition": "tinted lenses (55% dark)",
+        "n": 272,
+        "good": 177,
+        "good_rate": 0.6507352941176471,
+        "unable_to_assess_rate": 0.3492647058823529,
+        "quality_breakdown": {
+          "Good": 177,
+          "Hidden eyes or poor eye lighting": 73,
+          "Multiple faces": 22
+        },
+        "false_closure_rate_among_good": 0.0847457627118644,
+        "mean_ear_good": 0.2954838137512995,
+        "mean_ear_shift_vs_baseline": 0.00946864056376423
+      },
+      {
+        "condition": "one eye covered",
+        "n": 272,
+        "good": 0,
+        "good_rate": 0.0,
+        "unable_to_assess_rate": 1.0,
+        "quality_breakdown": {
+          "Hidden eyes or poor eye lighting": 260,
+          "Multiple faces": 11,
+          "No face": 1
+        },
+        "false_closure_rate_among_good": null,
+        "mean_ear_good": null,
+        "mean_ear_shift_vs_baseline": null
+      },
+      {
+        "condition": "lower face masked",
+        "n": 272,
+        "good": 236,
+        "good_rate": 0.8676470588235294,
+        "unable_to_assess_rate": 0.13235294117647056,
+        "quality_breakdown": {
+          "Multiple faces": 7,
+          "Good": 236,
+          "Blurred or hidden eyes": 24,
+          "Hidden eyes or poor eye lighting": 2,
+          "No face": 3
+        },
+        "false_closure_rate_among_good": 0.1271186440677966,
+        "mean_ear_good": 0.2889880997277018,
+        "mean_ear_shift_vs_baseline": 0.0029729265401665095
+      }
+    ]
+  }
+}

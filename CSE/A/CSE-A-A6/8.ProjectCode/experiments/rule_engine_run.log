@@ -1,0 +1,165 @@
+{
+ "note": "Scripted streams (seeded generators in scripts/measure_rules.py), not recordings of people.",
+ "defaults": {
+  "ear_threshold": 0.21,
+  "closure_seconds": 1.5,
+  "persistence_seconds": 1.0,
+  "closed_fraction": 0.55,
+  "tilt_degrees": 25.0,
+  "cooldown_seconds": 15.0,
+  "calibrated": false
+ },
+ "false_alarm_on_blink_streams": [
+  {
+   "case": "normal blinks 17/min (0.1-0.4 s)",
+   "sessions": 300,
+   "session_s": 180,
+   "fps": 15,
+   "sessions_with_warning": 0,
+   "session_false_warning_rate": 0.0,
+   "alerts_per_hour": 0.0,
+   "warning_time_fraction": 0.0
+  },
+  {
+   "case": "frequent blinks 35/min (0.1-0.4 s)",
+   "sessions": 300,
+   "session_s": 180,
+   "fps": 15,
+   "sessions_with_warning": 0,
+   "session_false_warning_rate": 0.0,
+   "alerts_per_hour": 0.0,
+   "warning_time_fraction": 0.0
+  },
+  {
+   "case": "noisy EAR (sd 0.04), blinks 17/min",
+   "sessions": 300,
+   "session_s": 180,
+   "fps": 15,
+   "sessions_with_warning": 0,
+   "session_false_warning_rate": 0.0,
+   "alerts_per_hour": 0.0,
+   "warning_time_fraction": 0.0
+  },
+  {
+   "case": "5% slow blinks (0.8-1.3 s), 17/min",
+   "sessions": 300,
+   "session_s": 180,
+   "fps": 15,
+   "sessions_with_warning": 0,
+   "session_false_warning_rate": 0.0,
+   "alerts_per_hour": 0.0,
+   "warning_time_fraction": 0.0
+  },
+  {
+   "case": "20% slow blinks (0.8-1.3 s), 17/min",
+   "sessions": 300,
+   "session_s": 180,
+   "fps": 15,
+   "sessions_with_warning": 3,
+   "session_false_warning_rate": 0.01,
+   "alerts_per_hour": 0.2,
+   "warning_time_fraction": 2.962962962962963e-05
+  }
+ ],
+ "other_rules": {
+  "closed_fraction_rule": {
+   "pattern": "0.9 s closures every 1.5 s from t=5 s (60 % closed)",
+   "first_warning_after_onset_s": 10.133333333333333,
+   "reason_at_warning": "Closed-eye fraction 63% over 10.0 s"
+  },
+  "tilt_rule": {
+   "pattern": "roll 30 deg with EAR 0.19 from t=6 s",
+   "first_warning_after_onset_s": 1.0666666666666664
+  },
+  "tilt_alone_warns": false,
+  "warmup_first_normal_s": 2.0,
+  "recovery_after_signal_loss_first_normal_s": 2.1333333333333333
+ },
+ "engine_cost": {
+  "updates": 200000,
+  "microseconds_per_update": 40.58276150000893
+ }
+}
+[
+{
+"fps": 10,
+"closure_s": 0.5,
+"runs": 30,
+"warned": 0,
+"latency_mean_s": null,
+"latency_min_s": null,
+"latency_max_s": null
+},
+{
+"fps": 10,
+"closure_s": 1.0,
+"runs": 30,
+"warned": 0,
+"latency_mean_s": null,
+"latency_min_s": null,
+"latency_max_s": null
+},
+{
+"fps": 10,
+"closure_s": 1.5,
+"runs": 30,
+"warned": 0,
+"latency_mean_s": null,
+"latency_min_s": null,
+"latency_max_s": null
+},
+{
+"fps": 10,
+"closure_s": 2.0,
+"runs": 30,
+"warned": 0,
+"latency_mean_s": null,
+"latency_min_s": null,
+"latency_max_s": null
+},
+{
+"fps": 10,
+"closure_s": 2.4,
+"runs": 30,
+"warned": 0,
+"latency_mean_s": null,
+"latency_min_s": null,
+"latency_max_s": null
+},
+{
+"fps": 10,
+"closure_s": 2.6,
+"runs": 30,
+"warned": 30,
+"latency_mean_s": 2.5999999999999988,
+"latency_min_s": 2.5999999999999996,
+"latency_max_s": 2.5999999999999996
+},
+{
+"fps": 10,
+"closure_s": 3.0,
+"runs": 30,
+"warned": 30,
+"latency_mean_s": 2.5999999999999988,
+"latency_min_s": 2.5999999999999996,
+"latency_max_s": 2.5999999999999996
+},
+{
+"fps": 10,
+"closure_s": 4.0,
+"runs": 30,
+"warned": 30,
+"latency_mean_s": 2.5999999999999988,
+"latency_min_s": 2.5999999999999996,
+"latency_max_s": 2.5999999999999996
+},
+{
+"fps": 10,
+"closure_s": 6.0,
+"runs": 30,
+"warned": 30,
+"latency_mean_s": 2.5999999999999988,
+"latency_min_s": 2.5999999999999996,
+"latency_max_s": 2.5999999999999996
+}
+]
